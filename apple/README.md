@@ -9,6 +9,12 @@ training, memory limits, optimizer resume, held-out evaluation and generation.
 The tool reuses MLX-LM's data processors, loss and LoRA forward; see
 [what is reused and why](SOURCES.md).
 
+The [usefulness review](reports/usability-review.md) assesses beginner usability
+and framework compatibility. The [proposed simple flow](SIMPLE_FLOW.md) is a design,
+not an implemented interface. For learning Metal inference optimizations from Git
+history, see the [task assessment](reports/metal-training-assessment.md) and its
+measured context limits.
+
 ## Verified status
 
 A controlled language-model fine-tune now changes `Code?` from the four-token

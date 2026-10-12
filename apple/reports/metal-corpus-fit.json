@@ -1,0 +1,415 @@
+{
+  "created_utc": "2026-10-12T20:29:59.153159+00:00",
+  "scope": "Read-only size audit of candidate optimization-related commits, not a verified-success training corpus. No code or commit content sent to external services.",
+  "repository": "/Users/jasontitus/experiments/mlx-stream",
+  "head": "bd7b3d42b38d677d8c69e0e417920c6a581a8a3a",
+  "selection": "First 20 nonempty code diffs among the newest 120 non-merge commits whose messages match perf|optim|speed|faster|fusion|fuse|throughput|latency|bandwidth|prefill|kernel; .metal/.zig/.py/.cpp/.h/.mm paths only.",
+  "measurement": "Actual local target tokenizer and chat template. Minimal prompt plus full commit message and code diff as completion; omits parent code, hardware and profiling context, so actual complete optimization examples generally need more context. This is a size probe, not a proposed training objective.",
+  "sample_count": 20,
+  "fitting_512": 1,
+  "target_positions": {
+    "minimum": 188,
+    "median": 5319.0,
+    "maximum": 645223
+  },
+  "message_tokens": {
+    "minimum": 51,
+    "median": 209.5,
+    "maximum": 828
+  },
+  "candidates": [
+    {
+      "commit": "08d83965e821388ee7122a8e55f0737371e59e60",
+      "subject": "glm_moe_dsa: the host's GLM-5.3 surface is comptime-optional; without it GLM-5.3 refuses by name",
+      "message_tokens": 258,
+      "code_diff_tokens": 24970,
+      "minimal_chat_total_tokens": 25247,
+      "training_target_positions": 25246,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/arch/glm_moe_dsa/bank.zig",
+        "src/arch/glm_moe_dsa/bill.zig",
+        "src/arch/glm_moe_dsa/bill_receipts_test.zig",
+        "src/arch/glm_moe_dsa/cache.zig",
+        "src/arch/glm_moe_dsa/exl3_bank.zig",
+        "src/arch/glm_moe_dsa/exl3_quant.zig",
+        "src/arch/glm_moe_dsa/experts.zig",
+        "src/arch/glm_moe_dsa/glm53_exl3/kernels.zig",
+        "src/arch/glm_moe_dsa/glm53_exl3/quant.zig",
+        "src/arch/glm_moe_dsa/glm53_exl3/selfcheck.zig",
+        "src/arch/glm_moe_dsa/glm_moe_dsa.zig",
+        "src/arch/glm_moe_dsa/graph.zig",
+        "src/arch/glm_moe_dsa/host_surface_test.zig",
+        "src/arch/glm_moe_dsa/module.zig",
+        "src/arch/glm_moe_dsa/mtp.zig",
+        "src/arch/glm_moe_dsa/mtp_parity.zig",
+        "src/arch/glm_moe_dsa/parity.zig",
+        "src/arch/glm_moe_dsa/plugin.zig",
+        "src/arch/glm_moe_dsa/settings.zig",
+        "src/arch/glm_moe_dsa/split.zig",
+        "src/arch/glm_moe_dsa/topk.zig",
+        "src/arch/glm_moe_dsa/trunk_kernels.zig",
+        "src/arch/glm_moe_dsa/trunk_selfcheck.zig",
+        "src/expert/routes_test.zig",
+        "src/host_caps.zig",
+        "src/root.zig",
+        "src/tests.zig"
+      ]
+    },
+    {
+      "commit": "8eb9db687e8d903289681b01da6b08a3a873aac6",
+      "subject": "GLM-5.3 packs on main: the MXFP4 format's reader, the converter's mode, the plain references",
+      "message_tokens": 124,
+      "code_diff_tokens": 46,
+      "minimal_chat_total_tokens": 189,
+      "training_target_positions": 188,
+      "fits_current_training_limit": true,
+      "changed_code_files": [
+        "scripts/convert_glm_mxfp4_bank.py"
+      ]
+    },
+    {
+      "commit": "f22ad1515533f7be43ee07e4d759e6ae27052f5d",
+      "subject": "GLM-5.3's trunk kernels: a pinned registry of their own (top-k, combine), built and run once at construction",
+      "message_tokens": 621,
+      "code_diff_tokens": 43952,
+      "minimal_chat_total_tokens": 44592,
+      "training_target_positions": 44591,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "scripts/glm_trunk_manifest.py",
+        "src/arch/glm_moe_dsa/exl3_quant.zig",
+        "src/arch/glm_moe_dsa/experts.zig",
+        "src/arch/glm_moe_dsa/graph.zig",
+        "src/arch/glm_moe_dsa/module.zig",
+        "src/arch/glm_moe_dsa/topk.zig",
+        "src/arch/glm_moe_dsa/trunk_kernels.zig",
+        "src/arch/glm_moe_dsa/trunk_selfcheck.zig",
+        "src/kernels/glm_moe_dsa/glm_moe_dsa_combine.metal",
+        "src/kernels/glm_moe_dsa/glm_moe_dsa_topk.metal",
+        "src/kernels/glm_moe_dsa/glm_moe_dsa_topk_rows1.metal",
+        "src/kernels/glm_moe_dsa/glm_moe_dsa_topk_rows2.metal",
+        "src/kernels/glm_moe_dsa/glm_moe_dsa_topk_rows3.metal",
+        "src/kernels/glm_moe_dsa/glm_moe_dsa_topk_rows4.metal",
+        "src/kernels/glm_moe_dsa/glm_moe_dsa_topk_rows5.metal",
+        "src/kernels/glm_moe_dsa/glm_moe_dsa_topk_rows6.metal",
+        "src/kernels/glm_moe_dsa/glm_moe_dsa_topk_rows7.metal",
+        "src/kernels/glm_moe_dsa/glm_moe_dsa_topk_rows8.metal",
+        "src/kernels/glm_moe_dsa/header_fp_contract_off.metal",
+        "src/tests.zig"
+      ]
+    },
+    {
+      "commit": "9f53c247654459b02a959c8e5d6910e1ce42a041",
+      "subject": "phase memory: the construction check's bounds rise by the bytes the host's other models hold in the process (#8's reading); GLM-5.3's check reads it once",
+      "message_tokens": 209,
+      "code_diff_tokens": 2093,
+      "minimal_chat_total_tokens": 2321,
+      "training_target_positions": 2320,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/arch/glm_moe_dsa/module.zig",
+        "src/phase_memory.zig"
+      ]
+    },
+    {
+      "commit": "a0e0b7cb52536c23273759c2d92a135d9b8471ff",
+      "subject": "glm_moe_dsa: the indexer's top-k and the routed combine take construction-time routes; their kernels built and run once at construction; the combine check is test-only",
+      "message_tokens": 375,
+      "code_diff_tokens": 15516,
+      "minimal_chat_total_tokens": 15910,
+      "training_target_positions": 15909,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/arch/glm_moe_dsa/experts.zig",
+        "src/arch/glm_moe_dsa/graph.zig",
+        "src/arch/glm_moe_dsa/module.zig",
+        "src/arch/glm_moe_dsa/mtp.zig",
+        "src/arch/glm_moe_dsa/topk.zig"
+      ]
+    },
+    {
+      "commit": "ce12e73c2e514df56d604105c698fd2d2b2975ec",
+      "subject": "glm_moe_dsa: the prompt pass's GEMM slices and attention spans in flight bounded by construction, and billed at those bounds",
+      "message_tokens": 280,
+      "code_diff_tokens": 11160,
+      "minimal_chat_total_tokens": 11459,
+      "training_target_positions": 11458,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/arch/glm_moe_dsa/bill.zig",
+        "src/arch/glm_moe_dsa/bill_receipts_test.zig",
+        "src/arch/glm_moe_dsa/experts.zig",
+        "src/arch/glm_moe_dsa/glm_moe_dsa.zig",
+        "src/arch/glm_moe_dsa/graph.zig"
+      ]
+    },
+    {
+      "commit": "555da9b852908324f3be98e8eab4b132597e0aca",
+      "subject": "sdk memory: boxUsedBytes reads host_statistics64 and is null without a reading; GLM-5.3 refuses a load without one",
+      "message_tokens": 193,
+      "code_diff_tokens": 2660,
+      "minimal_chat_total_tokens": 2872,
+      "training_target_positions": 2871,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "sdk/memory.zig",
+        "src/arch/glm_moe_dsa/module.zig"
+      ]
+    },
+    {
+      "commit": "fa49f0c98361da7d207de57fb5112386cc0153c7",
+      "subject": "expert tally: off for DeepSeek-V4.1 by default; expert_tally_file holds the file fixed for a cell; CHANGELOG says what GLM-5.3's work changes for DeepSeek-V4.1",
+      "message_tokens": 268,
+      "code_diff_tokens": 4779,
+      "minimal_chat_total_tokens": 5066,
+      "training_target_positions": 5065,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/arch/deepseek_v41/module.zig",
+        "src/arch/deepseek_v41/settings.zig",
+        "src/arch/glm_moe_dsa/module.zig",
+        "src/expert/policy_test.zig",
+        "src/sdk_ext/expert/tally.zig"
+      ]
+    },
+    {
+      "commit": "3b0fb414dda2f401fce4e74ea1127b35f3af3950",
+      "subject": "sdk: no dsa re-export; GLM-5.3's graph imports the host's DSA kernels itself",
+      "message_tokens": 83,
+      "code_diff_tokens": 435,
+      "minimal_chat_total_tokens": 537,
+      "training_target_positions": 536,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "sdk/root.zig",
+        "src/arch/glm_moe_dsa/graph.zig"
+      ]
+    },
+    {
+      "commit": "fc21fcb5ec25a2d2eb3f6dd2a7518c54cca48324",
+      "subject": "glm_moe_dsa: the arch under src/arch/glm_moe_dsa/ (its own EXL3 set under glm53_exl3/), as #10 laid out DeepSeek-V4.1 and MiMo; the route recorder's test under src/expert/",
+      "message_tokens": 147,
+      "code_diff_tokens": 645058,
+      "minimal_chat_total_tokens": 645224,
+      "training_target_positions": 645223,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "scripts/glm53_exl3_manifest.py",
+        "scripts/glm_moe_dsa_goldens.py",
+        "scripts/glm_moe_dsa_mtp_goldens.py",
+        "scripts/glm_split_k3_table.py",
+        "src/arch/glm_moe_dsa/bank.zig",
+        "src/arch/glm_moe_dsa/bill.zig",
+        "src/arch/glm_moe_dsa/bill_receipts_test.zig",
+        "src/arch/glm_moe_dsa/cache.zig",
+        "src/arch/glm_moe_dsa/exl3_bank.zig",
+        "src/arch/glm_moe_dsa/exl3_quant.zig",
+        "src/arch/glm_moe_dsa/experts.zig",
+        "src/arch/glm_moe_dsa/glm53_exl3/kernels.zig",
+        "src/arch/glm_moe_dsa/glm53_exl3/quant.zig",
+        "src/arch/glm_moe_dsa/glm53_exl3/routes.zig",
+        "src/arch/glm_moe_dsa/glm53_exl3/selfcheck.zig",
+        "src/arch/glm_moe_dsa/glm_moe_dsa.zig",
+        "src/arch/glm_moe_dsa/graph.zig",
+        "src/arch/glm_moe_dsa/module.zig",
+        "src/arch/glm_moe_dsa/mtp.zig",
+        "src/arch/glm_moe_dsa/mtp_parity.zig",
+        "src/arch/glm_moe_dsa/parity.zig",
+        "src/arch/glm_moe_dsa/plugin.zig",
+        "src/arch/glm_moe_dsa/prefill_timers.zig",
+        "src/arch/glm_moe_dsa/settings.zig",
+        "src/arch/glm_moe_dsa/split.zig",
+        "src/arch/glm_moe_dsa/split_k3.zig",
+        "src/arch/glm_moe_dsa/topk.zig",
+        "src/build_flags.zig",
+        "src/conformance.zig",
+        "src/expert/routes_test.zig",
+        "src/expert_routes_test.zig",
+        "src/glm53_exl3_kernels.zig",
+        "src/glm53_exl3_quant.zig",
+        "src/glm53_exl3_routes.zig",
+        "src/glm53_exl3_selfcheck.zig",
+        "src/glm_moe_dsa.zig",
+        "src/glm_moe_dsa_bank.zig",
+        "src/glm_moe_dsa_bill.zig",
+        "src/glm_moe_dsa_bill_receipts_test.zig",
+        "src/glm_moe_dsa_cache.zig",
+        "src/glm_moe_dsa_exl3_bank.zig",
+        "src/glm_moe_dsa_exl3_quant.zig",
+        "src/glm_moe_dsa_experts.zig",
+        "src/glm_moe_dsa_graph.zig",
+        "src/glm_moe_dsa_module.zig",
+        "src/glm_moe_dsa_mtp.zig",
+        "src/glm_moe_dsa_mtp_parity.zig",
+        "src/glm_moe_dsa_parity.zig",
+        "src/glm_moe_dsa_plugin.zig",
+        "src/glm_moe_dsa_prefill_timers.zig",
+        "src/glm_moe_dsa_settings.zig",
+        "src/glm_moe_dsa_split.zig",
+        "src/glm_moe_dsa_split_k3.zig",
+        "src/glm_moe_dsa_topk.zig",
+        "src/phase_memory.zig",
+        "src/root.zig",
+        "src/tests.zig"
+      ]
+    },
+    {
+      "commit": "0e3229cdb1f70fd88909af5d599791f66e13d1ac",
+      "subject": "dsv41: requestEnd's comments say who runs the reverse change",
+      "message_tokens": 125,
+      "code_diff_tokens": 1099,
+      "minimal_chat_total_tokens": 1243,
+      "training_target_positions": 1242,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/arch/deepseek_v41/ar.zig",
+        "src/arch/deepseek_v41/module.zig"
+      ]
+    },
+    {
+      "commit": "ba038400c13f92c50a027a46ac1b94f6f985d867",
+      "subject": "dsv41: the REVERSE record names keep when the change freed no grown rows",
+      "message_tokens": 120,
+      "code_diff_tokens": 426,
+      "minimal_chat_total_tokens": 565,
+      "training_target_positions": 564,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/arch/deepseek_v41/module.zig"
+      ]
+    },
+    {
+      "commit": "b9c9ed39fe1a760ab5cb7bde4c1ca1b8ac441af9",
+      "subject": "test: a refused settle after the keep route forgets the kept residents with the scratch still absent",
+      "message_tokens": 138,
+      "code_diff_tokens": 725,
+      "minimal_chat_total_tokens": 882,
+      "training_target_positions": 881,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/expert/stream.zig"
+      ]
+    },
+    {
+      "commit": "8411b71bd28269165ac9d365c01b5c268ce119ee",
+      "subject": "Keep the prompt rows' residents across the reverse phase change for a continuation (issue #9)",
+      "message_tokens": 455,
+      "code_diff_tokens": 9384,
+      "minimal_chat_total_tokens": 9859,
+      "training_target_positions": 9858,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/arch/deepseek_v41/arm.zig",
+        "src/arch/deepseek_v41/experts.zig",
+        "src/arch/deepseek_v41/module.zig",
+        "src/arch/mimo_v2/source.zig",
+        "src/arch/mimo_v2/stream.zig",
+        "src/expert/policy_test.zig",
+        "src/expert/stream.zig",
+        "src/sdk_ext/expert/policy.zig",
+        "src/sdk_ext/expert/stream.zig"
+      ]
+    },
+    {
+      "commit": "9c84a09daa2fbc7b058aea471b66035ca108f7d1",
+      "subject": "docs: MiMo 1K\u20131M sweep charts in the benchmarks format",
+      "message_tokens": 210,
+      "code_diff_tokens": 5345,
+      "minimal_chat_total_tokens": 5574,
+      "training_target_positions": 5573,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "scripts/mimo_sweep_charts.py"
+      ]
+    },
+    {
+      "commit": "3b83c24ff6f730e4af177e7d20657fecfc31acb9",
+      "subject": "glm_moe_dsa_topk: topk and topkRows decline a CPU stream (null, so the caller's argpartition runs): the parity tests' CPU arms reach the reference indexer, and a metal kernel only runs on the GPU",
+      "message_tokens": 51,
+      "code_diff_tokens": 598,
+      "minimal_chat_total_tokens": 669,
+      "training_target_positions": 668,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/glm_moe_dsa_topk.zig"
+      ]
+    },
+    {
+      "commit": "4e9db8a82bee63f306ed49aad649dce55bfe555b",
+      "subject": "glm_moe_dsa: a test of the reference indexer's top-k at GLM-5.3's top-k over a verify's rows and a prompt's blocks: the top-k kernel's int32 ids, argpartition's ids in its order (red: select still sorts each block with argpartition)",
+      "message_tokens": 66,
+      "code_diff_tokens": 1701,
+      "minimal_chat_total_tokens": 1786,
+      "training_target_positions": 1785,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/glm_moe_dsa_graph.zig"
+      ]
+    },
+    {
+      "commit": "05fc760621752899b574aeccad19554a4b70660c",
+      "subject": "mimo: dead code sweep",
+      "message_tokens": 529,
+      "code_diff_tokens": 10997,
+      "minimal_chat_total_tokens": 11545,
+      "training_target_positions": 11544,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/arch/mimo_v2/bank.zig",
+        "src/arch/mimo_v2/bill.zig",
+        "src/arch/mimo_v2/config.zig",
+        "src/arch/mimo_v2/fp8_linear.zig",
+        "src/arch/mimo_v2/gpu_warm.zig",
+        "src/arch/mimo_v2/kv.zig",
+        "src/arch/mimo_v2/math.zig",
+        "src/arch/mimo_v2/module.zig",
+        "src/arch/mimo_v2/mtp.zig",
+        "src/arch/mimo_v2/settings.zig",
+        "src/arch/mimo_v2/source.zig",
+        "src/arch/mimo_v2/stream.zig"
+      ]
+    },
+    {
+      "commit": "7f3d735f361995cc4e5ce342feea522dd6cd1fa2",
+      "subject": "mimo: hot-path audit, invariants move to construction",
+      "message_tokens": 770,
+      "code_diff_tokens": 10361,
+      "minimal_chat_total_tokens": 11150,
+      "training_target_positions": 11149,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "src/arch/mimo_v2/decode_attention.zig",
+        "src/arch/mimo_v2/draft.zig",
+        "src/arch/mimo_v2/fp8_linear.zig",
+        "src/arch/mimo_v2/glue.zig",
+        "src/arch/mimo_v2/gpu_warm.zig",
+        "src/arch/mimo_v2/kv.zig",
+        "src/arch/mimo_v2/module.zig",
+        "src/arch/mimo_v2/mtp.zig",
+        "src/arch/mimo_v2/source.zig",
+        "src/arch/mimo_v2/stream.zig"
+      ]
+    },
+    {
+      "commit": "e96bfe464d6d6c717d966367b4e9fed014483a9f",
+      "subject": "glm53 exl3: the prompt's gate|up reads x as f16, one MLX astype per wide call (beginWide), billed as a routed-call wave transient",
+      "message_tokens": 828,
+      "code_diff_tokens": 10230,
+      "minimal_chat_total_tokens": 11077,
+      "training_target_positions": 11076,
+      "fits_current_training_limit": false,
+      "changed_code_files": [
+        "scripts/glm53_exl3_manifest.py",
+        "src/glm53_exl3_kernels.zig",
+        "src/glm53_exl3_quant.zig",
+        "src/glm53_exl3_routes.zig",
+        "src/glm53_exl3_selfcheck.zig",
+        "src/glm_moe_dsa_bill.zig",
+        "src/glm_moe_dsa_bill_receipts_test.zig",
+        "src/glm_moe_dsa_experts.zig",
+        "src/kernels/glm53_exl3/glm53_pf_gu.metal"
+      ]
+    }
+  ]
+}

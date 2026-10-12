@@ -1,0 +1,154 @@
+{
+  "created_utc": "2026-10-12T20:24:59.950859+00:00",
+  "scope": "Bounded usability/integration probes; no model load, training or generation; source unchanged.",
+  "reviewed_commit": "2e63306249eebf3ca1cd084097042cec0fbd32eb",
+  "mlx_lm_version": "0.32.0",
+  "cases": [
+    {
+      "case": "ordinary_prompt_completion",
+      "outcome": "accepted",
+      "detail": {
+        "input_ids": [
+          0,
+          128803,
+          63006,
+          44388,
+          16,
+          128804,
+          128822,
+          19923,
+          3,
+          1
+        ],
+        "loss_start": 7
+      }
+    },
+    {
+      "case": "prompt_completion_with_source_metadata",
+      "outcome": "rejected",
+      "exception": "ValueError",
+      "detail": "Use text, prompt/completion, messages, or input_ids/loss_start"
+    },
+    {
+      "case": "alpaca_instruction_input_output",
+      "outcome": "rejected",
+      "exception": "ValueError",
+      "detail": "Use text, prompt/completion, messages, or input_ids/loss_start"
+    },
+    {
+      "case": "sharegpt_conversations",
+      "outcome": "rejected",
+      "exception": "ValueError",
+      "detail": "Use text, prompt/completion, messages, or input_ids/loss_start"
+    },
+    {
+      "case": "upstream_mlx_lm_adapter_loader",
+      "outcome": "rejected",
+      "exception": "AttributeError",
+      "detail": "'types.SimpleNamespace' object has no attribute 'num_layers'"
+    },
+    {
+      "case": "upstream_mlx_lm_architecture_config",
+      "outcome": "rejected",
+      "exception": "ValueError",
+      "detail": "Layers [1, 14] use engram memory, which this implementation does not have: the n-gram hash tables, the hashed embedding lookup and the engram attention are all missing."
+    },
+    {
+      "case": "default_prepare_on_short_customer_examples",
+      "outcome": "accepted",
+      "detail": {
+        "format": "exl3-mlx-dataset-v1",
+        "tokenizer": {
+          "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+          "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+          "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+        },
+        "source_sha256": "9f3654b0a4bf9ec870f35722217608180a60deb1fb53147b248db90377673ce2",
+        "seq_length": 128,
+        "seed": 8,
+        "duplicates_removed": 0,
+        "truncated_rows": 0,
+        "mask": "last assistant answer for chat",
+        "counts": {
+          "valid": 1,
+          "test": 1,
+          "train": 4
+        },
+        "supervised_tokens": {
+          "valid": 2,
+          "test": 2,
+          "train": 8
+        },
+        "files": {
+          "valid.jsonl": "5de487a0cebbb84b0767c106e08737f07cb42bea12805b9db611bd46182f2ebe",
+          "test.jsonl": "9a2a3968ac82ccdbc870b21f4610c366beb8e7667d505b6e5a8d048762d1a326",
+          "train.jsonl": "4fcd74c878e244107c0fda0db0ce1e047924307ecc624a4af3bc6ab6dd29dd35"
+        }
+      }
+    },
+    {
+      "case": "default_train_length_on_default_prepared_data",
+      "outcome": "rejected",
+      "exception": "ValueError",
+      "detail": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/exl3-usability-53x_iabk/prepared/train.jsonl:1: 41 targets exceed seq_length=16; use --truncate"
+    },
+    {
+      "case": "default_prepare_on_two_example_smoke_dataset",
+      "outcome": "rejected",
+      "exception": "ValueError",
+      "detail": "Not enough unique examples for nonempty requested splits"
+    },
+    {
+      "case": "csv_import",
+      "outcome": "rejected",
+      "exception": "JSONDecodeError",
+      "detail": "Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "case": "relative_config_from_another_directory",
+      "outcome": "accepted",
+      "detail": {
+        "args": "train --config absolute/path/examples/sft.json --steps 0 (does not train)",
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "ValueError: steps must be positive\n"
+      }
+    }
+  ],
+  "defaults": {
+    "prepare_seq_length": 128,
+    "train_seq_length": 16,
+    "train_memory_gib": 16.0,
+    "reserve_gib": 32.0,
+    "startup_required_reclaimable_gib": 48.0,
+    "train_option_count_excluding_help": 30,
+    "train_model_settings": {
+      "rank": 8,
+      "alpha": 16.0,
+      "adapter_layers": null,
+      "expert_adapter_layers": []
+    }
+  },
+  "top_level_help": {
+    "exit_code": 0,
+    "stdout": "usage: exl3-mlx [-h] {inspect,validate-linear,fetch-linear,train-smoke} ...\n\nSmall, reproducible primitives and checkpoint inspection commands.\n\npositional arguments:\n  {inspect,validate-linear,fetch-linear,train-smoke}\n    inspect             Read local checkpoint headers; does not load a model\n    validate-linear     Compare one matrix's decode/forward/dX to NumPy\n    fetch-linear        Download one matrix with bounded HTTP ranges\n    train-smoke         Fit a synthetic residual; not full-model SFT\n\noptions:\n  -h, --help            show this help message and exit\n\nFull workflow: prepare, train, evaluate, generate, doctor (COMMAND --help)\n",
+    "stderr": ""
+  },
+  "train_help": {
+    "exit_code": 0,
+    "stdout": "usage: exl3-mlx train [-h] --model MODEL [--memory-gib MEMORY_GIB]\n                      [--allocator-cache-mib ALLOCATOR_CACHE_MIB]\n                      [--reserve-gib RESERVE_GIB] [--cache-mib CACHE_MIB]\n                      [--chunk-size CHUNK_SIZE] [--verbose] [--config CONFIG]\n                      --data DATA [--valid-data VALID_DATA] --output OUTPUT\n                      [--steps STEPS] [--seq-length SEQ_LENGTH] [--rank RANK]\n                      [--alpha ALPHA] [--learning-rate LEARNING_RATE]\n                      [--grad-accumulation GRAD_ACCUMULATION]\n                      [--clip-grad CLIP_GRAD]\n                      [--adapter-layers [ADAPTER_LAYERS ...]]\n                      [--expert-adapter-layers [EXPERT_ADAPTER_LAYERS ...]]\n                      [--no-checkpoint] [--truncate] [--seed SEED]\n                      [--resume RESUME | --resume-adapter RESUME_ADAPTER]\n                      [--save-every SAVE_EVERY] [--keep-last KEEP_LAST]\n                      [--eval-every EVAL_EVERY]\n                      [--eval-examples EVAL_EXAMPLES] [--verify-reload]\n\noptions:\n  -h, --help            show this help message and exit\n  --model MODEL\n  --memory-gib MEMORY_GIB\n  --allocator-cache-mib ALLOCATOR_CACHE_MIB\n  --reserve-gib RESERVE_GIB\n  --cache-mib CACHE_MIB\n  --chunk-size CHUNK_SIZE\n  --verbose             Log every layer\n  --config CONFIG       JSON defaults; explicit CLI flags override\n  --data DATA           Training JSONL or prepared dataset directory\n  --valid-data VALID_DATA\n                        Optional validation JSONL; auto-detected in data\n                        directory\n  --output OUTPUT       New run directory\n  --steps STEPS         Additional optimizer steps\n  --seq-length SEQ_LENGTH\n  --rank RANK\n  --alpha ALPHA\n  --learning-rate LEARNING_RATE\n  --grad-accumulation GRAD_ACCUMULATION\n  --clip-grad CLIP_GRAD\n  --adapter-layers [ADAPTER_LAYERS ...]\n  --expert-adapter-layers [EXPERT_ADAPTER_LAYERS ...]\n  --no-checkpoint\n  --truncate\n  --seed SEED\n  --resume RESUME       Restore adapters, Adam moments, RNG and sample cursor\n  --resume-adapter RESUME_ADAPTER\n                        Warm start weights with a fresh optimizer\n  --save-every SAVE_EVERY\n  --keep-last KEEP_LAST\n                        Retain this many checkpoints in this run\n  --eval-every EVAL_EVERY\n  --eval-examples EVAL_EXAMPLES\n  --verify-reload       Check post-training prediction reload\n",
+    "stderr": ""
+  },
+  "example_configuration_paths": {
+    "model": "~/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "data": "artifacts/my-data",
+    "output": "artifacts/my-run"
+  },
+  "observations": {
+    "model_weights_loaded": false,
+    "source_files_modified": false,
+    "upstream_adapter_probe_used_empty_module": true,
+    "csv_and_data_fixture_paths_removed_after_run": true,
+    "config_zero_step_probe_scope": "Only confirms config parsing and early zero-step validation; does not exercise path resolution."
+  }
+}
