@@ -1,15 +1,48 @@
-# Standard workflow verification update
+# Quality gates for the Apple EXL3 trainer
 
-The new browser/CLI/Python SFT facade and adversarial fixes are documented in
-[standard-sft-review.md](reports/standard-sft-review.md). The integrated suite now
-passes **263 tests and 27 subtests**; [JUnit report](reports/standard-sft-pytest.xml).
+## Current long-context result
+
+The complete 5,809-token kernel-edit example finished one update in 31.0 minutes,
+peaking at 73.95 GiB MLX under an 80 GiB process cap and explicit 12 GiB reserve.
+Saved adapter/optimizer tensors and checksums passed the CPU audit. The fresh
+fitting check **failed**: answer NLL rose from 0.5012578592 to 0.5053724668 despite
+changed logits. Base scoring agreed with the pre-update training loss within
+2.24e-8. See the [combined verification audit](reports/ktune-full-parent-verification.json)
+and [preserved failed fit](reports/ktune-full-parent-first-update-fit.json).
+
+The original trial remains unchanged. All three tested derived inference
+strengths worsened NLL: +0.1 gave 0.5090817250, -0.1 gave 0.5019030712, and the
+adaptive +10 probe gave 0.5074643706. The bounded series is complete; no adapter
+was promoted as an improvement. See the [aggregate](reports/ktune-strength-diagnostics.json)
+for raw scores, exact scaling checks and unchanged checkpoint/source identities.
+Actual-weight native/head VJP checks passed 6/6 cases; the 5,808-row
+native execution passed all five cases with eight oracle rows per projection;
+real-dimension sparse attention passed four F32/BF16 cases. These component
+checks do not certify the full-model gradient or repair the fitting failure.
+The current suite passes **518 tests plus 27 subtests**; see the
+[diagnosis update](reports/first-step-diagnosis-update.md) and [JUnit](reports/kernel-sft-pytest.xml).
+Operational completion, adapter influence, improved likelihood and useful
+kernel quality are separate claims. This trial establishes the first two only.
+The 32,768-token implementation ceiling has not been validated by a training run;
+5,809 tokens is the largest complete training example tested here.
+
+## Earlier workflow verification
+
+The browser/CLI/Python SFT facade and its earlier adversarial fixes are documented in
+[standard-sft-review.md](reports/standard-sft-review.md). Revision `4352b83e`
+passed **263 tests and 27 subtests**; [JUnit report](reports/standard-sft-pytest.xml).
 Real-model workflow evidence is in
 [standard-sft-verification.json](reports/standard-sft-verification.json).
-The previous numerical, causal fitting and quality evidence below remains valid
-within its stated scope. New standard interfaces do not remove the 512-token or
-native full-model parity limitations.
+The numerical and causal fitting evidence below belongs to that recorded source
+revision. The ktune extension lifts the previous 512-token cap and fixes negative
+FP8 scale exponents, changing forward arithmetic even for short inputs. These
+historical receipts must not be presented as verification of the changed engine.
+Exact optimizer continuation across that arithmetic change is rejected. See
+[kernel tuning](KERNEL_TUNING.md) for the new tests and measured run scope.
+Independent native full-model parity and useful new kernel optimizations remain
+open gates.
 
-# Quality gates for the Apple EXL3 trainer
+## Reading the evidence
 
 Tool correctness, adapter influence, and useful task quality are separate claims.
 We record a status and evidence for each. A changed answer or falling loss alone
@@ -18,7 +51,7 @@ does not certify this port or a fine-tuned model.
 The current supported target is the local DeepSeek V4.1 3.0-bpw streaming repack.
 These checks do not establish support for other EXL3 layouts or architectures.
 
-## Current evidence
+## Earlier revision evidence
 
 - **Causal fitting demonstrated:** the base starts `I'd be happy` for `Code?`
   (generation capped at four tokens); the selected adapter answers `violet` and
@@ -32,7 +65,7 @@ These checks do not establish support for other EXL3 layouts or architectures.
   the first trial. It is not an untouched final test or a generalization estimate.
 - Peak MLX allocation for the successful run was 9.16 GiB; observed process peak
   was 10.61 GiB under a 16 GiB process guard and 32 GiB system reserve. This tests
-  only the short fixture, not the entire 512-token architectural limit.
+  only the short fixture, not long-context training.
 - Fresh paired probes retain all three controls: arithmetic (`4`), literal copy
   (`blue`), and an explicit alternative codeword instruction (`amber`). There are
   zero regressions and zero exact-answer improvements across the four probes.

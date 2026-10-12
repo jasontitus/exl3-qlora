@@ -10,6 +10,44 @@ import math
 import mlx.core as mx
 import mlx.nn as nn
 import numpy as np
+from mlx.utils import tree_flatten, tree_map, tree_unflatten
+
+from .materialize import materialize
+
+
+def _component_vjp(module, inputs, cotangent, *, weights_only=False):
+    """Recompute exactly one component and release its graph before continuing."""
+    parameters = module.trainable_parameters()
+    items = tree_flatten(parameters)
+    count = len(items)
+
+    def apply(*primals):
+        if count:
+            module.update(tree_unflatten([(key, v) for (key, _), v in zip(items, primals)]))
+        result = module(*primals[count:])
+        return result[0] if weights_only else result
+
+    primals = [mx.stop_gradient(value) for _, value in items]
+    primals += [mx.stop_gradient(value) for value in inputs]
+    try:
+        _, gradients = mx.vjp(apply, primals, [cotangent])
+        # eval alone does not cut nested custom-function traces. Round-trip the
+        # small results before the next expert's backward graph is constructed.
+        gradients = [materialize(value) for value in gradients]
+    finally:
+        module.update(parameters)
+    return {key: value for (key, _), value in zip(items, gradients)}, gradients[count:]
+
+
+def _route_plan(indices):
+    ids = np.array(indices)
+    for expert_id in np.unique(ids):
+        token_rows, slots = np.nonzero(ids == expert_id)
+        yield (
+            int(expert_id),
+            mx.array(token_rows.astype(np.int32)),
+            mx.array(slots.astype(np.int32)),
+        )
 
 
 class DeepSeekExpert(nn.Module):
@@ -76,9 +114,10 @@ class DeepSeekGate(nn.Module):
 class DeepSeekMoE(nn.Module):
     """Group only selected token/expert pairs and add the always-on shared expert.
 
-    The small integer route plan is synchronized to CPU; floating-point activation
-    and gradient math remains on MLX. This supports eager autodiff/checkpointing,
-    not compilation of data-dependent expert counts.
+    A first-order custom VJP recomputes one expert at a time, including its
+    router-weight derivative. Eager materialized accumulation avoids retaining
+    one full token-by-hidden scatter buffer per expert. Adapter parameters are
+    explicit primals; both expert adapters and upstream adapters keep gradients.
     """
 
     def __init__(self, gate, experts, shared_expert):
@@ -94,13 +133,65 @@ class DeepSeekMoE(nn.Module):
         flat = x.reshape(-1, shape[-1])
         if flat.shape[0] == 0:
             return mx.zeros_like(x)
-        weights, indices = self.gate(flat)
-        ids = np.array(indices)
-        output = mx.zeros(flat.shape, dtype=mx.float32)
-        for expert_id in np.unique(ids):
-            token_rows, slots = np.nonzero(ids == expert_id)
-            rows, slots = mx.array(token_rows.astype(np.int32)), mx.array(slots.astype(np.int32))
-            value = self.experts[int(expert_id)](flat[rows], weights[rows, slots, None])
-            output = output.at[rows].add(value.astype(mx.float32))
-        output = output + self.shared_expert(flat).astype(mx.float32)
-        return output.astype(x.dtype).reshape(shape)
+        original = self.trainable_parameters()
+
+        @mx.custom_function
+        def forward(parameters, inp):
+            inp = mx.stop_gradient(inp)
+            self.update(tree_map(mx.stop_gradient, parameters))
+            try:
+                weights, indices = self.gate(inp)
+                weights, indices = materialize(weights), materialize(indices)
+                output = mx.zeros(inp.shape, dtype=mx.float32)
+                for expert_id, rows, slots in _route_plan(indices):
+                    value = self.experts[expert_id](inp[rows], weights[rows, slots, None])
+                    output = materialize(output.at[rows].add(value.astype(mx.float32)))
+                    del value
+                output = output + self.shared_expert(inp).astype(mx.float32)
+                return materialize(output.astype(inp.dtype))
+            finally:
+                self.update(original)
+
+        @forward.vjp
+        def backward(primals, cotangent, output):
+            parameters, inp = primals
+            inp, cotangent = mx.stop_gradient(inp), mx.stop_gradient(cotangent)
+            self.update(tree_map(mx.stop_gradient, parameters))
+            try:
+                weights, indices = self.gate(inp)
+                weights, indices = materialize(weights), materialize(indices)
+                dx = mx.zeros(inp.shape, dtype=mx.float32)
+                dw = mx.zeros(weights.shape, dtype=mx.float32)
+                parameter_grads = {}
+
+                def collect(prefix, values):
+                    parameter_grads.update({prefix + key: value for key, value in values.items()})
+
+                for expert_id, rows, slots in _route_plan(indices):
+                    dp, (di, dr) = _component_vjp(
+                        self.experts[expert_id],
+                        (inp[rows], weights[rows, slots, None]),
+                        cotangent[rows],
+                    )
+                    collect(f"experts.{expert_id}.", dp)
+                    dx = materialize(dx.at[rows].add(di.astype(mx.float32)))
+                    # Each token/expert pair occurs once, with a unique slot.
+                    dw = materialize(dw.at[rows, slots].add(dr[:, 0].astype(mx.float32)))
+                    del dp, di, dr
+                dp, (di,) = _component_vjp(self.shared_expert, (inp,), cotangent)
+                collect("shared_expert.", dp)
+                dx = materialize(dx + di.astype(mx.float32))
+                del dp, di
+                dp, (di,) = _component_vjp(self.gate, (inp,), dw, weights_only=True)
+                collect("gate.", dp)
+                dx = materialize((dx + di.astype(mx.float32)).astype(inp.dtype))
+                # Preserve the exact pytree, including empty frozen submodules.
+                leaves = iter(
+                    parameter_grads.get(key, mx.zeros_like(value))
+                    for key, value in tree_flatten(parameters)
+                )
+                return tree_map(lambda _: next(leaves), parameters), dx
+            finally:
+                self.update(original)
+
+        return forward(original, flat).reshape(shape)

@@ -16,19 +16,18 @@ import mlx.core as mx
 import mlx.optimizers as optim
 from mlx.utils import tree_flatten
 
+from .context import ENGINE_SEMANTICS, MAX_CONTEXT_TOKENS
 from .data import load_dataset, load_tokenizer, prepare, training_data_identity
 from .deepseek import DeepSeekTextModel
 from .memory import MemoryBudget
+from .resources import RESOURCE_FIELDS, add_resource_arguments, resources_from_args
 from .train import load_adapter, load_adapter_config
 from .training import evaluate, load_checkpoint, optimizer_step, sample_indices, save_checkpoint
 
 
 def common(parser, *, inference=False):
     parser.add_argument("--model", required=True)
-    parser.add_argument("--memory-gib", type=float, default=16.0)
-    parser.add_argument("--allocator-cache-mib", type=int, default=64)
-    parser.add_argument("--reserve-gib", type=float, default=32.0)
-    parser.add_argument("--cache-mib", type=int, default=128)
+    add_resource_arguments(parser)
     parser.add_argument("--chunk-size", type=int, default=512)
     parser.add_argument("--verbose", action="store_true", help="Log every layer")
     if inference:
@@ -102,7 +101,7 @@ def build_parser():
     )
     ev.add_argument("--max-examples", type=int, default=0, help="0 evaluates all rows")
     gen = sub.add_parser(
-        "generate", help="Greedy text generation; recomputes the short prefix each token"
+        "generate", help="Greedy text generation; recomputes the full prefix each token"
     )
     common(gen, inference=True)
     prompt = gen.add_mutually_exclusive_group(required=True)
@@ -133,8 +132,16 @@ def parse_args(argv):
     ):
         cp = argparse.ArgumentParser(add_help=False)
         cp.add_argument("--config")
+        cp.add_argument("--profile")
         known, _ = cp.parse_known_args(argv[1:])
         config = json.loads(Path(known.config).expanduser().read_text())
+        if isinstance(config, dict) and "cache_mib" in config:
+            if "packed_cache_mib" in config:
+                parser.error("Use only one of cache_mib and packed_cache_mib")
+            config["packed_cache_mib"] = config.pop("cache_mib")
+        if isinstance(config, dict) and known.profile is not None:
+            for key in RESOURCE_FIELDS:
+                config.pop(key, None)
         actions = {a.dest: a for a in train._actions}
         if not isinstance(config, dict) or set(config) - (set(actions) - {"help", "config"}):
             parser.error("Config must be an object containing recognized train option names")
@@ -155,7 +162,12 @@ def parse_args(argv):
                 parser.error(f"Invalid config value for {key}")
             action.required = False
             action.default = value
-    return parser.parse_args(argv)
+    args = parser.parse_args(argv)
+    if args.command != "prepare":
+        for key, value in resources_from_args(args).items():
+            setattr(args, key, value)
+        args.cache_mib = args.packed_cache_mib  # Preserve the existing Python helper attribute.
+    return args
 
 
 def model_settings(args):
@@ -188,6 +200,7 @@ def make_model(args, log):
         Path(args.model).expanduser(),
         **settings,
         cache_mib=args.cache_mib,
+        decoded_cache_mib=getattr(args, "decoded_cache_mib", 0),
         chunk_size=args.chunk_size,
         checkpoint_blocks=not getattr(args, "no_checkpoint", False),
         progress=log if args.verbose else None,
@@ -216,19 +229,22 @@ def atomic_text(path, text):
 def load_resolved_datasets(paths, root, *, seq_length=None, truncate=False):
     """Use one explicit or inferred input length for all supplied splits."""
     paths = [Path(path).expanduser() for path in paths]
-    if seq_length is not None and (type(seq_length) is not int or not 2 <= seq_length <= 512):
-        raise ValueError("seq_length must be in 2..512")
+    if seq_length is not None and (
+        type(seq_length) is not int or not 2 <= seq_length <= MAX_CONTEXT_TOKENS
+    ):
+        raise ValueError("seq_length must be in 2..32768")
     declared = []
     if seq_length is None:
         for path in paths:
             manifest = path.parent / "dataset.json"
             if manifest.exists():
                 length = json.loads(manifest.read_text()).get("seq_length")
-                if type(length) is not int or not 2 <= length <= 512:
-                    raise ValueError("Prepared dataset seq_length must be in 2..512")
+                if type(length) is not int or not 2 <= length <= MAX_CONTEXT_TOKENS:
+                    raise ValueError("Prepared dataset seq_length must be in 2..32768")
                 declared.append(length)
     datasets = [
-        load_dataset(path, root, seq_length=seq_length or 512, truncate=truncate) for path in paths
+        load_dataset(path, root, seq_length=seq_length or MAX_CONTEXT_TOKENS, truncate=truncate)
+        for path in paths
     ]
     if seq_length is None:
         seq_length = max(
@@ -362,9 +378,14 @@ def train_run(args, budget, log):
     }
     contract.update(
         **training_data_identity(data, root),
+        engine_semantics=ENGINE_SEMANTICS,
         mlx=mx.__version__,
         mlx_lm=importlib.metadata.version("mlx-lm"),
     )
+    if resume_state is not None and resume_state.get("contract") != contract:
+        raise ValueError(
+            "Resume settings/data or engine semantics differ; use the recorded implementation for exact continuation"
+        )
     mx.random.seed(args.seed)
     model = make_model(args, log)
     optimizer = optim.Adam(learning_rate=args.learning_rate)
@@ -508,6 +529,7 @@ def train_run(args, budget, log):
         mlx_lm=importlib.metadata.version("mlx-lm"),
         device=mx.device_info()["device_name"],
         contract=contract,
+        resources=resources_from_args(args),
     )
     atomic_text(output / "training.json", json.dumps(report, indent=2) + "\n")
     return report
@@ -546,15 +568,15 @@ def doctor(args, budget):
         "startup_headroom_check_passed": True,
         "verified_expert_records": verified,
         "scope": "headers, bank sizes, token-map hashes and optional sampled record hashes; not full-model numerical parity",
-        "context_limit": 512,
+        "context_limit": MAX_CONTEXT_TOKENS,
         "mlx": mx.__version__,
         "mlx_lm": importlib.metadata.version("mlx-lm"),
     }
 
 
 def generate(args, model, budget):
-    if not 1 <= args.max_tokens <= 512:
-        raise ValueError("max_tokens must be in 1..512")
+    if not 1 <= args.max_tokens <= MAX_CONTEXT_TOKENS:
+        raise ValueError("max_tokens must be in 1..32768")
     messages_file = getattr(args, "messages_file", None)
     if messages_file and args.raw_prompt:
         raise ValueError("--raw-prompt cannot be combined with --messages-file")
@@ -585,8 +607,8 @@ def generate(args, model, budget):
             add_generation_prompt=True,
             return_dict=False,
         )
-    if len(ids) + args.max_tokens > 512:
-        raise ValueError("Prompt plus generation must fit the 512-token context limit")
+    if len(ids) + args.max_tokens > MAX_CONTEXT_TOKENS:
+        raise ValueError("Prompt plus generation must fit the 32768-token context limit")
     if 129264 in ids:
         raise ValueError("Image inputs are unsupported")
     prompt_ids = list(ids)
@@ -594,7 +616,13 @@ def generate(args, model, budget):
     answer = []
     for _ in range(args.max_tokens):
         budget.check()
-        logits = model(mx.array([ids], dtype=mx.int32))
+        inputs = mx.array([ids], dtype=mx.int32)
+        if hasattr(model, "hidden_states"):
+            hidden = model.hidden_states(inputs)
+            logits = model.project_logits(hidden[:, -1:])
+            del hidden
+        else:
+            logits = model(inputs)
         if not mx.all(mx.isfinite(logits[:, -1])).item():
             raise FloatingPointError("Nonfinite generation logits")
         token = mx.argmax(logits[0, -1]).item()
@@ -664,6 +692,8 @@ def main(argv=None):
                         budget_gib=budget.limit / 2**30,
                         observed_memory_gib=budget.usage() / 2**30,
                     )
+        if args.command != "prepare":
+            report["resources"] = resources_from_args(args)
         if getattr(args, "report", None):
             path = Path(args.report).expanduser()
             path.parent.mkdir(parents=True, exist_ok=True)

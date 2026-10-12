@@ -1,6 +1,7 @@
 import mlx.core as mx
 import mlx.nn as nn
 import numpy as np
+import pytest
 from test_streaming_moe import make_checkpoint, make_expert
 
 from exl3_mlx.attention import ShortAttention
@@ -93,3 +94,32 @@ def test_checkpoint_recomputation_preserves_shared_kv_and_adapter_gradients(tmp_
         assert mx.linalg.norm(va).item() > 0
         np.testing.assert_allclose(np.array(va), np.array(vb), rtol=3e-5, atol=1e-7)
     assert store.stats.backward_calls > 0
+
+
+@pytest.mark.parametrize("failure", ["vjp", "eval"])
+def test_recompute_restores_parameter_objects_after_backward_failure(monkeypatch, failure):
+    module = nn.Linear(2, 2, bias=False)
+    original_weight = module.weight
+    real_vjp, real_eval = mx.vjp, mx.eval
+    state = {"backward": False}
+
+    def failing_vjp(fn, primals, tangents):
+        # Recomputing installs new traced/detached parameter objects.
+        fn(*(value + 0 for value in primals))
+        assert module.weight is not original_weight
+        if failure == "vjp":
+            raise RuntimeError("injected backward failure")
+        result = real_vjp(fn, primals, tangents)
+        state["backward"] = True
+        return result
+
+    def failing_eval(*args):
+        if state["backward"]:
+            raise RuntimeError("injected backward failure")
+        return real_eval(*args)
+
+    monkeypatch.setattr(mx, "vjp", failing_vjp)
+    monkeypatch.setattr(mx, "eval", failing_eval)
+    with pytest.raises(RuntimeError, match="injected backward failure"):
+        mx.grad(lambda x: mx.sum(recompute(module, x)))(mx.ones((1, 2)))
+    assert module.weight is original_weight

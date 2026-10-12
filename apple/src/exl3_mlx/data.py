@@ -8,6 +8,8 @@ from pathlib import Path
 from mlx_lm.tuner.datasets import ChatDataset, CompletionsDataset, TextDataset
 from transformers import PreTrainedTokenizerFast
 
+from .context import MAX_CONTEXT_TOKENS
+
 TOKENIZER_FILES = ("tokenizer.json", "tokenizer_config.json", "chat_template.jinja")
 
 
@@ -50,8 +52,8 @@ def read_jsonl(path):
 
 
 def validate_example(row, *, seq_length, vocab_size, truncate=False):
-    if not 2 <= seq_length <= 512:
-        raise ValueError("seq_length must be in 2..512")
+    if not 2 <= seq_length <= MAX_CONTEXT_TOKENS:
+        raise ValueError("seq_length must be in 2..32768")
     if set(row) - {"input_ids", "loss_start"}:
         raise ValueError("Prepared examples use input_ids and optional loss_start only")
     ids, start = row.get("input_ids"), row.get("loss_start", 1)

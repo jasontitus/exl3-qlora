@@ -2,12 +2,18 @@
 
 An experimental port of [UnstableLlama/exl3-qlora](https://github.com/UnstableLlama/exl3-qlora)
 with real EXL3 Metal decoding, activation gradients, streamed experts and a usable
-short-context DeepSeek V4.1 adapter workflow.
+DeepSeek V4.1 adapter workflow.
 
 **Start with the [standard fine-tuning guide](SIMPLE_FLOW.md)** and run
 `uv run exl3-mlx studio` for the local browser interface. The project CLI and
 `SFTTrainer` Python API share CSV/JSON/chat import, safe resume and paired
 comparisons. The [advanced recipe](RECIPE.md) covers engine controls.
+Use `--profile development` for the explicit 80 GiB process budget and 8 GiB
+packed expert cache, or select Development in Studio. Decoded caching stays off
+after a slower measured MoE-layer experiment. It requires 112 GiB reclaimable
+at startup including system reserve. Low-memory defaults remain available; see
+[resource profiles and overrides](RESOURCE_PROFILES.md). Cache speedups require
+measurement on the actual workload.
 The tool reuses MLX-LM's data processors, loss and LoRA forward; see
 [what is reused and why](SOURCES.md).
 
@@ -16,9 +22,48 @@ and framework compatibility at the previous revision. The [standard workflow
 review](reports/standard-sft-review.md) records the new implementation and fixes.
 For learning Metal inference optimizations from Git
 history, see the [task assessment](reports/metal-training-assessment.md) and its
-measured context limits.
+previous context audit. See [kernel tuning](KERNEL_TUNING.md) for the ktune archive flow.
 
-## Verified status
+## Current kernel-tuning extension
+
+The [ktune flow](KERNEL_TUNING.md) imports complete archived edits, checks their
+source/evidence identities, prepares standard SFT projects, and audits fitting
+separately from kernel quality. Full-prefill attention now implements the model's
+sparse index selection beyond 512 tokens, with a 32,768-token implementation
+ceiling and explicit memory guards. The ceiling is not a tested operating limit.
+
+A complete **5,809-token historical kernel-edit example** completed one update
+in **31.0 minutes**, peaking at **73.95 GiB MLX memory**, under an 80 GiB process
+cap and explicit 12 GiB reserve. The checkpoint contains 3,153,920 finite adapter
+parameters; all 80 LoRA B tensors changed from zero, and optimizer/checksum checks
+passed. **Fresh fitting failed:** answer NLL increased from **0.5012578592 to
+0.5053724668**, despite changed logits. The original trial is preserved. The
++0.1, -0.1 and adaptive +10 inference-only strength probes also worsened NLL.
+The bounded series is complete, with no adapter promoted as an improvement.
+This is the largest complete training example tested; the operational pass does
+not establish improved fitting,
+32,768-token feasibility or kernel quality. See the [checkpoint audit](reports/ktune-full-parent-checkpoint-audit.json),
+[failed fit receipt](reports/ktune-full-parent-first-update-fit.json),
+[complete strength diagnostics](reports/ktune-strength-diagnostics.json), and
+[exact pilot settings](KERNEL_TUNING.md#command-line-recipe).
+
+Current verification passes **518 tests plus 27 subtests**, and the new native
+projection/head and sparse-attention VJP checks pass within their stated scope.
+These component passes do not resolve the fitting failure. See the
+[diagnosis update](reports/first-step-diagnosis-update.md) and [JUnit receipt](reports/kernel-sft-pytest.xml).
+
+This extension also fixes negative FP8 scale exponents in the earlier engine.
+That changes forward arithmetic even on short inputs. Old adapters and numerical
+receipts below belong to their recorded source revision; exact optimizer resume
+across this arithmetic change is rejected. Independent full-model parity and
+new-kernel speedups remain unverified. See the [long-context design review](reports/long-context-design-review.md)
+and [ktune adversarial review](reports/ktune-adversarial-review.md).
+
+## Previous revision's operational evidence
+
+The following results were recorded before the scale fix, including standard
+workflow revision `4352b83e`. They establish what those implementations did and
+do not validate the changed engine's numerical behavior.
 
 The new standard flow completed **two full-model updates plus a Studio resume to
 step 3**, then comparison and adapter export. Observed memory peaked at **10.04
@@ -57,7 +102,7 @@ not a throughput, quality or larger-context memory benchmark. Reports:
 also verified **bit-exact adapter and Adam state versus uninterrupted training**,
 base/adapter evaluation, and greedy generation. The four-token training fixture
 loss fell from 5.074 to 4.983 after two updates; this is not held-out quality.
-The current test suite passes **263 tests and 27 subtests**.
+That revision's test suite passed **263 tests and 27 subtests**.
 
 **Supported full-model checkpoint:** the local **3.0-bpw mtplx streaming repack**,
 with native MXFP8/BF16 trunk and Engram banks. The requested
@@ -85,13 +130,15 @@ uv run exl3-mlx doctor \
 | --- | --- |
 | `exl3-mlx studio` | Guided local browser: check data, train/resume, compare, preview and export |
 | `exl3-mlx finetune` | One project from CSV/JSON/JSONL; optional `--prepare-only` |
+| `exl3-mlx ktune snapshot / prepare / finetune` | Read ktune archives, preserve complete edits and train a standard project |
+| `exl3-mlx ktune verify / audit-evidence / export-edit` | Check training fit, audit receipts, and convert patches to ktune edits |
 | `exl3-mlx resume / compare / chat / export-adapter` | Continue or use a saved standard project |
 | `exl3-mlx status / stop` | Check progress or checkpoint after the current update |
 | `exl3-mlx prepare` | Local JSONL text/chat tokenization, answer masks, deduplication and splits |
 | `exl3-mlx train` | Streamed, eager adapter training with Adam, accumulation and validation |
 | `exl3-mlx train --resume STEP` | Restore optimizer, RNG and sample cursor |
 | `exl3-mlx evaluate` | Held-out token-weighted NLL/perplexity, base or adapter |
-| `exl3-mlx generate` | Greedy short-prefix generation using the saved adapter |
+| `exl3-mlx generate` | Greedy generation using the saved adapter; recomputes the full prefix per token |
 | `exl3-mlx doctor` | Header, bank-size, token-map and optional sampled-record checks |
 | `exl3-mlx inspect / validate-linear / fetch-linear` | Inspect and validate original EXL3 matrices |
 | `exl3-mlx train-smoke` | Small synthetic matrix test; not language-model training |
@@ -146,9 +193,12 @@ is advisory: this is **not an OS hard quota**, and one allocation may overshoot.
 Completed checkpoint directories are published atomically and remain recoverable.
 The last two checkpoints created in each run are retained by default.
 
-Maximum context is 512 tokens because longer-context sparse candidate/indexer
-selection is not ported. This is not a claim that 512-token training fits the
-default budget or is fast. Text only, first-order eager reverse-mode gradients;
+The implementation accepts up to 32,768 tokens with learned sparse index selection,
+candidate-block filtering and query-tiled attention. Complete examples are never
+silently truncated. This ceiling is not a claim that the longest run fits the
+default budget or is fast; use the measured lengths and memory in the kernel-tuning
+verification report. The frozen vocabulary head projects only supervised rows in
+32-token chunks during training/evaluation. Text only, first-order eager reverse-mode gradients;
 no vision, MTP, higher derivatives or `mx.compile`. Generation recomputes the
 whole prefix and has no KV decode cache. Adapters use a private format loaded by
 this tool; external serving/PEFT mapping and fusion are not implemented.

@@ -14,6 +14,8 @@ import shutil
 import tempfile
 from pathlib import Path
 
+from .context import MAX_CONTEXT_TOKENS
+
 _GROUP_KEYS = ("source_id", "document_id", "group_id")
 _FORBIDDEN = {"tools", "tool_calls", "functions", "image", "images", "audio", "video", "videos"}
 _SPLITS = ("train", "valid", "test")
@@ -371,8 +373,12 @@ def prepare_sft_data(
     optional splits. Demo file imports use training only. CSV row numbers identify
     logical records rather than physical lines when quoted cells contain newlines.
     """
-    if max_length is not None and (type(max_length) is not int or not 2 <= max_length <= 512):
-        raise ValueError("max_length must be an integer in 2..512, including BOS/prompt/answer/EOS")
+    if max_length is not None and (
+        type(max_length) is not int or not 2 <= max_length <= MAX_CONTEXT_TOKENS
+    ):
+        raise ValueError(
+            "max_length must be an integer in 2..32768, including BOS/prompt/answer/EOS"
+        )
     if type(seed) is not int or type(demo) is not bool:
         raise ValueError("seed must be an integer and demo must be a boolean")
     if (prompt_column is None) != (response_column is None):
@@ -423,7 +429,7 @@ def prepare_sft_data(
     config_hash = _sha256(model / "config.json")
     config = _parse_json((model / "config.json").read_text())
     vocab = config["text_config"]["vocab_size"]
-    limit = max_length if max_length is not None else 512
+    limit = max_length if max_length is not None else MAX_CONTEXT_TOKENS
     for record in records:
         try:
             example = tokenize_row(record["normalized"], tokenizer)

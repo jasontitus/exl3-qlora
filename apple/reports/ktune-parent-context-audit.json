@@ -1,0 +1,80 @@
+{
+  "format": "exl3-mlx-ktune-import-v1",
+  "task_scope": "historical patch-editing demonstration; not complete executable optimization tasks",
+  "prompt_context": "target_selected_complete_parent_files",
+  "context_selection_leakage": "Changed files/hunk locations were selected using the historical target; no independent optimization-task claim",
+  "counts": {
+    "train": 24,
+    "valid": 0,
+    "test": 0
+  },
+  "max_length": 25486,
+  "context_ceiling": 32768,
+  "length_audit": {
+    "examples_with_complete_tokenization": 44,
+    "max_total_tokens": 141917,
+    "max_selected_tokens": 25486,
+    "over_limit": 19,
+    "truncated": 0
+  },
+  "evidence_counts": {
+    "correctness_only": 1,
+    "negative": 3,
+    "historical_promoted": 6,
+    "historical_improved_superseded": 2,
+    "source_only": 23,
+    "official_unverified": 12,
+    "official_promoted": 53
+  },
+  "selected_lineages": 1,
+  "evaluation_scope": "training_only",
+  "quality_evaluation_available": false,
+  "limitations": [
+    "No random row split or held-out generalization claim.",
+    "Post-change notes, metrics and mechanism summaries are provenance only.",
+    "The large zstd submission corpus is not imported by this bounded importer.",
+    "Protection overlap cannot be resolved for excluded/index-only entries without source hashes or lineage metadata; no blanket contamination-free claim.",
+    "Archive filename association and self-digests alone do not prove measured source equivalence; parent_files additionally binds source Git objects.",
+    "A selected patch still needs source review, apply/build, full correctness and controlled paired timing on the intended target."
+  ],
+  "manifest_sha256": "09b6bb2277fdba8692984d07403dc30982daba0aa6f15640acbbbef16f51da8c",
+  "length_audit_sha256": "8adf0a33936e2ac6520655b6b609dc746cdc7607c5e76d6cc74cbe937d48aba3",
+  "selected_lengths": {
+    "minimum": 3606,
+    "median": 17806.5,
+    "maximum": 25486,
+    "all": [
+      3606,
+      5809,
+      5822,
+      6385,
+      6983,
+      7644,
+      7782,
+      11610,
+      12932,
+      13002,
+      14771,
+      17695,
+      17918,
+      18028,
+      19090,
+      19103,
+      19208,
+      20492,
+      21744,
+      21887,
+      24468,
+      25076,
+      25173,
+      25486
+    ]
+  },
+  "exclusion_counts": {
+    "evidence_tier_not_selected": 47,
+    "full_serialized_example_exceeds_context": 19,
+    "unsupported_edit_or_tokenization": 9,
+    "duplicate_complete_token_record": 1
+  },
+  "scope": "Tokenizer and pinned-parent Git audit only; no training or performance claim for the full dataset."
+}

@@ -1,0 +1,499 @@
+{
+  "scope": "actual checkpoint, full feature dimensions; all executed rows finite, selected rows checked by oracle",
+  "diagnostic_revision": "native-vjp-v2-sampled-rows",
+  "settings": {
+    "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "output": "reports/native-vjp-actual-shapes.json",
+    "layer": 0,
+    "wo_group": 0,
+    "rows": 4,
+    "oracle_rows": 8,
+    "head_rows": 2,
+    "weight_rows": 1024,
+    "seed": 81,
+    "projections": [
+      "wq_a",
+      "wq_b",
+      "wkv",
+      "wo_a",
+      "wo_b"
+    ],
+    "skip_head": false,
+    "memory_gib": 12,
+    "reserve_gib": 32
+  },
+  "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "versions": {
+    "mlx": "0.32.3",
+    "mlx-lm": "0.32.0",
+    "numpy": "2.5.4"
+  },
+  "source_sha256": {
+    "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/attention.py": "a22ffd2e0fe128949f045eb95dc332367bca6c70fbf96324b959813e2be3e2c4",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/native.py": "dc470bc7925db2f74d00a5cd68a9e916e66987d8afc749a23daae7a7e9a67e5d"
+  },
+  "script_sha256": "6dffc2914c73fb31858ed3dc7e5d53797f0852b5cebf6c28ade202ddd522afa2",
+  "metadata_sha256": {
+    "config.json": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d",
+    "model.safetensors.index.json": "c0ead8ce7960b2c715366373da35626f3ccaef1837094bf9215cded0bfefdabb"
+  },
+  "notes": [
+    "No full-model gradient or quality claim follows from these component checks.",
+    "Small row batches test actual feature dimensions but may select different Metal kernels from 5808-row prefill.",
+    "With --rows 5808 the trunk executes the full prefill row count; --oracle-rows controls independent sampled row checks only.",
+    "Linear rows are independent: sampled VJP rows use their corresponding nonuniform full-run cotangents.",
+    "The head oracle rounds dlogits to BF16 at the cast boundary before its transpose multiply.",
+    "Reference weights are independently decoded into NumPy float64 blocks; the full FP64 head is never retained.",
+    "Passing tolerances is component numerical evidence, not bitwise equivalence."
+  ],
+  "cases": [
+    {
+      "name": "layers.0.attn.wq_a",
+      "weight_shape": [
+        1280,
+        5120
+      ],
+      "weight_rows": null,
+      "input_shape": [
+        4,
+        5120
+      ],
+      "oracle_row_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "oracle_rows": 4,
+      "oracle_scope": "all_rows",
+      "all_forward_rows_finite": true,
+      "all_input_gradient_rows_finite": true,
+      "input_dtype": "bfloat16",
+      "weight_format": "mxfp8-e4m3-e8m0-group32",
+      "hash_array_encoding": "contiguous float32 representation of exact BF16 values",
+      "input_sha256": "4e9bcb209811e947cf48f642cbe851518b92faf0f198a7d751ae45aa46b5c73b",
+      "cotangent_sha256": "b883772e0f4807d44685668822dba8cef778cb9261b4e19f492b37236512a490",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0,
+        "reference_max_abs": 5.8125,
+        "relative_l2_error": 0.0,
+        "cosine": 1.0,
+        "actual_l2": 106.79152878373604,
+        "reference_l2": 106.79152878373604,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0009765625,
+        "reference_max_abs": 3.125,
+        "relative_l2_error": 9.25814742370466e-06,
+        "cosine": 0.9999999999571435,
+        "actual_l2": 105.48463299934407,
+        "reference_l2": 105.48463501101493,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "seconds": 0.15014437504578382,
+      "passed": true,
+      "peak_mlx_gib": 0.008301317691802979,
+      "process_accounted_gib": 0.2542724609375
+    },
+    {
+      "name": "layers.0.attn.wq_b",
+      "weight_shape": [
+        32768,
+        1280
+      ],
+      "weight_rows": null,
+      "input_shape": [
+        4,
+        1280
+      ],
+      "oracle_row_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "oracle_rows": 4,
+      "oracle_scope": "all_rows",
+      "all_forward_rows_finite": true,
+      "all_input_gradient_rows_finite": true,
+      "input_dtype": "bfloat16",
+      "weight_format": "mxfp8-e4m3-e8m0-group32",
+      "hash_array_encoding": "contiguous float32 representation of exact BF16 values",
+      "input_sha256": "933cd2d98ebbcef4e4f5fb4cb69d89c538954b5c88e816fa5212f0cea3bf329d",
+      "cotangent_sha256": "38991cd394a4f8cdcd7407ccfcfd86e802299dca76d181e430b73e006f8f3e26",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.00390625,
+        "reference_max_abs": 7.96875,
+        "relative_l2_error": 1.1988278123540494e-05,
+        "cosine": 0.9999999999281411,
+        "actual_l2": 325.8391314276285,
+        "reference_l2": 325.8391204930078,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.015625,
+        "reference_max_abs": 17.75,
+        "relative_l2_error": 4.882380823276633e-05,
+        "cosine": 0.9999999988081668,
+        "actual_l2": 320.028192549357,
+        "reference_l2": 320.0282928670412,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "seconds": 0.275751042063348,
+      "passed": true,
+      "peak_mlx_gib": 0.04129379987716675,
+      "process_accounted_gib": 0.341705322265625
+    },
+    {
+      "name": "layers.0.attn.wkv",
+      "weight_shape": [
+        512,
+        5120
+      ],
+      "weight_rows": null,
+      "input_shape": [
+        4,
+        5120
+      ],
+      "oracle_row_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "oracle_rows": 4,
+      "oracle_scope": "all_rows",
+      "all_forward_rows_finite": true,
+      "all_input_gradient_rows_finite": true,
+      "input_dtype": "bfloat16",
+      "weight_format": "mxfp8-e4m3-e8m0-group32",
+      "hash_array_encoding": "contiguous float32 representation of exact BF16 values",
+      "input_sha256": "be443489e456ddfa499279d075b283b4979b77408b80259d22335486b9203cf9",
+      "cotangent_sha256": "ff6ad35c1a755faa6ecdf03f2674515dbe70c426518894133ef2ab03edde6c3d",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0,
+        "reference_max_abs": 7.15625,
+        "relative_l2_error": 0.0,
+        "cosine": 1.0,
+        "actual_l2": 77.45213584171056,
+        "reference_l2": 77.45213584171056,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.000244140625,
+        "reference_max_abs": 3.421875,
+        "relative_l2_error": 3.02212695756227e-06,
+        "cosine": 0.9999999999954335,
+        "actual_l2": 80.78440956603815,
+        "reference_l2": 80.78440940556139,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "seconds": 0.031943875015713274,
+      "passed": true,
+      "peak_mlx_gib": 0.04129379987716675,
+      "process_accounted_gib": 0.3423004150390625
+    },
+    {
+      "name": "layers.0.attn.wo_a",
+      "weight_shape": [
+        1024,
+        4096
+      ],
+      "weight_rows": [
+        0,
+        1024
+      ],
+      "input_shape": [
+        4,
+        4096
+      ],
+      "oracle_row_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "oracle_rows": 4,
+      "oracle_scope": "all_rows",
+      "all_forward_rows_finite": true,
+      "all_input_gradient_rows_finite": true,
+      "input_dtype": "bfloat16",
+      "weight_format": "mxfp8-e4m3-e8m0-group32",
+      "hash_array_encoding": "contiguous float32 representation of exact BF16 values",
+      "input_sha256": "7bdbf26619729b2da11f0e763608f983c274507386675692f6460dbcc94a8a0b",
+      "cotangent_sha256": "a85baa07a9bd8d5c60519f3df5354993332e9936f0e70bbf653a480b05a01f00",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0,
+        "reference_max_abs": 5.03125,
+        "relative_l2_error": 0.0,
+        "cosine": 1.0,
+        "actual_l2": 80.4952407441982,
+        "reference_l2": 80.4952407441982,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 3.814697265625e-06,
+        "reference_max_abs": 3.4375,
+        "relative_l2_error": 4.728920153015025e-08,
+        "cosine": 0.9999999999999989,
+        "actual_l2": 80.66740698066064,
+        "reference_l2": 80.6674069807006,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "seconds": 0.05386858293786645,
+      "passed": true,
+      "peak_mlx_gib": 0.04129379987716675,
+      "process_accounted_gib": 0.3423004150390625
+    },
+    {
+      "name": "layers.0.attn.wo_b",
+      "weight_shape": [
+        5120,
+        8192
+      ],
+      "weight_rows": null,
+      "input_shape": [
+        4,
+        8192
+      ],
+      "oracle_row_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "oracle_rows": 4,
+      "oracle_scope": "all_rows",
+      "all_forward_rows_finite": true,
+      "all_input_gradient_rows_finite": true,
+      "input_dtype": "bfloat16",
+      "weight_format": "mxfp8-e4m3-e8m0-group32",
+      "hash_array_encoding": "contiguous float32 representation of exact BF16 values",
+      "input_sha256": "816cfef058f6aa5d5b5f236bd9c7884c34b46fef5483e586aa36e0cc12268708",
+      "cotangent_sha256": "c2916b622160e8e5a36448e8aa9c8ba612cb4546076999737d4e114a6e4b5dc8",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0009765625,
+        "reference_max_abs": 8.875,
+        "relative_l2_error": 3.971210468875139e-06,
+        "cosine": 0.9999999999921148,
+        "actual_l2": 245.91056747537098,
+        "reference_l2": 245.91056658146104,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.00390625,
+        "reference_max_abs": 6.03125,
+        "relative_l2_error": 1.777525865809096e-05,
+        "cosine": 0.9999999998420207,
+        "actual_l2": 247.2527643855125,
+        "reference_l2": 247.25275680340462,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "seconds": 0.28796149999834597,
+      "passed": true,
+      "peak_mlx_gib": 0.0434761643409729,
+      "process_accounted_gib": 0.5419769287109375
+    },
+    {
+      "name": "head+cross_entropy",
+      "weight_shape": [
+        129280,
+        5120
+      ],
+      "input_shape": [
+        2,
+        5120
+      ],
+      "input_dtype": "bfloat16",
+      "weight_format": "bfloat16",
+      "targets": [
+        36665,
+        26089
+      ],
+      "input_sha256": "c3761b0c53e6467c80e00d5f65a363e77c2590130fb41d6d9dbf2668c0945a6b",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.125,
+        "reference_max_abs": 55.5,
+        "relative_l2_error": 4.2887627820095605e-05,
+        "cosine": 0.9999999990803549,
+        "actual_l2": 5900.743819235581,
+        "reference_l2": 5900.742401586114,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0,
+        "reference_max_abs": 0.435546875,
+        "relative_l2_error": 0.0,
+        "cosine": 1.0,
+        "actual_l2": 11.235710048833909,
+        "reference_l2": 11.235710048833909,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp_conditioned_on_observed_logits": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0,
+        "reference_max_abs": 0.435546875,
+        "relative_l2_error": 0.0,
+        "cosine": 1.0,
+        "actual_l2": 11.235710048833909,
+        "reference_l2": 11.235710048833909,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "loss": 47.434425354003906,
+      "independent_loss": 47.434424100447,
+      "independent_loss_abs_error": 1.2535569027249949e-06,
+      "independent_loss_tolerance": 0.09486884820089402,
+      "observed_logits_ce_abs_error": 1.2535569027249949e-06,
+      "observed_logits_ce_tolerance": 9.4868848200894e-05,
+      "seconds": 3.420581458020024,
+      "passed": true,
+      "peak_mlx_gib": 1.2366333454847336,
+      "process_accounted_gib": 3.0029449462890625
+    }
+  ],
+  "complete": true,
+  "tensor_payloads": {
+    "layers.0.attn.wq_a": {
+      "rows": [
+        0,
+        1280
+      ],
+      "weight_sha256": "75ec5bd7ab3cef6ab5f3707fb78100420831083d18e713852da77fd8efada0be",
+      "scales_sha256": "ff0873cc3049634e4930ac42e43bbdc6a3dc82d9a0a6223689063610a9b575c0"
+    },
+    "layers.0.attn.wq_b": {
+      "rows": [
+        0,
+        32768
+      ],
+      "weight_sha256": "bbd26e3f43773773377fb4a1a401b5f28b0aefe03581ceea13ea2392049133c3",
+      "scales_sha256": "8413adceac0a8609d4b007a6658102b567422ab7f280d8b801429b33d6952f15"
+    },
+    "layers.0.attn.wkv": {
+      "rows": [
+        0,
+        512
+      ],
+      "weight_sha256": "e919c24453d000ae362941c6f3448f5fb45a38a2593558d1e3ef8ac813a406ca",
+      "scales_sha256": "c934b3ae568f5747f52ac0a4670305d19af52e17fc47e83b7a738bf8092522f1"
+    },
+    "layers.0.attn.wo_a": {
+      "rows": [
+        0,
+        1024
+      ],
+      "weight_sha256": "e13958610d7943cfc96182c000734874953056fe5c80281d163762b9839f5d57",
+      "scales_sha256": "3c7860a74b19f54f7581281ab5fe46c4841796a0da7a24a2276f798697621e39"
+    },
+    "layers.0.attn.wo_b": {
+      "rows": [
+        0,
+        5120
+      ],
+      "weight_sha256": "37aebdf196ced221241bf0557ef171cc8ff0de22fd9c115963e07086ca60da79",
+      "scales_sha256": "4b3bae8703b1fde46e9f8a9960878444bbeca1f2f9eb6302ccad7e85da16fed8"
+    },
+    "head": {
+      "rows": [
+        0,
+        129280
+      ],
+      "weight_sha256": "68f446ddda4243d5c8d57d2a9729c125f7fb8b2ee050c78ac6ff5e0cacde6789",
+      "scales_sha256": null
+    }
+  },
+  "passed": true,
+  "saved_at_unix_seconds": 1791848329.067513
+}

@@ -219,7 +219,7 @@ def test_old_checkpoint_without_selection_preserves_exact_contract(engine):
     assert resumed["seq_length"] == 16
     assert resumed["completed_step"] == 2
     assert resumed["contract"] == report["contract"]
-    with pytest.raises(ValueError, match="settings/data differ"):
+    with pytest.raises(ValueError, match="settings/data.*differ"):
         engine.run("changed", "--resume", report["checkpoint"], "--seq-length", 17)
 
 
@@ -231,18 +231,18 @@ def test_inferred_lengths_cover_all_splits_and_prepared_configuration(engine):
     assert length == 128
     length, _ = workflow.load_resolved_datasets([engine.train], engine.root, seq_length=8)
     assert length == 8
-    engine.train.write_text(json.dumps({"input_ids": [2] * 514, "loss_start": 1}))
+    engine.train.write_text(json.dumps({"input_ids": [2] * 32770, "loss_start": 1}))
     with pytest.raises(ValueError, match="exceed"):
         workflow.load_resolved_datasets([engine.train], engine.root)
     length, rows = workflow.load_resolved_datasets([engine.train], engine.root, truncate=True)
-    assert length == 512
-    assert len(rows[0][0]["input_ids"]) == 513
+    assert length == 32768
+    assert len(rows[0][0]["input_ids"]) == 32769
 
 
-@pytest.mark.parametrize("length", [1, 513, True, 1.5])
+@pytest.mark.parametrize("length", [1, 32769, True, 1.5])
 def test_inferred_length_rejects_invalid_prepared_bound(engine, length):
     (engine.root / "dataset.json").write_text(json.dumps({"seq_length": length}))
-    with pytest.raises(ValueError, match="2..512"):
+    with pytest.raises(ValueError, match="2..32768"):
         workflow.load_resolved_datasets([engine.train], engine.root)
 
 
@@ -357,3 +357,15 @@ def test_generation_prompt_sources_are_mutually_exclusive(tmp_path):
     )
     with pytest.raises(ValueError, match="cannot be combined"):
         workflow.generate(args, None, None)
+
+
+def test_resume_old_arithmetic_rejects_before_model_allocation(engine):
+    report = engine.run("old-arithmetic", "--steps", 1)
+    state_path = Path(report["checkpoint"]) / "trainer_state.json"
+    state = json.loads(state_path.read_text())
+    del state["contract"]["engine_semantics"]
+    state_path.write_text(json.dumps(state))
+    before = len(engine.tracker.models)
+    with pytest.raises(ValueError, match="engine semantics differ"):
+        engine.run("new-arithmetic", "--resume", report["checkpoint"], "--steps", 1)
+    assert len(engine.tracker.models) == before

@@ -7,6 +7,7 @@ import sys
 import time
 from pathlib import Path
 
+from .resources import RESOURCE_FIELDS, add_resource_arguments, resource_overrides
 from .sft import SFTConfig, SFTTrainer
 
 COMMANDS = {"finetune", "resume", "compare", "chat", "export-adapter", "status", "stop", "studio"}
@@ -22,14 +23,16 @@ def build_parser():
     start.add_argument("--config", help="JSON SFTConfig settings; explicit flags override")
     start.add_argument("--steps", type=int, help="Total optimizer steps (default 20)")
     start.add_argument(
-        "--max-length", type=int, help="Total serialized tokens; inferred, at most 512"
+        "--max-length", type=int, help="Total serialized tokens; inferred, at most 32768"
     )
     start.add_argument("--learning-rate", type=float)
     start.add_argument("--gradient-accumulation-steps", type=int)
     start.add_argument("--rank", type=int)
     start.add_argument("--lora-alpha", type=float)
-    start.add_argument("--memory-gib", type=float)
-    start.add_argument("--reserve-gib", type=float)
+    start.add_argument(
+        "--chunk-size", type=int, help="EXL3 column chunk (default 512); immutable per project"
+    )
+    add_resource_arguments(start, optional_profile=True)
     start.add_argument("--eval-steps", type=int)
     start.add_argument("--save-steps", type=int)
     start.add_argument("--save-total-limit", type=int)
@@ -61,6 +64,7 @@ def build_parser():
         help="Total desired updates, including completed updates",
     )
     resume.add_argument("--no-compare", action="store_true")
+    add_resource_arguments(resume, optional_profile=True)
     resume.add_argument("--request-start-ns", type=int, help=argparse.SUPPRESS)
     for name, help_text in (
         ("compare", "Compare base and selected adapter"),
@@ -92,6 +96,9 @@ def start_trainer(args, parser):
         allowed = {f.name for f in dataclasses.fields(SFTConfig)}
         if not isinstance(values, dict) or set(values) - allowed:
             parser.error("Config must contain only SFTConfig fields")
+    if args.profile is not None:
+        for key in RESOURCE_FIELDS:
+            values.pop(key, None)
     for name in ("model", "data", "output"):
         if getattr(args, name) is None:
             if sys.stdin.isatty() and not args.config:
@@ -142,7 +149,12 @@ def main(argv=None):
                 "note": "The current update may take several minutes; the last completed update will be saved.",
             }
         else:
-            trainer = SFTTrainer.from_project(args.project, max_steps=getattr(args, "steps", None))
+            resource_options = resource_overrides(args)
+            trainer = SFTTrainer.from_project(
+                args.project,
+                max_steps=getattr(args, "steps", None),
+                **({"resources": resource_options} if resource_options else {}),
+            )
             if args.command == "resume":
                 result = trainer.train(
                     resume_from_checkpoint=True,

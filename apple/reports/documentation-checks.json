@@ -1,0 +1,209 @@
+{
+  "scope": "CPU-only documentation checks; no application/package import, model, GPU, or shell snippets executed",
+  "docs": 27,
+  "local_links_checked": 195,
+  "missing_links": [],
+  "outside_staging_but_existing_upstream": [
+    {
+      "doc": "README.md",
+      "target": "../tests/testlib/trellis.py"
+    },
+    {
+      "doc": "README.md",
+      "target": "../exllamav3/exllamav3_ext/quant/codebook.cuh"
+    },
+    {
+      "doc": "README.md",
+      "target": "../exllamav3/modules/quant/exl3.py"
+    },
+    {
+      "doc": "README.md",
+      "target": "../exllamav3/training/qlora_linear.py"
+    }
+  ],
+  "existing_absolute_historical_links": [
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/train.py:79"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/workflow.py:175"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/audit_cpu_repro.py"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/adversarial-code-repro.json"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/train.py:89"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/train.py:45"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/storage.py:97"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/storage.py:174"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/streaming.py:51"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/train.py:46"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/mlx-stream/src/arch/deepseek_v41/parity.zig:1"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/mlx-serve-compression-audit/tests/dump_dsv41_fixtures.py:1"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/experiments/mlx-stream/src/arch/deepseek_v41/model.zig:1382"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/adapter-integrity-hardening.patch"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/adapter-integrity-staged/verify_cpu.py"
+    },
+    {
+      "doc": "reports/adversarial-code-review.md",
+      "target": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/adapter-integrity-staged/cpu-results.json"
+    }
+  ],
+  "syntax_snippets_checked": 30,
+  "syntax_failures": [],
+  "actual_parser_commands_checked": 28,
+  "parser_commands": [
+    {
+      "doc": "KERNEL_TUNING.md",
+      "command": "ktune snapshot"
+    },
+    {
+      "doc": "KERNEL_TUNING.md",
+      "command": "ktune prepare"
+    },
+    {
+      "doc": "KERNEL_TUNING.md",
+      "command": "ktune finetune"
+    },
+    {
+      "doc": "KERNEL_TUNING.md",
+      "command": "resume"
+    },
+    {
+      "doc": "KERNEL_TUNING.md",
+      "command": "ktune verify"
+    },
+    {
+      "doc": "KERNEL_TUNING.md",
+      "command": "ktune export-edit"
+    },
+    {
+      "doc": "RESOURCE_PROFILES.md",
+      "command": "finetune"
+    },
+    {
+      "doc": "RESOURCE_PROFILES.md",
+      "command": "ktune finetune"
+    },
+    {
+      "doc": "RESOURCE_PROFILES.md",
+      "command": "resume"
+    },
+    {
+      "doc": "RESOURCE_PROFILES.md",
+      "command": "ktune finetune"
+    },
+    {
+      "doc": "SIMPLE_FLOW.md",
+      "command": "studio"
+    },
+    {
+      "doc": "SIMPLE_FLOW.md",
+      "command": "finetune"
+    },
+    {
+      "doc": "SIMPLE_FLOW.md",
+      "command": "resume"
+    },
+    {
+      "doc": "SIMPLE_FLOW.md",
+      "command": "chat"
+    },
+    {
+      "doc": "SIMPLE_FLOW.md",
+      "command": "resume"
+    },
+    {
+      "doc": "SIMPLE_FLOW.md",
+      "command": "compare"
+    },
+    {
+      "doc": "SIMPLE_FLOW.md",
+      "command": "export-adapter"
+    },
+    {
+      "doc": "SIMPLE_FLOW.md",
+      "command": "resume"
+    },
+    {
+      "doc": "README.md",
+      "command": "doctor"
+    },
+    {
+      "doc": "RECIPE.md",
+      "command": "doctor"
+    },
+    {
+      "doc": "RECIPE.md",
+      "command": "train"
+    },
+    {
+      "doc": "RECIPE.md",
+      "command": "train"
+    },
+    {
+      "doc": "RECIPE.md",
+      "command": "prepare"
+    },
+    {
+      "doc": "RECIPE.md",
+      "command": "train"
+    },
+    {
+      "doc": "RECIPE.md",
+      "command": "train"
+    },
+    {
+      "doc": "RECIPE.md",
+      "command": "evaluate"
+    },
+    {
+      "doc": "RECIPE.md",
+      "command": "evaluate"
+    },
+    {
+      "doc": "RECIPE.md",
+      "command": "generate"
+    }
+  ],
+  "missing_markdown_anchors": [],
+  "final_refresh": "2026-10-12: all local links/anchors and snippet syntax rechecked after final outcome edits; 28 prior isolated actual-parser checks retained, with engine and command examples unchanged."
+}

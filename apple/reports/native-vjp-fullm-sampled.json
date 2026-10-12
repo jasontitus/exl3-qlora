@@ -1,0 +1,435 @@
+{
+  "scope": "actual checkpoint, full feature dimensions; all executed rows finite, selected rows checked by oracle",
+  "diagnostic_revision": "native-vjp-v2-sampled-rows",
+  "settings": {
+    "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "output": "reports/native-vjp-fullm-sampled.json",
+    "layer": 0,
+    "wo_group": 0,
+    "rows": 5808,
+    "oracle_rows": 8,
+    "head_rows": 2,
+    "weight_rows": 1024,
+    "seed": 81,
+    "projections": [
+      "wq_a",
+      "wq_b",
+      "wkv",
+      "wo_a",
+      "wo_b"
+    ],
+    "skip_head": true,
+    "memory_gib": 16.0,
+    "reserve_gib": 32
+  },
+  "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "versions": {
+    "mlx": "0.32.3",
+    "mlx-lm": "0.32.0",
+    "numpy": "2.5.4"
+  },
+  "source_sha256": {
+    "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/attention.py": "a22ffd2e0fe128949f045eb95dc332367bca6c70fbf96324b959813e2be3e2c4",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/native.py": "dc470bc7925db2f74d00a5cd68a9e916e66987d8afc749a23daae7a7e9a67e5d"
+  },
+  "script_sha256": "6dffc2914c73fb31858ed3dc7e5d53797f0852b5cebf6c28ade202ddd522afa2",
+  "metadata_sha256": {
+    "config.json": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d",
+    "model.safetensors.index.json": "c0ead8ce7960b2c715366373da35626f3ccaef1837094bf9215cded0bfefdabb"
+  },
+  "notes": [
+    "No full-model gradient or quality claim follows from these component checks.",
+    "Small row batches test actual feature dimensions but may select different Metal kernels from 5808-row prefill.",
+    "With --rows 5808 the trunk executes the full prefill row count; --oracle-rows controls independent sampled row checks only.",
+    "Linear rows are independent: sampled VJP rows use their corresponding nonuniform full-run cotangents.",
+    "The head oracle rounds dlogits to BF16 at the cast boundary before its transpose multiply.",
+    "Reference weights are independently decoded into NumPy float64 blocks; the full FP64 head is never retained.",
+    "Passing tolerances is component numerical evidence, not bitwise equivalence."
+  ],
+  "cases": [
+    {
+      "name": "layers.0.attn.wq_a",
+      "weight_shape": [
+        1280,
+        5120
+      ],
+      "weight_rows": null,
+      "input_shape": [
+        5808,
+        5120
+      ],
+      "oracle_row_indices": [
+        0,
+        1,
+        15,
+        16,
+        127,
+        128,
+        5806,
+        5807
+      ],
+      "oracle_rows": 8,
+      "oracle_scope": "sampled_rows_only",
+      "all_forward_rows_finite": true,
+      "all_input_gradient_rows_finite": true,
+      "input_dtype": "bfloat16",
+      "weight_format": "mxfp8-e4m3-e8m0-group32",
+      "hash_array_encoding": "contiguous float32 representation of exact BF16 values",
+      "input_sha256": "b1d0efe61472b758243d2b2a1c5f8ea34911890a37a05362ef6a31ef03a0bd9b",
+      "cotangent_sha256": "f81bca1471b31114dd2e0e356fd1c689986bcdb28ef2b95a153a17f35f3e7340",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0,
+        "reference_max_abs": 5.96875,
+        "relative_l2_error": 0.0,
+        "cosine": 0.9999999999999998,
+        "actual_l2": 147.1022676171445,
+        "reference_l2": 147.1022676171445,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.001953125,
+        "reference_max_abs": 3.84375,
+        "relative_l2_error": 1.4774799736559519e-05,
+        "cosine": 0.999999999890854,
+        "actual_l2": 147.79626689693953,
+        "reference_l2": 147.79625960869612,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "seconds": 0.6077957920497283,
+      "passed": true,
+      "peak_mlx_gib": 0.2431182935833931,
+      "process_accounted_gib": 1.1806182861328125
+    },
+    {
+      "name": "layers.0.attn.wq_b",
+      "weight_shape": [
+        32768,
+        1280
+      ],
+      "weight_rows": null,
+      "input_shape": [
+        5808,
+        1280
+      ],
+      "oracle_row_indices": [
+        0,
+        1,
+        15,
+        16,
+        127,
+        128,
+        5806,
+        5807
+      ],
+      "oracle_rows": 8,
+      "oracle_scope": "sampled_rows_only",
+      "all_forward_rows_finite": true,
+      "all_input_gradient_rows_finite": true,
+      "input_dtype": "bfloat16",
+      "weight_format": "mxfp8-e4m3-e8m0-group32",
+      "hash_array_encoding": "contiguous float32 representation of exact BF16 values",
+      "input_sha256": "16226df6736c99cd17638c9d13cd3c4f4254d103af5eb292d94ef797c29b0232",
+      "cotangent_sha256": "5156df4b28d6cd94675bf2f5cbadf30f60fd4a0f4558c2ff813b554a8b233a29",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0001220703125,
+        "reference_max_abs": 8.5625,
+        "relative_l2_error": 3.853781999540449e-07,
+        "cosine": 0.9999999999999256,
+        "actual_l2": 456.7598852880367,
+        "reference_l2": 456.75988527535725,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.015625,
+        "reference_max_abs": 16.625,
+        "relative_l2_error": 3.826799177514432e-05,
+        "cosine": 0.9999999992677842,
+        "actual_l2": 456.55418806299116,
+        "reference_l2": 456.55422754701624,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "seconds": 2.3232669580029324,
+      "passed": true,
+      "peak_mlx_gib": 0.9403724819421768,
+      "process_accounted_gib": 5.714630126953125
+    },
+    {
+      "name": "layers.0.attn.wkv",
+      "weight_shape": [
+        512,
+        5120
+      ],
+      "weight_rows": null,
+      "input_shape": [
+        5808,
+        5120
+      ],
+      "oracle_row_indices": [
+        0,
+        1,
+        15,
+        16,
+        127,
+        128,
+        5806,
+        5807
+      ],
+      "oracle_rows": 8,
+      "oracle_scope": "sampled_rows_only",
+      "all_forward_rows_finite": true,
+      "all_input_gradient_rows_finite": true,
+      "input_dtype": "bfloat16",
+      "weight_format": "mxfp8-e4m3-e8m0-group32",
+      "hash_array_encoding": "contiguous float32 representation of exact BF16 values",
+      "input_sha256": "dc8c39d967eb0f685a356e19071803594cb584d3cbb251554df19c284aa0f983",
+      "cotangent_sha256": "00f249dc9ddfe71ee6cf63fa797d7069bcf55439b3fff2e5277c4c9e04c77281",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.000244140625,
+        "reference_max_abs": 8.25,
+        "relative_l2_error": 2.1930455047764115e-06,
+        "cosine": 0.9999999999975953,
+        "actual_l2": 111.32492447881998,
+        "reference_l2": 111.32492438860314,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0009765625,
+        "reference_max_abs": 2.640625,
+        "relative_l2_error": 8.852085581378489e-06,
+        "cosine": 0.9999999999608206,
+        "actual_l2": 110.32004554281367,
+        "reference_l2": 110.32004750081896,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "seconds": 0.40455362503416836,
+      "passed": true,
+      "peak_mlx_gib": 0.9403724819421768,
+      "process_accounted_gib": 5.714630126953125
+    },
+    {
+      "name": "layers.0.attn.wo_a",
+      "weight_shape": [
+        1024,
+        4096
+      ],
+      "weight_rows": [
+        0,
+        1024
+      ],
+      "input_shape": [
+        5808,
+        4096
+      ],
+      "oracle_row_indices": [
+        0,
+        1,
+        15,
+        16,
+        127,
+        128,
+        5806,
+        5807
+      ],
+      "oracle_rows": 8,
+      "oracle_scope": "sampled_rows_only",
+      "all_forward_rows_finite": true,
+      "all_input_gradient_rows_finite": true,
+      "input_dtype": "bfloat16",
+      "weight_format": "mxfp8-e4m3-e8m0-group32",
+      "hash_array_encoding": "contiguous float32 representation of exact BF16 values",
+      "input_sha256": "a0067999a08fe2091cbf4ffcb1665cdb0eb0ef96f8afd6227dbd88a38be918c7",
+      "cotangent_sha256": "c6a83c894e0c388d568aa11955be98021e4ae98547c6fa7442798754dca66d1f",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 1.1920928955078125e-07,
+        "reference_max_abs": 5.53125,
+        "relative_l2_error": 1.0609839679664386e-09,
+        "cosine": 1.0,
+        "actual_l2": 112.35729582160108,
+        "reference_l2": 112.35729582160106,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.00390625,
+        "reference_max_abs": 3.453125,
+        "relative_l2_error": 3.483521284793258e-05,
+        "cosine": 0.9999999993932791,
+        "actual_l2": 112.13507258299298,
+        "reference_l2": 112.13509782491764,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "seconds": 1.4506523750023916,
+      "passed": true,
+      "peak_mlx_gib": 0.9403724819421768,
+      "process_accounted_gib": 5.714630126953125
+    },
+    {
+      "name": "layers.0.attn.wo_b",
+      "weight_shape": [
+        5120,
+        8192
+      ],
+      "weight_rows": null,
+      "input_shape": [
+        5808,
+        8192
+      ],
+      "oracle_row_indices": [
+        0,
+        1,
+        15,
+        16,
+        127,
+        128,
+        5806,
+        5807
+      ],
+      "oracle_rows": 8,
+      "oracle_scope": "sampled_rows_only",
+      "all_forward_rows_finite": true,
+      "all_input_gradient_rows_finite": true,
+      "input_dtype": "bfloat16",
+      "weight_format": "mxfp8-e4m3-e8m0-group32",
+      "hash_array_encoding": "contiguous float32 representation of exact BF16 values",
+      "input_sha256": "9de61a2ae574020c637ee3acfb3bfe27b55e39efcbda5b177bc51c27d4567f0c",
+      "cotangent_sha256": "20023cbb232497c9a040349fe039a02896be119934c1aba7a1038ae2eeea3f27",
+      "forward": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 3.0517578125e-05,
+        "reference_max_abs": 7.125,
+        "relative_l2_error": 8.739893574321138e-08,
+        "cosine": 0.9999999999999963,
+        "actual_l2": 349.5164517721769,
+        "reference_l2": 349.516451772569,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "input_vjp": {
+        "passed": true,
+        "finite": true,
+        "max_abs_error": 0.0078125,
+        "reference_max_abs": 5.875,
+        "relative_l2_error": 3.2484780166505464e-05,
+        "cosine": 0.9999999994723702,
+        "actual_l2": 346.85664224271176,
+        "reference_l2": 346.8566545916681,
+        "tolerance": {
+          "max_abs_per_reference_max": 0.02,
+          "relative_l2": 0.012,
+          "cosine_min": 0.9999,
+          "absolute_floor": 1e-07
+        }
+      },
+      "seconds": 1.270831250003539,
+      "passed": true,
+      "peak_mlx_gib": 0.9403724819421768,
+      "process_accounted_gib": 6.70843505859375
+    }
+  ],
+  "complete": true,
+  "tensor_payloads": {
+    "layers.0.attn.wq_a": {
+      "rows": [
+        0,
+        1280
+      ],
+      "weight_sha256": "75ec5bd7ab3cef6ab5f3707fb78100420831083d18e713852da77fd8efada0be",
+      "scales_sha256": "ff0873cc3049634e4930ac42e43bbdc6a3dc82d9a0a6223689063610a9b575c0"
+    },
+    "layers.0.attn.wq_b": {
+      "rows": [
+        0,
+        32768
+      ],
+      "weight_sha256": "bbd26e3f43773773377fb4a1a401b5f28b0aefe03581ceea13ea2392049133c3",
+      "scales_sha256": "8413adceac0a8609d4b007a6658102b567422ab7f280d8b801429b33d6952f15"
+    },
+    "layers.0.attn.wkv": {
+      "rows": [
+        0,
+        512
+      ],
+      "weight_sha256": "e919c24453d000ae362941c6f3448f5fb45a38a2593558d1e3ef8ac813a406ca",
+      "scales_sha256": "c934b3ae568f5747f52ac0a4670305d19af52e17fc47e83b7a738bf8092522f1"
+    },
+    "layers.0.attn.wo_a": {
+      "rows": [
+        0,
+        1024
+      ],
+      "weight_sha256": "e13958610d7943cfc96182c000734874953056fe5c80281d163762b9839f5d57",
+      "scales_sha256": "3c7860a74b19f54f7581281ab5fe46c4841796a0da7a24a2276f798697621e39"
+    },
+    "layers.0.attn.wo_b": {
+      "rows": [
+        0,
+        5120
+      ],
+      "weight_sha256": "37aebdf196ced221241bf0557ef171cc8ff0de22fd9c115963e07086ca60da79",
+      "scales_sha256": "4b3bae8703b1fde46e9f8a9960878444bbeca1f2f9eb6302ccad7e85da16fed8"
+    }
+  },
+  "passed": true,
+  "saved_at_unix_seconds": 1791848348.645092
+}

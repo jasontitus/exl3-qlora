@@ -99,10 +99,15 @@ class StudioState:
                     output_dir=value["project"],
                     max_steps=value.get("steps", 2),
                     max_length=value.get("max_length"),
+                    chunk_size=value.get("chunk_size", 512),
                     demo=value.get("demo", False),
                     learning_rate=value.get("learning_rate", 1e-4),
-                    memory_gib=value.get("memory_gib", 16),
-                    reserve_gib=value.get("reserve_gib", 32),
+                    profile=value.get("profile", "low-memory"),
+                    memory_gib=value.get("memory_gib"),
+                    reserve_gib=value.get("reserve_gib"),
+                    packed_cache_mib=value.get("packed_cache_mib"),
+                    decoded_cache_mib=value.get("decoded_cache_mib"),
+                    allocator_cache_mib=value.get("allocator_cache_mib"),
                     prompt_column=value.get("prompt_column") or None,
                     response_column=value.get("response_column") or None,
                     group_column=value.get("group_column") or None,
@@ -144,6 +149,26 @@ class StudioState:
                         "--request-start-ns",
                         stamp,
                     ]
+                    if "resources" in value:
+                        from .resources import RESOURCE_FIELDS, resolve_resources
+
+                        if not isinstance(value["resources"], dict):
+                            raise ValueError("Resource overrides must be an object")
+                        if value["resources"]:
+                            saved = json.loads((self.project / "project.json").read_text())[
+                                "config"
+                            ]
+                            options = (
+                                {}
+                                if "profile" in value["resources"]
+                                else {key: saved[key] for key in RESOURCE_FIELDS if key in saved}
+                            )
+                            resources = resolve_resources(**(options | value["resources"]))
+                            command += [
+                                part
+                                for key, item in resources.items()
+                                for part in ("--" + key.replace("_", "-"), str(item))
+                            ]
                 elif action == "compare":
                     command = ["compare", str(self.project)]
                 elif action == "chat":

@@ -1,0 +1,497 @@
+{
+  "status": "passed",
+  "plan": {
+    "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "config_sha256": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d",
+    "layer": 39,
+    "length": 5808,
+    "stream_shape": [
+      1,
+      5808,
+      4,
+      5120
+    ],
+    "pre_shape": [
+      1,
+      5808,
+      4
+    ],
+    "compressed_kv_shape": [
+      1,
+      5808,
+      512
+    ],
+    "index_keys_shape": [
+      1,
+      5808,
+      128
+    ],
+    "selected_shape": [
+      1,
+      5808,
+      512
+    ],
+    "candidate_block_size": 8,
+    "candidate_topk_blocks": 2048,
+    "index_topk": 512,
+    "requested_retained_baseline_gib": 17.95,
+    "chunk_size": 8192,
+    "scope": "synthetic final-block backward memory feasibility; no optimizer update",
+    "limitations": [
+      "Synthetic hidden/KV state and recent causal selections are not a real preceding39-layer state.",
+      "Streams begin with expand_streams shape/pre and independent perturbations so pre-mix gradients are exercised.",
+      "Dummy retained allocations simulate capacity, not the preceding autograd graph or allocator fragmentation.",
+      "Data-dependent expert routing and sparse attention may differ on actual examples.",
+      "A scalar final-collapse surrogate replaces the vocabulary head and supervised loss.",
+      "Passing this probe does not establish full-model training feasibility or numerical parity."
+    ]
+  },
+  "resources": {
+    "profile": "development",
+    "memory_gib": 80.0,
+    "reserve_gib": 16.0,
+    "packed_cache_mib": 8192,
+    "decoded_cache_mib": 0,
+    "allocator_cache_mib": 256
+  },
+  "settings": {
+    "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "output": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-sft/final-block-probe-packed",
+    "length": 5808,
+    "chunk_size": 8192,
+    "rank": 4,
+    "alpha": 8.0,
+    "seed": 8,
+    "memory_gib": 80.0,
+    "reserve_gib": 16.0,
+    "packed_cache_mib": 8192,
+    "decoded_cache_mib": 0,
+    "allocator_cache_mib": 256,
+    "retained_baseline_gib": 17.95,
+    "describe_only": false
+  },
+  "implementation": {
+    "source": {
+      "__init__.py": "6605af1a6c29d74cb5a62c1c268c24632d00e2fe8b1821a772e3cac6a1060c54",
+      "attention.py": "a22ffd2e0fe128949f045eb95dc332367bca6c70fbf96324b959813e2be3e2c4",
+      "checkpoint.py": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d",
+      "cli.py": "6a20e242263c4ee512aaa5018fb7386f89a0f93d64ef08da5973c24afa81cc83",
+      "context.py": "dae6e69baa6f5cda760b784d4abaab91cab7433e223d16f0c5c5e64b8c0c5246",
+      "data.py": "4791c84ad1bff633f3ffd49d9c6cc5f930ad59bdd3fe3e189b5720f868112a15",
+      "decode.metal": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282",
+      "deepseek.py": "8ab19c61590f390d0fd1a9e72229b72f35332cb838244dd83c1446acb9f1073b",
+      "engram.py": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+      "hyperconnections.py": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+      "ktune_cli.py": "83aedcb55c7a19f066ded36208516a8f3e6708ee6d7ddac7e2a57a1e5c9b9d6a",
+      "ktune_data.py": "5ceee57f664295731a4d4183215ac4d4feb128cb7aa52fd58903aa3470080838",
+      "ktune_eval.py": "91739cb483ac8e51ed93d0478a5b3a622042d73c87e89593b3baf3d9462ec91e",
+      "ktune_patch.py": "1e7972d4b4659b42e2284d89c798c915f9930061af260ac3a0f33fd305ebf0f6",
+      "linear.py": "51ecb3cbc657199e86f4db13b92f1ea6cd13d4550a31ad35602b2e352b3f6379",
+      "materialize.py": "c17735ac8ddac3b46e6b8fd62dc74f730ea31630496749700c2da1e266224e43",
+      "memory.py": "5df2ec9ebe5163d8587d4712ded34f87dc528bb07fba8ab58b5c7ef1fac493d8",
+      "moe.py": "88b821f17c0eda364cb136170f2de52285f872ef0a6330b4a280518d6d1828e0",
+      "native.py": "dc470bc7925db2f74d00a5cd68a9e916e66987d8afc749a23daae7a7e9a67e5d",
+      "recompute.py": "a7849b0b1b6877b62914b75e21ab7a66305469e2a0c72def94e8b1caa90cd988",
+      "reference.py": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595",
+      "remote.py": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c",
+      "resources.py": "7d123724454417ee8c26d1ee0f2a50e4d869141fc0c2701f170337e507c83e0d",
+      "sft.py": "9467543ea16c839e9b19118234e85ab095962111073afbcaf9ef9c9f144efa6f",
+      "sft_cli.py": "55876e672e6dc8cc7a09012d5e5d18a257cbc3ed3eb172a569bea8ae410b8d6e",
+      "sft_data.py": "60bf148fcbb0bda56c32701e31f282a2a074ffb852ae327db8b79a2978d38ceb",
+      "sparse_attention.py": "620082cc1e12cbb2f66b09054ff9bea08d9dadc6c34bd802ca25ae7aa26a21a7",
+      "storage.py": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+      "streaming.py": "e60c77729a89fd5a9a76cd2641b5325c5ccf8bc0ec4b80a19ff949a1579d03df",
+      "studio.html": "c8ff014471849cd37e96006ddbd6c56bd91f0191b0cfe2a1d7949793bafd8276",
+      "studio.py": "63f8b56e5a8698023a3cce509001d73eeb833a9283b8bd34de352b324815230b",
+      "train.py": "b820893532405ad46a84aedc170242d5ce98f830c9573eaddfc046859d165de1",
+      "training.py": "684cb6281c9d37ae3803a0437c9d7d946c5fffabae9458b65dbab7ab3bfb9826",
+      "trellis.py": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d",
+      "validation.py": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9",
+      "workflow.py": "40371fb3fa90bd5f32c30d78363f02612cc9f0fbba03ccdefb68aed39aead945"
+    },
+    "dependency_lock": "40a2c42b352bac86b8b24566543b2a0e76c418047a05d4e4d326c55ae89461ee",
+    "runtime": {
+      "mlx": "0.32.3",
+      "mlx-lm": "0.32.0",
+      "numpy": "2.5.4",
+      "transformers": "5.19.0",
+      "tokenizers": "0.23.3",
+      "safetensors": "0.8.0"
+    },
+    "python": "3.12.13"
+  },
+  "script_sha256": "cd940a4d645bbba473ccd8f1716ec8a065c1d328316fd0ea2ef949b2750b1872",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "python": "3.12.13 (main, Jul 18 2026, 16:55:18) [Clang 22.1.3 ]",
+  "events": [
+    {
+      "phase": "loading_model",
+      "elapsed_seconds": 0.03433737496379763,
+      "active_mlx_gib": 7.450580596923828e-09,
+      "allocator_cache_gib": 0.0,
+      "peak_mlx_gib": 7.450580596923828e-09,
+      "observed_process_gib": 0.082550048828125
+    },
+    {
+      "phase": "model_loaded",
+      "elapsed_seconds": 4.157543667010032,
+      "active_mlx_gib": 8.143869165331125,
+      "allocator_cache_gib": 8.940696716308594e-08,
+      "peak_mlx_gib": 8.143869165331125,
+      "observed_process_gib": 9.815093994140625,
+      "matrix_store": {
+        "loads": 0,
+        "hits": 0,
+        "evictions": 0,
+        "loaded_bytes": 0,
+        "cached_bytes": 0,
+        "peak_cached_bytes": 0,
+        "forward_calls": 0,
+        "backward_calls": 0,
+        "decoded_loads": 0,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 0,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      }
+    },
+    {
+      "phase": "synthetic_state_ready",
+      "elapsed_seconds": 4.332020583911799,
+      "active_mlx_gib": 8.439416650682688,
+      "allocator_cache_gib": 0.0,
+      "peak_mlx_gib": 8.974710267037153,
+      "observed_process_gib": 10.65081787109375,
+      "selected_shape": [
+        1,
+        5808,
+        512
+      ],
+      "candidate_shape": [
+        1,
+        5808,
+        91
+      ],
+      "matrix_store": {
+        "loads": 0,
+        "hits": 0,
+        "evictions": 0,
+        "loaded_bytes": 0,
+        "cached_bytes": 0,
+        "peak_cached_bytes": 0,
+        "forward_calls": 0,
+        "backward_calls": 0,
+        "decoded_loads": 0,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 0,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      }
+    },
+    {
+      "phase": "retained_state_ready",
+      "elapsed_seconds": 4.714941874961369,
+      "active_mlx_gib": 17.950006250292063,
+      "allocator_cache_gib": 0.0,
+      "peak_mlx_gib": 0.0,
+      "observed_process_gib": 17.950006250292063,
+      "matrix_store": {
+        "loads": 0,
+        "hits": 0,
+        "evictions": 0,
+        "loaded_bytes": 0,
+        "cached_bytes": 0,
+        "peak_cached_bytes": 0,
+        "forward_calls": 0,
+        "backward_calls": 0,
+        "decoded_loads": 0,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 0,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      }
+    },
+    {
+      "phase": "block_forward_and_vjp_started",
+      "elapsed_seconds": 4.718584124930203,
+      "active_mlx_gib": 17.950006250292063,
+      "allocator_cache_gib": 0.0,
+      "peak_mlx_gib": 0.0,
+      "observed_process_gib": 17.950006250292063,
+      "matrix_store": {
+        "loads": 0,
+        "hits": 0,
+        "evictions": 0,
+        "loaded_bytes": 0,
+        "cached_bytes": 0,
+        "peak_cached_bytes": 0,
+        "forward_calls": 0,
+        "backward_calls": 0,
+        "decoded_loads": 0,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 0,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      }
+    },
+    {
+      "phase": "recompute: recomputing backward",
+      "elapsed_seconds": 19.249237958923914,
+      "active_mlx_gib": 22.877823770977557,
+      "allocator_cache_gib": 0.0,
+      "peak_mlx_gib": 36.19095642119646,
+      "observed_process_gib": 22.877823770977557,
+      "matrix_store": {
+        "loads": 1134,
+        "hits": 0,
+        "evictions": 0,
+        "loaded_bytes": 5033290752,
+        "cached_bytes": 5033290752,
+        "peak_cached_bytes": 5033290752,
+        "forward_calls": 1134,
+        "backward_calls": 0,
+        "decoded_loads": 1134,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 26754416640,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      }
+    },
+    {
+      "phase": "recompute: backward complete; active MLX 56.69 GiB",
+      "elapsed_seconds": 52.310774124925956,
+      "active_mlx_gib": 56.68742200732231,
+      "allocator_cache_gib": 0.2232668399810791,
+      "peak_mlx_gib": 58.75978978071362,
+      "observed_process_gib": 56.91068884730339,
+      "matrix_store": {
+        "loads": 1134,
+        "hits": 3402,
+        "evictions": 0,
+        "loaded_bytes": 5033290752,
+        "cached_bytes": 5033290752,
+        "peak_cached_bytes": 5033290752,
+        "forward_calls": 3402,
+        "backward_calls": 1134,
+        "decoded_loads": 4536,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 107017666560,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      }
+    },
+    {
+      "phase": "block_vjp_complete",
+      "elapsed_seconds": 52.5631335839862,
+      "active_mlx_gib": 22.865143693983555,
+      "allocator_cache_gib": 0.2770233154296875,
+      "peak_mlx_gib": 58.75978978071362,
+      "observed_process_gib": 23.142167009413242,
+      "matrix_store": {
+        "loads": 1134,
+        "hits": 3402,
+        "evictions": 0,
+        "loaded_bytes": 5033290752,
+        "cached_bytes": 5033290752,
+        "peak_cached_bytes": 5033290752,
+        "forward_calls": 3402,
+        "backward_calls": 1134,
+        "decoded_loads": 4536,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 107017666560,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      }
+    },
+    {
+      "phase": "gradients_verified",
+      "elapsed_seconds": 52.658815458999015,
+      "active_mlx_gib": 22.865143693983555,
+      "allocator_cache_gib": 0.18656887486577034,
+      "peak_mlx_gib": 58.75978978071362,
+      "observed_process_gib": 23.051712568849325,
+      "matrix_store": {
+        "loads": 1134,
+        "hits": 3402,
+        "evictions": 0,
+        "loaded_bytes": 5033290752,
+        "cached_bytes": 5033290752,
+        "peak_cached_bytes": 5033290752,
+        "forward_calls": 3402,
+        "backward_calls": 1134,
+        "decoded_loads": 4536,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 107017666560,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      }
+    },
+    {
+      "phase": "probe_passed",
+      "elapsed_seconds": 52.66137212491594,
+      "active_mlx_gib": 22.865143693983555,
+      "allocator_cache_gib": 0.18656887486577034,
+      "peak_mlx_gib": 58.75978978071362,
+      "observed_process_gib": 23.051712568849325,
+      "matrix_store": {
+        "loads": 1134,
+        "hits": 3402,
+        "evictions": 0,
+        "loaded_bytes": 5033290752,
+        "cached_bytes": 5033290752,
+        "peak_cached_bytes": 5033290752,
+        "forward_calls": 3402,
+        "backward_calls": 1134,
+        "decoded_loads": 4536,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 107017666560,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      }
+    }
+  ],
+  "model": {
+    "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "expert_source": {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+      "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+      "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+    },
+    "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+    "streaming": {
+      "loads": 0,
+      "hits": 0,
+      "evictions": 0,
+      "loaded_bytes": 0,
+      "cached_bytes": 0,
+      "peak_cached_bytes": 0,
+      "forward_calls": 0,
+      "backward_calls": 0,
+      "decoded_loads": 0,
+      "decoded_hits": 0,
+      "decoded_evictions": 0,
+      "decoded_loaded_bytes": 0,
+      "decoded_cached_bytes": 0,
+      "decoded_peak_cached_bytes": 0
+    },
+    "engram_bytes_read": 0,
+    "trainable_parameters": 3153920,
+    "peak_mlx_gib": 8.143869165331125,
+    "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+    "context_limit": 32768,
+    "attention": "query-tiled sparse attention with frozen causal indexer and first-order VJP",
+    "block_recomputation": true
+  },
+  "padding": {
+    "payload_bytes": 10211911112,
+    "chunks": 153,
+    "before_active_gib": 8.439416650682688,
+    "after_active_gib": 17.950006250292063,
+    "target_already_exceeded": false
+  },
+  "peak_before_block_gib": 17.950006250292063,
+  "retained_padding_bytes_at_end": 10211911112,
+  "surrogate_loss": -0.28559279441833496,
+  "gradients": {
+    "attn.linears.wq_a.lora_a": {
+      "shape": [
+        5120,
+        4
+      ],
+      "dtype": "mlx.core.float32",
+      "finite": true,
+      "max_abs": 0.0,
+      "nonzero": false
+    },
+    "attn.linears.wq_a.lora_b": {
+      "shape": [
+        4,
+        1280
+      ],
+      "dtype": "mlx.core.float32",
+      "finite": true,
+      "max_abs": 0.023537755012512207,
+      "nonzero": true
+    },
+    "attn.linears.wo_b.lora_a": {
+      "shape": [
+        8192,
+        4
+      ],
+      "dtype": "mlx.core.float32",
+      "finite": true,
+      "max_abs": 0.0,
+      "nonzero": false
+    },
+    "attn.linears.wo_b.lora_b": {
+      "shape": [
+        4,
+        5120
+      ],
+      "dtype": "mlx.core.float32",
+      "finite": true,
+      "max_abs": 0.010982656851410866,
+      "nonzero": true
+    },
+    "input.h": {
+      "shape": [
+        1,
+        5808,
+        4,
+        5120
+      ],
+      "dtype": "mlx.core.bfloat16",
+      "finite": true,
+      "max_abs": 0.005096435546875,
+      "nonzero": true
+    },
+    "input.pre": {
+      "shape": [
+        1,
+        5808,
+        4
+      ],
+      "dtype": "mlx.core.float32",
+      "finite": true,
+      "max_abs": 0.006700797006487846,
+      "nonzero": true
+    },
+    "input.shared_kv": {
+      "shape": [
+        1,
+        5808,
+        512
+      ],
+      "dtype": "mlx.core.bfloat16",
+      "finite": true,
+      "max_abs": 0.00726318359375,
+      "nonzero": true
+    }
+  },
+  "final_cache_stats": {
+    "loads": 1134,
+    "hits": 3402,
+    "evictions": 0,
+    "loaded_bytes": 5033290752,
+    "cached_bytes": 5033290752,
+    "peak_cached_bytes": 5033290752,
+    "forward_calls": 3402,
+    "backward_calls": 1134,
+    "decoded_loads": 4536,
+    "decoded_hits": 0,
+    "decoded_evictions": 0,
+    "decoded_loaded_bytes": 107017666560,
+    "decoded_cached_bytes": 0,
+    "decoded_peak_cached_bytes": 0
+  },
+  "acceptance": "One synthetic final-block VJP completed with finite nonzero adapter/upstream gradients under the requested guard; no full-training claim."
+}

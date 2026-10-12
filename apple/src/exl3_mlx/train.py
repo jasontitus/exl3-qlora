@@ -8,10 +8,12 @@ import mlx.core as mx
 import mlx.nn as nn
 from mlx.utils import tree_flatten
 
+from .context import ENGINE_SEMANTICS, MAX_CONTEXT_TOKENS
+
 
 def load_examples(path, tokenizer, *, seq_length, vocab_size):
-    if not 2 <= seq_length <= 512:
-        raise ValueError("seq_length must be in 2..512")
+    if not 2 <= seq_length <= MAX_CONTEXT_TOKENS:
+        raise ValueError("seq_length must be in 2..32768")
     examples = []
     for number, line in enumerate(Path(path).read_text().splitlines(), 1):
         if not line.strip():
@@ -99,7 +101,8 @@ def save_adapter(model, directory, extra):
         "adapter_sha256": _file_sha256(directory / "adapter.safetensors"),
         **model.adapter_config,
         "base_identity": checkpoint_identity(model._root),
-        "max_seq_length": 512,
+        "max_seq_length": MAX_CONTEXT_TOKENS,
+        "engine_semantics": ENGINE_SEMANTICS,
         "activation_quantization": "fp8/fp4 with identity STE",
         "training": extra,
     }

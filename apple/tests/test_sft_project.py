@@ -136,11 +136,12 @@ def _checkpoint(trainer, step, *, path=None, contract_change=None, config_change
         "seed": args.seed,
         "seq_length": manifest["data"]["seq_length"],
         "truncate": False,
-        "chunk_size": 512,
+        "chunk_size": args.chunk_size,
         "no_checkpoint": False,
         "data_sha256": manifest["data_files"]["train.jsonl"],
         "mlx": manifest["implementation"]["runtime"]["mlx"],
         "mlx_lm": manifest["implementation"]["runtime"]["mlx-lm"],
+        "engine_semantics": sft.ENGINE_SEMANTICS,
         **(contract_change or {}),
     }
     validation = None
@@ -196,9 +197,9 @@ def _arg(command, name):
         {"per_device_train_batch_size": True},
         {"packing": True},
         {"loss_scope": "all_assistant"},
-        {"max_length": 513},
+        {"max_length": 32769},
         {"max_length": True},
-        {"max_new_tokens": 513},
+        {"max_new_tokens": 32769},
         {"seed": True},
         {"demo": 1},
         {"prompt_column": "question"},
@@ -209,7 +210,7 @@ def test_config_rejects_unsupported_or_invalid_settings(tmp_path, change):
         sft.SFTConfig(output_dir=str(tmp_path), **change)
 
 
-@pytest.mark.parametrize("memory", [0.5, 65])
+@pytest.mark.parametrize("memory", [0.5, 81])
 def test_config_rejects_budget_outside_backend_supported_range(tmp_path, memory):
     with pytest.raises(ValueError):
         sft.SFTConfig(output_dir=str(tmp_path), memory_gib=memory)
@@ -280,6 +281,37 @@ def test_cpu_child_retains_project_lock_after_parent_descriptor_closes(project):
         if child is not None and child.poll() is None:
             child.kill()
             child.communicate(timeout=5)
+
+
+@pytest.mark.parametrize(
+    "command,verbose_count",
+    [
+        (["train"], 1),
+        (["evaluate"], 1),
+        (["train", "--verbose"], 1),
+        (["doctor"], 0),
+        (["generate"], 0),
+    ],
+)
+def test_child_records_training_and_evaluation_progress(
+    project, monkeypatch, command, verbose_count
+):
+    captured = []
+    original = list(command)
+
+    class Child:
+        pid = 12345
+
+        def __init__(self, arguments, **kwargs):
+            captured.extend(arguments)
+
+        def wait(self):
+            return 0
+
+    monkeypatch.setattr(sft.subprocess, "Popen", Child)
+    project._child(command, label="progress", directory=project.root / "logs")
+    assert captured.count("--verbose") == verbose_count
+    assert command == original
 
 
 def test_total_step_resume_dispatches_only_remaining_updates(project, monkeypatch):
@@ -532,3 +564,389 @@ def test_comparison_keeps_metrics_and_checkpoint_identity_distinct(project, monk
     assert project.status()["comparison_is_current"] is True  # Earlier receipt remains readable.
     _checkpoint(project, 2)
     assert project.status()["comparison_is_current"] is False
+
+
+def test_training_fit_is_explicit_and_has_no_generation_or_quality_claim(project, monkeypatch):
+    selected = _checkpoint(project, 1)
+    seen = []
+
+    def child(command, *, label, directory):
+        seen.append(command)
+        assert command[0] == "evaluate"
+        assert Path(_arg(command, "--data")).name == "train.jsonl"
+        _write(
+            Path(_arg(command, "--report")),
+            {"loss": 2.0 if label == "fit-base" else 1.8, "examples": 1, "supervised_tokens": 2},
+        )
+
+    monkeypatch.setattr(project, "_child", child)
+    result = project.verify_training_fit()
+    assert len(seen) == 2
+    assert "--adapter" not in seen[0]
+    assert _arg(seen[1], "--adapter") == selected
+    assert result["quality_certified"] is False
+    assert result["evaluation_scope"] == "training_only"
+    assert result["loss_delta"] == pytest.approx(-0.2)
+    assert result["training_data_sha256"] == sft.digest(project.root / "data/train.jsonl")
+    assert (project.root / "fit.json").is_file()
+    assert "test_exposure_count" not in _read(project.root / "project.json")
+
+
+def test_external_evidence_is_bound_before_training_and_checked_on_resume(project, tmp_path):
+    evidence = tmp_path / "evidence"
+    evidence.mkdir()
+    (evidence / "ktune-import.json").write_text('{"scope":"training_only"}')
+    (evidence / "ledger.jsonl").write_text('{"outcome":"failed"}\n')
+    report = {
+        "artifacts_sha256": {"ledger.jsonl": sft.digest(evidence / "ledger.jsonl")},
+        "manifest_sha256": sft.digest(evidence / "ktune-import.json"),
+    }
+    project.bind_provenance(evidence, report)
+    assert len(project._manifest()["provenance_files"]) == 3
+    (project.root / "ktune-evidence/ledger.jsonl").write_text('{"outcome":"passed"}\n')
+    with pytest.raises(ValueError, match="provenance changed"):
+        sft.SFTTrainer.from_project(project.root)
+
+
+def test_evidence_cannot_be_attached_after_checkpoint(project, tmp_path):
+    _checkpoint(project, 1)
+    with pytest.raises(ValueError, match="before training"):
+        project.bind_provenance(tmp_path, {})
+
+
+def _evidence(tmp_path):
+    evidence = tmp_path / "evidence"
+    evidence.mkdir()
+    (evidence / "ktune-import.json").write_text('{"scope":"training_only"}')
+    (evidence / "ledger.jsonl").write_text('{"outcome":"failed"}\n')
+    report = {
+        "artifacts_sha256": {"ledger.jsonl": sft.digest(evidence / "ledger.jsonl")},
+        "manifest_sha256": sft.digest(evidence / "ktune-import.json"),
+    }
+    return evidence, report
+
+
+def test_interrupted_evidence_copy_is_durable_blocks_training_and_recovers(
+    project, tmp_path, monkeypatch
+):
+    evidence, report = _evidence(tmp_path)
+    original_copy = sft.shutil.copyfile
+    copied = []
+
+    def interrupted_copy(source, destination):
+        saved = _read(project.root / "project.json")
+        assert saved["provenance_binding"]["state"] == "pending"
+        assert saved["status"] == "provenance_pending"
+        copied.append(source)
+        if len(copied) == 2:
+            Path(destination).write_text("partial copy")
+            raise KeyboardInterrupt
+        return original_copy(source, destination)
+
+    monkeypatch.setattr(sft.shutil, "copyfile", interrupted_copy)
+    with pytest.raises(KeyboardInterrupt):
+        project.bind_provenance(evidence, report)
+    assert len(copied) == 2
+    with pytest.raises(ValueError, match="binding is pending"):
+        sft.SFTTrainer.from_project(project.root)
+    repair = sft.SFTTrainer.from_project(project.root, allow_pending_provenance=True)
+    monkeypatch.setattr(repair, "_child", lambda *a, **kw: pytest.fail("Must not launch a child"))
+    with pytest.raises(ValueError, match="binding is pending"):
+        repair.train(compare=False)
+    monkeypatch.setattr(sft.shutil, "copyfile", original_copy)
+    repair.bind_provenance(evidence, report)
+    manifest = repair._manifest()
+    assert manifest["provenance_binding"]["state"] == "complete"
+    assert manifest["status"] == "prepared"
+    assert len(manifest["provenance_files"]) == 3
+    assert not list(project.root.glob(".ktune-evidence-*"))
+
+
+def test_failed_evidence_hash_pins_exact_report_for_recovery(project, tmp_path):
+    evidence, report = _evidence(tmp_path)
+    original = (evidence / "ledger.jsonl").read_bytes()
+    (evidence / "ledger.jsonl").write_text("changed")
+    with pytest.raises(ValueError, match="Import changed before"):
+        project.bind_provenance(evidence, report)
+    changed = copy.deepcopy(report)
+    changed["artifacts_sha256"]["ledger.jsonl"] = sft.digest(evidence / "ledger.jsonl")
+    with pytest.raises(ValueError, match="same import report"):
+        project.bind_provenance(evidence, changed)
+    with pytest.raises(ValueError, match="same import report"):
+        project.bind_provenance(evidence, {**report, "scope": "changed"})
+    (evidence / "ledger.jsonl").write_bytes(original)
+    project.bind_provenance(evidence, report)
+    assert project._manifest()["status"] == "prepared"
+
+
+@pytest.mark.parametrize("tamper", [False, True])
+def test_published_evidence_recovers_without_recopy_but_rejects_tamper(
+    project, tmp_path, monkeypatch, tamper
+):
+    evidence, report = _evidence(tmp_path)
+    original_write = sft.write_json
+
+    def interrupted_write(path, value):
+        if (
+            Path(path).name == "project.json"
+            and value.get("provenance_binding", {}).get("state") == "complete"
+        ):
+            raise OSError("simulated final manifest failure")
+        return original_write(path, value)
+
+    monkeypatch.setattr(sft, "write_json", interrupted_write)
+    with pytest.raises(OSError, match="simulated"):
+        project.bind_provenance(evidence, report)
+    assert (project.root / "ktune-evidence").is_dir()
+    assert _read(project.root / "project.json")["provenance_binding"]["state"] == "pending"
+    monkeypatch.setattr(sft, "write_json", original_write)
+    monkeypatch.setattr(
+        sft.shutil, "copyfile", lambda *a, **kw: pytest.fail("Must verify published files")
+    )
+    if tamper:
+        (project.root / "ktune-evidence/ledger.jsonl").write_text("changed")
+        with pytest.raises(ValueError, match="Published provenance changed"):
+            project.bind_provenance(evidence, report)
+        with pytest.raises(ValueError, match="binding is pending"):
+            project._manifest()
+    else:
+        # The already published, hash-verified evidence is enough to finish recovery.
+        sft.shutil.rmtree(evidence)
+        project.bind_provenance(evidence, report)
+        assert project._manifest()["provenance_binding"]["state"] == "complete"
+
+
+@pytest.mark.parametrize("stage_kind", ["symlink", "escape"])
+def test_pending_evidence_never_deletes_unowned_paths(project, tmp_path, stage_kind):
+    evidence, report = _evidence(tmp_path)
+    (evidence / "ledger.jsonl").write_text("changed")
+    with pytest.raises(ValueError, match="Import changed before"):
+        project.bind_provenance(evidence, report)
+    saved = _read(project.root / "project.json")
+    stage = project.root / saved["provenance_binding"]["stage"]
+    stage.rmdir()
+    outside = tmp_path / "unrelated"
+    outside.mkdir()
+    (outside / "keep").write_text("keep me")
+    if stage_kind == "symlink":
+        stage.symlink_to(outside, target_is_directory=True)
+        error = "must not follow symlinks"
+    else:
+        saved["provenance_binding"]["stage"] = "../unrelated"
+        _write(project.root / "project.json", saved)
+        error = "Invalid provenance staging identity"
+    with pytest.raises(ValueError, match=error):
+        project.bind_provenance(evidence, report)
+    assert (outside / "keep").read_text() == "keep me"
+
+
+def test_required_provenance_blocks_gap_before_binder_starts(project, tmp_path, monkeypatch):
+    manifest = _read(project.root / "project.json")
+    manifest["provenance_required"] = True
+    _write(project.root / "project.json", manifest)
+    with pytest.raises(ValueError, match="requires provenance binding"):
+        sft.SFTTrainer.from_project(project.root)
+    repair = sft.SFTTrainer.from_project(project.root, allow_pending_provenance=True)
+    monkeypatch.setattr(repair, "_child", lambda *a, **kw: pytest.fail("Must not launch a child"))
+    with pytest.raises(ValueError, match="requires provenance binding"):
+        repair.train(compare=False)
+    evidence, report = _evidence(tmp_path)
+    repair.bind_provenance(evidence, report)
+    assert sft.SFTTrainer.from_project(project.root)._manifest()["provenance_required"] is True
+
+
+def test_prepare_publishes_required_provenance_in_initial_manifest(project, tmp_path, monkeypatch):
+    data_module = _module("sft_data")
+
+    def prepare_data(source, model, output, **kwargs):
+        sft.shutil.copytree(project.root / "data", output)
+        report = {
+            "source": str(source),
+            "source_files_sha256": {str(source): "fixture"},
+            "preview": [],
+            "counts": {"train": 1, "valid": 1, "test": 1},
+            "seq_length": 5,
+            "max_length": 6,
+        }
+        _write(output / "dataset.json", report)
+        (output / "provenance.jsonl").write_text(
+            json.dumps({"origin": str(source), "source_file": str(source)}) + "\n"
+        )
+        return report
+
+    monkeypatch.setattr(data_module, "prepare_sft_data", prepare_data)
+    fresh = sft.SFTTrainer(
+        model=project.model,
+        args=sft.SFTConfig(output_dir=str(tmp_path / "required-project"), chunk_size=8192),
+        train_dataset=project.root / "data/train.jsonl",
+        progress=lambda _: None,
+    )
+    manifest = fresh.prepare(provenance_required=True)
+    assert manifest["provenance_required"] is True
+    assert _read(fresh.root / "project.json")["provenance_required"] is True
+    assert manifest["config"]["chunk_size"] == 8192
+    assert "provenance_binding" not in manifest
+    with pytest.raises(ValueError, match="requires provenance binding"):
+        sft.SFTTrainer.from_project(fresh.root)
+
+
+def test_resource_profile_is_explicit_and_all_limits_reach_children(tmp_path):
+    low = sft.SFTConfig(output_dir=str(tmp_path / "low"))
+    assert (low.memory_gib, low.decoded_cache_mib, low.packed_cache_mib) == (16, 0, 128)
+    high = sft.SFTConfig(output_dir=str(tmp_path / "high"), profile="development")
+    assert (high.memory_gib, high.reserve_gib) == (80, 32)
+    assert (high.packed_cache_mib, high.decoded_cache_mib, high.allocator_cache_mib) == (
+        8192,
+        0,
+        256,
+    )
+    trainer = sft.SFTTrainer(model="unused", args=high)
+    flags = trainer._resources()
+    for key in sft.RESOURCE_FIELDS:
+        assert _arg(flags, "--" + key.replace("_", "-")) == getattr(high, key)
+
+
+def test_resource_only_resume_preserves_math_contract_and_records_attempt(project, monkeypatch):
+    first = _checkpoint(project, 7)
+    original_contract = _read(first / "trainer_state.json")["contract"]
+    trainer = sft.SFTTrainer.from_project(
+        project.root, max_steps=8, resources={"profile": "development", "decoded_cache_mib": 16384}
+    )
+    assert trainer.args.memory_gib == 80
+    assert trainer.args.decoded_cache_mib == 16384
+
+    def child(command, *, label, directory):
+        assert _arg(command, "--memory-gib") == 80
+        assert _arg(command, "--decoded-cache-mib") == 16384
+        recorded = _read(Path(directory) / "resources.json")
+        assert recorded["profile"] == "development"
+        if label == "training":
+            target = Path(_arg(command, "--output"))
+            _checkpoint(trainer, 8, path=target / "step-000008")
+            _write(target / "training.json", {"status": "completed", "completed_step": 8})
+
+    monkeypatch.setattr(trainer, "_child", child)
+    trainer.train(resume_from_checkpoint=True, compare=False)
+    saved = sft.SFTTrainer.from_project(project.root)
+    assert saved.args.memory_gib == 80
+    assert saved.args.decoded_cache_mib == 16384
+    assert _read(saved._recover()[1] / "trainer_state.json")["contract"] == original_contract
+    with pytest.raises(ValueError, match="Only resource"):
+        sft.SFTTrainer.from_project(project.root, resources={"learning_rate": 1e-3})
+
+
+def test_cli_development_profile_allows_explicit_cache_override(tmp_path):
+    parser = cli.build_parser()
+    args = parser.parse_args(
+        [
+            "finetune",
+            "--model",
+            "M",
+            "--data",
+            "D",
+            "--output",
+            str(tmp_path),
+            "--profile",
+            "development",
+            "--decoded-cache-mib",
+            "1024",
+        ]
+    )
+    trainer = cli.start_trainer(args, parser)
+    assert trainer.args.memory_gib == 80
+    assert trainer.args.decoded_cache_mib == 1024
+
+    config = tmp_path / "low-config.json"
+    _write(config, dataclasses.asdict(sft.SFTConfig(output_dir=str(tmp_path / "new-project"))))
+    args = parser.parse_args(
+        [
+            "finetune",
+            "--model",
+            "M",
+            "--data",
+            "D",
+            "--config",
+            str(config),
+            "--profile",
+            "development",
+            "--decoded-cache-mib",
+            "1024",
+        ]
+    )
+    trainer = cli.start_trainer(args, parser)
+    assert trainer.args.memory_gib == 80
+    assert trainer.args.packed_cache_mib == 8192
+    assert trainer.args.decoded_cache_mib == 1024
+
+
+@pytest.mark.parametrize("chunk", [0, 127, 129, 32769, True, 512.0, float("nan")])
+def test_invalid_project_chunk_size_is_rejected(tmp_path, chunk):
+    with pytest.raises(ValueError, match="chunk_size"):
+        sft.SFTConfig(output_dir=str(tmp_path), chunk_size=chunk)
+
+
+def test_chunk_choice_is_independent_of_resource_profile_and_cli_explicit(tmp_path):
+    for profile in ("low-memory", "development"):
+        assert sft.SFTConfig(output_dir=str(tmp_path), profile=profile).chunk_size == 512
+    parser = cli.build_parser()
+    args = parser.parse_args(
+        [
+            "finetune",
+            "--model",
+            "M",
+            "--data",
+            "D",
+            "--output",
+            str(tmp_path),
+            "--profile",
+            "development",
+            "--chunk-size",
+            "8192",
+        ]
+    )
+    assert cli.start_trainer(args, parser).args.chunk_size == 8192
+    with pytest.raises(SystemExit):
+        parser.parse_args(["resume", str(tmp_path), "--steps", "2", "--chunk-size", "8192"])
+
+
+def test_saved_chunk_reaches_all_children_and_cannot_change_on_resume(
+    project, preview, monkeypatch, tmp_path
+):
+    project.args.chunk_size = 8192
+    project.args.max_steps = 1
+    manifest = _read(project.root / "project.json")
+    manifest["config"] = dataclasses.asdict(project.args)
+    _write(project.root / "project.json", manifest)
+    seen = set()
+
+    def child(command, *, label, directory):
+        seen.add(command[0])
+        assert _arg(command, "--chunk-size") == 8192
+        if command[0] == "train":
+            output = Path(_arg(command, "--output"))
+            _checkpoint(project, 1, path=output / "step-000001")
+            _write(output / "training.json", {"status": "completed", "completed_step": 1})
+        elif command[0] == "evaluate":
+            _write(
+                Path(_arg(command, "--report")),
+                {"loss": 1.0, "examples": 1, "supervised_tokens": 2},
+            )
+        elif command[0] == "generate":
+            _write(Path(_arg(command, "--report")), _generation_result())
+
+    monkeypatch.setattr(project, "_child", child)
+    project.train(compare=False)
+    project.verify_training_fit()
+    project.evaluate()
+    project.generate("Q")
+    assert seen == {"doctor", "train", "evaluate", "generate"}
+    assert project._checkpoints()[0][2]["contract"]["chunk_size"] == 8192
+    exported = Path(project.save_model(tmp_path / "chunk-export"))
+    assert _read(exported / "bundle.json")["engine_settings"]["chunk_size"] == 8192
+    with pytest.raises(ValueError, match="Only resource"):
+        sft.SFTTrainer.from_project(project.root, resources={"chunk_size": 512})
+    project.args.chunk_size = 512
+    with pytest.raises(ValueError, match="Project settings changed"):
+        project.train(resume_from_checkpoint=True, compare=False)
+    with pytest.raises(ValueError, match="Checkpoint does not belong"):
+        project._checkpoints()

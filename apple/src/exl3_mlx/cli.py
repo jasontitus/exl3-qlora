@@ -90,6 +90,10 @@ def train_smoke(base, *, steps=60, output=None, seed=8):
 
 
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "ktune":
+        from .ktune_cli import main as ktune_main
+
+        return ktune_main(sys.argv[2:])
     from .sft_cli import COMMANDS
     from .sft_cli import main as sft_main
 
@@ -106,6 +110,9 @@ def main():
     sub = p.add_subparsers(dest="command", required=True)
     for name in sorted(COMMANDS):
         sub.add_parser(name, help="Guided SFT workflow (COMMAND --help)", add_help=False)
+    sub.add_parser(
+        "ktune", help="Optimization archive import, training and evidence audit", add_help=False
+    )
     inspect = sub.add_parser("inspect", help="Read local checkpoint headers; does not load a model")
     inspect.add_argument("path")
     check = sub.add_parser(

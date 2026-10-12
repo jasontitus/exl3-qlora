@@ -48,7 +48,7 @@ class ProbeTests(unittest.TestCase):
         for changed in (
             {"max_new_tokens": True},
             {"max_new_tokens": 0},
-            {"max_new_tokens": 513},
+            {"max_new_tokens": 32769},
             {"prompt": " "},
             {"expected": []},
             {"case_id": " case1"},
@@ -80,8 +80,8 @@ class ProbeTests(unittest.TestCase):
     def test_reject_context_overflow(self):
         with self.assertRaisesRegex(ValueError, "context"):
             self.tokenized(
-                prompt_ids=[4] * 511,
-                example={"input_ids": [4] * 511 + [5, 1], "loss_start": 511},
+                prompt_ids=[4] * 32767,
+                example={"input_ids": [4] * 32767 + [5, 1], "loss_start": 32767},
             )
 
     def test_reject_expectation_larger_than_generation_cap(self):

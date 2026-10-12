@@ -12,6 +12,7 @@ import importlib.metadata
 import json
 import math
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -20,6 +21,9 @@ import time
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
+
+from .context import ENGINE_SEMANTICS, MAX_CONTEXT_TOKENS
+from .resources import RESOURCE_FIELDS, resolve_resources
 
 
 @dataclass
@@ -37,8 +41,13 @@ class SFTConfig:
     eval_steps: int = 5
     save_total_limit: int = 2
     seed: int = 8
-    memory_gib: float = 16.0
-    reserve_gib: float = 32.0
+    chunk_size: int = 512  # EXL3 column chunk; changes floating-point reduction order.
+    profile: str = "low-memory"
+    memory_gib: float | None = None
+    reserve_gib: float | None = None
+    packed_cache_mib: int | None = None
+    decoded_cache_mib: int | None = None
+    allocator_cache_mib: int | None = None
     demo: bool = False
     prompt_column: str | None = None
     response_column: str | None = None
@@ -49,6 +58,16 @@ class SFTConfig:
     packing: bool = False
 
     def __post_init__(self):
+        if (
+            type(self.chunk_size) is not int
+            or not 128 <= self.chunk_size <= 32768
+            or self.chunk_size % 128
+        ):
+            raise ValueError("chunk_size must be a multiple of 128 in 128..32768")
+        for key, value in resolve_resources(
+            **{k: getattr(self, k) for k in RESOURCE_FIELDS}
+        ).items():
+            setattr(self, key, value)
         for key in (
             "max_steps",
             "gradient_accumulation_steps",
@@ -67,9 +86,9 @@ class SFTConfig:
             if type(value) not in (int, float) or not math.isfinite(value) or value <= 0:
                 raise ValueError(f"{key} must be finite and positive")
         if self.max_length is not None and (
-            type(self.max_length) is not int or not 3 <= self.max_length <= 512
+            type(self.max_length) is not int or not 3 <= self.max_length <= MAX_CONTEXT_TOKENS
         ):
-            raise ValueError("max_length is total serialized tokens and must be in 3..512")
+            raise ValueError("max_length is total serialized tokens and must be in 3..32768")
         if (
             self.per_device_train_batch_size != 1
             or type(self.per_device_train_batch_size) is not int
@@ -79,10 +98,8 @@ class SFTConfig:
             )
         if self.packing is not False or self.loss_scope != "last_assistant":
             raise ValueError("Only unpacked last_assistant chat supervision is supported")
-        if self.max_new_tokens > 512:
-            raise ValueError("max_new_tokens must be <=512")
-        if not 1 <= self.memory_gib <= 64:
-            raise ValueError("memory_gib must be in 1..64")
+        if self.max_new_tokens > MAX_CONTEXT_TOKENS:
+            raise ValueError("max_new_tokens must be <=32768")
         if type(self.seed) is not int or type(self.demo) is not bool:
             raise ValueError("seed must be an integer and demo a boolean")
         if bool(self.prompt_column) != bool(self.response_column):
@@ -107,6 +124,20 @@ def digest(path):
         for data in iter(lambda: stream.read(1 << 20), b""):
             h.update(data)
     return h.hexdigest()
+
+
+def _sync_provenance(path):
+    """Persist a provenance publication before advancing its durable state."""
+    path = Path(path)
+    if path.is_file():
+        with path.open("rb") as stream:
+            os.fsync(stream.fileno())
+        path = path.parent
+    fd = os.open(path, os.O_RDONLY)
+    try:
+        os.fsync(fd)
+    finally:
+        os.close(fd)
 
 
 def implementation_identity():
@@ -163,7 +194,7 @@ def capabilities(model):
     return {
         "model": str(root),
         "backend": "streamed-exl3",
-        "max_length": 512,
+        "max_length": MAX_CONTEXT_TOKENS,
         "loss_scope": "last assistant answer including EOS; prior turns are context",
         "adapter_format": "exl3-mlx-deepseek-short-text-v1",
         "external_adapter_compatibility": False,
@@ -235,18 +266,34 @@ class SFTTrainer:
         self.progress = progress or (lambda message: print(message, flush=True))
 
     @classmethod
-    def from_project(cls, project, *, max_steps=None, progress=None):
+    def from_project(
+        cls,
+        project,
+        *,
+        max_steps=None,
+        progress=None,
+        allow_pending_provenance=False,
+        resources=None,
+    ):
+        """Open a project; the pending option permits evidence repair, never training."""
         root = Path(project).expanduser().resolve()
         manifest = json.loads((root / "project.json").read_text())
         config = dict(manifest["config"])
         config["output_dir"] = str(root)
+        if resources:
+            if set(resources) - set(RESOURCE_FIELDS):
+                raise ValueError("Only resource settings can be overridden during resume")
+            if "profile" in resources:
+                for key in RESOURCE_FIELDS:
+                    config.pop(key, None)
+            config.update(resources)
         if max_steps is not None:
             config["max_steps"] = max_steps
         trainer = cls(model=manifest["model"], args=SFTConfig(**config), progress=progress)
-        trainer._manifest()
+        trainer._manifest(allow_pending_provenance=allow_pending_provenance)
         return trainer
 
-    def _manifest(self):
+    def _manifest(self, *, allow_pending_provenance=False):
         path = self.root / "project.json"
         manifest = json.loads(path.read_text())
         if manifest.get("format") != "exl3-sft-project-v1":
@@ -256,6 +303,8 @@ class SFTTrainer:
         for config in (immutable, saved):
             config.pop("max_steps", None)
             config.pop("output_dir", None)
+            for key in RESOURCE_FIELDS:
+                config.pop(key, None)
         if immutable != saved or self.model != manifest["model"]:
             raise ValueError(
                 "Project settings changed; create a new project for a different experiment"
@@ -269,9 +318,132 @@ class SFTTrainer:
         for name, expected in manifest["data_files"].items():
             if digest(self.root / "data" / name) != expected:
                 raise ValueError(f"Project dataset changed: {name}")
+        binding = manifest.get("provenance_binding")
+        if type(manifest.get("provenance_required", False)) is not bool:
+            raise ValueError("Invalid provenance requirement")
+        if manifest.get("provenance_required") and not binding and not allow_pending_provenance:
+            raise ValueError(
+                "Project requires provenance binding before training; reopen with "
+                "allow_pending_provenance=True and call bind_provenance with the import report"
+            )
+        if binding is not None:
+            if not isinstance(binding, dict) or binding.get("state") not in {"pending", "complete"}:
+                raise ValueError("Invalid project provenance binding state")
+            if binding["state"] == "pending" and not allow_pending_provenance:
+                raise ValueError(
+                    "Project provenance binding is pending; reopen with "
+                    "allow_pending_provenance=True and retry bind_provenance with the same "
+                    "import report before training"
+                )
+            if binding["state"] == "complete" and not manifest.get("provenance_files"):
+                raise ValueError("Completed provenance binding has no file manifest")
+        for name, expected in manifest.get("provenance_files", {}).items():
+            path = (self.root / name).resolve()
+            if not path.is_relative_to(self.root) or digest(path) != expected:
+                raise ValueError(f"Project provenance changed: {name}")
         return manifest
 
+    def bind_provenance(self, source, report):
+        """Bind or resume a pinned evidence publication before any optimizer update.
+
+        A durable pending marker blocks all training until the exact same report
+        and file hashes have been published. A retry recreates only its recorded
+        private stage, or verifies an already published directory after a crash.
+        """
+        with project_lock(self.root):
+            manifest = self._manifest(allow_pending_provenance=True)
+            if manifest.get("provenance_files") or self._checkpoints():
+                raise ValueError("Provenance can only be bound once, before training")
+            source = Path(source).resolve()
+            directory = self.root / "ktune-evidence"
+            expected = {
+                **report["artifacts_sha256"],
+                "ktune-import.json": report["manifest_sha256"],
+            }
+            if not expected or any(
+                not isinstance(name, str)
+                or Path(name).name != name
+                or name in {".", ".."}
+                or not isinstance(checksum, str)
+                or re.fullmatch(r"[0-9a-f]{64}", checksum) is None
+                for name, checksum in expected.items()
+            ):
+                raise ValueError("Invalid evidence filenames or checksums")
+            report_hash = hashlib.sha256(
+                json.dumps(report, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
+            ).hexdigest()
+            binding = manifest.get("provenance_binding")
+            if binding:
+                if (
+                    binding.get("state") != "pending"
+                    or binding.get("files") != expected
+                    or binding.get("report_sha256") != report_hash
+                ):
+                    raise ValueError("Pending provenance must resume with the same import report")
+            else:
+                if directory.exists() or directory.is_symlink():
+                    raise ValueError("Unbound evidence directory already exists; use a new project")
+                binding = {
+                    "state": "pending",
+                    "files": expected,
+                    "report_sha256": report_hash,
+                    "stage": ".ktune-evidence-" + uuid.uuid4().hex,
+                    "previous_status": manifest.get("status", "prepared"),
+                }
+                manifest.update(provenance_binding=binding, status="provenance_pending")
+                write_json(self.root / "project.json", manifest)
+                _sync_provenance(self.root / "project.json")
+            if (
+                not isinstance(binding.get("stage"), str)
+                or re.fullmatch(r"\.ktune-evidence-[0-9a-f]{32}", binding["stage"]) is None
+            ):
+                raise ValueError("Invalid provenance staging identity")
+            stage = self.root / binding["stage"]
+            if directory.is_symlink() or stage.is_symlink():
+                raise ValueError("Provenance publication must not follow symlinks")
+            if not directory.exists():
+                if stage.exists():
+                    if not stage.is_dir():
+                        raise ValueError("Provenance staging path is not a directory")
+                    shutil.rmtree(stage)
+                stage.mkdir()
+                for name, checksum in expected.items():
+                    path = (source / name).resolve()
+                    if not path.is_relative_to(source) or digest(path) != checksum:
+                        raise ValueError(f"Import changed before project binding: {name}")
+                    target = stage / name
+                    shutil.copyfile(path, target)
+                    if digest(target) != checksum:
+                        raise ValueError(f"Import changed during copy: {name}")
+                    _sync_provenance(target)
+                stage.rename(directory)
+                _sync_provenance(self.root)
+            if not directory.is_dir() or {p.name for p in directory.iterdir()} != set(expected):
+                raise ValueError(
+                    "Published provenance directory does not match its pending manifest"
+                )
+            hashes = {}
+            for name, checksum in expected.items():
+                target = directory / name
+                if target.is_symlink() or not target.is_file() or digest(target) != checksum:
+                    raise ValueError(f"Published provenance changed: {name}")
+                hashes[str(target.relative_to(self.root))] = checksum
+            write_json(self.root / "ktune-source.json", report)
+            _sync_provenance(self.root / "ktune-source.json")
+            hashes["ktune-source.json"] = digest(self.root / "ktune-source.json")
+            manifest["provenance_files"] = hashes
+            manifest["provenance_binding"] = {
+                "state": "complete",
+                "report_sha256": report_hash,
+            }
+            manifest["status"] = binding["previous_status"]
+            write_json(self.root / "project.json", manifest)
+            _sync_provenance(self.root / "project.json")
+
     def _child(self, command, *, label, directory):
+        command = list(command)
+        if command and command[0] in {"train", "evaluate"} and "--verbose" not in command:
+            command.append("--verbose")
         directory = Path(directory)
         directory.mkdir(parents=True, exist_ok=True)
         log_path = directory / f"{label}.log"
@@ -334,7 +506,14 @@ class SFTTrainer:
         self.progress(f"{label}: completed in {time.monotonic() - started:.1f}s")
 
     def _resources(self):
-        return ["--memory-gib", self.args.memory_gib, "--reserve-gib", self.args.reserve_gib]
+        return [
+            value
+            for key in RESOURCE_FIELDS
+            for value in ("--" + key.replace("_", "-"), getattr(self.args, key))
+        ]
+
+    def _engine_options(self):
+        return [*self._resources(), "--chunk-size", self.args.chunk_size]
 
     @staticmethod
     def _write_rows(dataset, target):
@@ -354,13 +533,18 @@ class SFTTrainer:
                 if count > 100000:
                     raise ValueError("Import supports at most 100,000 rows per split")
 
-    def prepare(self):
+    def prepare(self, *, provenance_required=False):
+        if type(provenance_required) is not bool:
+            raise ValueError("provenance_required must be a boolean")
         if (self.root / "project.json").exists():
             if any(d is not None for d in self.datasets) and not self._bound:
                 raise ValueError(
                     "Project already contains an immutable dataset; use from_project/resume, or choose a new output directory"
                 )
-            return self._manifest()
+            manifest = self._manifest()
+            if provenance_required and not manifest.get("provenance_required"):
+                raise ValueError("Existing project was not prepared with required provenance")
+            return manifest
         if self.root.exists():
             raise FileExistsError(f"Choose a new project directory: {self.root}")
         if self.datasets[0] is None:
@@ -452,9 +636,14 @@ class SFTTrainer:
                 },
                 "created": time.time(),
                 "status": "prepared",
+                "provenance_required": provenance_required,
             }
             write_json(stage / "project.json", manifest)
+            if provenance_required:
+                _sync_provenance(stage / "project.json")
             stage.rename(self.root)
+            if provenance_required:
+                _sync_provenance(self.root.parent)
         finally:
             if stage.exists():
                 shutil.rmtree(stage)
@@ -473,6 +662,8 @@ class SFTTrainer:
         with project_lock(self.root) as lock_fd:
             self._lock_fd = lock_fd
             manifest = self._manifest()
+            resources = {key: getattr(self.args, key) for key in RESOURCE_FIELDS}
+            manifest.setdefault("config", {}).update(resources)
             latest = self._recover()
             if resume_from_checkpoint not in (None, True):
                 requested = Path(resume_from_checkpoint).expanduser().resolve()
@@ -499,8 +690,10 @@ class SFTTrainer:
                     stop.unlink()
                 attempt = self.root / "attempts" / f"attempt-{time.time_ns()}"
                 attempt.mkdir(parents=True)
+                write_json(attempt / "resources.json", resources)
+                write_json(self.root / "project.json", manifest)
                 self._child(
-                    ["doctor", "--model", self.model, *self._resources()],
+                    ["doctor", "--model", self.model, *self._engine_options()],
                     label="preflight",
                     directory=attempt,
                 )
@@ -539,7 +732,7 @@ class SFTTrainer:
                     self.args.seed,
                     "--stop-file",
                     self.root / "stop.request",
-                    *self._resources(),
+                    *self._engine_options(),
                 ]
                 if latest:
                     command += ["--resume", latest[1]]
@@ -572,11 +765,12 @@ class SFTTrainer:
             "seed": self.args.seed,
             "seq_length": manifest["data"]["seq_length"],
             "truncate": False,
-            "chunk_size": 512,
+            "chunk_size": self.args.chunk_size,
             "no_checkpoint": False,
             "data_sha256": manifest["data_files"]["train.jsonl"],
             "mlx": runtime["mlx"],
             "mlx_lm": runtime["mlx-lm"],
+            "engine_semantics": ENGINE_SEMANTICS,
         }
         validation = None
         if manifest["data"]["counts"]["valid"]:
@@ -654,6 +848,73 @@ class SFTTrainer:
             else max(candidates, key=lambda item: (item[0], str(item[1])))[1]
         )
 
+    def verify_training_fit(self):
+        """Operational fit check on training rows, explicitly never held-out quality."""
+        with project_lock(self.root) as lock_fd:
+            self._lock_fd = lock_fd
+            manifest = self._manifest()
+            adapter = self.selected_checkpoint()
+            directory = self.root / "fit-checks" / str(time.time_ns())
+            directory.mkdir(parents=True)
+            results = {}
+            for condition in ("base", "adapter"):
+                path = directory / f"{condition}.json"
+                command = [
+                    "evaluate",
+                    "--model",
+                    self.model,
+                    "--data",
+                    self.root / "data/train.jsonl",
+                    "--seq-length",
+                    manifest["data"]["seq_length"],
+                    "--max-examples",
+                    self.args.comparison_examples,
+                    "--report",
+                    path,
+                    *self._engine_options(),
+                ]
+                if condition == "adapter":
+                    command += ["--adapter", adapter]
+                self._child(command, label=f"fit-{condition}", directory=directory)
+                results[condition] = json.loads(path.read_text())
+            rows = [
+                json.loads(line)
+                for line in (self.root / "data/train.jsonl").read_text().splitlines()
+                if line.strip()
+            ]
+            selected_rows = rows[: self.args.comparison_examples]
+            token_count = sum(len(row["input_ids"]) - row["loss_start"] for row in selected_rows)
+            for condition, receipt in results.items():
+                if (
+                    receipt.get("examples") != len(selected_rows)
+                    or receipt.get("supervised_tokens") != token_count
+                    or type(receipt.get("loss")) not in (int, float)
+                    or not math.isfinite(receipt["loss"])
+                ):
+                    raise ValueError(
+                        f"{condition} fit receipt does not match selected training rows"
+                    )
+            result = {
+                "available_examples": len(rows),
+                "evaluated_examples": len(selected_rows),
+                "supervised_tokens": token_count,
+                "selection": "first immutable training rows; no held-out interpretation",
+                "selected_examples_sha256": hashlib.sha256(
+                    json.dumps(selected_rows, sort_keys=True, separators=(",", ":")).encode()
+                ).hexdigest(),
+                "format": "exl3-sft-training-fit-v1",
+                "evaluation_scope": "training_only",
+                "quality_certified": False,
+                "note": "Training likelihood is a wiring/fit check, not generalization or kernel speedup.",
+                "selected_checkpoint": str(adapter),
+                "training_data_sha256": manifest["data_files"]["train.jsonl"],
+                "loss_delta": results["adapter"]["loss"] - results["base"]["loss"],
+                **results,
+            }
+            write_json(directory / "fit.json", result)
+            write_json(self.root / "fit.json", result)
+            return result
+
     def evaluate(self):
         with project_lock(self.root) as lock_fd:
             self._lock_fd = lock_fd
@@ -693,7 +954,7 @@ class SFTTrainer:
                     self.args.comparison_examples,
                     "--report",
                     path,
-                    *self._resources(),
+                    *self._engine_options(),
                 ]
                 if condition == "adapter":
                     command += ["--adapter", adapter]
@@ -749,10 +1010,10 @@ class SFTTrainer:
         history_file = directory / "messages.json"
         write_json(history_file, history)
         ids = tokenizer.apply_chat_template(history, add_generation_prompt=True, return_dict=False)
-        if len(ids) + self.args.max_new_tokens > 512:
+        if len(ids) + self.args.max_new_tokens > MAX_CONTEXT_TOKENS:
             return {
                 "status": "skipped",
-                "reason": "Prompt plus requested generation exceeds 512; data was not truncated",
+                "reason": "Prompt plus requested generation exceeds 32768; data was not truncated",
             }
         values = {}
         for condition in ("base", "adapter"):
@@ -767,7 +1028,7 @@ class SFTTrainer:
                 self.args.max_new_tokens,
                 "--report",
                 path,
-                *self._resources(),
+                *self._engine_options(),
             ]
             if condition == "adapter":
                 command += ["--adapter", adapter]
@@ -818,8 +1079,8 @@ class SFTTrainer:
 
     def generate(self, prompt, *, max_new_tokens=None, base=False):
         tokens = self.args.max_new_tokens if max_new_tokens is None else max_new_tokens
-        if type(tokens) is not int or not 1 <= tokens <= 512:
-            raise ValueError("max_new_tokens must be in 1..512")
+        if type(tokens) is not int or not 1 <= tokens <= MAX_CONTEXT_TOKENS:
+            raise ValueError("max_new_tokens must be in 1..32768")
         if not isinstance(prompt, str) or not prompt.strip():
             raise ValueError("Provide a nonempty text prompt")
         with project_lock(self.root) as lock_fd:
@@ -838,7 +1099,7 @@ class SFTTrainer:
                 tokens,
                 "--report",
                 path,
-                *self._resources(),
+                *self._engine_options(),
             ]
             if not base:
                 command += ["--adapter", self.selected_checkpoint()]
@@ -868,6 +1129,7 @@ class SFTTrainer:
                         "format": "exl3-mlx-adapter-bundle-v1",
                         "model": self.model,
                         "source_checkpoint": str(source),
+                        "engine_settings": {"chunk_size": self.args.chunk_size},
                         "external_compatibility": False,
                     },
                 )

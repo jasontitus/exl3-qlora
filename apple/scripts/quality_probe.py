@@ -13,6 +13,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from types import SimpleNamespace
 
+from exl3_mlx.context import MAX_CONTEXT_TOKENS
+
 SCOPE = "small regression probe, not quality certification"
 FIELDS = {
     "case_id",
@@ -57,8 +59,8 @@ def read_cases(path):
             if row["case_id"] != row["case_id"].strip() or row["case_id"] in seen:
                 raise ValueError(f"Line {number}: duplicate or whitespace-padded case_id")
             cap = row["max_new_tokens"]
-            if type(cap) is not int or not 1 <= cap <= 512:
-                raise ValueError(f"Line {number}: max_new_tokens must be an integer in 1..512")
+            if type(cap) is not int or not 1 <= cap <= MAX_CONTEXT_TOKENS:
+                raise ValueError(f"Line {number}: max_new_tokens must be an integer in 1..32768")
             seen.add(row["case_id"])
             cases.append(row)
     if not cases:
@@ -81,8 +83,11 @@ def validate_tokenized_case(case, example, prompt_ids, eos_token_id, vocab_size)
         raise ValueError(f"{case['case_id']}: invalid or unsupported text token IDs")
     if not 1 <= start < len(ids) or ids[:start] != prompt_ids:
         raise ValueError(f"{case['case_id']}: target template differs from generation prefix")
-    if len(ids) - 1 > 512 or len(prompt_ids) + case["max_new_tokens"] > 512:
-        raise ValueError(f"{case['case_id']}: context exceeds 512; shortening must be explicit")
+    if (
+        len(ids) - 1 > MAX_CONTEXT_TOKENS
+        or len(prompt_ids) + case["max_new_tokens"] > MAX_CONTEXT_TOKENS
+    ):
+        raise ValueError(f"{case['case_id']}: context exceeds 32768; shortening must be explicit")
     if ids[-1] != eos_token_id:
         raise ValueError(f"{case['case_id']}: expected answer must end with tokenizer EOS")
     if len(ids) - start > case["max_new_tokens"]:
@@ -344,7 +349,7 @@ def run(args):
     for case in cases:
         example = validate_example(
             tokenize_row({"prompt": case["prompt"], "completion": case["expected"]}, tokenizer),
-            seq_length=512,
+            seq_length=MAX_CONTEXT_TOKENS,
             vocab_size=vocab_size,
             truncate=False,
         )

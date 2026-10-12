@@ -1,0 +1,2078 @@
+{
+  "format": "exl3-ktune-receipt-audits-v1",
+  "input_sha256": "e77ed5504276c602a0ba462abd75af775b1162ae21eda51e480e4fb9ea674b96",
+  "kind": "official",
+  "receipts": 3030,
+  "valid": 53,
+  "quality_certified": false,
+  "error_counts": {
+    "candidate and baseline golden identities differ": 69,
+    "status must be 'accepted'": 2964,
+    "promotionStatus must be 'promoted'": 2965,
+    "improved must be True": 2964,
+    "officialScore must be finite and positive": 717,
+    "missing officialMetrics": 717,
+    "missing/invalid submission, measured or promoted commit identity": 2248,
+    "measured/promoted commit mismatch: source equivalence must be proved": 6
+  },
+  "validity_definition": "strict historical-promotion receipt eligibility; nonpromotions fail by design",
+  "reported_accepted": 66,
+  "accepted_eligible": 53,
+  "accepted_error_counts": {
+    "candidate and baseline golden identities differ": 7,
+    "measured/promoted commit mismatch: source equivalence must be proved": 6,
+    "promotionStatus must be 'promoted'": 1,
+    "missing/invalid submission, measured or promoted commit identity": 1
+  },
+  "accepted_receipt_audits": [
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "candidate and baseline golden identities differ"
+      ],
+      "receipt_sha256": "62c30a9856b91811f0f49f333d35666d1f2bcbc806374cd702e9d010e9cd49f9",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "0ac16f64-92e4-4f4b-8d03-917f89b0e46c",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.2091468257723965,
+          "prefill": 0.9994427577966863
+        },
+        "measured_commit": "e2366fb09fd55e0df41f72b777eeb7799e2f1619",
+        "promoted_commit": "e2366fb09fd55e0df41f72b777eeb7799e2f1619"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "candidate and baseline golden identities differ"
+      ],
+      "receipt_sha256": "b40dd3a01da6683b1c29e83b784a186b69f67db97552a98231c03438391a7802",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "2a2a42e1-9440-4ad5-b557-f9c58745c81e",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.212395215967945,
+          "prefill": 0.9988907929849385
+        },
+        "measured_commit": "2bea34076da7c9727a489e595979377c3edcd477",
+        "promoted_commit": "2bea34076da7c9727a489e595979377c3edcd477"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "candidate and baseline golden identities differ"
+      ],
+      "receipt_sha256": "297e3524e1f42ef1a377101a5bbb1376aaee773e1cb58f8d99c030f890c6cff0",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "42b15d61-0eb1-4ad4-967a-f19085e362ee",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.4252221995244696,
+          "prefill": 1.140681608753904
+        },
+        "measured_commit": "709404cd6f994858b15d3762e6fa87719b3f1553",
+        "promoted_commit": "709404cd6f994858b15d3762e6fa87719b3f1553"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "candidate and baseline golden identities differ"
+      ],
+      "receipt_sha256": "f4a0478d1bca9143700fffbbb689f5770ca98241a6bc3e77bed00807c96aef16",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "01e9b2d0-6cf5-49ed-a88b-118c9041e83d",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.5064955510450804,
+          "prefill": 1.146151890240926
+        },
+        "measured_commit": "f70c17d4731cc7281c252c9d5a73b48d210998ec",
+        "promoted_commit": "f70c17d4731cc7281c252c9d5a73b48d210998ec"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "candidate and baseline golden identities differ"
+      ],
+      "receipt_sha256": "8f4b48cb9c506e21fadbccf3cf60dfaf526ca789d7df823e1dc8c99e85ab2457",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "a3a7fa06-44b2-462b-848e-4631af8b2145",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.5260245480130936,
+          "prefill": 1.1479084249049005
+        },
+        "measured_commit": "7ea2b911f778b3fef3a2d31669fd3dd5a941f1a8",
+        "promoted_commit": "7ea2b911f778b3fef3a2d31669fd3dd5a941f1a8"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "candidate and baseline golden identities differ"
+      ],
+      "receipt_sha256": "8fbff410d886c754c0dc07da274c44393b5d75f55f8d9c6b82139dfd32e447e6",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "0871213d-d819-46dd-8407-6708d2addbca",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.6269590108683867,
+          "prefill": 1.1466184064834035
+        },
+        "measured_commit": "c85b704b4f3868762899a3a53717fe91ab0f0f00",
+        "promoted_commit": "c85b704b4f3868762899a3a53717fe91ab0f0f00"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "candidate and baseline golden identities differ",
+        "measured/promoted commit mismatch: source equivalence must be proved"
+      ],
+      "receipt_sha256": "9e41b517c5169124fc167ac1bcc45524b1fb16f2d9ba765cdb614fc2d62f4d8d",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "0ddcb182-ee15-4c51-9471-2411ace8e87f",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.6489642686239945,
+          "prefill": 1.1473985013017007
+        },
+        "measured_commit": "c4396ac1d78f304775c345d4e147b38f4f18bb2e",
+        "promoted_commit": "608b7d5d3647a0674fdce70bdf97b81a7c9ab769"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "d52a241b517d4c83d589feab3d85534c024e97bc678f7f4e28e0cd5141049b15",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "962f0b04-5614-44ee-a8f2-8af153a149aa",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.717408403729747,
+          "prefill": 1.1495745355505484
+        },
+        "measured_commit": "f8e8ad57f407b34af097b1d960767ca757f5b5d4",
+        "promoted_commit": "f8e8ad57f407b34af097b1d960767ca757f5b5d4"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "promotionStatus must be 'promoted'",
+        "missing/invalid submission, measured or promoted commit identity"
+      ],
+      "receipt_sha256": "41bc8aa2c62b20328e79af13282b45490c8c8008a6a60fd88c47ca3725e38f1c",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "cbb9a4b7-994c-460d-90ac-84e9c2149852",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.75220199153487,
+          "prefill": 1.146957547223882
+        },
+        "measured_commit": "dbedda6f33e062a401bbf6d7b6864d56e191b481",
+        "promoted_commit": null
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "0f40122664733e1069e76673ebfe493ebe2536fd49480b775b5b81f234511288",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "92522645-c028-43e4-8f17-04cc245128da",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.751198771437658,
+          "prefill": 1.1491845835080352
+        },
+        "measured_commit": "ddf36f3dd305042a80789438ad2dc0190541fe5d",
+        "promoted_commit": "ddf36f3dd305042a80789438ad2dc0190541fe5d"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "28bf63d80529d86c8278266f00e7ac76d80c19d976080f8d1f1bf28baa16c440",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "416f9381-f27e-4abb-9fc8-cc692b3a843f",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.7562443945012092,
+          "prefill": 1.147234734116534
+        },
+        "measured_commit": "44d3ba3c332cc4341b1604e3a282f49f95e755db",
+        "promoted_commit": "44d3ba3c332cc4341b1604e3a282f49f95e755db"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "measured/promoted commit mismatch: source equivalence must be proved"
+      ],
+      "receipt_sha256": "534eba3666dbf63d6e72178c1419426ad146bce68d503765a9cc9a6acc2dc224",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "1d1dcb6e-cfb0-46e4-9285-8eec9efe52e9",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.7825479437909202,
+          "prefill": 1.1537077319434739
+        },
+        "measured_commit": "bdd61c39f1327b049b6fba1fdd72c6ff7f399deb",
+        "promoted_commit": "c4f2897563f0cd2bcf28a1e4f71f082f24593c36"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "measured/promoted commit mismatch: source equivalence must be proved"
+      ],
+      "receipt_sha256": "cd9d8b7ccdce81e41c4f1e3fa0614650a22c174f8b56acf32af9cb52a3992272",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "f9765504-75ea-435f-9ed7-47f6bee81c89",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.819652051631356,
+          "prefill": 1.14943550708066
+        },
+        "measured_commit": "544a85cc6db0f462e7e79f38252a801109bd0f0a",
+        "promoted_commit": "750c51e1b9f680de19e22d754649c7dd80752152"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "da22089bf2089491901b25741d8db372a50c85b5ab18f0ecfc6495958ace3921",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "b0416ad1-8806-45cf-864a-1210413bf63a",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.794919496990589,
+          "prefill": 1.155887470100811
+        },
+        "measured_commit": "8aab76e8307e26d35c34a5bc35ea7c7d108de76f",
+        "promoted_commit": "8aab76e8307e26d35c34a5bc35ea7c7d108de76f"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "200c7a79c3da2417ff9a11b146c3b60cc48d6a32c5413b83342b712be1ad951b",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "8a690716-8068-4da8-9532-26047c96aa9c",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.8260629626880835,
+          "prefill": 1.1540504881235865
+        },
+        "measured_commit": "2c8532b038cada71f87e40b38485b7c096ac67d6",
+        "promoted_commit": "2c8532b038cada71f87e40b38485b7c096ac67d6"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "939b0f8d3959204e334ed9799f1669bf1dfd8ecbabf46ca42b7c97cf88c2f3e7",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "c4860fd1-c604-479b-bec2-708a039a7803",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.8356391947346318,
+          "prefill": 1.1528546213380293
+        },
+        "measured_commit": "b22bf811d429f6c49c204011b0154cb15e73ac2d",
+        "promoted_commit": "b22bf811d429f6c49c204011b0154cb15e73ac2d"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "cf77337831136b0ea90f8c7c2907eab6bf65594a5e2dd1fb00699a80692f3aec",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "c00b386b-3917-4d4f-89b4-2530c9870826",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.8355983489915584,
+          "prefill": 1.1534887862820622
+        },
+        "measured_commit": "18e9018f6950132b5fea968f6a329fd31ca34832",
+        "promoted_commit": "18e9018f6950132b5fea968f6a329fd31ca34832"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "ac0d7d45484a162d86e9f4361dcb79814c74f11d315ecf4d0c32bfa6257c0076",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "0db9d767-cdfb-4794-b13a-98a950bd6a73",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.8469487930707849,
+          "prefill": 1.2169850727020446
+        },
+        "measured_commit": "b054c539f5499036cc862071f6c67e00dee9a09e",
+        "promoted_commit": "b054c539f5499036cc862071f6c67e00dee9a09e"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "15c2165a168e9155ae0d02bbd6fb5f7e444bdf4df612063a6a29161ab4bdb5d4",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "f2825ec7-abfc-4e33-9e4e-5547a8a400bf",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.8805364045339392,
+          "prefill": 1.2160514805861973
+        },
+        "measured_commit": "bb1af03312de5f13aa3b84b95996566a6fe8461d",
+        "promoted_commit": "bb1af03312de5f13aa3b84b95996566a6fe8461d"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "7ce0f57f95c2ec5c07ebc8d2c314df0ab7bbcd8f0c80ae316fbf1fc50d016a43",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "26f64829-5015-4ff2-a7d9-b8ce0b33b4a3",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.939576071617125,
+          "prefill": 1.2180848965281317
+        },
+        "measured_commit": "841676635c083c14491f1f1d70a05f8f06199ad3",
+        "promoted_commit": "841676635c083c14491f1f1d70a05f8f06199ad3"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "f7d5a2da8bdda34562d5828fbe766ad5fd470e4d3d7f005b4028537143d209ac",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "473fa1a8-0656-4a38-bd14-72aa0e524869",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.947515510484522,
+          "prefill": 1.2184796235633237
+        },
+        "measured_commit": "25309177c6860e380fc074286d99f025f7feb505",
+        "promoted_commit": "25309177c6860e380fc074286d99f025f7feb505"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "d76af666df093cba2fe0e5e294d3d52ce3ec00a27c24648b6b76d8209fe0b6e3",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "8a61883e-0bf7-47e7-938a-3c4efca561b1",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9570343378362076,
+          "prefill": 1.2182205384674742
+        },
+        "measured_commit": "37b40ba0464f0910403d7a4e8afc4d1686123b7e",
+        "promoted_commit": "37b40ba0464f0910403d7a4e8afc4d1686123b7e"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "b613d1a659386c7f4f2a28fcc2156fc97a400e536544eaa921c63233f03bdec8",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "60475c8e-6ca0-4fe2-8454-9cd2e315ee6f",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9690634278358685,
+          "prefill": 1.217516315454519
+        },
+        "measured_commit": "9e6929d0715e1eb29bcc49633e79f4444dcb7cc8",
+        "promoted_commit": "9e6929d0715e1eb29bcc49633e79f4444dcb7cc8"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "3321f7ed7fb67cc705ff9cee6cd95fcf02395b4b4b669b8724c58d6b7a3a65a0",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "2c2949b0-5708-45e5-aa5e-5fcc7a7dc74d",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9776254599402976,
+          "prefill": 1.2189224258861155
+        },
+        "measured_commit": "c04d355a57929082de9709d4d3ceb04b425cb252",
+        "promoted_commit": "c04d355a57929082de9709d4d3ceb04b425cb252"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "measured/promoted commit mismatch: source equivalence must be proved"
+      ],
+      "receipt_sha256": "779efb3d3350d4d8c62b2994a897d3eca377967266f6197734dab8905368c256",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "aeeb7c09-6263-4a11-9a98-0a9c9ce68e9b",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9846821073607341,
+          "prefill": 1.2218076065128687
+        },
+        "measured_commit": "bb34203b6e911ae9ef3a39d37cedf7304c35f126",
+        "promoted_commit": "042d539c43b09bf78697d889d474d44bc503c216"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "925f7d625a0e31dc4e389867505120ebdd6d0493ad65e67132f6f671d2075774",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "c7352109-b721-4097-8263-0fdafc6485c3",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9829536511547652,
+          "prefill": 1.245880242691125
+        },
+        "measured_commit": "6fe3c14be6a8e432765c4aba2f5174c160828d44",
+        "promoted_commit": "6fe3c14be6a8e432765c4aba2f5174c160828d44"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "e256789e3bf9b4090e362b041b053bc552bcf4ad0a4a3558ac3f633b9ee87204",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "d9c96da2-ef07-4a27-a001-da45df75d92f",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.989017474304986,
+          "prefill": 1.2422683930316478
+        },
+        "measured_commit": "c84d6277bbe7679ab89a03ffb0062a1288a716b1",
+        "promoted_commit": "c84d6277bbe7679ab89a03ffb0062a1288a716b1"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "63e0ec6833fa684dc84fd5235e8f2d07cd900c0a52e6033f4cbc8625a9889a48",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "1682ecfa-e2ed-4e68-a412-6cdd402035cd",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9918013921447562,
+          "prefill": 1.267435605385163
+        },
+        "measured_commit": "3917a2e4fcd7a3497d9390ed71b47253721f416c",
+        "promoted_commit": "3917a2e4fcd7a3497d9390ed71b47253721f416c"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "7d01d5f3337d98430eddc1e0f2488e621d0ce83290be61ac4435636262671c97",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "0cc42eca-1bb3-4699-a677-11d0e166eb85",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9822408644173248,
+          "prefill": 1.3085064420363821
+        },
+        "measured_commit": "9f6a0ac01fc2cce856fbbeaa156b43d8a99ea7b4",
+        "promoted_commit": "9f6a0ac01fc2cce856fbbeaa156b43d8a99ea7b4"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "2cc0f01884a68480f8e7bb7ccf5a26050a0c37bf72dbb9f677a4f923c61082b3",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "6214393e-4439-4f22-bbf0-362cea43c60e",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9996333772063029,
+          "prefill": 1.3180553813613334
+        },
+        "measured_commit": "095403cbf1811203309b8c383e58e1985b6969f2",
+        "promoted_commit": "095403cbf1811203309b8c383e58e1985b6969f2"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "6ffc7b601126f3cf75d3c46265c522f65e7a39c22d3d484d59a551b2ec6d7b35",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "73c1c327-8161-47f7-8318-99bf6420dfbc",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9880954507483601,
+          "prefill": 1.358879694604594
+        },
+        "measured_commit": "c0df4611fb081c9a032beb2c6e503632855773eb",
+        "promoted_commit": "c0df4611fb081c9a032beb2c6e503632855773eb"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "9e2674187467402502a0e4dd47cd5ff02f86ac04e0902c25497c8f2fc4d17bf1",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "1ee8f625-54cc-41c7-9703-323b4e0af020",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.992101567826288,
+          "prefill": 1.3600422684742106
+        },
+        "measured_commit": "49d184e99da865b8cdb60bd01d26ee87171b3997",
+        "promoted_commit": "49d184e99da865b8cdb60bd01d26ee87171b3997"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "ba559adf36fc73751c1b4aa2941b079e20b4610c85a2a573bd21568433d19c0e",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "97010edf-1657-46e4-a171-d54735d21b71",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9962839869587612,
+          "prefill": 1.3615098823140341
+        },
+        "measured_commit": "2707b13ed5f8066084d0a254ecc02f17c26eecf6",
+        "promoted_commit": "2707b13ed5f8066084d0a254ecc02f17c26eecf6"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "dcc85497501f5d5c6c77bcf90745958f12306e41315b5f69782115a1c685a281",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "f05c9d63-e76a-4db9-9d73-361273d0b648",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 1.9961507238233096,
+          "prefill": 1.373131275376382
+        },
+        "measured_commit": "6dc576e29dfa2cdefbd621b79e90282264b006ab",
+        "promoted_commit": "6dc576e29dfa2cdefbd621b79e90282264b006ab"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "7502bb0c04f88616cfa22367448f91603ceb1f9435bee92970ef38ef192b4376",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "4fc8bf1a-965c-4844-b3fa-7223d411bfa9",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0041843670214057,
+          "prefill": 1.3731703001339615
+        },
+        "measured_commit": "f483f1deadc4b8f7b174a7384ea637df1e0f4923",
+        "promoted_commit": "f483f1deadc4b8f7b174a7384ea637df1e0f4923"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "0d17e4c09c10cf13262eaf93e2589e12e96685509aa1011f3474bf2786292b4d",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "4470c626-cc9a-4406-895e-e7f10ce33984",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.016256144663745,
+          "prefill": 1.3671713281729545
+        },
+        "measured_commit": "4dbe99ba968f857981b11bc24dd35c0f82dbc9f1",
+        "promoted_commit": "4dbe99ba968f857981b11bc24dd35c0f82dbc9f1"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "ab97f8ddf171d2101a41384296a6fb3f1289c9381cc2e6425f358bf6945b7131",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "5bd25610-825a-400e-ab34-3ce049fde7ee",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0188588597129824,
+          "prefill": 1.3698254275688675
+        },
+        "measured_commit": "20fa99b901c388f3f08f9a797a37925a9472a183",
+        "promoted_commit": "20fa99b901c388f3f08f9a797a37925a9472a183"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "5de6094f06baf91e451362e31db7049585649faef203301466a1ec0410a6316d",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "1f9397d2-8a88-4719-bca8-5080cc3b7224",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0206153872852557,
+          "prefill": 1.3736250911749728
+        },
+        "measured_commit": "c0ab310820e185ff010ed24cd845142bc7c446ee",
+        "promoted_commit": "c0ab310820e185ff010ed24cd845142bc7c446ee"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "c4ac05bc3798fed41c05574791372a2d9b115c885e9a65416f55ec0ea5fd22f3",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "9dfe6f74-4ddc-4bb7-a9b7-0ce20276be3f",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0243793715462046,
+          "prefill": 1.3741026070062576
+        },
+        "measured_commit": "9a693ddc97eeb4bcc986299ec5a220c6b5647081",
+        "promoted_commit": "9a693ddc97eeb4bcc986299ec5a220c6b5647081"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "measured/promoted commit mismatch: source equivalence must be proved"
+      ],
+      "receipt_sha256": "707eaea8270d1f28c9804cae94c0888d231f2ae2f472bc7799b6db3f9d202f36",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "a67e3730-a951-45f1-ab39-121a5039c7b2",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.030973012074119,
+          "prefill": 1.3685790352504577
+        },
+        "measured_commit": "f60389bf13054015aca64bfb21620eb8f53f1684",
+        "promoted_commit": "42ee17edeb80e0647e85194b2165caebe485b62e"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "00851e86b7a376fc9fc686fcc22cd35ab55f2890f0d8647f71a0404749ec76fa",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "b655ab44-3cd1-4e06-9484-730daf713258",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0494093845940933,
+          "prefill": 1.3743419941841508
+        },
+        "measured_commit": "701ab14d5e82259995bc0c195db644ce9597cae7",
+        "promoted_commit": "701ab14d5e82259995bc0c195db644ce9597cae7"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "6d109b403508abfc514c765accd027503d660573beac2d6429f7dced150f7f92",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "c0e42c7e-268c-454f-a9cb-e705f952b819",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.070596833267543,
+          "prefill": 1.37417087894363
+        },
+        "measured_commit": "5818374a5f5c8b84d3d8fc8a90101be5de89351d",
+        "promoted_commit": "5818374a5f5c8b84d3d8fc8a90101be5de89351d"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "1ddfc443a53fafb6a884dc53ea3fff610bd3797038a009501c56ade9bc2e2c56",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "047262fa-9e19-4f2e-8572-3a2ceb1b80fe",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.067031633259773,
+          "prefill": 1.408970499475749
+        },
+        "measured_commit": "1b0ee62aeeb7bcad1a83d6dc64fbdc8eefa91d94",
+        "promoted_commit": "1b0ee62aeeb7bcad1a83d6dc64fbdc8eefa91d94"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "a03552b42dcfe4f110e850953b7e2dc5ed42cc5ef2d90adf5210982ce1a769a9",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "0daa0399-567e-4a3f-9f03-fc388827d00f",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.070805201575467,
+          "prefill": 1.4105779855950216
+        },
+        "measured_commit": "bff43f75acf917543d260dd83c568d146747c735",
+        "promoted_commit": "bff43f75acf917543d260dd83c568d146747c735"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "10ae609897f757f33846ef31bcc6cba278a304bc784468d10e2fb4340cdcf33f",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "1ccca5c4-12f5-4be1-b1cb-6fd15c6db161",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0827630147244096,
+          "prefill": 1.4025299037296646
+        },
+        "measured_commit": "c16a662f9da116748cd6a713490a46f0de88d2e2",
+        "promoted_commit": "c16a662f9da116748cd6a713490a46f0de88d2e2"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "d30d6b1e4928091661e48fa3de56540deadc27bafd14084a80b040ad898523ab",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "d4b8e765-0a5b-4880-aee8-d19e5f0cbaa6",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0878600697184275,
+          "prefill": 1.4043886694748593
+        },
+        "measured_commit": "6b090617ef108ee6919b9c58a65758c05713e7f8",
+        "promoted_commit": "6b090617ef108ee6919b9c58a65758c05713e7f8"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "42e34820aead00c039adc9bc2148d62a17c567510858affebd27860986716ddc",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "a88cd6e0-cfea-46c9-a411-1bd488018e37",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.035573350727957,
+          "prefill": 1.5267034196932836
+        },
+        "measured_commit": "b37385f8c93ab5f2d787fbf468fd6a347c71cb92",
+        "promoted_commit": "b37385f8c93ab5f2d787fbf468fd6a347c71cb92"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "25a52fb7c48919ecd8a86b84fd3480a48bc3020820a57f6a47c1722b1fd2a438",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "1a621870-4993-4c43-9472-6f7d8f745140",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0409528003886974,
+          "prefill": 1.5297703518767285
+        },
+        "measured_commit": "0850f7ffee84ca61d0fe439782ec59f5e5101d30",
+        "promoted_commit": "0850f7ffee84ca61d0fe439782ec59f5e5101d30"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": false,
+      "errors": [
+        "measured/promoted commit mismatch: source equivalence must be proved"
+      ],
+      "receipt_sha256": "08bb0a37d25ea45fbef7c8901b05f5c2632e60213d8b1157aa13e82bc6a747a0",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "744adde7-2cf3-4400-95b0-184c14884e5c",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0766374789507567,
+          "prefill": 1.529541781835951
+        },
+        "measured_commit": "67cc02aa7c1807ccdfdf84f8435e9f7239b04f7a",
+        "promoted_commit": "b4646c986746770228725782e08c85ed00dafe41"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "not_verified_promotion"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "ede0a8269c6f5953db3359bf827d974eb76eb434dbb48f4175fb0626eee3cd50",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "668fc0a7-149f-4f3b-93ff-f4bf7ae40591",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0574643621134525,
+          "prefill": 1.5915443724694935
+        },
+        "measured_commit": "711083e0c599e6e1b3423c83f8cbc531b5bf7b26",
+        "promoted_commit": "711083e0c599e6e1b3423c83f8cbc531b5bf7b26"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "bc313a548b7aa188a1c4ddd0a5eb80ec973322b7dd1812a82055bfba64401e63",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "d7b32509-c484-4394-8a5c-c02aadeae8d9",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.0678611368426365,
+          "prefill": 1.5938618224776735
+        },
+        "measured_commit": "6fbe0e4340b061a9ab801fc9321710631c642344",
+        "promoted_commit": "6fbe0e4340b061a9ab801fc9321710631c642344"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "719495246ec5cf00f1708dfa6ee2692c297d05ca572421b96eb7f70a34f31cd0",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "1171d352-1015-480e-be0a-4e10783cee55",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.090707595180494,
+          "prefill": 1.5879391550888697
+        },
+        "measured_commit": "c3b2e7657cb60b383248e00c7779264941d894e5",
+        "promoted_commit": "c3b2e7657cb60b383248e00c7779264941d894e5"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "d84f31d1bac4045034c0c49e87d4b1b828324de219d655101d106dd954cedee5",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "c0c3346b-aeef-44ef-aca4-53345d1fe7e7",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.092257373591291,
+          "prefill": 1.5951046638743163
+        },
+        "measured_commit": "8981cef5a0a0c5b327f72cf040aa566fc61ff723",
+        "promoted_commit": "8981cef5a0a0c5b327f72cf040aa566fc61ff723"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "b20a192607f59d8bb27f8a2cbf91845b30cb15ff5afe0f83aa2391d93f9d1f51",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "3749fb33-1856-4145-8bda-020755ef96ae",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.108684726777464,
+          "prefill": 1.5895097362033859
+        },
+        "measured_commit": "cb5b4578ff9fa5c73c1b33613c68326130d38ed6",
+        "promoted_commit": "cb5b4578ff9fa5c73c1b33613c68326130d38ed6"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "cdc6c7c5153b333640257d6d610788746df4c01db808c09c0dcf61e7911a1e37",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "45be4405-3ab5-4692-b2b6-0989a2434dd1",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.1190132115504157,
+          "prefill": 1.593712343664958
+        },
+        "measured_commit": "05944553c77666f74651f5c20d6cb4b8b132b7d9",
+        "promoted_commit": "05944553c77666f74651f5c20d6cb4b8b132b7d9"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "c1a81e58ffd92b53eeee0b75ef82ab3965820e688d9a3e5dd40ce5d13f17c18e",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "dcf0d156-24f3-483f-adb4-649c1dda6528",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.126910870832171,
+          "prefill": 1.5892312699048265
+        },
+        "measured_commit": "002e1a82f9d3c110613954a1b56fdce6abbab81d",
+        "promoted_commit": "002e1a82f9d3c110613954a1b56fdce6abbab81d"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "46d9027d5dd3ea76021d1222f99ee0cef33a230b0501dd1330a79cc90cc10b84",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "4a7a1a2f-f4fd-4126-880e-8e3b4a43e427",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.1305244587563834,
+          "prefill": 1.5878005971749367
+        },
+        "measured_commit": "d51c66240ad4e80ecd2bd11b84d9e5432ec41513",
+        "promoted_commit": "d51c66240ad4e80ecd2bd11b84d9e5432ec41513"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "43898251b0770ef9bbb7e44358b5c0e8a6ba28a2443092496de85090a57078e4",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "2295b881-da17-4d2c-9cff-bf3ef415068c",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.143341963662044,
+          "prefill": 1.594184481535517
+        },
+        "measured_commit": "72fac44efa47b13424263445227d2eb2f703363b",
+        "promoted_commit": "72fac44efa47b13424263445227d2eb2f703363b"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "169dd81f7972abb442e062dbc153e67d84061978726f15102f2ef907b0fefbf7",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "0df6b0ba-d2ab-4f9b-8199-aa79d3a5aa4e",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.150598702172235,
+          "prefill": 1.58971466820226
+        },
+        "measured_commit": "813953807c935e81f45112167c9736af8894d46c",
+        "promoted_commit": "813953807c935e81f45112167c9736af8894d46c"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "bb39f68fc9a5b6168d49d0b1005e0decd876c5dc2f03e0e1a3064c523b175ab7",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "665b968c-b377-4cdc-bc4c-e4aa5bef7b1d",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.1575410140472444,
+          "prefill": 1.590383402334302
+        },
+        "measured_commit": "0d43963718c1772495d5a0e8ddf51841e32a4cf6",
+        "promoted_commit": "0d43963718c1772495d5a0e8ddf51841e32a4cf6"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "e80c6cbe56d21087555797e9fb729c4cdb3eba3bd761f398d0f9e37d29cb8080",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "06dd654a-1365-4a3a-b76e-21af0d5df005",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.164023111402941,
+          "prefill": 1.5942884143629097
+        },
+        "measured_commit": "c123c2a74a677b717e44336f521c7103ca8e6d91",
+        "promoted_commit": "c123c2a74a677b717e44336f521c7103ca8e6d91"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "1efef169d3c55c0ca077d27352538a100db8ed337074d50ed3e789aedcf99a85",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "b2ff01ab-f1c9-4ab0-b726-1d47901d1c3c",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.2241291173593183,
+          "prefill": 1.6093030136105053
+        },
+        "measured_commit": "7df55c7af59dda9631e6f604c111a1cb1c93e43f",
+        "promoted_commit": "7df55c7af59dda9631e6f604c111a1cb1c93e43f"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "5489a9cc638546c33b3ec912a379dbe4db624ca835c6766d8ff3c24984aecc2c",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "1e21c8fb-e71d-4c47-a4d9-c51c41d5aa5d",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.241656754900396,
+          "prefill": 1.6124743914715083
+        },
+        "measured_commit": "95dc312c885165bb787ad40bac453d613e7ec29e",
+        "promoted_commit": "95dc312c885165bb787ad40bac453d613e7ec29e"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "912fbf68f4d2d9dfe03bf4bcf815a4cdbc2947fa5331c4a30e0403f4b9caa718",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "a4012fd2-19be-4535-b29d-cce527ff04da",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.2808217745101733,
+          "prefill": 1.6128225890581258
+        },
+        "measured_commit": "f65573af7e1b2174ff23ec5da225ed47e87b3b6e",
+        "promoted_commit": "f65573af7e1b2174ff23ec5da225ed47e87b3b6e"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "6e6eab94f28c74c2d364339b7ebe40f33d760ec0d6630fa8b4417d82b5c542ca",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "f2dccddd-4194-41b4-bf62-73f3f9b93122",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.2943088795636255,
+          "prefill": 1.607103517505781
+        },
+        "measured_commit": "734e7e43b9d8794b9e1f955b22d01cafe6c3e91d",
+        "promoted_commit": "734e7e43b9d8794b9e1f955b22d01cafe6c3e91d"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    },
+    {
+      "format": "exl3-ktune-receipt-audit-v1",
+      "kind": "official_qwen",
+      "valid": true,
+      "errors": [],
+      "receipt_sha256": "a2cdbd5f981a8511dcbe71affc65fc33bb64941fcc387489454e1a6da944a9ba",
+      "metrics": {
+        "reported_status": "accepted",
+        "submission_id": "484a3198-d809-4545-8ace-30999d358633",
+        "case_count": 1,
+        "checked_steps": 64,
+        "pair_count": 2,
+        "speedup_vs_fixed_baseline": {
+          "decode": 2.30812119994694,
+          "prefill": 1.6113763372432426
+        },
+        "measured_commit": "59160bd982abe5c98c8000caeb028e2a901b1d48",
+        "promoted_commit": "59160bd982abe5c98c8000caeb028e2a901b1d48"
+      },
+      "quality_certified": false,
+      "source_payload_verified": false,
+      "independently_reproduced": false,
+      "limitations": [
+        "Internal receipt consistency does not authenticate the reporting authority.",
+        "No source payload, compiler execution, numerical test or timing rerun was performed.",
+        "Historical benchmark correctness does not establish unseen-workload generalization.",
+        "Paired speedups use the fixed baseline, not the immediately preceding champion."
+      ],
+      "evidence_level": "official_promoted"
+    }
+  ],
+  "detail_scope": "All 3,030 records counted; individual accepted receipts included. Full all-status audit retained in workspace.",
+  "actual_local_negative_check": {
+    "format": "exl3-ktune-receipt-audits-v1",
+    "input_sha256": "eba3dd36712672b832a71454502d80ec770eb138fd64e41162d5799aef20cdf5",
+    "kind": "local",
+    "receipts": 1,
+    "valid": 1,
+    "quality_certified": false,
+    "error_counts": {},
+    "audits": [
+      {
+        "format": "exl3-ktune-receipt-audit-v1",
+        "kind": "local_qwen",
+        "valid": true,
+        "errors": [],
+        "receipt_sha256": "0c7762b71fd2153677b7bcc1b904c9ed28a84d330060cfb444856f96e4c7b138",
+        "metrics": {
+          "decode_gain": 1.0018043877794502,
+          "prefill_gain": 1.0107787561253698,
+          "composite_gain": 1.004040482051679,
+          "decode_latency_reduction": 0.0018011378283635526,
+          "pair_wins": 2,
+          "pair_count": 4,
+          "one_sided_95_log_gain_lower_bound": -0.010940403394528161,
+          "unrelated_prefill_movement": 0.010778756125369826
+        },
+        "quality_certified": false,
+        "source_payload_verified": false,
+        "independently_reproduced": false,
+        "limitations": [
+          "Internal receipt consistency does not authenticate the reporting authority.",
+          "No source payload, compiler execution, numerical test or timing rerun was performed.",
+          "Historical benchmark correctness does not establish unseen-workload generalization.",
+          "The local result has a parent ID but no measured candidate content hash; pairing it with a candidate file by directory alone does not bind the measured payload."
+        ],
+        "evidence_level": "local_screening_only",
+        "screen_passed": false,
+        "official_promotion": false
+      }
+    ]
+  }
+}

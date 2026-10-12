@@ -5,7 +5,7 @@ start with the [standard SFT guide](SIMPLE_FLOW.md). This page documents advance
 engine controls. Project `resume --steps` means total updates; engine `train
 --steps` below means additional updates.
 
-This is an **experimental, working short-context text adapter pipeline** for the
+This is an **experimental text adapter pipeline** for the
 DeepSeek V4.1 **streaming repack** already on this Mac. It trains against frozen
 EXL3 weights on Metal, saves adapters, resumes Adam, evaluates held-out text, and
 uses the adapter for generation. It does not convert EXL3 into ordinary affine
@@ -19,12 +19,14 @@ its real individual matrices and complete expert have passed decode/gradient
 checks. Qwen is not an implemented architecture. Do not point these training
 commands at an arbitrary EXL3 directory and expect architecture conversion.
 
-The [measured workflow report](reports/workflow-verification.json) records two
+The earlier revision's [measured workflow report](reports/workflow-verification.json) records two
 full-model updates, exact adapter/Adam continuation versus an uninterrupted run,
 exact adapter prediction reload, evaluation and one-token generation. Peak MLX
 allocation was **8.78 GiB** for four target tokens at rank 2, with attention adapters
 in all layers and EXL3 expert adapters in layer 0. These tests kept the process
-budget at 12 GiB and the system reserve at 32 GiB. The unit suite now passes 263 tests and 27 subtests.
+budget at 12 GiB and the system reserve at 32 GiB. That revision passed 263 tests
+and 27 subtests. These receipts precede the FP8 scale and long-context changes;
+they do not validate the current engine's numerical behavior.
 
 ## 1. Install and inspect
 
@@ -47,6 +49,12 @@ files. Its 2 GiB budget is for inspection only. Training defaults to 16 GiB plus
 32 GiB system reserve. A checkpoint contains roughly 190 GiB of EXL3 experts,
 189 GiB of Engram tables, and the trunk; disk capacity is distinct from working RAM.
 No full-model download or deletion is part of this recipe.
+
+For an explicit 80 GiB process budget with an 8 GiB packed expert cache, add
+`--profile development`. It preserves 32 GiB system reserve and requires 112 GiB
+free/reclaimable at startup. Defaults remain unchanged. See
+[resource profiles](RESOURCE_PROFILES.md) for cache overrides, project resume,
+and the distinction between process memory and retained cache sizes.
 
 ## 2. Verify one real update first
 
@@ -238,7 +246,7 @@ Evaluation reports token-weighted NLL, perplexity and a logits hash. It uses the
 same masks as training. Generation is greedy and **recomputes the full prefix**
 for every token; there is no KV decode cache yet. Use `--raw-prompt` for plain text
 continuation. The tokenizer's local chat template controls reasoning delimiters.
-Prompt plus generated text must stay within 512 tokens. Assess factual accuracy,
+Prompt plus generated text must stay within 32,768 tokens. Assess factual accuracy,
 style and regressions separately: lower perplexity on a toy dataset is not quality
 validation. Report paths must be new.
 
@@ -246,7 +254,61 @@ Adapters use this package's private `exl3-mlx-deepseek-short-text-v1` format. Lo
 them with these commands; do not assume PEFT, upstream CUDA or an external serving
 engine can consume them. Fusion/requantization/export is intentionally unsupported.
 
+Project-based `SFTTrainer` open/resume checks the recorded engine and dependency
+identity. The low-level standalone adapter loader does **not** currently enforce
+legacy `engine_semantics` metadata, so a successful load is not evidence of a
+compatible migration across the FP8 scale or other arithmetic changes. Keep
+older adapters with their recorded runtime; use a new project for the changed
+engine rather than treating a standalone load as a validated continuation.
+
 ## Memory and throughput
+
+The 5,809-token full-parent ktune attempt at 32 GiB completed its forward pass
+but failed during backward before an optimizer update. The new project completed
+**one update in 1,862.1 seconds**, peaking at **73.95 GiB MLX**, with an **80 GiB
+process cap, explicit 12 GiB system reserve, 8 GiB packed cache, decoded cache off,
+and explicit chunk 8192**. The checkpoint audit found all 160 adapter tensors and
+322 optimizer tensors finite, all 80 LoRA B tensors nonzero, valid checksums and
+Adam step 1. The fresh fitting check **failed**: same-answer NLL rose from
+**0.5012578592 to 0.5053724668** (delta +0.0041146076; lower is better), despite
+changed logits. This is an operational pass, not an improved adapter. The original
+checkpoint is preserved. All three tested inference strengths (+0.1, -0.1,
+adaptive +10) also worsened NLL; the bounded series is complete, with no adapter
+promoted as an improvement. See the [aggregate](reports/ktune-strength-diagnostics.json).
+Component VJP checks and the current
+518-test plus 27-subtest suite pass, but do not resolve the first fitting failure.
+See the [diagnosis update](reports/first-step-diagnosis-update.md).
+The saved 27.66 GiB observed-process reading is an end-of-run observation, not
+peak memory. See the [checkpoint audit](reports/ktune-full-parent-checkpoint-audit.json)
+and [failed fitting receipt](reports/ktune-full-parent-first-update-fit.json).
+There is no completed low-memory full-update baseline for a speed ratio.
+The complete-update rate was approximately 3.12 serialized example tokens/s,
+or 0.44 supervised answer tokens/s. Fresh full-context scoring took about
+523–570 seconds per condition; these measurements are not generation speed.
+Use the complete [kernel tuning recipe](KERNEL_TUNING.md#command-line-recipe) for
+the pinned case, parent context, actual paths, and resume commands.
+
+The 12 GiB reserve is a recorded choice for that run's available startup headroom,
+not the development preset default. Its startup gate is 92 GiB free/reclaimable;
+the unmodified preset keeps a 32 GiB reserve and requires 112 GiB. Resuming without
+resource flags inherits saved limits. Explicit `--profile development` resets
+resource defaults, so preserving a smaller reserve requires repeating its
+explicit override. Changing only `--reserve-gib` preserves other saved limits.
+
+Packed-only caching improved the observed real single-MoE-layer sequence from
+57.902 to 53.728 seconds at chunk 512, and from 48.536 to 44.103 seconds at chunk
+8192, with same-chunk bitwise output/dX parity. These are one-sequence measurements
+using saved baseline receipts, not complete-model throughput. The prototype
+8 GiB packed + 32 GiB decoded configuration was slower at both chunks, so decoded
+caching remains off. See the [measurement and scope review](reports/high-memory-cache-review.md).
+`--decoded-cache-mib 32768` remains an explicit experimental option; historical
+prototype receipts retain their original numeric settings.
+
+The memory profile retains the **512 chunk default**. This pilot's explicit
+`--chunk-size 8192` changes reduction order and is immutable within the project;
+cache parity at one chunk does not establish equality across chunks. Use a new
+project to change it and retain full-update numerical and timing checks as
+separate gates. See [explicit decoder chunks](RESOURCE_PROFILES.md#explicit-decoder-chunk-experiments).
 
 This is **end-to-end backpropagation with streamed weights and block recomputation**.
 It is not separately training layer 0, then layer 1. Base trunk weights stay
@@ -255,9 +317,10 @@ recomputes blocks and re-reads expert matrices. Only adapter parameters and thei
 optimizer state are trainable. Selecting fewer adapter layers saves adapter state,
 but still executes the full network.
 
-The 16 GiB process budget checks MLX allocations/cache and process peak RSS every
+The process budget (16 GiB by default, up to the explicit 80 GiB profile) checks MLX allocations/cache and process peak RSS every
 100 ms. It also checks free/reclaimable system memory every five seconds and
-preserves a 32 GiB reserve; startup requires budget plus reserve. MLX's allocator
+preserves the configured reserve (32 GiB by default); startup requires budget
+plus reserve. MLX's allocator
 limit is advisory, **not an OS hard quota**. An allocation can overshoot before the
 watchdog runs. Exit code 75 means the watchdog terminated this process; `memory-abort.json` records the reason when
 it can be written. A failed
@@ -270,11 +333,15 @@ bounded and block recomputation on. A lower memory budget tightens the guard;
 raising it or removing the reserve does not make the model more memory efficient.
 No command here stops other servers or deletes existing models.
 
-The short-context cap is 512 because sparse candidate/indexer selection beyond
-that point is not ported. This is an architectural limit, not a promise that a
-512-token training run fits or is practical. SSD traffic is large and grows with
-the number of distinct routed experts. Start with the four-token smoke, then 16,
-32 and larger lengths, recording wall time, read bytes and memory at each step.
+The largest complete training example tested is **5,809 serialized tokens**;
+its update completed but fresh answer NLL worsened. The implementation context
+ceiling is 32,768 tokens, not a tested training limit. Sparse index selection
+and candidate blocks follow the frozen model; attention processes query tiles and
+recomputes each tile's first-order VJP. The LM head processes supervised rows in
+32-token chunks. Backbone block boundaries still consume memory proportional to
+context. SSD traffic grows with the number of distinct routed experts. Start with
+a complete short task, then increase lengths while recording time, reads and peak
+memory. See [kernel tuning](KERNEL_TUNING.md) for the ktune importer and evidence gates.
 Host activation materialization currently prevents retained decode graphs at the
 cost of synchronization and copies. Multi-token training throughput is experimental.
 
@@ -294,4 +361,4 @@ we have not imported them or claimed an autograd implementation from them.
 Before production use: independent full-model logit parity, a representative
 held-out task evaluation, long-run numerical stability/throughput measurements,
 and an adapter mapping to the intended serving engine. Original 2.8-bpw full-model
-loading, longer contexts and Qwen architecture support remain separate work.
+loading, faster long-context execution and Qwen architecture support remain separate work.

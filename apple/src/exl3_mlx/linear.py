@@ -15,7 +15,7 @@ def hadamard128(x):
     return mx.hadamard_transform(x.reshape(shape)).reshape(x.shape)
 
 
-def _base(x, trellis, suh, svh, codebook, chunk_size, transpose=False, eager=False):
+def _base(x, trellis, suh, svh, codebook, chunk_size, transpose=False, eager=False, decoder=None):
     # Use fp32 for transforms/accumulation (including dX); cast only at the boundary.
     n = svh.size
     left, right = (svh, suh) if transpose else (suh, svh)
@@ -26,7 +26,11 @@ def _base(x, trellis, suh, svh, codebook, chunk_size, transpose=False, eager=Fal
     total = None
     for start in range(0, n, chunk_size):
         end = min(start + chunk_size, n)
-        w = reconstruct(trellis, codebook, start=start, width=end - start)
+        w = (
+            reconstruct(trellis, codebook, start=start, width=end - start)
+            if decoder is None
+            else decoder(start, end - start).astype(mx.float32)
+        )
         if transpose:
             part = xh[..., start:end] @ w.T
             total = part if total is None else total + part
@@ -37,6 +41,9 @@ def _base(x, trellis, suh, svh, codebook, chunk_size, transpose=False, eager=Fal
             if eager:
                 part = materialize(part)
             chunks.append(part)
+        # Release the current working FP32 tile before the next decoder call
+        # evicts/allocates a cached FP16 tile. Lazy outputs retain what they need.
+        del w, part
     inner = total if transpose else mx.concatenate(chunks, axis=-1)
     return (hadamard128(inner) * right).astype(x.dtype)
 

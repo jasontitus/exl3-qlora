@@ -1,0 +1,243 @@
+{
+  "scope": "Exploratory training-row strength diagnostics; no held-out, new-update, or kernel-quality claim",
+  "original_checkpoint": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001",
+  "original_checkpoint_unchanged": true,
+  "original_failed_fit_unchanged": true,
+  "derived_A_unchanged_B_exactly_scaled": true,
+  "engine_source_unchanged": true,
+  "initial_plan_sha256": "809a2a953b1eb6d0d94beb40a60c0d8cc4f7d667cbedf1317ce71ac6071b09a3",
+  "adaptive_larger_strength_plan_sha256": "752fc20c973c0e4f262f93e15077c1b0c495fabb9aaa00d174d913c297da0387",
+  "training_data_sha256": "77af20962e596e5301dbd87157d597a6dee69e52d1f22f624429593aa770b32e",
+  "engine_settings": {
+    "chunk_size": 8192
+  },
+  "resources": {
+    "profile": "development",
+    "memory_gib": 80,
+    "reserve_gib": 12,
+    "packed_cache_mib": 8192,
+    "decoded_cache_mib": 0,
+    "allocator_cache_mib": 256
+  },
+  "selection": "One complete training row, 5809 serialized tokens, 811 supervised tokens. +0.1/-0.1 predeclared together; +10 added after both failed and component VJPs passed.",
+  "results": [
+    {
+      "strength": 0.0,
+      "kind": "base",
+      "loss": 0.5012578592107731,
+      "loss_delta": 0.0
+    },
+    {
+      "strength": 1.0,
+      "kind": "original_optimizer_checkpoint",
+      "loss": 0.5053724668388994,
+      "loss_delta": 0.00411460762812621
+    },
+    {
+      "strength": 0.1,
+      "kind": "derived_inference_only",
+      "loss": 0.5090817250428723,
+      "loss_delta": 0.007823865832099153,
+      "improved_training_nll": false,
+      "elapsed_seconds": 555.7609879580559,
+      "peak_mlx_gib": 19.93561017140746,
+      "logits_sha256": "3b1a91a1b10e4adbc06a4abdd233fa628b9946d4999b3e1057cd039a643b88f8",
+      "adapter_sha256": "c93d672b71f759c3e26ef16f0c9dc280bb001a1f4bbd1df2e332111c46533230",
+      "evaluation_sha256": "6fa61b7efe3754796c8c424e32d910dd54fa11864944c685c4f861328ca32a86",
+      "derivation_sha256": "55cc60f8290fe4eb5324bf4361605cd4f064c3c953d062dd1cc38322cd1f0809"
+    },
+    {
+      "strength": -0.1,
+      "kind": "derived_inference_only",
+      "loss": 0.5019030711638285,
+      "loss_delta": 0.0006452119530553357,
+      "improved_training_nll": false,
+      "elapsed_seconds": 570.1272252090275,
+      "peak_mlx_gib": 19.935521498322487,
+      "logits_sha256": "2cb440606780222defa3fa4a55a605bbdaf1b247a816d09e3d79ffb99d50ebf3",
+      "adapter_sha256": "171000f50b1633e418d2c5ce53f161ad96c6b1a1cb290ce1783cfc1a48f00285",
+      "evaluation_sha256": "0a4f9cb2594161de4d5118770c6860b798a50458e4b0e0af658338260e8e5090",
+      "derivation_sha256": "26d5966c147c8a52664eb5e6bc6e53779a0b78b8ece0493f780482b22b886cde"
+    },
+    {
+      "strength": 10.0,
+      "kind": "derived_inference_only",
+      "loss": 0.5074643705753422,
+      "loss_delta": 0.006206511364569067,
+      "improved_training_nll": false,
+      "elapsed_seconds": 566.3072989579523,
+      "peak_mlx_gib": 19.93560951575637,
+      "logits_sha256": "3017875fba2eb91daab3232fc2593ec5c7062a296526744ac79c0fe11c5b9a9a",
+      "adapter_sha256": "435e0c34f6d1f65074eac0c5b3857859c7bdcc0cb152a666b4fe32373b8a06a3",
+      "evaluation_sha256": "0037f6e362d7d6120d19ac95facbbc4b324868ff9a9bd1b1d368aff0c215df3b",
+      "derivation_sha256": "a2672c21aa668645e046a8be7cdd83af1bbaabf95d16625c08fb877db3256872"
+    }
+  ],
+  "component_checks": {
+    "native-vjp-actual-shapes.json": {
+      "sha256": "b080123295bfb1d200caf40ab629b9c197474737a0db1962dc2c27e912148546",
+      "passed": true
+    },
+    "native-vjp-fullm-sampled.json": {
+      "sha256": "2b69673316310bbecf9eafa89bfaf68369a5585bd1b1a3015bd9d90953b587de",
+      "passed": true
+    },
+    "sparse-attention-real-dim-vjp.json": {
+      "sha256": "f16e00bac4dbfce53f06be5da9ee7c90ee2c42adf4d326ca8c1ef2dfb07e8e22",
+      "passed": true
+    }
+  },
+  "raw_evaluations": {
+    "positive-0.1": {
+      "loss": 0.5090817250428723,
+      "perplexity": 1.66376270164121,
+      "supervised_tokens": 811,
+      "examples": 1,
+      "logits_sha256": "3b1a91a1b10e4adbc06a4abdd233fa628b9946d4999b3e1057cd039a643b88f8",
+      "logits_scope": "supervised_rows",
+      "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+      "expert_source": {
+        "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+        "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+        "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+      },
+      "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+      "streaming": {
+        "loads": 41139,
+        "hits": 0,
+        "evictions": 39204,
+        "loaded_bytes": 182596603392,
+        "cached_bytes": 8588551680,
+        "peak_cached_bytes": 8588551680,
+        "forward_calls": 41139,
+        "backward_calls": 0,
+        "decoded_loads": 41139,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 970590781440,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      },
+      "engram_bytes_read": 34385208,
+      "trainable_parameters": 3153920,
+      "peak_mlx_gib": 19.93561017140746,
+      "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+      "context_limit": 32768,
+      "attention": "query-tiled sparse attention with frozen causal indexer and first-order VJP",
+      "block_recomputation": true,
+      "adapter": "artifacts/ktune-20261012/first-step-strength-diagnostic/positive-0.1",
+      "elapsed_seconds": 555.7609879580559,
+      "budget_gib": 80.0,
+      "observed_memory_gib": 20.019561767578125,
+      "resources": {
+        "profile": "development",
+        "memory_gib": 80.0,
+        "reserve_gib": 12.0,
+        "packed_cache_mib": 8192,
+        "decoded_cache_mib": 0,
+        "allocator_cache_mib": 256
+      }
+    },
+    "negative-0.1": {
+      "loss": 0.5019030711638285,
+      "perplexity": 1.6518618920727133,
+      "supervised_tokens": 811,
+      "examples": 1,
+      "logits_sha256": "2cb440606780222defa3fa4a55a605bbdaf1b247a816d09e3d79ffb99d50ebf3",
+      "logits_scope": "supervised_rows",
+      "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+      "expert_source": {
+        "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+        "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+        "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+      },
+      "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+      "streaming": {
+        "loads": 41148,
+        "hits": 0,
+        "evictions": 39213,
+        "loaded_bytes": 182636550144,
+        "cached_bytes": 8588551680,
+        "peak_cached_bytes": 8588551680,
+        "forward_calls": 41148,
+        "backward_calls": 0,
+        "decoded_loads": 41148,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 970803118080,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      },
+      "engram_bytes_read": 34385208,
+      "trainable_parameters": 3153920,
+      "peak_mlx_gib": 19.935521498322487,
+      "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+      "context_limit": 32768,
+      "attention": "query-tiled sparse attention with frozen causal indexer and first-order VJP",
+      "block_recomputation": true,
+      "adapter": "artifacts/ktune-20261012/first-step-strength-diagnostic/negative-0.1",
+      "elapsed_seconds": 570.1272252090275,
+      "budget_gib": 80.0,
+      "observed_memory_gib": 20.064910888671875,
+      "resources": {
+        "profile": "development",
+        "memory_gib": 80.0,
+        "reserve_gib": 12.0,
+        "packed_cache_mib": 8192,
+        "decoded_cache_mib": 0,
+        "allocator_cache_mib": 256
+      }
+    },
+    "positive-10": {
+      "loss": 0.5074643705753422,
+      "perplexity": 1.6610739824948662,
+      "supervised_tokens": 811,
+      "examples": 1,
+      "logits_sha256": "3017875fba2eb91daab3232fc2593ec5c7062a296526744ac79c0fe11c5b9a9a",
+      "logits_scope": "supervised_rows",
+      "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+      "expert_source": {
+        "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+        "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+        "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+      },
+      "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+      "streaming": {
+        "loads": 41133,
+        "hits": 0,
+        "evictions": 39198,
+        "loaded_bytes": 182569972224,
+        "cached_bytes": 8588551680,
+        "peak_cached_bytes": 8588551680,
+        "forward_calls": 41133,
+        "backward_calls": 0,
+        "decoded_loads": 41133,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 970449223680,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      },
+      "engram_bytes_read": 34385208,
+      "trainable_parameters": 3153920,
+      "peak_mlx_gib": 19.93560951575637,
+      "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+      "context_limit": 32768,
+      "attention": "query-tiled sparse attention with frozen causal indexer and first-order VJP",
+      "block_recomputation": true,
+      "adapter": "artifacts/ktune-20261012/first-step-strength-diagnostic/positive-10",
+      "elapsed_seconds": 566.3072989579523,
+      "budget_gib": 80.0,
+      "observed_memory_gib": 20.0546875,
+      "resources": {
+        "profile": "development",
+        "memory_gib": 80.0,
+        "reserve_gib": 12.0,
+        "packed_cache_mib": 8192,
+        "decoded_cache_mib": 0,
+        "allocator_cache_mib": 256
+      }
+    }
+  },
+  "quality_certified": false
+}

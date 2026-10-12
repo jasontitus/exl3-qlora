@@ -16,6 +16,7 @@ from mlx.utils import tree_flatten, tree_map, tree_unflatten
 from mlx_lm.tuner.trainer import default_loss
 
 from .data import sha256
+from .materialize import materialize
 
 
 def batch_for(example):
@@ -23,7 +24,60 @@ def batch_for(example):
     return mx.array([ids], dtype=mx.int32), mx.array([[example["loss_start"], len(ids) - 1]])
 
 
+def supervised_hidden(model, tokens, lengths):
+    """Keep full causal context but project only rows with supervised targets."""
+    hidden = model.hidden_states(tokens[:, :-1])
+    spans = np.array(lengths)
+    pieces, targets = [], []
+    for batch, (start, end) in enumerate(spans.tolist()):
+        if not 1 <= start <= end < tokens.shape[1]:
+            raise ValueError("Invalid supervised token span")
+        pieces.append(hidden[batch, start - 1 : end])
+        targets.append(tokens[batch, start : end + 1])
+    return mx.concatenate(pieces), mx.concatenate(targets)
+
+
+def projected_cross_entropy(project, hidden, targets, *, chunk_size=32):
+    """Exact target-only CE with an eager first-order VJP for a frozen LM head.
+
+    Never retain an [sequence, vocabulary] graph. Chunking does not detach the
+    backbone or reset its history. The head is frozen; its input receives dL/dh.
+    """
+    if chunk_size < 1 or not len(targets) or hidden.shape[0] != targets.shape[0]:
+        raise ValueError("Positive chunk size and aligned nonempty targets required")
+    count = len(targets)
+
+    def part(value, start):
+        return nn.losses.cross_entropy(
+            project(value), targets[start : start + value.shape[0]], reduction="sum"
+        )
+
+    @mx.custom_function
+    def forward(values):
+        values = mx.stop_gradient(values)
+        total = 0.0
+        for start in range(0, count, chunk_size):
+            total += part(values[start : start + chunk_size], start).item()
+        return mx.array(total / count, dtype=mx.float32)
+
+    @forward.vjp
+    def backward(primals, cotangent, output):
+        values = primals
+        gradients = []
+        for start in range(0, count, chunk_size):
+            piece = mx.stop_gradient(values[start : start + chunk_size])
+            _, (gradient,) = mx.vjp(lambda value: part(value, start), [piece], [cotangent / count])
+            mx.eval(gradient)
+            gradients.append(materialize(gradient))
+        return mx.concatenate(gradients)
+
+    return forward(hidden)
+
+
 def masked_loss(model, tokens, lengths):
+    if hasattr(model, "hidden_states") and hasattr(model, "project_logits"):
+        hidden, targets = supervised_hidden(model, tokens, lengths)
+        return projected_cross_entropy(model.project_logits, hidden, targets)
     return default_loss(model, tokens, lengths)[0]
 
 
@@ -98,16 +152,34 @@ def evaluate(model, examples, *, check=lambda: None):
         for example in examples:
             check()
             tokens, lengths = batch_for(example)
-            logits = model(tokens[:, :-1])
-            # Use the same upstream loss; retain logits for a reproducible reload fingerprint.
-            value, n = default_loss(lambda _, values=logits: values, tokens, lengths)
-            mx.eval(value, n, logits)
-            if not math.isfinite(value.item()):
-                raise FloatingPointError("Nonfinite evaluation loss")
-            nll += value.item() * n.item()
-            total += n.item()
-            digest.update(np.array(logits).tobytes())
-            del logits, value, tokens, lengths
+            if hasattr(model, "hidden_states") and hasattr(model, "project_logits"):
+                hidden, targets = supervised_hidden(model, tokens, lengths)
+                mx.eval(hidden, targets)
+                for start in range(0, len(targets), 32):
+                    check()
+                    logits = model.project_logits(hidden[start : start + 32])
+                    value = nn.losses.cross_entropy(
+                        logits, targets[start : start + 32], reduction="sum"
+                    )
+                    mx.eval(value, logits)
+                    if not math.isfinite(value.item()):
+                        raise FloatingPointError("Nonfinite evaluation loss")
+                    nll += value.item()
+                    total += logits.shape[0]
+                    digest.update(np.array(logits).tobytes())
+                    del logits, value
+                del hidden, targets
+            else:
+                logits = model(tokens[:, :-1])
+                value, n = default_loss(lambda _, values=logits: values, tokens, lengths)
+                mx.eval(value, n, logits)
+                if not math.isfinite(value.item()):
+                    raise FloatingPointError("Nonfinite evaluation loss")
+                nll += value.item() * n.item()
+                total += n.item()
+                digest.update(np.array(logits).tobytes())
+                del logits, value
+            del tokens, lengths
             check()
     finally:
         model.train(was_training)
@@ -120,6 +192,7 @@ def evaluate(model, examples, *, check=lambda: None):
         "supervised_tokens": total,
         "examples": len(examples),
         "logits_sha256": digest.hexdigest(),
+        "logits_scope": "supervised_rows" if hasattr(model, "hidden_states") else "all_rows",
     }
 
 

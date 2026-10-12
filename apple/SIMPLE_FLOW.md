@@ -4,6 +4,12 @@ This interface is implemented. It puts a local browser, a project CLI and a smal
 `SFTTrainer` Python API over the same streamed EXL3 training engine. Start with a
 short pilot, inspect the saved comparison, then decide whether to train further.
 
+For long kernel-patch data, use the [kernel tuning recipe](KERNEL_TUNING.md).
+The largest complete example trained here is **5,809 tokens** under an 80 GiB
+process cap; its first update completed but made answer NLL worse. An 80 GiB
+budget does not certify 32,768-token training or model quality. The short-text
+comparison/generation steps below are not practical long-patch inference.
+
 ## Launch the local interface
 
 ```bash
@@ -13,12 +19,18 @@ uv run exl3-mlx studio
 ```
 
 Studio opens a local, authenticated browser page. Files stay on this Mac.
+Under **Data and resource settings**, choose **Development (80 GiB)** when the
+machine has at least 112 GiB reclaimable for the process plus system reserve.
+Studio shows the project's saved limits. For an existing project, check **Apply
+these resource settings to the next Train / resume** to change them. See
+[resource profiles](RESOURCE_PROFILES.md) for cache limits and overrides.
 
 1. Enter the **model folder**, **dataset file** and a **new project folder**.
 2. Select **Check data**. Review split counts, longest example, context and
    supervised answer previews. The tool rejects overlong examples instead of
    silently shortening them.
-3. Leave **Total optimizer updates** at 2 and select **Train / resume**.
+3. For a short text pilot, leave **Total optimizer updates** at 2 and select
+   **Train / resume**.
 4. Select **Compare base vs adapter**. Read likelihood, the fixed prompt preview,
    and whether generation reached EOS. Try another prompt with **Generate**.
 5. Increase total updates to continue, or export the selected adapter.
@@ -61,6 +73,28 @@ JSON values. `status PROJECT` reports progress and `stop PROJECT` requests a saf
 stop. Comparison uses a fresh process for each condition and produces
 `comparison.json` and `report.html`.
 
+Add `--profile development` to `finetune` or `resume` for the explicit 80 GiB
+budget with an 8 GiB packed cache; decoded caching remains off after a slower
+measured MoE-layer result. Default ordinary SFT remains 16 GiB. For example:
+
+```bash
+uv run exl3-mlx resume artifacts/my-pilot --steps 10 --profile development --no-compare
+```
+
+An explicit CLI profile replaces resource limits from a JSON configuration;
+explicit cache/memory flags then override that profile. Other training settings
+retain their JSON values. The profile increases available caching, not a promise
+of faster or better training.
+
+For an explicit decoder experiment, new projects accept `--chunk-size 8192`.
+Studio exposes **Decoder chunk size (new projects only)** under advanced settings
+and shows the saved immutable value in the project summary.
+Both resource profiles default to 512. Wider chunks change floating-point
+reduction order, so chunk size cannot change during project resume. Read the
+[decoder chunk guidance](RESOURCE_PROFILES.md#explicit-decoder-chunk-experiments)
+and numerical benchmark results before selecting it; larger chunks are not a
+claim of faster full-model training.
+
 ## Accepted datasets
 
 | Input | Example / behavior |
@@ -91,9 +125,9 @@ audio records fail with a source row error.
 
 The final assistant answer and EOS receive loss. System prompts and previous
 turns provide context. `max_length` is **all serialized tokens**, including BOS,
-prompt and EOS; it is inferred by default, at most 512. Backend shifted input
+prompt and EOS; it is inferred by default, at most 32,768. Backend shifted input
 length is one token smaller. Generation separately requires prompt plus requested
-new tokens to fit 512. No packing, all-assistant mask, or silent truncation is
+new tokens to fit 32,768. No packing, all-assistant mask, or silent truncation is
 performed by this interface.
 
 ## Python and Hugging Face datasets
@@ -139,8 +173,11 @@ cannot exit a notebook. Unsupported options fail explicitly. See
 
 A project snapshots prepared and normalized data, provenance, tokenizer metadata,
 configuration, implementation hashes and dependency versions. Resume requires the
-same recorded environment and immutable settings; only the total step target can
-increase. Kernel and Python changes invalidate exact continuation. Preserve the
+same recorded environment and immutable learning/data settings. The total step
+target can increase, and resource-only overrides can change process/reserve/cache
+limits. Resolved limits are recorded in the project and each attempt's
+`resources.json`; later resumes inherit them. Kernel and Python changes invalidate
+exact continuation. Preserve the
 checkout and environment for long-lived experiments. Model receipts fingerprint
 metadata and verify bank structure; they do not hash every byte of the enormous
 frozen weight files, which must remain immutable.
@@ -184,16 +221,29 @@ regression controls and independent test sets before claiming usefulness.
 
 Only the 40-layer DeepSeek V4.1 MXFP8-trunk/EXL3 **streaming repack** is supported
 end-to-end. Original EXL3 shard layouts and Qwen do not become supported through
-this interface. Most complete optimization diffs exceed the 512-token limit;
-the earlier corpus audit found 19 of 20 candidate changes too long. See the
-[Metal training assessment](reports/metal-training-assessment.md).
+this interface. The backend now accepts up to 32,768 tokens with sparse selection
+and bounded attention/head workspaces. Full-model memory still grows with context;
+this maximum is an implementation ceiling, not a throughput or RAM guarantee.
+The completed 5,809-token update is the largest tested example. Its fresh fitting
+check failed (NLL 0.5012578592 base versus 0.5053724668 adapter); separate strength
+diagnostics at +0.1, -0.1 and adaptive +10 also worsened NLL. This bounded series
+is complete, with no adapter promoted as an improvement; see the
+[aggregate](reports/ktune-strength-diagnostics.json). Component checks pass but
+do not establish improved fitting; see the [diagnosis update](reports/first-step-diagnosis-update.md) and
+[verification audit](reports/ktune-full-parent-verification.json).
+The existing generation path recomputes the whole prefix per new token; practical
+long-patch generation still needs compatible inference with a persistent KV cache.
 
-For examples that fit, turn a verified optimization into a task: pre-change code,
-hardware/workload constraints and benchmark evidence in the prompt; the justified
-patch in the answer. Keep repository, parent/commit hashes, benchmark result and
-commit family in metadata/group IDs. A commit message claiming success is not
-proof. Hold out related optimization families together and evaluate generated
-patches by compilation, numerical correctness, repeated on-device speed/memory
-measurements and regressions. These execution-based task metrics are not yet
-built into Studio. The tool can train short examples today; it cannot yet
-establish improved Metal optimization ability or support realistic long patches.
+Use `exl3-mlx ktune --help` and the [kernel tuning guide](KERNEL_TUNING.md) to snapshot,
+audit, prepare and train from the optimization archive. That flow records historical
+evidence scope, preserves failures, audits complete prompt/answer lengths and keeps
+related revisions together. A historical win or lower training loss does not prove
+that newly generated patches improve an engine. Evaluate them by application,
+compilation, independent numerical correctness and repeated on-device measurements.
+
+The long-context revision also fixes negative power-of-two activation scales. It
+changes forward arithmetic from the early prototype. Existing projects retain
+their recorded implementation; exact resume under changed code is rejected. To
+reproduce earlier outputs, use their original environment. A deliberate adapter
+warm start through the advanced CLI starts a new experiment and needs evaluation
+again; it is not exact continuation.

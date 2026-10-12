@@ -1,8 +1,8 @@
-"""Experimental text-only, short-context DeepSeek V4.1 Flash trainer model.
+"""Experimental text-only DeepSeek V4.1 Flash trainer model.
 
 Loads the mtplx streaming repack: MXFP8/BF16 trunk, real EXL3 routed experts,
 and sparse MXFP8 Engram banks. All 40 backbone layers participate in text loss.
-No vision, MTP, decode cache, long-context indexer, or PEFT export is claimed.
+No vision, MTP, decode cache, or PEFT export is claimed.
 """
 
 import json
@@ -13,7 +13,8 @@ import mlx.nn as nn
 import numpy as np
 from mlx.utils import tree_flatten
 
-from .attention import ShortAttention
+from .attention import FrozenIndexer, ShortAttention, empty_attention_state
+from .context import MAX_CONTEXT_TOKENS
 from .engram import Engram, EngramBank
 from .hyperconnections import HyperConnection, expand_streams, hc_post, hc_pre, rms_norm
 from .moe import DeepSeekExpert, DeepSeekGate, DeepSeekMoE
@@ -51,6 +52,7 @@ class DeepSeekTextModel(nn.Module):
         rank=8,
         alpha=16.0,
         cache_mib=256,
+        decoded_cache_mib=0,
         chunk_size=512,
         checkpoint_blocks=True,
         adapter_layers=None,
@@ -58,6 +60,8 @@ class DeepSeekTextModel(nn.Module):
         progress=None,
     ):
         super().__init__()
+        if any(type(v) is not int or v < 0 for v in (cache_mib, decoded_cache_mib)):
+            raise ValueError("Packed and decoded cache limits must be nonnegative integer MiB")
         root = Path(path).expanduser().resolve()
         raw = json.loads((root / "config.json").read_text())
         c = raw["text_config"]
@@ -92,7 +96,12 @@ class DeepSeekTextModel(nn.Module):
             "n_layers": c["num_hidden_layers"],
         }:
             raise ValueError("Expert bank dimensions disagree with config")
-        self._store = MatrixStore(bank, cache_bytes=cache_mib << 20, chunk_size=chunk_size)
+        self._store = MatrixStore(
+            bank,
+            cache_bytes=cache_mib << 20,
+            decoded_cache_bytes=decoded_cache_mib << 20,
+            chunk_size=chunk_size,
+        )
         self._engrams = EngramBank(root, c)
         ea = TensorArchive(root / "engram/engram-residents.safetensors")
         selected = set(range(c["num_hidden_layers"]) if adapter_layers is None else adapter_layers)
@@ -136,7 +145,32 @@ class DeepSeekTextModel(nn.Module):
                 for g in range(c["o_groups"])
             ]
             attn = ShortAttention(
-                i, c, linears, norms, tensor("attn.attn_sink"), groups, compressor
+                i,
+                c,
+                linears,
+                norms,
+                tensor("attn.attn_sink"),
+                groups,
+                compressor,
+                indexer=(
+                    FrozenIndexer(
+                        i,
+                        c,
+                        {
+                            name: native("attn.indexer." + name)
+                            for name in (
+                                ("wq_b", "weights_proj", "wk")
+                                if i in c["kv_source_layer_ids"]
+                                else ("wq_b", "weights_proj")
+                            )
+                        },
+                        tensor("attn.indexer.k_norm.weight")
+                        if i in c["kv_source_layer_ids"]
+                        else None,
+                    )
+                    if i in c["index_source_layer_ids"]
+                    else None
+                ),
             )
             gate = DeepSeekGate(
                 tensor("ffn.gate.weight"),
@@ -199,10 +233,24 @@ class DeepSeekTextModel(nn.Module):
             raise AssertionError("Only adapter parameters may enter the optimizer")
 
     def __call__(self, tokens):
+        return self.project_logits(self.hidden_states(tokens))
+
+    def _cache_progress(self, message):
+        if self._progress:
+            stats = self._store.stats
+            self._progress(
+                f"{message}; cumulative packed reads/hits {stats.loads}/{stats.hits}; "
+                f"decoded loads/hits/evictions {stats.decoded_loads}/{stats.decoded_hits}/{stats.decoded_evictions}; "
+                f"retained packed/decoded {stats.cached_bytes / 2**30:.2f}/{stats.decoded_cached_bytes / 2**30:.2f} GiB"
+            )
+
+    def hidden_states(self, tokens):
+        """Run the complete backbone and final norm, retaining the full context."""
         ids = np.array(tokens)
         c = self.config
-        if ids.ndim != 2 or not 1 <= ids.shape[1] <= c["index_topk"]:
-            raise ValueError("Expected 1..512 text tokens per sequence")
+        limit = min(MAX_CONTEXT_TOKENS, c.get("max_position_embeddings", MAX_CONTEXT_TOKENS))
+        if ids.ndim != 2 or not 1 <= ids.shape[1] <= limit:
+            raise ValueError(f"Expected 1..{limit} text tokens per sequence")
         hashes = self._engrams.hashes(ids)
         # Read only the embedding rows actually needed by this microbatch.
         unique, inverse = np.unique(ids, return_inverse=True)
@@ -213,22 +261,37 @@ class DeepSeekTextModel(nn.Module):
             *ids.shape, c["hidden_size"]
         )
         h, pre = expand_streams(embedding, c["hc_mult"])
-        kv = mx.zeros((ids.shape[0], 0, c["head_dim"]), dtype=h.dtype)
+        kv = empty_attention_state(
+            ids.shape[0], ids.shape[1], c["head_dim"], c["index_head_dim"], h.dtype
+        )
         for i, block in enumerate(self.blocks):
             bank_rows = mx.zeros((0,), dtype=h.dtype)
             if i in c["engram_layer_ids"]:
                 bank_rows = self._engrams.gather(i, hashes[:, :, c["engram_layer_ids"].index(i)])
                 mx.eval(bank_rows)
             if self.checkpoint_blocks and self.training:
-                h, pre, kv = recompute(block, h, pre, kv, bank_rows)
+                callback = (
+                    (
+                        lambda message, layer=i: self._cache_progress(
+                            f"Layer {layer + 1}/40: {message}"
+                        )
+                    )
+                    if self._progress
+                    else None
+                )
+                h, pre, kv = recompute(block, h, pre, kv, bank_rows, progress=callback)
             else:
                 h, pre, kv = block(h, pre, kv, bank_rows)
             mx.eval(h, pre, kv)
             if self._progress:
-                self._progress(
-                    f"Forward layer {i + 1}/40; active MLX {mx.get_active_memory() / 2**30:.2f} GiB; expert reads {self._store.stats.loads}"
+                self._cache_progress(
+                    f"Forward layer {i + 1}/40; active MLX {mx.get_active_memory() / 2**30:.2f} GiB"
                 )
-        return self.head(rms_norm(hc_pre(h, pre), self.norm)).astype(mx.float32)
+        return rms_norm(hc_pre(h, pre), self.norm)
+
+    def project_logits(self, hidden):
+        """Project any contiguous or selected normalized hidden rows to logits."""
+        return self.head(hidden).astype(mx.float32)
 
     def report(self):
         return {
@@ -242,6 +305,9 @@ class DeepSeekTextModel(nn.Module):
             ),
             "peak_mlx_gib": mx.get_peak_memory() / 2**30,
             "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
-            "context_limit": 512,
+            "context_limit": min(
+                MAX_CONTEXT_TOKENS, self.config.get("max_position_embeddings", MAX_CONTEXT_TOKENS)
+            ),
+            "attention": "query-tiled sparse attention with frozen causal indexer and first-order VJP",
             "block_recomputation": self.checkpoint_blocks,
         }

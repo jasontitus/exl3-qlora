@@ -1,5 +1,13 @@
 # Can this tool teach better Apple silicon Metal optimization?
 
+> Historical assessment of the earlier 512-position implementation. Repository
+> import and longer-context support have since been implemented; this document's
+> present-tense capability statements do not describe the latest engine. See
+> [the current kernel guide](../KERNEL_TUNING.md) and
+> [the applicability review](ktune-applicability-review.md) for current scope and
+> the remaining training/execution-quality gates. Earlier numerical receipts
+> must be interpreted under their original engine revision.
+
 Assessment date: 2026-10-12. Target: better model-generated inference-engine
 optimizations, measured by correctness and actual speed/memory results.
 

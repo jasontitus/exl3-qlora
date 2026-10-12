@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 _PATH = Path(__file__).resolve().parents[1] / "src/exl3_mlx/sft_data.py"
-_SPEC = importlib.util.spec_from_file_location("sft_data_cpu_tests", _PATH)
+_SPEC = importlib.util.spec_from_file_location("exl3_mlx.sft_data_cpu_tests", _PATH)
 sft = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(sft)
 
@@ -50,7 +50,7 @@ def tokenize(row, tokenizer):
 
 def validate(row, *, seq_length, vocab_size, truncate):
     assert truncate is False
-    assert 2 <= seq_length <= 512
+    assert 2 <= seq_length <= 32768
     ids, start = row["input_ids"], row["loss_start"]
     if len(ids) > seq_length + 1 or not 1 <= start < len(ids):
         raise ValueError("Invalid token count/mask")
@@ -344,14 +344,14 @@ def test_total_length_exact_boundary_and_no_truncation(setup):
     assert report["seq_length"] == 5
     with pytest.raises(ValueError, match="6 serialized tokens exceed max_length=5"):
         run(setup, [row("Q", "A")], output="too-short", demo=True, max_length=5)
-    with pytest.raises(ValueError, match="exceed max_length=512"):
-        run(setup, [row("Q", "A" * 508)], output="too-long", demo=True)
+    with pytest.raises(ValueError, match="exceed max_length=32768"):
+        run(setup, [row("Q", "A" * 32764)], output="too-long", demo=True)
 
 
 def test_invalid_args_and_explicit_group_missing(setup):
     for kwargs in (
         {"max_length": True},
-        {"max_length": 513},
+        {"max_length": 32769},
         {"seed": True},
         {"demo": 1},
         {"prompt_column": "x"},
@@ -444,3 +444,9 @@ def test_module_import_is_cpu_only():
     assert sft._helpers.__name__ == "_helpers"
     assert "mlx" not in sft.__dict__
     assert not any(name.startswith("sft_data_cpu_tests.mlx") for name in sys.modules)
+
+
+def test_infer_long_example_preserves_all_tokens(setup):
+    report = run(setup, [row("Q" * 1000, "A" * 1300)], demo=True)
+    assert report["max_length"] == 2304
+    assert report["seq_length"] == 2303

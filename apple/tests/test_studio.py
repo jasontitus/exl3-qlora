@@ -100,6 +100,57 @@ def test_authenticated_state_is_no_store_and_cpu_only(monkeypatch, state):
     assert state.process is None
 
 
+@pytest.mark.parametrize("chunk_size", [None, 8192])
+def test_studio_records_profile_and_only_overrides_resume_when_requested(
+    monkeypatch, state, tmp_path, chunk_size
+):
+    calls = []
+    monkeypatch.setattr(
+        studio.subprocess,
+        "Popen",
+        lambda command, **kwargs: (
+            calls.append(command) or SimpleNamespace(pid=1234, poll=lambda: 0)
+        ),
+    )
+    target = tmp_path / "profile-project"
+    state.action(
+        {
+            "action": "prepare",
+            "model": "M",
+            "data": "D",
+            "project": str(target),
+            "profile": "development",
+            **({"chunk_size": chunk_size} if chunk_size is not None else {}),
+        }
+    )
+    config_file = Path(calls[-1][calls[-1].index("--config") + 1])
+    config = json.loads(config_file.read_text())
+    assert (config["memory_gib"], config["decoded_cache_mib"]) == (80, 0)
+    assert config["chunk_size"] == (chunk_size or 512)
+    project(target)
+    manifest = json.loads((target / "project.json").read_text())
+    manifest["config"] = config
+    (target / "project.json").write_text(json.dumps(manifest))
+    state.action({"action": "train", "steps": 2})
+    assert "--profile" not in calls[-1]
+    state.action({"action": "train", "steps": 2, "resources": {}})
+    assert "--profile" not in calls[-1]
+    state.action({"action": "train", "steps": 2, "resources": {"decoded_cache_mib": 4096}})
+    assert calls[-1][calls[-1].index("--memory-gib") + 1] == "80.0"
+    state.action(
+        {
+            "action": "train",
+            "steps": 2,
+            "resources": {"profile": "development", "decoded_cache_mib": 4096},
+        }
+    )
+    assert calls[-1][calls[-1].index("--profile") + 1] == "development"
+    assert calls[-1][calls[-1].index("--decoded-cache-mib") + 1] == "4096"
+    assert all("--chunk-size" not in command for command in calls)
+    with pytest.raises(ValueError, match="Unknown resource"):
+        state.action({"action": "train", "steps": 2, "resources": {"chunk_size": 512}})
+
+
 def test_authorized_upload_stays_inside_studio_directory(monkeypatch, state):
     payload = b'{"prompt":"Q","completion":"A"}\n'
     status, _, body = request(
@@ -221,6 +272,7 @@ def test_browser_script_clears_old_project_results_and_survives_refresh():
     if node is None:
         pytest.skip("Node is needed for the CPU-only JavaScript state test")
     html = Path(studio.__file__).with_name("studio.html").read_text()
+    assert 'id="chunk_size" type="number" value="512" min="128" max="32768" step="128"' in html
     script = html.split("<script>", 1)[1].split("</script>", 1)[0]
     harness = r"""
 const vm = require('node:vm');
@@ -235,23 +287,47 @@ class Element {
   append(...children) { this.children.push(...children); }
 }
 function page(hash) {
-  const nodes=new Map(), calls=[];
+  const nodes=new Map(), calls=[], bodies=[];
   const get=id=>{if(!nodes.has(id))nodes.set(id,new Element());return nodes.get(id);};
-  let snapshot={running:false,project:'A',log:'A log',comparison:{adapter:'A-ADAPTER',status:'likelihood_improved',evaluation_scope:'held_out_test'}};
+  let snapshot={running:false,project:'A',log:'A log',config:{profile:'development',memory_gib:80,reserve_gib:32,packed_cache_mib:8192,decoded_cache_mib:32768,allocator_cache_mib:256,chunk_size:8192},comparison:{adapter:'A-ADAPTER',status:'likelihood_improved',evaluation_scope:'held_out_test'}};
   const context={
     location:{hash,pathname:'/'},history:{replaceState(){}},
     sessionStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},
     document:{getElementById:get,querySelectorAll:()=>[],createElement:()=>new Element()},
     setInterval(){},
-    fetch:async(path,options)=>{calls.push(options.headers);const value=snapshot;return {ok:true,json:async()=>value};}
+    fetch:async(path,options)=>{calls.push(options.headers);if(options.body)bodies.push(JSON.parse(options.body));const value=snapshot;return {ok:true,json:async()=>value};}
   };
   vm.createContext(context);vm.runInContext(script,context);
-  return {context,get,calls,set:value=>snapshot=value};
+  return {context,get,calls,bodies,set:value=>snapshot=value};
 }
 (async()=>{
   const first=page('#secret');await first.context.poll();
   assert.match(first.get('comparison').textContent,/A-ADAPTER/);
-  first.set({running:false,project:'B',log:''});await first.context.poll();
+  assert.equal(first.get('memory_gib').value,80);
+  assert.match(first.get('savedResources').textContent,/process 80 GiB/);
+  assert.match(first.get('savedResources').textContent,/Immutable decoder chunk: 8192/);
+  assert.equal(first.get('chunk_size').value,8192);
+  // An existing prototype's explicit 32 GiB setting remains visible; selecting
+  // the current profile chooses the measured decoded-off default.
+  assert.equal(first.get('decoded_cache_mib').value,32768);
+  first.get('profile').value='development';first.get('profile').onchange();
+  assert.equal(first.get('decoded_cache_mib').value,0);
+  first.get('chunk_size').value=4096;
+  first.get('decoded_cache_mib').value=4096;
+  await first.context.poll();
+  assert.equal(first.get('decoded_cache_mib').value,4096);
+  assert.equal(first.get('chunk_size').value,4096);
+  first.get('override_resources').checked=true;
+  first.get('steps').value=2;
+  await first.context.action('train');
+  assert.equal(Object.hasOwn(first.bodies.at(-1).resources,'chunk_size'),false);
+  assert.equal(Object.hasOwn(first.bodies.at(-1),'chunk_size'),false);
+  await first.context.action('prepare');
+  assert.equal(first.bodies.at(-1).chunk_size,4096);
+  first.set({running:false,project:'B',log:'',config:{memory_gib:16}});await first.context.poll();
+  assert.equal(first.get('memory_gib').value,16);
+  assert.equal(first.get('chunk_size').value,512);
+  assert.equal(first.get('override_resources').checked,false);
   assert.equal(first.get('projectName').textContent,'B');
   assert.equal(first.get('comparison').textContent,'No comparison yet.');
   assert.equal(first.get('log').textContent,'Job output appears here.');

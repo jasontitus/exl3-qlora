@@ -53,3 +53,32 @@ def test_system_reserve_is_monitored_after_startup(monkeypatch):
     )
     with pytest.raises(MemoryError, match="Could not measure"):
         guard.check_system_headroom()
+
+
+def test_development_budget_still_requires_budget_plus_system_reserve(monkeypatch):
+    from types import SimpleNamespace
+
+    import exl3_mlx.memory as memory
+
+    monkeypatch.setattr(memory.sys, "platform", "darwin")
+    guard = MemoryBudget(80, cache_mib=256, reserve_gib=32)
+    for available, passes in ((111, False), (112, True)):
+        text = (
+            "Mach Virtual Memory Statistics: (page size of 16384 bytes)\n"
+            f"Pages free: {available * 2**30 // 16384}.\nPages inactive: 0.\nPages speculative: 0.\n"
+        )
+        monkeypatch.setattr(memory.subprocess, "run", lambda *a, **kw: SimpleNamespace(stdout=text))
+        if passes:
+            guard.check_startup_headroom()
+        else:
+            with pytest.raises(MemoryError, match="budget plus reserve"):
+                guard.check_startup_headroom()
+
+
+@pytest.mark.parametrize(
+    "change",
+    [{"gib": 81}, {"gib": float("nan")}, {"reserve_gib": float("inf")}, {"cache_mib": True}],
+)
+def test_memory_budget_rejects_invalid_limits_without_allocator_calls(change):
+    with pytest.raises(ValueError):
+        MemoryBudget(**change)

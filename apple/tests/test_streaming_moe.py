@@ -125,7 +125,8 @@ def test_grouped_moe_matches_dense_dispatch_forward_and_vjp(tmp_path):
     np.testing.assert_allclose(np.array(da), np.array(de), atol=3e-6)
     assert 2 not in np.array(gate(x.reshape(-1, 128))[1])  # unused expert wasn't evaluated
     used = len(np.unique(np.array(gate(x.reshape(-1, 128))[1]))) + 1
-    assert store.stats.forward_calls == used * 3
+    # The bounded MoE backward recomputes one expert forward at a time.
+    assert store.stats.forward_calls == used * 6
     assert store.stats.backward_calls == used * 3
     assert store.stats.cached_bytes == 0
 

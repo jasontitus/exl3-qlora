@@ -18,13 +18,12 @@ from pathlib import Path
 
 import mlx.core as mx
 
+from .resources import validate_memory_budget
+
 
 class MemoryBudget:
     def __init__(self, gib=16.0, *, cache_mib=64, reserve_gib=32.0):
-        if not 1 <= gib <= 64 or not 0 <= cache_mib <= 1024 or reserve_gib < 0:
-            raise ValueError(
-                "Use 1..64 GiB process budget, 0..1024 MiB cache and nonnegative reserve"
-            )
+        validate_memory_budget(gib, cache_mib, reserve_gib)
         self.limit = int(gib * 2**30)
         self.cache_limit = int(cache_mib * 2**20)
         self.reserve = int(reserve_gib * 2**30)
