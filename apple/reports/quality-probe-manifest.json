@@ -1,0 +1,142 @@
+{
+  "format": "exl3-mlx-paired-probe-v1",
+  "scope": "small regression probe, not quality certification",
+  "created_utc": "2026-10-12T20:04:22.181941+00:00",
+  "dataset": {
+    "path": "/Users/jasontitus/experiments/exl3-qlora/apple/examples/quality-development-probes.jsonl",
+    "sha256": "98d10a190469e72112cac8ee66f5d955396b01f1aafd3450ec5e82c9c22c262d",
+    "cases": 4
+  },
+  "adapter": {
+    "path": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/behavior-demo-20261012-lowrate/step-000004",
+    "files_sha256": {
+      "adapter_config.json": "1fb8c692843b3570948fe930e525e9eaae15acf08c59970221ddbb087a16aebb",
+      "adapter.safetensors": "5fde7b9572cbd8aeb9b172278d40d9a69897caf1e4710f54ff19664135f3ceeb"
+    },
+    "settings": {
+      "rank": 4,
+      "alpha": 8,
+      "adapter_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "expert_adapter_layers": [
+        0
+      ]
+    }
+  },
+  "base": {
+    "path": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "metadata_sha256": {
+      "config.json": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d",
+      "expert-manifest-v2.json": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+      "engram/engram-manifest.json": "b6467b20fa72b0432dcbf966c2a054aa205004a1e687e44bfbdd1257ce8a52f3",
+      "engram-token-map.u32.json": "b3509de9fb07fc769429481e2a3868452c23818df4296be9627fd5568de46b73",
+      "model.safetensors.index.json": "c0ead8ce7960b2c715366373da35626f3ccaef1837094bf9215cded0bfefdabb",
+      "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b"
+    },
+    "hash_scope": "metadata only; does not hash all base weight bytes"
+  },
+  "tokenizer_sha256": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "runtime": {
+    "python": "3.12.13 (main, Jul 18 2026, 16:55:18) [Clang 22.1.3 ]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "chip": "Apple M1 Ultra",
+    "dependencies": {
+      "mlx": "0.32.3",
+      "mlx-lm": "0.32.0",
+      "numpy": "2.5.4",
+      "transformers": "5.19.0",
+      "tokenizers": "0.23.3",
+      "safetensors": "0.8.0"
+    },
+    "code": {
+      "package_root": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx",
+      "script_sha256": "7178f723420993b5ceab28d6fbfd3594916388fbcf1d73191e2054372e0dd4a1",
+      "git_commit": "c6f1ca3d86420a329502d37a2a2235ece50cbbcf",
+      "git_dirty_diff_sha256": "19a9cac12eef8b41cbe91504ad46bfaba4443548573f3871b155a78e7374fe3a",
+      "git_status": "M apple/scripts/verify_workflow.py\n M apple/src/exl3_mlx/train.py\n M apple/src/exl3_mlx/workflow.py\n M apple/tests/test_training_io.py\n?? apple/examples/quality-development-probes.jsonl\n?? apple/reports/quality-pytest.xml\n?? apple/scripts/adapter_family_ablation.py\n?? apple/scripts/quality_probe.py\n?? apple/scripts/verify_behavior.py\n?? apple/tests/test_quality_probe.py\n?? apple/tests/test_verification_provenance.py",
+      "dependency_lock_sha256": "40a2c42b352bac86b8b24566543b2a0e76c418047a05d4e4d326c55ae89461ee",
+      "source_files_sha256": {
+        "__init__.py": "45cbb3dfeef2a0bb5020d09b8d8b9cbf4923f3f1bc5760e16e2f622703c39067",
+        "attention.py": "4d648d91cdcb70ebdb8418316992747b3dc09066d993bb2c90095cc0733bc9f6",
+        "checkpoint.py": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d",
+        "cli.py": "817b7f80a583e978a7c4e2119f7a52fb7a71575adf22171f55f6756aa54874d4",
+        "data.py": "50fc4b906a18384d6af9ebb0a37743042fdcf2ffc356f3c883c338d2960c94cf",
+        "deepseek.py": "f934554027c91966de88a384300863f5069406a21a66dd71f9fbd3bd5fa8f146",
+        "engram.py": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+        "hyperconnections.py": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+        "linear.py": "6a787172aa6e5f2bc76561e4da83fa7b1c320d8e05170738266765cb1e6abbd5",
+        "materialize.py": "8dbe3bb9500edc74c679c936aef8dba50d48483154c09b1383188b5171ec4be9",
+        "memory.py": "0e393aa5018fee84394d16bc0a7dd5a57b12d4f7ea3f30598dd3f257ed7d6cfc",
+        "moe.py": "49dfddcdb1b88c15f0b1f4d7473af92f3fd7e55f38720cb5409c2480481eb98a",
+        "native.py": "dc470bc7925db2f74d00a5cd68a9e916e66987d8afc749a23daae7a7e9a67e5d",
+        "recompute.py": "fa90444a8540935fd3c272fdf73d9be2f62d3e32db65d13f60fe0b72dc8188c3",
+        "reference.py": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595",
+        "remote.py": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c",
+        "storage.py": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+        "streaming.py": "58d82f7f9925ef3ac4b583d85dd192dc3ff09a9107e089e3e725030c67f28c27",
+        "train.py": "1bdcbae0920c9a3ef3173e9c69ee1f66e6ea9686d2fc65ea84fb9a1b0f9f39c4",
+        "training.py": "b59586e838c6bf926fad6973ec670609131bd4e2076e0e387e07288346e83056",
+        "trellis.py": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d",
+        "validation.py": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9",
+        "workflow.py": "961e4daee8b0ad11ff5acd29b6a9ff58cb81f7f8759285ff1980c3abfec6a01b",
+        "decode.metal": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282"
+      }
+    }
+  },
+  "settings": {
+    "memory_gib": 16,
+    "reserve_gib": 32,
+    "allocator_cache_mib": 64,
+    "cache_mib": 128,
+    "chunk_size": 512,
+    "seed": 8
+  },
+  "objective": "masked final assistant answer including EOS; no training",
+  "decoding": "existing workflow.generate: greedy, chat template, full-prefix recomputation",
+  "selection": "fixed development/regression fixtures; no checkpoint selection within this run"
+}

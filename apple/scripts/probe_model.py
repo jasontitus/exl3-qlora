@@ -11,10 +11,11 @@ from pathlib import Path
 
 import mlx.core as mx
 import mlx.nn as nn
-from exl3_mlx.deepseek import DeepSeekTextModel
-from exl3_mlx.memory import MemoryBudget
 from mlx.utils import tree_flatten
 from tokenizers import Tokenizer
+
+from exl3_mlx.deepseek import DeepSeekTextModel
+from exl3_mlx.memory import MemoryBudget
 
 
 def main():

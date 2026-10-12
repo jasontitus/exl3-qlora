@@ -3,6 +3,7 @@ import math
 import mlx.core as mx
 import numpy as np
 import pytest
+
 from exl3_mlx.attention import latent_attention, quantize_activation, rope, round_e4m3
 
 

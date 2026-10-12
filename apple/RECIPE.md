@@ -19,7 +19,7 @@ full-model updates, exact adapter/Adam continuation versus an uninterrupted run,
 exact adapter prediction reload, evaluation and one-token generation. Peak MLX
 allocation was **8.78 GiB** for four target tokens at rank 2, with attention adapters
 in all layers and EXL3 expert adapters in layer 0. These tests kept the process
-budget at 12 GiB and the system reserve at 32 GiB. The unit suite passes 111 tests.
+budget at 12 GiB and the system reserve at 32 GiB. The unit suite now passes 142 tests and 27 subtests.
 
 ## 1. Install and inspect
 
@@ -65,6 +65,40 @@ To train adapters directly on the EXL3 expert projections too, add
 projections in that layer; only selected routes receive nonzero gradients.
 Use `--adapter-layers 0 1` to restrict attention adapters, or an empty
 `--adapter-layers` with nonempty expert layers for expert-only adapters.
+
+## Demonstrate a deliberate answer change
+
+The recorded codeword run teaches `Code?` and `Code:` to produce `violet` plus EOS.
+The selected adapter inherits one update at 0.003, then four at 0.0001 with a fresh
+Adam optimizer. An eight-update high-rate trial was unstable and is retained as
+failed evidence. The low-rate run changed generation, reduced `Code?` answer NLL
+from 10.0753 to 0.05798, and passed exact adapter-off/reload and fresh-CLI checks.
+See [the report](reports/behavior-lowrate-passed.json) and [quality gates](QUALITY.md).
+
+To construct the same two-stage setup using new output directories:
+
+```bash
+uv run exl3-mlx train \
+  --model "$EXL3_MODEL" --data examples/codeword-train.jsonl \
+  --output artifacts/codeword-initial --steps 1 --seq-length 16 \
+  --rank 4 --alpha 8 --expert-adapter-layers 0 --seed 8 \
+  --learning-rate 0.003 --save-every 1
+uv run python scripts/verify_behavior.py \
+  --model "$EXL3_MODEL" --output artifacts/codeword-behavior \
+  --resume-adapter artifacts/codeword-initial/step-000001 \
+  --learning-rate 0.0001 --max-steps 16
+```
+
+The verifier records fresh base outputs, trains only the two fixed prompts, checks
+for the exact target and EOS after every even step from four onward, then checks
+ablation and reload. It returns a nonzero exit if the causal checks fail. The
+optional `--baseline-report` reuses a completed earlier demo and records its hash;
+its adapter-off check revalidates the trained-prompt baseline. Prefer fresh base
+measurements when code, model, template or environment changes.
+
+This tiny dataset is intentionally a fitting demonstration. Run the paired
+contrastive probes in [QUALITY.md](QUALITY.md) to detect unwanted answer collapse;
+use a real task and independent test split before claiming useful quality.
 
 ## 3. Prepare your data
 

@@ -11,6 +11,16 @@ The tool reuses MLX-LM's data processors, loss and LoRA forward; see
 
 ## Verified status
 
+A controlled language-model fine-tune now changes `Code?` from the four-token
+base prefix `I'd be happy` to **`violet` plus EOS**. The successful adapter uses
+one initial update plus four lower-rate updates, with exact adapter-off/reload
+checks and fresh-process public-CLI confirmation. It peaks at 9.16 GiB MLX /
+10.61 GiB observed process memory. An earlier high-rate trial failed and is
+preserved. This demonstrates causal fitting, not broad task quality. See the
+[quality gates and adversarial reviews](QUALITY.md),
+[successful run](reports/behavior-lowrate-passed.json) and
+[failed trial](reports/behavior-highrate-failed.json).
+
 A real 40-layer model completed an Adam update with **18,681,856 trainable adapter
 parameters**, including attention adapters in all layers and EXL3 expert adapters
 in layer 0. Gradients and saved adapters were finite; 60 expert B tensors changed.
@@ -28,7 +38,7 @@ not a throughput, quality or larger-context memory benchmark. Reports:
 also verified **bit-exact adapter and Adam state versus uninterrupted training**,
 base/adapter evaluation, and greedy generation. The four-token training fixture
 loss fell from 5.074 to 4.983 after two updates; this is not held-out quality.
-The small test suite passes **111 tests**.
+The test suite now passes **142 tests and 27 subtests**.
 
 **Supported full-model checkpoint:** the local **3.0-bpw mtplx streaming repack**,
 with native MXFP8/BF16 trunk and Engram banks. The requested

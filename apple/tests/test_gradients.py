@@ -3,9 +3,10 @@ import mlx.nn as nn
 import mlx.optimizers as optim
 import numpy as np
 import pytest
+from mlx.utils import tree_flatten
+
 from exl3_mlx import EXL3Linear, EXL3QLoRALinear
 from exl3_mlx.reference import effective, random_packed
-from mlx.utils import tree_flatten
 
 
 def fixture(k=128, n=384, rate=3, codebook="mul1", chunk_size=128):

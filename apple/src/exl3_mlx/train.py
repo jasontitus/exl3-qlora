@@ -54,6 +54,41 @@ def checkpoint_identity(root):
     return {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in names}
 
 
+def _file_sha256(path):
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as source:
+        for block in iter(lambda: source.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def _verify_adapter_integrity(directory, config):
+    """Verify available receipts before replacing any destination parameters."""
+    expected = []
+    if "adapter_sha256" in config:
+        expected.append(config["adapter_sha256"])
+    state_path = directory / "trainer_state.json"
+    if state_path.exists():
+        state = json.loads(state_path.read_text())
+        if not isinstance(state, dict) or state.get("format") != "exl3-mlx-training-state-v1":
+            raise ValueError("Unsupported training checkpoint integrity receipt")
+        files = state.get("files")
+        required = ("adapter.safetensors", "adapter_config.json")
+        if not isinstance(files, dict) or any(not isinstance(files.get(n), str) for n in required):
+            raise ValueError("Training checkpoint is missing adapter checksums")
+        if _file_sha256(directory / "adapter_config.json") != files["adapter_config.json"]:
+            raise ValueError("Adapter configuration checksum mismatch")
+        expected.append(files["adapter.safetensors"])
+    if not expected:
+        raise ValueError(
+            "Adapter has no saved checksum; recover a trusted training checkpoint "
+            "or explicitly re-save verified weights"
+        )
+    actual = _file_sha256(directory / "adapter.safetensors")
+    if any(value != actual for value in expected):
+        raise ValueError("Adapter weight checksum mismatch")
+
+
 def save_adapter(model, directory, extra):
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
@@ -61,6 +96,7 @@ def save_adapter(model, directory, extra):
     mx.save_safetensors(str(directory / "adapter.safetensors"), weights)
     config = {
         "format": "exl3-mlx-deepseek-short-text-v1",
+        "adapter_sha256": _file_sha256(directory / "adapter.safetensors"),
         **model.adapter_config,
         "base_identity": checkpoint_identity(model._root),
         "max_seq_length": 512,
@@ -76,11 +112,19 @@ def save_adapter(model, directory, extra):
         raise AssertionError("Adapter serialization mismatch")
 
 
-def load_adapter(model, directory):
-    directory = Path(directory)
-    c = json.loads((directory / "adapter_config.json").read_text())
-    if c["format"] != "exl3-mlx-deepseek-short-text-v1":
+def load_adapter_config(directory):
+    """Read verified settings before model allocation or parameter mutation."""
+    directory = Path(directory).expanduser()
+    config = json.loads((directory / "adapter_config.json").read_text())
+    if not isinstance(config, dict) or config.get("format") != "exl3-mlx-deepseek-short-text-v1":
         raise ValueError("Unsupported adapter format")
+    _verify_adapter_integrity(directory, config)
+    return config
+
+
+def load_adapter(model, directory):
+    directory = Path(directory).expanduser()
+    c = load_adapter_config(directory)
     if c["base_identity"] != checkpoint_identity(model._root):
         raise ValueError("Adapter checkpoint identity mismatch")
     if any(c[k] != v for k, v in model.adapter_config.items()):
@@ -91,6 +135,8 @@ def load_adapter(model, directory):
         v.shape != expected[k].shape or v.dtype != expected[k].dtype for k, v in weights.items()
     ):
         raise ValueError("Adapter tensor keys, shapes or dtypes differ")
+    if any(not mx.all(mx.isfinite(value)).item() for value in weights.values()):
+        raise ValueError("Adapter contains nonfinite weights")
     model.load_weights(list(weights.items()), strict=False)
     mx.eval(model.trainable_parameters())
 

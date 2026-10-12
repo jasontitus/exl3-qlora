@@ -1,0 +1,192 @@
+[
+  {
+    "case_id": "transfer_codeword_01",
+    "source_family": "codeword_transfer",
+    "category": "development_transfer",
+    "prompt": "What's the codeword?",
+    "expected": "violet",
+    "max_new_tokens": 4,
+    "example": {
+      "input_ids": [
+        0,
+        128803,
+        3085,
+        734,
+        270,
+        22838,
+        958,
+        763,
+        33,
+        128804,
+        128822,
+        88,
+        27724,
+        1
+      ],
+      "loss_start": 11
+    },
+    "prompt_ids": [
+      0,
+      128803,
+      3085,
+      734,
+      270,
+      22838,
+      958,
+      763,
+      33,
+      128804,
+      128822
+    ],
+    "target_ids": [
+      88,
+      27724,
+      1
+    ],
+    "eos_token_id": 1
+  },
+  {
+    "case_id": "control_arithmetic_01",
+    "source_family": "arithmetic",
+    "category": "unrelated_control",
+    "prompt": "Answer with one digit only: 2 + 2.",
+    "expected": "4",
+    "max_new_tokens": 4,
+    "example": {
+      "input_ids": [
+        0,
+        128803,
+        7805,
+        418,
+        834,
+        11424,
+        1353,
+        28,
+        223,
+        20,
+        940,
+        223,
+        20,
+        16,
+        128804,
+        128822,
+        22,
+        1
+      ],
+      "loss_start": 16
+    },
+    "prompt_ids": [
+      0,
+      128803,
+      7805,
+      418,
+      834,
+      11424,
+      1353,
+      28,
+      223,
+      20,
+      940,
+      223,
+      20,
+      16,
+      128804,
+      128822
+    ],
+    "target_ids": [
+      22,
+      1
+    ],
+    "eos_token_id": 1
+  },
+  {
+    "case_id": "control_copy_01",
+    "source_family": "literal_copy",
+    "category": "unrelated_control",
+    "prompt": "Repeat only: blue",
+    "expected": "blue",
+    "max_new_tokens": 4,
+    "example": {
+      "input_ids": [
+        0,
+        128803,
+        94973,
+        1353,
+        28,
+        8295,
+        128804,
+        128822,
+        27602,
+        1
+      ],
+      "loss_start": 8
+    },
+    "prompt_ids": [
+      0,
+      128803,
+      94973,
+      1353,
+      28,
+      8295,
+      128804,
+      128822
+    ],
+    "target_ids": [
+      27602,
+      1
+    ],
+    "eos_token_id": 1
+  },
+  {
+    "case_id": "control_override_01",
+    "source_family": "codeword_override",
+    "category": "explicit_alternative_instruction",
+    "prompt": "The codeword is amber. Reply only amber.",
+    "expected": "amber",
+    "max_new_tokens": 4,
+    "example": {
+      "input_ids": [
+        0,
+        128803,
+        671,
+        22838,
+        958,
+        763,
+        344,
+        101853,
+        16,
+        19414,
+        1353,
+        101853,
+        16,
+        128804,
+        128822,
+        13749,
+        1
+      ],
+      "loss_start": 15
+    },
+    "prompt_ids": [
+      0,
+      128803,
+      671,
+      22838,
+      958,
+      763,
+      344,
+      101853,
+      16,
+      19414,
+      1353,
+      101853,
+      16,
+      128804,
+      128822
+    ],
+    "target_ids": [
+      13749,
+      1
+    ],
+    "eos_token_id": 1
+  }
+]

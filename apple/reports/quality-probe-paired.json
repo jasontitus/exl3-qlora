@@ -1,0 +1,124 @@
+{
+  "scope": "small regression probe, not quality certification",
+  "pairs": [
+    {
+      "case_id": "transfer_codeword_01",
+      "category": "development_transfer",
+      "source_family": "codeword_transfer",
+      "expected": "violet",
+      "base_pass": false,
+      "adapter_pass": false,
+      "base_pass_adapter_fail": false,
+      "base_fail_adapter_pass": false,
+      "base_text": "I don't have",
+      "adapter_text": "I don't have",
+      "base_truncated": true,
+      "adapter_truncated": true,
+      "output_changed": false,
+      "nll_delta_adapter_minus_base": -5.969735145568848,
+      "unexpected_violet": false
+    },
+    {
+      "case_id": "control_arithmetic_01",
+      "category": "unrelated_control",
+      "source_family": "arithmetic",
+      "expected": "4",
+      "base_pass": true,
+      "adapter_pass": true,
+      "base_pass_adapter_fail": false,
+      "base_fail_adapter_pass": false,
+      "base_text": "4",
+      "adapter_text": "4",
+      "base_truncated": false,
+      "adapter_truncated": false,
+      "output_changed": false,
+      "nll_delta_adapter_minus_base": 0.0010160777164855972,
+      "unexpected_violet": false
+    },
+    {
+      "case_id": "control_copy_01",
+      "category": "unrelated_control",
+      "source_family": "literal_copy",
+      "expected": "blue",
+      "base_pass": true,
+      "adapter_pass": true,
+      "base_pass_adapter_fail": false,
+      "base_fail_adapter_pass": false,
+      "base_text": "blue",
+      "adapter_text": "blue",
+      "base_truncated": false,
+      "adapter_truncated": false,
+      "output_changed": false,
+      "nll_delta_adapter_minus_base": 0.00015309999025703291,
+      "unexpected_violet": false
+    },
+    {
+      "case_id": "control_override_01",
+      "category": "explicit_alternative_instruction",
+      "source_family": "codeword_override",
+      "expected": "amber",
+      "base_pass": true,
+      "adapter_pass": true,
+      "base_pass_adapter_fail": false,
+      "base_fail_adapter_pass": false,
+      "base_text": "amber",
+      "adapter_text": "amber",
+      "base_truncated": false,
+      "adapter_truncated": false,
+      "output_changed": false,
+      "nll_delta_adapter_minus_base": 4.398626833790331e-05,
+      "unexpected_violet": false
+    }
+  ],
+  "totals": {
+    "base": {
+      "cases": 4,
+      "exact_text_matches": 3,
+      "exact_answers_with_eos": 3,
+      "truncated_answers": 1,
+      "supervised_tokens": 9,
+      "token_weighted_nll": 2.3661825605852047
+    },
+    "adapter": {
+      "cases": 4,
+      "exact_text_matches": 3,
+      "exact_answers_with_eos": 3,
+      "truncated_answers": 1,
+      "supervised_tokens": 9,
+      "token_weighted_nll": 0.3765404373900512
+    }
+  },
+  "regressions": 0,
+  "improvements": 0,
+  "confidence_claim": "none; descriptive counts on this fixed development probe only",
+  "quality_certified": false,
+  "status": "completed",
+  "elapsed_seconds": 678.4027736660792,
+  "peak_mlx_gib": 8.518404860049486,
+  "observed_memory_gib": 10.138046264648438,
+  "model": {
+    "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "expert_source": {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+      "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+      "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+    },
+    "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+    "streaming": {
+      "loads": 130731,
+      "hits": 0,
+      "evictions": 130701,
+      "loaded_bytes": 580253203968,
+      "cached_bytes": 133155840,
+      "peak_cached_bytes": 133155840,
+      "forward_calls": 130731,
+      "backward_calls": 0
+    },
+    "engram_bytes_read": 4663296,
+    "trainable_parameters": 37363712,
+    "peak_mlx_gib": 8.518404860049486,
+    "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+    "context_limit": 512,
+    "block_recomputation": true
+  }
+}

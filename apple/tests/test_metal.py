@@ -1,6 +1,7 @@
 import mlx.core as mx
 import numpy as np
 import pytest
+
 from exl3_mlx.reference import decode, random_packed, rotated
 from exl3_mlx.trellis import CODEBOOKS, HEADER, reconstruct
 

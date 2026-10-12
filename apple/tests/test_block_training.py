@@ -1,6 +1,8 @@
 import mlx.core as mx
 import mlx.nn as nn
 import numpy as np
+from test_streaming_moe import make_checkpoint, make_expert
+
 from exl3_mlx.attention import ShortAttention
 from exl3_mlx.deepseek import TrainingBlock
 from exl3_mlx.hyperconnections import HyperConnection, expand_streams
@@ -8,7 +10,6 @@ from exl3_mlx.moe import DeepSeekGate, DeepSeekMoE
 from exl3_mlx.native import LoRALinear
 from exl3_mlx.recompute import recompute
 from exl3_mlx.streaming import MatrixStore
-from test_streaming_moe import make_checkpoint, make_expert
 
 
 class Dense(nn.Module):

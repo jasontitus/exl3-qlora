@@ -1,0 +1,125 @@
+{
+  "format": "exl3-mlx-quality-status-v1",
+  "created_utc": "2026-10-12T20:21:34.554488+00:00",
+  "scope": "Experimental short-context DeepSeek V4.1 3.0-bpw streaming repack; fixed fitting and regression probes only.",
+  "quality_certified": false,
+  "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "selected_adapter": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/behavior-demo-20261012-lowrate/step-000004",
+  "adapter_sha256": "5fde7b9572cbd8aeb9b172278d40d9a69897caf1e4710f54ff19664135f3ceeb",
+  "selected_adapter_updates": {
+    "inherited_updates": 1,
+    "inherited_learning_rate": 0.003,
+    "new_updates": 4,
+    "new_learning_rate": 0.0001,
+    "optimizer_restarted_for_continuation": true
+  },
+  "gates": {
+    "component_numerics": {
+      "status": "passed_with_limited_scope",
+      "evidence": [
+        "quality-pytest.xml",
+        "../tests/test_engram.py"
+      ],
+      "detail": "142 tests plus 27 subtests pass, including EXL3/component gradient checks and an independent smooth FP32 Engram forward/VJP fixture. This is not full-model parity or complete mixed-precision coverage."
+    },
+    "independent_full_model_parity": {
+      "status": "not_run",
+      "detail": "Requires identical packed weights and input IDs through a separate implementation with real expert providers, stage outputs, route checks and predeclared tolerances."
+    },
+    "causal_fitting": {
+      "status": "passed",
+      "evidence": [
+        "behavior-lowrate-passed.json",
+        "behavior-fresh-cli.json"
+      ],
+      "prompt": "Code?",
+      "base_text": "I'd be happy",
+      "base_stop_reason": "max_tokens",
+      "adapter_text": "violet",
+      "adapter_stop_reason": "eos",
+      "max_new_tokens": 4,
+      "base_answer_nll": 10.075325012207031,
+      "adapter_answer_nll": 0.05797773599624634,
+      "peak_mlx_gib": 9.159388842,
+      "observed_memory_gib": 10.608383179,
+      "detail": "Five retained updates total; controlled fitting, not a representative quality score."
+    },
+    "reload_and_adapter_off": {
+      "status": "passed",
+      "evidence": [
+        "behavior-lowrate-passed.json",
+        "behavior-fresh-cli.json",
+        "behavior-family-ablation.json"
+      ],
+      "detail": "Exact baseline restoration and adapter reload within this implementation, plus target and EOS from a fresh public CLI process."
+    },
+    "family_influence": {
+      "status": "observed",
+      "evidence": [
+        "behavior-family-ablation.json"
+      ],
+      "attention_affects_logits": true,
+      "expert_affects_logits": true,
+      "detail": "Attention-only retains correct teacher-forced argmaxes; expert-only does not. Expert inclusion slightly increases NLL on this prompt. Influence is not necessarily beneficial or additive."
+    },
+    "development_transfer": {
+      "status": "mixed",
+      "evidence": [
+        "behavior-lowrate-passed.json",
+        "quality-probe-paired.json"
+      ],
+      "detail": "Code please? produces violet plus EOS. The broader What's the codeword? prompt fails in both conditions under the four-token cap; adapter target NLL improves without a generated-answer improvement. These are development probes."
+    },
+    "control_retention": {
+      "status": "passed_smoke_only",
+      "evidence": [
+        "quality-probe-paired.json",
+        "quality-probe-results.jsonl"
+      ],
+      "controls": 3,
+      "base_passes": 3,
+      "adapter_passes": 3,
+      "regressions": 0,
+      "detail": "Arithmetic, literal copy and explicit alternate instruction retained. No statistical non-regression claim."
+    },
+    "representative_task_quality": {
+      "status": "insufficient_evidence",
+      "detail": "Requires a source-family-disjoint final test, predeclared scoring and paired uncertainty estimates plus regression controls."
+    },
+    "adapter_and_reuse_integrity": {
+      "status": "tests_passed",
+      "evidence": [
+        "quality-pytest.xml",
+        "../tests/test_training_io.py",
+        "../tests/test_verification_provenance.py"
+      ],
+      "detail": "Checksum/nonfinite rejection and source/runtime/evidence-bound report reuse. Checksums do not authenticate the publisher."
+    },
+    "full_base_payload_integrity": {
+      "status": "not_verified",
+      "detail": "Base identity binds metadata, not every expert/trunk/Engram byte. Frozen object identities are not a full content audit."
+    },
+    "long_context_endurance": {
+      "status": "not_run",
+      "detail": "Measured memory applies to short probes only. Increasing-context and extended-run validation remain open."
+    }
+  },
+  "failed_experiment_retained": {
+    "evidence": "behavior-highrate-failed.json",
+    "learning_rate": 0.003,
+    "updates": 8,
+    "generation": "vvvv",
+    "detail": "Did not learn intended answer; retained rather than excluded from the record."
+  },
+  "evidence_sha256": {
+    "behavior-family-ablation.json": "aeadc62afa0e5ad321d7922830d4558d90dbe07993cdf70db70d4bc5a3840265",
+    "behavior-fresh-cli.json": "b5992cd486978d38e70dfebf27b775ecd2823c7ec6ce1f19bbd33db1b0b2027e",
+    "behavior-highrate-failed.json": "11aa454159edfbd23223902e4453c0b35c67d6d434bafa7ebc9f258b3593ccd9",
+    "behavior-lowrate-passed.json": "6c5b447e83ae0373854cc1280f5138e6e11088562b53053d8c035c793198fabd",
+    "quality-probe-manifest.json": "6a5231b4a8e7f95cad2df95d36b91af4429afbe73c4bed1ee1d90ab574df9aee",
+    "quality-probe-paired.json": "36cea510c59f5029af76b2e05b70c0f4f61fd17ec171dd12f9d622b0fe2c42cb",
+    "quality-probe-results.jsonl": "2bed66cc6250dbb8695ef37309342215ace977ba4a60b94168f2bcbaa0521fb8",
+    "quality-probe-tokenized-cases.json": "e603a6095bc8ddd14c6ad3a69bb7de32a86031a9643fcc45727af2cf1f399396",
+    "quality-pytest.xml": "0dff602bf6da21fdefa1662a9a42611fe4ab2fe8c14ee3e6c1301f9703df1de7"
+  }
+}

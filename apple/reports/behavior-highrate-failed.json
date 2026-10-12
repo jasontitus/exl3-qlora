@@ -1,0 +1,478 @@
+{
+  "status": "needs-investigation",
+  "scope": "Controlled codeword fitting; not a general quality claim",
+  "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "target": "violet",
+  "train_prompts": [
+    "Code?",
+    "Code:"
+  ],
+  "held_out_prompt": "Code please?",
+  "history": [
+    {
+      "loss": 9.681822776794434,
+      "gradient_norm": 2.925577402114868,
+      "supervised_tokens": 3,
+      "microbatches": 1,
+      "step": 1,
+      "prompt": "Code:",
+      "elapsed_seconds": 270.8868959998945,
+      "peak_mlx_gib": 8.986271850764751
+    },
+    {
+      "loss": 6.049341678619385,
+      "gradient_norm": 25.78142547607422,
+      "supervised_tokens": 3,
+      "microbatches": 1,
+      "step": 2,
+      "prompt": "Code?",
+      "elapsed_seconds": 349.45256745791994,
+      "peak_mlx_gib": 9.15811382420361
+    },
+    {
+      "loss": 9.20855712890625,
+      "gradient_norm": 50.177207946777344,
+      "supervised_tokens": 3,
+      "microbatches": 1,
+      "step": 3,
+      "prompt": "Code?",
+      "elapsed_seconds": 420.2367142919684,
+      "peak_mlx_gib": 9.15811382420361
+    },
+    {
+      "loss": 14.947734832763672,
+      "gradient_norm": 62.837711334228516,
+      "supervised_tokens": 3,
+      "microbatches": 1,
+      "step": 4,
+      "prompt": "Code:",
+      "elapsed_seconds": 466.3885638329666,
+      "peak_mlx_gib": 9.15811382420361,
+      "probe_after_update": {
+        "loss": 8.263406753540039,
+        "supervised_tokens": 3,
+        "first_target_probability": 0.07029858976602554,
+        "predicted_target_ids": [
+          88,
+          88,
+          88
+        ],
+        "expected_target_ids": [
+          88,
+          27724,
+          1
+        ],
+        "all_target_top1_correct": false,
+        "logits_sha256": "8e2881cb91057727412173400b468268bbc20bd5a5b3f9597ec598676c345cb0"
+      }
+    },
+    {
+      "loss": 8.43542766571045,
+      "gradient_norm": 13.25948429107666,
+      "supervised_tokens": 3,
+      "microbatches": 1,
+      "step": 5,
+      "prompt": "Code:",
+      "elapsed_seconds": 543.2647627498955,
+      "peak_mlx_gib": 9.15811382420361
+    },
+    {
+      "loss": 10.343182563781738,
+      "gradient_norm": 39.04704284667969,
+      "supervised_tokens": 3,
+      "microbatches": 1,
+      "step": 6,
+      "prompt": "Code?",
+      "elapsed_seconds": 580.3200418329798,
+      "peak_mlx_gib": 9.15811382420361,
+      "probe_after_update": {
+        "loss": 29.66672706604004,
+        "supervised_tokens": 3,
+        "first_target_probability": 5.829126530443318e-05,
+        "predicted_target_ids": [
+          1,
+          1,
+          1
+        ],
+        "expected_target_ids": [
+          88,
+          27724,
+          1
+        ],
+        "all_target_top1_correct": false,
+        "logits_sha256": "c4f5c7a7e89a0b3b1b9b027dbacecd0f3bed361258bcabd6751d73470fc3fea7"
+      }
+    },
+    {
+      "loss": 29.66672706604004,
+      "gradient_norm": 43.81114959716797,
+      "supervised_tokens": 3,
+      "microbatches": 1,
+      "step": 7,
+      "prompt": "Code?",
+      "elapsed_seconds": 626.9419372079428,
+      "peak_mlx_gib": 9.15811382420361
+    },
+    {
+      "loss": 29.8125,
+      "gradient_norm": 23.29241371154785,
+      "supervised_tokens": 3,
+      "microbatches": 1,
+      "step": 8,
+      "prompt": "Code:",
+      "elapsed_seconds": 664.1481374169234,
+      "peak_mlx_gib": 9.15811382420361,
+      "probe_after_update": {
+        "loss": 11.542381286621094,
+        "supervised_tokens": 3,
+        "first_target_probability": 0.9992852807044983,
+        "predicted_target_ids": [
+          88,
+          88,
+          88
+        ],
+        "expected_target_ids": [
+          88,
+          27724,
+          1
+        ],
+        "all_target_top1_correct": false,
+        "logits_sha256": "d3aaacb9831aee739692c870315c6f1ae64a2d2e8dac7d9fc01b01b062932a15"
+      }
+    }
+  ],
+  "settings": {
+    "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "output": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/behavior-demo-20261012",
+    "max_steps": 8,
+    "learning_rate": 0.003,
+    "memory_gib": 16.0
+  },
+  "tokenization": [
+    {
+      "prompt": "Code?",
+      "input_ids": [
+        0,
+        128803,
+        9945,
+        33,
+        128804,
+        128822,
+        88,
+        27724,
+        1
+      ],
+      "loss_start": 6
+    },
+    {
+      "prompt": "Code:",
+      "input_ids": [
+        0,
+        128803,
+        9945,
+        28,
+        128804,
+        128822,
+        88,
+        27724,
+        1
+      ],
+      "loss_start": 6
+    },
+    {
+      "prompt": "Code please?",
+      "input_ids": [
+        0,
+        128803,
+        9945,
+        8033,
+        33,
+        128804,
+        128822,
+        88,
+        27724,
+        1
+      ],
+      "loss_start": 7
+    }
+  ],
+  "contract": {
+    "learning_rate": 0.003,
+    "grad_accumulation": 1,
+    "clip_grad": 1.0,
+    "seed": 8,
+    "seq_length": 16,
+    "truncate": false,
+    "chunk_size": 512,
+    "no_checkpoint": false,
+    "data_sha256": "8db0babca3e5ba5ebbaf2bf5e53cea47614e4837f7fdb98b24a6fdc06c8844e6",
+    "mlx": "0.32.3",
+    "mlx_lm": "0.32.0"
+  },
+  "phase": "complete",
+  "initial_model": {
+    "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "expert_source": {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+      "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+      "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+    },
+    "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+    "streaming": {
+      "loads": 0,
+      "hits": 0,
+      "evictions": 0,
+      "loaded_bytes": 0,
+      "cached_bytes": 0,
+      "peak_cached_bytes": 0,
+      "forward_calls": 0,
+      "backward_calls": 0
+    },
+    "engram_bytes_read": 0,
+    "trainable_parameters": 37363712,
+    "peak_mlx_gib": 8.2412803247571,
+    "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+    "context_limit": 512,
+    "block_recomputation": true
+  },
+  "before": {
+    "trained_prompt": {
+      "metrics": {
+        "loss": 10.075325012207031,
+        "supervised_tokens": 3,
+        "first_target_probability": 9.717970872458181e-10,
+        "predicted_target_ids": [
+          43,
+          1173,
+          4541
+        ],
+        "expected_target_ids": [
+          88,
+          27724,
+          1
+        ],
+        "all_target_top1_correct": false,
+        "logits_sha256": "e661405fb15eb716ea5c75734a161305ef36d0e8775bce32eb017432aae58d67"
+      },
+      "generation": {
+        "text": "I'd be happy",
+        "generated_ids": [
+          43,
+          7485,
+          366,
+          8846
+        ],
+        "prompt_ids": [
+          0,
+          128803,
+          9945,
+          33,
+          128804,
+          128822
+        ],
+        "max_new_tokens": 4,
+        "ended_with_eos": false,
+        "decoding": "greedy; no sampling",
+        "template": "checkpoint local chat template"
+      }
+    },
+    "held_out_prompt": {
+      "metrics": {
+        "loss": 9.973077774047852,
+        "supervised_tokens": 3,
+        "first_target_probability": 1.397793825130833e-10,
+        "predicted_target_ids": [
+          43,
+          1173,
+          4541
+        ],
+        "expected_target_ids": [
+          88,
+          27724,
+          1
+        ],
+        "all_target_top1_correct": false,
+        "logits_sha256": "ba13ade854cbe7e5b7e7e8c3a84befec700bf97bcf89aa9f9dd173488c011f4d"
+      },
+      "generation": {
+        "text": "I'd be happy",
+        "generated_ids": [
+          43,
+          7485,
+          366,
+          8846
+        ],
+        "prompt_ids": [
+          0,
+          128803,
+          9945,
+          8033,
+          33,
+          128804,
+          128822
+        ],
+        "max_new_tokens": 4,
+        "ended_with_eos": false,
+        "decoding": "greedy; no sampling",
+        "template": "checkpoint local chat template"
+      }
+    }
+  },
+  "checkpoint": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/behavior-demo-20261012/step-000008",
+  "after": {
+    "trained_prompt": {
+      "metrics": {
+        "loss": 11.542381286621094,
+        "supervised_tokens": 3,
+        "first_target_probability": 0.9992852807044983,
+        "predicted_target_ids": [
+          88,
+          88,
+          88
+        ],
+        "expected_target_ids": [
+          88,
+          27724,
+          1
+        ],
+        "all_target_top1_correct": false,
+        "logits_sha256": "d3aaacb9831aee739692c870315c6f1ae64a2d2e8dac7d9fc01b01b062932a15"
+      },
+      "generation": {
+        "text": "vvvv",
+        "generated_ids": [
+          88,
+          88,
+          88,
+          88
+        ],
+        "prompt_ids": [
+          0,
+          128803,
+          9945,
+          33,
+          128804,
+          128822
+        ],
+        "max_new_tokens": 4,
+        "ended_with_eos": false,
+        "decoding": "greedy; no sampling",
+        "template": "checkpoint local chat template"
+      }
+    },
+    "held_out_prompt": {
+      "metrics": {
+        "loss": 11.5215482711792,
+        "supervised_tokens": 3,
+        "first_target_probability": 0.9992851614952087,
+        "predicted_target_ids": [
+          88,
+          88,
+          88
+        ],
+        "expected_target_ids": [
+          88,
+          27724,
+          1
+        ],
+        "all_target_top1_correct": false,
+        "logits_sha256": "90a3ead8d8f92d378bf188847210b9af4fe8671c62b8f24101cbb8391bae9eb4"
+      },
+      "generation": {
+        "text": "vvvv",
+        "generated_ids": [
+          88,
+          88,
+          88,
+          88
+        ],
+        "prompt_ids": [
+          0,
+          128803,
+          9945,
+          8033,
+          33,
+          128804,
+          128822
+        ],
+        "max_new_tokens": 4,
+        "ended_with_eos": false,
+        "decoding": "greedy; no sampling",
+        "template": "checkpoint local chat template"
+      }
+    }
+  },
+  "frozen_parameter_objects_unchanged": true,
+  "adapter_off_matches_base_logits": true,
+  "reloaded": {
+    "metrics": {
+      "loss": 11.542381286621094,
+      "supervised_tokens": 3,
+      "first_target_probability": 0.9992852807044983,
+      "predicted_target_ids": [
+        88,
+        88,
+        88
+      ],
+      "expected_target_ids": [
+        88,
+        27724,
+        1
+      ],
+      "all_target_top1_correct": false,
+      "logits_sha256": "d3aaacb9831aee739692c870315c6f1ae64a2d2e8dac7d9fc01b01b062932a15"
+    },
+    "generation": {
+      "text": "vvvv",
+      "generated_ids": [
+        88,
+        88,
+        88,
+        88
+      ],
+      "prompt_ids": [
+        0,
+        128803,
+        9945,
+        33,
+        128804,
+        128822
+      ],
+      "max_new_tokens": 4,
+      "ended_with_eos": false,
+      "decoding": "greedy; no sampling",
+      "template": "checkpoint local chat template"
+    }
+  },
+  "adapter_reload_exact": true,
+  "learned_target_on_trained_prompt": false,
+  "generalized_to_held_out_wording": false,
+  "output_changed": true,
+  "elapsed_seconds": 810.0038282499881,
+  "final_model": {
+    "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "expert_source": {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+      "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+      "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+    },
+    "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+    "streaming": {
+      "loads": 112590,
+      "hits": 9732,
+      "evictions": 112560,
+      "loaded_bytes": 499733867520,
+      "cached_bytes": 133155840,
+      "peak_cached_bytes": 133155840,
+      "forward_calls": 103248,
+      "backward_calls": 19074
+    },
+    "engram_bytes_read": 3738240,
+    "trainable_parameters": 37363712,
+    "peak_mlx_gib": 9.15811382420361,
+    "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+    "context_limit": 512,
+    "block_recomputation": true
+  },
+  "observed_memory_gib": 10.052688598632812
+}

@@ -1,0 +1,48 @@
+{
+  "text": "violet",
+  "generated_ids": [
+    88,
+    27724,
+    1
+  ],
+  "prompt_tokens": 6,
+  "prompt_ids": [
+    0,
+    128803,
+    9945,
+    33,
+    128804,
+    128822
+  ],
+  "max_new_tokens": 4,
+  "eos_token_id": 1,
+  "stop_reason": "eos",
+  "method": "greedy full-prefix recomputation",
+  "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "expert_source": {
+    "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+    "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+    "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+  },
+  "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+  "streaming": {
+    "loads": 9246,
+    "hits": 0,
+    "evictions": 9216,
+    "loaded_bytes": 41038629888,
+    "cached_bytes": 133155840,
+    "peak_cached_bytes": 133155840,
+    "forward_calls": 9246,
+    "backward_calls": 0
+  },
+  "engram_bytes_read": 266112,
+  "trainable_parameters": 37363712,
+  "peak_mlx_gib": 8.408738300204277,
+  "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+  "context_limit": 512,
+  "block_recomputation": true,
+  "adapter": "artifacts/behavior-demo-20261012-lowrate/step-000004",
+  "elapsed_seconds": 50.421878208057024,
+  "budget_gib": 16.0,
+  "observed_memory_gib": 10.019027709960938
+}

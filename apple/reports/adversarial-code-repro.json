@@ -1,0 +1,8 @@
+{
+  "changed_native_weight_payload_has_same_base_identity": true,
+  "changed_chat_template_has_same_adapter_identity": true,
+  "corrupted_expert_record_passes_constructor": true,
+  "corrupted_expert_record_passes_normal_array_read": true,
+  "explicit_record_verifier_detects_corruption": true,
+  "nonfinite_adapter_with_wrong_saved_checksum_is_accepted_by_load_adapter": true
+}

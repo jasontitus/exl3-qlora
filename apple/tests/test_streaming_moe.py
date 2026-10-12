@@ -4,11 +4,12 @@ import mlx.core as mx
 import mlx.nn as nn
 import numpy as np
 import pytest
+from safetensors.numpy import save_file
+
 from exl3_mlx import EXL3QLoRALinear
 from exl3_mlx.checkpoint import MARKERS, Checkpoint
 from exl3_mlx.moe import DeepSeekExpert, DeepSeekGate, DeepSeekMoE
 from exl3_mlx.streaming import MatrixStore
-from safetensors.numpy import save_file
 
 
 def make_checkpoint(path, count=6):

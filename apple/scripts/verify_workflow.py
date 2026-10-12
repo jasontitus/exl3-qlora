@@ -5,11 +5,114 @@ Requires several model loads and a new output directory. Downloads nothing.
 
 import argparse
 import hashlib
+import importlib.metadata
+import importlib.util
 import json
+import platform
 import subprocess
 import sys
 import time
 from pathlib import Path
+
+MODEL_METADATA = (
+    "config.json",
+    "expert-manifest-v2.json",
+    "engram/engram-manifest.json",
+    "engram-token-map.u32.json",
+    "model.safetensors.index.json",
+    "tokenizer.json",
+    "tokenizer_config.json",
+    "chat_template.jinja",
+)
+CHECKPOINT_FILES = {
+    "adapter.safetensors",
+    "adapter_config.json",
+    "optimizer.safetensors",
+    "random.safetensors",
+}
+PHASES = {"train", "resume", "base-eval", "adapter-eval", "generate"}
+
+
+def sha256(path):
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as source:
+        for block in iter(lambda: source.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def runtime_identity(project):
+    # Resolving a top-level package spec does not import it or initialize Metal.
+    spec = importlib.util.find_spec("exl3_mlx")
+    expected = (project / "src/exl3_mlx").resolve()
+    if spec is None or spec.origin is None or Path(spec.origin).resolve().parent != expected:
+        raise ValueError("Run with the environment installed from this source checkout")
+    return {
+        "python": sys.version,
+        "executable": str(Path(sys.executable).resolve()),
+        "platform": platform.platform(),
+        "machine": platform.machine(),
+        "packages": sorted(
+            [d.metadata["Name"], d.version]
+            for d in importlib.metadata.distributions()
+            if d.metadata["Name"]
+        ),
+    }
+
+
+def provenance(project, model, fixture, *, runtime=None):
+    sources = sorted((project / "src/exl3_mlx").glob("*.py"))
+    if not sources:
+        raise ValueError("No runtime source files found")
+    sources += [
+        project / name for name in ("scripts/verify_workflow.py", "pyproject.toml", "uv.lock")
+    ]
+    return {
+        "format": "exl3-workflow-verification-provenance-v1",
+        "source": {str(p.relative_to(project)): sha256(p) for p in sources},
+        "runtime": runtime if runtime is not None else runtime_identity(project),
+        "model_metadata": {name: sha256(model / name) for name in MODEL_METADATA},
+        "model_identity_scope": "Metadata/tokenizer/template hashes; NOT base weight payload hashes",
+        "fixture_sha256": sha256(fixture),
+    }
+
+
+def phase_evidence(output, name):
+    if name not in PHASES:
+        raise ValueError(f"Unknown verification phase: {name}")
+    files = {
+        f"{name}.{suffix}": sha256(output / f"{name}.{suffix}")
+        for suffix in ("stdout.json", "stderr.log")
+    }
+    if name in {"train", "resume"}:
+        manifests = sorted((output / name).glob("step-*/trainer_state.json"))
+        if not manifests:
+            raise ValueError(f"No checkpoint manifests for {name}")
+        for manifest in manifests:
+            state = json.loads(manifest.read_text())
+            if (
+                state.get("format") != "exl3-mlx-training-state-v1"
+                or set(state.get("files", {})) != CHECKPOINT_FILES
+            ):
+                raise ValueError(f"Invalid checkpoint manifest: {manifest}")
+            files[str(manifest.relative_to(output))] = sha256(manifest)
+            for filename, expected in state["files"].items():
+                path = manifest.parent / filename
+                actual = sha256(path)
+                if actual != expected:
+                    raise ValueError(f"Checkpoint checksum mismatch: {path}")
+                files[str(path.relative_to(output))] = actual
+    return files
+
+
+def validate_continuation(old, current, output):
+    if old.get("model") != current["model"] or old.get("provenance") != current["provenance"]:
+        raise ValueError("Cannot continue: verification provenance is missing or differs")
+    if old.get("fixture_sha256") != current["fixture_sha256"]:
+        raise ValueError("Cannot continue: fixture identity differs")
+    for name, phase in old["phases"].items():
+        if phase.get("exit_code") == 0 and phase.get("evidence") != phase_evidence(output, name):
+            raise ValueError(f"Cannot reuse {name}: saved phase evidence is missing or differs")
 
 
 def main():
@@ -33,7 +136,8 @@ def main():
     output = Path(args.output).expanduser().resolve()
     if args.wait_for_memory < 0:
         p.error("wait-for-memory must be nonnegative")
-    data = Path(__file__).resolve().parents[1] / "examples/smoke-tokens.jsonl"
+    project = Path(__file__).resolve().parents[1]
+    data = project / "examples/smoke-tokens.jsonl"
     prefix = [sys.executable, "-m", "exl3_mlx.workflow"]
     common = ["--model", str(root), "--memory-gib", str(args.memory_gib)]
     report = {
@@ -41,18 +145,14 @@ def main():
         "model": str(root),
         "phases": {},
         "fixture_sha256": hashlib.sha256(data.read_bytes()).hexdigest(),
+        "provenance": provenance(project, root, data),
     }
     if args.continue_run:
         old = json.loads((output / "verification.json").read_text())
-        if old["model"] != str(root):
-            p.error("Cannot continue against a different model")
-        fixture_hash = old.get("fixture_sha256")
-        if fixture_hash is None and old["phases"].get("train", {}).get("exit_code") == 0:
-            fixture_hash = json.loads((output / "train.stdout.json").read_text())["contract"][
-                "data_sha256"
-            ]
-        if fixture_hash != report["fixture_sha256"]:
-            p.error("Cannot continue with a different or unverified fixture")
+        try:
+            validate_continuation(old, report, output)
+        except (ValueError, OSError) as error:
+            p.error(str(error))
         report["phases"] = old["phases"]
     else:
         output.mkdir(parents=True, exist_ok=False)
@@ -60,6 +160,8 @@ def main():
     def run(name, command):
         previous = report["phases"].get(name, {})
         if previous.get("exit_code") == 0:
+            if previous.get("command") != prefix + command:
+                p.error(f"Cannot reuse {name}: invocation changed")
             print(f"Reusing completed {name}", flush=True)
             return json.loads((output / f"{name}.stdout.json").read_text())
         if name in {"train", "resume"} and (output / name).exists():
@@ -94,7 +196,10 @@ def main():
             (output / f"{name}.stderr.log").open("w") as stderr,
         ):
             result = subprocess.run(prefix + command, stdout=stdout, stderr=stderr)
-        report["phases"][name] = {"exit_code": result.returncode, "attempt": attempt}
+        phase = {"exit_code": result.returncode, "attempt": attempt, "command": prefix + command}
+        if not result.returncode:
+            phase["evidence"] = phase_evidence(output, name)
+        report["phases"][name] = phase
         (output / "verification.json").write_text(json.dumps(report, indent=2) + "\n")
         if result.returncode:
             raise SystemExit(
@@ -137,6 +242,7 @@ def main():
         ],
     )
     import mlx.core as mx
+
     from exl3_mlx.memory import MemoryBudget
 
     with MemoryBudget(2, cache_mib=64, reserve_gib=16):

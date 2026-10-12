@@ -4,6 +4,7 @@ import json
 import mlx.core as mx
 import numpy as np
 import pytest
+
 from exl3_mlx.engram import hash_ids, hash_layout
 from exl3_mlx.storage import ExpertBank, TensorArchive
 from exl3_mlx.streaming import MatrixStore

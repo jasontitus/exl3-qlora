@@ -3,11 +3,12 @@ import json
 import mlx.core as mx
 import numpy as np
 import pytest
+from safetensors.numpy import save_file
+
 from exl3_mlx.checkpoint import MARKERS, Checkpoint
 from exl3_mlx.cli import train_smoke
 from exl3_mlx.remote import fetch_linear
 from exl3_mlx.validation import validate_linear
-from safetensors.numpy import save_file
 
 
 def tensors(rate=3):
@@ -74,8 +75,9 @@ def test_train_artifacts_contain_only_adapter_and_reload(tmp_path):
 
 
 def test_range_extraction_and_payload_budget(tmp_path, monkeypatch):
-    import exl3_mlx.remote as remote
     from safetensors.numpy import save
+
+    import exl3_mlx.remote as remote
 
     blob = save(tensors())
     calls = []

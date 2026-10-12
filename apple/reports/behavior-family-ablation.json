@@ -1,0 +1,121 @@
+{
+  "scope": "Measure attention/expert adapter influence on one fixed prompt.\n\nFamily ablation is a causal diagnostic for this prompt, not isolated training or\nan additive attribution of quality. Every condition starts from the saved adapter.\n",
+  "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "adapter": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/behavior-demo-20261012-lowrate/step-000004",
+  "adapter_sha256": "5fde7b9572cbd8aeb9b172278d40d9a69897caf1e4710f54ff19664135f3ceeb",
+  "adapter_files_sha256": {
+    "adapter.safetensors": "5fde7b9572cbd8aeb9b172278d40d9a69897caf1e4710f54ff19664135f3ceeb",
+    "adapter_config.json": "1fb8c692843b3570948fe930e525e9eaae15acf08c59970221ddbb087a16aebb"
+  },
+  "prompt": "Code?",
+  "answer": "violet",
+  "conditions": {
+    "all_on": {
+      "loss": 0.05797773599624634,
+      "supervised_tokens": 3,
+      "logits_sha256": "c1ae2cb639865c30bdf5d9b8e08f6bb3316c286df85e15a7d35a4d0a6c5211f8",
+      "target_top1_ids": [
+        88,
+        27724,
+        1
+      ],
+      "first_target_probability": 0.852692804036371,
+      "max_abs_logit_delta_from_all_on": 0.0,
+      "elapsed_seconds": 22.854588457965292
+    },
+    "attention_only": {
+      "loss": 0.049819666892290115,
+      "supervised_tokens": 3,
+      "logits_sha256": "d1c9a357a8c46c6a42c919c18a63268681616dd8d9dd6df45bf52be621ea4144",
+      "target_top1_ids": [
+        88,
+        27724,
+        1
+      ],
+      "first_target_probability": 0.8806687580289452,
+      "max_abs_logit_delta_from_all_on": 4.1015625,
+      "elapsed_seconds": 42.00846712500788
+    },
+    "expert_only": {
+      "loss": 7.656625270843506,
+      "supervised_tokens": 3,
+      "logits_sha256": "33862bf34a0e861a593041cf042a50b904a7d7df0dce96daa5e8ef9bb9de598f",
+      "target_top1_ids": [
+        43,
+        1173,
+        1
+      ],
+      "first_target_probability": 1.340866390423581e-08,
+      "max_abs_logit_delta_from_all_on": 18.8125,
+      "elapsed_seconds": 61.8297062079655
+    },
+    "all_off": {
+      "loss": 10.075325012207031,
+      "supervised_tokens": 3,
+      "logits_sha256": "e661405fb15eb716ea5c75734a161305ef36d0e8775bce32eb017432aae58d67",
+      "target_top1_ids": [
+        43,
+        1173,
+        4541
+      ],
+      "first_target_probability": 9.717975322073793e-10,
+      "max_abs_logit_delta_from_all_on": 21.125,
+      "elapsed_seconds": 81.14369408297352
+    }
+  },
+  "status": "complete",
+  "tokenized": {
+    "input_ids": [
+      0,
+      128803,
+      9945,
+      33,
+      128804,
+      128822,
+      88,
+      27724,
+      1
+    ],
+    "loss_start": 6
+  },
+  "saved_adapter_families": {
+    "attention": {
+      "b_tensors": 80,
+      "nonzero_b_tensors": 80,
+      "b_squared_norm": 93.8374726660324
+    },
+    "expert": {
+      "b_tensors": 1152,
+      "nonzero_b_tensors": 105,
+      "b_squared_norm": 69.10550065838997
+    }
+  },
+  "expert_family_affects_this_prompt": true,
+  "attention_family_affects_this_prompt": true,
+  "model_report": {
+    "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "expert_source": {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+      "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+      "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+    },
+    "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+    "streaming": {
+      "loads": 13662,
+      "hits": 0,
+      "evictions": 13632,
+      "loaded_bytes": 60639169536,
+      "cached_bytes": 133155840,
+      "peak_cached_bytes": 133155840,
+      "forward_calls": 13662,
+      "backward_calls": 0
+    },
+    "engram_bytes_read": 405504,
+    "trainable_parameters": 37363712,
+    "peak_mlx_gib": 8.518751181662083,
+    "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+    "context_limit": 512,
+    "block_recomputation": true
+  },
+  "observed_memory_gib": 10.38629150390625
+}

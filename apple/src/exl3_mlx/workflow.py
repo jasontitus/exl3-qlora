@@ -16,7 +16,7 @@ from mlx.utils import tree_flatten
 from .data import load_dataset, load_tokenizer, prepare, training_data_identity
 from .deepseek import DeepSeekTextModel
 from .memory import MemoryBudget
-from .train import load_adapter
+from .train import load_adapter, load_adapter_config
 from .training import evaluate, load_checkpoint, optimizer_step, sample_indices, save_checkpoint
 
 
@@ -147,7 +147,7 @@ def model_settings(args):
     keys = ("rank", "alpha", "adapter_layers", "expert_adapter_layers")
     defaults = dict(rank=8, alpha=16.0, adapter_layers=None, expert_adapter_layers=[])
     if adapter:
-        c = json.loads((Path(adapter).expanduser() / "adapter_config.json").read_text())
+        c = load_adapter_config(Path(adapter).expanduser())
         for key in keys:
             value = getattr(args, key, None)
             if value is not None and value != c[key]:
@@ -379,6 +379,7 @@ def generate(args, model, budget):
         raise ValueError("Prompt plus generation must fit the 512-token context limit")
     if 129264 in ids:
         raise ValueError("Image inputs are unsupported")
+    prompt_ids = list(ids)
     model.eval()
     answer = []
     for _ in range(args.max_tokens):
@@ -398,6 +399,10 @@ def generate(args, model, budget):
         "text": tokenizer.decode(answer, skip_special_tokens=True),
         "generated_ids": answer,
         "prompt_tokens": len(ids) - len(answer),
+        "prompt_ids": prompt_ids,
+        "max_new_tokens": args.max_tokens,
+        "eos_token_id": tokenizer.eos_token_id,
+        "stop_reason": "eos" if answer[-1] == tokenizer.eos_token_id else "max_tokens",
         "method": "greedy full-prefix recomputation",
         **model.report(),
     }

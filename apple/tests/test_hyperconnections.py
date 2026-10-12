@@ -1,6 +1,7 @@
 import mlx.core as mx
 import numpy as np
 import pytest
+
 from exl3_mlx.hyperconnections import HyperConnection, expand_streams, hc_post, hc_pre, sinkhorn
 
 

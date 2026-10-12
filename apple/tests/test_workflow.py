@@ -7,6 +7,10 @@ import mlx.nn as nn
 import mlx.optimizers as optim
 import numpy as np
 import pytest
+from mlx.utils import tree_flatten
+from mlx_lm.tuner.lora import LoRALinear as UpstreamLoRA
+from test_block_training import Dense
+
 from exl3_mlx.data import load_dataset, prepare, tokenize_row, validate_example
 from exl3_mlx.native import LoRALinear
 from exl3_mlx.training import (
@@ -19,9 +23,6 @@ from exl3_mlx.training import (
     save_checkpoint,
 )
 from exl3_mlx.workflow import parse_args
-from mlx.utils import tree_flatten
-from mlx_lm.tuner.lora import LoRALinear as UpstreamLoRA
-from test_block_training import Dense
 
 
 class Toy(nn.Module):
