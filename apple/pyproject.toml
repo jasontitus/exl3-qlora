@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "exl3-mlx"
+version = "0.1.0"
+description = "Experimental EXL3 trellis decoding and QLoRA primitives for Apple silicon"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+dependencies = ["mlx==0.32.3", "numpy>=2.0", "safetensors>=0.6"]
+
+[project.scripts]
+exl3-mlx = "exl3_mlx.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.9"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/exl3_mlx"]

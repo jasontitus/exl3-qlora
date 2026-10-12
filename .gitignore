@@ -2,6 +2,12 @@
 build/
 malamus/
 uv.lock
+!apple/uv.lock
+.venv-mlx/
+apple/.venv/
+apple/.pytest_cache/
+apple/.ruff_cache/
+apple/artifacts/
 
 *.pyc
 __pycache__/

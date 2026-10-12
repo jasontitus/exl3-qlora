@@ -1,0 +1,18 @@
+{
+  "in_features": 5120,
+  "out_features": 2304,
+  "bpw": 2.0,
+  "codebook": "mul1",
+  "chunk_size": 512,
+  "decode_bit_exact": true,
+  "forward_max_abs_error": 1.7801696099439823e-06,
+  "dx_max_abs_error": 2.0516168528494916e-06,
+  "forward_ms_warm_mean": 0.7809665985405445,
+  "rows": 3,
+  "mlx": "0.32.3",
+  "device": "Apple M1 Ultra",
+  "validation_scope": "single stored matrix against CPU format oracle; not native model parity",
+  "repo": "jayleaton/DeepSeek-V4.1-Flash-EXL3-2.8bpw",
+  "revision": "915e1d0de8ee0a99944c5bc88ab802a639c63380",
+  "key": "layers.0.ffn.experts.0.w1"
+}

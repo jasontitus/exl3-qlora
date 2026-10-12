@@ -1,0 +1,15 @@
+{
+  "repo": "jayleaton/DeepSeek-V4.1-Flash-EXL3-2.8bpw",
+  "revision": "915e1d0de8ee0a99944c5bc88ab802a639c63380",
+  "shard": "layer-00.safetensors",
+  "key": "layers.0.attn.wkv",
+  "payload_bytes": 1649668,
+  "header_bytes": 464680,
+  "sha256_by_tensor": {
+    "layers.0.attn.wkv.trellis": "07e8bc3db4cf9a68f811946bef05c2bf781879b6ac2dd2bc940bb7cd9129107c",
+    "layers.0.attn.wkv.suh": "21ed63d88bbc3ae2bae95f65be7d62888d14673880a93ff846c33a1409862d52",
+    "layers.0.attn.wkv.svh": "e8eb1608b3dc2d4bccefa695fc38c142cd9cae409bfa86e43433d4c1b3c66dae",
+    "layers.0.attn.wkv.mul1": "20feb8ff6dbb9b28746f70893914cd343f8a92629ad812923fb29772030dd082"
+  },
+  "output": "apple/artifacts/deepseek-v41-wkv.safetensors"
+}

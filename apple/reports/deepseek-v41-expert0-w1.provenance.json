@@ -1,0 +1,15 @@
+{
+  "repo": "jayleaton/DeepSeek-V4.1-Flash-EXL3-2.8bpw",
+  "revision": "915e1d0de8ee0a99944c5bc88ab802a639c63380",
+  "shard": "layer-00.safetensors",
+  "key": "layers.0.ffn.experts.0.w1",
+  "payload_bytes": 2963972,
+  "header_bytes": 464680,
+  "sha256_by_tensor": {
+    "layers.0.ffn.experts.0.w1.trellis": "453738a4e2cadc4d2a2e38d77fa0576a7233d04b33d99903ed76cc2349b2d3b7",
+    "layers.0.ffn.experts.0.w1.suh": "9eaa4f1ca8282219f6f188ec2cf09ad32ddc0700eb93ed914a19dd8fe61f8a5a",
+    "layers.0.ffn.experts.0.w1.svh": "d70dc3b6c8eefc917654c056222b975984350270e9992768b65583f3c1d98612",
+    "layers.0.ffn.experts.0.w1.mul1": "20feb8ff6dbb9b28746f70893914cd343f8a92629ad812923fb29772030dd082"
+  },
+  "output": "apple/artifacts/deepseek-v41-expert0-w1.safetensors"
+}
