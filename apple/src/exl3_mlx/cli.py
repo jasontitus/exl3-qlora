@@ -5,16 +5,6 @@ import json
 import sys
 from pathlib import Path
 
-import mlx.core as mx
-import mlx.nn as nn
-import mlx.optimizers as optim
-import numpy as np
-from mlx.utils import tree_flatten
-
-from .checkpoint import Checkpoint
-from .linear import EXL3Linear, EXL3QLoRALinear
-from .remote import fetch_linear
-
 
 def train_smoke(base, *, steps=60, output=None, seed=8):
     """Fit a synthetic rank-4 residual on a real or synthetic frozen base.
@@ -22,6 +12,14 @@ def train_smoke(base, *, steps=60, output=None, seed=8):
     This tests adapter optimization only; it is not language-model fine-tuning.
     Artifacts use this primitive's A/B orientation, not an asserted PEFT mapping.
     """
+    import mlx.core as mx
+    import mlx.nn as nn
+    import mlx.optimizers as optim
+    import numpy as np
+    from mlx.utils import tree_flatten
+
+    from .linear import EXL3QLoRALinear
+
     if steps <= 0:
         raise ValueError("steps must be positive")
     if output is not None and Path(output).exists():
@@ -92,15 +90,22 @@ def train_smoke(base, *, steps=60, output=None, seed=8):
 
 
 def main():
+    from .sft_cli import COMMANDS
+    from .sft_cli import main as sft_main
+
+    if len(sys.argv) > 1 and sys.argv[1] in COMMANDS:
+        return sft_main()
     if len(sys.argv) > 1 and sys.argv[1] in {"prepare", "train", "evaluate", "generate", "doctor"}:
         from .workflow import main as workflow_main
 
         return workflow_main()
     p = argparse.ArgumentParser(
         description=__doc__,
-        epilog="Full workflow: prepare, train, evaluate, generate, doctor (COMMAND --help)",
+        epilog="Advanced engine: prepare, train, evaluate, generate, doctor (COMMAND --help)",
     )
     sub = p.add_subparsers(dest="command", required=True)
+    for name in sorted(COMMANDS):
+        sub.add_parser(name, help="Guided SFT workflow (COMMAND --help)", add_help=False)
     inspect = sub.add_parser("inspect", help="Read local checkpoint headers; does not load a model")
     inspect.add_argument("path")
     check = sub.add_parser(
@@ -123,6 +128,9 @@ def main():
     smoke.add_argument("--steps", type=int, default=60)
     smoke.add_argument("--output", required=True)
     args = p.parse_args()
+    from .checkpoint import Checkpoint
+    from .remote import fetch_linear
+
     if args.command == "inspect":
         report = Checkpoint(args.path).summary()
     elif args.command == "fetch-linear":
@@ -145,6 +153,11 @@ def main():
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(json.dumps(report, indent=2) + "\n")
     else:
+        import mlx.core as mx
+        import numpy as np
+
+        from .linear import EXL3Linear
+
         if bool(args.checkpoint) != bool(args.key):
             p.error("--checkpoint and --key must be provided together")
         if args.checkpoint:
@@ -158,4 +171,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -1,0 +1,276 @@
+{
+  "format": "exl3-standard-sft-verification-v1",
+  "status": "workflow_passed_quality_not_established",
+  "date": "2026-10-12",
+  "project": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/standard-sft-20261012",
+  "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "device": "Apple M1 Ultra",
+  "inputs": {
+    "format": "CSV question/answer/source_id",
+    "counts": {
+      "train": 4,
+      "valid": 1,
+      "test": 1
+    },
+    "total_serialized_tokens": 15,
+    "seq_length": 14,
+    "scope": "synthetic shared-template slot task, not Metal or broad generalization"
+  },
+  "entry_points": {
+    "initial_two_updates": "public finetune CLI",
+    "resume_to_three": "Studio Train / resume button",
+    "comparison": "Studio Compare button",
+    "export": "Studio Export adapter button",
+    "standard_formats": "SFTTrainer Python iterable API; actual tokenizer preparation only"
+  },
+  "checks": {
+    "unit_tests": 263,
+    "subtests": 27,
+    "ruff": true,
+    "offline_wheel_contains_studio_and_metal": true,
+    "gui_prepare_and_refresh": true,
+    "full_model_updates": 3,
+    "resume_contract_preserved": true,
+    "step_and_cursor_preserved": true,
+    "resumed_adapter_changed": true,
+    "export_integrity_loader_passed": true,
+    "export_weights_equal_selected_checkpoint": true,
+    "full_report_written": true,
+    "generation_changed": false,
+    "adapter_exact_answer_with_eos": false,
+    "comparison_current_after_reporting_fix": true
+  },
+  "elapsed_training_seconds": 364.13644795899745,
+  "peak_mlx_gib": 8.608600317500532,
+  "observed_memory_gib": 10.035614013671875,
+  "process_budget_gib": 16,
+  "system_reserve_gib": 32,
+  "validation_losses": [
+    9.01273250579834,
+    6.903299331665039,
+    3.881096601486206
+  ],
+  "comparison": {
+    "status": "likelihood_improved",
+    "evaluation_scope": "held_out_test",
+    "quality_certified": false,
+    "note": "Conditional answer likelihood is not task accuracy or Metal speedup.",
+    "adapter": {
+      "loss": 3.7012345790863037,
+      "perplexity": 40.49727059341456,
+      "supervised_tokens": 3,
+      "examples": 1,
+      "logits_sha256": "fcec4e28ef92c9ebd8476d13621e75bf2ec2b46c5e8ad0dd83ad3591d250c029",
+      "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+      "expert_source": {
+        "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+        "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+        "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+      },
+      "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+      "streaming": {
+        "loads": 5424,
+        "hits": 0,
+        "evictions": 5394,
+        "loaded_bytes": 24074575872,
+        "cached_bytes": 133155840,
+        "peak_cached_bytes": 133155840,
+        "forward_calls": 5424,
+        "backward_calls": 0
+      },
+      "engram_bytes_read": 177408,
+      "trainable_parameters": 3153920,
+      "peak_mlx_gib": 8.286710178479552,
+      "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+      "context_limit": 512,
+      "block_recomputation": true,
+      "adapter": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/standard-sft-20261012/attempts/attempt-1791838733502018000/train/step-000003",
+      "elapsed_seconds": 36.14477608294692,
+      "budget_gib": 16.0,
+      "observed_memory_gib": 9.942352294921875
+    },
+    "split": "test",
+    "available_examples": 1,
+    "evaluated_examples": 1,
+    "loss_delta": -5.63550591468811,
+    "base": {
+      "loss": 9.336740493774414,
+      "perplexity": 11347.361101138547,
+      "supervised_tokens": 3,
+      "examples": 1,
+      "logits_sha256": "3f27139fd0eae2c2d2177c3b86df9413d86f9d20a29c0435f9476c4dc55759cc",
+      "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+      "expert_source": {
+        "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+        "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+        "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+      },
+      "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+      "streaming": {
+        "loads": 5397,
+        "hits": 0,
+        "evictions": 5367,
+        "loaded_bytes": 23954735616,
+        "cached_bytes": 133155840,
+        "peak_cached_bytes": 133155840,
+        "forward_calls": 5397,
+        "backward_calls": 0
+      },
+      "engram_bytes_read": 177408,
+      "trainable_parameters": 6307840,
+      "peak_mlx_gib": 8.297946840524673,
+      "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+      "context_limit": 512,
+      "block_recomputation": true,
+      "adapter": null,
+      "elapsed_seconds": 30.8315553329885,
+      "budget_gib": 16.0,
+      "observed_memory_gib": 9.928665161132812
+    },
+    "preview": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the code for slot E?"
+        }
+      ],
+      "expected": "violet",
+      "base": {
+        "text": "I can help,",
+        "stop_reason": "max_tokens",
+        "prompt_ids": [
+          0,
+          128803,
+          3085,
+          344,
+          270,
+          4181,
+          362,
+          26326,
+          446,
+          33,
+          128804,
+          128822
+        ],
+        "exact_answer_with_eos": false
+      },
+      "adapter": {
+        "text": "I can help,",
+        "stop_reason": "max_tokens",
+        "prompt_ids": [
+          0,
+          128803,
+          3085,
+          344,
+          270,
+          4181,
+          362,
+          26326,
+          446,
+          33,
+          128804,
+          128822
+        ],
+        "exact_answer_with_eos": false
+      }
+    },
+    "test_previously_observed": false,
+    "selected_checkpoint": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/standard-sft-20261012/attempts/attempt-1791838733502018000/train/step-000003",
+    "bookkeeping_correction": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/standard-sft-20261012/reporting-fix.json"
+  },
+  "export": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/standard-sft-export-20261012",
+  "export_adapter_sha256": "ab56f1de598008012066dd99775cd6771e3918a09631e56bf1de6716b6ff9319",
+  "implementation": {
+    "source": {
+      "__init__.py": "6605af1a6c29d74cb5a62c1c268c24632d00e2fe8b1821a772e3cac6a1060c54",
+      "attention.py": "4d648d91cdcb70ebdb8418316992747b3dc09066d993bb2c90095cc0733bc9f6",
+      "checkpoint.py": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d",
+      "cli.py": "8a873cb55acf8e2b0022866ac5c7e702f4626ff3528ec63be2294b7a177ececd",
+      "data.py": "50fc4b906a18384d6af9ebb0a37743042fdcf2ffc356f3c883c338d2960c94cf",
+      "decode.metal": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282",
+      "deepseek.py": "f934554027c91966de88a384300863f5069406a21a66dd71f9fbd3bd5fa8f146",
+      "engram.py": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+      "hyperconnections.py": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+      "linear.py": "6a787172aa6e5f2bc76561e4da83fa7b1c320d8e05170738266765cb1e6abbd5",
+      "materialize.py": "8dbe3bb9500edc74c679c936aef8dba50d48483154c09b1383188b5171ec4be9",
+      "memory.py": "0e393aa5018fee84394d16bc0a7dd5a57b12d4f7ea3f30598dd3f257ed7d6cfc",
+      "moe.py": "49dfddcdb1b88c15f0b1f4d7473af92f3fd7e55f38720cb5409c2480481eb98a",
+      "native.py": "dc470bc7925db2f74d00a5cd68a9e916e66987d8afc749a23daae7a7e9a67e5d",
+      "recompute.py": "fa90444a8540935fd3c272fdf73d9be2f62d3e32db65d13f60fe0b72dc8188c3",
+      "reference.py": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595",
+      "remote.py": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c",
+      "sft.py": "8e0af081c464601346f1433359203c8aabd7c4aca785585194758a6d24d8d063",
+      "sft_cli.py": "fbb30d9f602731eb5b2705c4f14c3ab6b398b163c3264ce2e47f27838605a4d5",
+      "sft_data.py": "37a84aaca39366553c3f269fec9eeb1c1e70a06dc6ef22ecdca184b807c34bf0",
+      "storage.py": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+      "streaming.py": "58d82f7f9925ef3ac4b583d85dd192dc3ff09a9107e089e3e725030c67f28c27",
+      "studio.html": "8c5ac561b8bd242a14e3d593c66ea885ffdd16f5d158ac5d29e21b327f29c17c",
+      "studio.py": "38f2fa60fbd60d32fe08e362a101f4ecde7edf330ecce5e869e35cbd6e9a49a9",
+      "train.py": "1bdcbae0920c9a3ef3173e9c69ee1f66e6ea9686d2fc65ea84fb9a1b0f9f39c4",
+      "training.py": "b59586e838c6bf926fad6973ec670609131bd4e2076e0e387e07288346e83056",
+      "trellis.py": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d",
+      "validation.py": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9",
+      "workflow.py": "fdd65fd3248a537ad4b6dd01c87c6b6727b591316b069c5db0085ed788ea2ad1"
+    },
+    "dependency_lock": "40a2c42b352bac86b8b24566543b2a0e76c418047a05d4e4d326c55ae89461ee",
+    "runtime": {
+      "mlx": "0.32.3",
+      "mlx-lm": "0.32.0",
+      "numpy": "2.5.4",
+      "transformers": "5.19.0",
+      "tokenizers": "0.23.3",
+      "safetensors": "0.8.0"
+    },
+    "python": "3.12.13"
+  },
+  "limitations": [
+    "Three updates lowered NLL but did not change the capped greedy prefix; neither answer is correct.",
+    "One synthetic held-out row is not a task-quality evaluation.",
+    "No independent native full-model parity, long-context quality, or measured Metal optimization improvement established.",
+    "Exact resumed-vs-uninterrupted numerical equality is covered by the tiny MLX test and earlier workflow evidence; this new full-model pilot checks restored state and continuation."
+  ],
+  "current_implementation": {
+    "source": {
+      "__init__.py": "6605af1a6c29d74cb5a62c1c268c24632d00e2fe8b1821a772e3cac6a1060c54",
+      "attention.py": "4d648d91cdcb70ebdb8418316992747b3dc09066d993bb2c90095cc0733bc9f6",
+      "checkpoint.py": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d",
+      "cli.py": "8a873cb55acf8e2b0022866ac5c7e702f4626ff3528ec63be2294b7a177ececd",
+      "data.py": "50fc4b906a18384d6af9ebb0a37743042fdcf2ffc356f3c883c338d2960c94cf",
+      "decode.metal": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282",
+      "deepseek.py": "f934554027c91966de88a384300863f5069406a21a66dd71f9fbd3bd5fa8f146",
+      "engram.py": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+      "hyperconnections.py": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+      "linear.py": "6a787172aa6e5f2bc76561e4da83fa7b1c320d8e05170738266765cb1e6abbd5",
+      "materialize.py": "8dbe3bb9500edc74c679c936aef8dba50d48483154c09b1383188b5171ec4be9",
+      "memory.py": "0e393aa5018fee84394d16bc0a7dd5a57b12d4f7ea3f30598dd3f257ed7d6cfc",
+      "moe.py": "49dfddcdb1b88c15f0b1f4d7473af92f3fd7e55f38720cb5409c2480481eb98a",
+      "native.py": "dc470bc7925db2f74d00a5cd68a9e916e66987d8afc749a23daae7a7e9a67e5d",
+      "recompute.py": "fa90444a8540935fd3c272fdf73d9be2f62d3e32db65d13f60fe0b72dc8188c3",
+      "reference.py": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595",
+      "remote.py": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c",
+      "sft.py": "818fc9551042cac78c4a69f60bb21520ed4637b23d4f6ef0aa7f4bd9c1c643ff",
+      "sft_cli.py": "fbb30d9f602731eb5b2705c4f14c3ab6b398b163c3264ce2e47f27838605a4d5",
+      "sft_data.py": "37a84aaca39366553c3f269fec9eeb1c1e70a06dc6ef22ecdca184b807c34bf0",
+      "storage.py": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+      "streaming.py": "58d82f7f9925ef3ac4b583d85dd192dc3ff09a9107e089e3e725030c67f28c27",
+      "studio.html": "8c5ac561b8bd242a14e3d593c66ea885ffdd16f5d158ac5d29e21b327f29c17c",
+      "studio.py": "38f2fa60fbd60d32fe08e362a101f4ecde7edf330ecce5e869e35cbd6e9a49a9",
+      "train.py": "1bdcbae0920c9a3ef3173e9c69ee1f66e6ea9686d2fc65ea84fb9a1b0f9f39c4",
+      "training.py": "b59586e838c6bf926fad6973ec670609131bd4e2076e0e387e07288346e83056",
+      "trellis.py": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d",
+      "validation.py": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9",
+      "workflow.py": "fdd65fd3248a537ad4b6dd01c87c6b6727b591316b069c5db0085ed788ea2ad1"
+    },
+    "dependency_lock": "40a2c42b352bac86b8b24566543b2a0e76c418047a05d4e4d326c55ae89461ee",
+    "runtime": {
+      "mlx": "0.32.3",
+      "mlx-lm": "0.32.0",
+      "numpy": "2.5.4",
+      "transformers": "5.19.0",
+      "tokenizers": "0.23.3",
+      "safetensors": "0.8.0"
+    },
+    "python": "3.12.13"
+  },
+  "reporting_fix": "artifacts/standard-sft-20261012/reporting-fix.json"
+}

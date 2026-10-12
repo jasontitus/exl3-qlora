@@ -1,3 +1,14 @@
+# Standard workflow verification update
+
+The new browser/CLI/Python SFT facade and adversarial fixes are documented in
+[standard-sft-review.md](reports/standard-sft-review.md). The integrated suite now
+passes **263 tests and 27 subtests**; [JUnit report](reports/standard-sft-pytest.xml).
+Real-model workflow evidence is in
+[standard-sft-verification.json](reports/standard-sft-verification.json).
+The previous numerical, causal fitting and quality evidence below remains valid
+within its stated scope. New standard interfaces do not remove the 512-token or
+native full-model parity limitations.
+
 # Quality gates for the Apple EXL3 trainer
 
 Tool correctness, adapter influence, and useful task quality are separate claims.

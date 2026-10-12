@@ -4,18 +4,31 @@ An experimental port of [UnstableLlama/exl3-qlora](https://github.com/UnstableLl
 with real EXL3 Metal decoding, activation gradients, streamed experts and a usable
 short-context DeepSeek V4.1 adapter workflow.
 
-**Start with the [complete recipe](RECIPE.md).** It covers setup, data/masks,
-training, memory limits, optimizer resume, held-out evaluation and generation.
+**Start with the [standard fine-tuning guide](SIMPLE_FLOW.md)** and run
+`uv run exl3-mlx studio` for the local browser interface. The project CLI and
+`SFTTrainer` Python API share CSV/JSON/chat import, safe resume and paired
+comparisons. The [advanced recipe](RECIPE.md) covers engine controls.
 The tool reuses MLX-LM's data processors, loss and LoRA forward; see
 [what is reused and why](SOURCES.md).
 
 The [usefulness review](reports/usability-review.md) assesses beginner usability
-and framework compatibility. The [proposed simple flow](SIMPLE_FLOW.md) is a design,
-not an implemented interface. For learning Metal inference optimizations from Git
+and framework compatibility at the previous revision. The [standard workflow
+review](reports/standard-sft-review.md) records the new implementation and fixes.
+For learning Metal inference optimizations from Git
 history, see the [task assessment](reports/metal-training-assessment.md) and its
 measured context limits.
 
 ## Verified status
+
+The new standard flow completed **two full-model updates plus a Studio resume to
+step 3**, then comparison and adapter export. Observed memory peaked at **10.04
+GiB** (8.61 GiB MLX). Answer loss on one synthetic held-out row fell from **9.34 to
+3.70**, but both four-token previews remained `I can help,` and neither reached
+EOS. This validates the workflow and demonstrates why likelihood improvement
+alone must not be called answer quality. [Full evidence](reports/standard-sft-verification.json).
+Actual-tokenizer preparation also passed for Alpaca, ShareGPT and multi-turn
+system chat through the Python API: [format report](reports/standard-sft-api-formats.json).
+
 
 A controlled language-model fine-tune now changes `Code?` from the four-token
 base prefix `I'd be happy` to **`violet` plus EOS**. The successful adapter uses
@@ -44,7 +57,7 @@ not a throughput, quality or larger-context memory benchmark. Reports:
 also verified **bit-exact adapter and Adam state versus uninterrupted training**,
 base/adapter evaluation, and greedy generation. The four-token training fixture
 loss fell from 5.074 to 4.983 after two updates; this is not held-out quality.
-The test suite now passes **142 tests and 27 subtests**.
+The current test suite passes **263 tests and 27 subtests**.
 
 **Supported full-model checkpoint:** the local **3.0-bpw mtplx streaming repack**,
 with native MXFP8/BF16 trunk and Engram banks. The requested
@@ -70,6 +83,10 @@ uv run exl3-mlx doctor \
 
 | Command | Purpose |
 | --- | --- |
+| `exl3-mlx studio` | Guided local browser: check data, train/resume, compare, preview and export |
+| `exl3-mlx finetune` | One project from CSV/JSON/JSONL; optional `--prepare-only` |
+| `exl3-mlx resume / compare / chat / export-adapter` | Continue or use a saved standard project |
+| `exl3-mlx status / stop` | Check progress or checkpoint after the current update |
 | `exl3-mlx prepare` | Local JSONL text/chat tokenization, answer masks, deduplication and splits |
 | `exl3-mlx train` | Streamed, eager adapter training with Adam, accumulation and validation |
 | `exl3-mlx train --resume STEP` | Restore optimizer, RNG and sample cursor |

@@ -1,5 +1,10 @@
 # Fine-tuning EXL3 on Apple silicon
 
+For the browser interface, CSV/Alpaca/ShareGPT import and project-based Python API,
+start with the [standard SFT guide](SIMPLE_FLOW.md). This page documents advanced
+engine controls. Project `resume --steps` means total updates; engine `train
+--steps` below means additional updates.
+
 This is an **experimental, working short-context text adapter pipeline** for the
 DeepSeek V4.1 **streaming repack** already on this Mac. It trains against frozen
 EXL3 weights on Metal, saves adapters, resumes Adam, evaluates held-out text, and
@@ -19,7 +24,7 @@ full-model updates, exact adapter/Adam continuation versus an uninterrupted run,
 exact adapter prediction reload, evaluation and one-token generation. Peak MLX
 allocation was **8.78 GiB** for four target tokens at rank 2, with attention adapters
 in all layers and EXL3 expert adapters in layer 0. These tests kept the process
-budget at 12 GiB and the system reserve at 32 GiB. The unit suite now passes 142 tests and 27 subtests.
+budget at 12 GiB and the system reserve at 32 GiB. The unit suite now passes 263 tests and 27 subtests.
 
 ## 1. Install and inspect
 

@@ -292,6 +292,65 @@ def test_resume_sparse_list_optimizer_tree(base, tmp_path):
     assert evaluate(a, examples()) == evaluate(b, examples())
 
 
+def test_best_checkpoint_pinning_does_not_change_exact_optimizer_resume(
+    base, tmp_path, monkeypatch
+):
+    from exl3_mlx import workflow
+
+    monkeypatch.setattr(Toy, "report", lambda self: {"trainable_parameters": 40}, raising=False)
+    monkeypatch.setattr(workflow, "make_model", lambda args, log: Toy(base))
+    losses = iter(range(1, 9))
+    monkeypatch.setattr(workflow, "evaluate", lambda *args, **kwargs: {"loss": next(losses)})
+    data, valid = tmp_path / "train.jsonl", tmp_path / "valid.jsonl"
+    data.write_text("\n".join(json.dumps(row) for row in examples()))
+    valid.write_text('{"input_ids":[0,9,2,1],"loss_start":2}\n')
+    budget = SimpleNamespace(check=lambda: None, limit=2**30, usage=lambda: 0)
+
+    def run(name, *flags):
+        return workflow.train_run(
+            parse_args(
+                [
+                    "train",
+                    "--model",
+                    str(base),
+                    "--data",
+                    str(data),
+                    "--valid-data",
+                    str(valid),
+                    "--output",
+                    str(tmp_path / name),
+                    "--steps",
+                    "3",
+                    "--eval-every",
+                    "1",
+                    "--save-every",
+                    "1",
+                    "--keep-last",
+                    "1",
+                    *flags,
+                ]
+            ),
+            budget,
+            lambda message: None,
+        )
+
+    first = run("first")
+    assert sorted(p.name for p in (tmp_path / "first").glob("step-*")) == [
+        "step-000001",
+        "step-000003",
+    ]
+    resumed = run("resumed", "--resume", first["checkpoint"], "--steps", "1")
+    uninterrupted = run("whole", "--steps", "4")
+    assert resumed["best_checkpoint"] == first["best_checkpoint"]
+    assert resumed["best_validation_loss"] == 1
+    assert resumed["contract"] == first["contract"]
+    for filename in ("adapter.safetensors", "optimizer.safetensors", "random.safetensors"):
+        a = mx.load(str(Path(resumed["checkpoint"]) / filename))
+        b = mx.load(str(Path(uninterrupted["checkpoint"]) / filename))
+        assert a.keys() == b.keys()
+        assert all(mx.array_equal(a[key], b[key]).item() for key in a)
+
+
 def test_interrupted_save_never_publishes_partial_checkpoint(base, tmp_path, monkeypatch):
     def fail(*args):
         raise OSError("simulated disk full")
