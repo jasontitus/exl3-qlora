@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 import mlx.core as mx
@@ -91,7 +92,14 @@ def train_smoke(base, *, steps=60, output=None, seed=8):
 
 
 def main():
-    p = argparse.ArgumentParser(description=__doc__)
+    if len(sys.argv) > 1 and sys.argv[1] in {"prepare", "train", "evaluate", "generate", "doctor"}:
+        from .workflow import main as workflow_main
+
+        return workflow_main()
+    p = argparse.ArgumentParser(
+        description=__doc__,
+        epilog="Full workflow: prepare, train, evaluate, generate, doctor (COMMAND --help)",
+    )
     sub = p.add_subparsers(dest="command", required=True)
     inspect = sub.add_parser("inspect", help="Read local checkpoint headers; does not load a model")
     inspect.add_argument("path")

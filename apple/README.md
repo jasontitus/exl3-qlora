@@ -1,111 +1,124 @@
 # EXL3 QLoRA on Apple silicon / MLX
 
-This is an experimental port of the upstream CUDA training path, developed on
-an M1 Ultra with 128 GiB RAM and MLX 0.32.3. It includes real EXL3 decoding,
-first-order input gradients, streamed experts, and a short-context DeepSeek V4.1
-text adapter trainer. The CUDA package remains separate.
+An experimental port of [UnstableLlama/exl3-qlora](https://github.com/UnstableLlama/exl3-qlora)
+with real EXL3 Metal decoding, activation gradients, streamed experts and a usable
+short-context DeepSeek V4.1 adapter workflow.
 
-**Verified:** text forward and backward through all 40 layers of the existing
-local **3.0-bpw streaming repack**, with finite gradients for 160 attention-adapter
-tensors. The successful four-token probe peaked at **8.47 GiB of MLX allocations**
-and took 55.8 seconds including loading, a separate inference pass, and a training
-forward/backward. This is not a throughput benchmark or total system RAM figure.
+**Start with the [complete recipe](RECIPE.md).** It covers setup, data/masks,
+training, memory limits, optimizer resume, held-out evaluation and generation.
+The tool reuses MLX-LM's data processors, loss and LoRA forward; see
+[what is reused and why](SOURCES.md).
 
-**Still unverified:** a full-model optimizer update, trained-adapter text quality,
-and full-model logit parity against native DeepSeek inference. Earlier runs caused
-substantial memory pressure; they exposed retained MLX graphs. The streaming path
-now materializes activation boundaries, and a regression test checks that decoded
-matrices do not accumulate. The final budget/per-slice hardening has passed small
-tests but has not been rerun on the full model after the user's memory warning.
+## Verified status
 
-The requested **2.8-bpw** target remains
-[jayleaton/DeepSeek-V4.1-Flash-EXL3-2.8bpw](https://huggingface.co/jayleaton/DeepSeek-V4.1-Flash-EXL3-2.8bpw),
-pinned at `915e1d0de8ee0a99944c5bc88ab802a639c63380`. Its individual matrices and a
-complete real expert have been verified. Its original full checkpoint layout is
-not yet connected to the text trainer. The available 3.0-bpw repack is a distinct
-validation checkpoint, not an assertion of 2.8-bpw model support. Nothing was deleted.
+A real 40-layer model completed an Adam update with **18,681,856 trainable adapter
+parameters**, including attention adapters in all layers and EXL3 expert adapters
+in layer 0. Gradients and saved adapters were finite; 60 expert B tensors changed.
+The system-reserve watchdog interrupted the next step when another workload
+consumed memory. The complete step checkpoint survived, resumed to optimizer
+step 2 in a new process, and passed **exact full-model prediction reload**.
 
-## Setup and small checks
+The resumed run peaked at **8.78 GiB of MLX allocations** and **10.26 GiB observed
+process/MLX memory**, under a 12 GiB process guard and 32 GiB system reserve.
+These are four-target-token operational checks on an M1 Ultra with 128 GiB RAM,
+not a throughput, quality or larger-context memory benchmark. Reports:
+[initial update](reports/workflow-full-model-update.json),
+[successful recovery and reload](reports/workflow-resumed.json), and
+[complete workflow](reports/workflow-verification.json). The repeatable workflow
+also verified **bit-exact adapter and Adam state versus uninterrupted training**,
+base/adapter evaluation, and greedy generation. The four-token training fixture
+loss fell from 5.074 to 4.983 after two updates; this is not held-out quality.
+The small test suite passes **111 tests**.
+
+**Supported full-model checkpoint:** the local **3.0-bpw mtplx streaming repack**,
+with native MXFP8/BF16 trunk and Engram banks. The requested
+[2.8-bpw original checkpoint](https://huggingface.co/jayleaton/DeepSeek-V4.1-Flash-EXL3-2.8bpw)
+is a different layout: its real matrices and a complete expert are verified, but
+full-model loading of that original layout is not implemented. Qwen is not yet
+supported. No existing model was deleted.
+
+Independent native full-model logit parity and useful trained text quality remain
+unverified. Activation FP8/FP4 rounding uses an explicit identity straight-through
+gradient. This is experimental code, not a production quality claim.
+
+## Setup and commands
 
 ```bash
 cd ~/experiments/exl3-qlora/apple
 uv sync --locked
 uv run pytest
+uv run exl3-mlx doctor \
+  --model ~/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw \
+  --memory-gib 2 --verify-records
+```
+
+| Command | Purpose |
+| --- | --- |
+| `exl3-mlx prepare` | Local JSONL text/chat tokenization, answer masks, deduplication and splits |
+| `exl3-mlx train` | Streamed, eager adapter training with Adam, accumulation and validation |
+| `exl3-mlx train --resume STEP` | Restore optimizer, RNG and sample cursor |
+| `exl3-mlx evaluate` | Held-out token-weighted NLL/perplexity, base or adapter |
+| `exl3-mlx generate` | Greedy short-prefix generation using the saved adapter |
+| `exl3-mlx doctor` | Header, bank-size, token-map and optional sampled-record checks |
+| `exl3-mlx inspect / validate-linear / fetch-linear` | Inspect and validate original EXL3 matrices |
+| `exl3-mlx train-smoke` | Small synthetic matrix test; not language-model training |
+
+Every command accepts `--help`. `exl3-mlx-train` remains an alias for the full
+trainer. [examples/sft.json](examples/sft.json) supplies editable JSON defaults;
+CLI flags override them. Choose new directories for each run. See the recipe for
+commands, input schemas and the exact continuation versus warm-start distinction.
+
+For the repeatable, substantial real-model workflow check:
+
+```bash
+uv run python scripts/verify_workflow.py \
+  --model ~/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw \
+  --output artifacts/workflow-check
+```
+
+This sequentially checks two updates, exact optimizer continuation, adapter reload,
+base/adapter evaluation and generation. All child processes retain the usual
+memory guards; it downloads nothing. If an evaluation/generation phase is blocked
+by memory pressure, rerun with `--continue-run --wait-for-memory 120` to reuse
+completed phases. An interrupted training phase needs the trainer's `--resume`
+or a new verification directory. Individual primitive checks are much smaller:
+
+```bash
 uv run exl3-mlx train-smoke --output artifacts/small-adapter
 uv run python scripts/validate_target.py
 uv run python scripts/validate_expert.py
 ```
 
-`validate_target.py` fetches four matrices (under 12 MiB of tensor payload), not
-whole shards. Downloads require a pinned revision, enforce a byte limit, and save
-hashes. `train-smoke` fits a synthetic residual; it is not language-model training.
+The target validators fetch only four pinned matrices (under 12 MiB payload),
+enforce byte limits, and record hashes. Weights and generated adapters stay ignored.
 
-## Experimental text trainer
+## How memory stays bounded
 
-The loader accepts the local `mtplx-expert-manifest-v2` repack with native
-MXFP8/BF16 trunk shards, `experts.bin`, both Engram banks, tokenizer, and token map.
-The existing checkpoint is at:
+Selected EXL3 matrices are read through a bounded packed-weight LRU, and Engram
+reads fetch only needed rows. The full expert/Engram banks never become resident.
+The roughly 8 GiB frozen text trunk stays in RAM. Block recomputation rebuilds
+one block's backward graph at a time and preserves gradients through shared KV.
+This is end-to-end training, not independent layer-by-layer fitting.
 
-```text
-~/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw
-```
+Python MLX custom VJPs with `eval`/`stop_gradient` alone retained dense decode
+graphs. The current implementation materializes activation boundaries through
+small host buffers, preserving BF16 bytes, to release those graphs. Decode and
+matrix math run on Metal. Synchronization and SSD traffic currently cost speed;
+see [remaining porting work](PORTING.md).
 
-JSONL data uses one document per line, either `{"text":"..."}` or
-`{"input_ids":[0,671,6102,294,8760]}`. Text gets BOS/EOS; explicit token IDs are used
-as supplied. Loss covers every target token. Each document starts its own
-attention/Engram history; long examples are explicitly prefix-truncated. Chat
-message conversion, assistant-only masks, packing and multimodal inputs are absent.
+Training defaults to a 16 GiB fail-fast process budget, 64 MiB allocator cache,
+128 MiB packed-weight cache and 32 GiB system reserve. A 100 ms watchdog checks
+MLX/RSS use; system headroom is checked every five seconds. MLX's allocator limit
+is advisory: this is **not an OS hard quota**, and one allocation may overshoot.
+Completed checkpoint directories are published atomically and remain recoverable.
+The last two checkpoints created in each run are retained by default.
 
-For a future guarded smoke update (not executed after the memory warning):
-
-```bash
-uv run exl3-mlx-train \
-  --model ~/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw \
-  --data data.jsonl --output artifacts/text-smoke \
-  --steps 1 --seq-length 4 --rank 2 --alpha 4 \
-  --memory-gib 16 --allocator-cache-mib 64 --cache-mib 128
-```
-
-Defaults attach LoRA to attention `wq_a` and `wo_b` across all 40 layers. Use
-`--adapter-layers 0 1` to select fewer adapter layers, or
-`--expert-adapter-layers 0` to also adapt all routed experts in layer 0. This adds
-adapter/optimizer memory. Frozen EXL3 experts still participate in input gradients
-throughout the model. Selecting fewer adapters does not remove base layers.
-
-Completed updates save adapter-only `step-000001/adapter.safetensors`, metadata,
-and checkpoint identity hashes. `--resume-adapter` reloads weights but starts a
-fresh optimizer. The named format `exl3-mlx-deepseek-short-text-v1` is private to
-this package: no PEFT or external serving-engine compatibility is claimed.
-Prediction reload parity is tested on a small model, not yet the real 40-layer model.
-
-For read-only full-model forward/backward verification, explicitly run
-`uv run python scripts/probe_model.py --model PATH`. This is a substantial workload;
-it performs no optimizer update and downloads nothing.
-
-## Memory behavior and current limits
-
-- Routed weights are read per selected matrix in forward and backward through a
-  bounded LRU. The entire 190-GiB expert bank is never mapped or copied into RAM.
-  Native trunk weights (about 8 GiB for this text path) remain resident.
-- Eager block recomputation rebuilds one block's gradient graph at a time, including
-  shared compressed-KV gradients. Packed base parameters never enter the optimizer.
-- Python MLX custom VJPs plus `eval`/`stop_gradient` alone retained dense decode
-  graphs. The prototype copies **activation results**, preserving BF16 bytes,
-  through host buffers to break those graphs. Both weight decode and matrix math
-  run on Metal. These synchronizations/copies cost speed; a native primitive is the
-  next optimization. The streamed path also materializes each column slice.
-- The CLI defaults to a **16-GiB fail-fast budget**, 64-MiB MLX allocator cache,
-  256-MiB packed-weight cache and a startup check for 32 GiB of system headroom
-  beyond the budget. It checks MLX allocated/cache memory and process peak RSS.
-  A 100-ms watchdog exits this training process on violation, preserving earlier
-  step checkpoints. **This is not an OS-enforced hard quota**: MLX's own limit is
-  advisory and one allocation can overshoot before the watchdog runs.
-- The 512-token limit is architectural, not a promise that 512-token training fits
-  the default memory budget or runs quickly. For sequences up to the indexer's
-  512 candidates, all causally eligible compressed positions fit. Longer contexts
-  require the sparse indexer/candidate-selection port and fail explicitly.
-- Text-only, eager first-order reverse-mode training. No vision, MTP, generation
-  cache, optimizer-state resume, higher derivatives or `mx.compile` support.
+Maximum context is 512 tokens because longer-context sparse candidate/indexer
+selection is not ported. This is not a claim that 512-token training fits the
+default budget or is fast. Text only, first-order eager reverse-mode gradients;
+no vision, MTP, higher derivatives or `mx.compile`. Generation recomputes the
+whole prefix and has no KV decode cache. Adapters use a private format loaded by
+this tool; external serving/PEFT mapping and fusion are not implemented.
 
 ## EXL3 and architecture verification
 

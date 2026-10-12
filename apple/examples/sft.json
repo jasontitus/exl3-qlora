@@ -1,0 +1,22 @@
+{
+  "model": "~/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "data": "artifacts/my-data",
+  "output": "artifacts/my-run",
+  "steps": 20,
+  "seq_length": 32,
+  "rank": 4,
+  "alpha": 8.0,
+  "learning_rate": 0.0001,
+  "grad_accumulation": 4,
+  "clip_grad": 1.0,
+  "memory_gib": 16,
+  "allocator_cache_mib": 64,
+  "reserve_gib": 32,
+  "cache_mib": 128,
+  "chunk_size": 512,
+  "save_every": 5,
+  "keep_last": 2,
+  "eval_every": 5,
+  "eval_examples": 2,
+  "seed": 8
+}

@@ -1,0 +1,6 @@
+{"messages":[{"role":"user","content":"What is 2 + 2?"},{"role":"assistant","content":"4."}]}
+{"prompt":"Name the capital of France.","completion":"Paris."}
+{"prompt":"What is the opposite of hot?","completion":"Cold."}
+{"prompt":"How many sides does a triangle have?","completion":"Three."}
+{"prompt":"Complete the sequence: 1, 2, 3, ...","completion":"4."}
+{"messages":[{"role":"user","content":"Give one example of a primary color."},{"role":"assistant","content":"Red."}]}

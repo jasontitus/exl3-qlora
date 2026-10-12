@@ -5,12 +5,13 @@ build-backend = "hatchling.build"
 [project]
 name = "exl3-mlx"
 version = "0.1.0"
-description = "Experimental EXL3 trellis decoding and QLoRA primitives for Apple silicon"
+description = "Experimental streamed EXL3 fine-tuning for Apple silicon"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.12"
 dependencies = [
     "mlx==0.32.3",
+    "mlx-lm==0.32.0",
     "numpy>=2.0",
     "safetensors>=0.6",
     "tokenizers>=0.22,<1",

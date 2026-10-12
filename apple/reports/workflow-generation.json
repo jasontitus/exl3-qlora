@@ -1,0 +1,35 @@
+{
+  "text": " is",
+  "generated_ids": [
+    344
+  ],
+  "prompt_tokens": 5,
+  "method": "greedy full-prefix recomputation",
+  "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "expert_source": {
+    "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+    "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+    "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+  },
+  "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+  "streaming": {
+    "loads": 2772,
+    "hits": 0,
+    "evictions": 2742,
+    "loaded_bytes": 12303599616,
+    "cached_bytes": 133155840,
+    "peak_cached_bytes": 133155840,
+    "forward_calls": 2772,
+    "backward_calls": 0
+  },
+  "engram_bytes_read": 63360,
+  "trainable_parameters": 18681856,
+  "peak_mlx_gib": 8.34162336960435,
+  "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+  "context_limit": 512,
+  "block_recomputation": true,
+  "adapter": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/workflow-verification/train/step-000002",
+  "elapsed_seconds": 21.49771858297754,
+  "budget_gib": 12.0,
+  "observed_memory_gib": 9.961349487304688
+}

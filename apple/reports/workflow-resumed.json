@@ -1,0 +1,60 @@
+{
+  "checkpoint": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/workflow-resumed/step-000002",
+  "expert_source": {
+    "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+    "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+    "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+  },
+  "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+  "streaming": {
+    "loads": 10755,
+    "hits": 1230,
+    "evictions": 10725,
+    "loaded_bytes": 47736368640,
+    "cached_bytes": 133155840,
+    "peak_cached_bytes": 133155840,
+    "forward_calls": 9588,
+    "backward_calls": 2397
+  },
+  "engram_bytes_read": 152064,
+  "trainable_parameters": 18681856,
+  "peak_mlx_gib": 8.778843326494098,
+  "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+  "context_limit": 512,
+  "block_recomputation": true,
+  "history": [
+    {
+      "loss": 5.047365188598633,
+      "gradient_norm": 0.2437674105167389,
+      "supervised_tokens": 4,
+      "microbatches": 1,
+      "step": 2,
+      "cursor": 2,
+      "elapsed_seconds": 55.42140687489882,
+      "peak_mlx_gib": 8.778843326494098
+    }
+  ],
+  "completed_step": 2,
+  "additional_steps": 1,
+  "elapsed_seconds": 81.40316249988973,
+  "adapter_prediction_reload_exact": true,
+  "optimizer_resume_supported": true,
+  "budget_gib": 12.0,
+  "observed_memory_gib": 10.263580322265625,
+  "mlx": "0.32.3",
+  "mlx_lm": "0.32.0",
+  "device": "Apple M1 Ultra",
+  "contract": {
+    "learning_rate": 0.0001,
+    "grad_accumulation": 1,
+    "clip_grad": 1.0,
+    "seed": 8,
+    "seq_length": 4,
+    "truncate": false,
+    "chunk_size": 512,
+    "no_checkpoint": false,
+    "data_sha256": "c346fc03916086c550b1de4789a51f6ab62da4d66b2adeed8af335d27541dd82",
+    "mlx": "0.32.3",
+    "mlx_lm": "0.32.0"
+  }
+}

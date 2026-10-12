@@ -1,0 +1,33 @@
+{
+  "scope": "4-token operational validation; not quality or native full-model parity",
+  "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "phases": {
+    "train": {
+      "exit_code": 0
+    },
+    "resume": {
+      "exit_code": 0
+    },
+    "base-eval": {
+      "exit_code": 0
+    },
+    "adapter-eval": {
+      "exit_code": 0,
+      "attempt": 2
+    },
+    "generate": {
+      "exit_code": 0,
+      "attempt": 1
+    }
+  },
+  "fixture_sha256": "c346fc03916086c550b1de4789a51f6ab62da4d66b2adeed8af335d27541dd82",
+  "completed": true,
+  "full_model_optimizer_resume_exact": true,
+  "adapter_prediction_reload_exact": true,
+  "base_loss": 5.0738067626953125,
+  "adapter_loss": 4.9827117919921875,
+  "generated_ids": [
+    344
+  ],
+  "peak_mlx_gib": 8.778984000906348
+}

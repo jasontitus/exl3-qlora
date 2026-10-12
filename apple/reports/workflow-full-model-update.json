@@ -1,0 +1,36 @@
+{
+  "scope": "One full-model optimizer update, followed by a system-reserve watchdog abort during the next step",
+  "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "run": "apple/artifacts/workflow-smoke",
+  "saved_adapter": "apple/artifacts/workflow-smoke/step-000001",
+  "metrics": {
+    "loss": 5.0738067626953125,
+    "gradient_norm": 0.08747831732034683,
+    "supervised_tokens": 4,
+    "microbatches": 1,
+    "step": 1,
+    "cursor": 1,
+    "elapsed_seconds": 58.71491350000724,
+    "peak_mlx_gib": 8.69041309505701
+  },
+  "adapter_parameters": 18681856,
+  "adapter_tensors": 2464,
+  "all_adapter_values_finite": true,
+  "nonzero_B_tensors": 140,
+  "nonzero_EXL3_expert_B_tensors": 60,
+  "optimizer_step": 1,
+  "checkpoint_hashes_valid": {
+    "adapter.safetensors": true,
+    "adapter_config.json": true,
+    "optimizer.safetensors": true,
+    "random.safetensors": true
+  },
+  "process_budget_gib": 12,
+  "system_reserve_gib": 32,
+  "exit_code": 75,
+  "exit_reason": "System reclaimable headroom fell to 31.90 GiB, below the 32 GiB reserve",
+  "full_model_prediction_reload_tested": true,
+  "full_model_optimizer_resume_tested": true,
+  "note": "The saved checkpoint was recovered in a new process: Adam advanced to step 2 and full-model prediction reload was exact. See recovery_report. This is not a quality or independent native logit-parity result.",
+  "recovery_report": "workflow-resumed.json"
+}

@@ -4,6 +4,7 @@ import math
 
 import mlx.core as mx
 import mlx.nn as nn
+from mlx_lm.tuner.lora import LoRALinear as MLXLMLoRALinear
 
 from .attention import quantize_activation
 
@@ -37,19 +38,26 @@ class NativeLinear(nn.Module):
         return x @ self.weight.astype(x.dtype).T
 
 
-class LoRALinear(nn.Module):
+class LoRALinear(MLXLMLoRALinear):
+    """MLX-LM's adapter forward, initialized without a dense placeholder base.
+
+    ``from_base`` assumes MLX's affine quantization and temporarily allocates an
+    nn.Linear. Neither is appropriate for disk-streamed EXL3 experts.
+    """
+
     def __init__(self, base, *, rank=8, alpha=16.0):
-        super().__init__()
+        nn.Module.__init__(self)
         if rank < 1 or not math.isfinite(alpha) or alpha <= 0:
             raise ValueError("Positive rank and alpha required")
-        self.base = base
+        self.linear = base
+        self.dropout = nn.Dropout(0.0)
+        self.scale = alpha / rank
         self.in_features, self.out_features = base.in_features, base.out_features
         self.rank, self.alpha = rank, alpha
         bound = 1 / math.sqrt(self.in_features)
         self.lora_a = mx.random.uniform(-bound, bound, (self.in_features, rank))
         self.lora_b = mx.zeros((rank, self.out_features))
-        self.base.freeze()
+        self.linear.freeze()
 
-    def __call__(self, x):
-        delta = (x.astype(mx.float32) @ self.lora_a) @ self.lora_b * (self.alpha / self.rank)
-        return self.base(x) + delta.astype(x.dtype)
+    def fuse(self, dequantize=False):
+        raise NotImplementedError("Keep EXL3 adapters separate; fusion requires requantization")
