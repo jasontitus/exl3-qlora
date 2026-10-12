@@ -1,0 +1,14 @@
+{
+  "forward_max_abs_error": 2.4172787337906065e-06,
+  "dx_max_abs_error": 4.304021136380953e-06,
+  "bits_w1_w2_w3": [
+    2.0,
+    3.0,
+    2.0
+  ],
+  "rows": 2,
+  "scope": "Complete real expert with route weights before down projection; NumPy float64 oracle",
+  "repo": "jayleaton/DeepSeek-V4.1-Flash-EXL3-2.8bpw",
+  "revision": "915e1d0de8ee0a99944c5bc88ab802a639c63380",
+  "key": "layers.0.ffn.experts.0"
+}

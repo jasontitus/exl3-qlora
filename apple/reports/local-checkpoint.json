@@ -1,0 +1,16 @@
+{
+  "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "expert_source": {
+    "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+    "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+    "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+  },
+  "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+  "expert_bank_bytes": 204535234560,
+  "verified_records": {
+    "0/0": "c32ff8c8637164c02680d975f58796a838a5648394d54876f584e18f7aeb2ae5",
+    "14/123": "8b0b3cc78703a555eb1c71d670b968d6b8f47f42c21b38d1c22296c03352da6a",
+    "39/383": "84db8cae18e5ada62e13520baed581e4af8b6967c888809216863bdb9bbdfb42"
+  },
+  "deletions": []
+}

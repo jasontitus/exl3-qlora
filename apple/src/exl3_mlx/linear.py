@@ -5,6 +5,7 @@ import math
 import mlx.core as mx
 import mlx.nn as nn
 
+from .materialize import materialize
 from .trellis import reconstruct, validate_trellis
 
 
@@ -14,7 +15,7 @@ def hadamard128(x):
     return mx.hadamard_transform(x.reshape(shape)).reshape(x.shape)
 
 
-def _base(x, trellis, suh, svh, codebook, chunk_size, transpose=False):
+def _base(x, trellis, suh, svh, codebook, chunk_size, transpose=False, eager=False):
     # Use fp32 for transforms/accumulation (including dX); cast only at the boundary.
     n = svh.size
     left, right = (svh, suh) if transpose else (suh, svh)
@@ -29,14 +30,19 @@ def _base(x, trellis, suh, svh, codebook, chunk_size, transpose=False):
         if transpose:
             part = xh[..., start:end] @ w.T
             total = part if total is None else total + part
+            if eager:
+                total = materialize(total)
         else:
-            chunks.append(xh @ w)
+            part = xh @ w
+            if eager:
+                part = materialize(part)
+            chunks.append(part)
     inner = total if transpose else mx.concatenate(chunks, axis=-1)
     return (hadamard128(inner) * right).astype(x.dtype)
 
 
 class EXL3Linear(nn.Module):
-    """One real EXL3 matrix. Full-model architecture loading is not implemented.
+    """One resident EXL3 matrix; the separate streaming module provides disk loading.
 
     Shapes are storage dimensions; unsupported unpadded shapes fail explicitly.
     No dense weights are retained across calls or saved as autodiff residuals.
@@ -76,11 +82,15 @@ class EXL3Linear(nn.Module):
 
         @mx.custom_function
         def frozen_linear(inp):
-            return _base(inp, trellis, suh, svh, codebook, chunk_size)
+            return materialize(
+                _base(mx.stop_gradient(inp), trellis, suh, svh, codebook, chunk_size)
+            )
 
         @frozen_linear.vjp
         def frozen_vjp(primals, cotangent, output):
-            return _base(cotangent, trellis, suh, svh, codebook, chunk_size, transpose=True)
+            return materialize(
+                _base(cotangent, trellis, suh, svh, codebook, chunk_size, transpose=True)
+            )
 
         out = frozen_linear(x)
         if "bias" in self:
@@ -100,6 +110,7 @@ class EXL3QLoRALinear(nn.Module):
         if not math.isfinite(alpha) or alpha <= 0:
             raise ValueError("alpha must be positive and finite")
         self.base = base
+        self.in_features, self.out_features = base.in_features, base.out_features
         self.rank, self.alpha = rank, float(alpha)
         self.scaling = self.alpha / rank
         bound = 1 / math.sqrt(base.in_features)

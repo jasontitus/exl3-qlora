@@ -1,0 +1,44 @@
+{
+  "checkpoint": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "expert_source": {
+    "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-3.0bpw",
+    "revision": "c5534b90602b4090980a1c3ded1eb3b4d99a38d5",
+    "exllamav3": "v1.4.2 5f3c537ca9d89893d771256f5c43c93656553fbb"
+  },
+  "expert_manifest_sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+  "streaming": {
+    "loads": 7329,
+    "hits": 2307,
+    "evictions": 7269,
+    "loaded_bytes": 32529971712,
+    "cached_bytes": 266311680,
+    "peak_cached_bytes": 266311680,
+    "forward_calls": 7227,
+    "backward_calls": 2409
+  },
+  "engram_bytes_read": 101376,
+  "trainable_parameters": 1576960,
+  "peak_mlx_gib": 8.470530221238732,
+  "activation_gradient": "identity straight-through for FP8/FP4 activation quantization",
+  "context_limit": 512,
+  "block_recomputation": true,
+  "loss": 5.0738067626953125,
+  "elapsed_seconds": 55.798289917060174,
+  "gradient_tensors": 160,
+  "all_grads_finite": true,
+  "optimizer_update_tested": false,
+  "input_ids": [
+    0,
+    671,
+    6102,
+    294
+  ],
+  "target_ids": [
+    671,
+    6102,
+    294,
+    8760
+  ],
+  "validation_scope": "Real 40-layer text forward/backward on local 3.0-bpw repack; not native-logit parity or fine-tuning quality",
+  "measurement_note": "Successful run before subsequent fail-fast budget and per-slice materialization hardening. Allocator cache limited to 256 MiB in this measurement. Earlier runs exposed excessive retained graphs; see PORTING.md."
+}

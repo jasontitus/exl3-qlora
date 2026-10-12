@@ -9,10 +9,16 @@ description = "Experimental EXL3 trellis decoding and QLoRA primitives for Apple
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.12"
-dependencies = ["mlx==0.32.3", "numpy>=2.0", "safetensors>=0.6"]
+dependencies = [
+    "mlx==0.32.3",
+    "numpy>=2.0",
+    "safetensors>=0.6",
+    "tokenizers>=0.22,<1",
+]
 
 [project.scripts]
 exl3-mlx = "exl3_mlx.cli:main"
+exl3-mlx-train = "exl3_mlx.train:main"
 
 [dependency-groups]
 dev = ["pytest>=8", "ruff>=0.9"]

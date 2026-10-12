@@ -1,4 +1,4 @@
-"""Reproduce real DeepSeek matrix checks with under 10 MiB of tensor downloads.
+"""Reproduce real DeepSeek matrix checks with under 12 MiB of tensor downloads.
 
 Run from apple/: uv run python scripts/validate_target.py
 Downloads only missing fixtures; verifies cached tensors against recorded hashes.
@@ -19,6 +19,7 @@ CASES = {
     "deepseek-v41-wkv": "layers.0.attn.wkv",
     "deepseek-v41-expert0-w1": "layers.0.ffn.experts.0.w1",
     "deepseek-v41-expert0-w2": "layers.0.ffn.experts.0.w2",
+    "deepseek-v41-expert0-w3": "layers.0.ffn.experts.0.w3",
 }
 
 
