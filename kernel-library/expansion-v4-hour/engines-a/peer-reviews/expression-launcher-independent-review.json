@@ -1,0 +1,64 @@
+{
+  "schema": "expression-launcher-independent-review-v1",
+  "created_utc": "2026-10-13T22:39:59.373654+00:00",
+  "reviewer": "quality_research",
+  "status": "approved_implementation_execution_gates_pending",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/expression_launch.py": "be6586a921b86da27a40e940ebd5c43108f3f416e8435905b7357467fd14aded",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/expression_build.py": "8b73b19c91e17025fb95ab7aa39265b9dce78daa69e18d82a3b6919c2f56b906",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/tests/test_expression_launch.py": "51a015b55710c6d218e59f9b4d0359f22f2b799d9938c2de51a6c9c654c5706f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/expression-implementation.json": "b1a1e6758dd562028be2511238e6cf5d99af08eb94f5939bc5acd65bc55a2dc4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/EXPRESSIONS.md": "680830f096d8d7892ffd023273cd1fcb0c3384655883c5a656ed3f9c336d469a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/launch.py": "bf0871c5c7b67924723b71a85efbbf92374b08875fd5d05718c4977bf86835e9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/test_expression_receipt_boundaries.py": "b5d208641a3302444c2814bbdb155e0ef8c3f4ff23f41170e36ad4d0442926c8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/expression-launcher-independent-tests-final.xml": "f8a09e1a8b2305275b7a0fee9f6f0fb345d22a0f9fbf49afba21cc8450a7bafd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/expression-receipt-adversarial-reproductions.json": "d9546ee41445bad38fd2a0509fc5dfe26a604a846879f62347e218c2f7e8b4dd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/reproduce_expression_receipt_gaps.py": "c018dd314c323a3b142f51b07c1879613f75cfa4360627adac45776ddc92496b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/diagnostic-launchers-independent-review.json": "e44fccefd47ce453ef3889c2ba90f678de1ec567671cbe96f2e1f7c1b8099a18",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-probes-m5-v1/scripts/generated_expression_probes.py": "09d31c2dda0a2c9b1b04cd9d0b07a18dc102ebce3a8285f8e9e1815827b720ec",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-probes-m5-v1/scripts/verify_expression_probes.swift": "7fb205dad382b48786a56f70ef57eff6e0dc3ad72a2d9056e4ad82137cee7ab7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/expression-relocation-independent-review.json": "f2c8b317713f9b9ce56d73a13b233b514885c09b505e891f30d98f72a61bc547"
+  },
+  "validation": {
+    "test_methods_passed": 23,
+    "subtests_passed": 33,
+    "author_methods": 19,
+    "independent_methods": 4,
+    "model_loaded": false,
+    "gpu_executed": false,
+    "compiler_executed": false,
+    "remote_executed": false
+  },
+  "findings": [
+    {
+      "issue": "An errored/incomplete negative control could be treated as intended numerical rejection.",
+      "state": "resolved",
+      "evidence": "Independent original-source CPU reproduction preserved; final source rejects error field, requires completed_fixed_cases and finite ordered completion timestamps."
+    },
+    {
+      "issue": "Build context consumed launch receipts without verifying recorded child argv/cwd/environment against sealed commands.",
+      "state": "resolved",
+      "evidence": "Independent original-source CPU reproduction accepted mutated nine child contracts; final source validates exact process keys, sealed generation/collection argv, TF32/Python environment, cwd, output/log paths, positive PIDs and serial timestamps. Independent negatives now pass."
+    }
+  ],
+  "confirmed_scope": [
+    "Exactly six greedy expression generations in declared base/prior/final order, plus three receipt collection children; source-bound two probes, eight-token cap, same checkpoint/runtime/package/adapter/environment guards as reviewed diagnostic campaign.",
+    "No compilation or Swift GPU dispatch is implicit in generation. Build is separate, hash-bound and preserves original model text and generation receipts.",
+    "Absent EOS, unexpected special tokens and malformed expressions are per-probe rejections; provenance/token-text failures abort. A valid companion probe remains eligible independently through original compiler builder.",
+    "M5 golden and negative controls must bind the relocated reviewed plan/builder/Swift and complete all30 reference/candidate cases with guards; both negatives must be numerically discriminated.",
+    "Build context revalidates full recorded campaign identity and selected condition token/stop/admission data, including rejected-but-valid-looking truncations."
+  ],
+  "execution_gates": [
+    "Concrete request must be independently matched to completed fixed396-step training launch and final checkpoint; generic diagnostic/expression modules do not choose final training checkpoint.",
+    "Actual fresh M5 golden/negative controls must be run, reviewed and bound before expression preparation. Current CPU test fixtures do not satisfy this gate.",
+    "Review sealed concrete paths/model full-payload receipt/runtime/package/adapters/resources before model execution.",
+    "Independently review actual generated receipt and explicit build-admission sidecar, then separately authorize/run the Swift harness; preserve failed cases and original outputs."
+  ],
+  "limitations": [
+    "CPU mocks and inspected trusted-local receipt logic, not hostile-host attestation or real inference validation.",
+    "Generated expression fills a predeclared supplied kernel hole. Fixed finite cases do not establish full-agent editing, optimization discovery, broad generalization or speed.",
+    "No actual expression campaign, compiler invocation, M5 control or GPU run performed in this independent review.",
+    "Prior flawed source revisions and adversarial reproduction receipts remain preserved."
+  ]
+}

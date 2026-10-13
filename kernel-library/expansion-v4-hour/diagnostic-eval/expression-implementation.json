@@ -1,0 +1,30 @@
+{
+  "schema": "trusted-expression-implementation-v1",
+  "status": "held_pending_independent_review",
+  "created_utc": "2026-10-13T22:34:37.194290+00:00",
+  "cpu_tests": 19,
+  "cpu_tests_result": "passed",
+  "ruff": "passed",
+  "gpu_executed": false,
+  "model_executed": false,
+  "compiler_executed": false,
+  "remote_executed": false,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/expression_launch.py": "be6586a921b86da27a40e940ebd5c43108f3f416e8435905b7357467fd14aded",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/expression_build.py": "8b73b19c91e17025fb95ab7aa39265b9dce78daa69e18d82a3b6919c2f56b906",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/tests/test_expression_launch.py": "51a015b55710c6d218e59f9b4d0359f22f2b799d9938c2de51a6c9c654c5706f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/expression-cpu-tests.log": "fe21645511ae39da331ec1cb703f7e65da6a3f8beef6fb9abf9109e5b36b1049",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/EXPRESSIONS.md": "680830f096d8d7892ffd023273cd1fcb0c3384655883c5a656ed3f9c336d469a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/launch.py": "bf0871c5c7b67924723b71a85efbbf92374b08875fd5d05718c4977bf86835e9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-probes-m5-v1/scripts/generated_expression_probes.py": "09d31c2dda0a2c9b1b04cd9d0b07a18dc102ebce3a8285f8e9e1815827b720ec",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-probes-m5-v1/scripts/verify_expression_probes.swift": "7fb205dad382b48786a56f70ef57eff6e0dc3ad72a2d9056e4ad82137cee7ab7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/expression-relocation-independent-review.json": "f2c8b317713f9b9ce56d73a13b233b514885c09b505e891f30d98f72a61bc547"
+  },
+  "scope": "Separate fixed6 generations and per-probe admission; explicit CPU build gate preserves valid companion probe while rejecting malformed/truncated output. No actual request/plan prepared; no control or model execution. Original builder and relocated assets unchanged.",
+  "updated_utc": "2026-10-13T22:39:10.149397+00:00",
+  "review_fixes": [
+    "Controls require completed numerical status, no error, finite ordered timestamps.",
+    "Build gate checks exact nine sealed commands, process keys, cwd, TF32/Python environment, serial timestamps, both logs and output paths."
+  ],
+  "prior_revision": "revisions/expression-v1-pre-review-fixes"
+}

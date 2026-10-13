@@ -1,0 +1,16 @@
+{
+  "schema": "supplemental-compiler-summary-v2",
+  "created_utc": "2026-10-13T22:38:26.607634+00:00",
+  "receipt": "kernel-library/expansion-v4-hour/compiler-probes/tensorfold-closure-v2/receipt.json",
+  "receipt_sha256": "1bf4c2054d88abb81401ad630ba51a094a905dab5d68deb6abc644f44d7a7ef5",
+  "script_sha256": "496b65f450064fbd7a218caee9ba2c941581d6e0a8eee4884a2c7263c62d0818",
+  "counts": {
+    "compiled": 38,
+    "compile_failed": 5,
+    "unqualified": 1
+  },
+  "qualification": "Historical source/header compilation only; generated host definitions are absent in failed probes, so failure is not an upstream regression verdict. No linking, GPU numerical or performance claim. Independent review approved the recorded file-compilation scope. Prior v1 summary preserved.",
+  "independent_review_sha256": "7913afc397c779508563be72f8f2bad47d18f346544586ee6fb899458d0e2501",
+  "distinct_changes_inspected": 7,
+  "changes_with_passing_translation_units": 3
+}
