@@ -1,0 +1,57 @@
+{
+  "schema": "m5-preparation-request-v1",
+  "created_utc": "2026-10-13T22:03:12.624482+00:00",
+  "status": "review_required_not_executed",
+  "host": "jason-m5-MacBook.local",
+  "purpose": "CPU-only creation of immutable concrete 198-row training plan after complete verified model transfer",
+  "environment": {
+    "MLX_ENABLE_TF32": "0"
+  },
+  "command": [
+    "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5/.venv/bin/python",
+    "/Volumes/Scratch/exl3-training/2026-10-13/prepare_agent_corpus_run.py",
+    "prepare",
+    "--runtime",
+    "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5",
+    "--corpus",
+    "/Volumes/Scratch/exl3-training/2026-10-13/training-mix-12288-v3",
+    "--model",
+    "/Volumes/Scratch/exl3-training/models/deepseek-v4.1-flash-exl3-3.0bpw",
+    "--project",
+    "/Volumes/Scratch/exl3-training/2026-10-13/metal-mix198-tf32off-v1",
+    "--plan",
+    "/Volumes/Scratch/exl3-training/2026-10-13/metal-mix198-tf32off-plan-v1.json",
+    "--prefix-disk-cache",
+    "/Volumes/Scratch/exl3-training/2026-10-13/metal-mix198-tf32off-v1/prefix-disk-cache",
+    "--max-length",
+    "12288",
+    "--memory-gib",
+    "80"
+  ],
+  "helper_sha256": "08227583a6fbd17b5f26c2ba4e83f78d5d79a076fb25679535904c709c0ebfa9",
+  "corpus_manifest_sha256": "b80a3c38637546565c517311f8785e1ac3e803267b98b70976b125b523bf60fb",
+  "expected_counts": {
+    "train": 198,
+    "valid": 0,
+    "test": 16
+  },
+  "expected_updates": 396,
+  "resource_policy": {
+    "memory_gib": 80,
+    "reserve_gib": 8,
+    "packed_cache_mib": 2048,
+    "decoded_cache_mib": 0,
+    "prefix_ram_mib": 1024,
+    "allocator_cache_mib": 256,
+    "prefix_disk_quota_gib": 64
+  },
+  "remaining_gates": [
+    "Full model transfer SHA verification",
+    "Fresh live memory preflight; preserve reserve and other jobs",
+    "CPU preparation must preserve counts, exact heldout bytes, provenance, runtime identity",
+    "Independent review of resulting concrete plan before launcher",
+    "Longest full training and heldout item qualification before main run"
+  ],
+  "numerical_scope": "MLX_ENABLE_TF32=0 in all comparison phases; small RoPE reference discrepancy recorded separately; no full model parity claim",
+  "evaluation_extensions": "Prior adapter and generation comparisons require additional trusted launch receipts after serial five-phase run; these are not provided by the five-phase launcher."
+}

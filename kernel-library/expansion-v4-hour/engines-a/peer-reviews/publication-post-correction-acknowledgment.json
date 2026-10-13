@@ -1,0 +1,38 @@
+{
+  "schema": "publication-documentation-correction-acknowledgment-v1",
+  "status": "approved_for_reviewed_publication_scope",
+  "reviewer": "quality_research",
+  "timestamp_utc": "2026-10-13T22:00:26.144794+00:00",
+  "checks": {
+    "resource_range_matches_validator": true,
+    "protected_llama_explicit_preparation_only": true,
+    "no_protected_example_resume_or_fit_command": true,
+    "protected_preparation_followed_by_status": true,
+    "early_corpus_cutoff_explicit": true,
+    "5822_context_cutoff_explicit": true,
+    "full_target_vs_scoped_prompt_coverage_distinguished": true,
+    "local_markdown_links_resolve": true
+  },
+  "parent_numerical_test_receipt": {
+    "passed": 54,
+    "failures": 0,
+    "errors": 0,
+    "independent_reviewer_did_not_run_gpu": true
+  },
+  "interpretation": "All four documented publication findings are corrected. The protected preparation illustration now follows with CPU status inspection rather than a nonexistent-checkpoint fitting call. Prior source inventory/static/import/M5-copy checks remain bounded by their original receipt. The newer54-test numerical receipt was inspected, not independently rerun.",
+  "limitations": [
+    "Research receipt paths remain historical local evidence references; source archive is intentionally not a standalone corpus distribution.",
+    "No new model correctness, speed, broad generated-kernel improvement, or external push approval is implied."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/README.md": "d5ab8769cf4d50e3abee61c5c55ad9830d859c061fc1deab57a84a84d454c593",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/KERNEL_TUNING.md": "c201d83dc8a3bc818288b7ae2dd105d63afe5419aab6495e313e750dcce9a613",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/RESOURCE_PROFILES.md": "9d1eb7dc74e52837ccc455c26c7d36bab66c2b520bb2b1c2674c9a7a8bcc5c20",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/resources.py": "9307ae8f03c6143edc20ebad5988cdc7d93bc90bba2b49bbdf58245dc2003023",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/sft.py": "3b5dd1b482140aea41415a12f6ff7aa335b21b3ff676ac6b09954a396762b60c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/final-30-update-heldout-overview.json": "8f769dd917037566abe265740f6ba31aa73e9473f0dd38f497ab97ada8e92768",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/publication-gradient-tests-v2.xml": "efe7af1c50d4de293c9e134f7f9a5c55780c31075f478a04dccdd7bcb87e0a3e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/publication-gradient-tests-v2.log": "1b7fec24d2e2ddde1bd3d22f5d29c22d8fc0c105ce9e7f2e1a63f12c6419bf2f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/publication-independent-review.json": "d6048996c430660072eae05424ea70d053bce6f10fbef9e5770cfc75c3a04035"
+  }
+}

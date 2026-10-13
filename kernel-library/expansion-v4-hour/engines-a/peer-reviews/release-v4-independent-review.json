@@ -1,0 +1,54 @@
+{
+  "schema": "metal-library-v4-independent-seal-review-v1",
+  "status": "passed_scoped_release_integrity_and_count_audit",
+  "reviewer": "quality_research",
+  "timestamp_utc": "2026-10-13T22:07:54.275671+00:00",
+  "release_sha256": "50decf9a6f13be38cf14affad6738f701455422ace04b99a6b83bd2e27edb113",
+  "checks": {
+    "all_release_files_rehashed": 34,
+    "unique_current_audit_input_bindings_rehashed": 1608,
+    "all_current_artifact_maps_verified": true,
+    "heldout16_prepared_bytes_exact": true,
+    "prior_exact_training_rows_preserved": true,
+    "12k_exact_rows_identical_subset_of32k": true,
+    "complete_rows_fit_declared_caps_no_truncation": true,
+    "mix_exact_rows_match_reviewed_exact_corpus": true,
+    "no_duplicate_known_diagnostic_exposure_groups": true
+  },
+  "exact": {
+    "12288": {
+      "rows": 159,
+      "new_commits": 48,
+      "retained_prior_rows_exact": 111,
+      "max_serialized_ids": 12173,
+      "supervised_tokens": 385424
+    },
+    "32768": {
+      "rows": 226,
+      "new_commits": 72,
+      "retained_prior_rows_exact": 154,
+      "max_serialized_ids": 32633,
+      "supervised_tokens": 1115647
+    }
+  },
+  "new_reasoning_views": 76,
+  "mix": {
+    "exact": 159,
+    "diagnostic": 39,
+    "total": 198,
+    "updates": 396,
+    "diagnostic_update_fraction": 0.19696969696969696
+  },
+  "qualification": "Source/replay/tokenization and scoped independent review only; not blanket compilation, numerical, performance or model-quality qualification. Commit counts are not independent optimization families. No model outputs selected these inputs.",
+  "limitations": [
+    "This audits sealed data, counts, current evidence hashes, subset preservation and exposure grouping. It does not redo every source semantic review or execute patches.",
+    "Historical superseded reports inside evidence retain their historical scopes; this audit does not recursively reinterpret old receipts as current attestations.",
+    "No source-history completeness, dependency-closure, universal kernel correctness/performance, training capacity, or model-quality improvement claim.",
+    "The source-reviewed excerpts and diagnostic views are historical reconstructions, not observed multi-turn agent trajectories. No model/GPU run occurred here."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/release.json": "50decf9a6f13be38cf14affad6738f701455422ace04b99a6b83bd2e27edb113",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/release.json": "27e311bf4d3db60115458ea2425b355a649a8c7e91aa223aa6c8da7e0765fcd9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/check_release_v4.py": "f87e12c747bd087820d080bb577ffe9efc25580812a437e5d127ef95d795a389"
+  }
+}

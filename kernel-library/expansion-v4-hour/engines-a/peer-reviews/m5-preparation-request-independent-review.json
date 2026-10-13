@@ -1,0 +1,48 @@
+{
+  "schema": "m5-cpu-preparation-request-independent-review-v1",
+  "reviewer": "quality_research",
+  "status": "approved_for_cpu_preparation_pending_declared_remote_gates",
+  "timestamp_utc": "2026-10-13T22:05:31.337813+00:00",
+  "actionable_preparation_incompatibilities": [],
+  "checks": [
+    "Request helper hash equals both current and frozen-v5 copies. All requested CLI arguments exist.",
+    "Request corpus hash equals final mix-v3. Existing helper corpus_inputs verifies every artifact checksum,198 train,0 valid,16 test and no truncation without importing MLX.",
+    "The helper constructs exactly396 updates, accumulation1, seed8, rank4/alpha8, layer39, checkpoint activation mode, chunk2048, learning rate5e-5, clipping1, fixed final checkpoint. These match reviewed strategy.",
+    "80GiB process,8GiB reserve,2048MiB packed,0 decoded,1024MiB prefix RAM,256MiB allocator and64GiB disk quota match helper configuration.",
+    "Prefix cache is inside the new project and must remain initially absent. Helper emits legacy PYTHONPATH environment; reviewed M5 launcher separately enforces TF32=0 for every guard/helper/model process.",
+    "Five-phase launcher covers disposable longest train update, longest test forward, fresh base NLL,396 updates and fresh final NLL. It does not include prior-adapter or generation comparisons; request explicitly identifies those remaining extensions."
+  ],
+  "counts": {
+    "train": 198,
+    "valid": 0,
+    "test": 16,
+    "updates": 396,
+    "exact": 159,
+    "diagnostic": 39
+  },
+  "lengths_total_serialized_ids": {
+    "longest_train": 12173,
+    "longest_test": 11645,
+    "cap": 12288
+  },
+  "remaining_requirements": [
+    "After complete model transfer, verify destination full bytes and record completed receipt before CPU preparation/launch.",
+    "CPU preparation must succeed with exact counts/masks and unchanged16 heldout prepared bytes; fail if de-duplication alters counts. Verify resulting immutable runtime/base/project/provenance/commands independently.",
+    "Live memory/headroom evidence must support80+8GiB. The request does not establish that a12173-token training update fits. Disposable longest full-row train/test phases remain mandatory.",
+    "Remote Python/dependency/source identities and fresh cache absence must pass actual launcher guards; local paths alone do not demonstrate installed remote state.",
+    "Baseline/prior/final generation and prior-adapter NLL need their own trusted process/identity receipts with identical numerical conditions."
+  ],
+  "limitations": [
+    "No CPU project was created and no remote execution/model/GPU run occurred in this review.",
+    "39/198 is19.697% of update rows; this is a declared heuristic, not a cap on gradient influence. Diagnostics include historical retrospective views and are not authentic agent trajectories."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/prepare-request-v1.json": "5141f14b0ce3948f992ec1257d45095ffa4bc1b014eb71984f98c24703221f34",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/scripts/prepare_agent_corpus_run.py": "08227583a6fbd17b5f26c2ba4e83f78d5d79a076fb25679535904c709c0ebfa9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/scripts/prepare_agent_corpus_run.py": "08227583a6fbd17b5f26c2ba4e83f78d5d79a076fb25679535904c709c0ebfa9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/ktune-import.json": "b80a3c38637546565c517311f8785e1ac3e803267b98b70976b125b523bf60fb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/selection.json": "a22cfbee7cfa9065569989261eee9b71590c989e157d76821221d805cee69544",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/strategy/training-strategy-draft.json": "a3eb20d8aa84350e25eba1b03bcfb9c876311ca27d4c5b12d6f4270242f13ff1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab"
+  }
+}

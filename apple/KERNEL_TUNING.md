@@ -614,3 +614,9 @@ model payloads remain in the experiment workspace rather than this source checko
 Small release/strategy/review receipts are archived here. Their historical absolute
 paths and hashes identify the original evidence; they are not portable download
 links. The 32K preparation count is not a 32K hardware-training claim.
+
+The v4 release is now sealed in `kernel-library/expansion-v4-hour/release.json`.
+Independent release review rechecked 34 sealed files and 1,608 unique audit input
+bindings. All prior exact token rows and the 16 held-out rows are preserved.
+The 12K library gained 48 distinct commit examples; the 32K archive gained 72.
+These are preparation checks, not new model-quality or kernel-performance results.
