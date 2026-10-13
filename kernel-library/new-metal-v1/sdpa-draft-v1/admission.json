@@ -1,0 +1,38 @@
+{
+  "schema": "new-metal-draft-admission-v1",
+  "status": "quarantined_exact_protected_identity",
+  "id": "mlx-5778a97c04b4-new-metal-v1",
+  "commit": "5778a97c04b40753cb5d7c255aec76c2156e916a",
+  "parent": "365bd0fbac2e96631a1b2c4a34ca5a0771cdfde5",
+  "protected_matches": [
+    {
+      "reserved_id": "mlx:4461",
+      "candidate_field": "parent",
+      "candidate_commit": "365bd0fbac2e96631a1b2c4a34ca5a0771cdfde5",
+      "reserved_field": "head"
+    }
+  ],
+  "reserved_pr_match": false,
+  "training_admission": false,
+  "eligible_examples": 0,
+  "raw_rows_exported": 0,
+  "prepared_rows_exported": 0,
+  "tokenization": "not_run_after_protection_gate",
+  "complete_source_capture": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/5778a97c04b40753cb5d7c255aec76c2156e916a",
+  "existing_capture_replay": "previously_verified_exact_complete_changed_files",
+  "source_context_extraction": "not_run_after_protection_gate",
+  "active_dataset_modified": false,
+  "gpu_or_upstream_code_executed": false,
+  "reason": "The candidate's exact parent equals the captured reserved MLX PR4461 head. The established exact head/parent policy excludes this candidate; a different subject or PR number cannot override that identity gate. Prior discovery/source teaching review was not admission.",
+  "limits": "Exact adjacency establishes the recorded policy hit, not a claim that every added source line duplicates a protected solution or that this entire framework is excluded.",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/5778a97c04b40753cb5d7c255aec76c2156e916a/receipt.json": "0fb73e41f6e5a7957ca3a1f3ce44da0c51527000a187a78e79776a66945f83a4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/5778a97c04b40753cb5d7c255aec76c2156e916a/edit.patch": "eb1325dec7750958bcc34064054a0ae08f8432f1fd9d18fc47230c2738c55e44",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/5778a97c04b40753cb5d7c255aec76c2156e916a/replay-receipt.json": "34ec359e3c5023546098d8807206502bc05248b321606c1b9cb3418502f6945f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/reviewed-teaching-evidence.json": "7a9fc39812dfd0e292c4b9ac14e00a01e64cc072dc06fcdf5cf3cf43d339baa3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source-independent-review.json": "9279b0bca775de0e617ea7fea734607dd43db5916e18255f592e94c40de036a6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/integration-v1/group-a/evidence/reserved-metadata.json": "f4eef3821f220de8903d19de9452bdd524648215cc99c0af8ee3106b48aab92b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/integration-v1/group-a/evidence/reserved-task-contracts.json": "71ffab0661d0497f1b65e9438440b08f9ca1cff09fd2e267097ff0adc381de81",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/sdpa-draft-v1/prepare.py": "076542db863dac0df669d7c52b3836e25760dc98f564fcfa867058dcc8d127d0"
+  }
+}

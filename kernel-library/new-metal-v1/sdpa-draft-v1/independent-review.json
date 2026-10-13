@@ -1,0 +1,90 @@
+{
+  "schema": "new-metal-protected-admission-independent-review-v1",
+  "status": "confirmed_quarantined_zero_rows_released198_unchanged",
+  "reviewer": "quality_research",
+  "created_utc": "2026-10-13T23:18:04.034480+00:00",
+  "candidate": {
+    "id": "mlx-5778a97c04b4-new-metal-v1",
+    "commit": "5778a97c04b40753cb5d7c255aec76c2156e916a",
+    "parent": "365bd0fbac2e96631a1b2c4a34ca5a0771cdfde5"
+  },
+  "protection_match": {
+    "reserved_id": "mlx:4461",
+    "candidate_field": "parent",
+    "candidate_commit": "365bd0fbac2e96631a1b2c4a34ca5a0771cdfde5",
+    "reserved_field": "head"
+  },
+  "protection_basis": {
+    "captured_manifest": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/integration-v1/group-a/evidence/reserved-metadata.json",
+    "captured_review_path": "/Volumes/Scratch/model-work/ktune/runs/library-breadth-expansion/reserved-unit-review-final.json",
+    "captured_review_sha256": "2e6f34bb76ab0a730d6eb9187bdc7142163ef14c617f3f4d893dfa39ce335131",
+    "original_partition_pin": "d03f863f150f1b3e24f20942696d2489938c26974564701818c78bf26d89f421",
+    "metadata_copies_identical": true,
+    "reserved_row": {
+      "id": "mlx:4461",
+      "head": "365bd0fbac2e96631a1b2c4a34ca5a0771cdfde5",
+      "base": "334cfdc5d21d6c0126468b6806e9b7707e45bb34",
+      "units": 1
+    }
+  },
+  "checks": {
+    "admission_inputs_rehashed": 8,
+    "parent_verified_from_local_git": true,
+    "git_no_lazy_fetch": true,
+    "git_argv": [
+      "git",
+      "--git-dir=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/mirrors/mlx.git",
+      "rev-list",
+      "--parents",
+      "-n",
+      "1",
+      "5778a97c04b40753cb5d7c255aec76c2156e916a"
+    ],
+    "git_result": "5778a97c04b40753cb5d7c255aec76c2156e916a 365bd0fbac2e96631a1b2c4a34ca5a0771cdfde5",
+    "eligible_rows": 0,
+    "raw_prepared_exports_found": [],
+    "draft_index_all_ineligible": true,
+    "protection_gate_precedes_source_extraction_and_export": true,
+    "active_mix_files_rehashed_against_prior_release": 8,
+    "active_counts": {
+      "train.jsonl": 198,
+      "train.prepared.jsonl": 198,
+      "test.jsonl": 16,
+      "test.prepared.jsonl": 16,
+      "valid.jsonl": 0
+    },
+    "candidate_absent_from_active_selection_and_provenance": true,
+    "all_audited_inputs_unchanged_at_end": true
+  },
+  "claim_limits": [
+    "This is an exact captured protected-head/direct-parent policy match, not proof that all new changed lines duplicate a protected solution or a blanket MLX exclusion.",
+    "Original remote partition contents were not fetched again; the captured coverage and original partition hash are bound and identical across prior released local evidence copies.",
+    "No source compilation, candidate execution, GPU, tokenizer, model load or training was performed for this audit.",
+    "Active198 unchanged refers to exact local sealed release bytes and counts; this is not a fresh remote runtime attestation.",
+    "Prior discovery/teaching evidence remains archival; it is not training admission."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/sdpa-draft-v1/admission.json": "795d7a0ebdc096268fdd737263c0b5806a6cb3d1aa72085938d1458fc36813e7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/sdpa-draft-v1/case-index.json": "0fa70ea5b7eb9e22350b1227a78dfb440174535919f09079c936071f613c0ed0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/5778a97c04b40753cb5d7c255aec76c2156e916a/receipt.json": "0fb73e41f6e5a7957ca3a1f3ce44da0c51527000a187a78e79776a66945f83a4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/5778a97c04b40753cb5d7c255aec76c2156e916a/edit.patch": "eb1325dec7750958bcc34064054a0ae08f8432f1fd9d18fc47230c2738c55e44",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/5778a97c04b40753cb5d7c255aec76c2156e916a/replay-receipt.json": "34ec359e3c5023546098d8807206502bc05248b321606c1b9cb3418502f6945f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/reviewed-teaching-evidence.json": "7a9fc39812dfd0e292c4b9ac14e00a01e64cc072dc06fcdf5cf3cf43d339baa3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source-independent-review.json": "9279b0bca775de0e617ea7fea734607dd43db5916e18255f592e94c40de036a6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/integration-v1/group-a/evidence/reserved-metadata.json": "f4eef3821f220de8903d19de9452bdd524648215cc99c0af8ee3106b48aab92b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/integration-v1/group-a/evidence/reserved-task-contracts.json": "71ffab0661d0497f1b65e9438440b08f9ca1cff09fd2e267097ff0adc381de81",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/sdpa-draft-v1/prepare.py": "076542db863dac0df669d7c52b3836e25760dc98f564fcfa867058dcc8d127d0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/evidence/reserved-metadata.json": "f4eef3821f220de8903d19de9452bdd524648215cc99c0af8ee3106b48aab92b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/group-b/batch2/evidence/reserved-metadata-exact.json": "f4eef3821f220de8903d19de9452bdd524648215cc99c0af8ee3106b48aab92b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/release.json": "50decf9a6f13be38cf14affad6738f701455422ace04b99a6b83bd2e27edb113",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/release-v4-independent-review.json": "8026b9f56a16cc08142d2469b359fd54d759f8cf84b8a0abb8f0c4de98daac46",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/ktune-import.json": "b80a3c38637546565c517311f8785e1ac3e803267b98b70976b125b523bf60fb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/provenance.jsonl": "bf9da40c1e2edd466ee3f781e28eb9ea54b04456913f682e7a44a7606988ada6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/selection.json": "a22cfbee7cfa9065569989261eee9b71590c989e157d76821221d805cee69544",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/test.jsonl": "42cd97436334db78fb465bc73275fb588dd76732ab3830506acfe735a0f8c18c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/test.prepared.jsonl": "0720ead3d696e6e9215e99cbf18dd26e532def8c309add06bbbe21efe1841ad0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/train.jsonl": "9bbc1807934d8454c4a9a359d96cdfb6b31048f6df9d478db3f1f792e7343b3e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/train.prepared.jsonl": "3391c6fa2aaf9656574b082e53643eb8adbadf7ff0281dcb037598d159a7462c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/valid.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
