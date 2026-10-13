@@ -1,0 +1,65 @@
+{
+  "architecture_distinction": "Qwen GatedResidual uses per-channel sigmoid mixing and per-stream2*sigmoid injection; no DeepSeek Sinkhorn/combine matrix. Final mixer has no injection or following RMSNorm in the inspected Qwen architecture.",
+  "config_sha256": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1",
+  "created_utc": "2026-10-13T15:31:42.124651+00:00",
+  "dtype_scope": "FP32 mathematical reference; FP64 continuous derivative oracle. No backend bitwise parity.",
+  "end_to_end_model_supported": false,
+  "evidence": [
+    "Independent scalar forward formula agrees at2e-12 FP64 and2e-6 FP32/FP16-input tolerance; not actual Torch or fused-kernel parity.",
+    "Known zero-gate answer checks per-stream norm, mean scaling and raw residual injection.",
+    "Central differences with1e-6 perturbation verify site/final stream adjoints and composed residual/sublayer-output adjoints at rtol2e-7/atol2e-8.",
+    "Nonuniform cotangents, noncontiguous/batched inputs, source tamper, immutable tables, dtype/shape bounds, saturation, zero streams and overflow rejection."
+  ],
+  "fixture_caps": {
+    "hidden_size": 64,
+    "rank": 64,
+    "tokens": 32
+  },
+  "format": "qwen-gated-residual-reference-implementation-v1",
+  "gpu_parity_qualified": false,
+  "implementation_sha256": "90d46b90d4382443a50b5f54df6d507c770ec842c3373c3ac3dee43753082b76",
+  "implemented": [
+    "FP32 copied four-stream expansion",
+    "Per-stream RMS normalization with prepared1+w tables, flattened down/H -> SiLU -> up -> sigmoid, weighted stream mean",
+    "Per-stream2*sigmoid injection into raw residual; output dtype retained",
+    "Final no-inject mixer and separately labeled feature-export stream mean",
+    "Explicit checkpoint-table preparation matching local ExLlama FP32 norm+1 and FP16 projection table conventions",
+    "Continuous FP64 analytical stream input adjoint, plus residual partial adjoints"
+  ],
+  "limitations": [
+    "Only tiny synthetic matrices, no real hyperconnection payload loaded.",
+    "NumPy GEMM/reductions do not establish bitwise Torch/CUDA/Metal or Sushi parity.",
+    "FP64 analytical adjoint treats the expression as continuous math, not differentiation through rounded FP32 operations.",
+    "Actual Qwen hidden2560/rank320 exceed deliberate fixture limits64/64; no production memory qualification.",
+    "No attention, GDN, MoE, PLE, whole-model inference, training or serving integration implemented.",
+    "The explicit ExLlama table preparation convention is not a claim about Sushi resident table dtypes."
+  ],
+  "numpy_version": "2.5.4",
+  "real_payload_verified": false,
+  "semantic_sources_sha256": {
+    "exllamav3/architecture/qwen4_exp.py": "f0781ec11aabc78694ed5084d24fb31093c0500a5c985a00276188c241c165bb",
+    "exllamav3/modules/hyperconnections.py": "841ca30d37ea8900b5ae1c9e4b4862d9580ec0c4c92342b1b460968c0926c2f9",
+    "exllamav3/training/backbone.py": "0265a93b28089470d9d109a61a997403201145456e70c098f3061026c3c076d9",
+    "exllamav3/training/hyperconnections.py": "0d2873bf4fe26416f23db6c8cbd884cded24a473dbb72710f0f25479671dbe6c",
+    "exllamav3/training/native_llama.py": "12c99ff24bb54067a081ceb9e6b52154cf811afd231bd30a13847c70d5729f5e"
+  },
+  "source_revision_context": "b766887941695bc0c28e25b59ca24db63916e8b8",
+  "status": "held_for_independent_review",
+  "target_config_dimensions": {
+    "hc_count": 4,
+    "hc_lowrank": 320,
+    "hidden_size": 2560,
+    "rms_norm_eps": 1e-06
+  },
+  "test_file_sha256": "2853a36bfd3f055866cab780dee385041a776e90d1bece629c926232db456a26",
+  "validation": {
+    "CPU_only": true,
+    "command": "python -m unittest discover -s qwen-next/tests -p test_qwen_hyperconnection_reference.py -v",
+    "elapsed_seconds": 0.059,
+    "errors": 0,
+    "failures": 0,
+    "passed": 13,
+    "ruff": "passed",
+    "tests_run": 13
+  }
+}

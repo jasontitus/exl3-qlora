@@ -1,0 +1,33 @@
+{
+  "scope": "Actual one-command upstream preparation only; no optimizer updates",
+  "stdout_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/upstream-llama-real-preparation.stdout.log",
+  "stdout_sha256": "7fdcab3049d5744d233854195230780e83d7e22b931a44ab8f9fc4922364923b",
+  "cli_result": {
+    "project": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-llama-prepared-project",
+    "dataset": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-llama-prepared-project-upstream-data",
+    "max_length": 3394,
+    "evaluation_scope": "training_only",
+    "quality_certified": false,
+    "status": "prepared"
+  },
+  "project_sha256": "24d96b032c841f72f912d13885aab2421b0a9355892cf7b66c0242d5c919ff78",
+  "provenance_required": true,
+  "provenance_binding": {
+    "state": "complete",
+    "report_sha256": "cb854505cbfc8905f66bed6070e0ed3fb4b2d461b1656e0a48811fccf57fdc32"
+  },
+  "counts": {
+    "train": 1,
+    "valid": 0,
+    "test": 0
+  },
+  "supervised_tokens": {
+    "train": 1521,
+    "valid": 0,
+    "test": 0
+  },
+  "max_length": 3394,
+  "truncated": 0,
+  "checkpoints": [],
+  "all_bound_evidence_rehashed": true
+}

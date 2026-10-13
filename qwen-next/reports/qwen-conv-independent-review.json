@@ -1,0 +1,69 @@
+{
+  "format": "qwen-conv-independent-review-v1",
+  "created_at": "2026-10-13T17:51:48.892420+00:00",
+  "reviewed_by": "adversarial_code",
+  "reviewer_independent_of_implementation_author": true,
+  "status": "passed_scoped_review",
+  "passed": true,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/qwen_conv_reference.py": "abf905f59bc1be6e5d0707bd798332242524fb5e2639e90df98b999da249d65a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_qwen_conv_reference.py": "4da07b19e8a41c8dcec5bc2c8b90f2b26f501ec4cbe3751a643f8b53d6e8abd2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen_conv_independent_probe.py": "8f39629803cf00e129e3d5ca99ac5447b30b671baebb59d63d78e2fcd1a5fd80",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-conv-independent-probe.json": "fcf3386320811ac535d4d2e09680b68286d4f8308a37219e25dd4788f81b93c3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-conv-independent-author-tests.log": "464330e6cd1dd0aaab0ad4e595069a10adc6323bb081670952eb35a1b75f266b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-convolution-and-adjoint-progress.json": "f2d6a89fa5b7a088eccae812ddfb0817472d05bfd1589cfc742d23ef05c08a83",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/config.json": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1",
+    "/Users/jasontitus/experiments/exl3-qlora/exllamav3/training/gdn.py": "e1de1f6112715a7868388972872a5f37b0d8198d98246527650ce791d9b33a57",
+    "/Users/jasontitus/experiments/exl3-qlora/exllamav3/modules/gated_delta_net_fn/conv1d.py": "c750304f06fa7b970556202337792a1d698dda060b2985071692a364c72c219b"
+  },
+  "findings": [],
+  "verdict": "No concrete correctness blocker found for the stated tiny FP64 causal depthwise convolution, SiLU, and minimal raw-history adjoint contract.",
+  "validation": {
+    "existing_tests_independently_rerun": 7,
+    "existing_tests_passed": 7,
+    "independent_probe_checks": 44,
+    "independent_probe_checks_passed": 44,
+    "independent_scalar_forward_cases": 5,
+    "independent_directional_adjoint_checks": 17,
+    "max_scalar_forward_absolute_error": 2.220446049250313e-16,
+    "max_directional_absolute_error": 2.1756907386816238e-10,
+    "max_chunk_composition_absolute_error": 1.3877787807814457e-17,
+    "oracle": "Independent scalar time-index equation with math.fsum, direct raw-history indexing and central directional differences; no subject forward/helper reused in scalar oracle. Separate full-K serving-state indexing check and analytical returned-history-only loss.",
+    "covered": "K1/K4/K8, 1/3/9/32-token chunks, with/without bias, positive and negative array strides, shorter-than-history chunks, no input mutation, saturated SiLU, late-output and final-history cotangents, repeated one-token backward state handoff.",
+    "numpy_version": "2.5.4",
+    "torch_imported": false,
+    "mlx_imported": false,
+    "gpu_used": false,
+    "probe_ruff": "passed after formatting; implementation was not edited"
+  },
+  "source_contract_checked": [
+    {
+      "location": "exllamav3/training/gdn.py:108",
+      "contract": "Packed q|k|v channels [B,C,T], weight[C,K], depthwise cross-correlation with K-1 left zeros for sequence start, optional per-channel bias and SiLU. The mathematical FP64 reference preserves the ordering of kernel taps."
+    },
+    {
+      "location": "exllamav3/modules/gated_delta_net_fn/conv1d.py:373",
+      "contract": "Inference Torch reference concatenates the first K state columns with current input, computes valid convolution and keeps the final T outputs. Dropping the oldest of those K input-state columns maps exactly to this oracle minimal K-1 history; current code does not implement larger history/speculative serving-state layouts."
+    },
+    {
+      "location": "tools/qwen_conv_reference.py:49",
+      "contract": "Returned state is the final K-1 raw inputs, including previous history when T<K-1, rather than activated convolution outputs."
+    },
+    {
+      "location": "tools/qwen_conv_reference.py:62",
+      "contract": "SiLU derivative and direct depthwise weight/input adjoints include both output cotangent and returned-history cotangent; K1 returns empty history."
+    },
+    {
+      "location": "tools/qwen_conv_reference.py:26",
+      "contract": "Strict finite FP64 arrays and bounded B<=2,C<=64,T<=32,K<=8; shape errors, nonfinite inputs and detected forward/adjoint overflow reject."
+    }
+  ],
+  "next_milestone": "The reference can be used as a small independent convolution/history component oracle for subsequent GDN composition. That composition and any backend implementation still need their own tests.",
+  "qualification_scope": [
+    "Continuous FP64 CPU mathematical reference only; no implementation or active DeepSeek runtime edits by this reviewer.",
+    "No PyTorch/MLX/Metal execution, real checkpoint payload, compiled-kernel parity, serving state ABI, dtype-cast/rounding parity or complete Qwen layer/model qualification.",
+    "Target config uses K4 and 10240 packed q/k/v channels (2*16*128+48*128), whereas implementation allows at most64 channels/32 tokens. No target-dimension, 16K training, memory or throughput claim.",
+    "No document boundary resets, packed-sequence masks, projections, recurrence/output norm composition or optimizer updates are implemented by this component.",
+    "Input finite and overflow validation is exercised by author tests and inspected; the sampled numerical checks do not certify all representable FP64 inputs."
+  ]
+}

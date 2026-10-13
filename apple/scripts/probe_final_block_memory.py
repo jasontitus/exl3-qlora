@@ -59,6 +59,7 @@ def read_plan(args):
         "candidate_topk_blocks": config["candidate_topk_blocks"],
         "index_topk": config["index_topk"],
         "requested_retained_baseline_gib": args.retained_baseline_gib,
+        "frozen_inputs": getattr(args, "frozen_inputs", False),
         "chunk_size": args.chunk_size,
         "scope": "synthetic final-block backward memory feasibility; no optimizer update",
         "limitations": [
@@ -105,6 +106,11 @@ def parser():
     p.add_argument("--decoded-cache-mib", type=int, default=32768)
     p.add_argument("--allocator-cache-mib", type=int, default=256)
     p.add_argument("--retained-baseline-gib", type=float, default=17.95)
+    p.add_argument(
+        "--frozen-inputs",
+        action="store_true",
+        help="Test final-only adapters with frozen prefix state and zero input cotangents",
+    )
     p.add_argument("--describe-only", action="store_true")
     return p
 
@@ -297,6 +303,7 @@ def run(args, plan, resources):
                     (latent, index_keys, selected, candidates),
                     no_engram,
                     progress=lambda message: event("recompute: " + message),
+                    frozen_inputs=args.frozen_inputs,
                 )
                 final = rms_norm(hc_pre(a, b), model.norm)
                 return mx.sum(final.astype(mx.float32) * readout.astype(mx.float32)) / math.sqrt(
@@ -320,9 +327,13 @@ def run(args, plan, resources):
             }
             if not any(summary[name]["nonzero"] for name, _ in leaves):
                 raise FloatingPointError("All final-block adapter gradients were zero")
-            if not all(
+            input_nonzero = [
                 summary[name]["nonzero"] for name in ("input.h", "input.pre", "input.shared_kv")
-            ):
+            ]
+            if args.frozen_inputs:
+                if any(input_nonzero):
+                    raise AssertionError("Frozen input cotangents must all be zero")
+            elif not all(input_nonzero):
                 raise FloatingPointError("An expected upstream state gradient was entirely zero")
             for (name, value), (expected_name, expected_value) in zip(
                 tree_flatten(block.trainable_parameters()), leaves, strict=True
@@ -343,7 +354,15 @@ def run(args, plan, resources):
         # leave a success receipt from just before a final guard check.
         report.update(
             status="passed",
-            acceptance="One synthetic final-block VJP completed with finite nonzero adapter/upstream gradients under the requested guard; no full-training claim.",
+            acceptance=(
+                "One synthetic final-block VJP completed with finite nonzero adapter gradients and "
+                + (
+                    "zero frozen-input cotangents"
+                    if args.frozen_inputs
+                    else "nonzero upstream gradients"
+                )
+                + " under the requested guard; no full-training claim."
+            ),
         )
         event("probe_passed")
     except Exception as error:

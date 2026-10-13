@@ -1,0 +1,101 @@
+{
+  "format": "exl3-multichange-fit-proposal-v1",
+  "status": "proposed_not_executed",
+  "source_directory": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-official-audit",
+  "source_hashes": {
+    "train.jsonl": "0d04aa9a195a1d6552bed8f94593cd84ee6cc35a74692f2c5aa26a74777e424f",
+    "length-audit.jsonl": "8adf0a33936e2ac6520655b6b609dc746cdc7607c5e76d6cc74cbe937d48aba3",
+    "provenance.jsonl": "34c7216a47734349e57351fa730a516205a5d5bbfa8c58f967adffb8b0a29ef7",
+    "ktune-import.json": "09b6bb2277fdba8692984d07403dc30982daba0aa6f15640acbbbef16f51da8c"
+  },
+  "selection": "three shortest selected complete-parent official-promoted rows, ordered by serialized token count; selected before new fitting outcomes",
+  "evaluation_scope": "training_fit_only",
+  "quality_certified": false,
+  "independent_lineages": 1,
+  "counts": {
+    "training_examples": 3,
+    "valid": 0,
+    "test": 0
+  },
+  "examples": [
+    {
+      "case_id": "official:qwen38-125b-a6b-mlx-v1:c0e42c7e-268c-454f-a9cb-e705f952b819",
+      "source_id": "ktune-lineage:f85c13c0896fd4a695fd5d56",
+      "mechanism_manual_classification": "SIMD ownership setting (2 rows to 1)",
+      "prompt_tokens": 3402,
+      "supervised_tokens_including_eos": 204,
+      "serialized_tokens": 3606,
+      "files": [
+        "Runner/FastModel/TrackFastMixer.swift"
+      ],
+      "hunks": 1,
+      "added_lines": 1,
+      "deleted_lines": 1,
+      "created_at": "2026-09-12T20:05:26.889Z",
+      "head_commit": "5818374a5f5c8b84d3d8fc8a90101be5de89351d",
+      "complete_target_sha256": "3df3322910404b3ff4fbfd13768589247cbb64a2480eb987f9221e7a8ce1fa0e",
+      "row_sha256": "0e3ad73c12d65549ed372d57660cea18cb71d806779dafe73c5061b39f5041e8",
+      "prompt_utf8_sha256": "f00a7fcf68a6970f5d5fe6d6b8bfec3c7e3aaba3f23f0b8795f9bce35c9d286d",
+      "completion_utf8_sha256": "3df3322910404b3ff4fbfd13768589247cbb64a2480eb987f9221e7a8ce1fa0e",
+      "source_payload_verified": true,
+      "evidence_tier": "official_promoted",
+      "historical_receipt_case_count": 1,
+      "historical_receipt_checked_steps": 64
+    },
+    {
+      "case_id": "official:qwen38-125b-a6b-mlx-v1:1a621870-4993-4c43-9472-6f7d8f745140",
+      "source_id": "ktune-lineage:f85c13c0896fd4a695fd5d56",
+      "mechanism_manual_classification": "Prefill M tile reduction (64 to 32), existing failed-fit example",
+      "prompt_tokens": 4998,
+      "supervised_tokens_including_eos": 811,
+      "serialized_tokens": 5809,
+      "files": [
+        "Runner/FastModel/TrackPrefillMixerAct.swift",
+        "Runner/FastModel/TrackPrefillMixerActMetal.swift"
+      ],
+      "hunks": 2,
+      "added_lines": 11,
+      "deleted_lines": 3,
+      "created_at": "2026-09-13T06:25:02.920Z",
+      "head_commit": "0850f7ffee84ca61d0fe439782ec59f5e5101d30",
+      "complete_target_sha256": "b70bc4342d40df45ae315cd5d49ec3cfa78483804eaf8c00db38592e658ac4bf",
+      "row_sha256": "263cbadbb7b2961af9aa3eff96a7c6f2dea9f3979addf3c7860b125947617fa3",
+      "prompt_utf8_sha256": "e5b7509e2cffb6bce938e04ea4ca880c49b232d0f7a4fe9639f24b5e5edbe54b",
+      "completion_utf8_sha256": "b70bc4342d40df45ae315cd5d49ec3cfa78483804eaf8c00db38592e658ac4bf",
+      "source_payload_verified": true,
+      "evidence_tier": "official_promoted",
+      "historical_receipt_case_count": 1,
+      "historical_receipt_checked_steps": 64
+    },
+    {
+      "case_id": "official:qwen38-125b-a6b-mlx-v1:8a690716-8068-4da8-9532-26047c96aa9c",
+      "source_id": "ktune-lineage:f85c13c0896fd4a695fd5d56",
+      "mechanism_manual_classification": "Two-row GDN Metal recurrence plus prefill dispatch",
+      "prompt_tokens": 3945,
+      "supervised_tokens_including_eos": 1877,
+      "serialized_tokens": 5822,
+      "files": [
+        "Runner/FastModel/TrackFastKernels.swift"
+      ],
+      "hunks": 2,
+      "added_lines": 98,
+      "deleted_lines": 1,
+      "created_at": "2026-09-11T02:28:06.545Z",
+      "head_commit": "2c8532b038cada71f87e40b38485b7c096ac67d6",
+      "complete_target_sha256": "f942a8e452c4f84c6f023cd90b616399d2ead6048fd968df4f666c3dc09503b5",
+      "row_sha256": "8a4192e78c381f8f63d83e3d4cc4ebaeba6a85238ec6d6f34620bbdd1c05e956",
+      "prompt_utf8_sha256": "09ab348fcb03e3d68c07c4ba305dfa44ae304aead1f0ab486d3c1ca234d237ad",
+      "completion_utf8_sha256": "f942a8e452c4f84c6f023cd90b616399d2ead6048fd968df4f666c3dc09503b5",
+      "source_payload_verified": true,
+      "evidence_tier": "official_promoted",
+      "historical_receipt_case_count": 1,
+      "historical_receipt_checked_steps": 64
+    }
+  ],
+  "one_epoch_serialized_tokens": 15237,
+  "one_epoch_supervised_tokens_including_eos": 2892,
+  "maximum_serialized_tokens": 5822,
+  "batching": "sequential microbatch1; do not pack or truncate",
+  "acceptance": "Predeclare fixed update budget and score every selected row before and after. Report token-weighted mean, macro mean, every paired delta, changed-logit evidence, and repetitions/noise baseline. A training-fit improvement is not held-out kernel quality.",
+  "memory": "80GiB guard retained;5822 is13 tokens beyond largest measured complete training run5809; feasibility must be measured, not inferred from32768 ceiling."
+}

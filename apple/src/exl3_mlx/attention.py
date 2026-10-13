@@ -9,6 +9,8 @@ import math
 import mlx.core as mx
 import mlx.nn as nn
 
+from .activation_config import validate_activation_mode
+from .grouped_projection import grouped_projection
 from .hyperconnections import rms_norm
 from .materialize import materialize
 from .sparse_attention import sparse_latent_attention
@@ -199,6 +201,15 @@ class FrozenIndexer(nn.Module):
 
     def __init__(self, layer_id, config, linears, k_norm=None, *, query_chunk=16):
         super().__init__()
+        # The experimental BF16 differentiable path does not alter the frozen
+        # indexer's quantization policy. Selections are still recomputed from
+        # its current inputs, which may change when the backbone math changes.
+        self.activation_mode = "checkpoint"
+        if any(
+            getattr(value, "activation_mode", "checkpoint") != "checkpoint"
+            for value in linears.values()
+        ):
+            raise ValueError("FrozenIndexer projections must retain checkpoint activation mode")
         self.layer_id, self.config, self.linears = layer_id, config, linears
         self.k_norm, self.query_chunk = k_norm, query_chunk
         self.freeze()
@@ -259,15 +270,29 @@ class ShortAttention(nn.Module):
     """Full-prefill attention; historical class name retained for compatibility."""
 
     def __init__(
-        self, layer_id, config, linears, norms, sink, wo_a_groups, compressor=None, indexer=None
+        self,
+        layer_id,
+        config,
+        linears,
+        norms,
+        sink,
+        wo_a_groups,
+        compressor=None,
+        indexer=None,
+        *,
+        activation_mode="checkpoint",
     ):
         super().__init__()
+        self.activation_mode = validate_activation_mode(activation_mode)
         self.layer_id, self.config = layer_id, config
         self.linears, self.norms = linears, norms
         self.sink, self.wo_a_groups = sink, wo_a_groups
         self.compressor = compressor
         self.indexer = indexer
         self.freeze(keys=["norms", "sink"], recurse=False)
+
+    def _quantize(self, value, kind="fp8"):
+        return quantize_activation(value, kind) if self.activation_mode == "checkpoint" else value
 
     def __call__(self, x, shared_kv):
         c = self.config
@@ -286,7 +311,7 @@ class ShortAttention(nn.Module):
 
         qr = rms_norm(self.linears["wq_a"](x), self.norms["q"], c["rms_norm_eps"])
         q = rot(self.linears["wq_b"](qr).reshape(b, s, c["num_attention_heads"], c["head_dim"]))
-        window = quantize_activation(
+        window = self._quantize(
             rot(rms_norm(self.linears["wkv"](x), self.norms["kv"], c["rms_norm_eps"]))
         )
         if self.compressor is not None:
@@ -301,7 +326,7 @@ class ShortAttention(nn.Module):
             latent = rms_norm(latent, self.norms["compressor"], c["rms_norm_eps"])
             if self.indexer is not None:
                 index_keys = self.indexer.keys(latent)
-            shared_kv = quantize_activation(rot(latent, mx.arange(latent.shape[1]) * ratio), "fp4")
+            shared_kv = self._quantize(rot(latent, mx.arange(latent.shape[1]) * ratio), "fp4")
         if ratio:
             if self.indexer is not None:
                 selected, candidates = self.indexer(x, qr, index_keys, candidates)
@@ -321,9 +346,7 @@ class ShortAttention(nn.Module):
             self.sink,
             window_size=c["sliding_window"],
         )
-        out = quantize_activation(rot(out, inverse=True).reshape(b, s, c["o_groups"], -1))
-        out = mx.concatenate(
-            [proj(out[:, :, g]) for g, proj in enumerate(self.wo_a_groups)], axis=-1
-        )
+        out = self._quantize(rot(out, inverse=True).reshape(b, s, c["o_groups"], -1))
+        out = grouped_projection(out, self.wo_a_groups)
         state = shared_kv if legacy else (shared_kv, index_keys, selected, candidates)
         return self.linears["wo_b"](out), state

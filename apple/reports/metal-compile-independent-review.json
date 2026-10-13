@@ -1,0 +1,40 @@
+{
+  "format": "exl3-metal-compile-independent-review-v1",
+  "created_utc": "2026-10-13T03:25:42.464749+00:00",
+  "scope": "CPU read-only review and mocked compiler contract tests; no candidate compilation or GPU execution by reviewer",
+  "source_sha256": {
+    "src/exl3_mlx/metal_compile.py": "a0362012d767758357ac42bfeae286f489d1ebf54758e477248f85246ba26d2b",
+    "tests/test_metal_compile.py": "e19dce451903b9abe25c7f7c854262bfa532f782d8941c77eb757aedb0a84548"
+  },
+  "tests": {
+    "command": "PYTHONPATH=src /Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python -m pytest -q tests/test_metal_compile.py",
+    "passed": 23,
+    "failed": 0,
+    "seconds": 0.15,
+    "ruff": "passed"
+  },
+  "resolved_findings": [
+    "Digraph/trigraph directive spellings rejected; form-feed, vertical-tab and CR preprocessing whitespace normalized.",
+    "Lexical comment stripping respects quoted literals and escapes; the unused-macro quoted-comment local-include regression is rejected.",
+    "Successful exit requires a nonempty AIR artifact, not merely exit zero.",
+    "Both snapshotted inputs are rechecked after the second compile, preventing earlier-source mutation from silently passing."
+  ],
+  "reviewer_reproductions": {
+    "former_false_admissions": [
+      "digraph include",
+      "form-feed include",
+      "vertical-tab include",
+      "quoted-comment local include"
+    ],
+    "final_all_rejected": true
+  },
+  "remaining_concrete_blockers_for_declared_scope": [],
+  "limitations": [
+    "The supported-format filter is not a security sandbox or a complete C++ preprocessor. Review sources before compiling them.",
+    "AIR compilation does not establish linking, GPU execution, numerical parity, performance, or full upstream-commit correctness.",
+    "Only exact source-pair snapshots and fixed validation flags are tested, not necessarily original project flags or host dispatch.",
+    "Compiler version/SDK output and local checksums establish local receipt consistency, not externally authenticated provenance.",
+    "Importer execution_verified_examples remains zero; this compile-only gate does not promote source examples.",
+    "Parent actual TensorFold compile receipt was produced before the latest parser hardening; this review does not relabel that historical script identity."
+  ]
+}

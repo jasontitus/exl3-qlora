@@ -1,0 +1,178 @@
+{
+  "schema": "exl3-matched-checkpoint-control-plan-v1",
+  "created_utc": "2026-10-13T01:49:54.289859+00:00",
+  "status": "predeclared_before_fresh_control_launch_after_BF16_result_known",
+  "scope": "One previously inspected training row; mechanism-development experiment, not independent quality evaluation.",
+  "question": "Under the same runtime and fresh original recipe, does checkpoint mode reproduce one-step regression while the differentiable-path quantizer-bypass mode descends?",
+  "runtime": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v2",
+  "runtime_snapshot_sha256": "707e6a6996f08c60ef99aafc4b690a0d3ea360710b7aec61110980b053de2917",
+  "config": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-one-step-config.json",
+  "config_sha256": "4aead354935a2b2337d4e0d815d52474f2b699e63f30f9d471548d1538e3fa80",
+  "treatment_config": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step-config.json",
+  "treatment_config_sha256": "99be9255ff93da1382bea07e180a25b42c25188756741f35afd890ead2454696",
+  "only_planned_config_differences": {
+    "activation_mode": {
+      "bf16": "bf16",
+      "control": "checkpoint"
+    },
+    "output": {
+      "bf16": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step",
+      "control": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-one-step"
+    }
+  },
+  "bound_inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v2/snapshot.json": "707e6a6996f08c60ef99aafc4b690a0d3ea360710b7aec61110980b053de2917",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-one-step-config.json": "4aead354935a2b2337d4e0d815d52474f2b699e63f30f9d471548d1538e3fa80",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step-config.json": "99be9255ff93da1382bea07e180a25b42c25188756741f35afd890ead2454696",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/activation-causal-plan-v2.json": "c1f7d50e5c849ba7c4fa6df1fa00f7528a75a06ad6da6fb269f68d8573ec049e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/bf16-all-layers-one-step-audit.json": "b1277bdb470feb37e67ef604b58437f6bb63cc7c9a70df6cc1d33a4e3389acea",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/training.json": "a336b11d88a8db383883185da362bc5d9c28d7e7f2d766699422633312b1f169",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/run_config.json": "7484d2e810086c51930a38048a0c4a86cb2d41ab3f571a7d7effe40c2c8f29c9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-post.json": "66d412a85da4a1b23f7e0a2821976293341cce728b90052901ea458ce744928e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/original-one-row.jsonl": "77af20962e596e5301dbd87157d597a6dee69e52d1f22f624429593aa770b32e"
+  },
+  "historical_control": {
+    "checkpoint": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001",
+    "files_sha256": {
+      "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/run_config.json": "b1bfa0a994aac760b08c2ebfbbb7991406f37526a9fc55aa160b19a8ddedc732",
+      "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/trainer_state.json": "35364c73c723168bf8fdf309596a45216462387969d5f5ec54abf48cc329f930",
+      "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/adapter_config.json": "52c112319391c2695b4608653eca54e227f3d122d07f3f34a85fd2e694406c17",
+      "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/adapter.safetensors": "31a0e93774b1710f9192e14b4828c5cd0ab4ebb699b28b4a7f0538327e2a78c9",
+      "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/optimizer.safetensors": "b987a9f20a6adaf91641f9e044b5033fbec117af7983a868f355181a10273e62",
+      "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/project.json": "02333d836d6b3845e9433f0ff31d40cfa474d295bcfac27afd1cfda83bc31a23",
+      "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/data/train.jsonl": "77af20962e596e5301dbd87157d597a6dee69e52d1f22f624429593aa770b32e",
+      "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/fit-checks/1791845852751361000/base.json": "40979deae8ed007895e3148501a16814ad814d23bf3fa3d9638f6fc8d1aac50c",
+      "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/fit-checks/1791845852751361000/adapter.json": "ae1a893dfb38b3e95f9ceb0cc4f4e6e340654369d4bbec1340dd35325d001bf4"
+    },
+    "base_metadata_identities": {
+      "config.json": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d",
+      "expert-manifest-v2.json": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+      "model.safetensors.index.json": "c0ead8ce7960b2c715366373da35626f3ccaef1837094bf9215cded0bfefdabb",
+      "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+      "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+      "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197",
+      "engram/engram-manifest.json": "b6467b20fa72b0432dcbf966c2a054aa205004a1e687e44bfbdd1257ce8a52f3",
+      "engram-token-map.u32.json": "b3509de9fb07fc769429481e2a3868452c23818df4296be9627fd5568de46b73"
+    },
+    "base_payload_identity_limit": "Metadata/manifest hashes and file stat guards are not a full payload hash of every frozen weight byte.",
+    "training_contract": {
+      "learning_rate": 1e-05,
+      "grad_accumulation": 1,
+      "clip_grad": 1.0,
+      "seed": 8,
+      "seq_length": 5808,
+      "truncate": false,
+      "chunk_size": 8192,
+      "no_checkpoint": false,
+      "data_sha256": "77af20962e596e5301dbd87157d597a6dee69e52d1f22f624429593aa770b32e",
+      "engine_semantics": "deepseek-v41-sparse-prefill-v3-bounded-moe-exact-quant-scales",
+      "mlx": "0.32.3",
+      "mlx_lm": "0.32.0"
+    },
+    "pre_update_train_loss": 0.5012578368186951,
+    "fresh_base_nll": 0.5012578592107731,
+    "fresh_base_logits_sha256": "aa93ec9398b2ccad0e07827d378bd8776af72141a26f2e8d1ca7e3f333b6e6d3",
+    "fresh_post_nll": 0.5053724668388994,
+    "fresh_post_logits_sha256": "d76ed2371b074714b4d1acf25dd15219467e717a00582a85412d4d8a4319ebf4",
+    "actual_delta": 0.00411460762812621,
+    "gradient_norm": 0.0382997989654541,
+    "surrogate_directional_prediction_from_first_moment": -0.0008529185677381717,
+    "reuse_gate": "Historical checkpoint control is already measured. For a strong matched-causal claim under new source, replay its original zero-B and saved-step supervised logits digests exactly (and NLL within1e-6). If replay is not performed, label it a historical comparison with source-drift uncertainty. If replay mismatches, report the mismatch and run a fresh same-runtime checkpoint-mode one-step control before causal attribution."
+  },
+  "treatment": {
+    "checkpoint": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/step-000001",
+    "pre_update_loss": 0.5061723589897156,
+    "fresh_post_loss": 0.5014906038202744,
+    "delta": -0.0046817551694411375,
+    "runtime": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v2"
+  },
+  "expected_resources": {
+    "profile": "development",
+    "memory_gib": 80.0,
+    "reserve_gib": 8.0,
+    "packed_cache_mib": 8192,
+    "decoded_cache_mib": 0,
+    "prefix_cache_mib": 0,
+    "allocator_cache_mib": 256
+  },
+  "launch": {
+    "cwd": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple",
+    "environment": {
+      "PYTHONPATH": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v2/src"
+    },
+    "train_argv": [
+      "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python",
+      "-m",
+      "exl3_mlx.workflow",
+      "train",
+      "--config",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-one-step-config.json"
+    ],
+    "post_argv": [
+      "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python",
+      "-m",
+      "exl3_mlx.workflow",
+      "evaluate",
+      "--model",
+      "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+      "--data",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/original-one-row.jsonl",
+      "--adapter",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-one-step/step-000001",
+      "--activation-mode",
+      "checkpoint",
+      "--chunk-size",
+      "8192",
+      "--seq-length",
+      "5808",
+      "--profile",
+      "development",
+      "--reserve-gib",
+      "8",
+      "--prefix-cache-mib",
+      "0",
+      "--token-metrics",
+      "--report",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-post.json"
+    ],
+    "post_report": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-post.json"
+  },
+  "prelaunch_gates": [
+    "Wait until active training and fresh fit serial chain have exited; no concurrent GPU workload.",
+    "Verify every runtime snapshot entry plus snapshot, treatment/config/data/protocol hashes. Verify installed dependency versions equal treatment evaluation_context implementation runtime.",
+    "Require new output/report/log paths; no resume, warm start, adapter rescaling, data changes, route freezing, changed precision, bias correction, LR, clipping, or resource override.",
+    "Record plan/config/snapshot hashes, exact command/cwd/PYTHONPATH, start/end times, exit code and separate stdout/stderr. Continue only if 80+8 GiB memory headroom preflight passes; failure is a failed launch, not permission to silently alter settings."
+  ],
+  "measurements": [
+    "Exactly one completed optimizer update, one row/microbatch, cursor1,811targets,5808input positions,loss_start4998; full uncached pre-update training objective is this mode baseline.",
+    "Verify trainer_state checksums and adapter/internal training state;160adapter tensors and322optimizer tensors finite; steps/cursor1; exact data/optimizer/math contract and base metadata equal treatment and historical control.",
+    "All80A matrices must be dtype/shape/bitwise equal to both historical and treatment A; their m/v exactlyzero. Fresh B0 follows pinned initializer/config; do not infer an independently saved initialB snapshot.",
+    "Verify actual B update against fresh uncorrected Adam betas(.9,.999),eps1e-8,LR1e-5 with UPDATE_RTOL3e-6,UPDATE_ATOL1e-10; finite moments and reconstructed g=m/.1 (undo clip if active),normRTOL1e-5. Compute g_dot_actual_delta and prediction residual.",
+    "Compare all control A/B/optimizer/RNG tensors bitwise against historical arrays, including dtype and shape. Record per-family equality and differences. Exact historic reproduction is a separate flag; a mismatch requires diagnosis, never tolerance widening.",
+    "Fresh process evaluates this NEW control checkpoint using pinned runtime-v2 and original complete data, checkpoint mode,chunk8192,prefix0,token metrics. Validate selected-row SHA,exact IDs/counts,per-token finite NLL and mean within1e-6,source identity,argv,adapter checksums; do not substitute the historical checkpoint path.",
+    "Compare own baseline against historical pre-update0.5012578368186951 (abs1e-6) and post against historical0.5053724668388994. If adapters are bitwise equal, require exact historical post supervised-logits hash d76ed2371b074714b4d1acf25dd15219467e717a00582a85412d4d8a4319ebf4 for historical forward reproduction.",
+    "Keep negative, zero-change, mismatched, partial, or failed results. Do not rerun selectively, select a different strength/checkpoint or tune LR in this primary comparison."
+  ],
+  "scoring": {
+    "absolute_nll_guard": 1e-06,
+    "descent": "fresh_post-own_pre_update < -1e-6",
+    "regression": "fresh_post-own_pre_update > 1e-6",
+    "unresolved": "absolute delta<=1e-6",
+    "contrast": "Report both within-mode deltas; delta_bf16 minus delta_checkpoint is descriptive, not a significance test.",
+    "supported_if_checkpoint_regresses_and_bf16_descends": "For this fixed row, initialization, one-step optimizer recipe and pinned runtime, bypassing the specified differentiable-path activation quantizer bundle changed the observed outcome from regression to descent.",
+    "if_checkpoint_descends": "The new matched control does not reproduce the claimed failure; do not claim the quantizer bundle was necessary to restore descent. Investigate historical source/environment or nondeterminism.",
+    "if_checkpoint_unresolved": "No resolved checkpoint direction within the predeclared band; report that result without a regression claim.",
+    "not_supported": [
+      "A unique quantizer or STE is proven responsible",
+      "All40 training is universally fixed",
+      "Treatment has better absolute base quality",
+      "Full smooth-gradient correctness",
+      "Held-out generalization",
+      "Generated Metal compilation/correctness/performance gains",
+      "All inference math is BF16",
+      "Route IDs are identical across modes"
+    ]
+  },
+  "base_replay": "Optional runtime-v3 three-row fresh baseline row1 may independently replay historical supervised-logits SHA aa93ec9398b2ccad0e07827d378bd8776af72141a26f2e8d1ca7e3f333b6e6d3 with exact original IDs/mask and default eval math equivalence. It is not a prerequisite for the new control own-baseline scalar contrast.",
+  "source_immutability": "No engine/pinned source or existing evidence is changed. The plan/config are new CPU-authored artifacts."
+}

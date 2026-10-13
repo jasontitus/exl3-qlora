@@ -1,0 +1,1745 @@
+{
+  "schema": "exl3-activation-one-step-audit-v1",
+  "audit_completed": true,
+  "scope": "One training row, one fresh first Adam update; no quality certification",
+  "quality_certified": false,
+  "matched_causal_claim": false,
+  "causal_limit": "Historical control only unless separately replayed under the new source; this audit does not establish replay or source equivalence.",
+  "own_baseline_kind": "Complete uncached zero-B pre-update training objective",
+  "evidence_checks": {
+    "complete_training": true,
+    "checkpoint_checksums": true,
+    "finite_saved_tensors": true,
+    "all80_A_bitwise_equal_original": true,
+    "all_A_first_moments_zero": true,
+    "all80_B_changed_from_zero": true,
+    "exact_original_context_ids_mask": true,
+    "post_target_ids_and_scalar_mean": true
+  },
+  "zero_B_initialization_evidence": "Fresh run_config plus recorded initializer; no pre-update B tensor snapshot is inferred from a post checkpoint.",
+  "baseline": 0.5061723589897156,
+  "fresh_post_loss": 0.5014906038202744,
+  "actual_loss_delta": -0.0046817551694411375,
+  "loss_change_tolerance": 1e-06,
+  "training_fit_outcome": "descent",
+  "surrogate_prediction": -0.0007197292689923374,
+  "actual_minus_surrogate_prediction": -0.0039620259004488,
+  "moments": {
+    "changed_b_tensors": 80,
+    "clip_scale": 1.0,
+    "reported_raw_gradient_norm": 0.03230893984436989,
+    "reconstructed_raw_gradient_norm": 0.032308936693585304,
+    "g_dot_actual_delta": -0.0007197292689923374,
+    "tensors": [
+      {
+        "key": "blocks.0.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0027675340112051387,
+        "update_norm": 0.004283659427900471,
+        "g_dot_delta": -9.426896064572671e-06
+      },
+      {
+        "key": "blocks.0.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0008210868324057392,
+        "update_norm": 0.002092325791250757,
+        "g_dot_delta": -1.4110907901730871e-06
+      },
+      {
+        "key": "blocks.1.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0036524684597544245,
+        "update_norm": 0.004337201441361023,
+        "g_dot_delta": -1.2744557358390018e-05
+      },
+      {
+        "key": "blocks.1.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0017660726925332916,
+        "update_norm": 0.002165866718871889,
+        "g_dot_delta": -3.0769711467957744e-06
+      },
+      {
+        "key": "blocks.10.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.006571170201229135,
+        "update_norm": 0.004403408137046602,
+        "g_dot_delta": -2.2882163354949497e-05
+      },
+      {
+        "key": "blocks.10.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0036962363678293723,
+        "update_norm": 0.0022108112531503354,
+        "g_dot_delta": -6.592112253855043e-06
+      },
+      {
+        "key": "blocks.11.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003994475716336546,
+        "update_norm": 0.0043545009901061185,
+        "g_dot_delta": -1.4189852931180495e-05
+      },
+      {
+        "key": "blocks.11.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0035844755415215244,
+        "update_norm": 0.002208728701590857,
+        "g_dot_delta": -6.377154816647534e-06
+      },
+      {
+        "key": "blocks.12.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.005018346280465331,
+        "update_norm": 0.004380110875722706,
+        "g_dot_delta": -1.7737027341548906e-05
+      },
+      {
+        "key": "blocks.12.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0034238771514155525,
+        "update_norm": 0.0022085924123285082,
+        "g_dot_delta": -6.114064695574051e-06
+      },
+      {
+        "key": "blocks.13.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.00546139763205707,
+        "update_norm": 0.004388930474719301,
+        "g_dot_delta": -1.9281478303371167e-05
+      },
+      {
+        "key": "blocks.13.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003567106048038573,
+        "update_norm": 0.002209569057973968,
+        "g_dot_delta": -6.311986327138694e-06
+      },
+      {
+        "key": "blocks.14.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.008924835613627715,
+        "update_norm": 0.004425577039259558,
+        "g_dot_delta": -3.0827071247643156e-05
+      },
+      {
+        "key": "blocks.14.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.005808084415547312,
+        "update_norm": 0.0022257143881136768,
+        "g_dot_delta": -1.0311116682415601e-05
+      },
+      {
+        "key": "blocks.15.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004866794881911127,
+        "update_norm": 0.004365954378206377,
+        "g_dot_delta": -1.6582758426077188e-05
+      },
+      {
+        "key": "blocks.15.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004534096826573121,
+        "update_norm": 0.002216814989491256,
+        "g_dot_delta": -8.014369669845663e-06
+      },
+      {
+        "key": "blocks.16.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0060645854169330176,
+        "update_norm": 0.0044021019380911875,
+        "g_dot_delta": -2.1511698275731576e-05
+      },
+      {
+        "key": "blocks.16.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.005668783541657297,
+        "update_norm": 0.0022229303569057538,
+        "g_dot_delta": -1.0013688756791286e-05
+      },
+      {
+        "key": "blocks.17.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004122711710426011,
+        "update_norm": 0.004361372508583828,
+        "g_dot_delta": -1.4601950520717445e-05
+      },
+      {
+        "key": "blocks.17.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003995650749986732,
+        "update_norm": 0.0022123518905158655,
+        "g_dot_delta": -7.029384821140519e-06
+      },
+      {
+        "key": "blocks.18.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0035513278319940574,
+        "update_norm": 0.004335318561920569,
+        "g_dot_delta": -1.2405461152966298e-05
+      },
+      {
+        "key": "blocks.18.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0036750455290347076,
+        "update_norm": 0.002212154507615882,
+        "g_dot_delta": -6.553027911632571e-06
+      },
+      {
+        "key": "blocks.19.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.00601691717774901,
+        "update_norm": 0.00440170755622803,
+        "g_dot_delta": -2.1446324871797264e-05
+      },
+      {
+        "key": "blocks.19.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.005220175855445553,
+        "update_norm": 0.0022193814355332122,
+        "g_dot_delta": -9.123770622164777e-06
+      },
+      {
+        "key": "blocks.2.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0031144988640537624,
+        "update_norm": 0.0043012546284369535,
+        "g_dot_delta": -1.0543682966855196e-05
+      },
+      {
+        "key": "blocks.2.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002822670537060389,
+        "update_norm": 0.002195011423525948,
+        "g_dot_delta": -4.986331122005025e-06
+      },
+      {
+        "key": "blocks.20.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003557333902535339,
+        "update_norm": 0.0043342029448440594,
+        "g_dot_delta": -1.24918281050916e-05
+      },
+      {
+        "key": "blocks.20.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0031687824353094137,
+        "update_norm": 0.0022006990680905297,
+        "g_dot_delta": -5.4845426866383204e-06
+      },
+      {
+        "key": "blocks.21.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0031056747587498807,
+        "update_norm": 0.004311619423065419,
+        "g_dot_delta": -1.0883344381746028e-05
+      },
+      {
+        "key": "blocks.21.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003956749014501205,
+        "update_norm": 0.0021947063152247654,
+        "g_dot_delta": -6.07608690989264e-06
+      },
+      {
+        "key": "blocks.22.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.002972885809009466,
+        "update_norm": 0.00430430856315711,
+        "g_dot_delta": -1.0415749888775547e-05
+      },
+      {
+        "key": "blocks.22.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004041102557962795,
+        "update_norm": 0.0022115179443162867,
+        "g_dot_delta": -7.077948844062501e-06
+      },
+      {
+        "key": "blocks.23.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.002966243435900318,
+        "update_norm": 0.004311942522364893,
+        "g_dot_delta": -1.0467870524323338e-05
+      },
+      {
+        "key": "blocks.23.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002544894560448023,
+        "update_norm": 0.0021932576880980517,
+        "g_dot_delta": -4.4843317733807205e-06
+      },
+      {
+        "key": "blocks.24.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0027780727947111722,
+        "update_norm": 0.00429790576591652,
+        "g_dot_delta": -9.731724663206072e-06
+      },
+      {
+        "key": "blocks.24.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0021406247016708914,
+        "update_norm": 0.0021773937909875907,
+        "g_dot_delta": -3.762973360843341e-06
+      },
+      {
+        "key": "blocks.25.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0020605031721461164,
+        "update_norm": 0.004241302432492011,
+        "g_dot_delta": -7.2045790829214115e-06
+      },
+      {
+        "key": "blocks.25.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0023434560534536463,
+        "update_norm": 0.002177492594444105,
+        "g_dot_delta": -3.929126851569672e-06
+      },
+      {
+        "key": "blocks.26.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003646677284298125,
+        "update_norm": 0.004337036172715271,
+        "g_dot_delta": -1.2669001758660744e-05
+      },
+      {
+        "key": "blocks.26.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002626616543116772,
+        "update_norm": 0.002194339960736204,
+        "g_dot_delta": -4.693724786656427e-06
+      },
+      {
+        "key": "blocks.27.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0020684810680861943,
+        "update_norm": 0.004236834907102701,
+        "g_dot_delta": -7.155581053251238e-06
+      },
+      {
+        "key": "blocks.27.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002568083562574745,
+        "update_norm": 0.002190195163501854,
+        "g_dot_delta": -4.526758862767455e-06
+      },
+      {
+        "key": "blocks.28.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0028704677538586884,
+        "update_norm": 0.004295074209288954,
+        "g_dot_delta": -9.95237115992664e-06
+      },
+      {
+        "key": "blocks.28.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.001938383523181808,
+        "update_norm": 0.002170722546775324,
+        "g_dot_delta": -3.3973133613699494e-06
+      },
+      {
+        "key": "blocks.29.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.002349672637359826,
+        "update_norm": 0.00426923312327609,
+        "g_dot_delta": -8.251477368389803e-06
+      },
+      {
+        "key": "blocks.29.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002098788578410018,
+        "update_norm": 0.002176558864640721,
+        "g_dot_delta": -3.6522605438142975e-06
+      },
+      {
+        "key": "blocks.3.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0029140657179487725,
+        "update_norm": 0.004297390697834234,
+        "g_dot_delta": -9.96342602148748e-06
+      },
+      {
+        "key": "blocks.3.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002573330505377963,
+        "update_norm": 0.0021956667445725,
+        "g_dot_delta": -4.586106275102301e-06
+      },
+      {
+        "key": "blocks.30.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0018568946723896878,
+        "update_norm": 0.004221374378140363,
+        "g_dot_delta": -6.473151494435947e-06
+      },
+      {
+        "key": "blocks.30.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.001988962619530073,
+        "update_norm": 0.0021758207661766765,
+        "g_dot_delta": -3.487275122037615e-06
+      },
+      {
+        "key": "blocks.31.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0022282873183793006,
+        "update_norm": 0.0042596097105754216,
+        "g_dot_delta": -7.789149411655914e-06
+      },
+      {
+        "key": "blocks.31.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0026483672121533942,
+        "update_norm": 0.002186950789233401,
+        "g_dot_delta": -4.523541140530859e-06
+      },
+      {
+        "key": "blocks.32.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0021878875736899128,
+        "update_norm": 0.004255368550014702,
+        "g_dot_delta": -7.680230212642057e-06
+      },
+      {
+        "key": "blocks.32.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002216004691212828,
+        "update_norm": 0.0021838056790776154,
+        "g_dot_delta": -3.9463409987119e-06
+      },
+      {
+        "key": "blocks.33.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0034437734082972005,
+        "update_norm": 0.004319615612515465,
+        "g_dot_delta": -1.1637665359951158e-05
+      },
+      {
+        "key": "blocks.33.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002252672441554679,
+        "update_norm": 0.00218581655401823,
+        "g_dot_delta": -3.983262738278368e-06
+      },
+      {
+        "key": "blocks.34.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003503875933551053,
+        "update_norm": 0.004326561877774792,
+        "g_dot_delta": -1.2127092991001983e-05
+      },
+      {
+        "key": "blocks.34.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.00381304950275037,
+        "update_norm": 0.002212109567920004,
+        "g_dot_delta": -6.7142990312758666e-06
+      },
+      {
+        "key": "blocks.35.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0027516451045671866,
+        "update_norm": 0.004295794735881717,
+        "g_dot_delta": -9.607047209564576e-06
+      },
+      {
+        "key": "blocks.35.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0031878323520046466,
+        "update_norm": 0.0022008267442070743,
+        "g_dot_delta": -5.615436350372423e-06
+      },
+      {
+        "key": "blocks.36.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0024688375554219035,
+        "update_norm": 0.004276946573263327,
+        "g_dot_delta": -8.60251428818299e-06
+      },
+      {
+        "key": "blocks.36.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.00259994982724163,
+        "update_norm": 0.002192256960568897,
+        "g_dot_delta": -4.634503956696617e-06
+      },
+      {
+        "key": "blocks.37.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.002449238210975007,
+        "update_norm": 0.004277294596742336,
+        "g_dot_delta": -8.576747797755143e-06
+      },
+      {
+        "key": "blocks.37.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0037699254470685267,
+        "update_norm": 0.0022109114198013776,
+        "g_dot_delta": -6.658530377214641e-06
+      },
+      {
+        "key": "blocks.38.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0017571016627148917,
+        "update_norm": 0.004209100618454799,
+        "g_dot_delta": -6.13185851215219e-06
+      },
+      {
+        "key": "blocks.38.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0031383912334841998,
+        "update_norm": 0.0021986729837523357,
+        "g_dot_delta": -5.414794814497556e-06
+      },
+      {
+        "key": "blocks.39.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.002067115693896471,
+        "update_norm": 0.004232677258218071,
+        "g_dot_delta": -7.081038809071082e-06
+      },
+      {
+        "key": "blocks.39.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002880738355944077,
+        "update_norm": 0.00218809940769066,
+        "g_dot_delta": -4.845228402762932e-06
+      },
+      {
+        "key": "blocks.4.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0027996819303903334,
+        "update_norm": 0.004304873915779761,
+        "g_dot_delta": -9.926077256104335e-06
+      },
+      {
+        "key": "blocks.4.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002321920196580498,
+        "update_norm": 0.0021845653412068534,
+        "g_dot_delta": -4.1046290569264796e-06
+      },
+      {
+        "key": "blocks.5.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003037821446585845,
+        "update_norm": 0.004315542984567521,
+        "g_dot_delta": -1.0743577499336148e-05
+      },
+      {
+        "key": "blocks.5.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0021896928996601654,
+        "update_norm": 0.0021795672188124763,
+        "g_dot_delta": -3.834208485994855e-06
+      },
+      {
+        "key": "blocks.6.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003567579565373506,
+        "update_norm": 0.004333858309286588,
+        "g_dot_delta": -1.2496995680092718e-05
+      },
+      {
+        "key": "blocks.6.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.00242991605371027,
+        "update_norm": 0.0021887735342158566,
+        "g_dot_delta": -4.305245690651961e-06
+      },
+      {
+        "key": "blocks.7.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003688053272408052,
+        "update_norm": 0.004340036294971883,
+        "g_dot_delta": -1.3028838579662041e-05
+      },
+      {
+        "key": "blocks.7.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0029738921880707258,
+        "update_norm": 0.0021995685385319615,
+        "g_dot_delta": -5.306104880361347e-06
+      },
+      {
+        "key": "blocks.8.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.006031193029890935,
+        "update_norm": 0.004401081944715747,
+        "g_dot_delta": -2.133766259589808e-05
+      },
+      {
+        "key": "blocks.8.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.005452202552616024,
+        "update_norm": 0.002221871430502366,
+        "g_dot_delta": -9.627908013508807e-06
+      },
+      {
+        "key": "blocks.9.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0036956353062717454,
+        "update_norm": 0.004333360878841019,
+        "g_dot_delta": -1.268714824704959e-05
+      },
+      {
+        "key": "blocks.9.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003377725277484847,
+        "update_norm": 0.0022023636145087856,
+        "g_dot_delta": -5.847043292101403e-06
+      }
+    ]
+  },
+  "original_moments": {
+    "changed_b_tensors": 80,
+    "clip_scale": 1.0,
+    "reported_raw_gradient_norm": 0.0382997989654541,
+    "reconstructed_raw_gradient_norm": 0.03829979971080936,
+    "g_dot_actual_delta": -0.0008529185677381717,
+    "tensors": [
+      {
+        "key": "blocks.0.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0038101613291387144,
+        "update_norm": 0.0043395037971509145,
+        "g_dot_delta": -1.323088314098266e-05
+      },
+      {
+        "key": "blocks.0.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0013112316423412246,
+        "update_norm": 0.002142284360283576,
+        "g_dot_delta": -2.269401081255175e-06
+      },
+      {
+        "key": "blocks.1.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.005341917392474611,
+        "update_norm": 0.00438545660539688,
+        "g_dot_delta": -1.8804450230066684e-05
+      },
+      {
+        "key": "blocks.1.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002608132604001132,
+        "update_norm": 0.002192474254625176,
+        "g_dot_delta": -4.5231447182572165e-06
+      },
+      {
+        "key": "blocks.10.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.007573496905999425,
+        "update_norm": 0.00441380722279591,
+        "g_dot_delta": -2.618482514498042e-05
+      },
+      {
+        "key": "blocks.10.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0041697493015295,
+        "update_norm": 0.002214045163638323,
+        "g_dot_delta": -7.359288290178663e-06
+      },
+      {
+        "key": "blocks.11.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.00476622334508551,
+        "update_norm": 0.0043765443855102275,
+        "g_dot_delta": -1.6927434960720777e-05
+      },
+      {
+        "key": "blocks.11.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003892487770544939,
+        "update_norm": 0.0022131769734029527,
+        "g_dot_delta": -6.884097543356866e-06
+      },
+      {
+        "key": "blocks.12.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0058354468352304605,
+        "update_norm": 0.004395194779059001,
+        "g_dot_delta": -2.06248813527113e-05
+      },
+      {
+        "key": "blocks.12.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.00422152684648312,
+        "update_norm": 0.00221645599316503,
+        "g_dot_delta": -7.544012626011561e-06
+      },
+      {
+        "key": "blocks.13.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.006219001679798332,
+        "update_norm": 0.004398373431748434,
+        "g_dot_delta": -2.1791670964610873e-05
+      },
+      {
+        "key": "blocks.13.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003888424900397328,
+        "update_norm": 0.0022137764957719653,
+        "g_dot_delta": -6.893360711429974e-06
+      },
+      {
+        "key": "blocks.14.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.01018656292787263,
+        "update_norm": 0.0044375595469386365,
+        "g_dot_delta": -3.507981502340685e-05
+      },
+      {
+        "key": "blocks.14.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.006949729287442285,
+        "update_norm": 0.002229623697151305,
+        "g_dot_delta": -1.2332875932314152e-05
+      },
+      {
+        "key": "blocks.15.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.006220577520750261,
+        "update_norm": 0.0043890026294450424,
+        "g_dot_delta": -2.073333527092002e-05
+      },
+      {
+        "key": "blocks.15.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004752768084717737,
+        "update_norm": 0.002217999252573538,
+        "g_dot_delta": -8.467131713668562e-06
+      },
+      {
+        "key": "blocks.16.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.006947549866185317,
+        "update_norm": 0.004412995313584905,
+        "g_dot_delta": -2.452034390583322e-05
+      },
+      {
+        "key": "blocks.16.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.006435486387164622,
+        "update_norm": 0.002227472042615761,
+        "g_dot_delta": -1.1279221945509197e-05
+      },
+      {
+        "key": "blocks.17.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0048359994910481905,
+        "update_norm": 0.004377907028979072,
+        "g_dot_delta": -1.7168402748885917e-05
+      },
+      {
+        "key": "blocks.17.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004496261817566519,
+        "update_norm": 0.0022168400399165517,
+        "g_dot_delta": -7.94382240462151e-06
+      },
+      {
+        "key": "blocks.18.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004195416539996171,
+        "update_norm": 0.004364073533946023,
+        "g_dot_delta": -1.4862459705548834e-05
+      },
+      {
+        "key": "blocks.18.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004380114706015703,
+        "update_norm": 0.0022177428850187766,
+        "g_dot_delta": -7.757080081810697e-06
+      },
+      {
+        "key": "blocks.19.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.006798050863789911,
+        "update_norm": 0.004415126175604293,
+        "g_dot_delta": -2.428363141896161e-05
+      },
+      {
+        "key": "blocks.19.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.006144672019875942,
+        "update_norm": 0.0022257994870366186,
+        "g_dot_delta": -1.0680539472138932e-05
+      },
+      {
+        "key": "blocks.2.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004672755480509684,
+        "update_norm": 0.004358793193828536,
+        "g_dot_delta": -1.5758016012938165e-05
+      },
+      {
+        "key": "blocks.2.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.00394328169575668,
+        "update_norm": 0.002212622932947371,
+        "g_dot_delta": -6.958452745702553e-06
+      },
+      {
+        "key": "blocks.20.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004152367869359729,
+        "update_norm": 0.004358578043118811,
+        "g_dot_delta": -1.4648739679059901e-05
+      },
+      {
+        "key": "blocks.20.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0037190600556301166,
+        "update_norm": 0.0022118000121361314,
+        "g_dot_delta": -6.550787961971228e-06
+      },
+      {
+        "key": "blocks.21.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0035036733073041232,
+        "update_norm": 0.004330798469456593,
+        "g_dot_delta": -1.228720543217179e-05
+      },
+      {
+        "key": "blocks.21.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004669061824990546,
+        "update_norm": 0.0022118467076104624,
+        "g_dot_delta": -7.725546079517158e-06
+      },
+      {
+        "key": "blocks.22.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003521873301141322,
+        "update_norm": 0.004337059071714794,
+        "g_dot_delta": -1.2440173341222575e-05
+      },
+      {
+        "key": "blocks.22.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.005104265176962275,
+        "update_norm": 0.002220795909236119,
+        "g_dot_delta": -8.871512445413128e-06
+      },
+      {
+        "key": "blocks.23.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0033513560841161305,
+        "update_norm": 0.004328913530887212,
+        "g_dot_delta": -1.1850067897714733e-05
+      },
+      {
+        "key": "blocks.23.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0028523737359980434,
+        "update_norm": 0.002198478615663476,
+        "g_dot_delta": -5.045716025109871e-06
+      },
+      {
+        "key": "blocks.24.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0029833769727430825,
+        "update_norm": 0.004310222044656102,
+        "g_dot_delta": -1.0434308047670643e-05
+      },
+      {
+        "key": "blocks.24.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002512527167640351,
+        "update_norm": 0.002185754094575173,
+        "g_dot_delta": -4.409830275739851e-06
+      },
+      {
+        "key": "blocks.25.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0022914323653468994,
+        "update_norm": 0.004264011770196737,
+        "g_dot_delta": -8.022306496591736e-06
+      },
+      {
+        "key": "blocks.25.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0026604974313167895,
+        "update_norm": 0.0021850442530105345,
+        "g_dot_delta": -4.517568179886796e-06
+      },
+      {
+        "key": "blocks.26.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0038257961602293986,
+        "update_norm": 0.004344707230260927,
+        "g_dot_delta": -1.327992793241671e-05
+      },
+      {
+        "key": "blocks.26.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0033334565008364615,
+        "update_norm": 0.0022062786703199604,
+        "g_dot_delta": -5.980661050924614e-06
+      },
+      {
+        "key": "blocks.27.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0024923724478542924,
+        "update_norm": 0.0042720819306829505,
+        "g_dot_delta": -8.609329142282016e-06
+      },
+      {
+        "key": "blocks.27.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002694401861226611,
+        "update_norm": 0.002191232145015233,
+        "g_dot_delta": -4.701401476072034e-06
+      },
+      {
+        "key": "blocks.28.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0032552961627058275,
+        "update_norm": 0.004317351541418472,
+        "g_dot_delta": -1.1323806348111325e-05
+      },
+      {
+        "key": "blocks.28.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0020979933179984442,
+        "update_norm": 0.0021775934695990513,
+        "g_dot_delta": -3.6879168557452388e-06
+      },
+      {
+        "key": "blocks.29.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0024357390095284624,
+        "update_norm": 0.004280869001731068,
+        "g_dot_delta": -8.573488698693025e-06
+      },
+      {
+        "key": "blocks.29.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0020876636744707557,
+        "update_norm": 0.0021768180143496266,
+        "g_dot_delta": -3.643690692170815e-06
+      },
+      {
+        "key": "blocks.3.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003931893955700324,
+        "update_norm": 0.004346771368528286,
+        "g_dot_delta": -1.3617792839608953e-05
+      },
+      {
+        "key": "blocks.3.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003996656389649855,
+        "update_norm": 0.0022104510805773807,
+        "g_dot_delta": -7.034895194657845e-06
+      },
+      {
+        "key": "blocks.30.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0019355872507603783,
+        "update_norm": 0.004230793083680007,
+        "g_dot_delta": -6.754696194055077e-06
+      },
+      {
+        "key": "blocks.30.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002107529524891816,
+        "update_norm": 0.0021810679053539026,
+        "g_dot_delta": -3.7356627727227327e-06
+      },
+      {
+        "key": "blocks.31.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0025233632451830013,
+        "update_norm": 0.004284834818313882,
+        "g_dot_delta": -8.905604508185686e-06
+      },
+      {
+        "key": "blocks.31.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003015285289951972,
+        "update_norm": 0.0021982495773430247,
+        "g_dot_delta": -5.265763515424172e-06
+      },
+      {
+        "key": "blocks.32.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0022487201722544217,
+        "update_norm": 0.004267116245649884,
+        "g_dot_delta": -7.941211302804891e-06
+      },
+      {
+        "key": "blocks.32.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0024718085681528497,
+        "update_norm": 0.00219321113696413,
+        "g_dot_delta": -4.416012642265738e-06
+      },
+      {
+        "key": "blocks.33.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003561568182219475,
+        "update_norm": 0.004324813864536043,
+        "g_dot_delta": -1.2015227233885062e-05
+      },
+      {
+        "key": "blocks.33.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0024422587366217316,
+        "update_norm": 0.002187212736674287,
+        "g_dot_delta": -4.2738838789360985e-06
+      },
+      {
+        "key": "blocks.34.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0037668011302552104,
+        "update_norm": 0.004339059690508939,
+        "g_dot_delta": -1.2965264826280038e-05
+      },
+      {
+        "key": "blocks.34.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.00408124945573047,
+        "update_norm": 0.0022132560289779197,
+        "g_dot_delta": -7.2154857822637534e-06
+      },
+      {
+        "key": "blocks.35.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.002907135997422125,
+        "update_norm": 0.004301633646890948,
+        "g_dot_delta": -1.0060127624336856e-05
+      },
+      {
+        "key": "blocks.35.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0031329255773948493,
+        "update_norm": 0.0022006406187702,
+        "g_dot_delta": -5.454202615822805e-06
+      },
+      {
+        "key": "blocks.36.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0025255997425201347,
+        "update_norm": 0.004279085177256861,
+        "g_dot_delta": -8.827481933599626e-06
+      },
+      {
+        "key": "blocks.36.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002574199083714985,
+        "update_norm": 0.0021925966011411683,
+        "g_dot_delta": -4.547436982311976e-06
+      },
+      {
+        "key": "blocks.37.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0025075278211102313,
+        "update_norm": 0.004283096449635577,
+        "g_dot_delta": -8.793397798170234e-06
+      },
+      {
+        "key": "blocks.37.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004094462247382437,
+        "update_norm": 0.002214311848132715,
+        "g_dot_delta": -7.226265347156179e-06
+      },
+      {
+        "key": "blocks.38.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0017233712371227633,
+        "update_norm": 0.0042037906905639235,
+        "g_dot_delta": -5.997076015978741e-06
+      },
+      {
+        "key": "blocks.38.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002997275230232343,
+        "update_norm": 0.002197702476464636,
+        "g_dot_delta": -5.175887825309901e-06
+      },
+      {
+        "key": "blocks.39.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0020868869016030093,
+        "update_norm": 0.004235537067256449,
+        "g_dot_delta": -7.1518312365631635e-06
+      },
+      {
+        "key": "blocks.39.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0027442778392969447,
+        "update_norm": 0.002190559847461934,
+        "g_dot_delta": -4.622257954039086e-06
+      },
+      {
+        "key": "blocks.4.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004093408073812044,
+        "update_norm": 0.004359613620706295,
+        "g_dot_delta": -1.4501276254659838e-05
+      },
+      {
+        "key": "blocks.4.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0032736759467127956,
+        "update_norm": 0.0022028742330397577,
+        "g_dot_delta": -5.785452722843714e-06
+      },
+      {
+        "key": "blocks.5.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004291023427568597,
+        "update_norm": 0.004367952681255364,
+        "g_dot_delta": -1.5282344789813346e-05
+      },
+      {
+        "key": "blocks.5.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0035608402834841958,
+        "update_norm": 0.002208924651674167,
+        "g_dot_delta": -6.314614410806114e-06
+      },
+      {
+        "key": "blocks.6.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0048714882017349805,
+        "update_norm": 0.004375882937116111,
+        "g_dot_delta": -1.7178419121964315e-05
+      },
+      {
+        "key": "blocks.6.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003969721670285092,
+        "update_norm": 0.002211424711225203,
+        "g_dot_delta": -6.9062166594530614e-06
+      },
+      {
+        "key": "blocks.7.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.00489418535090677,
+        "update_norm": 0.0043742590676869265,
+        "g_dot_delta": -1.7019074241888795e-05
+      },
+      {
+        "key": "blocks.7.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.00376653970585525,
+        "update_norm": 0.002208376923811128,
+        "g_dot_delta": -6.700459311158826e-06
+      },
+      {
+        "key": "blocks.8.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.007655669297074431,
+        "update_norm": 0.004420584254285338,
+        "g_dot_delta": -2.7181091642219955e-05
+      },
+      {
+        "key": "blocks.8.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.006861012191651378,
+        "update_norm": 0.002230634001735051,
+        "g_dot_delta": -1.2228741879409488e-05
+      },
+      {
+        "key": "blocks.9.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004822385001675074,
+        "update_norm": 0.004368201401796705,
+        "g_dot_delta": -1.6765403140256217e-05
+      },
+      {
+        "key": "blocks.9.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004263005738438364,
+        "update_norm": 0.0022170281019281497,
+        "g_dot_delta": -7.59144433401154e-06
+      }
+    ]
+  },
+  "gradient_reconstruction": "CPUfloat64 m/.1 then undo recorded clipping; retains FP32 moment rounding and is not an independent gradient oracle.",
+  "tolerances": {
+    "loss_abs": 1e-06,
+    "norm_relative": 1e-05,
+    "update_relative": 3e-06,
+    "update_abs": 1e-10
+  },
+  "evaluation_invocation": {
+    "provided": true,
+    "argv_data_and_settings_match": true,
+    "execution_authenticity": "Recorded argv is evidence of intended invocation, not proof that a fresh process executed it.",
+    "selected_context_and_target_ids_match": true,
+    "data_hash_matches": true,
+    "process_id": 27962,
+    "implementation": {
+      "source": {
+        "__init__.py": "6605af1a6c29d74cb5a62c1c268c24632d00e2fe8b1821a772e3cac6a1060c54",
+        "activation_config.py": "7e3ac0956b0f7bf0fa8a5b0dfacbde5f8554f6f75056e6c9979b04c9aa630215",
+        "attention.py": "322829decc3385ad611ecff007565690ec8cd87e31e6fc3815f15bf391062827",
+        "checkpoint.py": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d",
+        "cli.py": "6a20e242263c4ee512aaa5018fb7386f89a0f93d64ef08da5973c24afa81cc83",
+        "context.py": "dae6e69baa6f5cda760b784d4abaab91cab7433e223d16f0c5c5e64b8c0c5246",
+        "data.py": "4791c84ad1bff633f3ffd49d9c6cc5f930ad59bdd3fe3e189b5720f868112a15",
+        "decode.metal": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282",
+        "deepseek.py": "1536240ac4249494d61af74503713a385beae953959246f33aeeb6dfc3f77dc9",
+        "engram.py": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+        "hyperconnections.py": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+        "ktune_cli.py": "514918ebfbedda9a3410423716568e103597c3d2c0c98630f75edf01e3266ce1",
+        "ktune_data.py": "5ceee57f664295731a4d4183215ac4d4feb128cb7aa52fd58903aa3470080838",
+        "ktune_eval.py": "91739cb483ac8e51ed93d0478a5b3a622042d73c87e89593b3baf3d9462ec91e",
+        "ktune_patch.py": "1e7972d4b4659b42e2284d89c798c915f9930061af260ac3a0f33fd305ebf0f6",
+        "linear.py": "51ecb3cbc657199e86f4db13b92f1ea6cd13d4550a31ad35602b2e352b3f6379",
+        "materialize.py": "c17735ac8ddac3b46e6b8fd62dc74f730ea31630496749700c2da1e266224e43",
+        "memory.py": "5df2ec9ebe5163d8587d4712ded34f87dc528bb07fba8ab58b5c7ef1fac493d8",
+        "moe.py": "88b821f17c0eda364cb136170f2de52285f872ef0a6330b4a280518d6d1828e0",
+        "native.py": "4da811483bf9b358cbbdbcad5db2d11caa70a6e10ccfa101c292f19660f96809",
+        "prefix_cache.py": "62321488c8760e3b075e1737931857f3a6b06fb0c8c730b1ff373df4bbb201f0",
+        "recompute.py": "a7849b0b1b6877b62914b75e21ab7a66305469e2a0c72def94e8b1caa90cd988",
+        "reference.py": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595",
+        "remote.py": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c",
+        "resources.py": "02003a49a22ef4008280119275aa94992f274b334076a06f008d716f866b36ea",
+        "sft.py": "f8f7e16ea9521ce28a3926ccbc7fcff495d746e34f918d0b14e683a2846e46b6",
+        "sft_cli.py": "ccc99fb6865aa5ba420758617b0888a93236336e855dc486f59c56666be09005",
+        "sft_data.py": "60bf148fcbb0bda56c32701e31f282a2a074ffb852ae327db8b79a2978d38ceb",
+        "sparse_attention.py": "620082cc1e12cbb2f66b09054ff9bea08d9dadc6c34bd802ca25ae7aa26a21a7",
+        "storage.py": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+        "streaming.py": "e60c77729a89fd5a9a76cd2641b5325c5ccf8bc0ec4b80a19ff949a1579d03df",
+        "studio.html": "70c002ed8f31a8323a378f553ab144233c95f71babe26a3d92b14145897b74bb",
+        "studio.py": "909b121d2b10bfd3ecf0e50e5b2abafdf27c313116aab176e0f26592727c1af8",
+        "train.py": "c776ef26b9d59c09ca2544d669d41704674e371ab111826258951722c7a04f42",
+        "training.py": "aaa8ccaa4a44deb566c40a87899a48a06f1f67213c29a7f3d9a4cb716fbe1273",
+        "trellis.py": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d",
+        "validation.py": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9",
+        "workflow.py": "1ed9bfbe07e99070682e75d6ed3439fefb18f901a28b20496ab4fd7b2c93b08f"
+      },
+      "dependency_lock": "40a2c42b352bac86b8b24566543b2a0e76c418047a05d4e4d326c55ae89461ee",
+      "runtime": {
+        "mlx": "0.32.3",
+        "mlx-lm": "0.32.0",
+        "numpy": "2.5.4",
+        "transformers": "5.19.0",
+        "tokenizers": "0.23.3",
+        "safetensors": "0.8.0"
+      },
+      "python": "3.12.13"
+    },
+    "fresh_process_limit": "A process ID alone does not prove independence from training; inspect the saved launch logs."
+  },
+  "resources": {
+    "profile": "development",
+    "memory_gib": 80.0,
+    "reserve_gib": 8.0,
+    "packed_cache_mib": 8192,
+    "decoded_cache_mib": 0,
+    "prefix_cache_mib": 0,
+    "allocator_cache_mib": 256
+  },
+  "original_checkpoint": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001",
+  "new_checkpoint": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/step-000001",
+  "input_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/training.json": "a336b11d88a8db383883185da362bc5d9c28d7e7f2d766699422633312b1f169",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/run_config.json": "7484d2e810086c51930a38048a0c4a86cb2d41ab3f571a7d7effe40c2c8f29c9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-post.json": "66d412a85da4a1b23f7e0a2821976293341cce728b90052901ea458ce744928e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step-config.json": "99be9255ff93da1382bea07e180a25b42c25188756741f35afd890ead2454696",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/activation-causal-plan-v2.json": "c1f7d50e5c849ba7c4fa6df1fa00f7528a75a06ad6da6fb269f68d8573ec049e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/original-one-row.jsonl": "77af20962e596e5301dbd87157d597a6dee69e52d1f22f624429593aa770b32e",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/data/train.jsonl": "77af20962e596e5301dbd87157d597a6dee69e52d1f22f624429593aa770b32e",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/run_config.json": "b1bfa0a994aac760b08c2ebfbbb7991406f37526a9fc55aa160b19a8ddedc732",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/adapter.safetensors": "31a0e93774b1710f9192e14b4828c5cd0ab4ebb699b28b4a7f0538327e2a78c9",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/random.safetensors": "af6b04bdf2d71a07c7e29ec138a43fd8b6a7a036c22610aedd00684f16a53f77",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/adapter_config.json": "52c112319391c2695b4608653eca54e227f3d122d07f3f34a85fd2e694406c17",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/optimizer.safetensors": "b987a9f20a6adaf91641f9e044b5033fbec117af7983a868f355181a10273e62",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/trainer_state.json": "35364c73c723168bf8fdf309596a45216462387969d5f5ec54abf48cc329f930",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/step-000001/adapter.safetensors": "e52c336bc4ed929e742e80b3f38167b61bb039d9eeef567b0afb3a4f1aad2177",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/step-000001/random.safetensors": "af6b04bdf2d71a07c7e29ec138a43fd8b6a7a036c22610aedd00684f16a53f77",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/step-000001/adapter_config.json": "85b885bb53249f1c6db48cf1b6a225ab97dc3815477ca1f22ca69add3d2013f9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/step-000001/optimizer.safetensors": "478bd17a1384378cb77cb69dcd166813bdac6c2d8fab22b2e686b51579acb951",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/step-000001/trainer_state.json": "43706ceb567b9fcf82db429ac4e2279e62a34223701847026077a2feb9de71bf"
+  },
+  "audit_script_sha256": "9895c72d7770fb586f022778c6f7f2cb241785f97ea5f002c3b2499acededdda"
+}

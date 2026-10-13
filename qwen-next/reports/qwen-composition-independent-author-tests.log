@@ -1,0 +1,7 @@
+test_composed_directional_derivatives (test_qwen_conv_gdn_composition.CompositionTests.test_composed_directional_derivatives) ... ok
+test_full_vs_chunked_late_loss_and_both_state_adjoints (test_qwen_conv_gdn_composition.CompositionTests.test_full_vs_chunked_late_loss_and_both_state_adjoints) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.054s
+
+OK

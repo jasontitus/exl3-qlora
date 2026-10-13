@@ -74,3 +74,70 @@ def test_long_masked_loss_preserves_prompt_gradients_and_evaluation():
     assert report["logits_scope"] == "supervised_rows"
     assert max(model._head_rows) <= 32
     assert report["loss"] == pytest.approx(value.item(), rel=2e-6)
+
+
+def test_token_metrics_match_dense_reference_and_preserve_aggregate():
+    mx.random.seed(22)
+    model = Tiny()
+    examples = [
+        {"input_ids": (np.arange(71) % 101).tolist(), "loss_start": 17},
+        {"input_ids": [0, 4, 12, 20], "loss_start": 2},
+    ]
+    plain = evaluate(model, examples)
+    detailed = evaluate(model, examples, include_token_metrics=True)
+    assert {k: v for k, v in detailed.items() if k != "rows"} == plain
+    for example, row in zip(examples, detailed["rows"]):
+        tokens = mx.array([example["input_ids"]])
+        start = example["loss_start"]
+        logits = model(tokens[:, :-1])[0, start - 1 :]
+        gold = tokens[0, start:]
+        np.testing.assert_allclose(
+            row["token_nll"], nn.losses.cross_entropy(logits, gold).tolist(), atol=1e-6
+        )
+        assert row["target_ids"] == gold.tolist()
+        assert row["predicted_ids"] == mx.argmax(logits, axis=-1).tolist()
+        assert row["supervised_tokens"] == len(example["input_ids"]) - start
+        single = evaluate(model, [example], include_token_metrics=True)
+        assert row["logits_sha256"] == single["logits_sha256"]
+        assert row["logits_sha256"] == single["rows"][0]["logits_sha256"]
+
+
+@pytest.mark.parametrize("training", [False, True])
+@pytest.mark.parametrize("preserve_mode", [False, True])
+@pytest.mark.parametrize("fail", [False, True])
+def test_evaluate_preserves_requested_mode_and_restores_on_error(training, preserve_mode, fail):
+    class Observed(Tiny):
+        def __init__(self):
+            super().__init__()
+            self._seen_modes = []
+
+        def project_logits(self, values):
+            self._seen_modes.append(self.training)
+            return super().project_logits(values)
+
+    mx.random.seed(31)
+    model = Observed()
+    model.train(training)
+    checks = 0
+
+    def check():
+        nonlocal checks
+        checks += 1
+        if fail and checks == 3:
+            raise MemoryError("diagnostic budget check")
+
+    kwargs = dict(check=check, include_token_metrics=True, preserve_mode=preserve_mode)
+    examples = [{"input_ids": [0, 4, 12, 20], "loss_start": 2}]
+    if fail:
+        with pytest.raises(MemoryError, match="diagnostic budget"):
+            evaluate(model, examples, **kwargs)
+    else:
+        report = evaluate(model, examples, **kwargs)
+        assert report["supervised_tokens"] == 2
+    assert model._seen_modes == [training if preserve_mode else False]
+    assert model.training == training
+
+
+def test_evaluate_rejects_nonboolean_preserve_mode():
+    with pytest.raises(ValueError, match="preserve_mode"):
+        evaluate(Tiny(), [], preserve_mode="yes")

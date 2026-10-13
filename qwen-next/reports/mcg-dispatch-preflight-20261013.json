@@ -1,0 +1,41 @@
+{
+  "created_utc": "2026-10-13T20:08:20.605397+00:00",
+  "scope": "Tiny standalone synthetic decoder test preflight; no model/training launch",
+  "deepseek_train_and_adapter_exit_codes": [
+    0,
+    0
+  ],
+  "deepseek_checkpoint_baseline_log_hashes_verified": 11,
+  "live_training_process_found": false,
+  "observed_related_processes": {
+    "studio": [
+      40456,
+      59690
+    ],
+    "sfideas": [
+      68192,
+      38928
+    ],
+    "WatchAI": [
+      8585
+    ]
+  },
+  "unrelated_workloads_untouched": true,
+  "memory_snapshot": {
+    "page_size_bytes": 16384,
+    "free_pages": 4544423,
+    "free_gib": 69.34239196777344,
+    "swap_used_mib": 18129.88,
+    "note": "Existing swap usage is not current swapping rate. Inactive pages not counted as guaranteed available."
+  },
+  "planned_scope": {
+    "cases": 94,
+    "output_values": 51712,
+    "largest_matrix": [
+      32,
+      48
+    ],
+    "fixture_bytes": 434938
+  },
+  "dispatch_requires": "Independent harness review with no blocking findings; no concurrent training job."
+}

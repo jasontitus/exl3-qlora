@@ -1,0 +1,43 @@
+{
+  "format": "exl3-tensorfold-gpu-receipt-independent-review-v1",
+  "created_utc": "2026-10-13T03:46:00.363121+00:00",
+  "scope": "CPU verification of root-executed GPU receipt and exact build/source bindings; no independent GPU rerun",
+  "receipt": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/parity.json",
+  "receipt_sha256": "432eb859e72dbfbb0909c7827b59a482e00f066cf393f7ca41e6f68902e8c60d",
+  "checks": {
+    "manifest_hash": true,
+    "executable_hash": true,
+    "harness_source_hash": true,
+    "builder_hash": true,
+    "compile_receipt_hash": true,
+    "before_library_order_and_bytes": true,
+    "before_source_and_air": true,
+    "before_link": true,
+    "after_library_order_and_bytes": true,
+    "after_source_and_air": true,
+    "after_link": true,
+    "distinct_libraries": true,
+    "all_162_cases_once": true,
+    "all_case_results": true,
+    "codebook_results": true,
+    "scope": true,
+    "argv": true
+  },
+  "passed": true,
+  "projection_cases": 162,
+  "projection_output_elements": 131328,
+  "codebook_states": 65536,
+  "excluded_paths": [
+    "prompt tensor-unit kernel",
+    "CUDA",
+    "bfloat output",
+    "rotate/combine host integration",
+    "routed members",
+    "exceptional input values"
+  ],
+  "limits": [
+    "Before/after regression parity, not independent absolute correctness.",
+    "Only declared finite projection cases and exhaustive codebook state comparison on Apple M1 Ultra.",
+    "No timing, full commit, routed-member, BF16 output, or generated-model quality verification."
+  ]
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://huggingface.co/beamster/Qwen3.8-Flash-Next-Sushi-3bpw/resolve/76bd8f55df2bd4ab6297101c57bf86d450ac0aa3/config.json",
+    "file": "config.json",
+    "bytes": 92519,
+    "sha256": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1"
+  },
+  {
+    "url": "https://huggingface.co/beamster/Qwen3.8-Flash-Next-Sushi-3bpw/resolve/76bd8f55df2bd4ab6297101c57bf86d450ac0aa3/model.safetensors.index.json",
+    "file": "model.safetensors.index.json",
+    "bytes": 331165,
+    "sha256": "7d9d288b98bcc1cd6aaaf0755223cb4c54f2fb5ed7a976f471fa2843a5bd398f"
+  },
+  {
+    "url": "https://huggingface.co/beamster/Qwen3.8-Flash-Next-Sushi-3bpw/resolve/76bd8f55df2bd4ab6297101c57bf86d450ac0aa3/tokenizer_config.json",
+    "file": "tokenizer_config.json",
+    "bytes": 17928,
+    "sha256": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27"
+  }
+]

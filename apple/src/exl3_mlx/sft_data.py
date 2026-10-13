@@ -15,9 +15,10 @@ import tempfile
 from pathlib import Path
 
 from .context import MAX_CONTEXT_TOKENS
+from .tool_data import normalize_tool_row
 
 _GROUP_KEYS = ("source_id", "document_id", "group_id")
-_FORBIDDEN = {"tools", "tool_calls", "functions", "image", "images", "audio", "video", "videos"}
+_FORBIDDEN = {"tool_calls", "functions", "image", "images", "audio", "video", "videos"}
 _SPLITS = ("train", "valid", "test")
 
 
@@ -95,7 +96,10 @@ def _normalize(row, prompt_column, response_column):
     if not isinstance(row, dict) or not row:
         raise ValueError("Each record must be a nonempty object")
     if _FORBIDDEN & set(row):
-        raise ValueError("Tools and multimodal records are unsupported")
+        raise ValueError("Unsupported top-level tool or multimodal fields")
+    tool_row = "tools" in row
+    if tool_row and (prompt_column is not None or "messages" not in row):
+        raise ValueError("Tool records require explicit messages and declared tools")
     if prompt_column is not None:
         selected = "mapped_prompt_completion"
         used = {prompt_column, response_column}
@@ -141,7 +145,12 @@ def _normalize(row, prompt_column, response_column):
             }
         elif selected == "messages":
             used = {"messages"}
-            normalized = {"messages": _messages(row["messages"])}
+            if tool_row:
+                used.add("tools")
+                normalized = normalize_tool_row({"messages": row["messages"], "tools": row["tools"]})
+                selected = "terminal_tool_call"
+            else:
+                normalized = {"messages": _messages(row["messages"])}
         else:
             used = {"conversations"}
             conversation = row["conversations"]
@@ -167,10 +176,21 @@ def _normalize(row, prompt_column, response_column):
         ]
         if messages[0]["role"] == "system":
             raise ValueError("System instructions occur both at top level and inside messages")
-        normalized = {"messages": _messages([system, *messages])}
+        normalized = (
+            normalize_tool_row({"messages": [system, *messages], "tools": normalized["tools"]})
+            if tool_row else {"messages": _messages([system, *messages])}
+        )
     metadata = {key: value for key, value in row.items() if key not in used}
     return normalized, metadata, selected
 
+
+
+def tool_row_ends_with_template(row, example, tokenizer):
+    if "tools" not in row:
+        return example["input_ids"][-1] == tokenizer.eos_token_id
+    # Check the entire exact template output, not just an assumed EOS suffix.
+    actual = tokenizer.apply_chat_template(row["messages"], tools=row["tools"], return_dict=False)
+    return example["input_ids"] == actual
 
 def _read_file_unchecked(path):
     suffix = path.suffix.lower()
@@ -442,8 +462,8 @@ def prepare_sft_data(
             record["example"] = validate_example(
                 example, seq_length=max(2, limit - 1), vocab_size=vocab, truncate=False
             )
-            if example["input_ids"][-1] != tokenizer.eos_token_id:
-                raise ValueError("Tokenized assistant answer must end with the model's EOS token")
+            if not tool_row_ends_with_template(record["normalized"], example, tokenizer):
+                raise ValueError("Tokenized assistant answer has an invalid template ending")
         except (ValueError, TypeError, KeyError) as error:
             raise ValueError(f"{record['origin']}: {error}") from error
     groups, duplicates = _assign_splits(records, explicit=source.is_dir(), seed=seed, demo=demo)
@@ -513,7 +533,7 @@ def prepare_sft_data(
             "model_config_sha256": config_hash,
             "max_length": max_length,
             "seq_length": max(2, max_length - 1),
-            "length_definition": "total serialized tokens including BOS, prompt, answer and EOS",
+            "length_definition": "total serialized tokens including BOS, prompt and complete template-terminated assistant target",
             "observed_max_length": observed_max,
             "seed": seed,
             "demo": demo,
@@ -530,7 +550,8 @@ def prepare_sft_data(
                 for name, rows in split_records.items()
             },
             "length_stats": _stats([len(r["example"]["input_ids"]) for r in retained]),
-            "mask": "last assistant answer including EOS; prior turns are context",
+            "mask": "last assistant answer/tool-call turn including exact template termination; prior turns and schemas are context",
+            "terminal_tool_call_rows": sum(r["input_format"] == "terminal_tool_call" for r in retained),
             "split_policy": "preserved explicit splits"
             if source.is_dir()
             else "training-only demonstration"

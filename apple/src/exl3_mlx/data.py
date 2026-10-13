@@ -5,7 +5,6 @@ import json
 import random
 from pathlib import Path
 
-from mlx_lm.tuner.datasets import ChatDataset, CompletionsDataset, TextDataset
 from transformers import PreTrainedTokenizerFast
 
 from .context import MAX_CONTEXT_TOKENS
@@ -79,8 +78,14 @@ def validate_example(row, *, seq_length, vocab_size, truncate=False):
 def tokenize_row(row, tokenizer, *, all_tokens=False):
     if "input_ids" in row:
         return row
+    if "tools" in row:
+        from .tool_data import tokenize_tool_row
+
+        return tokenize_tool_row(row, tokenizer, all_tokens=all_tokens)
     if set(row) == {"text"} and isinstance(row["text"], str) and row["text"].strip():
-        ids, _ = TextDataset([], tokenizer).process(row)
+        ids = tokenizer.encode(row["text"])
+        if ids[-1] != tokenizer.eos_token_id:
+            ids.append(tokenizer.eos_token_id)
         if ids[0] != tokenizer.bos_token_id:
             ids.insert(0, tokenizer.bos_token_id)
         return {"input_ids": ids, "loss_start": 1}
@@ -89,10 +94,8 @@ def tokenize_row(row, tokenizer, *, all_tokens=False):
             {"role": "user", "content": row["prompt"]},
             {"role": "assistant", "content": row["completion"]},
         ]
-        dataset = CompletionsDataset([], tokenizer, "prompt", "completion", not all_tokens)
     elif set(row) == {"messages"} and isinstance(row["messages"], list):
         messages = row["messages"]
-        dataset = ChatDataset([], tokenizer, mask_prompt=not all_tokens)
     else:
         raise ValueError("Use text, prompt/completion, messages, or input_ids/loss_start")
     if (
@@ -108,11 +111,15 @@ def tokenize_row(row, tokenizer, *, all_tokens=False):
         raise ValueError(
             "Use text messages ending in an assistant answer; tools/images unsupported"
         )
-    ids, offset = dataset.process(row)
+    # Byte/token-equivalent to MLX-LM ChatDataset/CompletionsDataset, without
+    # importing mlx_lm.__init__ (which can initialize Metal for CPU-only import).
+    ids = tokenizer.apply_chat_template(messages, tools=None, return_dict=False)
+    offset = 0
     if not all_tokens:
         prefix = tokenizer.apply_chat_template(
-            messages[:-1], add_generation_prompt=True, return_dict=False
+            messages[:-1], tools=None, add_generation_prompt=True, return_dict=False
         )
+        offset = len(prefix)
         if ids[:offset] != prefix:
             raise ValueError("Chat template prefix is inconsistent; supply explicit IDs/loss_start")
     return {"input_ids": ids, "loss_start": max(1, offset)}

@@ -1,0 +1,36 @@
+{
+  "format": "tensorfold-projection-build-independent-check-v1",
+  "date": "2026-10-13T03:29:13.879166+00:00",
+  "scope": "CPU-only repaired source/build artifact identities; no GPU parity or performance",
+  "build": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-parity-build-v3",
+  "manifest_sha256": "39afa590299ef4a5f7f80d93d0aa7615cc02715d50acb0bb57f0ec656e867852",
+  "source_sha256": {
+    "builder": "debb6205a4c9ee4dce3f5ec2e0419f6500a654a896d6a7858f1842a429880eee",
+    "harness": "03a0a2722f775d0f49eb80b25e73ea4fba0641a28378af7178d228c8947f120a"
+  },
+  "checks": {
+    "compile_receipt_bytes": true,
+    "compile_receipt_canonical": true,
+    "swift_source": true,
+    "builder_source": true,
+    "executable": true,
+    "swift_build": true,
+    "before_AIR": true,
+    "before_library": true,
+    "before_source": true,
+    "before_compile": true,
+    "before_link": true,
+    "after_AIR": true,
+    "after_library": true,
+    "after_source": true,
+    "after_compile": true,
+    "after_link": true,
+    "distinct_libraries": true
+  },
+  "passed": true,
+  "remaining_limits": [
+    "Checksums bind local artifacts, not externally authenticated compiler claims.",
+    "Before/after regression parity will not establish independent absolute kernel correctness.",
+    "No GPU result exists in this receipt."
+  ]
+}

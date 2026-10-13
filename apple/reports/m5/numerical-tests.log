@@ -1,0 +1,561 @@
+...FFFFFF..F..F..F..F........FFF...                                      [100%]
+=================================== FAILURES ===================================
+_______ test_latent_attention_sink_masks_and_gradients_against_numpy[0] ________
+
+ratio = 0
+
+    @pytest.mark.parametrize("ratio", [0, 1, 2])
+    def test_latent_attention_sink_masks_and_gradients_against_numpy(ratio):
+        rng = np.random.default_rng(4)
+        q = rng.normal(size=(1, 5, 2, 8)).astype(np.float32)
+        win = rng.normal(size=(1, 5, 8)).astype(np.float32)
+        comp = rng.normal(size=(1, 5 // max(ratio, 1), 8)).astype(np.float32)
+        sink = np.array([0.2, 1.1], np.float32)
+    
+        def oracle(q, win, comp):
+            out = np.zeros_like(q, dtype=np.float64)
+            for s in range(5):
+                keys = win[0, max(0, s - 2) : s + 1].astype(np.float64)
+                if ratio:
+                    keys = np.concatenate([keys, comp[0, : (s + 1) // ratio]], axis=0)
+                for h in range(2):
+                    scores = np.append(keys @ q[0, s, h].astype(np.float64) / math.sqrt(8), sink[h])
+                    probs = np.exp(scores - scores.max())
+                    probs /= probs.sum()
+                    out[0, s, h] = probs[:-1] @ keys
+            return out
+    
+        def fn(a, b, c):
+            return latent_attention(a, b, c, mx.array(sink), ratio=ratio, window_size=3)
+    
+        got = fn(mx.array(q), mx.array(win), mx.array(comp))
+>       np.testing.assert_allclose(np.array(got), oracle(q, win, comp), atol=3e-7)
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=3e-07
+E       
+E       Mismatched elements: 80 / 80 (100%)
+E       First 5 mismatches are at indices:
+E        [0, 0, 0, 0]: -0.8354775905609131 (ACTUAL), -0.8363487912368335 (DESIRED)
+E        [0, 0, 0, 1]: -0.06676715612411499 (ACTUAL), -0.06684302366011706 (DESIRED)
+E        [0, 0, 0, 2]: 0.6829266548156738 (ACTUAL), 0.6835013945157923 (DESIRED)
+E        [0, 0, 0, 3]: 2.076364517211914 (ACTUAL), 2.0781387069756905 (DESIRED)
+E        [0, 0, 0, 4]: -0.8827056884765625 (ACTUAL), -0.8838250522772525 (DESIRED)
+E       Max absolute difference among violations: 0.00177419
+E       Max relative difference among violations: 0.00671659
+E        ACTUAL: array([[[[-0.835478, -0.066767,  0.682927,  2.076365, -0.882706,
+E                  0.86348 , -0.517001, -0.130504],
+E                [-0.737298, -0.058921,  0.602674,  1.832365, -0.778976,...
+E        DESIRED: array([[[[-0.836349, -0.066843,  0.683501,  2.078139, -0.883825,
+E                  0.864277, -0.517638, -0.130646],
+E                [-0.738145, -0.058994,  0.603245,  1.834124, -0.780047,...
+
+tests/test_attention.py:72: AssertionError
+_______ test_latent_attention_sink_masks_and_gradients_against_numpy[1] ________
+
+ratio = 1
+
+    @pytest.mark.parametrize("ratio", [0, 1, 2])
+    def test_latent_attention_sink_masks_and_gradients_against_numpy(ratio):
+        rng = np.random.default_rng(4)
+        q = rng.normal(size=(1, 5, 2, 8)).astype(np.float32)
+        win = rng.normal(size=(1, 5, 8)).astype(np.float32)
+        comp = rng.normal(size=(1, 5 // max(ratio, 1), 8)).astype(np.float32)
+        sink = np.array([0.2, 1.1], np.float32)
+    
+        def oracle(q, win, comp):
+            out = np.zeros_like(q, dtype=np.float64)
+            for s in range(5):
+                keys = win[0, max(0, s - 2) : s + 1].astype(np.float64)
+                if ratio:
+                    keys = np.concatenate([keys, comp[0, : (s + 1) // ratio]], axis=0)
+                for h in range(2):
+                    scores = np.append(keys @ q[0, s, h].astype(np.float64) / math.sqrt(8), sink[h])
+                    probs = np.exp(scores - scores.max())
+                    probs /= probs.sum()
+                    out[0, s, h] = probs[:-1] @ keys
+            return out
+    
+        def fn(a, b, c):
+            return latent_attention(a, b, c, mx.array(sink), ratio=ratio, window_size=3)
+    
+        got = fn(mx.array(q), mx.array(win), mx.array(comp))
+>       np.testing.assert_allclose(np.array(got), oracle(q, win, comp), atol=3e-7)
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=3e-07
+E       
+E       Mismatched elements: 80 / 80 (100%)
+E       First 5 mismatches are at indices:
+E        [0, 0, 0, 0]: -0.7457937002182007 (ACTUAL), -0.7467472428792852 (DESIRED)
+E        [0, 0, 0, 1]: -0.0705314427614212 (ACTUAL), -0.07059293638269662 (DESIRED)
+E        [0, 0, 0, 2]: 0.6600365042686462 (ACTUAL), 0.6605744236060892 (DESIRED)
+E        [0, 0, 0, 3]: 2.083047389984131 (ACTUAL), 2.084597772957554 (DESIRED)
+E        [0, 0, 0, 4]: -0.7734798789024353 (ACTUAL), -0.7746744554375853 (DESIRED)
+E       Max absolute difference among violations: 0.00206354
+E       Max relative difference among violations: 0.02626551
+E        ACTUAL: array([[[[-0.745794, -0.070531,  0.660037,  2.083047, -0.77348 ,
+E                  0.836621, -0.475913, -0.086535],
+E                [-0.265811, -0.080999,  0.49289 ,  1.915556, -0.201724,...
+E        DESIRED: array([[[[-0.746747, -0.070593,  0.660574,  2.084598, -0.774674,
+E                  0.837364, -0.476557, -0.086749],
+E                [-0.266378, -0.081095,  0.493396,  1.91762 , -0.202227,...
+
+tests/test_attention.py:72: AssertionError
+_______ test_latent_attention_sink_masks_and_gradients_against_numpy[2] ________
+
+ratio = 2
+
+    @pytest.mark.parametrize("ratio", [0, 1, 2])
+    def test_latent_attention_sink_masks_and_gradients_against_numpy(ratio):
+        rng = np.random.default_rng(4)
+        q = rng.normal(size=(1, 5, 2, 8)).astype(np.float32)
+        win = rng.normal(size=(1, 5, 8)).astype(np.float32)
+        comp = rng.normal(size=(1, 5 // max(ratio, 1), 8)).astype(np.float32)
+        sink = np.array([0.2, 1.1], np.float32)
+    
+        def oracle(q, win, comp):
+            out = np.zeros_like(q, dtype=np.float64)
+            for s in range(5):
+                keys = win[0, max(0, s - 2) : s + 1].astype(np.float64)
+                if ratio:
+                    keys = np.concatenate([keys, comp[0, : (s + 1) // ratio]], axis=0)
+                for h in range(2):
+                    scores = np.append(keys @ q[0, s, h].astype(np.float64) / math.sqrt(8), sink[h])
+                    probs = np.exp(scores - scores.max())
+                    probs /= probs.sum()
+                    out[0, s, h] = probs[:-1] @ keys
+            return out
+    
+        def fn(a, b, c):
+            return latent_attention(a, b, c, mx.array(sink), ratio=ratio, window_size=3)
+    
+        got = fn(mx.array(q), mx.array(win), mx.array(comp))
+>       np.testing.assert_allclose(np.array(got), oracle(q, win, comp), atol=3e-7)
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=3e-07
+E       
+E       Mismatched elements: 80 / 80 (100%)
+E       First 5 mismatches are at indices:
+E        [0, 0, 0, 0]: -0.8354775905609131 (ACTUAL), -0.8363487912368335 (DESIRED)
+E        [0, 0, 0, 1]: -0.06676715612411499 (ACTUAL), -0.06684302366011706 (DESIRED)
+E        [0, 0, 0, 2]: 0.6829266548156738 (ACTUAL), 0.6835013945157923 (DESIRED)
+E        [0, 0, 0, 3]: 2.076364517211914 (ACTUAL), 2.0781387069756905 (DESIRED)
+E        [0, 0, 0, 4]: -0.8827056884765625 (ACTUAL), -0.8838250522772525 (DESIRED)
+E       Max absolute difference among violations: 0.00177419
+E       Max relative difference among violations: 0.01043731
+E        ACTUAL: array([[[[-0.835478, -0.066767,  0.682927,  2.076365, -0.882706,
+E                  0.86348 , -0.517001, -0.130504],
+E                [-0.737298, -0.058921,  0.602674,  1.832365, -0.778976,...
+E        DESIRED: array([[[[-0.836349, -0.066843,  0.683501,  2.078139, -0.883825,
+E                  0.864277, -0.517638, -0.130646],
+E                [-0.738145, -0.058994,  0.603245,  1.834124, -0.780047,...
+
+tests/test_attention.py:72: AssertionError
+___________ test_rope_matches_adjacent_complex_reference_and_inverse ___________
+
+    def test_rope_matches_adjacent_complex_reference_and_inverse():
+        c = {
+            "qk_rope_head_dim": 8,
+            "rope_theta": 10000,
+            "compress_rope_theta": 160000,
+            "rope_scaling": {
+                "original_max_position_embeddings": 65536,
+                "factor": 16,
+                "beta_fast": 32,
+                "beta_slow": 1,
+            },
+        }
+        x = np.random.default_rng(2).normal(size=(2, 3, 4, 16)).astype(np.float32)
+        pos = np.array([0, 7, 600], np.float32)
+        z = x[..., 8::2] + 1j * x[..., 9::2]
+        z = z * np.exp(1j * pos[:, None] / (10000 ** (np.arange(0, 8, 2) / 8)))[None, :, None, :]
+        want = x.copy()
+        want[..., 8::2] = z.real
+        want[..., 9::2] = z.imag
+        got = rope(mx.array(x), mx.array(pos), c)
+>       np.testing.assert_allclose(np.array(got), want, atol=3e-6)
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=3e-06
+E       
+E       Mismatched elements: 4 / 384 (1.04%)
+E       Mismatch at indices:
+E        [0, 2, 2, 11]: 0.009563565254211426 (ACTUAL), 0.009567567147314548 (DESIRED)
+E        [0, 2, 3, 11]: 0.04313372075557709 (ACTUAL), 0.04313068836927414 (DESIRED)
+E        [1, 2, 0, 10]: -0.13661354780197144 (ACTUAL), -0.1366206258535385 (DESIRED)
+E        [1, 2, 1, 11]: -0.7442398071289062 (ACTUAL), -0.7442429065704346 (DESIRED)
+E       Max absolute difference among violations: 7.0780516e-06
+E       Max relative difference among violations: 0.00041828
+E        ACTUAL: array([[[[ 0.189053, -0.522748, -0.413064, -2.441467,  1.799707,
+E                  1.144166, -0.325423,  0.773807,  0.281211, -0.553823,
+E                  0.977567, -0.310557, -0.328824, -0.792147,  0.454958,...
+E        DESIRED: array([[[[ 0.189053, -0.522748, -0.413064, -2.441467,  1.799707,
+E                  1.144166, -0.325423,  0.773807,  0.281211, -0.553823,
+E                  0.977567, -0.310557, -0.328824, -0.792147,  0.454958,...
+
+tests/test_attention.py:101: AssertionError
+_____ test_composed_recompute_gradient_matches_independent_anchored_replay _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10f8b9340>
+
+    def test_composed_recompute_gradient_matches_independent_anchored_replay(monkeypatch):
+        data, anchors, routes = fixture(), [], []
+        model = make_model(data)
+        parameters = model.trainable_parameters()
+        streams, pre = mx.array(data["streams"]), mx.array(data["pre"])
+        original_quant, original_gate = attention.quantize_activation, DeepSeekGate.__call__
+    
+        def record_quant(value, kind="fp8"):
+            rounded = original_quant(value, kind)
+            anchors.append(
+                (kind, np.array(value).astype(np.float64), np.array(rounded).astype(np.float64))
+            )
+            return rounded
+    
+        def record_gate(gate, value):
+            weights, indices = original_gate(gate, value)
+            routes.append(np.array(indices))
+            return weights, indices
+    
+        # Capture a plain forward only. Backward recomputation must not append more
+        # quantization or routing anchors to this nominal execution's tape.
+        with monkeypatch.context() as patch:
+            patch.setattr(attention, "quantize_activation", record_quant)
+            patch.setattr(DeepSeekGate, "__call__", record_gate)
+            value = mlx_loss(model, data, parameters, streams, pre, checkpoint=False)
+            mx.eval(value)
+        assert len(routes) == 2 and len(anchors) >= 15
+    
+        def plain(p, x, a):
+            return mlx_loss(model, data, p, x, a, checkpoint=False)
+    
+        def checked(p, x, a):
+            return mlx_loss(model, data, p, x, a, checkpoint=True)
+    
+        value_plain, grad_plain = mx.value_and_grad(plain, argnums=(0, 1, 2))(parameters, streams, pre)
+        value_checked, grad_checked = mx.value_and_grad(checked, argnums=(0, 1, 2))(
+            parameters, streams, pre
+        )
+        mx.eval(value_plain, value_checked, grad_plain, grad_checked)
+        assert value_checked.item() == pytest.approx(value_plain.item(), abs=1e-6)
+        for (name, actual), (other, expected) in zip(
+            tree_flatten(grad_checked), tree_flatten(grad_plain), strict=True
+        ):
+            assert name == other
+            np.testing.assert_allclose(np.array(actual), np.array(expected), rtol=2e-4, atol=2e-7)
+    
+        flat_parameters = {k: np.array(v).astype(np.float64) for k, v in tree_flatten(parameters)}
+        flat_gradients = {k: np.array(v).astype(np.float64) for k, v in tree_flatten(grad_checked[0])}
+    
+        def independent(p, x, a):
+            return numpy_loss(data, p, x, a, anchors, routes)
+    
+        expected_loss = independent(flat_parameters, data["streams"], data["pre"])
+>       assert value_checked.item() == pytest.approx(expected_loss, abs=8e-6)
+E       assert 3.0123188495635986 == 3.0126522557743405 ± 8.0e-06
+E         
+E         comparison failed
+E         Obtained: 3.0123188495635986
+E         Expected: 3.0126522557743405 ± 8.0e-06
+
+tests/test_composed_gradient.py:474: AssertionError
+____________ test_forward_vjp_against_float64[3-mul1-dtype0-2e-05] _____________
+
+dtype = mlx.core.float32, tol = 2e-05, rate = 3, cb = 'mul1'
+
+    @pytest.mark.parametrize("dtype,tol", [(mx.float32, 2e-5), (mx.float16, 2e-3), (mx.bfloat16, 2e-2)])
+    @pytest.mark.parametrize("rate,cb", [(3, "mul1"), (2.5, "mul1"), (4, "mcg"), (2, "3inst")])
+    def test_forward_vjp_against_float64(dtype, tol, rate, cb):
+        base, w, bias = fixture(rate=rate, codebook=cb)
+        rng = np.random.default_rng(6)
+        x = mx.array(rng.normal(size=(2, 3, 128)), dtype=dtype)
+        dy = mx.array(rng.normal(size=(2, 3, 384)), dtype=dtype)
+        xnp, dynp = np.array(x.astype(mx.float32)), np.array(dy.astype(mx.float32))
+        y = base(x)
+        _, (dx,) = mx.vjp(base, [x], [dy])
+>       np.testing.assert_allclose(np.array(y.astype(mx.float32)), xnp @ w + bias, atol=tol, rtol=tol)
+E       AssertionError: 
+E       Not equal to tolerance rtol=2e-05, atol=2e-05
+E       
+E       Mismatched elements: 2002 / 2304 (86.9%)
+E       First 5 mismatches are at indices:
+E        [0, 0, 1]: 0.9026175141334534 (ACTUAL), 0.9029888556642959 (DESIRED)
+E        [0, 0, 2]: -0.25084251165390015 (ACTUAL), -0.25089134269483837 (DESIRED)
+E        [0, 0, 3]: -0.12465424835681915 (ACTUAL), -0.12456025804430204 (DESIRED)
+E        [0, 0, 4]: 1.026078224182129 (ACTUAL), 1.0263895708168798 (DESIRED)
+E        [0, 0, 5]: 1.0137070417404175 (ACTUAL), 1.0140832145961707 (DESIRED)
+E       Max absolute difference among violations: 0.00189118
+E       Max relative difference among violations: 0.18169074
+E        ACTUAL: array([[[ 3.946917e-02,  9.026175e-01, -2.508425e-01, ...,
+E                 1.130152e+00,  6.278176e-01,  4.403782e-01],
+E               [ 8.556279e-04, -8.429883e-01,  3.327552e-02, ...,...
+E        DESIRED: array([[[ 3.947717e-02,  9.029889e-01, -2.508913e-01, ...,
+E                 1.130210e+00,  6.282406e-01,  4.405413e-01],
+E               [ 8.479125e-04, -8.430295e-01,  3.327243e-02, ...,...
+
+tests/test_gradients.py:39: AssertionError
+___________ test_forward_vjp_against_float64[2.5-mul1-dtype0-2e-05] ____________
+
+dtype = mlx.core.float32, tol = 2e-05, rate = 2.5, cb = 'mul1'
+
+    @pytest.mark.parametrize("dtype,tol", [(mx.float32, 2e-5), (mx.float16, 2e-3), (mx.bfloat16, 2e-2)])
+    @pytest.mark.parametrize("rate,cb", [(3, "mul1"), (2.5, "mul1"), (4, "mcg"), (2, "3inst")])
+    def test_forward_vjp_against_float64(dtype, tol, rate, cb):
+        base, w, bias = fixture(rate=rate, codebook=cb)
+        rng = np.random.default_rng(6)
+        x = mx.array(rng.normal(size=(2, 3, 128)), dtype=dtype)
+        dy = mx.array(rng.normal(size=(2, 3, 384)), dtype=dtype)
+        xnp, dynp = np.array(x.astype(mx.float32)), np.array(dy.astype(mx.float32))
+        y = base(x)
+        _, (dx,) = mx.vjp(base, [x], [dy])
+>       np.testing.assert_allclose(np.array(y.astype(mx.float32)), xnp @ w + bias, atol=tol, rtol=tol)
+E       AssertionError: 
+E       Not equal to tolerance rtol=2e-05, atol=2e-05
+E       
+E       Mismatched elements: 2027 / 2304 (88%)
+E       First 5 mismatches are at indices:
+E        [0, 0, 0]: -0.08622121810913086 (ACTUAL), -0.08657585241133815 (DESIRED)
+E        [0, 0, 1]: 0.217108815908432 (ACTUAL), 0.2173176395598066 (DESIRED)
+E        [0, 0, 2]: 0.48751896619796753 (ACTUAL), 0.48816860502231074 (DESIRED)
+E        [0, 0, 3]: 1.3331249952316284 (ACTUAL), 1.333450941632777 (DESIRED)
+E        [0, 0, 4]: 0.22710295021533966 (ACTUAL), 0.22717219347739345 (DESIRED)
+E       Max absolute difference among violations: 0.00212772
+E       Max relative difference among violations: 0.52377017
+E        ACTUAL: array([[[-0.086221,  0.217109,  0.487519, ...,  0.223812, -2.01217 ,
+E                -0.547892],
+E               [ 0.383958,  0.167253, -0.150573, ..., -0.294344, -1.033321,...
+E        DESIRED: array([[[-0.086576,  0.217318,  0.488169, ...,  0.223814, -2.012662,
+E                -0.548156],
+E               [ 0.384763,  0.167229, -0.150745, ..., -0.294443, -1.033692,...
+
+tests/test_gradients.py:39: AssertionError
+_____________ test_forward_vjp_against_float64[4-mcg-dtype0-2e-05] _____________
+
+dtype = mlx.core.float32, tol = 2e-05, rate = 4, cb = 'mcg'
+
+    @pytest.mark.parametrize("dtype,tol", [(mx.float32, 2e-5), (mx.float16, 2e-3), (mx.bfloat16, 2e-2)])
+    @pytest.mark.parametrize("rate,cb", [(3, "mul1"), (2.5, "mul1"), (4, "mcg"), (2, "3inst")])
+    def test_forward_vjp_against_float64(dtype, tol, rate, cb):
+        base, w, bias = fixture(rate=rate, codebook=cb)
+        rng = np.random.default_rng(6)
+        x = mx.array(rng.normal(size=(2, 3, 128)), dtype=dtype)
+        dy = mx.array(rng.normal(size=(2, 3, 384)), dtype=dtype)
+        xnp, dynp = np.array(x.astype(mx.float32)), np.array(dy.astype(mx.float32))
+        y = base(x)
+        _, (dx,) = mx.vjp(base, [x], [dy])
+>       np.testing.assert_allclose(np.array(y.astype(mx.float32)), xnp @ w + bias, atol=tol, rtol=tol)
+E       AssertionError: 
+E       Not equal to tolerance rtol=2e-05, atol=2e-05
+E       
+E       Mismatched elements: 2018 / 2304 (87.6%)
+E       First 5 mismatches are at indices:
+E        [0, 0, 0]: 0.602047324180603 (ACTUAL), 0.6028545961167112 (DESIRED)
+E        [0, 0, 2]: -1.4075695276260376 (ACTUAL), -1.4085593296606889 (DESIRED)
+E        [0, 0, 3]: 1.1758004426956177 (ACTUAL), 1.1763252250728407 (DESIRED)
+E        [0, 0, 4]: 0.5464720129966736 (ACTUAL), 0.5467749467961863 (DESIRED)
+E        [0, 0, 6]: -0.8206290006637573 (ACTUAL), -0.8208738697749848 (DESIRED)
+E       Max absolute difference among violations: 0.00222525
+E       Max relative difference among violations: 0.07515064
+E        ACTUAL: array([[[ 0.602047,  1.170334, -1.40757 , ...,  0.585849,  0.349432,
+E                -0.017893],
+E               [-1.467868, -1.691251, -1.105729, ..., -0.421329,  1.97011 ,...
+E        DESIRED: array([[[ 0.602855,  1.170369, -1.408559, ...,  0.586127,  0.349648,
+E                -0.0179  ],
+E               [-1.468488, -1.692297, -1.105799, ..., -0.421308,  1.970666,...
+
+tests/test_gradients.py:39: AssertionError
+____________ test_forward_vjp_against_float64[2-3inst-dtype0-2e-05] ____________
+
+dtype = mlx.core.float32, tol = 2e-05, rate = 2, cb = '3inst'
+
+    @pytest.mark.parametrize("dtype,tol", [(mx.float32, 2e-5), (mx.float16, 2e-3), (mx.bfloat16, 2e-2)])
+    @pytest.mark.parametrize("rate,cb", [(3, "mul1"), (2.5, "mul1"), (4, "mcg"), (2, "3inst")])
+    def test_forward_vjp_against_float64(dtype, tol, rate, cb):
+        base, w, bias = fixture(rate=rate, codebook=cb)
+        rng = np.random.default_rng(6)
+        x = mx.array(rng.normal(size=(2, 3, 128)), dtype=dtype)
+        dy = mx.array(rng.normal(size=(2, 3, 384)), dtype=dtype)
+        xnp, dynp = np.array(x.astype(mx.float32)), np.array(dy.astype(mx.float32))
+        y = base(x)
+        _, (dx,) = mx.vjp(base, [x], [dy])
+>       np.testing.assert_allclose(np.array(y.astype(mx.float32)), xnp @ w + bias, atol=tol, rtol=tol)
+E       AssertionError: 
+E       Not equal to tolerance rtol=2e-05, atol=2e-05
+E       
+E       Mismatched elements: 2040 / 2304 (88.5%)
+E       First 5 mismatches are at indices:
+E        [0, 0, 0]: -0.5686013698577881 (ACTUAL), -0.5688297004837164 (DESIRED)
+E        [0, 0, 1]: 0.9765509963035583 (ACTUAL), 0.976855032272159 (DESIRED)
+E        [0, 0, 2]: -0.09001447260379791 (ACTUAL), -0.0898782667788248 (DESIRED)
+E        [0, 0, 3]: 0.5367053151130676 (ACTUAL), 0.5369910045542325 (DESIRED)
+E        [0, 0, 4]: -0.24715745449066162 (ACTUAL), -0.24723587636591132 (DESIRED)
+E       Max absolute difference among violations: 0.00264173
+E       Max relative difference among violations: 0.5815158
+E        ACTUAL: array([[[-0.568601,  0.976551, -0.090014, ..., -1.204259, -2.860851,
+E                -0.303715],
+E               [ 0.830597,  0.822833,  0.609847, ..., -2.861574,  1.207239,...
+E        DESIRED: array([[[-0.56883 ,  0.976855, -0.089878, ..., -1.204853, -2.862004,
+E                -0.303361],
+E               [ 0.831326,  0.823246,  0.609223, ..., -2.863335,  1.207667,...
+
+tests/test_gradients.py:39: AssertionError
+______ test_adapter_and_input_gradients_match_dense_and_finite_difference ______
+
+    def test_adapter_and_input_gradients_match_dense_and_finite_difference():
+        mx.random.seed(123)
+        base, w, bias = fixture()
+        layer = EXL3QLoRALinear(base, rank=4, alpha=8)
+        layer.lora_b = mx.random.normal(layer.lora_b.shape) * 0.1
+        x = mx.random.normal((3, 128))
+        target = mx.random.normal((3, 384))
+    
+        def loss(m, inp):
+            return mx.mean((m(inp) - target) ** 2)
+    
+        _, grads = nn.value_and_grad(layer, loss)(layer, x)
+        dx = mx.grad(lambda z: loss(layer, z))(x)
+        wmx, bmx = mx.array(w, dtype=mx.float32), mx.array(bias)
+    
+        def dense(inp, a, b):
+            y = inp @ wmx + bmx + (inp @ a) @ b * layer.scaling
+            return mx.mean((y - target) ** 2)
+    
+        expected = mx.grad(dense, argnums=(0, 1, 2))(x, layer.lora_a, layer.lora_b)
+        for got, want in zip((dx, grads["lora_a"], grads["lora_b"]), expected):
+>           np.testing.assert_allclose(np.array(got), np.array(want), rtol=2e-4, atol=2e-6)
+E           AssertionError: 
+E           Not equal to tolerance rtol=0.0002, atol=2e-06
+E           
+E           Mismatched elements: 145 / 384 (37.8%)
+E           First 5 mismatches are at indices:
+E            [0, 1]: 0.006767055951058865 (ACTUAL), 0.006761991418898106 (DESIRED)
+E            [0, 2]: 0.00490897661074996 (ACTUAL), 0.004902424290776253 (DESIRED)
+E            [0, 4]: -0.0017065760912373662 (ACTUAL), -0.0017020143568515778 (DESIRED)
+E            [0, 7]: 0.018155867233872414 (ACTUAL), 0.018144916743040085 (DESIRED)
+E            [0, 10]: -0.001734031829982996 (ACTUAL), -0.0017370551358908415 (DESIRED)
+E           Max absolute difference among violations: 2.3338944e-05
+E           Max relative difference among violations: 0.03886517
+E            ACTUAL: array([[-1.651618e-03,  6.767056e-03,  4.908977e-03, -4.068445e-03,
+E                   -1.706576e-03, -7.709585e-04, -2.282339e-03,  1.815587e-02,
+E                   -6.250674e-03, -5.095183e-03, -1.734032e-03,  1.750553e-02,...
+E            DESIRED: array([[-1.651875e-03,  6.761991e-03,  4.902424e-03, -4.068538e-03,
+E                   -1.702014e-03, -7.713968e-04, -2.281048e-03,  1.814492e-02,
+E                   -6.249311e-03, -5.093686e-03, -1.737055e-03,  1.749087e-02,...
+
+tests/test_gradients.py:64: AssertionError
+_____________ test_gate_matches_unbiased_numpy_reference_and_dx[1] _____________
+
+k = 1
+
+    @pytest.mark.parametrize("k", [1, 2, 4])
+    def test_gate_matches_unbiased_numpy_reference_and_dx(k):
+        rng = np.random.default_rng(6)
+        w = rng.normal(0, 0.1, (4, 128)).astype(np.float32)
+        bias = np.array([1.0, -0.5, 0.8, 0.1], np.float32)
+        x = rng.normal(size=(3, 128)).astype(np.float32)
+        router = DeepSeekGate(mx.array(w), mx.array(bias), top_k=k)
+        weights, ids = router(mx.array(x))
+        expected, expected_ids = numpy_route(x, w, bias, k, 1.5)
+        np.testing.assert_array_equal(np.array(ids), expected_ids)
+>       np.testing.assert_allclose(np.array(weights), expected, atol=3e-7)
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=3e-07
+E       
+E       Mismatched elements: 3 / 3 (100%)
+E       Mismatch at indices:
+E        [0, 0]: 0.8991234302520752 (ACTUAL), 0.8988072714863 (DESIRED)
+E        [1, 0]: 1.3008558750152588 (ACTUAL), 1.3009536100953112 (DESIRED)
+E        [2, 0]: 1.356773853302002 (ACTUAL), 1.3567165948897397 (DESIRED)
+E       Max absolute difference among violations: 0.00031616
+E       Max relative difference among violations: 0.00035175
+E        ACTUAL: array([[0.899123],
+E              [1.300856],
+E              [1.356774]], dtype=float32)
+E        DESIRED: array([[0.898807],
+E              [1.300954],
+E              [1.356717]])
+
+tests/test_streaming_moe.py:89: AssertionError
+_____________ test_gate_matches_unbiased_numpy_reference_and_dx[2] _____________
+
+k = 2
+
+    @pytest.mark.parametrize("k", [1, 2, 4])
+    def test_gate_matches_unbiased_numpy_reference_and_dx(k):
+        rng = np.random.default_rng(6)
+        w = rng.normal(0, 0.1, (4, 128)).astype(np.float32)
+        bias = np.array([1.0, -0.5, 0.8, 0.1], np.float32)
+        x = rng.normal(size=(3, 128)).astype(np.float32)
+        router = DeepSeekGate(mx.array(w), mx.array(bias), top_k=k)
+        weights, ids = router(mx.array(x))
+        expected, expected_ids = numpy_route(x, w, bias, k, 1.5)
+        np.testing.assert_array_equal(np.array(ids), expected_ids)
+>       np.testing.assert_allclose(np.array(weights), expected, atol=3e-7)
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=3e-07
+E       
+E       Mismatched elements: 6 / 6 (100%)
+E       First 5 mismatches are at indices:
+E        [0, 0]: 0.8791836500167847 (ACTUAL), 0.8792286536329191 (DESIRED)
+E        [0, 1]: 0.6208163499832153 (ACTUAL), 0.6207713463670809 (DESIRED)
+E        [1, 0]: 0.7733912467956543 (ACTUAL), 0.7734016088899697 (DESIRED)
+E        [1, 1]: 0.7266087532043457 (ACTUAL), 0.7265983911100302 (DESIRED)
+E        [2, 0]: 0.715378999710083 (ACTUAL), 0.7153723044951142 (DESIRED)
+E       Max absolute difference among violations: 4.50036161e-05
+E       Max relative difference among violations: 7.24962845e-05
+E        ACTUAL: array([[0.879184, 0.620816],
+E              [0.773391, 0.726609],
+E              [0.715379, 0.784621]], dtype=float32)
+E        DESIRED: array([[0.879229, 0.620771],
+E              [0.773402, 0.726598],
+E              [0.715372, 0.784628]])
+
+tests/test_streaming_moe.py:89: AssertionError
+_____________ test_gate_matches_unbiased_numpy_reference_and_dx[4] _____________
+
+k = 4
+
+    @pytest.mark.parametrize("k", [1, 2, 4])
+    def test_gate_matches_unbiased_numpy_reference_and_dx(k):
+        rng = np.random.default_rng(6)
+        w = rng.normal(0, 0.1, (4, 128)).astype(np.float32)
+        bias = np.array([1.0, -0.5, 0.8, 0.1], np.float32)
+        x = rng.normal(size=(3, 128)).astype(np.float32)
+        router = DeepSeekGate(mx.array(w), mx.array(bias), top_k=k)
+        weights, ids = router(mx.array(x))
+        expected, expected_ids = numpy_route(x, w, bias, k, 1.5)
+        np.testing.assert_array_equal(np.array(ids), expected_ids)
+>       np.testing.assert_allclose(np.array(weights), expected, atol=3e-7)
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=3e-07
+E       
+E       Mismatched elements: 12 / 12 (100%)
+E       First 5 mismatches are at indices:
+E        [0, 0]: 0.31169480085372925 (ACTUAL), 0.3115902016661536 (DESIRED)
+E        [0, 1]: 0.22009648382663727 (ACTUAL), 0.21999541098195885 (DESIRED)
+E        [0, 2]: 0.7108687162399292 (ACTUAL), 0.7111652564453808 (DESIRED)
+E        [0, 3]: 0.25734004378318787 (ACTUAL), 0.257249130906507 (DESIRED)
+E        [1, 0]: 0.404035747051239 (ACTUAL), 0.40406980354669775 (DESIRED)
+E       Max absolute difference among violations: 0.00029654
+E       Max relative difference among violations: 0.00045943
+E        ACTUAL: array([[0.311695, 0.220096, 0.710869, 0.25734 ],
+E              [0.404036, 0.379596, 0.379075, 0.337294],
+E              [0.374524, 0.410774, 0.409211, 0.305492]], dtype=float32)
+E        DESIRED: array([[0.31159 , 0.219995, 0.711165, 0.257249],
+E              [0.40407 , 0.379617, 0.379101, 0.337213],
+E              [0.374536, 0.410795, 0.409267, 0.305401]])
+
+tests/test_streaming_moe.py:89: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_attention.py::test_latent_attention_sink_masks_and_gradients_against_numpy[0]
+FAILED tests/test_attention.py::test_latent_attention_sink_masks_and_gradients_against_numpy[1]
+FAILED tests/test_attention.py::test_latent_attention_sink_masks_and_gradients_against_numpy[2]
+FAILED tests/test_attention.py::test_rope_matches_adjacent_complex_reference_and_inverse
+FAILED tests/test_composed_gradient.py::test_composed_recompute_gradient_matches_independent_anchored_replay
+FAILED tests/test_gradients.py::test_forward_vjp_against_float64[3-mul1-dtype0-2e-05]
+FAILED tests/test_gradients.py::test_forward_vjp_against_float64[2.5-mul1-dtype0-2e-05]
+FAILED tests/test_gradients.py::test_forward_vjp_against_float64[4-mcg-dtype0-2e-05]
+FAILED tests/test_gradients.py::test_forward_vjp_against_float64[2-3inst-dtype0-2e-05]
+FAILED tests/test_gradients.py::test_adapter_and_input_gradients_match_dense_and_finite_difference
+FAILED tests/test_streaming_moe.py::test_gate_matches_unbiased_numpy_reference_and_dx[1]
+FAILED tests/test_streaming_moe.py::test_gate_matches_unbiased_numpy_reference_and_dx[2]
+FAILED tests/test_streaming_moe.py::test_gate_matches_unbiased_numpy_reference_and_dx[4]
+13 failed, 22 passed in 124.71s (0:02:04)

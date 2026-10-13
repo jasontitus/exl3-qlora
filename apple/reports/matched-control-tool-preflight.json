@@ -1,0 +1,15 @@
+{
+  "auditor_sha256": "7ba04ed1ded2dafe6765b63d2d2eab8aa1bc3bb0f428a648fb414eabac785b4d",
+  "launcher_sha256": "a9bcf5a63fc9d573453ba46314cdb79dd8a94c40b75e14e03f02aec3f8612381",
+  "plan_sha256": "3606cd6f3d01af73ff6ebc85b23a91c22f14b61b1030dac0e4d4b758957f757a",
+  "config_sha256": "4aead354935a2b2337d4e0d815d52474f2b699e63f30f9d471548d1538e3fa80",
+  "cpu_tests_passed": 33,
+  "audit_tests": 24,
+  "launcher_tests": 9,
+  "ruff": "passed",
+  "actual_preflight": "verified_only",
+  "gpu_subprocesses_started": 0,
+  "prior_treatment_input_bindings_verified": 18,
+  "prior_treatment_audit_rerun_exact": true,
+  "plan_and_config_unchanged": true
+}

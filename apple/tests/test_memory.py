@@ -77,7 +77,7 @@ def test_development_budget_still_requires_budget_plus_system_reserve(monkeypatc
 
 @pytest.mark.parametrize(
     "change",
-    [{"gib": 81}, {"gib": float("nan")}, {"reserve_gib": float("inf")}, {"cache_mib": True}],
+    [{"gib": 1025}, {"gib": float("nan")}, {"reserve_gib": float("inf")}, {"cache_mib": True}],
 )
 def test_memory_budget_rejects_invalid_limits_without_allocator_calls(change):
     with pytest.raises(ValueError):

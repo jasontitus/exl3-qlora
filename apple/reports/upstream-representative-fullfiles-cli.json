@@ -1,0 +1,59 @@
+{
+  "format": "exl3-mlx-upstream-import-v1",
+  "source": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-inventory/representative-manifest.json",
+  "source_files_sha256": {
+    "representative-manifest.json": "9e4c03dfda1ea5dd1c313e3d5a5e3cdd1f228d8ed99331486d80f69d3782954d"
+  },
+  "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "tokenizer": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "model_config_sha256": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d",
+  "minimum_verification": "source_reconstructed",
+  "context_policies": {
+    "complete_changed_files": 8
+  },
+  "counts": {
+    "candidates": 8,
+    "source_reconstructed": 8,
+    "unique_normalized_patches": 8,
+    "train": 2,
+    "valid": 0,
+    "test": 0,
+    "excluded": 6
+  },
+  "ready_for_sft": true,
+  "selected_case_ids": [
+    "mlx-serve-431ac5d7a9d9",
+    "tensorfold-51426b8e668b"
+  ],
+  "max_length": 28115,
+  "max_examples": null,
+  "context_ceiling": 32768,
+  "truncated": 0,
+  "exclusion_counts": {
+    "full_serialized_example_exceeds_context": 6
+  },
+  "evaluation_scope": "training_only",
+  "quality_evaluation_available": false,
+  "execution_verified_examples": 0,
+  "selected_lineages": 2,
+  "limitations": [
+    "No compiler, numerical checker or benchmark ran; no executable-kernel quality claim.",
+    "Target-selected complete changed files are not complete repository/build/runtime dependencies.",
+    "Commit rationale and metrics are source-reported; inferred annotations are explicitly labeled.",
+    "All examples train-only; repository/commit/declared-group/normalized-patch connections and explicit protected keys are conservative, not blanket contamination assurance.",
+    "No best-of-N generation or independently confirmed performance selection is implemented by this intake.",
+    "Unknown metadata stays unknown; large complete examples are excluded without cropping."
+  ],
+  "artifacts_sha256": {
+    "train.jsonl": "fb3f619756b77660d591efece6ceed4f917979c56210d9b157a4f534f0aec7af",
+    "valid.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "test.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "provenance.jsonl": "1118e7fa1b77cfe2bbe27fef5c20d01a31a2ac8f0c755cb88c61aa77f4051af5",
+    "ledger.jsonl": "de9caaa97cd5a24dc4520e2a66c437aa7a8ad2cee6b17c9dc77ee8744b4ce791",
+    "length-audit.jsonl": "34b1ceb66894ea4170dc468885283cf51718f9f3e786c826980530b3993a3cb5"
+  }
+}

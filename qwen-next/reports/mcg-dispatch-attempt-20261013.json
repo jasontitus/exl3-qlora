@@ -1,0 +1,17 @@
+{
+  "started_utc": "2026-10-13T20:09:38.762759+00:00",
+  "argv": [
+    "qwen-next/artifacts/mcg-harness/mcg_decode_harness",
+    "--dispatch",
+    "--fixtures",
+    "qwen-next/artifacts/mcg-harness/synthetic-v1.json",
+    "--kernel",
+    "qwen-next/kernels/mcg_decode.metal",
+    "--receipt",
+    "qwen-next/reports/mcg-harness-gpu-parity.json"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Rejected: Metal unavailable or source not UTF8\n",
+  "timeout_seconds": 60
+}

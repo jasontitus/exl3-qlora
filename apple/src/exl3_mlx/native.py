@@ -6,12 +6,16 @@ import mlx.core as mx
 import mlx.nn as nn
 from mlx_lm.tuner.lora import LoRALinear as MLXLMLoRALinear
 
+from .activation_config import validate_activation_mode
 from .attention import quantize_activation
 
 
 class NativeLinear(nn.Module):
-    def __init__(self, archive, key, *, rows=None, quantize_input=True):
+    def __init__(
+        self, archive, key, *, rows=None, quantize_input=True, activation_mode="checkpoint"
+    ):
         super().__init__()
+        self.activation_mode = validate_activation_mode(activation_mode)
         self.weight = archive.array(key + ".weight", rows)
         self.quantize_input = quantize_input
         self.quantized = self.weight.dtype == mx.uint32
@@ -31,7 +35,11 @@ class NativeLinear(nn.Module):
 
     def __call__(self, x):
         if self.quantized:
-            inp = quantize_activation(x) if self.quantize_input else x
+            inp = (
+                quantize_activation(x)
+                if self.quantize_input and self.activation_mode == "checkpoint"
+                else x
+            )
             return mx.quantized_matmul(
                 inp, self.weight, self.scales, group_size=32, bits=8, mode="mxfp8"
             )

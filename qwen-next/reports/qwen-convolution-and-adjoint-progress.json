@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-10-13T17:46:06.672429+00:00",
+  "status": "author_tests_passed_independent_review_pending",
+  "changes": [
+    "Stable normalized-projector GDN VJP avoids inverse-norm cubing underflow/overflow",
+    "Tiny FP64 depthwise causal convolution/SiLU forward and VJP, including raw history adjoints across chunks"
+  ],
+  "validation": {
+    "full_cpu_suite_tests": 131,
+    "failures": 0,
+    "gdn_tests": 18,
+    "convolution_tests": 7
+  },
+  "files": {
+    "tools/qwen_gdn_reference.py": "96f48929fda71119f63f66a9f78e2589a48eed511bdc43b203d2724f48baac7b",
+    "tests/test_qwen_gdn_reference.py": "d44d7345064760ac476863f3f80cf773ad699462b2563024b643b7cc23249163",
+    "tools/qwen_conv_reference.py": "abf905f59bc1be6e5d0707bd798332242524fb5e2639e90df98b999da249d65a",
+    "tests/test_qwen_conv_reference.py": "4da07b19e8a41c8dcec5bc2c8b90f2b26f501ec4cbe3751a643f8b53d6e8abd2"
+  },
+  "qualification": "Tiny CPU mathematical references only; no Qwen full-model, Metal dispatch, serving ABI, or 16K training qualification. DeepSeek runtime unchanged."
+}

@@ -1,0 +1,204 @@
+{
+  "scope": "Independent CPU review of completed standard12 training/checkpoints/probe; fresh fit not consumed",
+  "reviewed_utc": "2026-10-13T02:12:33.135284+00:00",
+  "training_completion_verified": true,
+  "checkpoints_verified": 12,
+  "steps": [
+    {
+      "step": 1,
+      "row_index": 2,
+      "adapter_sha256": "5fb1156c74af4d07be464cba5da716c776ef94da47dcb99886692326ede29d91",
+      "optimizer_sha256": "89824310cae891986fc4527f88e3b902e66c36e39af07f242852cdb4131e1f2f",
+      "trainer_state_sha256": "181057cc7c5234d60bec67d126e78a424ef302cdf190fe561f1dc61259fb208f",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 2,
+      "row_index": 1,
+      "adapter_sha256": "d74650beb26257143ecad22f90c24e7251a3b73affbff5d3483b4577408c9d11",
+      "optimizer_sha256": "826fe757649914daaed8ca3e4f1169a07f0448777540d18490593fb248146dc3",
+      "trainer_state_sha256": "cc1c276ae2f69a6251a2246dc0f9f111607c37116f708e6e8c8551b747d2d259",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 3,
+      "row_index": 0,
+      "adapter_sha256": "7e6edfdd2dc8db1c7d14fd865e3736df802d5cfe3f2c0c26e90c4e628186fa4c",
+      "optimizer_sha256": "100a90bd91a508303348fbe6eae727d6b2e474cc7e5370525fdfd5b44349d5e3",
+      "trainer_state_sha256": "dc881449dd1b9bc0b9cc13a28dfca62c14a356ba24003f3088f07a2bf1c43dcc",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 4,
+      "row_index": 0,
+      "adapter_sha256": "0b93dfc377c71b93b22806cbd6520694b35c2360b1e6d231633f517d4fe7d44b",
+      "optimizer_sha256": "6863c339b5db87f014f93deb5c3cf8bcd005a68c574d1ed71cb544ece6ed56bb",
+      "trainer_state_sha256": "3dcc4e3d5d0582770c1b0a72dafa8fbb6b82a231baef416844085a246b680fc9",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 5,
+      "row_index": 2,
+      "adapter_sha256": "56fc126e596663d8cde9b7473ad885d9dac05ab9d061a359b9b3ebbbe35a2e6e",
+      "optimizer_sha256": "54b26921a95a6ee3af3fca60f5cacdcddb75e30d9dd6d9a9531b12bcd15b1556",
+      "trainer_state_sha256": "fa16a74ed23b17c04ebafac4a2652f79fdc4b60601f833b338ff5af8f7b292c3",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 6,
+      "row_index": 1,
+      "adapter_sha256": "be4eb57c10e6f66715d7f0a9e919ee2acc8df730dcc165f406b3a5088292dbc8",
+      "optimizer_sha256": "515048979b4a765dafe8ae4c9336b11d8aeb7767459be3aa80a29cad5fdab5d8",
+      "trainer_state_sha256": "e8068532841397d5fc65f732ab8733a2cf7acb85233afb322fcd3c6a1b558b48",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 7,
+      "row_index": 1,
+      "adapter_sha256": "e61ff20421cab06e3ca7d81bc3d3d4d37204a6dbb26d08bc5980bd81765dd4cd",
+      "optimizer_sha256": "2134bd64ed062e1fc613782f13fb3b3c9b2bd072cf8e6458f98ee2470288de4f",
+      "trainer_state_sha256": "41ac3cacb4bad42ec1ad011671edee6a296dcfe7f0df4181144957b1a92449fb",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 8,
+      "row_index": 0,
+      "adapter_sha256": "60790729cc687999cfee93deca45d6766e2d9d6f4e4ec32d8471e3f7ef72ec32",
+      "optimizer_sha256": "05eb663af4f7601625e08e95f92d6fca792edd844060ee28ae40b51225826548",
+      "trainer_state_sha256": "543d11d30f125b21e2c988e28324969d5b5abb1d22e44af9708bf612ca966fe4",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 9,
+      "row_index": 2,
+      "adapter_sha256": "cc9f3907109ff0bfb2b985a06fa0bcb7d60e2d77ce5117c1d72f770b94dd8802",
+      "optimizer_sha256": "a3ff25ee22df7a5cbf9ebdf590edf29ff87f72fae0dd96c3964b9994fa2d98b9",
+      "trainer_state_sha256": "0345a476d7d965e73b6b91c0f1a963fc8f214d75f630da166c17c816416ecb68",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 10,
+      "row_index": 0,
+      "adapter_sha256": "637fbd99082b192c2758f6b1b639c6c51411753f617464710aae1b2be2778ff2",
+      "optimizer_sha256": "6837d5ffe72febd3da42ac2ab75b9006317154030734bcb844d7addc2bee6f3b",
+      "trainer_state_sha256": "104abcfbe5ad128ad4f112779f066e5bb22b8bd88269e4648ed3f3bc44fff6ad",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 11,
+      "row_index": 2,
+      "adapter_sha256": "a772acee857070b1d7c4a64002c59ad9aa7fb24eeb3b8dba3cd08fa20fee0837",
+      "optimizer_sha256": "9e4f785e653ae9d67149bc2aa17d01b21da2c17920a7eb69c50bff57e5f7963b",
+      "trainer_state_sha256": "ede0d3a74309b947b5b44a7dc90fcb54cd4114b7b0c351f8295f3830ab6d7af5",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    },
+    {
+      "step": 12,
+      "row_index": 1,
+      "adapter_sha256": "8d555564edb6f1ead8a796a8dc21040da3b56463b3cf5a6520292a5dbd83f8d2",
+      "optimizer_sha256": "cfd89247476d4b17104223ca256e28e6438ace05fa9d6218a0afd35d7c3d86e3",
+      "trainer_state_sha256": "d674979a4c1643235ca62a5af61d6100870e34daaddbf2bc3c0194a1d322d72f",
+      "finite_adapter_tensors": 4,
+      "finite_optimizer_tensors": 10,
+      "nonzero_B_tensors": 2
+    }
+  ],
+  "sampling_order": [
+    2,
+    1,
+    0,
+    0,
+    2,
+    1,
+    1,
+    0,
+    2,
+    0,
+    2,
+    1
+  ],
+  "each_row_visits": {
+    "0": 4,
+    "1": 4,
+    "2": 4
+  },
+  "prepared_rows": 3,
+  "supervised_targets": 2892,
+  "original_row1_exact": true,
+  "trainable_parameters": 78848,
+  "all_four_adapter_tensors_changed_from_step1_to12": true,
+  "runtime_snapshot_files_verified": 61,
+  "probe_scores_validated": true,
+  "probe_loss": 0.32627658115426944,
+  "probe_row_losses": [
+    0.24123094192846378,
+    0.46115149473761147,
+    0.2772439499113509
+  ],
+  "probe_target_counts": [
+    204,
+    811,
+    1877
+  ],
+  "probe_correct_tokens": [
+    191,
+    717,
+    1771
+  ],
+  "probe_cache_hits": 3,
+  "probe_cache_new_misses": 0,
+  "retained_prefix_bytes": 676312732,
+  "peak_mlx_gib": 53.0847752308473,
+  "elapsed_seconds_including_final_probe": 1808.3602438749513,
+  "fresh_uncached_adapter_parity": "pending; not reviewed here",
+  "base_vs_adapter_training_fit": "pending; not reviewed here",
+  "quality_certified": false,
+  "input_sha256": {
+    "artifacts/loss-fix/three-changes-standard-prefix/project.json": "2b343d9b2837694dacc36a36abedffd2798a96ced150b12ea55a74cae43e546d",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/training.json": "b1e13ca0efaef50b56b875cd6df376352dd784703a256905c4e9bee83d1f1631",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/run_config.json": "f1ade4b1aa47a9f4327aa0e1e3954e2d91597e121cd9828e3f6064eb702239a3",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/training-fit-probe.json": "2390d1b8ccc3a78defbce36339a05ce55515b5dca433418ef8c402ab3af379e3",
+    "artifacts/loss-fix/three-changes-standard-prefix/data/train.jsonl": "ca6fd8c939be9de5f7715e79d5f1ffc9354d251d1092aa9a3cc77d5d5ce80cb3",
+    "artifacts/loss-fix/runtime-v3/snapshot.json": "370f61975af7b351a94659a1ba81414bd925764e6cb8107a1caa3b06f98c5201",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000001/trainer_state.json": "181057cc7c5234d60bec67d126e78a424ef302cdf190fe561f1dc61259fb208f",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000002/trainer_state.json": "cc1c276ae2f69a6251a2246dc0f9f111607c37116f708e6e8c8551b747d2d259",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000003/trainer_state.json": "dc881449dd1b9bc0b9cc13a28dfca62c14a356ba24003f3088f07a2bf1c43dcc",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000004/trainer_state.json": "3dcc4e3d5d0582770c1b0a72dafa8fbb6b82a231baef416844085a246b680fc9",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000005/trainer_state.json": "fa16a74ed23b17c04ebafac4a2652f79fdc4b60601f833b338ff5af8f7b292c3",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000006/trainer_state.json": "e8068532841397d5fc65f732ab8733a2cf7acb85233afb322fcd3c6a1b558b48",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000007/trainer_state.json": "41ac3cacb4bad42ec1ad011671edee6a296dcfe7f0df4181144957b1a92449fb",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000008/trainer_state.json": "543d11d30f125b21e2c988e28324969d5b5abb1d22e44af9708bf612ca966fe4",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000009/trainer_state.json": "0345a476d7d965e73b6b91c0f1a963fc8f214d75f630da166c17c816416ecb68",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000010/trainer_state.json": "104abcfbe5ad128ad4f112779f066e5bb22b8bd88269e4648ed3f3bc44fff6ad",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000011/trainer_state.json": "ede0d3a74309b947b5b44a7dc90fcb54cd4114b7b0c351f8295f3830ab6d7af5",
+    "artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012/trainer_state.json": "d674979a4c1643235ca62a5af61d6100870e34daaddbf2bc3c0194a1d322d72f"
+  },
+  "limitations": [
+    "Same-training-row evidence only; no heldout split or validation selection",
+    "No generation or Metal execution benchmark",
+    "CPU checksum/schema checks do not execute checkpoint reload/resume",
+    "Base identity checks metadata/manifests, not every payload byte"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "three-change-category-totals-v1",
+  "source": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/three-changes-standard-fit-result.json",
+  "source_sha256": "5ac1ca67c2cc530059c0573785be8895933d895b03bf93f34a8ceb8dc2e47e9c",
+  "scope": "Derived only from completed checksum-validated paired teacher-forced token scores; not generated kernel quality",
+  "quality_certified": false,
+  "weighted_loss_reduction_percent": 8.234109528639678,
+  "macro_loss_reduction_percent": 12.174512412036743,
+  "categories": {
+    "all": {
+      "tokens": 2892,
+      "base_nll_sum": 1028.2599160999864,
+      "trained_nll_sum": 943.591868369215,
+      "base_correct": 2670,
+      "trained_correct": 2679,
+      "base_loss": 0.35555322133471173,
+      "trained_loss": 0.3262765796574049,
+      "loss_delta": -0.029276641677306814,
+      "share_of_total_nll_decrease": 1.0
+    },
+    "added_code": {
+      "tokens": 1527,
+      "base_nll_sum": 95.047430930406,
+      "trained_nll_sum": 90.14894842920262,
+      "base_correct": 1501,
+      "trained_correct": 1502,
+      "base_loss": 0.062244552017292724,
+      "trained_loss": 0.059036639442830795,
+      "loss_delta": -0.0032079125744619297,
+      "share_of_total_nll_decrease": 0.057855148813394604
+    },
+    "diff_header": {
+      "tokens": 405,
+      "base_nll_sum": 261.24464074789205,
+      "trained_nll_sum": 221.22511294992256,
+      "base_correct": 350,
+      "trained_correct": 357,
+      "base_loss": 0.6450484956738075,
+      "trained_loss": 0.5462348467899323,
+      "loss_delta": -0.09881364888387523,
+      "share_of_total_nll_decrease": 0.4726638781754379
+    },
+    "eos": {
+      "tokens": 3,
+      "base_nll_sum": 5.005787134170532,
+      "trained_nll_sum": 4.011746764183044,
+      "base_correct": 1,
+      "trained_correct": 0,
+      "base_loss": 1.6685957113901775,
+      "trained_loss": 1.3372489213943481,
+      "loss_delta": -0.33134678999582934,
+      "share_of_total_nll_decrease": 0.011740442783662038
+    },
+    "removed_code": {
+      "tokens": 128,
+      "base_nll_sum": 0.06367159071116646,
+      "trained_nll_sum": 0.07483705247185668,
+      "base_correct": 128,
+      "trained_correct": 128,
+      "base_loss": 0.000497434302430988,
+      "trained_loss": 0.0005846644724363803,
+      "loss_delta": 8.723017000539235e-05,
+      "share_of_total_nll_decrease": -0.00013187338151688947
+    },
+    "unchanged_context": {
+      "tokens": 505,
+      "base_nll_sum": 15.856434236626725,
+      "trained_nll_sum": 15.059233580851206,
+      "base_correct": 498,
+      "trained_correct": 498,
+      "base_loss": 0.031398879676488564,
+      "trained_loss": 0.02982026451653704,
+      "loss_delta": -0.0015786151599515227,
+      "share_of_total_nll_decrease": 0.0094156021916375
+    },
+    "added_comment": {
+      "tokens": 324,
+      "base_nll_sum": 651.0419514601801,
+      "trained_nll_sum": 613.0719895925838,
+      "base_correct": 192,
+      "trained_correct": 194,
+      "base_loss": 2.00938873907463,
+      "trained_loss": 1.8921974987425425,
+      "loss_delta": -0.11719124033208739,
+      "share_of_total_nll_decrease": 0.4484568014173865
+    }
+  }
+}

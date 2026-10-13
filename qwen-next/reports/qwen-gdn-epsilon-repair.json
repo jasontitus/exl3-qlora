@@ -1,0 +1,51 @@
+{
+  "format": "qwen-gdn-epsilon-repair-v1",
+  "created_utc": "2026-10-13T16:33:21.825661+00:00",
+  "status": "held_for_author_independent_review",
+  "fixed_finding": "fp32-epsilon-cast-overflow",
+  "source_sha256": "d5ea77ed0798ec853fc17d5d461d966e392da288ad75c88a4757aa981022ffe5",
+  "tests_sha256": "7713dbfeeb83da019eb545e6156d164e3e53540dc521636f80b61b19b4793858",
+  "prior_readonly_review": {
+    "path": "reports/qwen-gdn-reference-readonly-review.json",
+    "sha256": "3d54ac7f75258d3ae6c069908a7aafa12c45ac280a5f0dbf619b46c8631c3ec9"
+  },
+  "prior_implementation_report": {
+    "path": "reports/qwen-gdn-reference-implementation.json",
+    "sha256": "c92f1d8336da9e9f46b2686a70e5a3a41421b1558f3ed84d138b14150f0507a5"
+  },
+  "changes": [
+    "Require epsilon to remain finite and strictly positive after conversion to selected FP32/FP64 precision. Reject conversion OverflowError as ValueError.",
+    "Reject overflow in squared-norm-plus-epsilon denominators, even if input squared sums and epsilon are separately finite.",
+    "All historical reports preserved; no dependency, model payload, GPU, serving or active runtime changes."
+  ],
+  "regressions": [
+    "FP32eps1e100 overflow and min-subnormal/4 underflow-to-zero both rejected by recurrence and output norm.",
+    "FP64oversized integer10**400, infinite epsilon and zero rejected.",
+    "Smallest positive subnormal and largest finite epsilons accepted when denominator remains finite; stable finite/nonzero output norm result checked.",
+    "Both FP32/FP64 finite squared sums plus maximum finite epsilon rejected when their sum overflows."
+  ],
+  "validation": {
+    "command": [
+      "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "qwen-next/tests",
+      "-p",
+      "test_qwen_gdn_reference.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests_passed": 17,
+    "wall_seconds": 0.236724124988541,
+    "log_path": "qwen-next/reports/qwen-gdn-epsilon-repair-tests.log",
+    "log_sha256": "5cb299447f86d0799da35f5e8bf0092f5290e84dbe23315164201483b9565a94",
+    "ruff": "passed"
+  },
+  "limitations": [
+    "Repair authored and tested by original implementer; author-independent review still required.",
+    "Unchanged tiny CPU recurrence scope; no convolution, full model, production16K backward or Metal parity qualification.",
+    "This is representability and nonfinite rejection, not bitwise equivalence to a serving backend."
+  ]
+}

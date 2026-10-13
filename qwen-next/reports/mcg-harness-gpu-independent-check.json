@@ -1,0 +1,44 @@
+{
+  "schema": "qwen-mcg-gpu-independent-check-v1",
+  "status": "passed_exact_synthetic_scope",
+  "passed": true,
+  "reviewer": "adversarial_code",
+  "created_utc": "2026-10-13T20:10:49.119812+00:00",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/mcg-harness-independent-review.json": "670dcf913c97df8b00355a61ce60c5963d6bb620641f15b6107f741b1d2c7275",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/mcg-harness-gpu-parity.json": "fb7f5b245a4d2f964c0499ef628f50b3395a91c8092fd912f175ee4439b27410",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/mcg-harness/synthetic-v1.json": "521b2113e4881376c55c667774ec22d74430e21d612c1f0d50de7446d978ec82",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/mcg-harness/mcg_decode_harness": "3e2e4c5d1495894d404dcc6365fee6871f164d7f8c48191928533440432748c4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/kernels/mcg_decode.metal": "3dcc8821ed264ff35e573c80b50b74b6d15b6e5a8f2c1a0229ad08d14a44f0d4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/trellis_reference.py": "36827164c88dd6c25dfde67077abe3ad5fb45067f85940a64035fe79dbf29493",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/make_mcg_harness_fixtures.py": "734edf0e6dc687d0619837ea6a1e69909a97dd763d916eb9758a856efc9afa6b"
+  },
+  "checks": {
+    "prior_review_bindings_unchanged": true,
+    "case_order_and_geometry_exact": true,
+    "cases": 94,
+    "compared_fp16_values": 51712,
+    "mismatches": 0,
+    "all_actual_payload_sha256_equal_expected": true,
+    "all_output_prefix_suffix_guards_unchanged": true,
+    "all_input_payload_and_guards_unchanged": true,
+    "tolerance": 0,
+    "device": "Apple M1 Ultra",
+    "device_registry_id": "4294971641",
+    "os": "Version 27.0.1 (Build 26A434)",
+    "metal_language": "3.1",
+    "fast_math_enabled": false,
+    "dispatch_process_id": 53586,
+    "dispatch_finished_utc": "2026-10-13T20:09:50Z"
+  },
+  "findings": [],
+  "qualification": "The pinned standalone inner-MCG decoder produced exact expectedFP16bits for all94synthetic cases on this AppleM1Ultra. This is one hardware/fixture qualification, not complete checkpoint or training support.",
+  "limits": [
+    "Only synthetic innerMCG decode is covered. No converter-known-answer window14, real checkpoint, Hadamard/scales/public weights, packed matmul, VJP, complete architecture or training support is established.",
+    "Every rate/window appears, but this is not the full57x9cross-product or all possible payloads/large matrices. Crop coverage is tile-aligned and the largest actual fixture is32x48.",
+    "The direct-bit oracle is algorithmically different from the kernel funnel extraction but shares the declared MCG/permutation contract. The completed dispatch qualifies only the exact recorded hardware and fixtures.",
+    "Hashes establish local consistency, not authenticity of arbitrary new fixtures. Canary bytes detect writes/mutation; they are not a hardware out-of-bounds-read sanitizer. Source index proof covers this kernel\u2019s admitted domain.",
+    "No performance inference from wall time; no large-matrix scaling, GPU saturation, race stress or cross-device reproducibility campaign."
+  ],
+  "independent_reviewer_gpu_execution": false
+}

@@ -1,0 +1,30 @@
+{
+  "scope": "Isolated loader hardening only; no changes to active source or pinned runtime",
+  "cpu_tests": {
+    "tests.test_loader_hardening_cpu": 58,
+    "tests.test_activation_mode_config": 25,
+    "tests.test_sft_project": 71,
+    "tests.test_resource_profiles": 25
+  },
+  "total_cpu_tests": 179,
+  "metal_integration_tests": "10 new tests authored but NOT RUN; existing test_workflow exact resume gate also pending",
+  "files": {
+    "src/exl3_mlx/train.py": {
+      "before_sha256": "c776ef26b9d59c09ca2544d669d41704674e371ab111826258951722c7a04f42",
+      "after_sha256": "2bf8053f5521bc91178932ea73370f7b677647e724c46871c1a1fafc93f38e62"
+    },
+    "src/exl3_mlx/training.py": {
+      "before_sha256": "aa769f153c0d3bbb02e75df93993b7e37526adc35e1fc75c9af084de0e2c46cf",
+      "after_sha256": "f4068595fc36efbe489dc953d9de94da9e946b1e6ae157bc82dd8b4c6598a8bf"
+    },
+    "tests/test_loader_hardening_cpu.py": {
+      "before_sha256": null,
+      "after_sha256": "bde71955afa51535a63bb3a65928ecb2fcde36e02343515518b026e1f6ce5c63"
+    },
+    "tests/test_loader_hardening.py": {
+      "before_sha256": null,
+      "after_sha256": "cd5b0890ef95b40d51b9dced50d45091b649d2d987f078057a2d67e94125b46b"
+    }
+  },
+  "patch_sha256": "2b16c14502597fff63ed4310347c781eac4cab2003147bf3166e69ef6fbc7617"
+}

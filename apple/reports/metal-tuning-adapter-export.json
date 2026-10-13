@@ -1,0 +1,19 @@
+{
+  "schema": "verified-adapter-export-v1",
+  "export": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/metal-tuning-adapter-step12",
+  "source_checkpoint": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012",
+  "adapter_bytes": 315818,
+  "adapter_sha256": "8d555564edb6f1ead8a796a8dc21040da3b56463b3cf5a6520292a5dbd83f8d2",
+  "source_adapter_sha256": "8d555564edb6f1ead8a796a8dc21040da3b56463b3cf5a6520292a5dbd83f8d2",
+  "export_config_sha256": "02bd0178d9a3315674007d94742c81ab1b81e0e833308efd7a4d0f07084571b6",
+  "bundle_sha256": "3f66b6c7a2cafc8b224088e59008f591296834e33957d69c440d4b1062e6d259",
+  "engine_settings": {
+    "chunk_size": 8192
+  },
+  "activation_mode": "checkpoint",
+  "adapter_layers": [
+    39
+  ],
+  "runtime": "artifacts/loss-fix/runtime-v3",
+  "scope": "Exact selected step12 inference-weight export, not independent quality or PEFT/MLX-LM interoperability certification."
+}

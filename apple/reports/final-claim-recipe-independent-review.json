@@ -1,0 +1,67 @@
+{
+  "format": "exl3-final-documentation-independent-review-v1",
+  "created_utc": "2026-10-13T04:01:15.012096+00:00",
+  "scope": "CPU-only final README, kernel recipe and measured-result claim review; no new training or GPU workload",
+  "documents_sha256": {
+    "README.md": "70b30ad00e99856054cce3c3fc7768c40d0ac01e2449ae4147599818c656f508",
+    "KERNEL_TUNING.md": "819bd63e298363f0f3b5a8dc87a3780bc966f658b185e1cf8914f887b1a824af",
+    "reports/metal-tuning-result.md": "d771fcdb564ab55cfc9f5b8939d86996e4c67f33a0a3221383f6890a783ffc81"
+  },
+  "installed_documents_match": true,
+  "runtime_v4_snapshot_sha256": "722f76a06e9222ee5030f853abb469de3cf46eb146879e2bc3f0a4425ce0f0ff",
+  "runtime_v4_files_verified": 69,
+  "all_runtime_files_match_installed": true,
+  "all_referenced_local_paths_exist_after_install": true,
+  "integrated_junit": {
+    "sha256": "f5456fcd5189294f15bd05ac03064f587b5b5f308dc6f3978e92b7d66ff8a422",
+    "tests_including_subtests": 1067,
+    "reported_main_tests": 1040,
+    "reported_subtests": 27,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "upstream_real_prepare_receipt_sha256": "9c83324cc1d0979305458f10845aa1401ab65f977c988ee3aaf4b04771c8ac54",
+  "upstream_real_prepare_zero_updates": true,
+  "scoped_gpu_receipts": {
+    "llama-conv-gpu-independent-check.json": {
+      "sha256": "69fc26ac18c2a32fd2630bdb29c06cdefbb1ac74157a6a71dfcd6a22b0aa98b3",
+      "raw_receipt_sha256": "f197f71c75c3518a2b140ae8ebd652cf4ff2c0388e165bbcf1b7a7c20cd81bd2",
+      "passed": true
+    },
+    "tensorfold-projection-gpu-independent-check.json": {
+      "sha256": "48af5d379b471f0b0af49177c8eecba033301b5d9108f9e43c5f4f9c5b81eb20",
+      "raw_receipt_sha256": "432eb859e72dbfbb0909c7827b59a482e00f066cf393f7ca41e6f68902e8c60d",
+      "passed": true
+    }
+  },
+  "completed_control_review_sha256": "a1e1dda2cf020aea2db5b2b585ac11d91a0f1d814bdd7ef8458a70a5edd57ede",
+  "three_fit_review_sha256": "98f0d70b780a3054cb989adc8585d6337859f421487f8f2e40495a6c3dfa108a",
+  "fixed_findings": [
+    "Historical all40 project continuation no longer invokes incompatible current CLI; documentation states exact source/runtime reconstruction would be required and points to preserved three-example runtime-v3 entrypoint.",
+    "README now distinguishes both source-kernel parity checks from the convolution independent CPU oracle; no shared absolute-correctness or speed claim."
+  ],
+  "remaining_concrete_documentation_blockers": [],
+  "claim_limits_retained": [
+    "The three-example result is training fit, with comments/headers accounting for92.1%gain, one added-code teacher-forced correction and explicit category/EOS regressions.",
+    "Matched checkpoint/BF16 control is one-case evidence, with different own baselines, prospective resource exception and failed historical bitwise reproduction.",
+    "100 candidates are not100usable examples:93reconstructed,5whole-file token-fit,0executionverified, mixed source_only records.",
+    "New llama example completed preparation only; zero optimizer updates. The proposed training recipe is not claimed as an already successful new run.",
+    "TensorFold is scoped before/after parity with no independent absolute projection oracle; convolution oracle uses exact dyadic geometric fixtures. Neither proves timing, full-commit behavior or model generation quality.",
+    "Practical long-output generation,100\u2013200curated records, independent heldout quality and automated compile/correctness/timing best-of-N remain unfinished."
+  ],
+  "previous_staged_documents_sha256": {
+    "README.md": "70b30ad00e99856054cce3c3fc7768c40d0ac01e2449ae4147599818c656f508",
+    "KERNEL_TUNING.md": "819bd63e298363f0f3b5a8dc87a3780bc966f658b185e1cf8914f887b1a824af",
+    "reports/metal-tuning-result.md": "6fe59e9f6800e2139cf974e0345c5254e2b7073d0a50c27fadbaaf53fc4a3c67"
+  },
+  "publication_rechecked_utc": "2026-10-13T04:02:36.354631+00:00",
+  "publication_note": "Initial review observed unsynchronized installed documents; final sync makes all three reviewed documents byte-identical. No source changes.",
+  "integration_receipt_sha256": "0b3bf5fad26dd4988882af3df60cddf922970c2e68b25a39b61cdbb8ebb7b683",
+  "integration_evidence_bindings_rehashed": 9,
+  "integration_project_status_receipts_verified": {
+    "new_upstream_steps": 0,
+    "preserved_three_example_steps": 12,
+    "both_integrity_checked": true
+  }
+}

@@ -1,0 +1,582 @@
+{
+  "schema": "diagnostic-known-family-aliases-v1",
+  "status": "reviewed_explicit_source_links_only",
+  "reviewer": "adversarial_code",
+  "groups": [
+    {
+      "id": "known-source-family-2a22a09333f0b20d03f9",
+      "members": [
+        {
+          "repo": "https://github.com/ddalcu/mlx-serve",
+          "commit": "ff7f359bd024687fe93640bac7ae16832a237640"
+        }
+      ],
+      "source_labels": [
+        "mlx-serve-gather-nax-omlx-ancestry"
+      ],
+      "relations": [
+        "explicit_baseline_port_header"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/linked-change-ledger-v2.json": "fc11cc57fdf2a730a68e9e9574c3a6caff845aeb66eacbc2d0482da972f188c4"
+      }
+    },
+    {
+      "id": "known-source-family-372306b3049e02843be6",
+      "members": [
+        {
+          "repo": "https://github.com/beamivalice/sushi",
+          "commit": "8e991af832ace9914fd26d8bc1c1874f01774b86"
+        }
+      ],
+      "source_labels": [
+        "packed-kv-matmul2d-port"
+      ],
+      "relations": [
+        "source_declared_port_and_design_ancestry"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/linked-change-ledger-v2.json": "fc11cc57fdf2a730a68e9e9574c3a6caff845aeb66eacbc2d0482da972f188c4"
+      }
+    },
+    {
+      "id": "known-source-family-457e6f571e428bcd165b",
+      "members": [
+        {
+          "repo": "https://github.com/beamivalice/sushi",
+          "commit": "3adb8002840a556b55913dbc85be6cc83f6750e1"
+        },
+        {
+          "repo": "https://github.com/ddalcu/mlx-serve",
+          "commit": "9c511c4710d981b43e32ed2f2c8c7f0695196261"
+        },
+        {
+          "repo": "https://github.com/ml-explore/mlx-lm",
+          "commit": "735a43b2754e40099e04a9022c3f84ab07ad55ee"
+        }
+      ],
+      "source_labels": [
+        "qwen-gated-delta-f32-state-repair-family"
+      ],
+      "relations": [
+        "same_concrete_recurrent_state_precision_contract_not_patch_identity"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/linked-change-ledger-v2.json": "fc11cc57fdf2a730a68e9e9574c3a6caff845aeb66eacbc2d0482da972f188c4"
+      }
+    },
+    {
+      "id": "known-source-family-57dbd2c1fbd67a9f1857",
+      "members": [
+        {
+          "repo": "https://github.com/antirez/ds4",
+          "commit": "3d14d1c10684ebfbfd120839c1604c8a49df39c2"
+        },
+        {
+          "repo": "https://github.com/antirez/ds4",
+          "commit": "d4fba7b16fdf4ee200d1b434c2ee23f303d14583"
+        }
+      ],
+      "source_labels": [
+        "ds4-routed-tensorops-repair-and-rejection"
+      ],
+      "relations": [
+        "later_contradiction_and_rollback"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/linked-change-ledger-v2.json": "fc11cc57fdf2a730a68e9e9574c3a6caff845aeb66eacbc2d0482da972f188c4"
+      }
+    },
+    {
+      "id": "known-source-family-607c729528328362789d",
+      "members": [
+        {
+          "repo": "https://github.com/beamivalice/sushi",
+          "commit": "1dd27c838a0739fdf2ff22cd1dd263c7a2b622dd"
+        },
+        {
+          "repo": "https://github.com/beamivalice/sushi",
+          "commit": "3ba7272b3305d57e62f296abc1d6bf87aa84fe2e"
+        }
+      ],
+      "source_labels": [
+        "sushi-mimo-f16-p-lockstep-ablation-correction"
+      ],
+      "relations": [
+        "related_implementation_stages_with_corrected_attribution"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/linked-changes/implementation-family-ledger.json": "bc10614e0c80327702111e89e6e9aaac9f263ffdc0a7b8f2483299f34fcda952"
+      }
+    },
+    {
+      "id": "known-source-family-698c8051ce3017337f9a",
+      "members": [
+        {
+          "repo": "https://github.com/incoai/splash",
+          "commit": "d2b331112d7fdf9a0088817e42209909bed8d5d1"
+        },
+        {
+          "repo": "https://github.com/incoai/splash",
+          "commit": "dff5dfc573085a647a08d1578fcc718a78f8f077"
+        }
+      ],
+      "source_labels": [
+        "splash-live-row-tile-height-gather-trim-ablation"
+      ],
+      "relations": [
+        "companion_optimization_with_shared_ablation"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/linked-changes/implementation-family-ledger.json": "bc10614e0c80327702111e89e6e9aaac9f263ffdc0a7b8f2483299f34fcda952"
+      }
+    },
+    {
+      "id": "known-source-family-70ffe755b9e565a4b094",
+      "members": [
+        {
+          "repo": "https://github.com/vllm-project/vllm-metal",
+          "commit": "a57d71e5fbf73538c2489497fe0bedb9152d30d5"
+        }
+      ],
+      "source_labels": [
+        "gdn-qk-l2norm-via-rmsnorm-epsilon-scaling"
+      ],
+      "relations": [
+        "explicit_upstream_fix_adaptation"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/linked-changes/implementation-family-ledger.json": "bc10614e0c80327702111e89e6e9aaac9f263ffdc0a7b8f2483299f34fcda952"
+      }
+    },
+    {
+      "id": "known-source-family-902dab34eeaacd037f21",
+      "members": [
+        {
+          "repo": "https://github.com/antirez/ds4",
+          "commit": "3c0cfc3108e1c4c4ff42fb3cf3b0a5cba34e8043"
+        },
+        {
+          "repo": "https://github.com/antirez/ds4",
+          "commit": "54a39d7fa28ee5f87c4b092ba57380ba43d129e1"
+        },
+        {
+          "repo": "https://github.com/antirez/ds4",
+          "commit": "fe457518a69c6e41603d9f6b3c444cfb251cf8c0"
+        }
+      ],
+      "source_labels": [
+        "ds4-grouped-moe-decode-campaign"
+      ],
+      "relations": [
+        "source_declared_followup_specialization"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/linked-change-ledger-v2.json": "fc11cc57fdf2a730a68e9e9574c3a6caff845aeb66eacbc2d0482da972f188c4"
+      }
+    },
+    {
+      "id": "known-source-family-99d75955a27ff0b91ef4",
+      "members": [
+        {
+          "repo": "https://github.com/ml-explore/mlx",
+          "commit": "90089440bcf30b203a4cd68542aca236d725bdf6"
+        },
+        {
+          "repo": "https://github.com/ml-explore/mlx",
+          "commit": "a2a09fd56ccf064121f489528d339de40d2ba8b3"
+        }
+      ],
+      "source_labels": [
+        "mlx-dense-quantized-expert-boundary-scheduler"
+      ],
+      "relations": [
+        "explicit_PR4572_extension_of_PR4567"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/inventory-all.json": "73511770f9654972575a4461cb6f9572cebffa8b82826f6a948a04d15967c7fc"
+      }
+    },
+    {
+      "id": "known-source-family-a9376a91077ecfcab8b2",
+      "members": [
+        {
+          "repo": "https://github.com/antirez/ds4",
+          "commit": "582d809fd300b0d0284911e4f351dce26ef095b5"
+        }
+      ],
+      "source_labels": [
+        "ds4-glm-padded-prefill-row-cherry-pick"
+      ],
+      "relations": [
+        "explicit_cherry_pick"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/linked-changes/implementation-family-ledger.json": "bc10614e0c80327702111e89e6e9aaac9f263ffdc0a7b8f2483299f34fcda952"
+      }
+    },
+    {
+      "id": "known-source-family-cb5d6baa3e15290eed31",
+      "members": [
+        {
+          "repo": "https://github.com/beamivalice/sushi",
+          "commit": "84f2a6d742411941f7f193d8d3c50bf040c5e7e9"
+        }
+      ],
+      "source_labels": [
+        "mimo-192-prefill-explicit-cherry-pick"
+      ],
+      "relations": [
+        "explicit_cherry_pick"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/linked-change-ledger-v2.json": "fc11cc57fdf2a730a68e9e9574c3a6caff845aeb66eacbc2d0482da972f188c4"
+      }
+    },
+    {
+      "id": "known-source-family-dc9b38b82b76c4cff22f",
+      "members": [
+        {
+          "repo": "https://github.com/youssofal/mtplx",
+          "commit": "072610551789fcd87c3db977b6f879dfa74093f6"
+        },
+        {
+          "repo": "https://github.com/youssofal/mtplx",
+          "commit": "aa68928d1e2e82d95bf4492fa0a7bd38e0bfdd5c"
+        },
+        {
+          "repo": "https://github.com/youssofal/mtplx",
+          "commit": "ae2746a50260f4a0d235fc81b8a664cfa823d561"
+        }
+      ],
+      "source_labels": [
+        "mtplx-sorted-row-map-swiglu-kernel-extension-gates"
+      ],
+      "relations": [
+        "explicit_same_kernel_extension_and_version_gate"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/linked-changes/implementation-family-ledger.json": "bc10614e0c80327702111e89e6e9aaac9f263ffdc0a7b8f2483299f34fcda952"
+      }
+    },
+    {
+      "id": "known-source-family-e96a37b28cc54d557d00",
+      "members": [
+        {
+          "repo": "https://github.com/ddalcu/mlx-serve",
+          "commit": "bfe518f77e4db2872c5f0987157cdf158ad62367"
+        }
+      ],
+      "source_labels": [
+        "omlx-to-mlxserve-qsa-nax-occupancy-port"
+      ],
+      "relations": [
+        "explicit_kernel_port"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/linked-changes/implementation-family-ledger.json": "bc10614e0c80327702111e89e6e9aaac9f263ffdc0a7b8f2483299f34fcda952"
+      }
+    },
+    {
+      "id": "known-source-family-f4a325fe5f50894cb3c3",
+      "members": [
+        {
+          "repo": "https://github.com/beamivalice/sushi",
+          "commit": "6755ff2426b7c32977b0cbcd3648ff1ab0cf6f6a"
+        }
+      ],
+      "source_labels": [
+        "sushi-quantized-window-kv-cherry-pick"
+      ],
+      "relations": [
+        "explicit_cherry_pick"
+      ],
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/linked-changes/implementation-family-ledger.json": "bc10614e0c80327702111e89e6e9aaac9f263ffdc0a7b8f2483299f34fcda952"
+      }
+    }
+  ],
+  "unknown_links": [
+    {
+      "source_group": "gdn-qk-l2norm-via-rmsnorm-epsilon-scaling",
+      "anchor": {
+        "repository": "https://github.com/ml-explore/mlx-lm",
+        "symbol": "normalize_qk",
+        "commit": null,
+        "identity_limit": "The author names the upstream implementation but not its revision; no exact upstream commit is asserted."
+      },
+      "reason": "Incomplete external identity retained as annotation; no keyword or short-SHA merge."
+    },
+    {
+      "source_group": "sushi-quantized-window-kv-cherry-pick",
+      "anchor": {
+        "commit": "00d1132bcab3bf897f301e42103f7360d5449d6a",
+        "repository": null,
+        "identity_limit": "Original repository/ref is not named by the captured message."
+      },
+      "reason": "Incomplete external identity retained as annotation; no keyword or short-SHA merge."
+    },
+    {
+      "source_group": "ds4-glm-padded-prefill-row-cherry-pick",
+      "anchor": {
+        "commit": "4e166b1fb491d81009f978569cb4efbb1a1cbefb",
+        "repository": null
+      },
+      "reason": "Incomplete external identity retained as annotation; no keyword or short-SHA merge."
+    },
+    {
+      "source_group": "omlx-to-mlxserve-qsa-nax-occupancy-port",
+      "anchor": {
+        "repository": "https://github.com/jundot/omlx",
+        "revision_prefix": "d6b2b92",
+        "path": "qsa_nax.py",
+        "source_issue": "https://github.com/jundot/omlx/pull/4020"
+      },
+      "reason": "Incomplete external identity retained as annotation; no keyword or short-SHA merge."
+    },
+    {
+      "source_group": "mimo-192-prefill-explicit-cherry-pick",
+      "anchor": {
+        "repository": "unknown upstream checkout",
+        "commit": "070199c3c041b422d8bd92606313e820581e65ef"
+      },
+      "reason": "Missing verified repository or complete revision; not used as a selection alias."
+    },
+    {
+      "source_group": "packed-kv-matmul2d-port",
+      "anchor": {
+        "repository": "https://github.com/ddalcu/mlx-serve",
+        "commit": null,
+        "unit": "msv_qkv_mpp"
+      },
+      "reason": "Missing verified repository or complete revision; not used as a selection alias."
+    },
+    {
+      "source_group": "packed-kv-matmul2d-port",
+      "anchor": {
+        "repository": "https://github.com/incoai/splash",
+        "commit": null,
+        "unit": "q8 attention tile"
+      },
+      "reason": "Missing verified repository or complete revision; not used as a selection alias."
+    },
+    {
+      "source_group": "mlx-serve-gather-nax-omlx-ancestry",
+      "anchor": {
+        "repository": "https://github.com/jundot/omlx",
+        "commit_prefix": "d6b2b92",
+        "unit": "omlx/patches/m5_gather_qmm_nax.py"
+      },
+      "reason": "Missing verified repository or complete revision; not used as a selection alias."
+    },
+    {
+      "source_group": "tensorfold-a826-nax-address-space-port",
+      "known_member": {
+        "repo": "https://github.com/ashhart/tensorfold",
+        "commit": "a826eb7b31ba290663453e833463b06233843726"
+      },
+      "anchor": {
+        "repo": "https://github.com/ml-explore/mlx",
+        "commit": null,
+        "symbol": "steel NAX kernels address-space stripping"
+      },
+      "reason": "Explicit source credit but no exact upstream revision; not merged with another MLX change by keywords.",
+      "source_bindings": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/evidence/tensorfold-a826eb7b31ba-message.txt": "d3082d33d6a5d7dd8f2aa74c13e1d5fe64c29f57d7e69c63bcc0c454ebf98986"
+      }
+    }
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/linked-changes/implementation-family-ledger.json": "bc10614e0c80327702111e89e6e9aaac9f263ffdc0a7b8f2483299f34fcda952",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/ds4-0658dac84541-hour-v3.provenance.json": "9f145776e5a3633a07782db8dae4489120c07fb0d09547458f32afb14fbf807d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/ds4-846428239de2-hour-v3.provenance.json": "3f107554eb2bfd01a573dbb07dc35832fdcbbd7209e901af414d95c407a2e55b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/ds4-8cbdd7624f27-hour-v3.provenance.json": "a3e10bb1d8424bfa59a4468ce49069135b73520938198c8a22ec9b8e012c0cc6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/ds4-8fcd61d6bf0d-hour-v3.provenance.json": "b4813b6306ef70fec594b02b28b41306f7ba6903711d4b3f34335c892b8c82d9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/ds4-fb2abb29e4ef-hour-v3.provenance.json": "b47ba3bb22ae4eb8a824a3f34ad70ad3f8406798e94b4038dd01bda39f7a3328",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-02adf7b2125f-hour-v3.provenance.json": "1f688184a67cd7af0c19ffc59e95c96601d7430c2f8cd4bb9b96c601c9d41d96",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-0840c42a7aab-hour-v3.provenance.json": "6ddd70eaa3b8f049c48dafcdd92e887bd88ff6a3a013aba08f8420bfd93ddea6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-0fdcdc0e23a2-hour-v3.provenance.json": "031f0e22c8abf2193ceed0cc10c16618773eedee3b46be0d316ef204e8fdc4ff",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-494c8a6c93e5-hour-v3.provenance.json": "c20b5423ba7d0af8cb5e6e5c5829f7c0ddde3f37d1a93bf3ddbb101eb904447b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-4f8d91606c26-hour-v3.provenance.json": "bcebea0975194b11ecb7d3dd9828b157f0eca9c93128289a42496177b3fbef05",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-77bf1fa01956-hour-v3.provenance.json": "e9795def680c190da248cb878004d996e4e56832d3f0c41c06c421d054452616",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-789be76e27a3-hour-v3.provenance.json": "73a4d596915b3278995780b31cc887b4510f25493857ef66697da5fbb00477da",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-83b976ea4384-hour-v3.provenance.json": "541a696034f53f326e5f1df748a4a78a95f2cab83569d130064ceff918374b18",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-84ea22f389ed-hour-v3.provenance.json": "a746011c97f400026b8c55a5bbd05f413dc061b1ac6525d4b634c165e59a7dbc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-9b954755f529-hour-v3.provenance.json": "f5f1cb76b5f0d095548faa2bb8a6cd06ae4bc1eb67e0d9302bf0ec3ddef614d1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-9cb9c06fb2c8-hour-v3.provenance.json": "827cbc124039d990013ff85dbf73b8a48b712c458916b1c7bc7a3cfcd817c8f3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-d935276decaa-hour-v3.provenance.json": "851ef709baa3eb701e627e49dfe30e808800763660403539cce9c7a239ab715b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-f14e6d2d6d51-hour-v3.provenance.json": "738c3b1c7785a7df0a65cac2a8203d031f2a32d9a69e0e2c5e2f04b276a0ffe4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-f5cffe9456b7-hour-v3.provenance.json": "5a36f62ae2098d9d16e20f34ad2dfd54bd1baf7cedb02cabfca517f6a7cb36ce",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-lm-23af85703e42-hour-v3.provenance.json": "8f8a3fdfc856dd2865f77aafcb75f432302508c3bff61544b60548ad4bf02acc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-lm-416f7446a7da-hour-v3.provenance.json": "0f8773c936ee92c1d8e57f78929cd99d5fa402b748c86299146da0619bee2699",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-lm-480934402db0-hour-v3.provenance.json": "8851b565ace3f9b0be22849c0da8198100fb4ae8cfbe1222de14cb7d8cb06aea",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-lm-735a43b2754e-hour-v3.provenance.json": "1d4ed30fe2e35e2de6b351a1cceeb6457156789dd5c60e8d793ad78037582adb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-lm-9dcefa5272d2-hour-v3.provenance.json": "9d0e15242d01fb3d3517be82095f69b491038937ee6a9b77971b659b07eaed9e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-lm-a790972f0f84-hour-v3.provenance.json": "f26d1ec931828260e430e5211a07ae5f8771f10f00991701da3e04352b227644",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-lm-eaf1748ea5a4-hour-v3.provenance.json": "937c278c7f40509d0d9269565789241cda9c307a86a7638d1dc32f89d6cdca9d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-serve-cb477466a2a1-hour-v3.provenance.json": "163294f3148f65b14541e9da5555ce7ec5d13b07d6dbb354b4c53488e9fb7066",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-serve-dce06d208cbc-hour-v3.provenance.json": "0d95515673d59b39bd6c1feb8b79af5aa33a51ea06ba5050a6b2e1bc3b34eabc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-vlm-868596185d3f-hour-v3.provenance.json": "92607d80e3a1cb767297a119ab8f292daf40178b9d19015a0ff764a380c3ceb7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mlx-vlm-99b015560bce-hour-v3.provenance.json": "108bad9a9d3e40e786312a7a599854d85e38a1d27e4e1410bc9e536988a5da30",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mtplx-404084baedaa-hour-v3.provenance.json": "5cd5e0ee46e33db8d8f47c54a91c7045f3700a2f3ae14a289dc182352c42f05a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/mtplx-a075e78b5a68-hour-v3.provenance.json": "13f14e42da8fdf09c87ca03905f9d768a2ea640a7a4adc9c764ca98ea94ff59b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/omlx-42e7282a686d-hour-v3.provenance.json": "59c02ebd3038656bf1cf7bfaf3caa2528d704b0e26bdf7a2a66316fc245abd9e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/omlx-89a40d11317e-hour-v3.provenance.json": "0a0a74b90c3a02055d175c251d166cbcc38324ddc1a8c7a1ccacd43b4433959f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/omlx-9afd971cb56e-hour-v3.provenance.json": "6cc2011633247de7033ff664091110bb7f39427d86d4345621374753ecd0bdc9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/omlx-b6026ce26468-hour-v3.provenance.json": "b1cbe1b09a1bf09d7eb5476bf575015ecf09081bcbad6441e61e8a98881a3c76",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/splash-17c6726e8388-hour-v3.provenance.json": "b29b8e4a2ca5185cd8e4bd6dbe2a1ffb0762f8feedbf1e7590ad7fe57795eed3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/splash-540e6ae59a58-hour-v3.provenance.json": "500d22d88419cf9ee7d4d174e1a4072682f482e8fd29a080f75f87c7fd82fa4f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/splash-5ecf1fe88676-hour-v3.provenance.json": "b9d03bbccad1be905897c210353588777cdf9f7ddc1667d93f6c2f6a679b3cae",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/splash-7161da96eac6-hour-v3.provenance.json": "e0c5192c2ed81ce7b802d50f8bba3773fbabcb06a1b39c2be8f58a89384dce72",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/splash-9402155ae6ed-hour-v3.provenance.json": "bb8840e6fdb9b91c9a30719c29e6e2940d8af1dea4870a2858e334dbafc12f74",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/splash-d2b331112d7f-hour-v3.provenance.json": "3da5db3a0fb58c9c0fd97e85109af11542e54a8acb2c2d68f21eade2f4691c0f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/splash-dff5dfc57308-hour-v3.provenance.json": "d709cc031a9eaff5ef586f5c14942c581c04ec2ed2ba1af14ff5beb0f9eedfcf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/splash-f3a511e50aa3-hour-v3.provenance.json": "664d9bc7731cf3d4b4e049e54bd7579e80eeb2733974f78e9c18272d5d7f3936",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/sushi-25a4994db9cc-hour-v3.provenance.json": "20df1e7f54d7bec85a38d9a2e9e502078716e1898aadc2abdacbefb64c9c36b5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/sushi-2d58ab608455-hour-v3.provenance.json": "80bfe30d3bfe2045081040ab5884ede9af0e67829b716f288a9ffec6c76fc4b2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/sushi-6755ff2426b7-hour-v3.provenance.json": "42de3aadf01477147afeec0d0a20c45b3fd95cf6d939cffc375116552e02af8f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/sushi-987c40030406-hour-v3.provenance.json": "9c49bc4f10b1e455e5a6c1ea1c58a11fd04fe82dec8a02ce0f7ae6d716a4758e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/sushi-b89991a4e6ab-hour-v3.provenance.json": "0debf54723fa8e984fbdb70bb85049ea35bceb923d7c5f34b7eb1d6e277723db",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/tensorfold-14641c806791-hour-v3.provenance.json": "e8a7395a461867f3a0b280036706ac1790b7b0cbc7d39bf1dec586cc15de83d6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/tensorfold-1ca21d65debf-hour-v3.provenance.json": "b8904751ae16144c3868d0425b6c487f7a86832547ad90fb98c05b8c39c47fef",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/tensorfold-5768a5226de0-hour-v3.provenance.json": "be902dc03df4e8492b1b9c1d4c49d27d235333d6bcbc12bada2198b6208d67e8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/tensorfold-6128a0c131f9-hour-v3.provenance.json": "5e1fa618b7e481fb452864b3bfd1a321f987daa0437915975fcc75d7067b6860",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/tensorfold-8bb6e2857f45-hour-v3.provenance.json": "8c68c3269d30e9c3a8ae3f6eac4493339ab988fbb2d871c83c714ffe58364842",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/tensorfold-c0bb87da2444-hour-v3.provenance.json": "0aa8f70876298ca89899cbe3e6d9de0aab61c7947ebde16ad240ae6535a87fe8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/vllm-metal-a57d71e5fbf7-hour-v3.provenance.json": "cb68d8d6bc8ec429b93492243132ca0d3084bec583a466c21f7a7eddfcccf0f3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/new-core-32768/vllm-metal-cc08129b1b2a-hour-v3.provenance.json": "8e2dcb16190e3272dc502e1880ac585a624eaac7eaca5821b97234ee02eabad2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/ds4-6c00e2d53519-expansion-v2.provenance.json": "fc5e5b973c07bbeee363e788c8759d341a589eff2bcbb4d19baa098f44e1feec",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/ds4-8378039eb470-integration-v1.provenance.json": "1240f3f97419f7230d74d3ef998fd678605dff9aa45a05f3e1f913f0bd99ce1a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/ds4-a154af774b40-expansion-v2.provenance.json": "8e7a76ccaf4a5251a778623f7a53f336073a37df537c4ee40ff5c9912fb8d2d5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-02ce1fb6a0a2-expansion-v2.provenance.json": "2e16e0515b4bb116b7b940af4bc6f015931b7e53665341ccffe480883c54fec2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-09e67c686f62-expansion-v2.provenance.json": "efe563b5a5910f715e1b7be1a3a55f99f1d3992d0ef89c825b7826664f9440bf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-0e3ff3643b1c.provenance.json": "240bb4a677521bd3d4b83cb3cc24a0f1a53d5b7b0c25d4bc7b2f7ef553f35085",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-3c40e8f92d0c-expansion-v2.provenance.json": "a04146674cbf4414bdd21225cb5a5048ff1049d87a7a29cc3e9d52b00f96d780",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-3eb822cac09b-expansion-v2-refined.provenance.json": "efc49ddf0d1a37493e9d7ae14f0e8398d591eb7637c4bd2b687cd743ed289593",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-a082cb91d590-expansion-v2.provenance.json": "a70e36da86fa16583dec0137321ad06c6a0211801b6a361719701da7a17e8c43",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-a87691d2de8b-expansion-v2.provenance.json": "117afcd20197ef23c95a24eab7fda4d55d8cac6477728fb3d12d4bfcc93df49b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-d9add9d11f31-expansion-v2.provenance.json": "2f982f5cd46a01262d7bb64144b5d187dffebac306f3c6ee996685a80b02c077",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-ea7e39730931-expansion-v2.provenance.json": "db1534c04c7f5dd53744dd0da032932db872f74ff89894fd5cbbd6200cc6b07b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-lm-15a72f2f5528.provenance.json": "6945281098711a58b3e990f58c193a0e7e68527c8f45e6d8d363f0699a463d2d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-lm-e9308d7b0854.provenance.json": "279a0eb2f30c1152e4823c225b2cc34aad1e3e921076589212596e4ce531b0f5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-lm-f79dba78325b-expansion-v2.provenance.json": "3761632a43f24d86161070f6f07233bc5a1e4dde4a9e18e4c68a5f78223988f4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-242c0a50f1ad-expansion-v2.provenance.json": "0e3bc244912777d70a8f6eb17912e2c471a461030bdc074ffb772b683247d487",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-340016fcb017-expansion-v2.provenance.json": "1616af649b5d461ed73c8ddd3eb951bb6bf44fdde52091c209e35cfe0e3303c1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-364b9fd0760b-expansion-v2.provenance.json": "26b83f09a4153f9d59ef95bc2fc462d1e6d1781279bca822f2436433ee6fa35c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-431ac5d7a9d9.provenance.json": "5429b6beaabb0866910e9f847592f44a241e527b87f6a4d6f00e5a89a917ad0f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-499a08c6c80d-expansion-v2.provenance.json": "f56585ad9c19ae78d8e52ea6af2e5b88e1980bd02278a5641b9526773800c7fc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-55d834b0460a-expansion-v2.provenance.json": "8dce37338790871570cc04cfc384469ff270e91ea45c2a45b1674d1e20004976",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-59d77c06fb9c-expansion-v2.provenance.json": "74ddc6bca95c9863d5491137b9bd5da6a741dbc98585448b1bfc00c75977459f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-89283f810986-expansion-v2.provenance.json": "34b578b5513bea3322cd89c6ee72d6f77ffd9147cd5ab02169e737c6aeadf9e0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-9f4e58793c34.provenance.json": "78b55fd82b93308b99b50fa08219cf09898f82dc4bb8c3f7541753b0d8c1eaed",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-a3b04e3ef804-expansion-v2.provenance.json": "2cb92111210aa471dd196e3474d9c2f08025a00ce0bacedda6fd4e9cd277c6d0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-a453794f9e95.provenance.json": "f6f474d9b8c929cafca60132728cc0b985c0f157784a1a671177d8c23febb7aa",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-b95fbb4afe9e-expansion-v2.provenance.json": "172e5a7d68dca3d37dcb30fa574b0a14906a4bf0ed77bf7f7bc40fd36231b3a1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-bbf652a589d8.provenance.json": "2c2cd14e7d136c517fffa7ca4a1e32fd41e0ef5f77fab1bb170e825d32cd3fba",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-bfe518f77e4d-expansion-v2.provenance.json": "e8fa5163280ab2408dc5b6b3350dbaa1b45680850c99c15f9360e758c3a65982",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-cc2b07cfc400.provenance.json": "971269437fd394a703dcaa40e5a1608cbc7c873d07199e5c3a9e4de49979c8b9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-serve-d344c4e259d6.provenance.json": "bba8be8c23467eaf7439122e40c9aed9dc47c6a550f9bdcc664da296baa64ff7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-vlm-4f4634bb813c.provenance.json": "6334c3e57b350c9b3d61f870f9ffb3bb30981626b2b8d1b7312e59b658587f6b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mlx-vlm-933558a664cd.provenance.json": "effaceab579de2983d344e1c1977c003c74ea72982a30484bf2f76df8ad16e9e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mtplx-072610551789-expansion-v2.provenance.json": "9f21cc6321964ffc56e5fcd759322c6cd31a7daab74e46d17307d325c0e85d48",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mtplx-489f84e5a51e-expansion-v2.provenance.json": "14c4b8788cf9f838dfccc52df0075e064158b9d208c57b1aff1956dcd3da2d78",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mtplx-7628402337f8-expansion-v2.provenance.json": "c45014d4fda7a98b0853c90a47c7cc78e166a745a13061edc8511fa8796f4837",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mtplx-aa68928d1e2e-expansion-v2.provenance.json": "2df58561269dc18a817992303f7369c2f55996e7f8d56f757e3d57747028bd1c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/mtplx-ae2746a50260-expansion-v2.provenance.json": "cf42cfb4a7eeb355f0f0abeae665652b24339576df65a8c31a66810e9568ad78",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/omlx-00decffe7b77-expansion-v2.provenance.json": "c20a8438731614285f4748df9e2f87cdf536811ca71107aaa0607374d1662818",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/omlx-10e675bef8ef-integration-v1.provenance.json": "eae6a17b9c23795044aeede9f6145a02cc1d3b26d9ddf55b41177daa43e443b8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/omlx-125ca6819ed7-expansion-v2.provenance.json": "41bb99d9b8697b837b42a421f0534783db765eb16ba6c62b5cb95324471fa5f7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/omlx-1bead14038a1-expansion-v2.provenance.json": "e5fe935c3e8ac1b7317108b42f76a42cc72b9fbc69d951e068a4bd36b05caf32",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/omlx-b3445232ce6f-expansion-v2.provenance.json": "7f263a92c56de5bf802c8fb389c8f6b14231451b4ff912af2ac2d5b1fd38d6e0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/omlx-c79c6aaaef39-expansion-v2.provenance.json": "7355bcdfe8f33928db1ba7e180e8d5eae7aa4c21eba9e0986690e6f93d77d3da",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/omlx-f7270625e44b-expansion-v2.provenance.json": "fdf58695c18af7c4cc4b24934c37152c581e05a18529007de9758b1946c245ca",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/splash-07142b12bc86-expansion-v2.provenance.json": "5da7e4bd5ccd8e1b3d0a0c01e22daeea530bcda01f73e3cff0c55d4cf230979c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/splash-086f2c5c3658-integration-v1.provenance.json": "ca633af3b9172cfa3411dce3547d58c06944c31424d45ebc87858abb70a693b2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/splash-20593c49f48f-expansion-v2.provenance.json": "d1c4a026afbf11e5876f0da6d9009f8da12becc2c435ca65e3df53b880da87de",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/splash-4bd9c045c570-integration-v1.provenance.json": "b68e34b2ef2dcc91c9d29e462235fd6feb4cec1e1a983447fe6c6e87098204c8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/splash-74f0fee245fe-expansion-v2.provenance.json": "ea13f433f14b5cd00475be0feef31b13fb8097d90cda4be7973e9eee8608c441",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/splash-8b4e1a58f222-expansion-v2.provenance.json": "6f14574ee659920de8801e4db7698a7ce876f50a04b71a006177ea56cb89c240",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-062db8d26242.provenance.json": "4c95dd99faff7838a5d57775c0a3504538168f9510f0ff086b9e49b24110b861",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-1dd27c838a07.provenance.json": "30642acb8fd8674e56eef000a519ee336e575efa1271fe10f43fddc98bf920f6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-26ef54dc1070-expansion-v2.provenance.json": "bef2b57d7182ede3ce3820ddd25d2714f317213bf275ab1833e1de2f726984ed",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-27e81cfc2069-expansion-v2.provenance.json": "04685bb719c727e36e14df353a248d3935264da9a52dd5212214451f6113df0a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-3ba7272b3305-expansion-v2.provenance.json": "7c61da272ef70080faf65589e259317cbc405715258c2c1c6a91c13d946201bc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-4bf284554f14-expansion-v2.provenance.json": "5f3fe65725dfe5ffd894471f9473e4aa6279680165643114b887bf169e8d7f90",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-748fab8a2e3a-expansion-v2.provenance.json": "a8ba1c4653d90f7f49afb85f7b5a5ba64b76c33e761e4a9f1d0584ef05436a20",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-7de9af0f3023-expansion-v2.provenance.json": "24daa11b42fc52e06c2ea8072accf0c91d28767fab74a4e0c6b29e9e8eb8bfd4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-8c16b2bb6a33-expansion-v2.provenance.json": "7dd76a73e53d7e493d342ade86e054dc830b8f57a26da5155f5bc36d48a61799",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-96578478da83-expansion-v2.provenance.json": "b115f7c7008d6fd92a70ec14df54890a107916e0ac14f7613ae2dbaacb7eb739",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-9942e8ea6c3d-expansion-v2.provenance.json": "bc023a31f777a0fcbd15df8ad0f1d72cd2fbf3771f1e686f06814d1de2e97d37",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-a338ca2d2bef-expansion-v2.provenance.json": "88d6e5bd91b6bf5f44668c506d4d5754bbc348c115e6e241cfbe5f4db682feaa",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-dd9c7cce4822-expansion-v2.provenance.json": "4637493fe9c8d5c046e61e92dc1eefa3269d0d434607d4af5ffdce92d27cb7f2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-e69d8873c54d-expansion-v2.provenance.json": "4841f151bc27e1e591604feaaababe5b81e51d66713a5e76b0527dac03c5984a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/sushi-f11faec370ab-expansion-v2.provenance.json": "6745afda04d2777ef9b02be6192c3557e7c49e38adb3eafc761eca5fe60f6f74",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-04109455a209-expansion-v2.provenance.json": "3df1db2c882c21569a423282f34d5d6099b31111248aaae5ad7775363e88789b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-0ef2012546e5-expansion-v2.provenance.json": "92e38d605fd1081c3512c7a79adf85cbf109849b541ca9b6f01f4a566c9ae03d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-12b5d8dbbed5-expansion-v2.provenance.json": "8daf67f14f7d5f5333804faa295522615bd732ae0e2aa3d728f927389c461cca",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-1f918184e458-expansion-v2.provenance.json": "9dad2146d698667a9c662a24139887b5b4b478f78d84039a698c68fbc4218dea",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-22f41e226bcf-expansion-v2.provenance.json": "1350e41ecd0d64a6e5ba0549959b19adb843dff6693c3d8c94c66e9c93d8c5c9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-28e6ade73a15-expansion-v2.provenance.json": "df758cc8c2221bbc9adda32f084cea6a75a78930d4bf941ba51ff6af8e695045",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-2985ed7e2bf7-nemotron_weight_outer_loop.provenance.json": "353e231f9c7410f9e3cbf469cbdbd24fb9f64822b75ae267466ff3b9e59c1c35",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-2d5af5c4ee90-expansion-v2.provenance.json": "544638385c5807d45ab47e120f2322d0ec44f695629218e39e19375baaa40e81",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-2d698959ce98-expansion-v2.provenance.json": "76043ae86f27e2f455e424dadd9843c1543bb9494585f8ed5e51f1cfe68beb82",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-3b723fd3308c-expansion-v2.provenance.json": "b9b7f60157c72adcb092723fbabf6e50b3d9e051c298bfe477435d35e42d959b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-3d338260abd3-prompt_index_reuse.provenance.json": "0a19ff76b4f54b11fb0280616ce32c445e04eb14869576cc69b3c10bc72bb8b1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-3e117e518d54-decode_index_tensor.provenance.json": "9430655444ec3b6ab88341e76b333558e08b898483722971b3619edeaeeebe14",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-4535d28f08db-expansion-v2.provenance.json": "38ef1d421d8033b6422b11e51ccb5db0adcf591e247a339bab703b4e5895630e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-45fa6d3cf247-expansion-v2.provenance.json": "a1f78b92451ff4445e9fe2888876efb882c884ab33a5308331ae5d20f23616d6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-59341c23bd37-expansion-v2.provenance.json": "709e6410bd1a803d916e826af1b0784c669bc0098742d186515ce4b1d7b5b1bd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-5a6cd223796e-radix_parallel_threshold.provenance.json": "09e75cf734974329736944f57edfade4b1025d367ee07f302aeadc853931f09f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-5cf6cb2bed97-expansion-v2.provenance.json": "2898c34c538298314448914c3c0f2fbe951be4becf3d92b8a671f6179ddd8ac9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-5e449c7ba08b-expansion-v2.provenance.json": "042c9d4078b12190f7e925c48207df58eb802844def74f11c3d51c5f4b2554f8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-6cb537422ca1-expansion-v2.provenance.json": "bc9809447243608e3201759eb73d7823ea318867c7ceeadb64b07620bb4b6136",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-7422e20606e8-sparse_vector_loads.provenance.json": "de0039a3034de788321ba5e33a5d7bbe53cfe2974ad3404bd9c54b38c5c43662",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-8c1291cc7e9e-expansion-v2.provenance.json": "666ae289b8e8d2f84dceb230656fbbf89ffe4bef2d114e4b3dfde7fb281abc19",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-9a92139a530e-sparse_skip_identity_rescale.provenance.json": "e836c3271f96176431d21f28a1620e6bf2688cd8057c3ce8733ca0d9d0cdf70d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-9b1aab43e064-expansion-v2.provenance.json": "8eacac5a4bee49d9404f3903772a621faa62e112705f30a52a493ffb739dcb5d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-a813fa9ae354-expansion-v2.provenance.json": "1972143ac44568265f77ac343c42bed07010334b8837acf7ac839f77d20a7444",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-c5cae004e008-hc_four_lane_columns.provenance.json": "991d1d82891a780c80f516f866607f3ed6964da345fbd34918cffce8c255044b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-c738f3e1b3c4-expansion-v2.provenance.json": "a5258b16533024004d06388b7e6e9b418e4c59737a47219ccf39269e03ac480e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-db78ea7b86bb-expansion-v2.provenance.json": "c87b152936943a86601533845568830be9c26765750fb60e9eb99d98fd289088",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/tensorfold-e473ec8974bc-expansion-v2.provenance.json": "498dcc7a1938c074095d04d4e19e4e9482abd13956c6c73686cee3cfdd84411a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/vllm-metal-0ff8b4c40e89-expansion-v2.provenance.json": "7dbc10c916d2710734a7d07b65ba12218c017ce3405a1e6c9aa0845cdc9d5b01",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/vllm-metal-1a4aada280fc-expansion-v2.provenance.json": "a18ad72de4bd69abcce2ea2bef33fe8d4fa3ba5436697d79fd5cb6dfcf3a6b42",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3/vllm-metal-d2149cdafecc-integration-v1.provenance.json": "97666d740bbead0b086340c194bbac90e86c111a2907150fada490666ca2aa53",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/reasoning-library-v1/provenance.jsonl": "e4dfeed0513a06cb7568a32126e8be9c0adbe2b7fcbcbdef2e43e4924761f2dd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/linked-changes/inventory.json": "dea5b459ead6c375cfefbf241f764e5379dd6d73c8ba8df995c56fa486ff0a30",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/engines-a/sourcepacks/ds4-582d809fd300-hour-v3/commit-message.txt": "b735f25dbc5350415cb16ab84d2ee86beb006100df5f8a11a600c2c2191bf9b2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/linked-change-ledger-v2.json": "fc11cc57fdf2a730a68e9e9574c3a6caff845aeb66eacbc2d0482da972f188c4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/manifest-reviewed.json": "a0804e8ce7e2cf177c3d3aa8403f1428a02f51a43a3d140303b63f744d49e920",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/documentation-omissions.json": "2a98a909863a78abe719f53e6f97d1d5a064c8e6fc8cd6a488e32f188a6b1155",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/reviewed-length-audit.json": "1a3cf8e334b7bbd6bf471f239a5dd0fea32413ca9585bd67cdd1cc4d2e560b4d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/reasoning-records-v2.json": "b736ddc3f4eace47a12896c8ab3c087dead353b53439c147e64964c5431b3d65",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/candidate-screen.json": "cec49299a40e2be4f285a12466ddd77df90adb5b8d92ab67972b3be4d59571e6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/protection-dedup-review.json": "037ad8211637c9686ad1651023029b021f463b24dd53963a644c6b2a0a918f9d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/source-pins-batch1.json": "49fe0e9f1e9a5512e45e46fd1e4bf10db41def7887362dd5fba0d6fc80c9d223",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/source-pins-batch2.json": "5a0f24092bdfaf89d299ffcfda9296ab8fa9b626b8812d9f212a9e20ec07cb70",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/sourcepacks/sushi-84f2a6d74241-hour-v4/commit-message.txt": "cd25f90667b131286915dcf281750b17a56633321ec9fd568c756ae75b11de4c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/sourcepacks/sushi-8e991af832ac-hour-v4/commit-message.txt": "17875043888b5df2a3cbd0e0d6704a37e901f949316c841b8d19892f425322cb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/sourcepacks/ds4-fe457518a69c-hour-v4/commit-message.txt": "645e40619076db35bc5bca5c629d6272b31883a46c342c97b5102bacd72748fc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/sourcepacks/ds4-54a39d7fa28e-hour-v4/commit-message.txt": "0c161b8a877ff216fd9e25376b04be8864742f1d9b9e78769883ec418f89f1f7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/sourcepacks/ds4-3c0cfc3108e1-hour-v4/commit-message.txt": "4022fae76386abbd82201446ebde160c8e435b729be4ab143de75e2857129d26",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/sourcepacks/ds4-3d14d1c10684-hour-v4/commit-message.txt": "f4589bc47b0a84f038edafad83552bc5cf6717b369cf5fd1a6aadf9d26cd758a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/sourcepacks/ds4-d4fba7b16fdf-hour-v4/commit-message.txt": "3a8da1ed41bee3168649c0e7deb9876e4ba16611b65c742273faa140fce0037b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/sourcepacks/mlx-serve-9c511c4710d9-hour-v4/complete-record.json": "e36b9183c80ac7c3cb5791a8435ced2d1b8e9c3f7d6426532414f1ec6bafdf6f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/mlx/reviewed/mlx-lm-735a43b2754e-hour-v3.source.json": "5edcfb5261c442048d7df6aec934221e0e20f7323dce5072322e687ea73b8148",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/mlx/sourcepacks/mlx-lm-735a43b2754e/commit.diff": "6ccce77bbf02be70099d620e276bb1e7c0480785e2b7f27c55478307f1a39e53",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/engines-a/sourcepacks/sushi-3adb8002840a-hour-v3/complete-record.json": "2935278fa9b0089b76e36755a1a5b9b6a93ecf0e36965ad895611a93716334d9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/sourcepacks/mlx-serve-ff7f359bd024-hour-v4/before/src/gather_qmm_nax.zig": "8c14b9192dee94f5236b1b9443aaaf2eebf9136dfd226d2016963b21faa0822f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/inventory-all.json": "73511770f9654972575a4461cb6f9572cebffa8b82826f6a948a04d15967c7fc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/evidence/mlx-pr-4572.txt": "9c9f928b239d3b8ca1d0eca94a83d1e29d5f583d966a5df37e3bcaaae1ff1304",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/evidence/mlx-pr-4567.txt": "4f0f83e9801e9bc79c741ff72e795effb28591c43eee69ae65acb52d09c79cfc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/evidence/tensorfold-a826eb7b31ba-message.txt": "d3082d33d6a5d7dd8f2aa74c13e1d5fe64c29f57d7e69c63bcc0c454ebf98986"
+  },
+  "builder_sha256": "7c8aa0f9b0fd80bea59a1351d11d498eb4869a43c9f215c3150aeaf70b862d11",
+  "scope": "Selection aliases for known explicit source families, not an exhaustive semantic deduplication or independence proof. GDN is a reviewed shared precision contract, not proven identical patches or ancestry. Distinct complete edit exercises remain distinct commits. No payload/split mutation. Unknown upstream identities remain annotations only.",
+  "counts": {
+    "groups": 14,
+    "members": 24,
+    "multi_member_groups": 7,
+    "unresolved_links": 9
+  }
+}

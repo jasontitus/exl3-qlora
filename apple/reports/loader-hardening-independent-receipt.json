@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-12",
+  "scope": "Independent CPU/static review of repaired staging loaders; no GPU, actual repository, or pinned runtime edits",
+  "status": "No remaining concrete blocker identified within fixed-rate default Adam scope; real MLX integration pending",
+  "resolved_findings": [
+    "Destination moment state was accepted as its own input schema",
+    "Fractional optimizer step accepted through integer conversion"
+  ],
+  "cpu_tests": 196,
+  "cpu_failures": 0,
+  "cpu_errors": 0,
+  "ruff": "passed",
+  "static_compile": "passed",
+  "real_mlx_tests": {
+    "authored": 16,
+    "run_by_this_reviewer": false,
+    "status": "pending coordinated integration"
+  },
+  "sha256": {
+    "src/exl3_mlx/train.py": "2bf8053f5521bc91178932ea73370f7b677647e724c46871c1a1fafc93f38e62",
+    "src/exl3_mlx/training.py": "b43a2d9d3c23ebf80fe9d908349a517e1fbb61c9a3ec090fc4c90f04de1d677e",
+    "tests/test_loader_hardening_cpu.py": "bc9ad1ec1e5e4a083f44c9d13fc07cf76e69825170f62ce9d43f5ede7c6b0ec5",
+    "tests/test_loader_hardening.py": "c366aeead34c94d25070c53e09459696c1399257f1f44914bab7a62bca542a4b",
+    "reports/loader-hardening-independent-cpu.xml": "02cdb768c98c68b1d9c16c7a040e97caed6ce336468a01a1f7789fd7be034c26",
+    "reports/loader-hardening-independent-review.md": "bdc5991bb37d288f633bf6de0e2eceee253bea03accd258e3da5338c89176e12"
+  },
+  "mlxlibrary_inspected": "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/optimizers/optimizers.py",
+  "mlxlibrary_sha256": "25a57fe00ff9ae1fe836cd504506e16d0e9d890112daed05cef0e2bcb95f7714"
+}

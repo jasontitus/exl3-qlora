@@ -1,0 +1,71 @@
+{
+  "format": "exl3-upstream-bounded100-independent-review-v1",
+  "created_utc": "2026-10-13T03:28:47.923937+00:00",
+  "scope": "CPU source receipt/artifact and retokenization audit; no compilation, GPU/model execution or positive semantic curation",
+  "import_report": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-bounded100-fullfiles/ktune-import.json",
+  "import_report_sha256": "9b376d2e753a03c508c1b9de86f9d3911317c5cd90cd5e1c81ac93ba5feda69a",
+  "artifacts_rehashed": {
+    "ledger.jsonl": "af640d33975c70a660a3a08312be8156509d0c8b6d2927b4e9d43e38c906bcaf",
+    "length-audit.jsonl": "7cb349628c35f3ede60839470ab8514913cfcb7c0cd9a195c12d9c16a8a71c1a",
+    "provenance.jsonl": "04b1e9b424ea47a211215c1b26f15da3aa9479102525147960c68691fbb79a1a",
+    "test.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "train.jsonl": "afd306405f0a2907aea17556725e9df1017b450089653046ff4aa06d6562afa1",
+    "valid.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reported_counts": {
+    "candidates": 100,
+    "excluded": 95,
+    "source_reconstructed": 93,
+    "test": 0,
+    "train": 5,
+    "unique_normalized_patches": 93,
+    "valid": 0
+  },
+  "exclusion_counts": {
+    "full_serialized_example_exceeds_context": 88,
+    "source_reconstruction_failed": 7
+  },
+  "selected_lineages": 2,
+  "execution_verified_examples": 0,
+  "retokenized": [
+    {
+      "case_id": "mlx-serve-cc2b07cfc400",
+      "tokens": 17793,
+      "token_ids_sha256": "706f9d1d5ea3027762d363000c2a7c590cafedcdc97ce88fa93c965e0e9bc0cd",
+      "loss_start": 8751
+    },
+    {
+      "case_id": "tensorfold-eca8490bb868",
+      "tokens": 26058,
+      "token_ids_sha256": "c55548f916db9cc7a2ccbf071f31773c5a9575aa114ec4b862f55af2c9bc1382",
+      "loss_start": 12283
+    },
+    {
+      "case_id": "tensorfold-57097f7eb6ac",
+      "tokens": 7782,
+      "token_ids_sha256": "bd1254a7c16da227b47806c0cb3f7853fe6a2d1e75c8194bf2c00d277297ba99",
+      "loss_start": 3820
+    },
+    {
+      "case_id": "tensorfold-9a92139a530e",
+      "tokens": 9615,
+      "token_ids_sha256": "8cffb3a9038da933b7f911a6910b612a101b0c34f63de6717743e4ddd56ca9c6",
+      "loss_start": 4700
+    },
+    {
+      "case_id": "tensorfold-e82ab6949e0f",
+      "tokens": 23269,
+      "token_ids_sha256": "729e0b4c70a48c27644675190229c859c616c44c46cfe5e780c7588c652a7f39",
+      "loss_start": 10777
+    }
+  ],
+  "all_token_ids_masks_eos_exact": true,
+  "mlx_imported": false,
+  "source_only_admission": true,
+  "limitations": [
+    "100 is the screened candidate pool; only5 complete representations fit the context ceiling, leaving the requested100\u2013200usable examples unmet.",
+    "The5 comprise2 kernel optimizations,1ngram compatibility edit,1host-training enablement edit, and1loader memory edit; this classification is reviewer reading of author messages, not fresh verification.",
+    "TensorFold57097f7 reports10/11finite-difference checks in bound; its unresolved attention-layer failure must remain mixed evidence/review-required and cannot be called parity-passed.",
+    "All rows are training-only,2lineages;0executionverified,0heldout, nogenerated-kernel efficacy."
+  ]
+}

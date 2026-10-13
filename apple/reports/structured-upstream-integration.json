@@ -1,0 +1,101 @@
+{
+  "format": "exl3-structured-upstream-integration-v1",
+  "installed_directory": "/Users/jasontitus/experiments/exl3-qlora/apple",
+  "staging_directory": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple",
+  "pre_install_guard": "All 39 existing source files matched preserved runtime-v3; no extra source files",
+  "install_method": "rsync -ac, no deletion; excluded artifacts, environment, Git, caches and .DS_Store",
+  "runtime_snapshot": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v4/snapshot.json",
+  "runtime_snapshot_sha256": "722f76a06e9222ee5030f853abb469de3cf46eb146879e2bc3f0a4425ce0f0ff",
+  "installed_files_checked": 69,
+  "all_snapshot_files_match": true,
+  "python_package_source_files": 41,
+  "upstream_project_status": {
+    "project": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-llama-prepared-project",
+    "status": "prepared",
+    "completed_steps": 0,
+    "target_steps": 4,
+    "adapter_layers": [
+      39
+    ],
+    "activation_mode": "checkpoint",
+    "latest_checkpoint": null,
+    "selected_checkpoint": null,
+    "comparison": null,
+    "comparison_is_current": false,
+    "integrity_checked": true
+  },
+  "upstream_project_status_command": {
+    "argv": [
+      "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python",
+      "-m",
+      "exl3_mlx.cli",
+      "status",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-llama-prepared-project"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"project\": \"/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-llama-prepared-project\",\n  \"status\": \"prepared\",\n  \"completed_steps\": 0,\n  \"target_steps\": 4,\n  \"adapter_layers\": [\n    39\n  ],\n  \"activation_mode\": \"checkpoint\",\n  \"latest_checkpoint\": null,\n  \"selected_checkpoint\": null,\n  \"comparison\": null,\n  \"comparison_is_current\": false,\n  \"integrity_checked\": true\n}\n",
+    "stderr": ""
+  },
+  "preserved_three_example_project_status": {
+    "project": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix",
+    "status": "completed",
+    "completed_steps": 12,
+    "target_steps": 12,
+    "adapter_layers": [
+      39
+    ],
+    "activation_mode": "checkpoint",
+    "latest_checkpoint": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012",
+    "selected_checkpoint": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012",
+    "comparison": null,
+    "comparison_is_current": false,
+    "integrity_checked": true
+  },
+  "preserved_project_status_command": {
+    "argv": [
+      "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/loss-fix/metal-tune",
+      "status"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"project\": \"/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix\",\n  \"status\": \"completed\",\n  \"completed_steps\": 12,\n  \"target_steps\": 12,\n  \"adapter_layers\": [\n    39\n  ],\n  \"activation_mode\": \"checkpoint\",\n  \"latest_checkpoint\": \"/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012\",\n  \"selected_checkpoint\": \"/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012\",\n  \"comparison\": null,\n  \"comparison_is_current\": false,\n  \"integrity_checked\": true\n}\n",
+    "stderr": ""
+  },
+  "full_suite": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "1067",
+    "time": "45.302",
+    "timestamp": "2026-10-12T20:44:04.877660-07:00",
+    "hostname": "MacStudio-2.localdomain"
+  },
+  "pytest_tests": 1040,
+  "pytest_subtests": 27,
+  "ruff_src_tests_scripts": "passed",
+  "git_diff_check": "passed",
+  "own_studio": {
+    "port": 53658,
+    "http_status": 200,
+    "runtime": "runtime-v3",
+    "model_loaded_by_health_check": false
+  },
+  "evidence_sha256": {
+    "reports/loss-fix-integrated-pytest.xml": "f5456fcd5189294f15bd05ac03064f587b5b5f308dc6f3978e92b7d66ff8a422",
+    "reports/upstream-finetune-independent-review.json": "265c819129818970a04a2fe0fe3462d9cc6cf3fe915bf9bae8ee95c50f5c7f3c",
+    "reports/upstream-llama-real-preparation.json": "9c83324cc1d0979305458f10845aa1401ab65f977c988ee3aaf4b04771c8ac54",
+    "reports/metal-compile-independent-review.json": "0e041b9abfa530a4cc8cd4034149026329f82e72a65da27303e66f4c5cf8b115",
+    "reports/loader-hardening-independent-receipt.json": "5f3def855ff91fb26813d9aed3717419b3ffea0a57b2c821aedcc1a978260808",
+    "reports/llama-conv-gpu-independent-check.json": "69fc26ac18c2a32fd2630bdb29c06cdefbb1ac74157a6a71dfcd6a22b0aa98b3",
+    "reports/tensorfold-projection-gpu-independent-check.json": "48af5d379b471f0b0af49177c8eecba033301b5d9108f9e43c5f4f9c5b81eb20",
+    "artifacts/loss-fix/llama-conv-parity-v2/gpu-parity.json": "f197f71c75c3518a2b140ae8ebd652cf4ff2c0388e165bbcf1b7a7c20cd81bd2",
+    "artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/parity.json": "432eb859e72dbfbb0909c7827b59a482e00f066cf393f7ca41e6f68902e8c60d"
+  },
+  "limits": [
+    "No new structured example trained",
+    "No latency measurements from the scoped GPU checks",
+    "No held-out generated-kernel quality claim",
+    "Strict execution_verified import still admits no rows",
+    "100 to 200 curated usable optimization examples unfinished"
+  ]
+}

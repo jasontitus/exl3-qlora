@@ -1,0 +1,76 @@
+{
+  "format": "qwen-gdn-author-independent-review-v1",
+  "created_at": "2026-10-13T17:46:26.616843+00:00",
+  "reviewed_by": "adversarial_code",
+  "reviewer_independent_of_implementation_author": true,
+  "status": "passed_scoped_review",
+  "passed": true,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/qwen_gdn_reference.py": "96f48929fda71119f63f66a9f78e2589a48eed511bdc43b203d2724f48baac7b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_qwen_gdn_reference.py": "d44d7345064760ac476863f3f80cf773ad699462b2563024b643b7cc23249163",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen_gdn_independent_probe.py": "da6ff0f6960fda5622dfe9372ece4f855bda74f0834dd2bf930797c4e1c14ab5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-gdn-independent-probe-before-adjoint-repair.json": "03467d2cba0f37bd48f6f419107ed67cc0a451c4d5420271b2dbe68b57f053f4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-gdn-independent-probe-after-adjoint-repair.json": "e499b833db1a6cefdf6d42f3dd519877e1b6a0f1f9c2cb2fa15e0ff4c1c060c4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-gdn-independent-final-tests.log": "6fbcf0e4284d74a5b52a5f1904b60646c2dbc88032961a9225f303ff7d00c73a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-gdn-epsilon-repair.json": "85b3b9bdfa88be34d551c8824fcfab3abd19d5f43483cd6c82b10022e5eb44f8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-gdn-reference-readonly-review.json": "3d54ac7f75258d3ae6c069908a7aafa12c45ac280a5f0dbf619b46c8631c3ec9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-gdn-reference-implementation.json": "c92f1d8336da9e9f46b2686a70e5a3a41421b1558f3ed84d138b14150f0507a5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/config.json": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1",
+    "/Users/jasontitus/experiments/exl3-qlora/exllamav3/training/gdn.py": "e1de1f6112715a7868388972872a5f37b0d8198d98246527650ce791d9b33a57",
+    "/Users/jasontitus/experiments/exl3-qlora/exllamav3/modules/gated_delta_net_fn/gated_delta_rule.py": "a47e3ac514277ca77e73db51ee6306515dc5f1fbb24747dc7d7da0538823c99d",
+    "/Users/jasontitus/experiments/exl3-qlora/exllamav3/modules/gated_delta_net.py": "0c7c2e53a20445991a6b750b9a17e58f4eed6a349b7876f9dfc148e47cd1f87e",
+    "/Users/jasontitus/experiments/exl3-qlora/exllamav3/modules/gated_rmsnorm.py": "0823e3f45abfaf76707f213821980af08ab53cbb7c93c6a3c33a0f2f8548808f",
+    "/Users/jasontitus/experiments/exl3-qlora/exllamav3/architecture/qwen4_exp.py": "f0781ec11aabc78694ed5084d24fb31093c0500a5c985a00276188c241c165bb",
+    "/Users/jasontitus/experiments/exl3-qlora/exllamav3/training/native_llama.py": "12c99ff24bb54067a081ceb9e6b52154cf811afd231bd30a13847c70d5729f5e"
+  },
+  "findings": [
+    {
+      "id": "fp64-normalization-adjoint-power-instability",
+      "severity": "medium",
+      "status": "fixed_and_independently_verified",
+      "original_source_sha256": "d5ea77ed0798ec853fc17d5d461d966e392da288ad75c88a4757aa981022ffe5",
+      "repaired_source_sha256": "96f48929fda71119f63f66a9f78e2589a48eed511bdc43b203d2724f48baac7b",
+      "location": "tools/qwen_gdn_reference.py:398",
+      "reproduction": "One-step q=[1e110,2e110], k=[1,-1], v=3,g=-0.5,beta=0.5,dout=1: original radial q and k derivatives were -0.3354101128 while independent finite differences were approximately zero. qi**3/ki**3 underflow silently dropped the normalization projection. Minimum-finite FP64 epsilon and zero query also rejected a finite mathematical gradient.",
+      "repair": "Author replaced inverse-norm cubing with qi*(dq-unitq*sum(dq*unitq)), and analogous k expression after grouped-head cotangent summation.",
+      "verification": "Both radial predictions now0; independent finite difference -2.78e-12. Minimum-epsilon zero-query gradient matches closed-form value, maxabs3.3741853459e161, finite. Existing ordinary directional checks still pass."
+    },
+    {
+      "id": "epsilon-representability-repair",
+      "severity": "low",
+      "status": "independently_verified",
+      "location": "tools/qwen_gdn_reference.py:103",
+      "details": "Positive finite epsilon is validated after selected-precision conversion, and squared-norm-plus-epsilon denominators are checked for overflow. Author regression cases independently rerun: cast overflow, underflow to zero, finite sum overflow and representable endpoints."
+    }
+  ],
+  "validation": {
+    "existing_tests_independently_rerun": 18,
+    "existing_tests_passed": 18,
+    "independent_probe_checks": 27,
+    "independent_probe_checks_passed": 27,
+    "independent_forward_checks": 6,
+    "directional_adjoint_checks": 18,
+    "stability_checks": 3,
+    "max_ordinary_directional_absolute_error": 2.5878366116671714e-10,
+    "oracle": "Independent per-head matrix-projector recurrence exp(g)*(I-beta*k*kT)*S+beta*k*vT, scalar L2 normalization using math.fsum, central directional differences and zero-query closed-form derivative. No implementation helper reused in oracle.",
+    "numpy_version": "2.5.4",
+    "torch_imported": false,
+    "mlx_imported": false,
+    "gpu_used": false
+  },
+  "source_contract_checked": [
+    "Raw q/k L2 normalization uses sqrt(sum(x*x)+eps), then contiguous group mapping value_head//group; state has shape[b,nv,dk,dv].",
+    "State decays before key prediction in delta; output reads updated state scaled by dk^-0.5. Reverse scan includes both output and final-state cotangents.",
+    "Group-head q/k cotangents sum before normalization transpose; state-adjoint chunk carry is present and author scalar/chunk tests rerun.",
+    "Qwen split packed q|k|v channels, beta_scale1, scalar per-value-head decay and sigmoid after weighted RMSNorm (no implicit1+weight) agree with pinned architecture/training references.",
+    "FP32 default follows local training-reference algebra; precise serving/fused floating-point ordering is not certified."
+  ],
+  "next_milestone": "No remaining concrete blocker for building the separate causal convolution/reference composition milestone. Keep subsequent convolution state and its adjoint in the complete block contract.",
+  "qualification_scope": [
+    "Tiny CPU NumPy recurrence and continuous FP64 input VJP only.",
+    "No convolution, projection, output-norm adjoint, gate-helper adjoint, real checkpoint payload, Metal/Torch numerical parity or complete model training qualification.",
+    "Target16key/48value heads and128head dimensions exceed this tiny fixture implementation caps (8heads/16dimensions/32steps); no target-size or16K backward/memory/performance claim.",
+    "Tested numerical regimes and repaired edge cases do not prove accuracy for every representable floating-point input.",
+    "No implementation or active runtime changes were made by this independent reviewer; author supplied repair."
+  ]
+}

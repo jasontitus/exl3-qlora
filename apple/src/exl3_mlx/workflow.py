@@ -16,9 +16,11 @@ import mlx.core as mx
 import mlx.optimizers as optim
 from mlx.utils import tree_flatten
 
+from .activation_config import ACTIVATION_MODES, validate_activation_mode
 from .context import ENGINE_SEMANTICS, MAX_CONTEXT_TOKENS
 from .data import load_dataset, load_tokenizer, prepare, training_data_identity
 from .deepseek import DeepSeekTextModel
+from .fit_probe import file_sha256, run_final_fit_probe, validate_final_fit_examples
 from .memory import MemoryBudget
 from .resources import RESOURCE_FIELDS, add_resource_arguments, resources_from_args
 from .train import load_adapter, load_adapter_config
@@ -29,10 +31,24 @@ def common(parser, *, inference=False):
     parser.add_argument("--model", required=True)
     add_resource_arguments(parser)
     parser.add_argument("--chunk-size", type=int, default=512)
+    parser.add_argument(
+        "--activation-mode",
+        choices=ACTIVATION_MODES,
+        default=None,
+        help="checkpoint (default), or experimental bf16 activation bypass; saved adapters inherit their mode; a changed mode requires a fresh matched baseline",
+    )
     parser.add_argument("--verbose", action="store_true", help="Log every layer")
     if inference:
         parser.add_argument("--adapter", help="Saved step directory; omit to evaluate the base")
         parser.add_argument("--report", help="Write a new JSON report")
+        parser.add_argument(
+            "--adapter-layers",
+            type=int,
+            nargs="*",
+            default=None,
+            help="Base-model adapter placement for matching frozen-prefix cache scope",
+        )
+        parser.add_argument("--expert-adapter-layers", type=int, nargs="*", default=None)
 
 
 def build_parser():
@@ -88,6 +104,12 @@ def build_parser():
     train.add_argument("--eval-every", type=int, default=10)
     train.add_argument("--eval-examples", type=int, default=4)
     train.add_argument(
+        "--final-fit-examples",
+        type=int,
+        default=0,
+        help="Optional final training-mode probe on first N complete rows (0 disables; max32); no update",
+    )
+    train.add_argument(
         "--verify-reload", action="store_true", help="Check post-training prediction reload"
     )
     ev = sub.add_parser("evaluate", help="Token-weighted NLL/perplexity on held-out examples")
@@ -100,6 +122,11 @@ def build_parser():
         help="Infer from prepared data or observed token lengths",
     )
     ev.add_argument("--max-examples", type=int, default=0, help="0 evaluates all rows")
+    ev.add_argument(
+        "--token-metrics",
+        action="store_true",
+        help="Include per-answer-token NLL and teacher-forced predicted IDs in the report",
+    )
     gen = sub.add_parser(
         "generate", help="Greedy text generation; recomputes the full prefix each token"
     )
@@ -110,6 +137,10 @@ def build_parser():
         "--messages-file", help="JSON array of plain-text conversation messages ending in user"
     )
     gen.add_argument("--max-tokens", type=int, default=16)
+    gen.add_argument(
+        "--tools-file",
+        help="JSON list of declared function schemas for native tool-call generation",
+    )
     gen.add_argument(
         "--raw-prompt", action="store_true", help="Plain text continuation instead of chat"
     )
@@ -176,8 +207,14 @@ def model_settings(args):
         or getattr(args, "resume", None)
         or getattr(args, "resume_adapter", None)
     )
-    keys = ("rank", "alpha", "adapter_layers", "expert_adapter_layers")
-    defaults = dict(rank=8, alpha=16.0, adapter_layers=None, expert_adapter_layers=[])
+    keys = ("rank", "alpha", "adapter_layers", "expert_adapter_layers", "activation_mode")
+    defaults = dict(
+        rank=8,
+        alpha=16.0,
+        adapter_layers=None,
+        expert_adapter_layers=[],
+        activation_mode="checkpoint",
+    )
     if adapter:
         c = load_adapter_config(Path(adapter).expanduser())
         for key in keys:
@@ -185,10 +222,12 @@ def model_settings(args):
             if value is not None and value != c[key]:
                 raise ValueError(f"{key} differs from saved adapter")
         return {k: c[k] for k in keys}
-    return {
+    settings = {
         k: getattr(args, k, None) if getattr(args, k, None) is not None else defaults[k]
         for k in keys
     }
+    validate_activation_mode(settings["activation_mode"])
+    return settings
 
 
 def make_model(args, log):
@@ -201,6 +240,9 @@ def make_model(args, log):
         **settings,
         cache_mib=args.cache_mib,
         decoded_cache_mib=getattr(args, "decoded_cache_mib", 0),
+        prefix_cache_mib=getattr(args, "prefix_cache_mib", 0),
+        prefix_disk_cache=getattr(args, "prefix_disk_cache", None),
+        prefix_disk_cache_gib=getattr(args, "prefix_disk_cache_gib", 0),
         chunk_size=args.chunk_size,
         checkpoint_blocks=not getattr(args, "no_checkpoint", False),
         progress=log if args.verbose else None,
@@ -253,12 +295,12 @@ def load_resolved_datasets(paths, root, *, seq_length=None, truncate=False):
     return seq_length, datasets
 
 
-def validation_identity(path, root, examples, count):
+def validation_identity(path, root, examples, count, *, input_identity=None):
     if not examples:
         return None
     selected = examples[:count]
     return {
-        **training_data_identity(path, root),
+        **(training_data_identity(path, root) if input_identity is None else input_identity),
         "selection": "first examples in immutable dataset order",
         "requested_examples": count,
         "examples": len(selected),
@@ -315,6 +357,11 @@ def prune_checkpoints(saved, *, keep_last, latest, best):
 
 
 def train_run(args, budget, log):
+    final_fit_examples = validate_final_fit_examples(getattr(args, "final_fit_examples", 0))
+    if final_fit_examples:
+        from .sft import implementation_identity
+
+        probe_implementation = implementation_identity()
     for key in (
         "steps",
         "grad_accumulation",
@@ -350,18 +397,28 @@ def train_run(args, budget, log):
         # An omitted override must not change an older checkpoint's core contract.
         if args.seq_length is None:
             args.seq_length = resume_state["contract"]["seq_length"]
+    train_identity = training_data_identity(data, root)
+    valid_identity = training_data_identity(valid, root) if valid else None
     args.seq_length, datasets = load_resolved_datasets(
         [data, *([valid] if valid else [])],
         root,
         seq_length=args.seq_length,
         truncate=args.truncate,
     )
+    if training_data_identity(data, root) != train_identity:
+        raise ValueError("Training data changed during loading")
+    if valid and training_data_identity(valid, root) != valid_identity:
+        raise ValueError("Validation data changed during loading")
+    if final_fit_examples and implementation_identity() != probe_implementation:
+        raise ValueError("Training implementation changed during loading")
     examples, validation = datasets[0], datasets[1] if valid else []
     if validation and {tuple(e["input_ids"]) for e in examples} & {
         tuple(e["input_ids"]) for e in validation
     }:
         raise ValueError("Identical token sequences occur in training and validation")
-    selection_identity = validation_identity(valid, root, validation, args.eval_examples)
+    selection_identity = validation_identity(
+        valid, root, validation, args.eval_examples, input_identity=valid_identity
+    )
     best = restored_best(resume_state, selection_identity) if resume_state else None
     contract = {
         k: getattr(args, k)
@@ -377,7 +434,7 @@ def train_run(args, budget, log):
         )
     }
     contract.update(
-        **training_data_identity(data, root),
+        **train_identity,
         engine_semantics=ENGINE_SEMANTICS,
         mlx=mx.__version__,
         mlx_lm=importlib.metadata.version("mlx-lm"),
@@ -495,6 +552,40 @@ def train_run(args, budget, log):
     # iteration starts. Only a completed optimizer state is ever checkpointed.
     if status == "stopped" and history and latest_step != step:
         persist(history[-1])
+    fit_probe = None
+    if final_fit_examples and history and status == "completed" and not stop_requested():
+        if training_data_identity(data, root) != train_identity:
+            raise ValueError("Training data changed before final fit probe")
+        if implementation_identity() != probe_implementation:
+            raise ValueError("Training implementation changed before final fit probe")
+        log(f"Final training-mode fit probe: first {min(final_fit_examples, len(examples))} rows")
+        fit_probe = run_final_fit_probe(
+            model,
+            examples,
+            count=final_fit_examples,
+            evaluate=evaluate,
+            check=budget.check,
+            metadata={
+                "checkpoint": str(latest.resolve()),
+                "checkpoint_files_sha256": {
+                    name: file_sha256(latest / name)
+                    for name in ("adapter.safetensors", "adapter_config.json", "trainer_state.json")
+                },
+                "step": step,
+                "data": str(data.resolve()),
+                "input_identity": train_identity,
+                "implementation": probe_implementation,
+                "seq_length": args.seq_length,
+                "activation_mode": model.adapter_config.get("activation_mode", "checkpoint"),
+                "chunk_size": args.chunk_size,
+            },
+        )
+        if training_data_identity(data, root) != train_identity:
+            raise ValueError("Training data changed during final fit probe")
+        if implementation_identity() != probe_implementation:
+            raise ValueError("Training implementation changed during final fit probe")
+        atomic_text(output / "training-fit-probe.json", json.dumps(fit_probe, indent=2) + "\n")
+        log("Final training-mode fit probe completed; fresh uncached comparison remains required")
     reload_exact = None
     if args.verify_reload and history and status == "completed":
         probe = [examples[0]]
@@ -517,6 +608,7 @@ def train_run(args, budget, log):
         requested_steps=args.steps,
         elapsed_seconds=time.monotonic() - start,
         adapter_prediction_reload_exact=reload_exact,
+        training_fit_probe=fit_probe,
         optimizer_resume_supported=True,
         checkpoint=str(latest) if latest else None,
         best_checkpoint=best["checkpoint"] if best else None,
@@ -531,6 +623,11 @@ def train_run(args, budget, log):
         contract=contract,
         resources=resources_from_args(args),
     )
+    if final_fit_examples:
+        if training_data_identity(data, root) != train_identity:
+            raise ValueError("Training data changed before final report")
+        if implementation_identity() != probe_implementation:
+            raise ValueError("Training implementation changed before final report")
     atomic_text(output / "training.json", json.dumps(report, indent=2) + "\n")
     return report
 
@@ -578,6 +675,18 @@ def generate(args, model, budget):
     if not 1 <= args.max_tokens <= MAX_CONTEXT_TOKENS:
         raise ValueError("max_tokens must be in 1..32768")
     messages_file = getattr(args, "messages_file", None)
+    tools_file = getattr(args, "tools_file", None)
+    if tools_file and args.raw_prompt:
+        raise ValueError("--raw-prompt cannot be combined with --tools-file")
+    tools, tools_identity = None, None
+    if tools_file:
+        from .sft_data import _parse_json
+        from .tool_data import validate_tools
+
+        tools_path = Path(tools_file).expanduser()
+        raw_tools = tools_path.read_bytes()
+        tools_identity = hashlib.sha256(raw_tools).hexdigest()
+        tools = validate_tools(_parse_json(raw_tools.decode("utf-8")))
     if messages_file and args.raw_prompt:
         raise ValueError("--raw-prompt cannot be combined with --messages-file")
     messages = (
@@ -604,6 +713,7 @@ def generate(args, model, budget):
     else:
         ids = tokenizer.apply_chat_template(
             messages,
+            **({"tools": tools} if tools is not None else {}),
             add_generation_prompt=True,
             return_dict=False,
         )
@@ -635,6 +745,9 @@ def generate(args, model, budget):
     print(file=sys.stderr)
     return {
         "text": tokenizer.decode(answer, skip_special_tokens=True),
+        "raw_text": tokenizer.decode(answer, skip_special_tokens=False),
+        "tools": tools,
+        "tools_file_sha256": tools_identity,
         "generated_ids": answer,
         "prompt_tokens": len(ids) - len(answer),
         "prompt_ids": prompt_ids,
@@ -648,7 +761,8 @@ def generate(args, model, budget):
 
 
 def main(argv=None):
-    args = parse_args(sys.argv[1:] if argv is None else argv)
+    invocation = list(sys.argv[1:] if argv is None else argv)
+    args = parse_args(invocation)
     start = time.monotonic()
 
     def log(message):
@@ -672,17 +786,35 @@ def main(argv=None):
                     if args.command == "evaluate":
                         if args.max_examples < 0:
                             raise ValueError("max_examples must be nonnegative")
+                        data_path = Path(args.data).expanduser()
+                        model_root = Path(args.model).expanduser()
+                        from .sft import implementation_identity
+
+                        # Bind the files before reading/tokenizing them. A receipt
+                        # captured only after loading could attest different bytes.
+                        input_identity = training_data_identity(data_path, model_root)
+                        evaluated_implementation = implementation_identity()
                         args.seq_length, datasets = load_resolved_datasets(
-                            [Path(args.data).expanduser()],
-                            Path(args.model).expanduser(),
+                            [data_path],
+                            model_root,
                             seq_length=args.seq_length,
                         )
                         examples = datasets[0]
                         if args.max_examples:
                             examples = examples[: args.max_examples]
+                        if training_data_identity(data_path, model_root) != input_identity:
+                            raise ValueError("Evaluation data changed during execution")
+                        if implementation_identity() != evaluated_implementation:
+                            raise ValueError("Evaluation implementation changed during execution")
                     model = make_model(args, log)
                     report = (
-                        evaluate(model, examples, check=budget.check) | model.report()
+                        evaluate(
+                            model,
+                            examples,
+                            check=budget.check,
+                            include_token_metrics=args.token_metrics,
+                        )
+                        | model.report()
                         if args.command == "evaluate"
                         else generate(args, model, budget)
                     )
@@ -692,6 +824,23 @@ def main(argv=None):
                         budget_gib=budget.limit / 2**30,
                         observed_memory_gib=budget.usage() / 2**30,
                     )
+                    if args.command == "evaluate":
+                        if training_data_identity(data_path, model_root) != input_identity:
+                            raise ValueError("Evaluation data changed during execution")
+                        if implementation_identity() != evaluated_implementation:
+                            raise ValueError("Evaluation implementation changed during execution")
+                        report["evaluation_context"] = {
+                            "argv": invocation,
+                            "process_id": os.getpid(),
+                            "data": str(Path(args.data).expanduser().resolve()),
+                            "input_identity": input_identity,
+                            "selected_examples_sha256": hashlib.sha256(
+                                json.dumps(examples, sort_keys=True, separators=(",", ":")).encode()
+                            ).hexdigest(),
+                            "seq_length": args.seq_length,
+                            "requested_max_examples": args.max_examples,
+                            "implementation": evaluated_implementation,
+                        }
         if args.command != "prepare":
             report["resources"] = resources_from_args(args)
         if getattr(args, "report", None):

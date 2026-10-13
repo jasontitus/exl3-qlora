@@ -1,0 +1,20 @@
+{
+  "utc": "2026-10-13T20:46:33.725461+00:00",
+  "deepseek": "Completed30updates and16heldout evaluation; logs, checkpoint and baseline hashes reverified unchanged; no newtraining or duplicateGPU job",
+  "qwen": "108tiny affine cases passed forward/decode/transpose/inputVJP after reviewed harness repairs; failedattempt preserved",
+  "library_unchanged": true,
+  "sfideas_and_watchai_untouched": true,
+  "training_or_model_downloads": false,
+  "queue_complete": false,
+  "next": "Checkpoint-compatible MCG public transform fixtures and bounded affine row reader",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/project.json": "7dfd759ae9ceb5c1cf150ef373d7da4fa9af33fe8f5be12a7082de9bcd3551a6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-implementation.json": "07168cb7c10078dddde30803425774c2e2117e32b584ac8bad79004b10e08b9a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-independent-review-v2.json": "b767a0990e4e4b947ba884985b0c61788934f50acaaafb14a0f61c2eecdbf598",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-gpu-parity.json": "d4f786ed481a42ef613e8e04f0c46f9afb07914a3d000393467e57adf6b04feb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-gpu-parity-v2.json": "b4f78b6331cf39b3d8f86bab66776ba1b779c3971cc3a896b0ed2457f02894fd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-dispatch-attempt-v2.json": "191b02bcf4d4afbad3d87a0b8dac6ef1be71cb462e0bcd3143915bcc1eb755f7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-gpu-independent-check.json": "9c2a40c24c02978c7aa5c8099454f5f9e851a00e1cb5d7bb875f7b53292c8938"
+  },
+  "post_dispatch_independently_verified": true
+}

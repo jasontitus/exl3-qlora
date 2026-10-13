@@ -1,0 +1,157 @@
+{
+  "schema": "exl3-metal-compile-experiment-v1",
+  "scope": "Only complete exlr8_projection.metal translation unit, parent and head; not the whole commit, EXLR8 prompt path, CUDA or host integration. Compile-only; no GPU execution. Fixed validation flags are not asserted to match original project build flags.",
+  "repository": "https://github.com/ashhart/TensorFold",
+  "commit": "51426b8e668b181d28c0bb6964c1882183e292fd",
+  "parent": "e463e48bc7d796101a49fab5a8116016fc33c527",
+  "path": "zig/kernels/metal/core/exlr8_projection.metal",
+  "toolchain": {
+    "argv": [
+      "xcrun",
+      "--sdk",
+      "macosx",
+      "metal",
+      "--version"
+    ],
+    "started_unix": 1791861218.692031,
+    "elapsed_seconds": 0.7777919769287109,
+    "exit_code": 0,
+    "stdout": "Apple metal version 32023.921 (metalfe-32023.921.6)\nTarget: air64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.vYU8g3/Metal.xctoolchain/usr/metal/current/bin\n",
+    "stderr": ""
+  },
+  "sdk": {
+    "argv": [
+      "xcrun",
+      "--sdk",
+      "macosx",
+      "--show-sdk-path"
+    ],
+    "started_unix": 1791861219.469841,
+    "elapsed_seconds": 0.009010076522827148,
+    "exit_code": 0,
+    "stdout": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk\n",
+    "stderr": ""
+  },
+  "host": "macOS-27.0.1-arm64-arm-64bit",
+  "sources": {
+    "before": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/before.metal",
+      "sha256": "5f6378c6e2c7a6b74bc9c6e6283a02a2b036693898f1227365e40437927177ba",
+      "git_blob": "a9f08244bc741b5f4c0b9a7771d4a2dcd8bfd4cb",
+      "bytes": 12314,
+      "dependency_scope": "Only #include <metal_stdlib>; full translation unit retained"
+    },
+    "after": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/after.metal",
+      "sha256": "216dc0cadf64b313283981b107288de42fb551237a1b4390585fc90b101c97de",
+      "git_blob": "28ba2da0a037bb24c43beb2a49dac3d463492e25",
+      "bytes": 13258,
+      "dependency_scope": "Only #include <metal_stdlib>; full translation unit retained"
+    }
+  },
+  "runs": [
+    {
+      "argv": [
+        "xcrun",
+        "--sdk",
+        "macosx",
+        "metal",
+        "-std=metal3.1",
+        "-O3",
+        "-fno-fast-math",
+        "-fmodules-cache-path=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/module-cache",
+        "-c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/before.metal",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/before-metal3.1.air"
+      ],
+      "started_unix": 1791861219.659704,
+      "elapsed_seconds": 1.9180049896240234,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "source": "before",
+      "standard": "metal3.1",
+      "source_sha256": "5f6378c6e2c7a6b74bc9c6e6283a02a2b036693898f1227365e40437927177ba",
+      "output_sha256": "5ec7f04905471212c271a3c36f9c010bda60b243b51a4a4bdcbf2eeab005d05e"
+    },
+    {
+      "argv": [
+        "xcrun",
+        "--sdk",
+        "macosx",
+        "metal",
+        "-std=metal4.0",
+        "-O3",
+        "-fno-fast-math",
+        "-fmodules-cache-path=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/module-cache",
+        "-c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/before.metal",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/before-metal4.0.air"
+      ],
+      "started_unix": 1791861221.57857,
+      "elapsed_seconds": 1.0323760509490967,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "source": "before",
+      "standard": "metal4.0",
+      "source_sha256": "5f6378c6e2c7a6b74bc9c6e6283a02a2b036693898f1227365e40437927177ba",
+      "output_sha256": "41163b39ad4347c7fbb42fb025c548492b82ba72678de12f6ee06986d52d5020"
+    },
+    {
+      "argv": [
+        "xcrun",
+        "--sdk",
+        "macosx",
+        "metal",
+        "-std=metal3.1",
+        "-O3",
+        "-fno-fast-math",
+        "-fmodules-cache-path=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/module-cache",
+        "-c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/after.metal",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/after-metal3.1.air"
+      ],
+      "started_unix": 1791861222.703139,
+      "elapsed_seconds": 0.21733880043029785,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "source": "after",
+      "standard": "metal3.1",
+      "source_sha256": "216dc0cadf64b313283981b107288de42fb551237a1b4390585fc90b101c97de",
+      "output_sha256": "ee94b67d073c5fe2c11801caff445d659dd84263f8a53f29cb14715c30da3261"
+    },
+    {
+      "argv": [
+        "xcrun",
+        "--sdk",
+        "macosx",
+        "metal",
+        "-std=metal4.0",
+        "-O3",
+        "-fno-fast-math",
+        "-fmodules-cache-path=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/module-cache",
+        "-c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/after.metal",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/after-metal4.0.air"
+      ],
+      "started_unix": 1791861222.922037,
+      "elapsed_seconds": 0.22421813011169434,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "source": "after",
+      "standard": "metal4.0",
+      "source_sha256": "216dc0cadf64b313283981b107288de42fb551237a1b4390585fc90b101c97de",
+      "output_sha256": "a6057ab2285d9b33cc1c3157fffd4abb0bf5cc7eb8b1bc09bca6de1404e31643"
+    }
+  ],
+  "numerical_parity": "not_run",
+  "performance": "not_run",
+  "all_compiled": true
+}

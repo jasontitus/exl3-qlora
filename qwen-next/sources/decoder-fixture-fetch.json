@@ -1,0 +1,14 @@
+[
+  {
+    "path": "src/exl3/expert_exl3.zig",
+    "url": "https://raw.githubusercontent.com/beamivalice/sushi/bd4b3954f5a42a87effcdf8a68ea91a4b6a1a1b9/src/exl3/expert_exl3.zig",
+    "sha256": "33d37858ec6647c60fb975e5c011b1354aa4453e9258a0e79a1f781d22a5e0a5",
+    "bytes": 30022
+  },
+  {
+    "path": "src/exl3/fixtures/exl3_k2p5_mcg_w12_linear.safetensors",
+    "url": "https://raw.githubusercontent.com/beamivalice/sushi/bd4b3954f5a42a87effcdf8a68ea91a4b6a1a1b9/src/exl3/fixtures/exl3_k2p5_mcg_w12_linear.safetensors",
+    "sha256": "870df4165f311c7651655fbe81feec85b2ab0c6c51b1c754d023423bc6b3e7ad",
+    "bytes": 71576
+  }
+]

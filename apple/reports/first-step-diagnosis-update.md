@@ -1,5 +1,12 @@
 # First-update diagnosis: component checks pass; fitting still fails
 
+Later-results pointer (2026-10-12): this body preserves its review cutoff. The
+[completed one-row diagnostic and BF16 own-mode result](last-block-training-result-and-recipe.md)
+and [active normal three-change recipe](standard-three-change-run.md) supersede
+pending-result wording below. The launched normal run uses protocol v2,
+runtime-v3, an explicit 8 GiB reserve and all 12 checkpoints retained. Its fresh
+three-row fitting/cache-parity results are still pending.
+
 Final bounded-series result: 2026-10-12, after the +0.1, -0.1 and adaptive +10
 strength probes and the actual-dimension component checks. **All three tested
 derived variants worsened answer NLL; no adapter was promoted as an improvement.**

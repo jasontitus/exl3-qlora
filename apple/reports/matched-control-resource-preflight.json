@@ -1,0 +1,32 @@
+{
+  "schema": "matched-control-resource-amendment-preflight-v1",
+  "created_utc": "2026-10-13T02:49:47.370732+00:00",
+  "status": "CPU_verified_before_any_control_launch",
+  "tests_passed": 56,
+  "ruff_passed": true,
+  "actual_verify_only_passed": true,
+  "no_subprocesses_started": true,
+  "no_engine_or_pinned_runtime_changes": true,
+  "files_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/scripts/audit_matched_control.py": "9e2eb0415e7e37132eed5787e99e855068cbd36213ea9e76d1d7ac0c96df8ab5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/scripts/run_matched_control.py": "c09e4a0de0f2b5a9e747012ba810f24fb692fcf718cd48c91b7a3bf92a9d15b0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/tests/test_matched_control_audit.py": "a450d5d7d1ccb9a559d7f50b59e2537e3a9752a523ce12393785f2766581d31f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/tests/test_matched_control_launcher.py": "0de221f5f8b6dcbdf0ba9db64eb1c1a597dc58593d03e712d06db51e54c01900",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/matched-checkpoint-control-resource-plan.json": "83f6ac58ba5d93b655ef0fb5af1d570ca1a86eec4a4d44a54892bf9308976cbc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step-config.json": "ca3f5fb266632e96792455404e70171ba64af0d62afeee229196c02ba370bee2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/matched-checkpoint-control-plan.json": "3606cd6f3d01af73ff6ebc85b23a91c22f14b61b1030dac0e4d4b758957f757a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-one-step-config.json": "4aead354935a2b2337d4e0d815d52474f2b699e63f30f9d471548d1538e3fa80"
+  },
+  "resource_exception": {
+    "treatment_training": 80,
+    "control_training": 76,
+    "treatment_evaluation": 80,
+    "control_evaluation": 72,
+    "reserve_all": 8
+  },
+  "limits": [
+    "Measured historical MLX training peak73.9483GiB does not guarantee process RSS fits76GiB.",
+    "All exact mathematical settings and explicit caches unchanged; process caps are different.",
+    "No control outcome exists yet; retain failures and negative outcomes."
+  ]
+}

@@ -1,0 +1,12 @@
+test_all_inputs_directional_difference (test_qwen_conv_reference.ConvReferenceTests.test_all_inputs_directional_difference) ... ok
+test_full_vs_chunks_and_cross_boundary_adjoint (test_qwen_conv_reference.ConvReferenceTests.test_full_vs_chunks_and_cross_boundary_adjoint) ... ok
+test_future_independence_and_no_mutation (test_qwen_conv_reference.ConvReferenceTests.test_future_independence_and_no_mutation) ... ok
+test_independent_scalar_convolution (test_qwen_conv_reference.ConvReferenceTests.test_independent_scalar_convolution) ... ok
+test_kernel_one_and_no_bias (test_qwen_conv_reference.ConvReferenceTests.test_kernel_one_and_no_bias) ... ok
+test_pinned_semantic_source (test_qwen_conv_reference.ConvReferenceTests.test_pinned_semantic_source) ... ok
+test_reject_bad_inputs (test_qwen_conv_reference.ConvReferenceTests.test_reject_bad_inputs) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.044s
+
+OK

@@ -7,6 +7,7 @@ import sys
 import time
 from pathlib import Path
 
+from .activation_config import ACTIVATION_MODES
 from .resources import RESOURCE_FIELDS, add_resource_arguments, resource_overrides
 from .sft import SFTConfig, SFTTrainer
 
@@ -30,6 +31,17 @@ def build_parser():
     start.add_argument("--rank", type=int)
     start.add_argument("--lora-alpha", type=float)
     start.add_argument(
+        "--activation-mode",
+        choices=ACTIVATION_MODES,
+        help="checkpoint (default) or experimental bf16; changes the baseline; immutable per project",
+    )
+    start.add_argument(
+        "--adapter-layers",
+        type=int,
+        nargs="+",
+        help="Zero-based attention block IDs, e.g. 38 39; default all 40; immutable per project",
+    )
+    start.add_argument(
         "--chunk-size", type=int, help="EXL3 column chunk (default 512); immutable per project"
     )
     add_resource_arguments(start, optional_profile=True)
@@ -38,6 +50,11 @@ def build_parser():
     start.add_argument("--save-total-limit", type=int)
     start.add_argument("--max-new-tokens", type=int)
     start.add_argument("--comparison-examples", type=int)
+    start.add_argument(
+        "--final-fit-examples",
+        type=int,
+        help="Optional first N training rows to probe in warm training mode (default0; max32)",
+    )
     start.add_argument("--prompt-column")
     start.add_argument("--response-column")
     start.add_argument("--group-column")

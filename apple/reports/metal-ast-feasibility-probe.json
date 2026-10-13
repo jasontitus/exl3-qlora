@@ -1,0 +1,42 @@
+{
+  "scope": "CPU compiler AST feasibility probe on synthetic source; not a dataset verification result",
+  "argv": [
+    "xcrun",
+    "--sdk",
+    "macosx",
+    "metal",
+    "-fmodules-cache-path=/tmp/exl3-metal-module-cache",
+    "-fsyntax-only",
+    "-Xclang",
+    "-ast-dump=json",
+    "/tmp/exl3_unit_ast_probe.metal"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "source_sha256": "0b5e640a7803250fe1add4f21b339ee182c2d49ba792d3ab7cc28bc99c6f11b9",
+  "function_declarations": [
+    {
+      "kind": "FunctionDecl",
+      "name": "exl3_unit_probe",
+      "loc": {
+        "offset": 59,
+        "line": 3,
+        "col": 13,
+        "tokLen": 15
+      },
+      "range": {
+        "begin": {
+          "offset": 47,
+          "col": 1,
+          "tokLen": 6
+        },
+        "end": {
+          "offset": 229,
+          "line": 5,
+          "col": 1,
+          "tokLen": 1
+        }
+      }
+    }
+  ]
+}

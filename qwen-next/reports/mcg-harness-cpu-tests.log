@@ -1,0 +1,14 @@
+test_all_generated_values_match_direct_bit_oracle (test_mcg_harness.FixtureTests.test_all_generated_values_match_direct_bit_oracle) ... ok
+test_coverage_bound_and_identity (test_mcg_harness.FixtureTests.test_coverage_bound_and_identity) ... ok
+test_deterministic_and_each_payload_hash_bound (test_mcg_harness.FixtureTests.test_deterministic_and_each_payload_hash_bound) ... ok
+test_known_zero_exact_bits (test_mcg_harness.FixtureTests.test_known_zero_exact_bits) ... ok
+test_invalid_geometry_rate_and_unsigned_payload (test_mcg_harness.SwiftValidationTests.test_invalid_geometry_rate_and_unsigned_payload) ... ok
+test_lengths_hashes_nonfinite_and_missing_keys (test_mcg_harness.SwiftValidationTests.test_lengths_hashes_nonfinite_and_missing_keys) ... ok
+test_modes_required_no_overwrite (test_mcg_harness.SwiftValidationTests.test_modes_required_no_overwrite) ... ok
+test_symlink_and_oversized_input_rejected (test_mcg_harness.SwiftValidationTests.test_symlink_and_oversized_input_rejected) ... ok
+test_validation_is_explicitly_not_gpu_parity (test_mcg_harness.SwiftValidationTests.test_validation_is_explicitly_not_gpu_parity) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 5.748s
+
+OK

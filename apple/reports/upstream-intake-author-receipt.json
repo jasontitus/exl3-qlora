@@ -1,0 +1,63 @@
+{
+  "format": "upstream-intake-author-receipt-v1",
+  "scope": "CPU-only source reconstruction and tokenizer validation; no GPU/model/kernel execution",
+  "written_at": "2026-10-13T03:16:55.009074+00:00",
+  "source_sha256": {
+    "src/exl3_mlx/upstream_data.py": "fe2701b339fda1cb8c1843a85932f9ebc91424ebbacf33365b9ad583fda6850a",
+    "src/exl3_mlx/ktune_cli.py": "493816ad6046d499f478ef1f909c9bb5550fe7bd4a5bca490ea2a2a5cac90888",
+    "tests/test_upstream_data.py": "e408901448a03d8532d922aeffc95f328f5927ed04c446dc36222690c7052ed2",
+    "tests/test_ktune_cli.py": "1922357f3716d299ae8f43151333af371cb2dab2c42eed241efe569f12b9c180",
+    "docs/UPSTREAM_INTAKE.md": "f39b441e50e333760d3584fb26159c0bf01a6b459452dd244bdf190c95e0198f"
+  },
+  "tests": {
+    "combined_upstream_and_cli": {
+      "passed": 69,
+      "seconds": 20.75,
+      "receipt": "reports/upstream-intake-cpu-tests.xml"
+    },
+    "final_cli_after_compile_dispatch": {
+      "passed": 19,
+      "seconds": 0.5
+    },
+    "unique_test_total_current": 75,
+    "final_cli_with_standard_finetune_flow": {
+      "passed": 24,
+      "seconds": 0.14,
+      "receipt": "reports/upstream-finetune-cli-cpu-tests.xml"
+    }
+  },
+  "actual_imports": {
+    "eight_fullfile_candidates": {
+      "manifest": "artifacts/loss-fix/upstream-inventory/representative-manifest.json",
+      "output": "artifacts/loss-fix/upstream-representative-fullfiles",
+      "counts": {
+        "source_reconstructed": 8,
+        "unique_patches": 8,
+        "train": 2,
+        "oversize": 6
+      },
+      "selected_tokens": [
+        28115,
+        23493
+      ],
+      "note": "Exploratory receipt predates report-envelope filename/EOS-only final change; raw code/token content unchanged."
+    },
+    "reviewed_llama_conv": {
+      "manifest": "artifacts/loss-fix/upstream-inventory/reviewed-units/llama-conv-manifest.json",
+      "output": "artifacts/loss-fix/upstream-reviewed-llama-conv",
+      "total_tokens": 3394,
+      "prompt_tokens": 1873,
+      "target_tokens": 1521,
+      "source_replay": "all changed file bytes reconstructed exactly",
+      "execution_verified": false
+    }
+  },
+  "limits": [
+    "Source replay is not compilation, numerical parity, timing, or best-of-N quality.",
+    "Reviewed unit completeness/dependency claims and semantic paraphrases are curator asserted; byte bindings/edit coverage are checked.",
+    "Current manifests are train-only, no automatic blanket contamination guarantee.",
+    "Reported performance claims are not independently measured results.",
+    "Whole-file or reviewed-unit token fit is not an end-to-end training throughput/resource guarantee."
+  ],
+  "updated_at": "2026-10-13T03:25:59.113788+00:00"
+}

@@ -1,0 +1,50 @@
+{
+  "format": "exl3-llama-conv-build-independent-review-v1",
+  "created_utc": "2026-10-13T03:51:14.955316+00:00",
+  "scope": "CPU source and artifact review; no GPU run or numerical outcome",
+  "manifest": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/llama-conv-parity-v2/compile-link-manifest.json",
+  "manifest_sha256": "37e804c0a9d46ab86d8ed65c941cccd7c651036624a9e84093492e1d430b0b42",
+  "harness_source_sha256": "eb30b3546eb4e60dfa586a03ca4a63cf82644ddf513636324faa229c974d9a67",
+  "checks": {
+    "manifest_expected": true,
+    "file_build_script": true,
+    "file_compile_receipt": true,
+    "file_composition": true,
+    "file_harness_binary": true,
+    "file_harness_source": true,
+    "source_current_equals_snapshot": true,
+    "before_library": true,
+    "before_source": true,
+    "before_air": true,
+    "before_source_pinned": true,
+    "before_compile": true,
+    "before_link": true,
+    "before_exact_composition": true,
+    "after_library": true,
+    "after_source": true,
+    "after_air": true,
+    "after_source_pinned": true,
+    "after_compile": true,
+    "after_link": true,
+    "after_exact_composition": true,
+    "distinct_libraries": true,
+    "swift_compile_exit": true
+  },
+  "passed": true,
+  "fixed_case_oracle_review": {
+    "shapes": 8,
+    "weight_types": 2,
+    "cases": 16,
+    "outputs_per_variant": 29498,
+    "max_contributing_terms": 30,
+    "products_denominator": 512,
+    "worst_absolute_partial_sum_numerator_bound": 4950,
+    "index_contributor_sets_match": true,
+    "dyadic_float32_oracle_exact": true
+  },
+  "remaining_limits": [
+    "Numerical GPU parity has not been executed by this reviewer.",
+    "Finite fixed dyadic cases only, not general precision behavior.",
+    "No speed, full commit, upstream build, or generated-kernel quality claim."
+  ]
+}

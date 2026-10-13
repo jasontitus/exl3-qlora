@@ -1,0 +1,20 @@
+{
+  "format": "metal-corpus-release-v1",
+  "timestamp_utc": "2026-10-13T17:38:37.283673+00:00",
+  "primary_corpus": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-12288-v3",
+  "archive_corpus": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-32768-v3",
+  "train_count": 69,
+  "archive_train_count": 97,
+  "heldout_count": 16,
+  "qualification": "source-reviewed, exact-replay and tokenizer audited; runtime validation incomplete",
+  "training_launched": false,
+  "files_sha256": {
+    "corpus-12288-v3/train.jsonl": "d8c8192a3588aacc17af444ba025456e3cc93f4d05e5a3ee68b7635949ae71b8",
+    "corpus-12288-v3/test.jsonl": "42441e95d8bb8c087e332a0ecb56c67a0360e3649348e001d469f749609581e1",
+    "corpus-32768-v3/train.jsonl": "fcd82863e837bbd7eaf97d7b2649e3fb1d231364ddc3066ddbf071ec4499ac1d",
+    "aggregate-independent-audit-v3.json": "3064c88d1a7f5fa04984026e5a092937f3dab5d5dd112eaf233cf24270271671",
+    "README.md": "89950904712463e67c48b8cef51e13b2183dea894666d16ae723555ecf31ffd8",
+    "build_combined.py": "8a5b0ef7c0a68bc57a4b97d87de619156064afbb3968aab04c1c0e82359e2a1d",
+    "tools/reserved_identity.py": "ca880e798343f87f2358944152c661b2c1db4fe01d3e442faaef472b0b47c9c2"
+  }
+}

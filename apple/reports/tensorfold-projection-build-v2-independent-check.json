@@ -1,0 +1,27 @@
+{
+  "format": "tensorfold-projection-build-independent-check-v1",
+  "date": "2026-10-13T03:28:12.670462+00:00",
+  "scope": "CPU-only build artifact byte bindings; not GPU parity or performance",
+  "build": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-parity-build-v2",
+  "manifest_sha256": "c6263cd29712b7ac9317d69a117ab125ae26205f01fa7e9dd9c29e43ebeb8013",
+  "checks": {
+    "compile_receipt_bytes": true,
+    "compile_receipt_canonical": true,
+    "swift_source": true,
+    "executable": true,
+    "swift_build": true,
+    "before_AIR": true,
+    "before_library": true,
+    "before_source": true,
+    "before_compile": true,
+    "before_link": true,
+    "after_AIR": true,
+    "after_library": true,
+    "after_source": true,
+    "after_compile": true,
+    "after_link": true,
+    "distinct_libraries": true
+  },
+  "passed": true,
+  "builder_source_race_followup": "Current v2 artifact hashes match verified AIR; builder implementation should retain verified bytes instead of rereading before linking."
+}

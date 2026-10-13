@@ -1,0 +1,149 @@
+{
+  "project": "Qwen3.8-Flash-Next Apple training",
+  "implementation_status": "M0 inventory and CPU references complete; synthetic MCG decoder and tiny native MLX affine forward/input-VJP pass on Apple M1 Ultra; real-checkpoint and Qwen model/training unsupported",
+  "isolation": "stdlib/NumPy CPU reference tooling; no active MLX imports or dependency changes",
+  "source_runtime_reference": "loss-fix/apple/artifacts/loss-fix/runtime-v5",
+  "source_runtime_snapshot_sha256": "56b38d2b0bed0f2ff3eb991324aec1439d079c6f9a57021ffde071e861f07bcc",
+  "checkpoint": "beamster/Qwen3.8-Flash-Next-Sushi-3bpw",
+  "checkpoint_revision": "76bd8f55df2bd4ab6297101c57bf86d450ac0aa3",
+  "original_document": {
+    "source": "/Users/jasontitus/experiments/exl3-qlora/docs/qwen38-flash-next-16k-finetuning-design.md",
+    "sha256": "6da5bd5d517b3ae6d32ed53c5e67ed3aca7c576f1bc77491a559b09ec7d1a60f"
+  },
+  "execution_order": [
+    "M0 metadata and storage contracts",
+    "M1 affine/EXL3 fixtures and exact forward",
+    "M2a sparse forward + M3a output-only A0",
+    "M2b sparse backward + M3b QKV A1",
+    "M4 recurrent backward + earlier adapters",
+    "M5 quality, serving and separate32K qualification"
+  ],
+  "next_hardware_gate": "Checkpoint-compatible decoder/public transform parity after independent fixture review; recheck memory and GPU ownership before dispatch.",
+  "character_template_audit": {
+    "train": 15,
+    "test": 16,
+    "token_masks_qualified": false
+  },
+  "cpu_tests_passed": 133,
+  "converter_fixture_values_bit_exact": 98304,
+  "next_steps": [
+    "Real converter-known-answer window14 fixture plus public Hadamard/scales decoder parity",
+    "Bounded affine checkpoint row reader and integration using qualified native primitive",
+    "Qwen exact forward and complete A0 frozen boundary"
+  ],
+  "bounded_expert_reader": {
+    "implementation": "tools/expert_row_reader.py",
+    "synthetic_cpu_tests": 17,
+    "independent_review": "reports/expert-row-reader-independent-review.json",
+    "real_checkpoint_payload_qualified": false
+  },
+  "cpu_decode_bridge": {
+    "implementation": "tools/expert_decode_reference.py",
+    "tests_passed": 15,
+    "scope": "synthetic tiny experts only; real2560x640 expert intentionally unsupported",
+    "review_status": "independent review passed within tiny-reference scope",
+    "model_or_gpu_qualified": false
+  },
+  "qwen_hyperconnection_reference": {
+    "implementation": "tools/qwen_hyperconnection_reference.py",
+    "cpu_tests_passed": 13,
+    "scope": "bounded NumPy four-stream forward and input-adjoint reference",
+    "gpu_qualified": false,
+    "independent_review": "reports/qwen-hyperconnection-independent-review.json"
+  },
+  "qwen_gdn_reference": {
+    "implementation": "tools/qwen_gdn_reference.py",
+    "cpu_tests_passed": 18,
+    "scope": "tiny NumPy recurrence and analytical continuous VJP with chunk state adjoints; convolution/history excluded",
+    "gpu_qualified": false,
+    "independent_review": "reports/qwen-gdn-independent-review.json",
+    "epsilon_repair": "reports/qwen-gdn-epsilon-repair.json",
+    "normalization_adjoint_repair": "reports/qwen-convolution-and-adjoint-progress.json",
+    "independent_checks_passed": 27
+  },
+  "qwen_convolution_reference": {
+    "implementation": "tools/qwen_conv_reference.py",
+    "cpu_tests_passed": 7,
+    "scope": "tiny FP64 causal convolution/SiLU with minimal raw-input history and cross-chunk adjoints",
+    "independent_review": "reports/qwen-conv-independent-review.json",
+    "gpu_qualified": false,
+    "independent_checks_passed": 44
+  },
+  "qwen_conv_gdn_composition": {
+    "tests": "tests/test_qwen_conv_gdn_composition.py",
+    "tests_passed": 2,
+    "receipt": "reports/qwen-conv-gdn-composition.json",
+    "independent_review": "reports/qwen-composition-independent-review.json",
+    "gpu_qualified": false,
+    "independent_checks_passed": 60
+  },
+  "cpu_regression_latest": {
+    "tests_run": 147,
+    "passed": 142,
+    "skipped": 5,
+    "log": "reports/cpu-regression-20261013-2037.log",
+    "additional_repair_tests": "6 affine harness tests passed after regression; independent reviewer also tested container contracts",
+    "skipped_reason": "Swift validation binary not configured in full suite; previously passed separately"
+  },
+  "mcg_metal_synthetic_parity": {
+    "cases": 94,
+    "values": 51712,
+    "mismatches": 0,
+    "comparison": "exact-fp16-bits",
+    "device": "Apple M1 Ultra",
+    "metal_language": "3.1",
+    "fast_math": false,
+    "report": "reports/mcg-harness-gpu-parity.json",
+    "independent_review": "reports/mcg-harness-independent-review.json",
+    "real_checkpoint_qualified": false,
+    "model_training_qualified": false,
+    "post_dispatch_independent_review": "reports/mcg-harness-gpu-independent-check.json"
+  },
+  "affine_mlx_synthetic_parity": {
+    "cases": 108,
+    "device": "Apple M1 Ultra",
+    "bits": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "group_sizes": [
+      32,
+      64,
+      128
+    ],
+    "dtypes": [
+      "float32",
+      "float16",
+      "bfloat16"
+    ],
+    "batch_sizes": [
+      1,
+      3
+    ],
+    "max_weight_shape": [
+      32,
+      256
+    ],
+    "decode_comparison": "Exact host dtype-rounded values",
+    "checks": [
+      "forward",
+      "packed transpose",
+      "input-only native VJP"
+    ],
+    "max_relative_l2": {
+      "float32": 0.0,
+      "float16": 0.0002467377169936439,
+      "bfloat16": 0.00248742456939922
+    },
+    "report": "reports/affine-mlx-gpu-parity-v2.json",
+    "review": "reports/affine-mlx-independent-review-v2.json",
+    "failed_attempt_preserved": "reports/affine-mlx-gpu-parity.json",
+    "real_checkpoint_qualified": false,
+    "model_training_qualified": false,
+    "post_dispatch_review": "reports/affine-mlx-gpu-independent-check.json"
+  }
+}

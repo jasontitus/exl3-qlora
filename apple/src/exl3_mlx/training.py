@@ -144,14 +144,31 @@ def optimizer_step(model, optimizer, examples, *, clip=1.0, check=lambda: None):
     }
 
 
-def evaluate(model, examples, *, check=lambda: None):
+def evaluate(
+    model, examples, *, check=lambda: None, include_token_metrics=False, preserve_mode=False
+):
+    """Score complete supervised targets without updating model parameters.
+
+    By default, temporarily use evaluation mode. The opt-in preserve_mode path
+    keeps the caller's mode, allowing a final diagnostic to reuse exact frozen
+    training-prefix cache entries. It does not disable training-mode behavior
+    such as dropout on arbitrary models. Both paths restore the entry mode even
+    if scoring or a memory check raises; neither computes gradients or updates
+    an optimizer. The supported DeepSeek training path has no stochastic dropout.
+    """
+    if type(preserve_mode) is not bool:
+        raise ValueError("preserve_mode must be boolean")
     was_training = model.training
-    model.eval()
+    if not preserve_mode:
+        model.eval()
     total, nll, digest = 0, 0.0, hashlib.sha256()
+    row_metrics = []
     try:
         for example in examples:
             check()
             tokens, lengths = batch_for(example)
+            details = {"token_nll": [], "target_ids": [], "predicted_ids": []}
+            row_digest = hashlib.sha256() if include_token_metrics else None
             if hasattr(model, "hidden_states") and hasattr(model, "project_logits"):
                 hidden, targets = supervised_hidden(model, tokens, lengths)
                 mx.eval(hidden, targets)
@@ -166,7 +183,16 @@ def evaluate(model, examples, *, check=lambda: None):
                         raise FloatingPointError("Nonfinite evaluation loss")
                     nll += value.item()
                     total += logits.shape[0]
-                    digest.update(np.array(logits).tobytes())
+                    logit_bytes = np.array(logits).tobytes()
+                    digest.update(logit_bytes)
+                    if include_token_metrics:
+                        row_digest.update(logit_bytes)
+                        gold = targets[start : start + 32]
+                        details["token_nll"].extend(
+                            nn.losses.cross_entropy(logits, gold).tolist()
+                        )
+                        details["target_ids"].extend(gold.tolist())
+                        details["predicted_ids"].extend(mx.argmax(logits, axis=-1).tolist())
                     del logits, value
                 del hidden, targets
             else:
@@ -178,7 +204,24 @@ def evaluate(model, examples, *, check=lambda: None):
                 nll += value.item() * n.item()
                 total += n.item()
                 digest.update(np.array(logits).tobytes())
+                if include_token_metrics:
+                    row_digest.update(np.array(logits).tobytes())
+                    start = example["loss_start"]
+                    selected = logits[0, start - 1 :]
+                    gold = tokens[0, start:]
+                    details["token_nll"] = nn.losses.cross_entropy(selected, gold).tolist()
+                    details["target_ids"] = gold.tolist()
+                    details["predicted_ids"] = mx.argmax(selected, axis=-1).tolist()
                 del logits, value
+            if include_token_metrics:
+                details["logits_sha256"] = row_digest.hexdigest()
+                count = len(details["target_ids"])
+                details["loss"] = sum(details["token_nll"]) / count
+                details["supervised_tokens"] = count
+                details["correct_tokens"] = sum(
+                    a == b for a, b in zip(details["target_ids"], details["predicted_ids"])
+                )
+                row_metrics.append(details)
             del tokens, lengths
             check()
     finally:
@@ -186,7 +229,7 @@ def evaluate(model, examples, *, check=lambda: None):
     if not total:
         raise ValueError("Evaluation needs supervised tokens")
     loss = nll / total
-    return {
+    result = {
         "loss": loss,
         "perplexity": math.exp(loss) if loss < 700 else None,
         "supervised_tokens": total,
@@ -194,6 +237,9 @@ def evaluate(model, examples, *, check=lambda: None):
         "logits_sha256": digest.hexdigest(),
         "logits_scope": "supervised_rows" if hasattr(model, "hidden_states") else "all_rows",
     }
+    if include_token_metrics:
+        result["rows"] = row_metrics
+    return result
 
 
 def save_checkpoint(model, optimizer, directory, state):
@@ -234,12 +280,31 @@ def save_checkpoint(model, optimizer, directory, state):
 
 
 def load_checkpoint(model, optimizer, directory, contract):
+    """Restore the workflow's fixed-Adam state after complete validation."""
     from .train import load_adapter
 
+    if (
+        type(optimizer) is not optim.Adam
+        or tuple(optimizer.betas) != (0.9, 0.999)
+        or optimizer.eps != 1e-8
+        or optimizer.bias_correction is not False
+        or optimizer._schedulers
+    ):
+        raise ValueError("Resume supports only fixed-rate Adam with the workflow's default settings")
     directory = Path(directory)
     state = json.loads((directory / "trainer_state.json").read_text())
     if state.get("format") != "exl3-mlx-training-state-v1" or state.get("contract") != contract:
         raise ValueError("Resume settings/data differ; use --resume-adapter for a fresh optimizer")
+    if any(type(state.get(key)) is not int or state[key] < 0 for key in ("step", "cursor")):
+        raise ValueError("Optimizer step/cursor must be nonnegative integers")
+    if "grad_accumulation" in contract:
+        accumulation = contract["grad_accumulation"]
+        if (
+            type(accumulation) is not int
+            or accumulation < 1
+            or state["cursor"] != state["step"] * accumulation
+        ):
+            raise ValueError("Sample cursor differs from the recorded accumulation contract")
     names = {
         "adapter.safetensors",
         "adapter_config.json",
@@ -250,20 +315,46 @@ def load_checkpoint(model, optimizer, directory, contract):
         sha256(directory / n) != state["files"][n] for n in names
     ):
         raise ValueError("Training checkpoint checksum mismatch")
-    optimizer.init(model.trainable_parameters())
+    # Never derive the incoming schema from destination state: MLX init retains
+    # nonempty moment dictionaries, including malformed existing ones. The
+    # workflow uses fixed Adam, whose fresh constructor defines canonical scalar
+    # metadata and whose init derives every moment shape/dtype from the model.
+    # The placeholder learning rate defines only its dtype, not the loaded value.
+    template = optim.Adam(learning_rate=1.0)
+    template.init(model.trainable_parameters())
     arrays = mx.load(str(directory / "optimizer.safetensors"))
-    expected = dict(tree_flatten(optimizer.state))
+    expected = dict(tree_flatten(template.state))
     if set(arrays) != set(expected) or any(
         v.shape != expected[k].shape or v.dtype != expected[k].dtype for k, v in arrays.items()
     ):
         raise ValueError("Optimizer state structure mismatch")
+    if any(not mx.all(mx.isfinite(value)).item() for value in arrays.values()):
+        raise ValueError("Optimizer state contains nonfinite values")
+    if any(
+        not mx.all(value >= 0).item()
+        for name, value in arrays.items()
+        if name == "v" or name.endswith(".v")
+    ):
+        raise ValueError("Adam second moments must be nonnegative")
+    learning_rate = arrays["learning_rate"]
+    if learning_rate.size != 1 or learning_rate.item() <= 0:
+        raise ValueError("Optimizer learning rate must be a positive scalar")
+    if "learning_rate" in contract:
+        recorded_rate = contract["learning_rate"]
+        if (
+            type(recorded_rate) not in (int, float)
+            or not math.isfinite(recorded_rate)
+            or recorded_rate <= 0
+            or learning_rate.item() != mx.array(recorded_rate, dtype=learning_rate.dtype).item()
+        ):
+            raise ValueError("Optimizer learning rate differs from the recorded contract")
     rng = mx.load(str(directory / "random.safetensors"))
     if set(rng) != {str(i) for i in range(len(mx.random.state))} or any(
         v.shape != mx.random.state[int(k)].shape or v.dtype != mx.random.state[int(k)].dtype
         for k, v in rng.items()
     ):
         raise ValueError("Random state structure mismatch")
-    if int(arrays["step"].item()) != state["step"] or state["cursor"] < 0:
+    if arrays["step"].size != 1 or arrays["step"].item() != state["step"]:
         raise ValueError("Optimizer step/cursor mismatch")
     load_adapter(model, directory)
     optimizer.state = tree_unflatten(list(arrays.items()))

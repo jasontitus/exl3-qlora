@@ -5,10 +5,23 @@ This interface is implemented. It puts a local browser, a project CLI and a smal
 short pilot, inspect the saved comparison, then decide whether to train further.
 
 For long kernel-patch data, use the [kernel tuning recipe](KERNEL_TUNING.md).
-The largest complete example trained here is **5,809 tokens** under an 80 GiB
-process cap; its first update completed but made answer NLL worse. An 80 GiB
-budget does not certify 32,768-token training or model quality. The short-text
-comparison/generation steps below are not practical long-patch inference.
+A completed final-block diagnostic improved fitting on one **5,809-token** edit.
+The [normal three-change flow](reports/standard-three-change-run.md) then completed
+12 updates on complete 3,606 / 5,809 / 5,822-token examples under an 80 GiB guard
+(**53.08 GiB measured peak**, **30.1 minutes** including the warm probe). Fresh
+paired scoring improved answer NLL **8.23%**, with all three rows improving and
+exact warm/fresh uncached logit agreement. Only one additional added-code token
+became correct; most loss reduction came from comments and headers. This is a
+training-fit demonstration, not proof of useful generated kernels. The current
+integrated source suite also passed **1,040 tests plus 27 subtests**; the
+[quality guide](QUALITY.md) separates that test result from model-quality claims.
+
+Verification preserved a successful 80 GiB baseline and retried only the adapter
+score at 72 GiB after a startup-headroom failure; reserve remained 8 GiB and the
+math did not change. Training used 80 GiB. The existing project can be inspected
+with `artifacts/loss-fix/metal-tune status`, which uses its pinned runtime.
+An 80 GiB budget does not certify 32,768-token training or model quality. The
+short-text comparison/generation steps below are not practical long-patch inference.
 
 ## Launch the local interface
 
@@ -94,6 +107,51 @@ reduction order, so chunk size cannot change during project resume. Read the
 [decoder chunk guidance](RESOURCE_PROFILES.md#explicit-decoder-chunk-experiments)
 and numerical benchmark results before selecting it; larger chunks are not a
 claim of faster full-model training.
+
+New projects can select attention adapter blocks with `--adapter-layers 38 39`
+or `SFTConfig(adapter_layers=[38, 39], ...)`. IDs are zero-based: `39` is the last
+block, while omitting the setting keeps the default **all 40 blocks**. Each
+selected block adapts `wq_a` and `wo_b`; this option does not select expert
+adapters. Studio exposes **Attention adapter blocks (new projects only)** and
+shows the saved selection. Blank means all 40.
+
+The full model context remains part of the computation.
+Selecting fewer adapter blocks is useful for controlled fitting experiments,
+but is not a demonstrated quality fix or a guarantee of a particular memory
+reduction. The selection is immutable after data preparation: resume,
+comparison, generation and export use the recorded scope. Create a new project
+to change it; resource overrides cannot alter it. The same option is available
+on `ktune finetune`.
+
+An optional **Frozen-prefix cache (MiB)** reuses frozen earlier blocks for an
+identical repeated example. It is off by default and included in the process
+memory budget. `--prefix-cache-mib` is a resource-only setting that may change
+on resume; it cannot change the saved adapter-layer selection. See the
+[cache verification gate and limits](RESOURCE_PROFILES.md#optional-frozen-prefix-cache).
+
+## Experimental activation arithmetic
+
+The default `activation_mode="checkpoint"` preserves the existing FP8/FP4
+activation roundtrips. A new project may opt into `--activation-mode bf16`
+(`SFTConfig(activation_mode="bf16", ...)`, also available under Studio's
+**Activation arithmetic** setting). This bypasses differentiable-path activation
+roundtrips while retaining packed weights, FrozenIndexer quantizers, BF16 casts,
+and normally recomputed expert/top-k routes. It retains quantization and rounding. A completed one-row, one-update comparison
+observed BF16-mode descent (0.5061723590 → 0.5014906038) and checkpoint-mode
+regression (0.5012578368 → 0.5033001955). This supports a bounded experiment,
+not a general fix or a unique causal diagnosis; the modes have different forward
+objectives and the control did not exactly reproduce the historical update. See
+the [independent control review](reports/matched-control-final-independent-review.md).
+
+Changing this mode changes the **zero-adapter forward pass**, so BF16 experiments
+need their own freshly scored baseline. Project comparison and training-fit
+checks pass the same saved mode to both baseline and adapter evaluations. The
+mode is immutable after preparation and cannot be changed by resume or resource
+overrides; use a new project for a different mode. Exported adapters record it.
+The low-level `train`, `evaluate`, and `generate` commands inherit the mode from a
+saved adapter when the flag is omitted and reject an explicit mismatch, including
+an adapter-only warm start. A legacy missing mode means `checkpoint`; this does
+not waive source/runtime identity checks or migrate old projects.
 
 ## Accepted datasets
 
@@ -193,8 +251,8 @@ accumulate checkpoints. No model files are deleted.
 The default trains rank-4, alpha-8 LoRA on `wq_a` and `wo_b` in all 40 attention
 layers. The EXL3 experts stay frozen and contribute activation gradients.
 Microbatch size is one; use gradient accumulation for a larger effective batch.
-The advanced [engine recipe](RECIPE.md) exposes expert adapters and narrower
-layer selection, which this initial standard facade does not yet expose.
+Use `--adapter-layers` for narrower attention-layer selection in this standard
+interface. Expert adapters remain an advanced [engine recipe](RECIPE.md) option.
 
 Exports contain inference adapter weights/configuration and a bundle receipt,
 without a partial optimizer checkpoint. They load with this tool's
@@ -224,12 +282,15 @@ end-to-end. Original EXL3 shard layouts and Qwen do not become supported through
 this interface. The backend now accepts up to 32,768 tokens with sparse selection
 and bounded attention/head workspaces. Full-model memory still grows with context;
 this maximum is an implementation ceiling, not a throughput or RAM guarantee.
-The completed 5,809-token update is the largest tested example. Its fresh fitting
+The earlier all40-layer 5,809-token first update’s fresh fitting
 check failed (NLL 0.5012578592 base versus 0.5053724668 adapter); separate strength
 diagnostics at +0.1, -0.1 and adaptive +10 also worsened NLL. This bounded series
 is complete, with no adapter promoted as an improvement; see the
-[aggregate](reports/ktune-strength-diagnostics.json). Component checks pass but
-do not establish improved fitting; see the [diagnosis update](reports/first-step-diagnosis-update.md) and
+[aggregate](reports/ktune-strength-diagnostics.json). That series did not establish improved fitting. The later one-row final-block
+result and completed standard three-row verification are linked at the top of
+this page. The completed [activation control](reports/matched-control-final-independent-review.md)
+supports further quantizer testing but does not prove a unique cause. See the historical
+[diagnosis update](reports/first-step-diagnosis-update.md) and
 [verification audit](reports/ktune-full-parent-verification.json).
 The existing generation path recomputes the whole prefix per new token; practical
 long-patch generation still needs compatible inference with a persistent KV cache.
@@ -240,6 +301,30 @@ evidence scope, preserves failures, audits complete prompt/answer lengths and ke
 related revisions together. A historical win or lower training loss does not prove
 that newly generated patches improve an engine. Evaluate them by application,
 compilation, independent numerical correctness and repeated on-device measurements.
+
+The newer [upstream intake](docs/UPSTREAM_INTAKE.md) also accepts pinned Git
+histories from mlx-serve, TensorFold, Sushi and llama.cpp. It records operation,
+hardware, bottleneck and rationale with citations or explicit unknowns, preserves
+complete source/evidence, and distinguishes reported claims from measured results.
+`ktune finetune-upstream --source MANIFEST --model MODEL --output NEW_PROJECT
+--prepare-only` imports and binds a normal SFT project without training. The
+reviewed 3,394-token llama.cpp example has completed this prepare-only path;
+it has **zero optimizer updates**. Preparation is separate from the three-change
+trained adapter described above.
+
+The bounded 100-candidate audit yielded 93 reconstructed source pairs and only
+five whole-file examples within the token ceiling, not 100 ready kernel tasks.
+Exact reviewed source units provide a practical way to keep complete kernels and
+relevant dispatch/type context. Their task annotations remain explicitly
+retrospective, and external dependency completeness needs review. See the
+[inventory](reports/upstream-corpus-inventory.md).
+
+Separately, the original llama.cpp convolution pair passed 16 fixed GPU/CPU
+parity cases, and the original TensorFold pair passed 65,536 codebook states plus
+162 FP32 projection parity cases on this M1 Ultra. These scoped checks used
+captured, hash-bound compiled sources and canaries; they did not time kernels or
+check any model-generated optimization. The [quality guide](QUALITY.md#completed-activation-control-and-upstream-checks)
+links the raw receipts and excluded paths.
 
 The long-context revision also fixes negative power-of-two activation scales. It
 changes forward arithmetic from the early prototype. Existing projects retain

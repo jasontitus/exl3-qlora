@@ -1,0 +1,58 @@
+{
+  "utc": "2026-10-13T20:10:32.576363+00:00",
+  "deepseek": {
+    "status": "completed_and_independently_audited",
+    "updates": 30,
+    "unique_training_examples": 15,
+    "heldout_examples": 16,
+    "checkpoint_baseline_logs_reverified": true,
+    "live_training_process_found": false,
+    "metrics": {
+      "all": {
+        "tokens": 47069,
+        "nll_reduction_percent": 6.946770809560309,
+        "corrected": 65,
+        "regressed": 38
+      },
+      "metal/added/code_or_other": {
+        "tokens": 18364,
+        "nll_reduction_percent": 4.31503328991375,
+        "corrected": 22,
+        "regressed": 14
+      },
+      "family:rationale": {
+        "tokens": 5,
+        "nll_reduction_percent": 14.848201045224386,
+        "corrected": 0,
+        "regressed": 0
+      },
+      "family:eos": {
+        "tokens": 16,
+        "nll_reduction_percent": null,
+        "corrected": 0,
+        "regressed": 0
+      }
+    },
+    "quality_limit": "Teacher-forced likelihood only; five rationale tokens and saturated EOS cannot establish reasoning/end-of-answer benefit; no generated kernel correctness/performance gain demonstrated."
+  },
+  "qwen": {
+    "completed": "First tiny synthetic Metal MCG decoder parity",
+    "cases": 94,
+    "values": 51712,
+    "mismatches": 0,
+    "full_model_training_supported": false,
+    "post_dispatch_independently_verified": true
+  },
+  "new_library_not_used_in_completed_training": true,
+  "baseline_and_runtime_v5_unchanged": true,
+  "next": "Isolated affine forward/input-VJP qualification; real decoder fixtures and exact Qwen forward remain",
+  "automation_queue_complete": false,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/native-code-training-12k-72g-recovery.json": "673537e142641094092c7832f813c5f5d624e57c06cbd5af218a955bd263f2e0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/final-30-update-heldout-independent-audit.json": "cc38ca678f47f199d333fb2a3d8a84f404c426d8199013aba94a0c3a9c21c013",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/mcg-harness-gpu-parity.json": "fb7f5b245a4d2f964c0499ef628f50b3395a91c8092fd912f175ee4439b27410",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/mcg-harness-independent-review.json": "670dcf913c97df8b00355a61ce60c5963d6bb620641f15b6107f741b1d2c7275",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/project.json": "0fecfe15e2c1eabd858bc0bda0462ccc0a1b8a1a25cb48523f4c49977bcf1629",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/mcg-harness-gpu-independent-check.json": "2de585031ceb0a834b119c10b2084ddc220962eb78f859a19f35f7cb485a9c7b"
+  }
+}

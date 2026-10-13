@@ -1,0 +1,91 @@
+{
+  "format": "metal-optimization-sources-v1",
+  "repositories": [
+    {
+      "id": "sushi",
+      "repository": "beamivalice/sushi",
+      "url": "https://github.com/beamivalice/sushi"
+    },
+    {
+      "id": "tensorfold",
+      "repository": "ashhart/TensorFold",
+      "url": "https://github.com/ashhart/TensorFold"
+    },
+    {
+      "id": "mlx-serve",
+      "repository": "ddalcu/mlx-serve",
+      "url": "https://github.com/ddalcu/mlx-serve"
+    },
+    {
+      "id": "ds4",
+      "repository": "antirez/ds4",
+      "url": "https://github.com/antirez/ds4"
+    },
+    {
+      "id": "llama-cpp",
+      "repository": "ggml-org/llama.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp"
+    },
+    {
+      "id": "omlx",
+      "repository": "jundot/omlx",
+      "url": "https://github.com/jundot/omlx"
+    },
+    {
+      "id": "mlx",
+      "repository": "ml-explore/mlx",
+      "url": "https://github.com/ml-explore/mlx"
+    },
+    {
+      "id": "mlx-lm",
+      "repository": "ml-explore/mlx-lm",
+      "url": "https://github.com/ml-explore/mlx-lm"
+    },
+    {
+      "id": "mlx-vlm",
+      "repository": "Blaizzy/mlx-vlm",
+      "url": "https://github.com/Blaizzy/mlx-vlm"
+    },
+    {
+      "id": "splash",
+      "repository": "incoai/splash",
+      "url": "https://github.com/incoai/splash"
+    },
+    {
+      "id": "mtplx",
+      "repository": "youssofal/MTPLX",
+      "url": "https://github.com/youssofal/MTPLX"
+    },
+    {
+      "id": "vllm-metal",
+      "repository": "vllm-project/vllm-metal",
+      "url": "https://github.com/vllm-project/vllm-metal"
+    }
+  ],
+  "scope": "Next-round candidate library. Active train/testsets frozen. Source claims are not reproduced measurements.",
+  "user_aliases": {
+    "squash": "splash"
+  },
+  "collection_policy": {
+    "cadence_hours": 24,
+    "lookback": "Incremental new commits plus bounded historical backfill each run; record coverage and gaps",
+    "candidate_sources": [
+      "commits",
+      "merged pull requests",
+      "releases",
+      "changelogs",
+      "primary author announcements"
+    ],
+    "required_before_training": [
+      "paired before/after source",
+      "exact source/revision/parent/license provenance",
+      "performance claim with workload and hardware or explicit missing evidence",
+      "lineage and fork deduplication",
+      "protected evaluation overlap check",
+      "agent edit replay",
+      "compile/correctness evidence or explicit unqualified tier"
+    ],
+    "auto_promote_to_training": false,
+    "gpu_benchmarks_while_training": false
+  }
+}

@@ -1,0 +1,1 @@
+{"language_model.lm_head.biases":{"dtype":"BF16","shape":[248320,20],"data_offsets":[0,9932800]},"language_model.lm_head.scales":{"dtype":"BF16","shape":[248320,20],"data_offsets":[9932800,19865600]},"language_model.lm_head.weight":{"dtype":"U32","shape":[248320,640],"data_offsets":[19865600,655564800]}}       

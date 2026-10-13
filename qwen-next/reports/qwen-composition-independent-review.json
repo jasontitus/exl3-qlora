@@ -1,0 +1,57 @@
+{
+  "format": "qwen-conv-gdn-composition-independent-review-v1",
+  "created_at": "2026-10-13T18:13:21.838367+00:00",
+  "reviewed_by": "adversarial_code",
+  "reviewer_independent_of_implementation_author": true,
+  "status": "passed_scoped_review",
+  "passed": true,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_qwen_conv_gdn_composition.py": "695131eba2adf55a287fa8ed427342b28fc9343f356ec2a9dd9cf68ff71b682d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/qwen_conv_reference.py": "abf905f59bc1be6e5d0707bd798332242524fb5e2639e90df98b999da249d65a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/qwen_gdn_reference.py": "96f48929fda71119f63f66a9f78e2589a48eed511bdc43b203d2724f48baac7b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen_composition_independent_probe.py": "ca48e4131c9e02e8b807847dddfe7edde6c5d22cdfea492e4a189b342c9a5265",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen_conv_independent_probe.py": "8f39629803cf00e129e3d5ca99ac5447b30b671baebb59d63d78e2fcd1a5fd80",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-composition-independent-probe.json": "93b5da34a5a64153960bddd02cb1361c294040fd7962345a01778225ffedcc6d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-composition-independent-author-tests.log": "578e5eb07f49f3bbe7fc647d8ca06e0176ac200d757bb85b71c860933e1d7751",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-gdn-independent-review.json": "80230c68b874e2ddbeaeb8581d7f34d2765afe0483a70161c8d3a7c34efae88d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-conv-independent-review.json": "295ab1c6d20024cfb523caf449ce567981e340a9c6904638056c2922bdd3cb34",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/config.json": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1"
+  },
+  "findings": [],
+  "verdict": "No concrete correctness blocker found in the tiny test composition. Packed q/k/v gradient assembly and the two independent cross-chunk state adjoints are correct in reviewed cases.",
+  "validation": {
+    "author_tests_independently_rerun": 2,
+    "author_tests_passed": 2,
+    "independent_checks": 60,
+    "independent_checks_passed": 60,
+    "check_counts": {
+      "projector-forward": 9,
+      "independent-directional": 18,
+      "chunk-forward": 9,
+      "chunk-adjoint": 18,
+      "detached-negative-control": 6
+    },
+    "max_directional_absolute_error": 8.692461203954616e-11,
+    "max_chunk_adjoint_absolute_error": 1.1102230246251565e-16,
+    "minimum_detached_path_input_gradient_difference": 0.003276899076769483,
+    "independent_oracle": "Scalar time-index conv/SiLU from previously independently reviewed probe, followed by independent per-head exp(g)*(I-beta*k*kT) state projector. Manual packed-channel splitting, no implementation conv/GDN helper in oracle. Central differences cover x, convolution weights, raw history, recurrent initial state, g and beta.",
+    "fixtures": "B1/B2, T3/T7/T8, K4/K8, one key head/two value heads with dimensions2; nonzero terminal cotangents for both states plus late-only output loss. Chunk cuts1/2 are shorter than convolution history.",
+    "numpy_version": "2.5.4",
+    "mlx_imported": false,
+    "torch_imported": false,
+    "gpu_used": false
+  },
+  "test_contract_review": [
+    "Author forward applies depthwise conv+SiLU before transposing B,C,T to B,T,C, splitting contiguous q/k/v and invoking FP64 recurrence.",
+    "Author backward concatenates per-input q/k/v adjoints in the same packed order and transposes back before applying convolution VJP. Repeated-head q/k reduction belongs to and is performed within the independently reviewed GDN adjoint.",
+    "Chunk composition carries both cb.history and rb.initial_state into the prefix backward pass, and adds shared convolution weight gradients. Late loss produces nonzero early input gradients.",
+    "Author directional tests cover six actual inputs; independent probe adds an alternate mathematical forward, nonzero terminal losses, all six chunk-gradient comparisons, explicit final states and independently detached-path negative controls."
+  ],
+  "coverage_limits": [
+    "The two author tests use one seed, one head geometry and zero terminal-state losses. They establish useful composition checks, not comprehensive numerical qualification. Independent probes broaden those specific gaps but retain the same small head geometry.",
+    "This is test-local FP64 helper composition, not a production complete GDN layer. Learned input/output projections, beta/gate parameter transforms, output gated norm, residual/hyperconnections, optimizer updates and packed-document resets are absent.",
+    "No MLX/Torch/Metal execution, quantized checkpoint payload, serving dtype/ABI parity, target-size or16K backward/memory/performance qualification.",
+    "The implementation components and active DeepSeek runtime were not changed by this reviewer; only review/probe artifacts were created."
+  ],
+  "next_milestone": "Suitable as an independent tiny composed oracle to test later backend implementations and state-carry integration. Keep full-layer and target-dimension qualification separate."
+}

@@ -1,0 +1,359 @@
+{
+  "format": "qwen-gdn-independent-probe-v1",
+  "source_sha256": "d5ea77ed0798ec853fc17d5d461d966e392da288ad75c88a4757aa981022ffe5",
+  "probe_sha256": "da6ff0f6960fda5622dfe9372ece4f855bda74f0834dd2bf930797c4e1c14ab5",
+  "numpy": "2.5.4",
+  "checks": [
+    {
+      "kind": "independent_projector_forward",
+      "seed": 887,
+      "precision": "float64",
+      "eps": 1e-06,
+      "shape": [
+        2,
+        7,
+        2,
+        6,
+        3,
+        2
+      ],
+      "max_abs_output_error": 2.220446049250313e-16,
+      "max_abs_state_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_forward",
+      "seed": 887,
+      "precision": "float32",
+      "eps": 1e-06,
+      "shape": [
+        2,
+        7,
+        2,
+        6,
+        3,
+        2
+      ],
+      "max_abs_output_error": 6.512274464132162e-08,
+      "max_abs_state_error": 1.3662888354026848e-07,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 887,
+      "input": "q",
+      "eps": 1e-06,
+      "predicted": -2.602364386997781,
+      "finite_difference": -2.602364386738998,
+      "abs_error": 2.587832170775073e-10,
+      "tolerance": 7.837093160216994e-06,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 887,
+      "input": "k",
+      "eps": 1e-06,
+      "predicted": -0.2841196451849217,
+      "finite_difference": -0.2841196452774142,
+      "abs_error": 9.249245813691687e-11,
+      "tolerance": 8.823589358322426e-07,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 887,
+      "input": "v",
+      "eps": 1e-06,
+      "predicted": 0.11414389134018062,
+      "finite_difference": 0.114143891360996,
+      "abs_error": 2.081537719966775e-11,
+      "tolerance": 3.72431674082988e-07,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 887,
+      "input": "g",
+      "eps": 1e-06,
+      "predicted": -0.17788837507195265,
+      "finite_difference": -0.1778883751413218,
+      "abs_error": 6.936914931365834e-11,
+      "tolerance": 5.636651254239654e-07,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 887,
+      "input": "beta",
+      "eps": 1e-06,
+      "predicted": 1.003331086169933,
+      "finite_difference": 1.0033310861246036,
+      "abs_error": 4.5329295872420516e-11,
+      "tolerance": 3.0399932583738113e-06,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 887,
+      "input": "initial_state",
+      "eps": 1e-06,
+      "predicted": 0.004261812829266938,
+      "finite_difference": 0.0042618128581750625,
+      "abs_error": 2.8908124158344428e-11,
+      "tolerance": 4.2785438574525186e-08,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_forward",
+      "seed": 143,
+      "precision": "float64",
+      "eps": 1e-06,
+      "shape": [
+        1,
+        5,
+        1,
+        3,
+        2,
+        4
+      ],
+      "max_abs_output_error": 4.336808689942018e-19,
+      "max_abs_state_error": 3.469446951953614e-18,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_forward",
+      "seed": 143,
+      "precision": "float32",
+      "eps": 1e-06,
+      "shape": [
+        1,
+        5,
+        1,
+        3,
+        2,
+        4
+      ],
+      "max_abs_output_error": 2.3303175795269526e-10,
+      "max_abs_state_error": 1.524187959872636e-09,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 143,
+      "input": "q",
+      "eps": 1e-06,
+      "predicted": -0.05617628567845005,
+      "finite_difference": -0.05617628567843035,
+      "abs_error": 1.969951979319262e-14,
+      "tolerance": 1.9852885703529107e-07,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 143,
+      "input": "k",
+      "eps": 1e-06,
+      "predicted": -0.3528800428883385,
+      "finite_difference": -0.35288004287259417,
+      "abs_error": 1.57443502679655e-11,
+      "tolerance": 1.0886401286177826e-06,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 143,
+      "input": "v",
+      "eps": 1e-06,
+      "predicted": 2.653360175462673e-05,
+      "finite_difference": 2.6533602051626023e-05,
+      "abs_error": 2.9699929242842614e-13,
+      "tolerance": 3.007960080615487e-08,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 143,
+      "input": "g",
+      "eps": 1e-06,
+      "predicted": -0.014450719542138894,
+      "finite_difference": -0.014450719541814204,
+      "abs_error": 3.2468992772205496e-13,
+      "tolerance": 7.335215862544261e-08,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 143,
+      "input": "beta",
+      "eps": 1e-06,
+      "predicted": 0.0063248352212014886,
+      "finite_difference": 0.00632483522153282,
+      "abs_error": 3.3133131654983217e-13,
+      "tolerance": 4.897450566459845e-08,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 143,
+      "input": "initial_state",
+      "eps": 1e-06,
+      "predicted": -0.001632290752608699,
+      "finite_difference": -0.0016322907525623263,
+      "abs_error": 4.6372844800246504e-14,
+      "tolerance": 3.4896872257686974e-08,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_forward",
+      "seed": 298,
+      "precision": "float64",
+      "eps": 0.03,
+      "shape": [
+        2,
+        3,
+        2,
+        4,
+        4,
+        2
+      ],
+      "max_abs_output_error": 8.326672684688674e-17,
+      "max_abs_state_error": 3.3306690738754696e-16,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_forward",
+      "seed": 298,
+      "precision": "float32",
+      "eps": 0.03,
+      "shape": [
+        2,
+        3,
+        2,
+        4,
+        4,
+        2
+      ],
+      "max_abs_output_error": 5.63491319716114e-08,
+      "max_abs_state_error": 6.429552229514357e-08,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 298,
+      "input": "q",
+      "eps": 0.03,
+      "predicted": 0.036430524007278996,
+      "finite_difference": 0.03643052401969271,
+      "abs_error": 1.2413715888559551e-11,
+      "tolerance": 1.3929157205907812e-07,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 298,
+      "input": "k",
+      "eps": 0.03,
+      "predicted": 0.09670323000631958,
+      "finite_difference": 0.09670323002364255,
+      "abs_error": 1.7322962508892203e-11,
+      "tolerance": 3.2010969007092764e-07,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 298,
+      "input": "v",
+      "eps": 0.03,
+      "predicted": 0.20570772318589248,
+      "finite_difference": 0.20570772321093497,
+      "abs_error": 2.5042495854776803e-11,
+      "tolerance": 6.47123169632805e-07,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 298,
+      "input": "g",
+      "eps": 0.03,
+      "predicted": 0.0184560029005498,
+      "finite_difference": 0.018456002903732838,
+      "abs_error": 3.1830371671759394e-12,
+      "tolerance": 8.536800871119851e-08,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 298,
+      "input": "beta",
+      "eps": 0.03,
+      "predicted": -0.4071490936911318,
+      "finite_difference": -0.4071490936841115,
+      "abs_error": 7.020273251612252e-12,
+      "tolerance": 1.2514472810523344e-06,
+      "passed": true
+    },
+    {
+      "kind": "independent_projector_directional_vjp",
+      "seed": 298,
+      "input": "initial_state",
+      "eps": 0.03,
+      "predicted": -0.02054717222285476,
+      "finite_difference": -0.020547172230322985,
+      "abs_error": 7.46822395591984e-12,
+      "tolerance": 9.164151669096897e-08,
+      "passed": true
+    },
+    {
+      "kind": "large_finite_normalization_radial",
+      "input": "q",
+      "max_abs_input": 2e+110,
+      "predicted": -0.33541011277245075,
+      "finite_difference": -2.775557561562891e-12,
+      "passed": false
+    },
+    {
+      "kind": "large_finite_normalization_radial",
+      "input": "k",
+      "max_abs_input": 2e+110,
+      "predicted": -0.33541011277245075,
+      "finite_difference": -2.775557561562891e-12,
+      "passed": false
+    },
+    {
+      "kind": "smallest_finite_epsilon_zero_query_adjoint",
+      "eps": 5e-324,
+      "passed": false,
+      "error": "Reference arithmetic became nonfinite"
+    }
+  ],
+  "passed": false,
+  "source_provenance": {
+    "semantic_sources_sha256": {
+      "exllamav3/training/gdn.py": "e1de1f6112715a7868388972872a5f37b0d8198d98246527650ce791d9b33a57",
+      "exllamav3/modules/gated_delta_net_fn/gated_delta_rule.py": "a47e3ac514277ca77e73db51ee6306515dc5f1fbb24747dc7d7da0538823c99d",
+      "exllamav3/modules/gated_delta_net.py": "0c7c2e53a20445991a6b750b9a17e58f4eed6a349b7876f9dfc148e47cd1f87e",
+      "exllamav3/modules/gated_rmsnorm.py": "0823e3f45abfaf76707f213821980af08ab53cbb7c93c6a3c33a0f2f8548808f",
+      "exllamav3/architecture/qwen4_exp.py": "f0781ec11aabc78694ed5084d24fb31093c0500a5c985a00276188c241c165bb",
+      "exllamav3/training/native_llama.py": "12c99ff24bb54067a081ceb9e6b52154cf811afd231bd30a13847c70d5729f5e"
+    },
+    "config_sha256": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1",
+    "implementation_sha256": "d5ea77ed0798ec853fc17d5d461d966e392da288ad75c88a4757aa981022ffe5",
+    "numpy_version": "2.5.4",
+    "target_config": {
+      "linear_num_key_heads": 16,
+      "linear_num_value_heads": 48,
+      "linear_key_head_dim": 128,
+      "linear_value_head_dim": 128,
+      "linear_conv_kernel_dim": 4,
+      "output_gate_type": "sigmoid",
+      "rms_norm_eps": 1e-06
+    },
+    "head_mapping": "value_head j -> key_head j//(num_value_heads/num_key_heads)",
+    "convolution_implemented": false,
+    "real_payload_verified": false,
+    "gpu_parity_qualified": false,
+    "production_backward_qualified": false,
+    "scope": "Bounded recurrence only; FP32 sequential state and explicit continuousFP64 oracle."
+  }
+}

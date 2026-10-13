@@ -1,0 +1,195 @@
+{
+  "schema": "three-change-standard-sft-protocol-v1",
+  "created_utc": "2026-10-13T00:46:45.375807+00:00",
+  "status": "predeclared_before_standard_three_change_training",
+  "amends": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/experiment-plan.json",
+    "sha256": "5b73fe6f5ed9fcf6b09d2f9b5194583fcff4402382fa3f6591aaf45b5f820987",
+    "section": "next_if_fit_passes",
+    "changes": [
+      "Use ordinary SFT project trainer and its deterministic per-epoch shuffled sampler, instead of the diagnostic cyclic sampler.",
+      "Fresh seed8 selected-block39 initialization, not imported A or a continuation of the successful one-row diagnostic.",
+      "Use the new exact in-model bounded prefix LRU instead of an externally serialized diagnostic prefix cache.",
+      "Prepare through the normal raw-record SFT importer then require byte-identical prepared train.jsonl before training."
+    ]
+  },
+  "task_scope": "Training fit across three previously selected complete historical Metal edits from one lineage; no held-out quality claim.",
+  "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "case_ids": [
+    "official:qwen38-125b-a6b-mlx-v1:c0e42c7e-268c-454f-a9cb-e705f952b819",
+    "official:qwen38-125b-a6b-mlx-v1:1a621870-4993-4c43-9472-6f7d8f745140",
+    "official:qwen38-125b-a6b-mlx-v1:8a690716-8068-4da8-9532-26047c96aa9c"
+  ],
+  "raw_sha256": "9d058b2b163cbcbd7d28c021188dc941f65b9d07d5bbf1c24d5baa50daec8d36",
+  "expected_prepared_sha256": "ca6fd8c939be9de5f7715e79d5f1ffc9354d251d1092aa9a3cc77d5d5ce80cb3",
+  "row_lengths": [
+    3606,
+    5809,
+    5822
+  ],
+  "supervised_tokens": [
+    204,
+    811,
+    1877
+  ],
+  "max_length": 5822,
+  "seq_length": 5821,
+  "distinct_changes": 3,
+  "independent_lineages": 1,
+  "valid_rows": 0,
+  "test_rows": 0,
+  "settings": {
+    "steps_total": 12,
+    "adapter_layers": [
+      39
+    ],
+    "adapter_targets": [
+      "wq_a",
+      "wo_b"
+    ],
+    "rank": 4,
+    "alpha": 8,
+    "seed": 8,
+    "initialization": "fresh seed8 model initialization with selected block39; B exactly zero; no previous adapter loaded",
+    "learning_rate": 0.0001,
+    "optimizer": "MLX Adam, bias_correction=False, beta1=.9, beta2=.999, eps1e-8, fresh state",
+    "gradient_accumulation_steps": 1,
+    "microbatch_examples": 1,
+    "max_grad_norm": 1,
+    "chunk_size": 8192,
+    "activation_mode": "checkpoint",
+    "prefix_cache_mib": 2048,
+    "profile": "development",
+    "memory_gib": 80,
+    "reserve_gib": 8,
+    "packed_cache_mib": 8192,
+    "decoded_cache_mib": 0,
+    "allocator_cache_mib": 256,
+    "save_steps": 1,
+    "save_total_limit": 12,
+    "comparison_examples": 3,
+    "final_fit_examples": 3
+  },
+  "sampler": {
+    "policy": "standard sample_indices deterministic epoch shuffles",
+    "seed": 8,
+    "expected_row_indices": [
+      2,
+      1,
+      0,
+      0,
+      2,
+      1,
+      1,
+      0,
+      2,
+      0,
+      2,
+      1
+    ],
+    "exposures_per_row": {
+      "0": 4,
+      "1": 4,
+      "2": 4
+    },
+    "total_supervised_token_presentations": 11568
+  },
+  "prepare_argv": [
+    "finetune",
+    "--model",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "--data",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-metal-changes-raw.jsonl",
+    "--output",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix",
+    "--demo",
+    "--steps",
+    "12",
+    "--max-length",
+    "5822",
+    "--learning-rate",
+    "0.0001",
+    "--gradient-accumulation-steps",
+    "1",
+    "--rank",
+    "4",
+    "--lora-alpha",
+    "8",
+    "--adapter-layers",
+    "39",
+    "--activation-mode",
+    "checkpoint",
+    "--chunk-size",
+    "8192",
+    "--profile",
+    "development",
+    "--memory-gib",
+    "80",
+    "--reserve-gib",
+    "8",
+    "--packed-cache-mib",
+    "8192",
+    "--decoded-cache-mib",
+    "0",
+    "--prefix-cache-mib",
+    "2048",
+    "--allocator-cache-mib",
+    "256",
+    "--save-steps",
+    "1",
+    "--save-total-limit",
+    "12",
+    "--comparison-examples",
+    "3",
+    "--final-fit-examples",
+    "3",
+    "--prepare-only",
+    "--no-compare"
+  ],
+  "resume_argv": [
+    "resume",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix",
+    "--steps",
+    "12",
+    "--no-compare"
+  ],
+  "prelaunch_gates": [
+    "Freeze runtime/source after tests; bind its implementation/dependency identity in the new project and run receipt. This protocol does not approve changed numerical code after preparation.",
+    "Normal --prepare-only must produce exactly three training rows and no valid/test rows; sha256(data/train.jsonl) must equal expected_prepared_sha256 and all IDs/loss_start must equal the predeclared rows.",
+    "Verify saved seed8/rank4/alpha8/layers[39]/checkpoint mode and resource settings, then run serially with no competing GPU workload.",
+    "Use ordinary model and fresh optimizer construction; do not import/rescale a favorable adapter or alter learning rate after observing intermediate results.",
+    "Enable final_fit_examples=3 only after preserve-mode and bound-receipt tests pass in the frozen runtime; no active GPU computation during source freeze."
+  ],
+  "evaluation": [
+    "Evaluate all three complete training rows in fresh separate base and adapter processes under the same frozen source/mode/chunk; score original IDs/masks without truncation.",
+    "Record exact selected-row data identity, target counts204/811/1877, token-weighted mean and equal-row macro mean, every per-row paired loss, logits changes and per-token diagnostics.",
+    "Report added-code/comment/header/copied-context metrics only alongside the primary full-target metric; no favorable-category substitution.",
+    "Audit all12 real optimizer updates, actual sample cursor/order, finite parameters/moments, checksums and exact selected tensor scope; preserve failed and intermediate results.",
+    "Verify full uncached final score against any cache-assisted score. A prefix cache must not change model outputs or gradients.",
+    "If only aggregate fit improves while a row regresses, report mixed fitting rather than all-case success.",
+    "After saving step12, score all first3 immutable training rows in the existing training mode using the in-memory cache, without an optimizer call. Save per-row targets/predictions/NLL/logit hashes, exact checkpoint/source/data identities and before/after cache counters.",
+    "Fresh base and reloaded adapter evaluations each run in their own new process with prefix_cache_mib=0. Require matching target IDs/counts, per-row logit digests and token scores within the declared 1e-6 NLL tolerance. Claim real warm-cache parity only if all3 final-probe forwards registered hits and no new misses."
+  ],
+  "decision_rules": {
+    "primary": "Fresh final token-weighted NLL must decrease by more than1e-6 against its own zero-B baseline; every per-row and macro result is still required.",
+    "stronger_fit": "Every row improves by more than1e-6 and aggregate/macro improve; still training fit, not independent quality.",
+    "failure": "No resolved aggregate decrease, nonfinite state, identity mismatch or incorrect cache parity preserves failed run and blocks a successful-fit claim.",
+    "quality": "No kernel-quality promotion from NLL. Independent generated edits must apply, build, pass correctness and beat paired timing controls on target hardware.",
+    "cache_verification": "No mismatched output is acceptable. Absent/incomplete probe or fewer than3 measured warm hits means cache verification is incomplete, even if aggregate training fit improved. A numerical match without full warm reuse must be labeled accordingly."
+  },
+  "quality_certified": false,
+  "gpu_not_launched_by_this_protocol": true,
+  "amendments": [
+    {
+      "created_utc": "2026-10-13T01:00:32.847537+00:00",
+      "previous_protocol_sha256": "61f83c63a3588294c05febf84bc5753c9889236deea2459540ec68ef66b23e89",
+      "before_standard_three_change_training": true,
+      "reason": "Explicitly verify real in-model frozen-prefix reuse against fresh uncached scores after all12 updates. No change to data, optimizer, initialization or update budget."
+    }
+  ],
+  "amendment_before_launch": {
+    "resource_only": "reserve12\u21928GiB, processceiling80GiB retained; matched to current measured89GiB startup headroom. No change to arithmetic/cache/chunk/optimizer/data.",
+    "prior_protocol_sha256": "c4a2a06f9131732bb527de35cca1dd6c22afe3ac9c5876e5be7e6103f9a99a52",
+    "created_utc": "2026-10-13T01:12:34.343171+00:00"
+  }
+}

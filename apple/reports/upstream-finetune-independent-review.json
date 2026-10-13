@@ -1,0 +1,35 @@
+{
+  "format": "exl3-upstream-finetune-independent-review-v1",
+  "created_utc": "2026-10-13T03:27:17.724260+00:00",
+  "scope": "New finetune-upstream CLI integration with existing standard SFT lifecycle; CPU-only source review and mocked execution tests",
+  "source_sha256": {
+    "src/exl3_mlx/upstream_data.py": "fe2701b339fda1cb8c1843a85932f9ebc91424ebbacf33365b9ad583fda6850a",
+    "src/exl3_mlx/ktune_cli.py": "493816ad6046d499f478ef1f909c9bb5550fe7bd4a5bca490ea2a2a5cac90888",
+    "tests/test_upstream_data.py": "e408901448a03d8532d922aeffc95f328f5927ed04c446dc36222690c7052ed2",
+    "tests/test_ktune_cli.py": "1922357f3716d299ae8f43151333af371cb2dab2c42eed241efe569f12b9c180",
+    "docs/UPSTREAM_INTAKE.md": "f39b441e50e333760d3584fb26159c0bf01a6b459452dd244bdf190c95e0198f"
+  },
+  "checks": {
+    "command": "PYTHONPATH=src /Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python -m pytest -q tests/test_ktune_cli.py tests/test_upstream_data.py",
+    "passed": 75,
+    "failed": 0,
+    "seconds": 19.28,
+    "ruff": "passed"
+  },
+  "reviewed_gates": [
+    "Import writes a separate new upstream-data directory and preserves complete evidence envelope.",
+    "No eligible examples prevents project training.",
+    "Standard project preparation sets provenance_required=True before binding; binder failure prevents any update.",
+    "Resource, immutable math/adapter settings, sequence length, total steps and fit counts reach SFTConfig.",
+    "Prepare-only performs no train/fit call.",
+    "Stopped status remains stopped; no fresh fit is attempted until training completed.",
+    "All resulting fit claims remain training_only and quality_certified=False; strict execution_verified import remains unavailable."
+  ],
+  "remaining_concrete_blockers": [],
+  "limitations": [
+    "No real broader-corpus training or numerical engine evaluation was performed by this reviewer.",
+    "Training/data engine behavior is inherited from prior reviewed standard SFT code; this change introduces no alternate optimizer or model engine.",
+    "Default all40 checkpoint-mode behavior and experimental settings retain their existing evidence limits.",
+    "Importer core SHA remains unchanged from upstream-intake-independent-review.json; CLI/docs hashes changed for the new explicit flow."
+  ]
+}

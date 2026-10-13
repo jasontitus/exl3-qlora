@@ -1,0 +1,9 @@
+# Independent fit-recovery review — October 12, 2026
+
+The repaired CPU helper has no remaining concrete blocker identified within the recorded resource-only recovery. Independent review found and the author fixed two gaps: base/retry/assembler processes must have distinct IDs, and publication must remain under the project lock. The actual retry PID is also bound to a completed exit-zero launch receipt. Atomic exclusive publication preserves existing files. All **15 helper CPU tests passed** independently; the actual preserved baseline passed `--validate-base-only` without writing a report or loading a model.
+
+The helper preserves the successful 80 GiB baseline and retries adapter evaluation at 72 GiB with reserve 8 GiB unchanged. It binds raw receipts, exact source/data/checkpoint/argv, full runtime snapshot, the independent 12-checkpoint audit and both failed starts. The original startup-headroom failure and the separate pre-model data-path typo are not additional updates. Unchanged pinned SFT receipt validators and the final warm/fresh comparator remain the score gates; publication requires all three actual warm-cache hits and complete parity.
+
+The [v3 auditor receipt](standard-fit-auditor-recovery-hardening.json) binds the current summary script, tests and helper. Its **54 CPU tests passed**, and another code reviewer independently found no concrete blocker. Its output rechecks and presents the resource exception and failed-attempt ledger. The original [v2/42-test receipt](standard-fit-auditor-hardening.json) remains unchanged as a historical cutoff.
+
+At this review cutoff the real adapter retry is still running. This review verifies recovery logic and preserved baseline provenance, not the still-pending final fitting result. Checksums bind local evidence; they are not independent execution attestation. No GPU work or engine/pinned-runtime edits were performed by this reviewer.

@@ -1,0 +1,26 @@
+{
+  "schema": "m5-plan-launcher-independent-review-v1",
+  "status": "approved_for_reviewed_launcher_contract",
+  "reviewer": "quality_research",
+  "tests": 39,
+  "test_mode": "CPU lifecycle mocks; no model/GPU/real child process launched",
+  "diff_scope": "Compared with unchanged run_agent_corpus_plan-v1.py: add strict MLX_ENABLE_TF32=0 guard/child/receipt environment, initially absent project-owned prefix cache, and checksum-bound completed portable payload verification. Five phase emission/execution/verification, stop-on-failure and no automatic resume remain.",
+  "resolved_finding": "Initial receipt gate checked truthiness only; repaired validator rejects malformed file inventories/identities, invalid source hashes/totals/paths/timestamps, incomplete source-side receipts and wrong model roots.",
+  "checks": [
+    "Verify-only launches no child or project claim.",
+    "All five phases retain emission\u2192execution\u2192verification and exact plan/receipt/source bindings.",
+    "Inherited failures, wrong emission, wrong completion, source drift, uncertain prior outputs, signal cleanup and PID mismatch fail closed.",
+    "All helper/model child environments and receipts force TF32=0; missing/wrong/additional MLX variables and between-phase numerical-environment drift reject.",
+    "Cache must be absent and reside under the project.",
+    "Payload receipt SHA/model root/schema/files/totals/completion/source-manifest hash enforced."
+  ],
+  "limitations": [
+    "This reviews launcher mechanics with CPU mocks, not the pending concrete M5 plan, available memory, runtime TF32 effects or model correctness.",
+    "Full-payload receipt is a trusted local transfer-integrity record; underlying model must remain quiescent afterward. No adversarial publisher/process attestation or per-phase397GiB rehash is claimed."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/test_m5_launcher.py": "8d175895c64a0fa521c8eb408d594104f93e1632c11d37cd07067c5b1b249b0e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/m5-launcher-pytest.xml": "beda0d77d694b9447c61550df6d2729c1f0003d7762288156b20066c56c802e3"
+  }
+}

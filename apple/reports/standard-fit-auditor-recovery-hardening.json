@@ -1,0 +1,25 @@
+{
+  "version": "standard-sft-three-change-auditor-v3-recovery",
+  "scope": "Post-launch CPU auditor; pinned runtime and active project unchanged",
+  "supersedes_for_current_audits": "standard-fit-auditor-hardening.json (preserved v2/42-test cutoff)",
+  "tests": 54,
+  "independent_recovery_helper_tests": 15,
+  "ruff": "passed",
+  "real_recovered_fit_audited": false,
+  "reason_pending": "Adapter retry still running at this receipt cutoff",
+  "sha256": {
+    "scripts/summarize_standard_fit.py": "a4cacd641b99bd3180dfaabf970435f6b8ceaecfcc02b92b062a06380c3931a3",
+    "tests/test_standard_fit_summary.py": "bd3027e88eb0a00e59435dd06468a5f9157ac3ad35be5e1052018556c376fe00",
+    "scripts/recover_standard_fit.py": "74822118b21e5ebc9912c26ac7c876ff6ac5533c9b549fa6ba78ad846495b5a3",
+    "reports/standard-fit-summary-recovery-tests.xml": "c60201533d8f63237226993aa7b875d361a3aae4da7b9de0ffe7794bfb3f1283",
+    "reports/fit-recovery-independent-cpu.xml": "ba6863ee451b8fa97df1d719f5da0c23fc708581b22a6a132195ea9a3107bcff"
+  },
+  "checks": [
+    "Exact source/provenance case labels and raw source SHA",
+    "Resource exception base80/adapter72 GiB and unchanged reserve8/cache/math",
+    "Preserved raw base/adapter receipts and actual completed retry launch/PID/log",
+    "Both failed invocations retained and checksummed",
+    "Full pinned runtime snapshot and protocol/checkpoint bindings"
+  ],
+  "independent_review": "adversarial_code reported no concrete blocker and independently passed54CPUtests"
+}

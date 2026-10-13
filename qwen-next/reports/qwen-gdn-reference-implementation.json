@@ -1,0 +1,98 @@
+{
+  "adjoint_diagnostic": {
+    "acceptance_atol": 3e-08,
+    "acceptance_rtol": 3e-06,
+    "finite_difference_step": 1e-06,
+    "fixture": "seed493, batch1,steps3,key_heads1,value_heads2,dk2,dv2; cotangents seed381, nonzero initial state and final-state cotangent",
+    "per_input": {
+      "beta": {
+        "max_abs_error": 2.4009649823852897e-10,
+        "relative_l2": 1.3523841022059895e-10
+      },
+      "g": {
+        "max_abs_error": 1.4924082802902916e-10,
+        "relative_l2": 2.0164899483291961e-10
+      },
+      "initial_state": {
+        "max_abs_error": 2.2041141134465647e-10,
+        "relative_l2": 6.273469615984464e-10
+      },
+      "k": {
+        "max_abs_error": 1.9847923304894266e-10,
+        "relative_l2": 1.2086123784365533e-10
+      },
+      "q": {
+        "max_abs_error": 1.9276491514119698e-10,
+        "relative_l2": 2.1436290945142448e-10
+      },
+      "v": {
+        "max_abs_error": 1.6630130605932436e-10,
+        "relative_l2": 2.0058677698340856e-10
+      }
+    }
+  },
+  "config_sha256": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1",
+  "convolution_implemented": false,
+  "created_utc": "2026-10-13T16:01:47.596451+00:00",
+  "fixture_caps": {
+    "array_elements": 262144,
+    "batch": 2,
+    "key_or_value_dimension": 16,
+    "key_or_value_heads": 8,
+    "measured_peak_memory_bytes": null,
+    "retained_state_elements_including_initial": 135168,
+    "steps": 32
+  },
+  "format": "qwen-gdn-reference-implementation-v1",
+  "gpu_parity_qualified": false,
+  "head_mapping": "value_head j -> key_head j//(num_value_heads/num_key_heads)",
+  "implementation_sha256": "f2784bd1237aee3106dcaf909bdb9d8e3299535ab01e249b68af52693e067680",
+  "limitations": [
+    "Only tiny synthetic NumPy CPU arrays. No actual Qwen weights or model payloads loaded.",
+    "Default arithmetic is FP32 recurrence/state; explicit FP64 mode is continuous mathematical reference, not source helper float-cast or serving precision parity.",
+    "Adjoints are only for recurrence inputs and state, not gate transforms, convolution, projections, output RMSNorm, hyperconnections or whole model.",
+    "Convolution itself, convolution history, full block streaming, reset boundaries/document packing, attention/GDN model integration, and production16K backward are not implemented.",
+    "No Torch/MLX/CUDA/Metal imports or GPU execution; no fused-backend or real-model numeric qualification."
+  ],
+  "numpy_version": "2.5.4",
+  "production_backward_qualified": false,
+  "real_payload_verified": false,
+  "scope": "Bounded recurrence only; FP32 sequential state and explicit continuousFP64 oracle.",
+  "semantic_sources_sha256": {
+    "exllamav3/architecture/qwen4_exp.py": "f0781ec11aabc78694ed5084d24fb31093c0500a5c985a00276188c241c165bb",
+    "exllamav3/modules/gated_delta_net.py": "0c7c2e53a20445991a6b750b9a17e58f4eed6a349b7876f9dfc148e47cd1f87e",
+    "exllamav3/modules/gated_delta_net_fn/gated_delta_rule.py": "a47e3ac514277ca77e73db51ee6306515dc5f1fbb24747dc7d7da0538823c99d",
+    "exllamav3/modules/gated_rmsnorm.py": "0823e3f45abfaf76707f213821980af08ab53cbb7c93c6a3c33a0f2f8548808f",
+    "exllamav3/training/gdn.py": "e1de1f6112715a7868388972872a5f37b0d8198d98246527650ce791d9b33a57",
+    "exllamav3/training/native_llama.py": "12c99ff24bb54067a081ceb9e6b52154cf811afd231bd30a13847c70d5729f5e"
+  },
+  "status": "held_for_independent_review",
+  "target_config": {
+    "linear_conv_kernel_dim": 4,
+    "linear_key_head_dim": 128,
+    "linear_num_key_heads": 16,
+    "linear_num_value_heads": 48,
+    "linear_value_head_dim": 128,
+    "output_gate_type": "sigmoid",
+    "rms_norm_eps": 1e-06
+  },
+  "test_file_sha256": "22e9108624d3807dcd19be47ceb69dc94983a3e6ac7ebad1e98c3b4d734fa054",
+  "validated_scope": [
+    "Independent scalar decay-first recurrence agrees with vectorized FP32/FP64 tiny scan at rtol/atol2e-6 and2e-12 respectively.",
+    "FP32 andFP64 chunked recurrence output/finalstate arrays match unchunked exactly across several partitions. This does not qualify a full GDN layer because convolution history is absent.",
+    "Continuous input adjoints for q/k/v/logdecay/beta/initialstate agree with scalar finite differences; gradients compose across chunk boundary through final-state cotangent.",
+    "Late-only output loss gives nonzero earliest k/v gradients; early query gradient is zero because queries read but do not update state. Deliberately detaching state removes early gradient.",
+    "Qwen split channel layout, repeated contiguous key-head groups, beta_scale1, stable softplus/logdecay and sigmoid output RMS gating tested.",
+    "Shape/head/dtype/state/domain/cap/nonfinite/overflow/source-tamper failures are rejected."
+  ],
+  "validation": {
+    "CPU_only": true,
+    "command": "python -m unittest discover -s qwen-next/tests -p test_qwen_gdn_reference.py -v",
+    "elapsed_seconds": 0.065,
+    "errors": 0,
+    "failures": 0,
+    "passed": 14,
+    "ruff": "passed",
+    "tests_run": 14
+  }
+}

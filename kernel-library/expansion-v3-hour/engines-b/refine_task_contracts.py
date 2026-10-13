@@ -1,0 +1,32 @@
+import json,sys
+from pathlib import Path
+W=Path.cwd();sys.path.insert(0,str(W/'loss-fix/apple/src'))
+from exl3_mlx.data import load_tokenizer,tokenize_row
+p=W/'kernel-library/expansion-v3-hour/engines-b/case-index-draft.json';idx=json.loads(p.read_text())
+specs={
+'omlx-42e7282a':'The fused GDN kernels hardcode Dk=128 and Dv=128. The current modulus guard also admits unsupported 144/160 geometry. Restrict the fast route to the actual kernel geometry, preserve the general fallback, and cover supported and rejected shapes.',
+'omlx-b6026ce2':'The specialized attention kernel always enables causality. The public API treats mask=None as unrestricted attention. Route only an explicit causal mask to this implementation, preserve every other eligibility gate and the unrestricted fallback, and add routing regressions.',
+'omlx-9afd971c':'The NAX kernel bank supports 4/5/6/8-bit weights, not 2-bit weights. A failed 2-bit lookup poisons the process-wide availability cache for subsequent supported models. Check bit-width eligibility before that cache can be touched, propagate the bit width through all callers, and preserve the 2-bit fallback.',
+'omlx-89a40d11':'SSD-backed PLE rows always decode to BF16. On FP16 checkpoints, multiplying those rows by FP16 scales promotes the stream and attention cache to FP32. Decode in the checkpoint scale dtype, handle empty batches consistently, and cast the contribution to the receiving hidden-state dtype. Preserve 4/5-bit decoding behavior and add dtype tests.',
+'vllm-metal-a57d':'The GDN reference normalizes with epsilon added to the sum of squares; RMSNorm adds epsilon to the mean. Preserve the existing query/key scale placement while making the effective epsilon match the reference. Add a small-magnitude activation regression that would fail even when unit-scale inputs hide the error.',
+'vllm-metal-cc08':'Replace explicit bidirectional QK/softmax/V with MLX SDPA and retain additive padding masks. This experiment explicitly permits keeping activations in the configured projection dtype rather than the old FP32 promotion. Preserve FP32/FP16/BF16 tests and quantify the precision change; BF16 is not approved for the FP16 quality threshold. This is a measured tradeoff, not a bitwise-equivalent substitution.',
+'mtplx-404084ba':'Compiled fusion serializes a Python float scale with seven significant digits. The head_dim=256 value 0.0625 hides the issue; head_dim=32 or 128 exposes it. Read the intended Float32 scalar from memory in rows-gather attention and add compiled/eager parity coverage for grouped and one-to-one head layouts.',
+'mtplx-a075e78b':'In compiled verification, fused fast-exp sigmoid differs from eager sigmoid at the BF16 gate value -6.84375. Apply the existing attention_gate contract to all Flash-Next attention lanes, preserve non-verification behavior, and cover the rounding boundary and a static-YaRN route in regression tests.',
+'tensorfold-8bb6':'On M1/M2 a compiled pipeline can advertise fewer than 256*S threads because of its register use. Fall back to the supported one-set kernel for that pipeline instead of failing the complete EXLR8 model load. Preserve multi-set kernels when their own pipeline limit allows the requested group.',
+'tensorfold-c0bb':'Pre-M5 cooperative tensors use a different per-lane fragment layout from M5. Introduce generation-specific load/store/transpose helpers and a load-time exact integer check for both operand layouts. Preserve M5 preprocessing where possible; the new M5 check remains a hardware validation requirement, not an already-passed result.',
+'tensorfold-e0df':'Extend quantized prefill GEMM to accept mapped source rows and mapped destination rows for routed experts, reusing shared fragment loads and stores. Preserve the unmapped dense path, quantization arithmetic, row bounds and host bindings. Include the gate/up and down projection launch plumbing.',
+'tensorfold-1ca2':'The prompt expert tile table counts 129 experts although the model has 257; a 256-row example needs 211 tiles with capacity only 202. Account for per-expert partial tiles and the actual expert count, expose prompt-window selection, and add the source comparison checker. Its printed error ratios alone must not be represented as an asserted numerical tolerance.',
+'tensorfold-5768':'Add an optional adaptive speculative-width rule to GPU-side rounds, with widths and buffer geometry kept consistent while host decisions use statistics two rounds behind. Retain fixed-depth configurations. Historical timings favor different settings for prose and code; do not make an unconditional universal-speedup claim.',
+'tensorfold-1464':'Replace repeated scalar routed-expert backward accumulation with 16-pair by 64-column tiles, shared dequantization and FP32 simdgroup products. Recompute scan states from chunk checkpoints to remove the temporary state history. Preserve tail bounds and host plumbing, and expose profiling/comparison outputs. Reduction order may change; tile-size equality is not old-versus-new gradient equality.',
+'tensorfold-6128':'The current sampler discards all logits outside its top 1024, changing the requested distribution for top_k=0, top_k>1024 and wide nuclei. Add a complete-vocabulary path, retain the existing supported small-top_k and greedy paths, and clamp the uniform draw below 1 to avoid an infinite Gumbel score. Include host-reference, tail-support, nucleus, min_p and endpoint tests plus a GPU checker; wide nuclei may require many extra passes.'}
+tok=load_tokenizer('/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw')
+for e in idx['cases']:
+ brief=next(v for k,v in specs.items() if e['id'].startswith(k));rp=Path(e['paths']['raw']);raw=json.loads(rp.read_text())
+ for m in raw['messages']:
+  if m['role']=='user':
+   m['content']=m['content'].replace('\n\nRepository source excerpts follow.', '\n\nTask contract (reconstructed from the historical issue and change):\n'+brief+'\n\nRepository source excerpts follow.',1)
+ rp.write_text(json.dumps(raw,indent=2)+'\n');t=tokenize_row(raw,tok);Path(e['paths']['prepared']).write_text(json.dumps(t,indent=2)+'\n')
+ e['serialized_tokens']=len(t['input_ids']);e['supervised_tokens']=len(t['input_ids'])-t['loss_start']
+idx['review_note']='Root independently refined task contracts from captured source evidence; raw/prepared hashes supersede earlier CPU audit.'
+p.with_name('case-index-refined.json').write_text(json.dumps(idx,indent=2)+'\n')
+print([(e['id'],e['serialized_tokens']) for e in idx['cases']])

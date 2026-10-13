@@ -1,0 +1,17 @@
+{
+  "status": "author_tests_passed_independent_review_pending",
+  "created_at": "2026-10-13T18:11:43.849835+00:00",
+  "tests_passed": 2,
+  "coverage": [
+    "Forward equivalence across four chunk boundaries",
+    "Late-only output loss reaches first input",
+    "Both convolution-history and recurrent-state adjoints passed between chunks",
+    "Composed finite differences for raw input, convolution weight/history, initial recurrent state, decay and beta"
+  ],
+  "sha256": {
+    "tools/qwen_conv_reference.py": "abf905f59bc1be6e5d0707bd798332242524fb5e2639e90df98b999da249d65a",
+    "tools/qwen_gdn_reference.py": "96f48929fda71119f63f66a9f78e2589a48eed511bdc43b203d2724f48baac7b",
+    "tests/test_qwen_conv_gdn_composition.py": "695131eba2adf55a287fa8ed427342b28fc9343f356ec2a9dd9cf68ff71b682d"
+  },
+  "limits": "Tiny FP64 CPU composition only; no full layer, output gating/norm, projection gradients, checkpoint payload or Metal qualification."
+}

@@ -1,0 +1,30 @@
+{
+  "cpu_only": true,
+  "mlx_not_imported": true,
+  "helper_load": "Exact source AST of installed MLX-LM dataset classes and local data helper functions; bypass package import-time Metal initialization only",
+  "helper_source_sha256": {
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx_lm/tuner/datasets.py": "dcd675376d68d1813261c8389236b586b16b9a58a5ea80be8eb535bb9d0e9689",
+    "loss-fix/apple/src/exl3_mlx/data.py": "4791c84ad1bff633f3ffd49d9c6cc5f930ad59bdd3fe3e189b5720f868112a15"
+  },
+  "raw_sha256": "9d058b2b163cbcbd7d28c021188dc941f65b9d07d5bbf1c24d5baa50daec8d36",
+  "expected_prepared_sha256": "ca6fd8c939be9de5f7715e79d5f1ffc9354d251d1092aa9a3cc77d5d5ce80cb3",
+  "standard_prepared_sha256": "ca6fd8c939be9de5f7715e79d5f1ffc9354d251d1092aa9a3cc77d5d5ce80cb3",
+  "exact_row_order_token_ids_and_loss_start": true,
+  "counts": {
+    "train": 3,
+    "valid": 0,
+    "test": 0
+  },
+  "max_length": 5822,
+  "seq_length": 5821,
+  "row_lengths": [
+    3606,
+    5809,
+    5822
+  ],
+  "row_target_counts": [
+    204,
+    811,
+    1877
+  ]
+}

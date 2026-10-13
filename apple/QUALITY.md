@@ -1,6 +1,95 @@
 # Quality gates for the Apple EXL3 trainer
 
-## Current long-context result
+## Current long-context results
+
+The current integrated source suite passed **1,040 tests plus 27 subtests**;
+[JUnit receipt](reports/loss-fix-integrated-pytest.xml). This is a code-test result,
+separate from the pinned runtimes and measured experiment scopes below.
+
+A later final-block experiment fitted the complete 5,809-token Metal edit: NLL
+fell from 0.5012578592 to 0.4735794807 over eight updates, with exact same-process
+uncached final-logit parity. It trained one distinct change; most gain came from
+comments/headers and added-code accuracy stayed 112/114. The separate BF16-mode
+one-step experiment also descended against its own baseline; its completed
+checkpoint-mode control is described below. See the [measured results](reports/last-block-training-result-and-recipe.md).
+The normal [three-change flow](reports/standard-three-change-run.md) completed
+12 updates on three complete examples (3,606 / 5,809 / 5,822 tokens), four exposures
+each. Fresh-process answer NLL fell **0.3555532213 → 0.3262765797 (8.23%)**, with
+all three rows improving. All twelve finite checkpoints passed the CPU audit,
+and the fresh uncached adapter logits matched all three actual warm-cache probe
+hits exactly. Training plus that probe took **30.1 minutes**, peaking at **53.08
+GiB MLX** under an 80 GiB guard. The independent CPU rerun reproduced the
+[paired evidence report](reports/three-changes-standard-fit-independent.json).
+
+The result includes an explicit resource exception: the successful 80 GiB fresh
+baseline was reused, while only adapter evaluation retried at 72 GiB after an
+80 GiB startup-headroom rejection. Reserve stayed 8 GiB; numerical/data/cache
+settings stayed unchanged. Both that failed startup and a separate pre-model
+path-typo failure are preserved. They are not extra training updates.
+
+Added-code loss improved only in aggregate: it worsened slightly on rows 0 and 1
+and improved on row 2. Correct added-code predictions rose **1,501 → 1,502 / 1,527**;
+comments and diff headers supplied about **92.1%** of aggregate NLL-sum gain.
+EOS argmax correctness fell **1/3 → 0/3**. These are teacher-forced training scores,
+not generated patches. The three changes share one lineage, with no held-out
+or independently benchmarked new-kernel quality claim. The first failed
+all40-layer trial below remains preserved as historical evidence.
+
+## Completed activation control and upstream checks
+
+The one-update, all40-layer control comparison is complete on the same previously
+inspected training row, with the same numerical recipe and pinned runtime:
+
+| Activation mode | Own baseline NLL | Fresh post-update NLL | Change |
+| --- | ---: | ---: | ---: |
+| Checkpoint | 0.5012578368 | 0.5033001955 | +0.0020423587 |
+| Experimental BF16 | 0.5061723590 | 0.5014906038 | −0.0046817552 |
+
+This supports investigating the bundled differentiable-path activation roundtrips;
+it does not identify a unique cause or establish a general fix. The modes change
+the forward objective, and real routing may differ. Indexer quantization and BF16
+casts remain. The control was planned after the treatment outcome was known;
+there is one update per mode and no held-out task or repeated-trial estimate.
+Treatment used an 80 GiB cap; control training/evaluation used prospectively
+recorded 76/72 GiB caps, all with 8 GiB reserve and unchanged explicit caches.
+The control reproduced the historical baseline but **not** its exact update:
+78 B matrices differed, and the fresh post NLL was 0.5033001955 rather than the
+historical 0.5053724668. Both regressed. Repeated-index gradient accumulation is
+a plausible repeatability limitation, not a measured localization of that
+mismatch. See the [audit](reports/matched-checkpoint-control-76g-audit.json) and
+[independent final review](reports/matched-control-final-independent-review.md).
+
+The broader pinned upstream intake now produces structured, source-grounded
+historical examples from mlx-serve, TensorFold, Sushi and llama.cpp. A bounded
+100-candidate audit reconstructed 93 source pairs; only **five** fit the 32,768-token
+whole-file format, across two lineages and mixed kernel/integration tasks. Those
+five are source-only candidates, not independently benchmarked improvements.
+Reviewed complete source units produced a **3,394-token** llama.cpp convolution
+example. Its normal SFT [project](artifacts/loss-fix/upstream-llama-prepared-project/project.json)
+is prepared with provenance bound, **zero updates**, one training row and no
+held-out split. Retrospective task annotations are target-derived; this does not
+establish prospective optimization ability. See the [intake inventory](reports/upstream-corpus-inventory.md)
+and [interface contract](docs/UPSTREAM_INTAKE.md).
+
+Two original upstream source pairs also passed narrow GPU checks on the M1 Ultra:
+
+- [llama.cpp convolution](artifacts/loss-fix/llama-conv-parity-v2/gpu-parity.json):
+  all 16 fixed float/half-weight cases matched before/after and the independent
+  exact dyadic CPU reference bit for bit, with finite outputs and intact input,
+  prefix, row-gap and tail checks. The [independent CPU audit](reports/llama-conv-gpu-independent-check.json)
+  reconstructed all 29,498 outputs per variant and matched both complete GPU
+  buffer hashes.
+- [TensorFold EXLR8 projection](artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/parity.json):
+  all 65,536 codebook states and 162 finite FP32 projection cases matched the
+  original kernel bit for bit with unchanged trailing canaries. Prompt tensor-unit,
+  CUDA, BF16-output and surrounding host-integration paths were excluded.
+
+These are locally bound compile/parity receipts for original upstream code.
+Neither test measured speed or evaluated generated kernels, and neither certifies
+the whole upstream commit. They do not add trained changes to the three-row run
+or automatically grant the importer's stricter `execution_verified` admission.
+
+## Preserved first all40-layer trial
 
 The complete 5,809-token kernel-edit example finished one update in 31.0 minutes,
 peaking at 73.95 GiB MLX under an 80 GiB process cap and explicit 12 GiB reserve.
@@ -19,12 +108,13 @@ Actual-weight native/head VJP checks passed 6/6 cases; the 5,808-row
 native execution passed all five cases with eight oracle rows per projection;
 real-dimension sparse attention passed four F32/BF16 cases. These component
 checks do not certify the full-model gradient or repair the fitting failure.
-The current suite passes **518 tests plus 27 subtests**; see the
+That revision’s suite passed **518 tests plus 27 subtests**; see the
 [diagnosis update](reports/first-step-diagnosis-update.md) and [JUnit](reports/kernel-sft-pytest.xml).
 Operational completion, adapter influence, improved likelihood and useful
 kernel quality are separate claims. This trial establishes the first two only.
 The 32,768-token implementation ceiling has not been validated by a training run;
-5,809 tokens is the largest complete training example tested here.
+that preserved trial tested 5,809 tokens. The later standard run above completed
+5,822-token updates; neither run validates the 32,768-token ceiling.
 
 ## Earlier workflow verification
 

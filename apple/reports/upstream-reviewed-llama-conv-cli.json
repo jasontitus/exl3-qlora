@@ -1,0 +1,58 @@
+{
+  "format": "exl3-mlx-upstream-import-v1",
+  "source": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-inventory/reviewed-units/llama-conv-manifest.json",
+  "source_files_sha256": {
+    "llama-conv-manifest.json": "69b58f54afc6f36a24a764e4d093de670a1cfd72971d207e66198a23b40fa305"
+  },
+  "model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "tokenizer": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "model_config_sha256": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d",
+  "minimum_verification": "source_reconstructed",
+  "context_policies": {
+    "reviewed_units": 1
+  },
+  "counts": {
+    "candidates": 1,
+    "source_reconstructed": 1,
+    "unique_normalized_patches": 1,
+    "train": 1,
+    "valid": 0,
+    "test": 0,
+    "excluded": 0
+  },
+  "ready_for_sft": true,
+  "selected_case_ids": [
+    "llama-cpp-560445bf34c8"
+  ],
+  "max_length": 3394,
+  "max_examples": null,
+  "context_ceiling": 32768,
+  "truncated": 0,
+  "exclusion_counts": {},
+  "evaluation_scope": "training_only",
+  "quality_evaluation_available": false,
+  "execution_verified_examples": 0,
+  "selected_lineages": 1,
+  "limitations": [
+    "No compiler, numerical checker or benchmark ran; no executable-kernel quality claim.",
+    "Target-selected complete changed files are not complete repository/build/runtime dependencies.",
+    "Commit rationale and metrics are source-reported; inferred annotations are explicitly labeled.",
+    "All examples train-only; repository/commit/declared-group/normalized-patch connections and explicit protected keys are conservative, not blanket contamination assurance.",
+    "No best-of-N generation or independently confirmed performance selection is implemented by this intake.",
+    "Unknown metadata stays unknown; large complete examples are excluded without cropping."
+  ],
+  "artifacts_sha256": {
+    "train.jsonl": "84be02ee4e2210d29131c250c971002c6a83e4254c6cbe94311c0be56b0be7e4",
+    "valid.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "test.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "provenance.jsonl": "59b513595009b7196b1bfd1490395512e45e6727b8395c11f50f93cf3611a3e6",
+    "ledger.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "length-audit.jsonl": "7ee14f89f4e1f37abd50e0fb2447fdc10758e9fc168b7dc75c53c7b6eee6c594"
+  },
+  "output": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-reviewed-llama-conv",
+  "manifest_sha256": "bd207d2140aa95811aa25e0585844a4de672560099655c321c4f2b2925787fde"
+}

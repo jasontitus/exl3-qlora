@@ -1,0 +1,1996 @@
+{
+  "format": "exl3-matched-control-training-interim-independent-review-v1",
+  "created_utc": "2026-10-13T03:37:15.382682+00:00",
+  "scope": "Completed train phase only; fresh post evaluation pending, no descent/causal result claimed",
+  "input_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/matched-checkpoint-control-resource-plan.json": "83f6ac58ba5d93b655ef0fb5af1d570ca1a86eec4a4d44a54892bf9308976cbc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/training.json": "b1d2d635c0e3eb063c9c5727504576667c60fdd2a0860003b2e9126d83f16777",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/run_config.json": "3ab0eb64e9a4349b56d6ba5eafa8125d8fb4cd9d13e17ec3948498b768ca4d4f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step-config.json": "ca3f5fb266632e96792455404e70171ba64af0d62afeee229196c02ba370bee2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/step-000001/adapter.safetensors": "a0634cc41fee0c1073257daea0310a3f2105d5bbc53b5531c01368007adace99",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/step-000001/adapter_config.json": "e617d32ead29d1d7bd5ff36ed06cc792305e35729f04740a937a9821fbcc428f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/step-000001/optimizer.safetensors": "79c1ce66a9c664ae5539fc61394ea4ef7f8c1859d30ca5ebd13c54af55c23f75",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/step-000001/random.safetensors": "af6b04bdf2d71a07c7e29ec138a43fd8b6a7a036c22610aedd00684f16a53f77",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/step-000001/trainer_state.json": "20c0bae381f33148c4261ad5f26ee6a321fc4058a91f7a72455aa859730dfc02"
+  },
+  "launch_observed_sha256": "bb4a78b166b7112c045da88f002518ba584c93ee2cfe7546dd8f611f355a2379",
+  "launch_receipt_mutable_until_post_completion": true,
+  "launch_train_phase": {
+    "argv": [
+      "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python",
+      "-m",
+      "exl3_mlx.workflow",
+      "train",
+      "--config",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step-config.json"
+    ],
+    "cwd": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple",
+    "environment": {
+      "PYTHONPATH": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v2/src"
+    },
+    "stdout": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/matched-control-76g-launch-train.stdout.log",
+    "stderr": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/matched-control-76g-launch-train.stderr.log",
+    "started_utc": "2026-10-13T02:58:32.925694+00:00",
+    "status": "completed",
+    "process_id": 79190,
+    "exit_code": 0,
+    "finished_utc": "2026-10-13T03:33:19.197911+00:00"
+  },
+  "before_after_pinned_files_and_runtime_verified": true,
+  "launch_order_verified": true,
+  "new_evaluation_process_id": 29338,
+  "training_resources": {
+    "profile": "development",
+    "memory_gib": 76.0,
+    "reserve_gib": 8.0,
+    "packed_cache_mib": 8192,
+    "decoded_cache_mib": 0,
+    "prefix_cache_mib": 0,
+    "allocator_cache_mib": 256
+  },
+  "historical_tensor_comparisons": {
+    "adapters": {
+      "exact": false,
+      "count": 160,
+      "different": [
+        "blocks.0.attn.linears.wo_b.lora_b",
+        "blocks.0.attn.linears.wq_a.lora_b",
+        "blocks.1.attn.linears.wo_b.lora_b",
+        "blocks.1.attn.linears.wq_a.lora_b",
+        "blocks.10.attn.linears.wo_b.lora_b",
+        "blocks.10.attn.linears.wq_a.lora_b",
+        "blocks.11.attn.linears.wo_b.lora_b",
+        "blocks.11.attn.linears.wq_a.lora_b",
+        "blocks.12.attn.linears.wo_b.lora_b",
+        "blocks.12.attn.linears.wq_a.lora_b",
+        "blocks.13.attn.linears.wo_b.lora_b",
+        "blocks.13.attn.linears.wq_a.lora_b",
+        "blocks.14.attn.linears.wo_b.lora_b",
+        "blocks.14.attn.linears.wq_a.lora_b",
+        "blocks.15.attn.linears.wo_b.lora_b",
+        "blocks.15.attn.linears.wq_a.lora_b",
+        "blocks.16.attn.linears.wo_b.lora_b",
+        "blocks.16.attn.linears.wq_a.lora_b",
+        "blocks.17.attn.linears.wo_b.lora_b",
+        "blocks.17.attn.linears.wq_a.lora_b",
+        "blocks.18.attn.linears.wo_b.lora_b",
+        "blocks.18.attn.linears.wq_a.lora_b",
+        "blocks.19.attn.linears.wo_b.lora_b",
+        "blocks.19.attn.linears.wq_a.lora_b",
+        "blocks.2.attn.linears.wo_b.lora_b",
+        "blocks.2.attn.linears.wq_a.lora_b",
+        "blocks.20.attn.linears.wo_b.lora_b",
+        "blocks.20.attn.linears.wq_a.lora_b",
+        "blocks.21.attn.linears.wo_b.lora_b",
+        "blocks.21.attn.linears.wq_a.lora_b",
+        "blocks.22.attn.linears.wo_b.lora_b",
+        "blocks.22.attn.linears.wq_a.lora_b",
+        "blocks.23.attn.linears.wo_b.lora_b",
+        "blocks.23.attn.linears.wq_a.lora_b",
+        "blocks.24.attn.linears.wo_b.lora_b",
+        "blocks.24.attn.linears.wq_a.lora_b",
+        "blocks.25.attn.linears.wo_b.lora_b",
+        "blocks.25.attn.linears.wq_a.lora_b",
+        "blocks.26.attn.linears.wo_b.lora_b",
+        "blocks.26.attn.linears.wq_a.lora_b",
+        "blocks.27.attn.linears.wo_b.lora_b",
+        "blocks.27.attn.linears.wq_a.lora_b",
+        "blocks.28.attn.linears.wo_b.lora_b",
+        "blocks.28.attn.linears.wq_a.lora_b",
+        "blocks.29.attn.linears.wo_b.lora_b",
+        "blocks.29.attn.linears.wq_a.lora_b",
+        "blocks.3.attn.linears.wo_b.lora_b",
+        "blocks.3.attn.linears.wq_a.lora_b",
+        "blocks.30.attn.linears.wo_b.lora_b",
+        "blocks.30.attn.linears.wq_a.lora_b",
+        "blocks.31.attn.linears.wo_b.lora_b",
+        "blocks.31.attn.linears.wq_a.lora_b",
+        "blocks.32.attn.linears.wo_b.lora_b",
+        "blocks.32.attn.linears.wq_a.lora_b",
+        "blocks.33.attn.linears.wo_b.lora_b",
+        "blocks.33.attn.linears.wq_a.lora_b",
+        "blocks.34.attn.linears.wo_b.lora_b",
+        "blocks.34.attn.linears.wq_a.lora_b",
+        "blocks.35.attn.linears.wo_b.lora_b",
+        "blocks.35.attn.linears.wq_a.lora_b",
+        "blocks.36.attn.linears.wo_b.lora_b",
+        "blocks.36.attn.linears.wq_a.lora_b",
+        "blocks.37.attn.linears.wo_b.lora_b",
+        "blocks.37.attn.linears.wq_a.lora_b",
+        "blocks.38.attn.linears.wo_b.lora_b",
+        "blocks.38.attn.linears.wq_a.lora_b",
+        "blocks.4.attn.linears.wo_b.lora_b",
+        "blocks.4.attn.linears.wq_a.lora_b",
+        "blocks.5.attn.linears.wo_b.lora_b",
+        "blocks.5.attn.linears.wq_a.lora_b",
+        "blocks.6.attn.linears.wo_b.lora_b",
+        "blocks.6.attn.linears.wq_a.lora_b",
+        "blocks.7.attn.linears.wo_b.lora_b",
+        "blocks.7.attn.linears.wq_a.lora_b",
+        "blocks.8.attn.linears.wo_b.lora_b",
+        "blocks.8.attn.linears.wq_a.lora_b",
+        "blocks.9.attn.linears.wo_b.lora_b",
+        "blocks.9.attn.linears.wq_a.lora_b"
+      ]
+    },
+    "A": {
+      "exact": true,
+      "count": 80,
+      "different": []
+    },
+    "B": {
+      "exact": false,
+      "count": 80,
+      "different": [
+        "blocks.0.attn.linears.wo_b.lora_b",
+        "blocks.0.attn.linears.wq_a.lora_b",
+        "blocks.1.attn.linears.wo_b.lora_b",
+        "blocks.1.attn.linears.wq_a.lora_b",
+        "blocks.10.attn.linears.wo_b.lora_b",
+        "blocks.10.attn.linears.wq_a.lora_b",
+        "blocks.11.attn.linears.wo_b.lora_b",
+        "blocks.11.attn.linears.wq_a.lora_b",
+        "blocks.12.attn.linears.wo_b.lora_b",
+        "blocks.12.attn.linears.wq_a.lora_b",
+        "blocks.13.attn.linears.wo_b.lora_b",
+        "blocks.13.attn.linears.wq_a.lora_b",
+        "blocks.14.attn.linears.wo_b.lora_b",
+        "blocks.14.attn.linears.wq_a.lora_b",
+        "blocks.15.attn.linears.wo_b.lora_b",
+        "blocks.15.attn.linears.wq_a.lora_b",
+        "blocks.16.attn.linears.wo_b.lora_b",
+        "blocks.16.attn.linears.wq_a.lora_b",
+        "blocks.17.attn.linears.wo_b.lora_b",
+        "blocks.17.attn.linears.wq_a.lora_b",
+        "blocks.18.attn.linears.wo_b.lora_b",
+        "blocks.18.attn.linears.wq_a.lora_b",
+        "blocks.19.attn.linears.wo_b.lora_b",
+        "blocks.19.attn.linears.wq_a.lora_b",
+        "blocks.2.attn.linears.wo_b.lora_b",
+        "blocks.2.attn.linears.wq_a.lora_b",
+        "blocks.20.attn.linears.wo_b.lora_b",
+        "blocks.20.attn.linears.wq_a.lora_b",
+        "blocks.21.attn.linears.wo_b.lora_b",
+        "blocks.21.attn.linears.wq_a.lora_b",
+        "blocks.22.attn.linears.wo_b.lora_b",
+        "blocks.22.attn.linears.wq_a.lora_b",
+        "blocks.23.attn.linears.wo_b.lora_b",
+        "blocks.23.attn.linears.wq_a.lora_b",
+        "blocks.24.attn.linears.wo_b.lora_b",
+        "blocks.24.attn.linears.wq_a.lora_b",
+        "blocks.25.attn.linears.wo_b.lora_b",
+        "blocks.25.attn.linears.wq_a.lora_b",
+        "blocks.26.attn.linears.wo_b.lora_b",
+        "blocks.26.attn.linears.wq_a.lora_b",
+        "blocks.27.attn.linears.wo_b.lora_b",
+        "blocks.27.attn.linears.wq_a.lora_b",
+        "blocks.28.attn.linears.wo_b.lora_b",
+        "blocks.28.attn.linears.wq_a.lora_b",
+        "blocks.29.attn.linears.wo_b.lora_b",
+        "blocks.29.attn.linears.wq_a.lora_b",
+        "blocks.3.attn.linears.wo_b.lora_b",
+        "blocks.3.attn.linears.wq_a.lora_b",
+        "blocks.30.attn.linears.wo_b.lora_b",
+        "blocks.30.attn.linears.wq_a.lora_b",
+        "blocks.31.attn.linears.wo_b.lora_b",
+        "blocks.31.attn.linears.wq_a.lora_b",
+        "blocks.32.attn.linears.wo_b.lora_b",
+        "blocks.32.attn.linears.wq_a.lora_b",
+        "blocks.33.attn.linears.wo_b.lora_b",
+        "blocks.33.attn.linears.wq_a.lora_b",
+        "blocks.34.attn.linears.wo_b.lora_b",
+        "blocks.34.attn.linears.wq_a.lora_b",
+        "blocks.35.attn.linears.wo_b.lora_b",
+        "blocks.35.attn.linears.wq_a.lora_b",
+        "blocks.36.attn.linears.wo_b.lora_b",
+        "blocks.36.attn.linears.wq_a.lora_b",
+        "blocks.37.attn.linears.wo_b.lora_b",
+        "blocks.37.attn.linears.wq_a.lora_b",
+        "blocks.38.attn.linears.wo_b.lora_b",
+        "blocks.38.attn.linears.wq_a.lora_b",
+        "blocks.4.attn.linears.wo_b.lora_b",
+        "blocks.4.attn.linears.wq_a.lora_b",
+        "blocks.5.attn.linears.wo_b.lora_b",
+        "blocks.5.attn.linears.wq_a.lora_b",
+        "blocks.6.attn.linears.wo_b.lora_b",
+        "blocks.6.attn.linears.wq_a.lora_b",
+        "blocks.7.attn.linears.wo_b.lora_b",
+        "blocks.7.attn.linears.wq_a.lora_b",
+        "blocks.8.attn.linears.wo_b.lora_b",
+        "blocks.8.attn.linears.wq_a.lora_b",
+        "blocks.9.attn.linears.wo_b.lora_b",
+        "blocks.9.attn.linears.wq_a.lora_b"
+      ]
+    },
+    "optimizer": {
+      "exact": false,
+      "count": 322,
+      "different": [
+        "blocks.0.attn.linears.wo_b.lora_b.m",
+        "blocks.0.attn.linears.wo_b.lora_b.v",
+        "blocks.0.attn.linears.wq_a.lora_b.m",
+        "blocks.0.attn.linears.wq_a.lora_b.v",
+        "blocks.1.attn.linears.wo_b.lora_b.m",
+        "blocks.1.attn.linears.wo_b.lora_b.v",
+        "blocks.1.attn.linears.wq_a.lora_b.m",
+        "blocks.1.attn.linears.wq_a.lora_b.v",
+        "blocks.10.attn.linears.wo_b.lora_b.m",
+        "blocks.10.attn.linears.wo_b.lora_b.v",
+        "blocks.10.attn.linears.wq_a.lora_b.m",
+        "blocks.10.attn.linears.wq_a.lora_b.v",
+        "blocks.11.attn.linears.wo_b.lora_b.m",
+        "blocks.11.attn.linears.wo_b.lora_b.v",
+        "blocks.11.attn.linears.wq_a.lora_b.m",
+        "blocks.11.attn.linears.wq_a.lora_b.v",
+        "blocks.12.attn.linears.wo_b.lora_b.m",
+        "blocks.12.attn.linears.wo_b.lora_b.v",
+        "blocks.12.attn.linears.wq_a.lora_b.m",
+        "blocks.12.attn.linears.wq_a.lora_b.v",
+        "blocks.13.attn.linears.wo_b.lora_b.m",
+        "blocks.13.attn.linears.wo_b.lora_b.v",
+        "blocks.13.attn.linears.wq_a.lora_b.m",
+        "blocks.13.attn.linears.wq_a.lora_b.v",
+        "blocks.14.attn.linears.wo_b.lora_b.m",
+        "blocks.14.attn.linears.wo_b.lora_b.v",
+        "blocks.14.attn.linears.wq_a.lora_b.m",
+        "blocks.14.attn.linears.wq_a.lora_b.v",
+        "blocks.15.attn.linears.wo_b.lora_b.m",
+        "blocks.15.attn.linears.wo_b.lora_b.v",
+        "blocks.15.attn.linears.wq_a.lora_b.m",
+        "blocks.15.attn.linears.wq_a.lora_b.v",
+        "blocks.16.attn.linears.wo_b.lora_b.m",
+        "blocks.16.attn.linears.wo_b.lora_b.v",
+        "blocks.16.attn.linears.wq_a.lora_b.m",
+        "blocks.16.attn.linears.wq_a.lora_b.v",
+        "blocks.17.attn.linears.wo_b.lora_b.m",
+        "blocks.17.attn.linears.wo_b.lora_b.v",
+        "blocks.17.attn.linears.wq_a.lora_b.m",
+        "blocks.17.attn.linears.wq_a.lora_b.v",
+        "blocks.18.attn.linears.wo_b.lora_b.m",
+        "blocks.18.attn.linears.wo_b.lora_b.v",
+        "blocks.18.attn.linears.wq_a.lora_b.m",
+        "blocks.18.attn.linears.wq_a.lora_b.v",
+        "blocks.19.attn.linears.wo_b.lora_b.m",
+        "blocks.19.attn.linears.wo_b.lora_b.v",
+        "blocks.19.attn.linears.wq_a.lora_b.m",
+        "blocks.19.attn.linears.wq_a.lora_b.v",
+        "blocks.2.attn.linears.wo_b.lora_b.m",
+        "blocks.2.attn.linears.wo_b.lora_b.v",
+        "blocks.2.attn.linears.wq_a.lora_b.m",
+        "blocks.2.attn.linears.wq_a.lora_b.v",
+        "blocks.20.attn.linears.wo_b.lora_b.m",
+        "blocks.20.attn.linears.wo_b.lora_b.v",
+        "blocks.20.attn.linears.wq_a.lora_b.m",
+        "blocks.20.attn.linears.wq_a.lora_b.v",
+        "blocks.21.attn.linears.wo_b.lora_b.m",
+        "blocks.21.attn.linears.wo_b.lora_b.v",
+        "blocks.21.attn.linears.wq_a.lora_b.m",
+        "blocks.21.attn.linears.wq_a.lora_b.v",
+        "blocks.22.attn.linears.wo_b.lora_b.m",
+        "blocks.22.attn.linears.wo_b.lora_b.v",
+        "blocks.22.attn.linears.wq_a.lora_b.m",
+        "blocks.22.attn.linears.wq_a.lora_b.v",
+        "blocks.23.attn.linears.wo_b.lora_b.m",
+        "blocks.23.attn.linears.wo_b.lora_b.v",
+        "blocks.23.attn.linears.wq_a.lora_b.m",
+        "blocks.23.attn.linears.wq_a.lora_b.v",
+        "blocks.24.attn.linears.wo_b.lora_b.m",
+        "blocks.24.attn.linears.wo_b.lora_b.v",
+        "blocks.24.attn.linears.wq_a.lora_b.m",
+        "blocks.24.attn.linears.wq_a.lora_b.v",
+        "blocks.25.attn.linears.wo_b.lora_b.m",
+        "blocks.25.attn.linears.wo_b.lora_b.v",
+        "blocks.25.attn.linears.wq_a.lora_b.m",
+        "blocks.25.attn.linears.wq_a.lora_b.v",
+        "blocks.26.attn.linears.wo_b.lora_b.m",
+        "blocks.26.attn.linears.wo_b.lora_b.v",
+        "blocks.26.attn.linears.wq_a.lora_b.m",
+        "blocks.26.attn.linears.wq_a.lora_b.v",
+        "blocks.27.attn.linears.wo_b.lora_b.m",
+        "blocks.27.attn.linears.wo_b.lora_b.v",
+        "blocks.27.attn.linears.wq_a.lora_b.m",
+        "blocks.27.attn.linears.wq_a.lora_b.v",
+        "blocks.28.attn.linears.wo_b.lora_b.m",
+        "blocks.28.attn.linears.wo_b.lora_b.v",
+        "blocks.28.attn.linears.wq_a.lora_b.m",
+        "blocks.28.attn.linears.wq_a.lora_b.v",
+        "blocks.29.attn.linears.wo_b.lora_b.m",
+        "blocks.29.attn.linears.wo_b.lora_b.v",
+        "blocks.29.attn.linears.wq_a.lora_b.m",
+        "blocks.29.attn.linears.wq_a.lora_b.v",
+        "blocks.3.attn.linears.wo_b.lora_b.m",
+        "blocks.3.attn.linears.wo_b.lora_b.v",
+        "blocks.3.attn.linears.wq_a.lora_b.m",
+        "blocks.3.attn.linears.wq_a.lora_b.v",
+        "blocks.30.attn.linears.wo_b.lora_b.m",
+        "blocks.30.attn.linears.wo_b.lora_b.v",
+        "blocks.30.attn.linears.wq_a.lora_b.m",
+        "blocks.30.attn.linears.wq_a.lora_b.v",
+        "blocks.31.attn.linears.wo_b.lora_b.m",
+        "blocks.31.attn.linears.wo_b.lora_b.v",
+        "blocks.31.attn.linears.wq_a.lora_b.m",
+        "blocks.31.attn.linears.wq_a.lora_b.v",
+        "blocks.32.attn.linears.wo_b.lora_b.m",
+        "blocks.32.attn.linears.wo_b.lora_b.v",
+        "blocks.32.attn.linears.wq_a.lora_b.m",
+        "blocks.32.attn.linears.wq_a.lora_b.v",
+        "blocks.33.attn.linears.wo_b.lora_b.m",
+        "blocks.33.attn.linears.wo_b.lora_b.v",
+        "blocks.33.attn.linears.wq_a.lora_b.m",
+        "blocks.33.attn.linears.wq_a.lora_b.v",
+        "blocks.34.attn.linears.wo_b.lora_b.m",
+        "blocks.34.attn.linears.wo_b.lora_b.v",
+        "blocks.34.attn.linears.wq_a.lora_b.m",
+        "blocks.34.attn.linears.wq_a.lora_b.v",
+        "blocks.35.attn.linears.wo_b.lora_b.m",
+        "blocks.35.attn.linears.wo_b.lora_b.v",
+        "blocks.35.attn.linears.wq_a.lora_b.m",
+        "blocks.35.attn.linears.wq_a.lora_b.v",
+        "blocks.36.attn.linears.wo_b.lora_b.m",
+        "blocks.36.attn.linears.wo_b.lora_b.v",
+        "blocks.36.attn.linears.wq_a.lora_b.m",
+        "blocks.36.attn.linears.wq_a.lora_b.v",
+        "blocks.37.attn.linears.wo_b.lora_b.m",
+        "blocks.37.attn.linears.wo_b.lora_b.v",
+        "blocks.37.attn.linears.wq_a.lora_b.m",
+        "blocks.37.attn.linears.wq_a.lora_b.v",
+        "blocks.38.attn.linears.wo_b.lora_b.m",
+        "blocks.38.attn.linears.wo_b.lora_b.v",
+        "blocks.38.attn.linears.wq_a.lora_b.m",
+        "blocks.38.attn.linears.wq_a.lora_b.v",
+        "blocks.4.attn.linears.wo_b.lora_b.m",
+        "blocks.4.attn.linears.wo_b.lora_b.v",
+        "blocks.4.attn.linears.wq_a.lora_b.m",
+        "blocks.4.attn.linears.wq_a.lora_b.v",
+        "blocks.5.attn.linears.wo_b.lora_b.m",
+        "blocks.5.attn.linears.wo_b.lora_b.v",
+        "blocks.5.attn.linears.wq_a.lora_b.m",
+        "blocks.5.attn.linears.wq_a.lora_b.v",
+        "blocks.6.attn.linears.wo_b.lora_b.m",
+        "blocks.6.attn.linears.wo_b.lora_b.v",
+        "blocks.6.attn.linears.wq_a.lora_b.m",
+        "blocks.6.attn.linears.wq_a.lora_b.v",
+        "blocks.7.attn.linears.wo_b.lora_b.m",
+        "blocks.7.attn.linears.wo_b.lora_b.v",
+        "blocks.7.attn.linears.wq_a.lora_b.m",
+        "blocks.7.attn.linears.wq_a.lora_b.v",
+        "blocks.8.attn.linears.wo_b.lora_b.m",
+        "blocks.8.attn.linears.wo_b.lora_b.v",
+        "blocks.8.attn.linears.wq_a.lora_b.m",
+        "blocks.8.attn.linears.wq_a.lora_b.v",
+        "blocks.9.attn.linears.wo_b.lora_b.m",
+        "blocks.9.attn.linears.wo_b.lora_b.v",
+        "blocks.9.attn.linears.wq_a.lora_b.m",
+        "blocks.9.attn.linears.wq_a.lora_b.v"
+      ]
+    },
+    "rng": {
+      "exact": true,
+      "count": 1,
+      "different": []
+    }
+  },
+  "historical_update_tensors_exact": false,
+  "all_adapter_optimizer_finite": true,
+  "B_nonzero_count": 80,
+  "B_total": 80,
+  "moments": {
+    "changed_b_tensors": 80,
+    "clip_scale": 1.0,
+    "reported_raw_gradient_norm": 0.03827793523669243,
+    "reconstructed_raw_gradient_norm": 0.038277933875577624,
+    "g_dot_actual_delta": -0.0008524634130717974,
+    "tensors": [
+      {
+        "key": "blocks.0.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0038031159632154663,
+        "update_norm": 0.004339664281197964,
+        "g_dot_delta": -1.320487780456258e-05
+      },
+      {
+        "key": "blocks.0.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0013054939999070931,
+        "update_norm": 0.0021415328182240023,
+        "g_dot_delta": -2.2600987747876743e-06
+      },
+      {
+        "key": "blocks.1.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.005332050300427596,
+        "update_norm": 0.004385448801531022,
+        "g_dot_delta": -1.8769217249272025e-05
+      },
+      {
+        "key": "blocks.1.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0026029464789662643,
+        "update_norm": 0.002192364901891991,
+        "g_dot_delta": -4.514118740212189e-06
+      },
+      {
+        "key": "blocks.10.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.007573456807411251,
+        "update_norm": 0.004414256640346494,
+        "g_dot_delta": -2.6182427330746697e-05
+      },
+      {
+        "key": "blocks.10.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004168867314412613,
+        "update_norm": 0.0022142179368753873,
+        "g_dot_delta": -7.3587600572600645e-06
+      },
+      {
+        "key": "blocks.11.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004759862792011981,
+        "update_norm": 0.004375997718725648,
+        "g_dot_delta": -1.6904851496804004e-05
+      },
+      {
+        "key": "blocks.11.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003888930466906909,
+        "update_norm": 0.002212604547356639,
+        "g_dot_delta": -6.8790236334416915e-06
+      },
+      {
+        "key": "blocks.12.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.005833128021642906,
+        "update_norm": 0.004394884533254644,
+        "g_dot_delta": -2.061828633542054e-05
+      },
+      {
+        "key": "blocks.12.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004223235111173474,
+        "update_norm": 0.0022159945484360793,
+        "g_dot_delta": -7.547179767599758e-06
+      },
+      {
+        "key": "blocks.13.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.006218870135472451,
+        "update_norm": 0.004399011528730765,
+        "g_dot_delta": -2.179111391570534e-05
+      },
+      {
+        "key": "blocks.13.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003889032372135983,
+        "update_norm": 0.002213164095562664,
+        "g_dot_delta": -6.894273950441065e-06
+      },
+      {
+        "key": "blocks.14.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.010181891856143259,
+        "update_norm": 0.004437717816448394,
+        "g_dot_delta": -3.506354066477856e-05
+      },
+      {
+        "key": "blocks.14.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.006944418329149591,
+        "update_norm": 0.002229123524960164,
+        "g_dot_delta": -1.2321554583442916e-05
+      },
+      {
+        "key": "blocks.15.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.006217631939390418,
+        "update_norm": 0.004389762564264759,
+        "g_dot_delta": -2.0726182829118562e-05
+      },
+      {
+        "key": "blocks.15.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004750956582547471,
+        "update_norm": 0.0022178509768087454,
+        "g_dot_delta": -8.462651783557935e-06
+      },
+      {
+        "key": "blocks.16.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0069467931148222105,
+        "update_norm": 0.00441273221237861,
+        "g_dot_delta": -2.4518149950500003e-05
+      },
+      {
+        "key": "blocks.16.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.006427892420120278,
+        "update_norm": 0.002227462490308296,
+        "g_dot_delta": -1.1266301424875159e-05
+      },
+      {
+        "key": "blocks.17.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004837107074925476,
+        "update_norm": 0.004378601733570691,
+        "g_dot_delta": -1.7172833505068206e-05
+      },
+      {
+        "key": "blocks.17.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004496435400542956,
+        "update_norm": 0.002216483827352125,
+        "g_dot_delta": -7.944155695155755e-06
+      },
+      {
+        "key": "blocks.18.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.00419506879469845,
+        "update_norm": 0.004363970629251614,
+        "g_dot_delta": -1.486073289942281e-05
+      },
+      {
+        "key": "blocks.18.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004381538557351671,
+        "update_norm": 0.0022173255300906463,
+        "g_dot_delta": -7.7612372571182e-06
+      },
+      {
+        "key": "blocks.19.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.006799581006608472,
+        "update_norm": 0.004415007911516535,
+        "g_dot_delta": -2.4287801929057027e-05
+      },
+      {
+        "key": "blocks.19.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.006147219366641175,
+        "update_norm": 0.0022259918671289026,
+        "g_dot_delta": -1.0684959622891985e-05
+      },
+      {
+        "key": "blocks.2.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004661580689675379,
+        "update_norm": 0.004358562785483256,
+        "g_dot_delta": -1.5723576826068425e-05
+      },
+      {
+        "key": "blocks.2.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003929355605032783,
+        "update_norm": 0.002211681535381347,
+        "g_dot_delta": -6.934235376640943e-06
+      },
+      {
+        "key": "blocks.20.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.00415159986723307,
+        "update_norm": 0.004359051790143425,
+        "g_dot_delta": -1.4646513064654884e-05
+      },
+      {
+        "key": "blocks.20.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0037175072945467447,
+        "update_norm": 0.0022117867235563237,
+        "g_dot_delta": -6.5480623320891386e-06
+      },
+      {
+        "key": "blocks.21.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0035035557554474474,
+        "update_norm": 0.004330841800829586,
+        "g_dot_delta": -1.2287946898466848e-05
+      },
+      {
+        "key": "blocks.21.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004667718204251712,
+        "update_norm": 0.0022118163927636967,
+        "g_dot_delta": -7.721779608354106e-06
+      },
+      {
+        "key": "blocks.22.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003521868195017242,
+        "update_norm": 0.004337124293982275,
+        "g_dot_delta": -1.2440749604357623e-05
+      },
+      {
+        "key": "blocks.22.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.005107831095808419,
+        "update_norm": 0.002221066430734139,
+        "g_dot_delta": -8.878184065402909e-06
+      },
+      {
+        "key": "blocks.23.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0033517413424313416,
+        "update_norm": 0.004329199706649225,
+        "g_dot_delta": -1.1851916466007568e-05
+      },
+      {
+        "key": "blocks.23.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0028524632045844943,
+        "update_norm": 0.0021983150826888633,
+        "g_dot_delta": -5.044851007576968e-06
+      },
+      {
+        "key": "blocks.24.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0029836203024357897,
+        "update_norm": 0.004309909992655941,
+        "g_dot_delta": -1.0435161209798241e-05
+      },
+      {
+        "key": "blocks.24.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002512573528379534,
+        "update_norm": 0.0021859301128209826,
+        "g_dot_delta": -4.4101472743928874e-06
+      },
+      {
+        "key": "blocks.25.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.002291260426026134,
+        "update_norm": 0.004263531365962084,
+        "g_dot_delta": -8.021521729050377e-06
+      },
+      {
+        "key": "blocks.25.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0026615614869909387,
+        "update_norm": 0.002185340868353821,
+        "g_dot_delta": -4.519420170512788e-06
+      },
+      {
+        "key": "blocks.26.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0038263307073384926,
+        "update_norm": 0.004345080463480402,
+        "g_dot_delta": -1.328204117682214e-05
+      },
+      {
+        "key": "blocks.26.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0033358398921541923,
+        "update_norm": 0.002206511223915994,
+        "g_dot_delta": -5.985250993269617e-06
+      },
+      {
+        "key": "blocks.27.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.00249315459645365,
+        "update_norm": 0.004271907975573887,
+        "g_dot_delta": -8.611782546909332e-06
+      },
+      {
+        "key": "blocks.27.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0026956540534168972,
+        "update_norm": 0.0021915812435152632,
+        "g_dot_delta": -4.7035086543517484e-06
+      },
+      {
+        "key": "blocks.28.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0032553623477310748,
+        "update_norm": 0.004317258150541994,
+        "g_dot_delta": -1.132407293730704e-05
+      },
+      {
+        "key": "blocks.28.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002099938825093495,
+        "update_norm": 0.0021780625220411986,
+        "g_dot_delta": -3.6906012885015632e-06
+      },
+      {
+        "key": "blocks.29.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0024358246288650226,
+        "update_norm": 0.004280723079636805,
+        "g_dot_delta": -8.573762730832304e-06
+      },
+      {
+        "key": "blocks.29.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0020890049846218686,
+        "update_norm": 0.0021764034375072712,
+        "g_dot_delta": -3.6451827592476916e-06
+      },
+      {
+        "key": "blocks.3.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.003925103644734232,
+        "update_norm": 0.004346772400676353,
+        "g_dot_delta": -1.3594562698061065e-05
+      },
+      {
+        "key": "blocks.3.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003983929703471783,
+        "update_norm": 0.002210742132800521,
+        "g_dot_delta": -7.013764686308238e-06
+      },
+      {
+        "key": "blocks.30.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0019357572725583934,
+        "update_norm": 0.004230658456748419,
+        "g_dot_delta": -6.755419052202813e-06
+      },
+      {
+        "key": "blocks.30.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002108280498312735,
+        "update_norm": 0.002181010598463028,
+        "g_dot_delta": -3.7366772942508668e-06
+      },
+      {
+        "key": "blocks.31.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0025233246214842494,
+        "update_norm": 0.004285089992056911,
+        "g_dot_delta": -8.906110015055489e-06
+      },
+      {
+        "key": "blocks.31.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.00301588935477823,
+        "update_norm": 0.002198336982659993,
+        "g_dot_delta": -5.267401159699574e-06
+      },
+      {
+        "key": "blocks.32.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0022488081871723407,
+        "update_norm": 0.004266872828305056,
+        "g_dot_delta": -7.941291442731518e-06
+      },
+      {
+        "key": "blocks.32.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002472726155135569,
+        "update_norm": 0.0021932175335460324,
+        "g_dot_delta": -4.417932145679344e-06
+      },
+      {
+        "key": "blocks.33.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0035614157588646856,
+        "update_norm": 0.004324678935706326,
+        "g_dot_delta": -1.2014683113003276e-05
+      },
+      {
+        "key": "blocks.33.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002442615362874207,
+        "update_norm": 0.0021871338164089447,
+        "g_dot_delta": -4.274425803090345e-06
+      },
+      {
+        "key": "blocks.34.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0037669908783615467,
+        "update_norm": 0.004339271183784337,
+        "g_dot_delta": -1.2965599172274762e-05
+      },
+      {
+        "key": "blocks.34.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004080514783367039,
+        "update_norm": 0.0022129420343919835,
+        "g_dot_delta": -7.214534691142939e-06
+      },
+      {
+        "key": "blocks.35.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.002907251142456282,
+        "update_norm": 0.004301718985676912,
+        "g_dot_delta": -1.0060593423897685e-05
+      },
+      {
+        "key": "blocks.35.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0031332042838382837,
+        "update_norm": 0.002200708445311975,
+        "g_dot_delta": -5.455073222371323e-06
+      },
+      {
+        "key": "blocks.36.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.002525574630294553,
+        "update_norm": 0.004279058303365148,
+        "g_dot_delta": -8.827408372517746e-06
+      },
+      {
+        "key": "blocks.36.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.002574060400954828,
+        "update_norm": 0.002192515290903605,
+        "g_dot_delta": -4.547178913310455e-06
+      },
+      {
+        "key": "blocks.37.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0025075269845884554,
+        "update_norm": 0.004283095243786706,
+        "g_dot_delta": -8.793393564575954e-06
+      },
+      {
+        "key": "blocks.37.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004094471043769977,
+        "update_norm": 0.0022143220860436365,
+        "g_dot_delta": -7.2262848984748965e-06
+      },
+      {
+        "key": "blocks.38.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0017233712538724118,
+        "update_norm": 0.004203790656585372,
+        "g_dot_delta": -5.997076014850991e-06
+      },
+      {
+        "key": "blocks.38.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0029972752226905884,
+        "update_norm": 0.002197702593754044,
+        "g_dot_delta": -5.175887976215833e-06
+      },
+      {
+        "key": "blocks.39.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0020868869016030093,
+        "update_norm": 0.004235537067256449,
+        "g_dot_delta": -7.1518312365631635e-06
+      },
+      {
+        "key": "blocks.39.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0027442778392969447,
+        "update_norm": 0.002190559847461934,
+        "g_dot_delta": -4.622257954039086e-06
+      },
+      {
+        "key": "blocks.4.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004087276211896201,
+        "update_norm": 0.004359364127362118,
+        "g_dot_delta": -1.4478880425901749e-05
+      },
+      {
+        "key": "blocks.4.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.003266339283650836,
+        "update_norm": 0.002202348460124412,
+        "g_dot_delta": -5.771648028810246e-06
+      },
+      {
+        "key": "blocks.5.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004283849999195542,
+        "update_norm": 0.004367438027469111,
+        "g_dot_delta": -1.5256698232339096e-05
+      },
+      {
+        "key": "blocks.5.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0035550544660756375,
+        "update_norm": 0.0022089193344747033,
+        "g_dot_delta": -6.303916082842825e-06
+      },
+      {
+        "key": "blocks.6.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.0048630409677145065,
+        "update_norm": 0.0043758916611297705,
+        "g_dot_delta": -1.7147844829711048e-05
+      },
+      {
+        "key": "blocks.6.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0039605268345998135,
+        "update_norm": 0.00221073110793096,
+        "g_dot_delta": -6.892094912338296e-06
+      },
+      {
+        "key": "blocks.7.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.00488200048724522,
+        "update_norm": 0.004374213314664336,
+        "g_dot_delta": -1.697971841631362e-05
+      },
+      {
+        "key": "blocks.7.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.0037621811666055834,
+        "update_norm": 0.0022084076799286085,
+        "g_dot_delta": -6.694926313661796e-06
+      },
+      {
+        "key": "blocks.8.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.007647348611567285,
+        "update_norm": 0.004420447967032242,
+        "g_dot_delta": -2.715355998806233e-05
+      },
+      {
+        "key": "blocks.8.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.006852747442586726,
+        "update_norm": 0.0022303725063229788,
+        "g_dot_delta": -1.2216309902843912e-05
+      },
+      {
+        "key": "blocks.9.attn.linears.wo_b.lora_b",
+        "shape": [
+          4,
+          5120
+        ],
+        "raw_gradient_norm": 0.004816954847780675,
+        "update_norm": 0.004369127022376081,
+        "g_dot_delta": -1.674505636255761e-05
+      },
+      {
+        "key": "blocks.9.attn.linears.wq_a.lora_b",
+        "shape": [
+          4,
+          1280
+        ],
+        "raw_gradient_norm": 0.004261742827105813,
+        "update_norm": 0.002217008858415771,
+        "g_dot_delta": -7.588772804241689e-06
+      }
+    ]
+  },
+  "pre_update_loss": 0.5012578368186951,
+  "historical_pre_update_loss_exact": true,
+  "gradient_norm": 0.03827793523669243,
+  "historical_gradient_norm": 0.0382997989654541,
+  "gradient_comparison": {
+    "elements": 1024000,
+    "different_elements": 995672,
+    "max_abs_difference": 6.66236214641458e-07,
+    "relative_l2_to_historical": 0.009517397301156052,
+    "cosine": 0.999954846766257,
+    "opposite_nonzero_signs": 2674,
+    "compared_quantity": "first Adam moment m = 0.1 * raw gradient; relative L2/cosine/sign counts also apply to raw gradients",
+    "raw_gradient_max_abs_difference": 6.66236214641458e-06
+  },
+  "per_layer": [
+    {
+      "layer": 0,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.12754457606934e-07,
+        "relative_l2_to_historical": 0.01273735073760569,
+        "cosine": 0.9999209521226504,
+        "opposite_nonzero_signs": 112
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25593,
+        "max_abs_difference": 4.033516779600177e-05,
+        "relative_l2_to_historical": 0.05391059512623741,
+        "cosine": 0.9985467679563371,
+        "opposite_nonzero_signs": 112
+      }
+    },
+    {
+      "layer": 1,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.1259461391309742e-07,
+        "relative_l2_to_historical": 0.012233344784330465,
+        "cosine": 0.9999267919447087,
+        "opposite_nonzero_signs": 87
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25591,
+        "max_abs_difference": 4.3587804611888714e-05,
+        "relative_l2_to_historical": 0.05616631252399482,
+        "cosine": 0.9984226547568199,
+        "opposite_nonzero_signs": 87
+      }
+    },
+    {
+      "layer": 2,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.9564080250565894e-07,
+        "relative_l2_to_historical": 0.01247861864823664,
+        "cosine": 0.9999260357482398,
+        "opposite_nonzero_signs": 80
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25593,
+        "max_abs_difference": 4.666489803639706e-05,
+        "relative_l2_to_historical": 0.05667116838084706,
+        "cosine": 0.9983939902003423,
+        "opposite_nonzero_signs": 80
+      }
+    },
+    {
+      "layer": 3,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.7713576855603606e-07,
+        "relative_l2_to_historical": 0.012056233373120928,
+        "cosine": 0.9999301951614457,
+        "opposite_nonzero_signs": 94
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25593,
+        "max_abs_difference": 4.4846317905467004e-05,
+        "relative_l2_to_historical": 0.0549596719276531,
+        "cosine": 0.998489758746955,
+        "opposite_nonzero_signs": 94
+      }
+    },
+    {
+      "layer": 4,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.401214942437946e-07,
+        "relative_l2_to_historical": 0.012487191661859014,
+        "cosine": 0.99992349637174,
+        "opposite_nonzero_signs": 109
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25589,
+        "max_abs_difference": 4.24582940468099e-05,
+        "relative_l2_to_historical": 0.06242578579804858,
+        "cosine": 0.998051331635385,
+        "opposite_nonzero_signs": 109
+      }
+    },
+    {
+      "layer": 5,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25599,
+        "max_abs_difference": 3.132099664071575e-07,
+        "relative_l2_to_historical": 0.012219562608123279,
+        "cosine": 0.9999265853786482,
+        "opposite_nonzero_signs": 97
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25593,
+        "max_abs_difference": 4.8381656597484834e-05,
+        "relative_l2_to_historical": 0.05923977254452768,
+        "cosine": 0.9982451636098357,
+        "opposite_nonzero_signs": 97
+      }
+    },
+    {
+      "layer": 6,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.534652594476938e-07,
+        "relative_l2_to_historical": 0.011595996057251978,
+        "cosine": 0.9999345709800203,
+        "opposite_nonzero_signs": 102
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25583,
+        "max_abs_difference": 4.2156911149504595e-05,
+        "relative_l2_to_historical": 0.06141099014116846,
+        "cosine": 0.9981142297638279,
+        "opposite_nonzero_signs": 102
+      }
+    },
+    {
+      "layer": 7,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.53993221122073e-07,
+        "relative_l2_to_historical": 0.012444806156429766,
+        "cosine": 0.999924400308072,
+        "opposite_nonzero_signs": 108
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25591,
+        "max_abs_difference": 4.216984780214261e-05,
+        "relative_l2_to_historical": 0.06312362155226281,
+        "cosine": 0.9980076932458871,
+        "opposite_nonzero_signs": 108
+      }
+    },
+    {
+      "layer": 8,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 6.66236214641458e-07,
+        "relative_l2_to_historical": 0.012275236284797349,
+        "cosine": 0.9999252231001294,
+        "opposite_nonzero_signs": 111
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25578,
+        "max_abs_difference": 5.253227936918847e-05,
+        "relative_l2_to_historical": 0.07299200768345084,
+        "cosine": 0.9973359557327973,
+        "opposite_nonzero_signs": 111
+      }
+    },
+    {
+      "layer": 9,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.8651993488892913e-07,
+        "relative_l2_to_historical": 0.011641153103935103,
+        "cosine": 0.9999324806154319,
+        "opposite_nonzero_signs": 101
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25587,
+        "max_abs_difference": 4.0485219869879074e-05,
+        "relative_l2_to_historical": 0.06021297905697844,
+        "cosine": 0.9981875146559553,
+        "opposite_nonzero_signs": 101
+      }
+    },
+    {
+      "layer": 10,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 3.1040508474688977e-07,
+        "relative_l2_to_historical": 0.011481329065070564,
+        "cosine": 0.9999340874492291,
+        "opposite_nonzero_signs": 100
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25582,
+        "max_abs_difference": 5.253979361441452e-05,
+        "relative_l2_to_historical": 0.06858735746641786,
+        "cosine": 0.997648120130477,
+        "opposite_nonzero_signs": 100
+      }
+    },
+    {
+      "layer": 11,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.472444293744047e-07,
+        "relative_l2_to_historical": 0.011703822115265501,
+        "cosine": 0.9999321111046482,
+        "opposite_nonzero_signs": 104
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25588,
+        "max_abs_difference": 4.56906473118579e-05,
+        "relative_l2_to_historical": 0.061459114529995806,
+        "cosine": 0.9981111128156375,
+        "opposite_nonzero_signs": 104
+      }
+    },
+    {
+      "layer": 12,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.2986660042079166e-07,
+        "relative_l2_to_historical": 0.010442153222619583,
+        "cosine": 0.9999454814925083,
+        "opposite_nonzero_signs": 88
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25583,
+        "max_abs_difference": 4.309263749746606e-05,
+        "relative_l2_to_historical": 0.05714302320966922,
+        "cosine": 0.9983671814911721,
+        "opposite_nonzero_signs": 88
+      }
+    },
+    {
+      "layer": 13,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.366750777582638e-07,
+        "relative_l2_to_historical": 0.009032393632980704,
+        "cosine": 0.9999592095155013,
+        "opposite_nonzero_signs": 67
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25584,
+        "max_abs_difference": 3.757169906748459e-05,
+        "relative_l2_to_historical": 0.04682016640941842,
+        "cosine": 0.9989040033982781,
+        "opposite_nonzero_signs": 67
+      }
+    },
+    {
+      "layer": 14,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 4.009170879726298e-07,
+        "relative_l2_to_historical": 0.008702521738961775,
+        "cosine": 0.9999622664493181,
+        "opposite_nonzero_signs": 74
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25577,
+        "max_abs_difference": 4.612161501427181e-05,
+        "relative_l2_to_historical": 0.05910467779359323,
+        "cosine": 0.9982532894407542,
+        "opposite_nonzero_signs": 74
+      }
+    },
+    {
+      "layer": 15,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.3137408788898028e-07,
+        "relative_l2_to_historical": 0.008957046782362683,
+        "cosine": 0.9999599646300776,
+        "opposite_nonzero_signs": 89
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25582,
+        "max_abs_difference": 4.543484465102665e-05,
+        "relative_l2_to_historical": 0.0532822133465869,
+        "cosine": 0.9985806870586158,
+        "opposite_nonzero_signs": 89
+      }
+    },
+    {
+      "layer": 16,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25599,
+        "max_abs_difference": 2.779433998512104e-07,
+        "relative_l2_to_historical": 0.008186940547934111,
+        "cosine": 0.9999666489262584,
+        "opposite_nonzero_signs": 66
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25570,
+        "max_abs_difference": 4.987881766282953e-05,
+        "relative_l2_to_historical": 0.050776185191467885,
+        "cosine": 0.9987108283030737,
+        "opposite_nonzero_signs": 66
+      }
+    },
+    {
+      "layer": 17,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25599,
+        "max_abs_difference": 2.411929926893208e-07,
+        "relative_l2_to_historical": 0.008348567208281388,
+        "cosine": 0.9999651655201596,
+        "opposite_nonzero_signs": 83
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25569,
+        "max_abs_difference": 4.1976341890404e-05,
+        "relative_l2_to_historical": 0.0492486723251894,
+        "cosine": 0.998787401905851,
+        "opposite_nonzero_signs": 83
+      }
+    },
+    {
+      "layer": 18,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.7683373698673677e-07,
+        "relative_l2_to_historical": 0.007875802136717607,
+        "cosine": 0.9999689983337643,
+        "opposite_nonzero_signs": 63
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25587,
+        "max_abs_difference": 3.176077734678984e-05,
+        "relative_l2_to_historical": 0.03981163362776759,
+        "cosine": 0.9992074730975652,
+        "opposite_nonzero_signs": 63
+      }
+    },
+    {
+      "layer": 19,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.792876330204308e-07,
+        "relative_l2_to_historical": 0.007398910316207832,
+        "cosine": 0.9999726846777474,
+        "opposite_nonzero_signs": 56
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25573,
+        "max_abs_difference": 4.259798879502341e-05,
+        "relative_l2_to_historical": 0.046210307532222716,
+        "cosine": 0.9989322996442211,
+        "opposite_nonzero_signs": 56
+      }
+    },
+    {
+      "layer": 20,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.8008722690865397e-07,
+        "relative_l2_to_historical": 0.008780155975550786,
+        "cosine": 0.9999614849262582,
+        "opposite_nonzero_signs": 63
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25585,
+        "max_abs_difference": 3.1070178010850213e-05,
+        "relative_l2_to_historical": 0.040242657842067334,
+        "cosine": 0.9991903368626722,
+        "opposite_nonzero_signs": 63
+      }
+    },
+    {
+      "layer": 21,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.04153536742524e-07,
+        "relative_l2_to_historical": 0.007218797264193119,
+        "cosine": 0.9999739586177986,
+        "opposite_nonzero_signs": 77
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25586,
+        "max_abs_difference": 3.133568316115998e-05,
+        "relative_l2_to_historical": 0.040072499922127115,
+        "cosine": 0.9991971014829014,
+        "opposite_nonzero_signs": 77
+      }
+    },
+    {
+      "layer": 22,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 2.1589221432805061e-07,
+        "relative_l2_to_historical": 0.007973614425076323,
+        "cosine": 0.9999683375150992,
+        "opposite_nonzero_signs": 70
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25586,
+        "max_abs_difference": 3.779269718506839e-05,
+        "relative_l2_to_historical": 0.04172916562772117,
+        "cosine": 0.999129371465092,
+        "opposite_nonzero_signs": 70
+      }
+    },
+    {
+      "layer": 23,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.249891283805482e-07,
+        "relative_l2_to_historical": 0.007832747769999844,
+        "cosine": 0.9999693296673493,
+        "opposite_nonzero_signs": 68
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25593,
+        "max_abs_difference": 3.063761141675059e-05,
+        "relative_l2_to_historical": 0.035910654042879936,
+        "cosine": 0.9993552372106823,
+        "opposite_nonzero_signs": 68
+      }
+    },
+    {
+      "layer": 24,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 9.834889169724192e-08,
+        "relative_l2_to_historical": 0.007979617915505003,
+        "cosine": 0.9999681661449303,
+        "opposite_nonzero_signs": 66
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25590,
+        "max_abs_difference": 3.448284769547172e-05,
+        "relative_l2_to_historical": 0.03730846883403382,
+        "cosine": 0.9993040113070152,
+        "opposite_nonzero_signs": 66
+      }
+    },
+    {
+      "layer": 25,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.3593819403467933e-07,
+        "relative_l2_to_historical": 0.009154359336508062,
+        "cosine": 0.9999581266705548,
+        "opposite_nonzero_signs": 85
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25590,
+        "max_abs_difference": 3.7852143577765673e-05,
+        "relative_l2_to_historical": 0.03923369914262365,
+        "cosine": 0.9992303133389264,
+        "opposite_nonzero_signs": 85
+      }
+    },
+    {
+      "layer": 26,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.5772229744470678e-07,
+        "relative_l2_to_historical": 0.006725207373045396,
+        "cosine": 0.9999774698156714,
+        "opposite_nonzero_signs": 36
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25585,
+        "max_abs_difference": 2.658224093465833e-05,
+        "relative_l2_to_historical": 0.027557473329740286,
+        "cosine": 0.9996203310064514,
+        "opposite_nonzero_signs": 36
+      }
+    },
+    {
+      "layer": 27,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.0114911219716305e-07,
+        "relative_l2_to_historical": 0.0069731809521620175,
+        "cosine": 0.9999757750180219,
+        "opposite_nonzero_signs": 55
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25587,
+        "max_abs_difference": 2.9455412914103363e-05,
+        "relative_l2_to_historical": 0.03191745476087227,
+        "cosine": 0.9994906385247341,
+        "opposite_nonzero_signs": 55
+      }
+    },
+    {
+      "layer": 28,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.51797483027849e-07,
+        "relative_l2_to_historical": 0.00838596300491635,
+        "cosine": 0.9999648889408367,
+        "opposite_nonzero_signs": 72
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25588,
+        "max_abs_difference": 4.102022103324998e-05,
+        "relative_l2_to_historical": 0.03799136792280544,
+        "cosine": 0.9992783474150739,
+        "opposite_nonzero_signs": 72
+      }
+    },
+    {
+      "layer": 29,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.0468011168995872e-07,
+        "relative_l2_to_historical": 0.007091952184118299,
+        "cosine": 0.9999749021969822,
+        "opposite_nonzero_signs": 47
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25595,
+        "max_abs_difference": 2.2898693714523688e-05,
+        "relative_l2_to_historical": 0.026148203394116273,
+        "cosine": 0.9996581152854015,
+        "opposite_nonzero_signs": 47
+      }
+    },
+    {
+      "layer": 30,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.004930254566716e-07,
+        "relative_l2_to_historical": 0.006523838016935033,
+        "cosine": 0.9999787519889408,
+        "opposite_nonzero_signs": 62
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25591,
+        "max_abs_difference": 3.140817625535419e-05,
+        "relative_l2_to_historical": 0.026296915849836976,
+        "cosine": 0.9996542259781521,
+        "opposite_nonzero_signs": 62
+      }
+    },
+    {
+      "layer": 31,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.0217149792879354e-07,
+        "relative_l2_to_historical": 0.005487457389231866,
+        "cosine": 0.9999849518024853,
+        "opposite_nonzero_signs": 38
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25581,
+        "max_abs_difference": 2.2163167614053236e-05,
+        "relative_l2_to_historical": 0.021500096334187514,
+        "cosine": 0.9997688872753593,
+        "opposite_nonzero_signs": 38
+      }
+    },
+    {
+      "layer": 32,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25599,
+        "max_abs_difference": 7.885955710662529e-08,
+        "relative_l2_to_historical": 0.005682774704845623,
+        "cosine": 0.9999838809837863,
+        "opposite_nonzero_signs": 41
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25583,
+        "max_abs_difference": 2.590105214039795e-05,
+        "relative_l2_to_historical": 0.02343149298518044,
+        "cosine": 0.9997254713385135,
+        "opposite_nonzero_signs": 41
+      }
+    },
+    {
+      "layer": 33,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 9.329278327641077e-08,
+        "relative_l2_to_historical": 0.004318305889613151,
+        "cosine": 0.9999906764360215,
+        "opposite_nonzero_signs": 38
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25583,
+        "max_abs_difference": 2.5632491997384932e-05,
+        "relative_l2_to_historical": 0.02251930037415754,
+        "cosine": 0.999746432910332,
+        "opposite_nonzero_signs": 38
+      }
+    },
+    {
+      "layer": 34,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 1.1630800145212561e-07,
+        "relative_l2_to_historical": 0.003986168203070897,
+        "cosine": 0.9999920573836492,
+        "opposite_nonzero_signs": 31
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25567,
+        "max_abs_difference": 2.2530008436660864e-05,
+        "relative_l2_to_historical": 0.019739969548173388,
+        "cosine": 0.9998051686748017,
+        "opposite_nonzero_signs": 31
+      }
+    },
+    {
+      "layer": 35,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 6.492291504400782e-08,
+        "relative_l2_to_historical": 0.0030067310768265134,
+        "cosine": 0.9999954822692281,
+        "opposite_nonzero_signs": 25
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25548,
+        "max_abs_difference": 1.8094677216140553e-05,
+        "relative_l2_to_historical": 0.012959086566102139,
+        "cosine": 0.9999160331393403,
+        "opposite_nonzero_signs": 25
+      }
+    },
+    {
+      "layer": 36,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25600,
+        "max_abs_difference": 5.323818186298013e-08,
+        "relative_l2_to_historical": 0.0020005845944923964,
+        "cosine": 0.9999979992884783,
+        "opposite_nonzero_signs": 9
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 25521,
+        "max_abs_difference": 1.6273917026410345e-05,
+        "relative_l2_to_historical": 0.007657767797018222,
+        "cosine": 0.9999706790046827,
+        "opposite_nonzero_signs": 9
+      }
+    },
+    {
+      "layer": 37,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 25567,
+        "max_abs_difference": 2.077285898849368e-09,
+        "relative_l2_to_historical": 7.46958932283205e-05,
+        "cosine": 0.9999999972113477,
+        "opposite_nonzero_signs": 0
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 23451,
+        "max_abs_difference": 1.0611367429191887e-06,
+        "relative_l2_to_historical": 0.00039681528428761923,
+        "cosine": 0.999999921269154,
+        "opposite_nonzero_signs": 0
+      }
+    },
+    {
+      "layer": 38,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 22909,
+        "max_abs_difference": 5.3290705182007514e-11,
+        "relative_l2_to_historical": 1.4784140515883622e-06,
+        "cosine": 0.9999999999989077,
+        "opposite_nonzero_signs": 0
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 15061,
+        "max_abs_difference": 1.0404505701444577e-08,
+        "relative_l2_to_historical": 5.982354975045869e-06,
+        "cosine": 0.9999999999821023,
+        "opposite_nonzero_signs": 0
+      }
+    },
+    {
+      "layer": 39,
+      "B_gradient_comparison_via_first_m": {
+        "elements": 25600,
+        "different_elements": 0,
+        "max_abs_difference": 0.0,
+        "relative_l2_to_historical": 0.0,
+        "cosine": 1.0,
+        "opposite_nonzero_signs": 0
+      },
+      "B_update_comparison": {
+        "elements": 25600,
+        "different_elements": 0,
+        "max_abs_difference": 0.0,
+        "relative_l2_to_historical": 0.0,
+        "cosine": 0.9999999999999999,
+        "opposite_nonzero_signs": 0
+      }
+    }
+  ],
+  "peak_mlx_gib": 73.94824303779751,
+  "end_observed_memory_gib": 20.991058349609375,
+  "elapsed_update_seconds": 2079.731153416098,
+  "post_evaluation_pending": true,
+  "quality_certified": false,
+  "mlx_imported": false,
+  "limits": [
+    "Historical update is NOT bitwise reproduced:78/80B and156Bmoment tensors differ; bothlayer39B, all80A andRNG are exact. Do not widen the predeclared comparison to label this reproduction.",
+    "Cause of upstream-layer gradient differences is not established by this CPU receipt. Fresh matchedcontrol/treatment both use pinnedruntime-v2; historical reference used earlier source.",
+    "Process cap76GiB and reserve8 differ from treatment80GiB; no equal timing/resource claim.",
+    "Fresh post logits/NLL and final launch exit/hash chain remain pending.",
+    "Local launch receipts establish internal consistency, not external authentication."
+  ],
+  "historical_gradient_difference_cause": "unresolved; this receipt does not distinguish source/arithmetic-order changes, recomputation behavior, resource-dependent effects or nondeterminism"
+}

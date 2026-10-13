@@ -1,0 +1,128 @@
+{
+  "schema": "qwen-mcg-cpu-fixture-check-v1",
+  "passed": true,
+  "implementation_sha256": "36827164c88dd6c25dfde67077abe3ad5fb45067f85940a64035fe79dbf29493",
+  "fixtures": [
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/src/exl3/fixtures/exl3_k2p5_mcg_w12_linear.safetensors",
+      "sha256": "870df4165f311c7651655fbe81feec85b2ab0c6c51b1c754d023423bc6b3e7ad",
+      "bytes": 71576,
+      "metadata": {
+        "k": "2.5",
+        "codebook": "mcg",
+        "window": "12"
+      },
+      "in_features": 128,
+      "out_features": 128,
+      "n": 40,
+      "window": 12,
+      "inner": {
+        "elements": 16384,
+        "mismatches": 0,
+        "bitwise_equal": true,
+        "actual_sha256": "2e3043d5dec8b44dcbf34b5319614c20d6a53251716be11368fe21c545c81ae7",
+        "expected_sha256": "2e3043d5dec8b44dcbf34b5319614c20d6a53251716be11368fe21c545c81ae7"
+      },
+      "wrong_window_control": {
+        "window": 16,
+        "elements": 16384,
+        "mismatches": 15378,
+        "bitwise_equal": false,
+        "actual_sha256": "da3f6bb67cd86340acb7904cf30263ab001393fca31a39de6fd8d4d3827807f3",
+        "expected_sha256": "2e3043d5dec8b44dcbf34b5319614c20d6a53251716be11368fe21c545c81ae7"
+      },
+      "qualified_scope": "CPU MCG inner decode for this exact fixture and source-order composite public matrix; not serving arithmetic",
+      "production_metal_vjp_qualified": false,
+      "serving_projection_qualified": false,
+      "target_qwen_window14_converter_fixture_qualified": false,
+      "public_matrix": {
+        "elements": 16384,
+        "mismatches": 0,
+        "bitwise_equal": true,
+        "actual_sha256": "dfb41ca28f86a46326fa206b9dd35b224fd6dd1d2c761d24f6c6786d9f55c9dd",
+        "expected_sha256": "dfb41ca28f86a46326fa206b9dd35b224fd6dd1d2c761d24f6c6786d9f55c9dd"
+      }
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/src/exl3/fixtures/exl3_k2p5_mcg_linear.safetensors",
+      "sha256": "5a651adc9cb67f065d2786b548b3a0a010ae482b80c4e269a6701f745840be08",
+      "bytes": 71576,
+      "metadata": {
+        "k": "2.5",
+        "codebook": "mcg",
+        "window": "16"
+      },
+      "in_features": 128,
+      "out_features": 128,
+      "n": 40,
+      "window": 16,
+      "inner": {
+        "elements": 16384,
+        "mismatches": 0,
+        "bitwise_equal": true,
+        "actual_sha256": "aaeae1e5ff537e4257db73f76a0869740b19f0d5366d3ed4a3748056b2c12f6f",
+        "expected_sha256": "aaeae1e5ff537e4257db73f76a0869740b19f0d5366d3ed4a3748056b2c12f6f"
+      },
+      "wrong_window_control": {
+        "window": 12,
+        "elements": 16384,
+        "mismatches": 15357,
+        "bitwise_equal": false,
+        "actual_sha256": "941ffaf34395aa71eeb47fdc724064f3cdf70f505cb4f68d7b60da114140c83c",
+        "expected_sha256": "aaeae1e5ff537e4257db73f76a0869740b19f0d5366d3ed4a3748056b2c12f6f"
+      },
+      "qualified_scope": "CPU MCG inner decode for this exact fixture and source-order composite public matrix; not serving arithmetic",
+      "production_metal_vjp_qualified": false,
+      "serving_projection_qualified": false,
+      "target_qwen_window14_converter_fixture_qualified": false,
+      "public_matrix": {
+        "elements": 16384,
+        "mismatches": 0,
+        "bitwise_equal": true,
+        "actual_sha256": "4556d28a09653d52f2a089cbfe1fc883f92a1db3fe8502a8333a7bfd48c43b70",
+        "expected_sha256": "4556d28a09653d52f2a089cbfe1fc883f92a1db3fe8502a8333a7bfd48c43b70"
+      }
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/src/exl3/fixtures/exl3_k3_mcg_linear.safetensors",
+      "sha256": "bda534c4387dbe7d9342ca5ebdb6460b40d831397aca89422f21e274460ca987",
+      "bytes": 72600,
+      "metadata": {
+        "k": "3",
+        "codebook": "mcg",
+        "window": "16"
+      },
+      "in_features": 128,
+      "out_features": 128,
+      "n": 48,
+      "window": 16,
+      "inner": {
+        "elements": 16384,
+        "mismatches": 0,
+        "bitwise_equal": true,
+        "actual_sha256": "abb87d223adadc5484679063ed0872b46d61a201b518c3764f9fa089ce198396",
+        "expected_sha256": "abb87d223adadc5484679063ed0872b46d61a201b518c3764f9fa089ce198396"
+      },
+      "wrong_window_control": {
+        "window": 12,
+        "elements": 16384,
+        "mismatches": 15346,
+        "bitwise_equal": false,
+        "actual_sha256": "53addc7ad43698654955e8decdb03d7e1a4e3a0c4884959f99a7b293624260bc",
+        "expected_sha256": "abb87d223adadc5484679063ed0872b46d61a201b518c3764f9fa089ce198396"
+      },
+      "qualified_scope": "CPU MCG inner decode for this exact fixture and source-order composite public matrix; not serving arithmetic",
+      "production_metal_vjp_qualified": false,
+      "serving_projection_qualified": false,
+      "target_qwen_window14_converter_fixture_qualified": false,
+      "public_matrix": {
+        "elements": 16384,
+        "mismatches": 0,
+        "bitwise_equal": true,
+        "actual_sha256": "31a0c34099b0fd62aa69c7b17e3b0e5dc144277a75b6bfc2a9d360bd5f9012f0",
+        "expected_sha256": "31a0c34099b0fd62aa69c7b17e3b0e5dc144277a75b6bfc2a9d360bd5f9012f0"
+      }
+    }
+  ],
+  "scope": "CPU fixture known answers only; no full model, GPU, serving or training qualification"
+}

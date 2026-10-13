@@ -1,0 +1,30 @@
+{
+  "schema": "qwen-checkpoint-inventory-adversarial-review-v1",
+  "reviewed_at_local": "2026-10-13",
+  "reviewer": "independent adversarial-code subagent",
+  "method": "Static source/test inspection only; no GPU, payload reads, network, tool execution or engine modifications by reviewer. Parent and author separately report26CPU tests passed.",
+  "source_files": [
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/checkpoint_inventory.py",
+      "sha256": "9682fcae99d00cab9791e8621cb93df092d1d1ddfb6d7f281de772d20d4b072f"
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_checkpoint_inventory.py",
+      "sha256": "6b15317d0eb04aac9fbcc7b4107b0f3db971b12fd620a04b1dcad1ceefe7cc95"
+    }
+  ],
+  "verdict": "No concrete blocking defect found within the stated M0 header-inventory scope.",
+  "findings": [],
+  "checked": [
+    "Eight-byte length prefix and configured header limit checked before header read; header offsets/shape/dtype byte size, overlap and full payload coverage validated against stat size.",
+    "Flat regular non-symlink shards, duplicate physical name rejection, exact index-to-physical ownership map and declared tensor total verification.",
+    "Header/config/index read-time identity checks and final shard-set recheck; explicit same-stat payload-corruption limitation.",
+    "External ngram_table declaration and presence/stat reported separately; bytes excluded from safetensors tensor totals and payloads not read.",
+    "Report explicitly sets supported_training, whole_checkpoint_complete and payload_integrity_verified false; categories are labeled heuristic."
+  ],
+  "limits": [
+    "Per-file limits and maximum counts bound reads; this is not a tight process-memory budget for an adversarial directory containing thousands of maximal headers.",
+    "External-table presence does not validate its format, expected row layout, length, checksum or usability.",
+    "No claim about EXL3 decoder geometry, compatibility, full checkpoint validity, model forward/backward or training support."
+  ]
+}

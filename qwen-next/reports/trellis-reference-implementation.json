@@ -1,0 +1,80 @@
+{
+  "schema": "qwen-trellis-reference-implementation-v1",
+  "date": "2026-10-13",
+  "source_repository": "https://github.com/beamivalice/sushi",
+  "source_commit": "bd4b3954f5a42a87effcdf8a68ea91a4b6a1a1b9",
+  "bindings": [
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/trellis_reference.py",
+      "sha256": "36827164c88dd6c25dfde67077abe3ad5fb45067f85940a64035fe79dbf29493"
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_trellis_reference.py",
+      "sha256": "b2673e9cfe6bab7f6113e1e925ece13b1b1bf31261074ef04b2ac00539f84f88"
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/checkpoint_inventory.py",
+      "sha256": "9682fcae99d00cab9791e8621cb93df092d1d1ddfb6d7f281de772d20d4b072f"
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/src/exl3/expert_exl3.zig",
+      "sha256": "33d37858ec6647c60fb975e5c011b1354aa4453e9258a0e79a1f781d22a5e0a5"
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/trellis-reference-fixtures.json",
+      "sha256": "e3810c69c022dfd386874b693987feba3410ef65875332f8579e31f7942ace98"
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/cpu-reference-tests.log",
+      "sha256": "3417c546cf836ec02d23b08b7273e5671452611963b2a65b29734e0ebde1799a"
+    }
+  ],
+  "implementation": "Stdlib-only CPU MCG ring decoder, exact tile permutation and8..16-bit windows; bounded small-fixture loader; source-order FP32 H128 public matrix reconstruction; tiny float64 frozen-matrix forward/transpose oracle.",
+  "known_answers": {
+    "fixture_count": 3,
+    "inner_fp16_values": 49152,
+    "public_fp16_values": 49152,
+    "all_bitwise_equal": true,
+    "wrong_window_mismatches": [
+      {
+        "fixture": "exl3_k2p5_mcg_w12_linear.safetensors",
+        "correct_window": 12,
+        "wrong_window": 16,
+        "mismatches": 15378
+      },
+      {
+        "fixture": "exl3_k2p5_mcg_linear.safetensors",
+        "correct_window": 16,
+        "wrong_window": 12,
+        "mismatches": 15357
+      },
+      {
+        "fixture": "exl3_k3_mcg_linear.safetensors",
+        "correct_window": 16,
+        "wrong_window": 12,
+        "mismatches": 15346
+      }
+    ]
+  },
+  "tests": {
+    "targeted_unittest_count": 16,
+    "combined_M0_unittest_count": 61,
+    "combined_seconds": 5.0,
+    "passed": true,
+    "ruff": "passed",
+    "independent_ring_reader": "All57 even packed halfword counts16..128 against separate per-bit indexing; this is synthetic algorithm coverage, not converter parity at all rates.",
+    "window_tests": "All8..16 widths exercised synthetically; converter-known-answer windows12 and16 only.",
+    "adjoint_scope": "Binary64 matmul on the frozen converter public matrix; transpose identity and directional derivative; no runtime autodiff or Metal VJP tested."
+  },
+  "limitations": [
+    "The selected Qwen MCG/window14 checkpoint has no converter-known-answer fixture here and remains unqualified.",
+    "The public matrix composite and its float64 adjoint are not serving prepareInput/innerGemv/finishOutput, which round intermediate activations and products to half.",
+    "No Metal/MLX/GPU imports, model payloads, full model, training, serving adapter application, or runtime memory/throughput validation.",
+    "MCG only; no MUL1 decoder implemented.",
+    "Small fixtures only; no production expert-axis bank loader or grouped-rate loader."
+  ],
+  "read_only_peer_review": {
+    "sushi_expert_views": "No concrete blocker found in uniform single-projection byte geometry planning; inputs are header/config declarations and output is not payload integrity or decode qualification.",
+    "affine_reference": "No concrete blocker found in CPU mathematical packed affine decode/transpose scope; source uses distinct input-major packing and explicitly disclaims BF16/F16/Metal arithmetic parity."
+  }
+}

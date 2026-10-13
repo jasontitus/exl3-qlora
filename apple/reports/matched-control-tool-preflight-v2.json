@@ -1,0 +1,28 @@
+{
+  "auditor_sha256": "7ba04ed1ded2dafe6765b63d2d2eab8aa1bc3bb0f428a648fb414eabac785b4d",
+  "launcher_sha256": "c09e4a0de0f2b5a9e747012ba810f24fb692fcf718cd48c91b7a3bf92a9d15b0",
+  "plan_sha256": "3606cd6f3d01af73ff6ebc85b23a91c22f14b61b1030dac0e4d4b758957f757a",
+  "config_sha256": "4aead354935a2b2337d4e0d815d52474f2b699e63f30f9d471548d1538e3fa80",
+  "cpu_tests_passed": 39,
+  "audit_tests": 24,
+  "launcher_tests": 15,
+  "ruff": "passed",
+  "actual_preflight": "verified_only",
+  "gpu_subprocesses_started": 0,
+  "prior_treatment_input_bindings_verified": 18,
+  "prior_treatment_audit_rerun_exact": true,
+  "plan_and_config_unchanged": true,
+  "installed_runtime": {
+    "python": "3.12.13",
+    "runtime": {
+      "mlx": "0.32.3",
+      "mlx-lm": "0.32.0",
+      "numpy": "2.5.4",
+      "transformers": "5.19.0",
+      "tokenizers": "0.23.3",
+      "safetensors": "0.8.0"
+    },
+    "executable": "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python"
+  },
+  "sigint_sigterm_child_cleanup_tested": true
+}

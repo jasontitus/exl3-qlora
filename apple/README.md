@@ -32,7 +32,43 @@ separately from kernel quality. Full-prefill attention now implements the model'
 sparse index selection beyond 512 tokens, with a 32,768-token implementation
 ceiling and explicit memory guards. The ceiling is not a tested operating limit.
 
-A complete **5,809-token historical kernel-edit example** completed one update
+A later final-block experiment fitted the complete 5,809-token Metal edit: NLL
+fell from 0.5012578592 to 0.4735794807 over eight updates, with exact same-process
+uncached final-logit parity. It trained one distinct change; most gain came from
+comments/headers and added-code accuracy stayed 112/114. The separate BF16-mode
+one-step experiment descended against its own baseline. A completed same-runtime
+checkpoint-mode control regressed, but did not reproduce the historical update
+exactly; a unique cause remains unproven. See the [current measured results](reports/metal-tuning-result.md).
+The normal [three-change flow](reports/standard-three-change-run.md) completed
+12 updates on three complete examples (3,606 / 5,809 / 5,822 tokens), four passes
+per example. Fresh uncached NLL fell **0.35555322 → 0.32627658 (8.23%)**, and all
+three rows improved. The saved adapter exactly reproduced the warm training
+logits. Training took 30.14 minutes including the final probe and peaked at
+53.08 GiB MLX. The [result and saved-adapter recipe](reports/metal-tuning-result.md)
+include all category regressions: comments/headers account for 92.1% of the
+loss decrease, and added-code top-1 improved by one teacher-forced token. All three share one lineage,
+with no held-out quality claim. The first failed all40-layer trial below remains
+preserved as historical evidence.
+
+The new [upstream-history flow](docs/UPSTREAM_INTAKE.md) adds `ktune prepare-upstream`,
+`finetune-upstream`, and the separate `compile-metal` gate. Structured examples
+include baseline source, source-grounded task/hardware/bottleneck fields, rationale,
+complete optimized source, and explicit verification status. Source captures retain complete originals; exact-edit targets replay every
+retained non-documentation file change, while scoped prompts disclose omitted
+context. The historical
+[100-commit audit](reports/upstream-corpus-inventory.md) reconstructed 93 changes,
+but only five whole-file examples fit; they include non-kernel changes. A reviewed
+llama.cpp example fits 3,394 tokens and has passed actual standard-project
+preparation with bound provenance. Scoped GPU parity tests also pass for that
+convolution pair (16 cases plus a CPU oracle) and TensorFold's EXLR8 projection
+(162 cases and all 65,536 codebook states). These are source-kernel parity
+checks; the convolution also has an independent CPU oracle. Neither establishes
+speed or model-generation quality. The integrated revision passed
+1,040 tests plus 27 subtests. These new records have not been trained or proven
+faster. See the
+[one-command recipe](KERNEL_TUNING.md#structured-upstream-history-flow).
+
+The earlier all40-layer **5,809-token historical kernel-edit example** completed one update
 in **31.0 minutes**, peaking at **73.95 GiB MLX memory**, under an 80 GiB process
 cap and explicit 12 GiB reserve. The checkpoint contains 3,153,920 finite adapter
 parameters; all 80 LoRA B tensors changed from zero, and optimizer/checksum checks
@@ -40,16 +76,17 @@ passed. **Fresh fitting failed:** answer NLL increased from **0.5012578592 to
 0.5053724668**, despite changed logits. The original trial is preserved. The
 +0.1, -0.1 and adaptive +10 inference-only strength probes also worsened NLL.
 The bounded series is complete, with no adapter promoted as an improvement.
-This is the largest complete training example tested; the operational pass does
-not establish improved fitting,
+This historical operational pass does not establish improved fitting,
 32,768-token feasibility or kernel quality. See the [checkpoint audit](reports/ktune-full-parent-checkpoint-audit.json),
 [failed fit receipt](reports/ktune-full-parent-first-update-fit.json),
 [complete strength diagnostics](reports/ktune-strength-diagnostics.json), and
 [exact pilot settings](KERNEL_TUNING.md#command-line-recipe).
 
-Current verification passes **518 tests plus 27 subtests**, and the new native
+That revision passed **518 tests plus 27 subtests**, and the new native
 projection/head and sparse-attention VJP checks pass within their stated scope.
-These component passes do not resolve the fitting failure. See the
+These component passes did not resolve that first-step failure. The latest
+[pre-launch test receipt](reports/loss-fix-v3-pytest.xml) belongs to the standard
+three-change runtime. See the
 [diagnosis update](reports/first-step-diagnosis-update.md) and [JUnit receipt](reports/kernel-sft-pytest.xml).
 
 This extension also fixes negative FP8 scale exponents in the earlier engine.
@@ -131,6 +168,8 @@ uv run exl3-mlx doctor \
 | `exl3-mlx studio` | Guided local browser: check data, train/resume, compare, preview and export |
 | `exl3-mlx finetune` | One project from CSV/JSON/JSONL; optional `--prepare-only` |
 | `exl3-mlx ktune snapshot / prepare / finetune` | Read ktune archives, preserve complete edits and train a standard project |
+| `exl3-mlx ktune prepare-upstream / finetune-upstream` | Structured Git history intake and a standard project with bound provenance |
+| `exl3-mlx ktune compile-metal` | Compile a reviewed standalone before/after Metal source pair; no runtime claim |
 | `exl3-mlx ktune verify / audit-evidence / export-edit` | Check training fit, audit receipts, and convert patches to ktune edits |
 | `exl3-mlx resume / compare / chat / export-adapter` | Continue or use a saved standard project |
 | `exl3-mlx status / stop` | Check progress or checkpoint after the current update |
@@ -252,3 +291,23 @@ Architecture source:
 [official DeepSeek V4.1 model.py](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/blob/5254448103b6254fc646dacbca1cbbf20e9216c1/inference/model.py).
 The port and adapted math retain MIT licenses; see [`LICENSE`](LICENSE) and
 [`configs/DEEPSEEK_LICENSE`](configs/DEEPSEEK_LICENSE). Model weights stay untracked.
+
+### Development snapshot: M5 migration and research
+
+See [RESOURCE_PROFILES.md](RESOURCE_PROFILES.md#m5-training-host-qualification-2026-10-13)
+for the M5 numerical mode, full checkpoint verification and fresh-cache launch
+requirements, and [KERNEL_TUNING.md](KERNEL_TUNING.md#expanded-library-and-next-experiment-2026-10-13)
+for the expanded corpus and the next experiment's evidence limits.
+
+The repository's `qwen-next/` directory contains isolated storage/decoder and
+architecture reference work, synthetic tests and historical review receipts.
+It is **not** a supported Qwen full-model trainer. Some source audits deliberately
+bind the original local research checkout; configure those paths before reproduction.
+The existing Qwen design document remains the staged implementation contract.
+
+`kernel-library/` archives the collection, curation, packaging and audit scripts.
+These research scripts expect the separately retained experiment evidence tree and
+pinned runtime snapshots; they are not installed CLI entry points or a self-contained
+published dataset. Large source captures, corpora, model weights and training outputs
+are intentionally kept outside Git. Historical receipts distinguish observed results
+from proposals and record the original evidence paths.

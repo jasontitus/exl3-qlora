@@ -1,0 +1,117 @@
+{
+  "format": "exl3-metal-compile-pair-v1",
+  "scope": "self_contained_translation_unit_pair_compile_only",
+  "standard": "metal3.1",
+  "host": "macOS-27.0.1-arm64-arm-64bit",
+  "script_sha256": "1c525cd3013a434b27589c20dcf4141f58c91304e7d4df6bd5397a22b613355e",
+  "toolchain": {
+    "argv": [
+      "xcrun",
+      "--sdk",
+      "macosx",
+      "metal",
+      "--version"
+    ],
+    "started_unix": 1791861435.394361,
+    "elapsed_seconds": 0.08115315437316895,
+    "exit_code": 0,
+    "error": null,
+    "stdout": "Apple metal version 32023.921 (metalfe-32023.921.6)\nTarget: air64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.vYU8g3/Metal.xctoolchain/usr/metal/current/bin\n",
+    "stderr": ""
+  },
+  "sdk": {
+    "argv": [
+      "xcrun",
+      "--sdk",
+      "macosx",
+      "--show-sdk-path"
+    ],
+    "started_unix": 1791861435.4755578,
+    "elapsed_seconds": 0.009474039077758789,
+    "exit_code": 0,
+    "error": null,
+    "stdout": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk\n",
+    "stderr": ""
+  },
+  "sources": {
+    "before": {
+      "original_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/before.metal",
+      "snapshot_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile-tool/before.metal",
+      "sha256": "5f6378c6e2c7a6b74bc9c6e6283a02a2b036693898f1227365e40437927177ba",
+      "bytes": 12314
+    },
+    "after": {
+      "original_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile/after.metal",
+      "snapshot_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile-tool/after.metal",
+      "sha256": "216dc0cadf64b313283981b107288de42fb551237a1b4390585fc90b101c97de",
+      "bytes": 13258
+    }
+  },
+  "compiles": {
+    "before": {
+      "argv": [
+        "xcrun",
+        "--sdk",
+        "macosx",
+        "metal",
+        "-std=metal3.1",
+        "-O3",
+        "-fno-fast-math",
+        "-fmodules-cache-path=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile-tool/module-cache",
+        "-c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile-tool/before.metal",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile-tool/before.air"
+      ],
+      "started_unix": 1791861435.485664,
+      "elapsed_seconds": 1.0874300003051758,
+      "exit_code": 0,
+      "error": null,
+      "stdout": "",
+      "stderr": "",
+      "source_unchanged": true,
+      "air_sha256": "8ad914e8673edf89d7f4f8131246bb71e5917339d806032e05fb8dde3a186d63",
+      "air_bytes": 61184,
+      "passed": true
+    },
+    "after": {
+      "argv": [
+        "xcrun",
+        "--sdk",
+        "macosx",
+        "metal",
+        "-std=metal3.1",
+        "-O3",
+        "-fno-fast-math",
+        "-fmodules-cache-path=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile-tool/module-cache",
+        "-c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile-tool/after.metal",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-compile-tool/after.air"
+      ],
+      "started_unix": 1791861436.573969,
+      "elapsed_seconds": 0.22107696533203125,
+      "exit_code": 0,
+      "error": null,
+      "stdout": "",
+      "stderr": "",
+      "source_unchanged": true,
+      "air_sha256": "b25736a5ac478ff1249a69daadd69a71991c4fa07b911ed41a359699f2ebad06",
+      "air_bytes": 65472,
+      "passed": true
+    }
+  },
+  "numerical_parity": "not_run",
+  "performance": "not_run",
+  "execution_verified": false,
+  "limitations": [
+    "AIR compilation does not prove GPU execution, numerical parity or speed.",
+    "The fixed validation flags are not asserted to match original project flags.",
+    "Only this source pair is checked; surrounding host code or other changed files are not.",
+    "SDK compilation does not establish support on the runtime GPU.",
+    "Receipts record local results; checksums are not external authentication."
+  ],
+  "all_snapshots_unchanged": true,
+  "compiled": true,
+  "receipt_sha256": "a92c84e86b85673af2faf8f2b5cf7b57ac76f94c03012ce9a6aa102af9096f5e"
+}

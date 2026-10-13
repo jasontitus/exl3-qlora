@@ -100,9 +100,17 @@ def test_authenticated_state_is_no_store_and_cpu_only(monkeypatch, state):
     assert state.process is None
 
 
+def test_studio_cannot_override_adapter_scope_on_resume(state, tmp_path):
+    state.project = project(tmp_path / "existing")
+    with pytest.raises(ValueError, match="Adapter layers are fixed"):
+        state.action({"action": "train", "steps": 2, "adapter_layers": [39]})
+
+
+@pytest.mark.parametrize("activation_mode", [None, "bf16"])
 @pytest.mark.parametrize("chunk_size", [None, 8192])
+@pytest.mark.parametrize("adapter_layers", [None, [39]])
 def test_studio_records_profile_and_only_overrides_resume_when_requested(
-    monkeypatch, state, tmp_path, chunk_size
+    monkeypatch, state, tmp_path, chunk_size, adapter_layers, activation_mode
 ):
     calls = []
     monkeypatch.setattr(
@@ -120,13 +128,19 @@ def test_studio_records_profile_and_only_overrides_resume_when_requested(
             "data": "D",
             "project": str(target),
             "profile": "development",
+            "prefix_cache_mib": 2048,
+            **({"activation_mode": activation_mode} if activation_mode else {}),
             **({"chunk_size": chunk_size} if chunk_size is not None else {}),
+            **({"adapter_layers": adapter_layers} if adapter_layers is not None else {}),
         }
     )
     config_file = Path(calls[-1][calls[-1].index("--config") + 1])
     config = json.loads(config_file.read_text())
     assert (config["memory_gib"], config["decoded_cache_mib"]) == (80, 0)
+    assert config["prefix_cache_mib"] == 2048
+    assert config["activation_mode"] == (activation_mode or "checkpoint")
     assert config["chunk_size"] == (chunk_size or 512)
+    assert config["adapter_layers"] == (adapter_layers or list(range(40)))
     project(target)
     manifest = json.loads((target / "project.json").read_text())
     manifest["config"] = config
@@ -137,6 +151,7 @@ def test_studio_records_profile_and_only_overrides_resume_when_requested(
     assert "--profile" not in calls[-1]
     state.action({"action": "train", "steps": 2, "resources": {"decoded_cache_mib": 4096}})
     assert calls[-1][calls[-1].index("--memory-gib") + 1] == "80.0"
+    assert calls[-1][calls[-1].index("--prefix-cache-mib") + 1] == "2048"
     state.action(
         {
             "action": "train",
@@ -146,6 +161,7 @@ def test_studio_records_profile_and_only_overrides_resume_when_requested(
     )
     assert calls[-1][calls[-1].index("--profile") + 1] == "development"
     assert calls[-1][calls[-1].index("--decoded-cache-mib") + 1] == "4096"
+    assert calls[-1][calls[-1].index("--prefix-cache-mib") + 1] == "0"
     assert all("--chunk-size" not in command for command in calls)
     with pytest.raises(ValueError, match="Unknown resource"):
         state.action({"action": "train", "steps": 2, "resources": {"chunk_size": 512}})
@@ -289,7 +305,7 @@ class Element {
 function page(hash) {
   const nodes=new Map(), calls=[], bodies=[];
   const get=id=>{if(!nodes.has(id))nodes.set(id,new Element());return nodes.get(id);};
-  let snapshot={running:false,project:'A',log:'A log',config:{profile:'development',memory_gib:80,reserve_gib:32,packed_cache_mib:8192,decoded_cache_mib:32768,allocator_cache_mib:256,chunk_size:8192},comparison:{adapter:'A-ADAPTER',status:'likelihood_improved',evaluation_scope:'held_out_test'}};
+  let snapshot={running:false,project:'A',log:'A log',config:{profile:'development',memory_gib:80,reserve_gib:32,packed_cache_mib:8192,decoded_cache_mib:32768,prefix_cache_mib:2048,allocator_cache_mib:256,chunk_size:8192,adapter_layers:[38,39],activation_mode:'bf16'},comparison:{adapter:'A-ADAPTER',status:'likelihood_improved',evaluation_scope:'held_out_test'}};
   const context={
     location:{hash,pathname:'/'},history:{replaceState(){}},
     sessionStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},
@@ -307,26 +323,53 @@ function page(hash) {
   assert.match(first.get('savedResources').textContent,/process 80 GiB/);
   assert.match(first.get('savedResources').textContent,/Immutable decoder chunk: 8192/);
   assert.equal(first.get('chunk_size').value,8192);
+  assert.equal(first.get('adapter_layers').value,'38, 39');
+  assert.equal(first.get('activation_mode').value,'bf16');
+  assert.match(first.get('savedResources').textContent,/Activation mode: bf16/);
+  assert.match(first.get('savedResources').textContent,/Adapter blocks: 38, 39/);
   // An existing prototype's explicit 32 GiB setting remains visible; selecting
   // the current profile chooses the measured decoded-off default.
   assert.equal(first.get('decoded_cache_mib').value,32768);
+  assert.equal(first.get('prefix_cache_mib').value,2048);
+  assert.match(first.get('savedResources').textContent,/prefix 2048 MiB/);
   first.get('profile').value='development';first.get('profile').onchange();
   assert.equal(first.get('decoded_cache_mib').value,0);
+  assert.equal(first.get('prefix_cache_mib').value,0);
+  first.get('prefix_cache_mib').value=1024;
   first.get('chunk_size').value=4096;
+  first.get('activation_mode').value='checkpoint';
+  first.get('adapter_layers').value='39';
   first.get('decoded_cache_mib').value=4096;
   await first.context.poll();
   assert.equal(first.get('decoded_cache_mib').value,4096);
+  assert.equal(first.get('prefix_cache_mib').value,1024);
   assert.equal(first.get('chunk_size').value,4096);
+  assert.equal(first.get('activation_mode').value,'checkpoint');
+  assert.equal(first.get('adapter_layers').value,'39');
   first.get('override_resources').checked=true;
   first.get('steps').value=2;
   await first.context.action('train');
   assert.equal(Object.hasOwn(first.bodies.at(-1).resources,'chunk_size'),false);
+  assert.equal(first.bodies.at(-1).resources.prefix_cache_mib,1024);
   assert.equal(Object.hasOwn(first.bodies.at(-1),'chunk_size'),false);
+  assert.equal(Object.hasOwn(first.bodies.at(-1),'adapter_layers'),false);
+  assert.equal(Object.hasOwn(first.bodies.at(-1),'activation_mode'),false);
   await first.context.action('prepare');
   assert.equal(first.bodies.at(-1).chunk_size,4096);
+  assert.equal(first.bodies.at(-1).activation_mode,'checkpoint');
+  assert.deepEqual(first.bodies.at(-1).adapter_layers,[39]);
+  first.get('adapter_layers').value='39,';await first.context.action('prepare');
+  assert.deepEqual(first.bodies.at(-1).adapter_layers,[39]);
+  first.get('adapter_layers').value=',38 39,';await first.context.action('prepare');
+  assert.deepEqual(first.bodies.at(-1).adapter_layers,[38,39]);
+  first.get('adapter_layers').value=',';await first.context.action('prepare');
+  assert.deepEqual(first.bodies.at(-1).adapter_layers,[]);
   first.set({running:false,project:'B',log:'',config:{memory_gib:16}});await first.context.poll();
   assert.equal(first.get('memory_gib').value,16);
+  assert.equal(first.get('prefix_cache_mib').value,0);
   assert.equal(first.get('chunk_size').value,512);
+  assert.equal(first.get('adapter_layers').value,'');
+  assert.equal(first.get('activation_mode').value,'checkpoint');
   assert.equal(first.get('override_resources').checked,false);
   assert.equal(first.get('projectName').textContent,'B');
   assert.equal(first.get('comparison').textContent,'No comparison yet.');
@@ -340,3 +383,9 @@ function page(hash) {
         [node, "-e", harness], input=json.dumps(script), text=True, capture_output=True, timeout=10
     )
     assert result.returncode == 0, result.stderr
+
+
+def test_studio_cannot_change_activation_mode_on_resume(state, tmp_path):
+    state.project = project(tmp_path / "existing-mode")
+    with pytest.raises(ValueError, match="Activation mode is fixed"):
+        state.action({"action": "train", "steps": 2, "activation_mode": "bf16"})

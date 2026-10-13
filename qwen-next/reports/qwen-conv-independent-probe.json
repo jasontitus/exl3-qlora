@@ -1,0 +1,354 @@
+{
+  "format": "qwen-conv-independent-probe-v1",
+  "source_sha256": "abf905f59bc1be6e5d0707bd798332242524fb5e2639e90df98b999da249d65a",
+  "script_sha256": "8f39629803cf00e129e3d5ca99ac5447b30b671baebb59d63d78e2fcd1a5fd80",
+  "source_provenance": {
+    "inference_source": "/Users/jasontitus/experiments/exl3-qlora/exllamav3/modules/gated_delta_net_fn/conv1d.py",
+    "inference_sha256": "c750304f06fa7b970556202337792a1d698dda060b2985071692a364c72c219b",
+    "source": "/Users/jasontitus/experiments/exl3-qlora/exllamav3/training/gdn.py",
+    "sha256": "e1de1f6112715a7868388972872a5f37b0d8198d98246527650ce791d9b33a57",
+    "scope": "FP64 bounded CPU oracle; no serving/GPU qualification"
+  },
+  "numpy_version": "2.5.4",
+  "gpu_used": false,
+  "torch_imported": false,
+  "mlx_imported": false,
+  "checks": [
+    {
+      "name": "scalar-forward-0",
+      "max_abs_error": 0.0,
+      "tolerance": 2e-14,
+      "passed": true,
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "bias": false
+    },
+    {
+      "name": "raw-history-0",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "scalar-directional-0-x",
+      "max_abs_error": 4.565237077258644e-13,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 0.1859764457226576,
+      "analytical": 0.18597644572311411
+    },
+    {
+      "name": "scalar-directional-0-weight",
+      "max_abs_error": 3.1796787425264483e-13,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": -0.08661121170608355,
+      "analytical": -0.08661121170640151
+    },
+    {
+      "name": "no-mutation-0",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "scalar-forward-1",
+      "max_abs_error": 1.1102230246251565e-16,
+      "tolerance": 2e-14,
+      "passed": true,
+      "shape": [
+        2,
+        3,
+        1,
+        8
+      ],
+      "bias": true
+    },
+    {
+      "name": "raw-history-1",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "scalar-directional-1-x",
+      "max_abs_error": 6.440889488423807e-12,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 0.046009055842954893,
+      "analytical": 0.04600905584939578
+    },
+    {
+      "name": "scalar-directional-1-weight",
+      "max_abs_error": 1.0492010038554156e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 0.08177497051731208,
+      "analytical": 0.0817749705278041
+    },
+    {
+      "name": "scalar-directional-1-history",
+      "max_abs_error": 5.3434201507940315e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 0.4392781587647665,
+      "analytical": 0.4392781587113323
+    },
+    {
+      "name": "scalar-directional-1-bias",
+      "max_abs_error": 3.214395416506477e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 0.6519633411194992,
+      "analytical": 0.6519633410873552
+    },
+    {
+      "name": "no-mutation-1",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "scalar-forward-2",
+      "max_abs_error": 0.0,
+      "tolerance": 2e-14,
+      "passed": true,
+      "shape": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "bias": true
+    },
+    {
+      "name": "raw-history-2",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "scalar-directional-2-x",
+      "max_abs_error": 7.281286684701627e-12,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": -1.7554964084759428,
+      "analytical": -1.7554964084686615
+    },
+    {
+      "name": "scalar-directional-2-weight",
+      "max_abs_error": 3.6055408658697274e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 0.05385559870285661,
+      "analytical": 0.05385559873891202
+    },
+    {
+      "name": "scalar-directional-2-history",
+      "max_abs_error": 3.1798175204045265e-12,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": -0.11092545330881887,
+      "analytical": -0.11092545330563905
+    },
+    {
+      "name": "scalar-directional-2-bias",
+      "max_abs_error": 1.67090230540623e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": -0.36739191643098135,
+      "analytical": -0.3673919164142723
+    },
+    {
+      "name": "no-mutation-2",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "scalar-forward-3",
+      "max_abs_error": 1.3877787807814457e-17,
+      "tolerance": 2e-14,
+      "passed": true,
+      "shape": [
+        2,
+        2,
+        9,
+        4
+      ],
+      "bias": false
+    },
+    {
+      "name": "raw-history-3",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "scalar-directional-3-x",
+      "max_abs_error": 2.629280126953404e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 0.4204492341508548,
+      "analytical": 0.4204492341771476
+    },
+    {
+      "name": "scalar-directional-3-weight",
+      "max_abs_error": 7.57058860045845e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": -0.2217034379414784,
+      "analytical": -0.22170343801718428
+    },
+    {
+      "name": "scalar-directional-3-history",
+      "max_abs_error": 1.5590612134630533e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 0.10345960838042956,
+      "analytical": 0.10345960839602017
+    },
+    {
+      "name": "no-mutation-3",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "scalar-forward-4",
+      "max_abs_error": 2.220446049250313e-16,
+      "tolerance": 2e-14,
+      "passed": true,
+      "shape": [
+        2,
+        3,
+        32,
+        8
+      ],
+      "bias": true
+    },
+    {
+      "name": "raw-history-4",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "scalar-directional-4-x",
+      "max_abs_error": 2.1756907386816238e-10,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 0.10263254968112534,
+      "analytical": 0.10263254946355627
+    },
+    {
+      "name": "scalar-directional-4-weight",
+      "max_abs_error": 6.626432735856724e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 2.5382180935951126,
+      "analytical": 2.538218093661377
+    },
+    {
+      "name": "scalar-directional-4-history",
+      "max_abs_error": 8.925593597552961e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 0.2258450779724086,
+      "analytical": 0.22584507806166454
+    },
+    {
+      "name": "scalar-directional-4-bias",
+      "max_abs_error": 4.1946446316387664e-11,
+      "tolerance": 2e-08,
+      "passed": true,
+      "numerical": 1.8732979407687367,
+      "analytical": 1.8732979408106831
+    },
+    {
+      "name": "no-mutation-4",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "end-only-old-history-adjoint",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "end-only-current-input-adjoint",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "end-only-weight-adjoint",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "one-token-chunk-forward",
+      "max_abs_error": 1.3877787807814457e-17,
+      "tolerance": 2e-14,
+      "passed": true
+    },
+    {
+      "name": "one-token-chunk-end",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "one-token-chunk-adjoint-x",
+      "max_abs_error": 0.0,
+      "tolerance": 2e-14,
+      "passed": true
+    },
+    {
+      "name": "one-token-chunk-adjoint-weight",
+      "max_abs_error": 0.0,
+      "tolerance": 2e-14,
+      "passed": true
+    },
+    {
+      "name": "one-token-chunk-adjoint-history",
+      "max_abs_error": 0.0,
+      "tolerance": 2e-14,
+      "passed": true
+    },
+    {
+      "name": "inference-K-column-output-mapping",
+      "max_abs_error": 1.3877787807814457e-17,
+      "tolerance": 2e-14,
+      "passed": true
+    },
+    {
+      "name": "inference-K-column-history-mapping",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "saturated-silu-output",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "saturated-silu-input-adjoint",
+      "max_abs_error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    }
+  ],
+  "checks_passed": 44,
+  "passed": true,
+  "scope": "Tiny FP64 CPU mathematical conv/SiLU/history contract only; no serving or full-model qualification."
+}

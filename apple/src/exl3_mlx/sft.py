@@ -22,7 +22,9 @@ import uuid
 from dataclasses import dataclass
 from pathlib import Path
 
+from .activation_config import normalize_adapter_config, validate_activation_mode
 from .context import ENGINE_SEMANTICS, MAX_CONTEXT_TOKENS
+from .fit_probe import compare_final_fit_probe, validate_final_fit_examples
 from .resources import RESOURCE_FIELDS, resolve_resources
 
 
@@ -37,6 +39,8 @@ class SFTConfig:
     per_device_train_batch_size: int = 1
     rank: int = 4
     lora_alpha: float = 8.0
+    adapter_layers: list[int] | None = None  # Zero-based attention blocks; None means all 40.
+    activation_mode: str = "checkpoint"  # Experimental bf16 changes the zero-adapter forward.
     save_steps: int = 1
     eval_steps: int = 5
     save_total_limit: int = 2
@@ -47,6 +51,9 @@ class SFTConfig:
     reserve_gib: float | None = None
     packed_cache_mib: int | None = None
     decoded_cache_mib: int | None = None
+    prefix_cache_mib: int = 0
+    prefix_disk_cache: str | None = None
+    prefix_disk_cache_gib: float = 0.0
     allocator_cache_mib: int | None = None
     demo: bool = False
     prompt_column: str | None = None
@@ -54,10 +61,24 @@ class SFTConfig:
     group_column: str | None = None
     max_new_tokens: int = 16
     comparison_examples: int = 4
+    final_fit_examples: int = 0  # Optional warm training-mode probe; no optimizer update.
     loss_scope: str = "last_assistant"
     packing: bool = False
 
     def __post_init__(self):
+        self.final_fit_examples = validate_final_fit_examples(self.final_fit_examples)
+        self.activation_mode = validate_activation_mode(self.activation_mode)
+        if self.adapter_layers is None:
+            self.adapter_layers = list(range(40))
+        elif (
+            not isinstance(self.adapter_layers, (list, tuple))
+            or not self.adapter_layers
+            or any(type(layer) is not int or not 0 <= layer < 40 for layer in self.adapter_layers)
+            or len(set(self.adapter_layers)) != len(self.adapter_layers)
+        ):
+            raise ValueError("adapter_layers must contain unique integer block IDs in 0..39")
+        else:
+            self.adapter_layers = sorted(self.adapter_layers)
         if (
             type(self.chunk_size) is not int
             or not 128 <= self.chunk_size <= 32768
@@ -85,6 +106,10 @@ class SFTConfig:
             value = getattr(self, key)
             if type(value) not in (int, float) or not math.isfinite(value) or value <= 0:
                 raise ValueError(f"{key} must be finite and positive")
+        if self.final_fit_examples > self.comparison_examples:
+            raise ValueError(
+                "final_fit_examples must not exceed comparison_examples for fresh verification"
+            )
         if self.max_length is not None and (
             type(self.max_length) is not int or not 3 <= self.max_length <= MAX_CONTEXT_TOKENS
         ):
@@ -300,6 +325,12 @@ class SFTTrainer:
             raise ValueError("Unsupported fine-tuning project")
         immutable = dataclasses.asdict(self.args)
         saved = dict(manifest["config"])
+        # Projects created before layer selection implicitly targeted all 40.
+        # Source/runtime identity is still checked below; this is not migration.
+        if saved.get("adapter_layers") is None:
+            saved["adapter_layers"] = list(range(40))
+        saved.setdefault("activation_mode", "checkpoint")
+        saved.setdefault("final_fit_examples", 0)
         for config in (immutable, saved):
             config.pop("max_steps", None)
             config.pop("output_dir", None)
@@ -509,11 +540,87 @@ class SFTTrainer:
         return [
             value
             for key in RESOURCE_FIELDS
+            if getattr(self.args, key) is not None
             for value in ("--" + key.replace("_", "-"), getattr(self.args, key))
         ]
 
-    def _engine_options(self):
-        return [*self._resources(), "--chunk-size", self.args.chunk_size]
+    def _engine_options(self, *, placement=True):
+        return [
+            *self._resources(),
+            *(
+                ["--adapter-layers", *self.args.adapter_layers]
+                if placement and self.args.prefix_disk_cache
+                else []
+            ),
+            "--chunk-size",
+            self.args.chunk_size,
+            "--activation-mode",
+            self.args.activation_mode,
+        ]
+
+    def _verify_activation_receipt(self, receipt):
+        mode = validate_activation_mode(receipt.get("activation_mode", "checkpoint"))
+        if mode != self.args.activation_mode:
+            raise ValueError("Child receipt activation_mode differs from the saved project")
+
+    def _evaluation_rows(self, manifest, split):
+        """Snapshot the exact prepared rows whose bytes the project binds."""
+        path = self.root / "data" / f"{split}.jsonl"
+        payload = path.read_bytes()
+        if hashlib.sha256(payload).hexdigest() != manifest["data_files"][path.name]:
+            raise ValueError(f"Project dataset changed: {path.name}")
+        rows = [json.loads(line) for line in payload.splitlines() if line.strip()]
+        if len(rows) != manifest["data"]["counts"][split]:
+            raise ValueError("Project split count differs from its prepared rows")
+        selected = rows[: self.args.comparison_examples]
+        expected = {
+            "data": str(path.resolve()),
+            "input_identity": {"data_sha256": manifest["data_files"][path.name]},
+            "selected_examples_sha256": hashlib.sha256(
+                json.dumps(selected, sort_keys=True, separators=(",", ":")).encode()
+            ).hexdigest(),
+            "seq_length": manifest["data"]["seq_length"],
+            "requested_max_examples": self.args.comparison_examples,
+            "implementation": manifest["implementation"],
+        }
+        return rows, selected, expected
+
+    def _verify_evaluation_receipt(self, receipt, expected, selected, command, adapter):
+        """New comparisons require bound child provenance; old reports stay readable."""
+        self._verify_activation_receipt(receipt)
+        context = receipt.get("evaluation_context")
+        argv = list(map(str, command))
+        if "--verbose" not in argv:
+            argv.append("--verbose")
+        if (
+            not isinstance(context, dict)
+            or any(context.get(key) != value for key, value in expected.items())
+            or context.get("argv") != argv
+            or type(context.get("process_id")) is not int
+            or context["process_id"] <= 0
+            or type(context.get("seq_length")) is not int
+            or type(context.get("requested_max_examples")) is not int
+        ):
+            raise ValueError(
+                "Child evaluation provenance differs from the immutable project selection"
+            )
+        if receipt.get("checkpoint") != self.model or receipt.get("adapter") != (
+            str(adapter) if adapter is not None else None
+        ):
+            raise ValueError(
+                "Child evaluation model or adapter differs from the requested comparison"
+            )
+        token_count = sum(len(row["input_ids"]) - row["loss_start"] for row in selected)
+        if (
+            type(receipt.get("examples")) is not int
+            or receipt["examples"] != len(selected)
+            or type(receipt.get("supervised_tokens")) is not int
+            or receipt["supervised_tokens"] != token_count
+            or type(receipt.get("loss")) not in (int, float)
+            or not math.isfinite(receipt["loss"])
+            or receipt["loss"] < 0
+        ):
+            raise ValueError("Child evaluation scores do not match the complete selected rows")
 
     @staticmethod
     def _write_rows(dataset, target):
@@ -693,7 +800,7 @@ class SFTTrainer:
                 write_json(attempt / "resources.json", resources)
                 write_json(self.root / "project.json", manifest)
                 self._child(
-                    ["doctor", "--model", self.model, *self._engine_options()],
+                    ["doctor", "--model", self.model, *self._engine_options(placement=False)],
                     label="preflight",
                     directory=attempt,
                 )
@@ -714,6 +821,8 @@ class SFTTrainer:
                     self.args.rank,
                     "--alpha",
                     self.args.lora_alpha,
+                    "--adapter-layers",
+                    *self.args.adapter_layers,
                     "--learning-rate",
                     self.args.learning_rate,
                     "--grad-accumulation",
@@ -726,13 +835,15 @@ class SFTTrainer:
                     self.args.eval_steps,
                     "--eval-examples",
                     max(1, manifest["data"]["counts"]["valid"]),
+                    "--final-fit-examples",
+                    self.args.final_fit_examples,
                     "--keep-last",
                     self.args.save_total_limit,
                     "--seed",
                     self.args.seed,
                     "--stop-file",
                     self.root / "stop.request",
-                    *self._engine_options(),
+                    *self._engine_options(placement=False),
                 ]
                 if latest:
                     command += ["--resume", latest[1]]
@@ -741,6 +852,7 @@ class SFTTrainer:
                 try:
                     self._child(command, label="training", directory=attempt)
                     report = json.loads((attempt / "train/training.json").read_text())
+                    self._verify_activation_receipt(report)
                     manifest.update(
                         status=report.get("status", "completed"),
                         last_training_report=str(attempt / "train/training.json"),
@@ -799,7 +911,9 @@ class SFTTrainer:
                     raise ValueError(
                         f"Checkpoint does not belong to this dataset and training configuration: {path}"
                     )
-                config = json.loads((path / "adapter_config.json").read_text())
+                config = normalize_adapter_config(
+                    json.loads((path / "adapter_config.json").read_text())
+                )
                 expected_base = {
                     k: manifest["capabilities"]["base_metadata"][k]
                     for k in (
@@ -815,8 +929,9 @@ class SFTTrainer:
                     config.get("base_identity") != expected_base
                     or config.get("rank") != self.args.rank
                     or config.get("alpha") != self.args.lora_alpha
-                    or config.get("adapter_layers") != list(range(40))
+                    or config.get("adapter_layers") != self.args.adapter_layers
                     or config.get("expert_adapter_layers") != []
+                    or config["activation_mode"] != self.args.activation_mode
                 ):
                     raise ValueError(
                         f"Checkpoint base model or adapter settings differ from project: {path}"
@@ -854,9 +969,18 @@ class SFTTrainer:
             self._lock_fd = lock_fd
             manifest = self._manifest()
             adapter = self.selected_checkpoint()
+            rows, selected_rows, expected = self._evaluation_rows(manifest, "train")
             directory = self.root / "fit-checks" / str(time.time_ns())
             directory.mkdir(parents=True)
             results = {}
+            fit_options = self._engine_options()
+            # A new child plus disabled prefix reuse gives the probe an actual
+            # uncached comparison, independent of this project's train cache.
+            fit_options[fit_options.index("--prefix-cache-mib") + 1] = 0
+            for flag in ("--prefix-disk-cache", "--prefix-disk-cache-gib"):
+                if flag in fit_options:
+                    position = fit_options.index(flag)
+                    del fit_options[position : position + 2]
             for condition in ("base", "adapter"):
                 path = directory / f"{condition}.json"
                 command = [
@@ -865,35 +989,31 @@ class SFTTrainer:
                     self.model,
                     "--data",
                     self.root / "data/train.jsonl",
+                    "--token-metrics",
                     "--seq-length",
                     manifest["data"]["seq_length"],
                     "--max-examples",
                     self.args.comparison_examples,
                     "--report",
                     path,
-                    *self._engine_options(),
+                    *fit_options,
                 ]
                 if condition == "adapter":
                     command += ["--adapter", adapter]
                 self._child(command, label=f"fit-{condition}", directory=directory)
                 results[condition] = json.loads(path.read_text())
-            rows = [
-                json.loads(line)
-                for line in (self.root / "data/train.jsonl").read_text().splitlines()
-                if line.strip()
-            ]
-            selected_rows = rows[: self.args.comparison_examples]
+                self._manifest()
+                self._verify_evaluation_receipt(
+                    results[condition],
+                    expected,
+                    selected_rows,
+                    command,
+                    adapter if condition == "adapter" else None,
+                )
             token_count = sum(len(row["input_ids"]) - row["loss_start"] for row in selected_rows)
-            for condition, receipt in results.items():
-                if (
-                    receipt.get("examples") != len(selected_rows)
-                    or receipt.get("supervised_tokens") != token_count
-                    or type(receipt.get("loss")) not in (int, float)
-                    or not math.isfinite(receipt["loss"])
-                ):
-                    raise ValueError(
-                        f"{condition} fit receipt does not match selected training rows"
-                    )
+            parity = self._final_fit_parity(
+                adapter, results["adapter"], rows, selected_rows, expected
+            )
             result = {
                 "available_examples": len(rows),
                 "evaluated_examples": len(selected_rows),
@@ -909,11 +1029,50 @@ class SFTTrainer:
                 "selected_checkpoint": str(adapter),
                 "training_data_sha256": manifest["data_files"]["train.jsonl"],
                 "loss_delta": results["adapter"]["loss"] - results["base"]["loss"],
+                "training_mode_probe_parity": parity,
                 **results,
             }
             write_json(directory / "fit.json", result)
             write_json(self.root / "fit.json", result)
             return result
+
+    def _final_fit_parity(self, adapter, fresh, rows, selected_rows, expected):
+        report_path = adapter.parent / "training.json"
+        unavailable = {
+            "status": "unavailable",
+            "real_model_warm_cache_parity_verified": False,
+            "quality_certified": False,
+        }
+        if not report_path.exists():
+            return {**unavailable, "reason": "Selected checkpoint has no completed training report"}
+        report = json.loads(report_path.read_text())
+        probe = report.get("training_fit_probe")
+        if probe is None:
+            return {**unavailable, "reason": "No final training-mode fit probe was recorded"}
+        if report.get("status") != "completed":
+            raise ValueError("Training fit probe requires a completed training report")
+        if not isinstance(probe, dict):
+            raise ValueError("Invalid training fit probe receipt")
+        if probe.get("checkpoint") != str(adapter.resolve()):
+            return {
+                **unavailable,
+                "reason": "Final probe belongs to a different checkpoint than the selected adapter",
+            }
+        result = compare_final_fit_probe(
+            probe,
+            fresh,
+            selected_rows,
+            checkpoint=adapter,
+            expected={
+                **expected,
+                "available_examples": len(rows),
+                "requested_examples": self.args.final_fit_examples,
+                "activation_mode": self.args.activation_mode,
+                "chunk_size": self.args.chunk_size,
+            },
+        )
+        result["training_report_sha256"] = digest(report_path)
+        return result
 
     def evaluate(self):
         with project_lock(self.root) as lock_fd:
@@ -933,6 +1092,7 @@ class SFTTrainer:
                 write_json(self.root / "comparison.json", result)
                 self._render_report(result)
                 return result
+            _, selected_rows, expected = self._evaluation_rows(manifest, split)
             directory = self.root / "comparisons" / str(time.time_ns())
             directory.mkdir(parents=True)
             old_exposures = manifest.get("test_exposure_count", 0)
@@ -952,6 +1112,7 @@ class SFTTrainer:
                     manifest["data"]["seq_length"],
                     "--max-examples",
                     self.args.comparison_examples,
+                    "--token-metrics",
                     "--report",
                     path,
                     *self._engine_options(),
@@ -960,6 +1121,14 @@ class SFTTrainer:
                     command += ["--adapter", adapter]
                 self._child(command, label=condition, directory=directory)
                 results[condition] = json.loads(path.read_text())
+                self._manifest()
+                self._verify_evaluation_receipt(
+                    results[condition],
+                    expected,
+                    selected_rows,
+                    command,
+                    adapter if condition == "adapter" else None,
+                )
             delta = results["adapter"]["loss"] - results["base"]["loss"]
             result = {
                 "status": "likelihood_improved"
@@ -974,6 +1143,8 @@ class SFTTrainer:
                 "split": split,
                 "available_examples": counts[split],
                 "evaluated_examples": results["base"]["examples"],
+                "selected_examples_sha256": expected["selected_examples_sha256"],
+                "data_sha256": expected["input_identity"]["data_sha256"],
                 "loss_delta": delta,
                 **results,
             }
@@ -986,6 +1157,7 @@ class SFTTrainer:
             result["test_previously_observed"] = bool(old_exposures and split == "test")
             if result["test_previously_observed"]:
                 result["evaluation_scope"] = "previously_observed_test"
+            self._manifest()
             write_json(directory / "comparison.json", result)
             write_json(self.root / "comparison.json", result)
             manifest.update(
@@ -998,6 +1170,12 @@ class SFTTrainer:
             return result
 
     def _paired_preview(self, row, adapter, directory):
+        if "tools" in row:
+            return {
+                "status": "skipped",
+                "reason": "Native tool actions require the explicit tools-aware generation and patch-replay evaluation; plain-text preview is not a tool success metric",
+                "tool_action_verified": False,
+            }
         from .data import load_tokenizer
 
         tokenizer = load_tokenizer(self.model)
@@ -1034,6 +1212,7 @@ class SFTTrainer:
                 command += ["--adapter", adapter]
             self._child(command, label=f"{condition}-generation", directory=directory)
             value = json.loads(path.read_text())
+            self._verify_activation_receipt(value)
             generated = value.get("generated_ids")
             if (
                 value.get("prompt_ids") != list(ids)
@@ -1104,7 +1283,9 @@ class SFTTrainer:
             if not base:
                 command += ["--adapter", self.selected_checkpoint()]
             self._child(command, label="preview", directory=directory)
-            return json.loads(path.read_text())
+            receipt = json.loads(path.read_text())
+            self._verify_activation_receipt(receipt)
+            return receipt
 
     def save_model(self, output_dir):
         with project_lock(self.root) as lock_fd:
@@ -1120,7 +1301,9 @@ class SFTTrainer:
                 # Export inference weights only; resume remains in the project.
                 for name in ("adapter.safetensors", "adapter_config.json"):
                     shutil.copyfile(source / name, stage / name)
-                config = json.loads((stage / "adapter_config.json").read_text())
+                config = normalize_adapter_config(
+                    json.loads((stage / "adapter_config.json").read_text())
+                )
                 config["adapter_sha256"] = digest(stage / "adapter.safetensors")
                 write_json(stage / "adapter_config.json", config)
                 write_json(
@@ -1171,6 +1354,8 @@ class SFTTrainer:
             "status": manifest["status"],
             "completed_steps": latest[0] if latest else 0,
             "target_steps": manifest.get("target_steps", self.args.max_steps),
+            "adapter_layers": list(self.args.adapter_layers),
+            "activation_mode": self.args.activation_mode,
             "latest_checkpoint": str(latest[1]) if latest else None,
             "selected_checkpoint": selected,
             "comparison": comparison,

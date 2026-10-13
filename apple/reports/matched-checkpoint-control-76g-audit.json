@@ -1,0 +1,1182 @@
+{
+  "schema": "exl3-matched-checkpoint-control-audit-v1",
+  "audit_completed": true,
+  "scope": "Single previously inspected training row, one fresh update per mode; prospective control after treatment result known",
+  "quality_certified": false,
+  "unique_root_cause_proven": false,
+  "matched_evaluation_runtime_and_mathematical_settings": true,
+  "exact_resources_matched_to_treatment": false,
+  "resource_comparison": {
+    "treatment": {
+      "profile": "development",
+      "memory_gib": 80.0,
+      "reserve_gib": 8.0,
+      "packed_cache_mib": 8192,
+      "decoded_cache_mib": 0,
+      "prefix_cache_mib": 0,
+      "allocator_cache_mib": 256
+    },
+    "control_training": {
+      "profile": "development",
+      "memory_gib": 76.0,
+      "reserve_gib": 8.0,
+      "packed_cache_mib": 8192,
+      "decoded_cache_mib": 0,
+      "prefix_cache_mib": 0,
+      "allocator_cache_mib": 256
+    },
+    "control_evaluation": {
+      "profile": "development",
+      "memory_gib": 72.0,
+      "reserve_gib": 8.0,
+      "packed_cache_mib": 8192,
+      "decoded_cache_mib": 0,
+      "prefix_cache_mib": 0,
+      "allocator_cache_mib": 256
+    },
+    "amendment": {
+      "original_plan": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/matched-checkpoint-control-plan.json",
+      "original_plan_sha256": "3606cd6f3d01af73ff6ebc85b23a91c22f14b61b1030dac0e4d4b758957f757a",
+      "original_config": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-one-step-config.json",
+      "original_config_sha256": "4aead354935a2b2337d4e0d815d52474f2b699e63f30f9d471548d1538e3fa80",
+      "control_previously_launched": false,
+      "exact_resource_match": false,
+      "motivation_paths": {
+        "standard_failure_log": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/1791857030575085000/fit-adapter.log",
+        "recovery_declaration": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/recovery-launch.json",
+        "treatment_training_report": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/training.json",
+        "historical_training_report": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/training.json"
+      },
+      "motivation_inputs_sha256": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/1791857030575085000/fit-adapter.log": "b60ada9c6b3c7ff0f08752a51bafbc3f118b67216d422e9e6dff37ed79d9e67d",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/recovery-launch.json": "399d43ea4a13dbe307c5fd41741b42c15b6493ba39ed08ce43ad566336402291",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/training.json": "a336b11d88a8db383883185da362bc5d9c28d7e7f2d766699422633312b1f169",
+        "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/training.json": "e78f8d286ead857637a6c7e0d04c58303a80b56e98d7945cb8d94d591686c8e7"
+      },
+      "reason": "The separate standard-fit adapter child failed startup with 86.48 GiB free/reclaimable, below80+8 required. This is a prospective control resource amendment, not a retry of an observed failed control.",
+      "changes": {
+        "treatment_train_gib": 80.0,
+        "control_train_gib": 76.0,
+        "treatment_eval_gib": 80.0,
+        "control_eval_gib": 72.0,
+        "reserve_gib_all": 8.0
+      },
+      "unchanged": "Pinned runtime-v2, dependencies, seed/initialization, data/mask, optimizer, activation-mode contrast, chunk8192, all explicit caches, reserve8, recomputation and score protocol remain fixed.",
+      "memory_observations": {
+        "treatment_training_report": {
+          "peak_mlx_gib": 73.30529227294028,
+          "end_observed_memory_gib": 23.223068237304688
+        },
+        "historical_training_report": {
+          "peak_mlx_gib": 73.948277679272,
+          "end_observed_memory_gib": 27.656509399414062
+        }
+      },
+      "historical_mlx_peak_headroom_gib": 2.051722320728004,
+      "risk": "76 GiB is only about2.05GiB above the observed historical MLX peak. The watchdog uses max(process RSS, MLX active+cache); end_observed_memory is not a sampled RSS peak. Resource failure/transient differences remain possible. Keep failed/partial outcomes without silent retry or cap changes.",
+      "interpretation_limit": "This comparison matches the mathematical recipe and runtime with explicitly different process caps. Do not claim exact resource equality or identical timing. Lower caps are not themselves evidence of numerical parity; historical tensor/logits reproduction remains separately measured."
+    }
+  },
+  "training_runtime_provenance": "Requires separately inspected launch receipts; evaluation_context alone does not attest the training process runtime.",
+  "treatment_prior_audit_revalidated": true,
+  "historical_update_reproduced": false,
+  "historical_baseline_reproduced": true,
+  "historical_post_reproduced": false,
+  "historical_tensor_comparisons": {
+    "adapters": {
+      "exact": false,
+      "count": 160,
+      "different": [
+        "blocks.0.attn.linears.wo_b.lora_b",
+        "blocks.0.attn.linears.wq_a.lora_b",
+        "blocks.1.attn.linears.wo_b.lora_b",
+        "blocks.1.attn.linears.wq_a.lora_b",
+        "blocks.10.attn.linears.wo_b.lora_b",
+        "blocks.10.attn.linears.wq_a.lora_b",
+        "blocks.11.attn.linears.wo_b.lora_b",
+        "blocks.11.attn.linears.wq_a.lora_b",
+        "blocks.12.attn.linears.wo_b.lora_b",
+        "blocks.12.attn.linears.wq_a.lora_b",
+        "blocks.13.attn.linears.wo_b.lora_b",
+        "blocks.13.attn.linears.wq_a.lora_b",
+        "blocks.14.attn.linears.wo_b.lora_b",
+        "blocks.14.attn.linears.wq_a.lora_b",
+        "blocks.15.attn.linears.wo_b.lora_b",
+        "blocks.15.attn.linears.wq_a.lora_b",
+        "blocks.16.attn.linears.wo_b.lora_b",
+        "blocks.16.attn.linears.wq_a.lora_b",
+        "blocks.17.attn.linears.wo_b.lora_b",
+        "blocks.17.attn.linears.wq_a.lora_b",
+        "blocks.18.attn.linears.wo_b.lora_b",
+        "blocks.18.attn.linears.wq_a.lora_b",
+        "blocks.19.attn.linears.wo_b.lora_b",
+        "blocks.19.attn.linears.wq_a.lora_b",
+        "blocks.2.attn.linears.wo_b.lora_b",
+        "blocks.2.attn.linears.wq_a.lora_b",
+        "blocks.20.attn.linears.wo_b.lora_b",
+        "blocks.20.attn.linears.wq_a.lora_b",
+        "blocks.21.attn.linears.wo_b.lora_b",
+        "blocks.21.attn.linears.wq_a.lora_b",
+        "blocks.22.attn.linears.wo_b.lora_b",
+        "blocks.22.attn.linears.wq_a.lora_b",
+        "blocks.23.attn.linears.wo_b.lora_b",
+        "blocks.23.attn.linears.wq_a.lora_b",
+        "blocks.24.attn.linears.wo_b.lora_b",
+        "blocks.24.attn.linears.wq_a.lora_b",
+        "blocks.25.attn.linears.wo_b.lora_b",
+        "blocks.25.attn.linears.wq_a.lora_b",
+        "blocks.26.attn.linears.wo_b.lora_b",
+        "blocks.26.attn.linears.wq_a.lora_b",
+        "blocks.27.attn.linears.wo_b.lora_b",
+        "blocks.27.attn.linears.wq_a.lora_b",
+        "blocks.28.attn.linears.wo_b.lora_b",
+        "blocks.28.attn.linears.wq_a.lora_b",
+        "blocks.29.attn.linears.wo_b.lora_b",
+        "blocks.29.attn.linears.wq_a.lora_b",
+        "blocks.3.attn.linears.wo_b.lora_b",
+        "blocks.3.attn.linears.wq_a.lora_b",
+        "blocks.30.attn.linears.wo_b.lora_b",
+        "blocks.30.attn.linears.wq_a.lora_b",
+        "blocks.31.attn.linears.wo_b.lora_b",
+        "blocks.31.attn.linears.wq_a.lora_b",
+        "blocks.32.attn.linears.wo_b.lora_b",
+        "blocks.32.attn.linears.wq_a.lora_b",
+        "blocks.33.attn.linears.wo_b.lora_b",
+        "blocks.33.attn.linears.wq_a.lora_b",
+        "blocks.34.attn.linears.wo_b.lora_b",
+        "blocks.34.attn.linears.wq_a.lora_b",
+        "blocks.35.attn.linears.wo_b.lora_b",
+        "blocks.35.attn.linears.wq_a.lora_b",
+        "blocks.36.attn.linears.wo_b.lora_b",
+        "blocks.36.attn.linears.wq_a.lora_b",
+        "blocks.37.attn.linears.wo_b.lora_b",
+        "blocks.37.attn.linears.wq_a.lora_b",
+        "blocks.38.attn.linears.wo_b.lora_b",
+        "blocks.38.attn.linears.wq_a.lora_b",
+        "blocks.4.attn.linears.wo_b.lora_b",
+        "blocks.4.attn.linears.wq_a.lora_b",
+        "blocks.5.attn.linears.wo_b.lora_b",
+        "blocks.5.attn.linears.wq_a.lora_b",
+        "blocks.6.attn.linears.wo_b.lora_b",
+        "blocks.6.attn.linears.wq_a.lora_b",
+        "blocks.7.attn.linears.wo_b.lora_b",
+        "blocks.7.attn.linears.wq_a.lora_b",
+        "blocks.8.attn.linears.wo_b.lora_b",
+        "blocks.8.attn.linears.wq_a.lora_b",
+        "blocks.9.attn.linears.wo_b.lora_b",
+        "blocks.9.attn.linears.wq_a.lora_b"
+      ]
+    },
+    "optimizer": {
+      "exact": false,
+      "count": 322,
+      "different": [
+        "blocks.0.attn.linears.wo_b.lora_b.m",
+        "blocks.0.attn.linears.wo_b.lora_b.v",
+        "blocks.0.attn.linears.wq_a.lora_b.m",
+        "blocks.0.attn.linears.wq_a.lora_b.v",
+        "blocks.1.attn.linears.wo_b.lora_b.m",
+        "blocks.1.attn.linears.wo_b.lora_b.v",
+        "blocks.1.attn.linears.wq_a.lora_b.m",
+        "blocks.1.attn.linears.wq_a.lora_b.v",
+        "blocks.10.attn.linears.wo_b.lora_b.m",
+        "blocks.10.attn.linears.wo_b.lora_b.v",
+        "blocks.10.attn.linears.wq_a.lora_b.m",
+        "blocks.10.attn.linears.wq_a.lora_b.v",
+        "blocks.11.attn.linears.wo_b.lora_b.m",
+        "blocks.11.attn.linears.wo_b.lora_b.v",
+        "blocks.11.attn.linears.wq_a.lora_b.m",
+        "blocks.11.attn.linears.wq_a.lora_b.v",
+        "blocks.12.attn.linears.wo_b.lora_b.m",
+        "blocks.12.attn.linears.wo_b.lora_b.v",
+        "blocks.12.attn.linears.wq_a.lora_b.m",
+        "blocks.12.attn.linears.wq_a.lora_b.v",
+        "blocks.13.attn.linears.wo_b.lora_b.m",
+        "blocks.13.attn.linears.wo_b.lora_b.v",
+        "blocks.13.attn.linears.wq_a.lora_b.m",
+        "blocks.13.attn.linears.wq_a.lora_b.v",
+        "blocks.14.attn.linears.wo_b.lora_b.m",
+        "blocks.14.attn.linears.wo_b.lora_b.v",
+        "blocks.14.attn.linears.wq_a.lora_b.m",
+        "blocks.14.attn.linears.wq_a.lora_b.v",
+        "blocks.15.attn.linears.wo_b.lora_b.m",
+        "blocks.15.attn.linears.wo_b.lora_b.v",
+        "blocks.15.attn.linears.wq_a.lora_b.m",
+        "blocks.15.attn.linears.wq_a.lora_b.v",
+        "blocks.16.attn.linears.wo_b.lora_b.m",
+        "blocks.16.attn.linears.wo_b.lora_b.v",
+        "blocks.16.attn.linears.wq_a.lora_b.m",
+        "blocks.16.attn.linears.wq_a.lora_b.v",
+        "blocks.17.attn.linears.wo_b.lora_b.m",
+        "blocks.17.attn.linears.wo_b.lora_b.v",
+        "blocks.17.attn.linears.wq_a.lora_b.m",
+        "blocks.17.attn.linears.wq_a.lora_b.v",
+        "blocks.18.attn.linears.wo_b.lora_b.m",
+        "blocks.18.attn.linears.wo_b.lora_b.v",
+        "blocks.18.attn.linears.wq_a.lora_b.m",
+        "blocks.18.attn.linears.wq_a.lora_b.v",
+        "blocks.19.attn.linears.wo_b.lora_b.m",
+        "blocks.19.attn.linears.wo_b.lora_b.v",
+        "blocks.19.attn.linears.wq_a.lora_b.m",
+        "blocks.19.attn.linears.wq_a.lora_b.v",
+        "blocks.2.attn.linears.wo_b.lora_b.m",
+        "blocks.2.attn.linears.wo_b.lora_b.v",
+        "blocks.2.attn.linears.wq_a.lora_b.m",
+        "blocks.2.attn.linears.wq_a.lora_b.v",
+        "blocks.20.attn.linears.wo_b.lora_b.m",
+        "blocks.20.attn.linears.wo_b.lora_b.v",
+        "blocks.20.attn.linears.wq_a.lora_b.m",
+        "blocks.20.attn.linears.wq_a.lora_b.v",
+        "blocks.21.attn.linears.wo_b.lora_b.m",
+        "blocks.21.attn.linears.wo_b.lora_b.v",
+        "blocks.21.attn.linears.wq_a.lora_b.m",
+        "blocks.21.attn.linears.wq_a.lora_b.v",
+        "blocks.22.attn.linears.wo_b.lora_b.m",
+        "blocks.22.attn.linears.wo_b.lora_b.v",
+        "blocks.22.attn.linears.wq_a.lora_b.m",
+        "blocks.22.attn.linears.wq_a.lora_b.v",
+        "blocks.23.attn.linears.wo_b.lora_b.m",
+        "blocks.23.attn.linears.wo_b.lora_b.v",
+        "blocks.23.attn.linears.wq_a.lora_b.m",
+        "blocks.23.attn.linears.wq_a.lora_b.v",
+        "blocks.24.attn.linears.wo_b.lora_b.m",
+        "blocks.24.attn.linears.wo_b.lora_b.v",
+        "blocks.24.attn.linears.wq_a.lora_b.m",
+        "blocks.24.attn.linears.wq_a.lora_b.v",
+        "blocks.25.attn.linears.wo_b.lora_b.m",
+        "blocks.25.attn.linears.wo_b.lora_b.v",
+        "blocks.25.attn.linears.wq_a.lora_b.m",
+        "blocks.25.attn.linears.wq_a.lora_b.v",
+        "blocks.26.attn.linears.wo_b.lora_b.m",
+        "blocks.26.attn.linears.wo_b.lora_b.v",
+        "blocks.26.attn.linears.wq_a.lora_b.m",
+        "blocks.26.attn.linears.wq_a.lora_b.v",
+        "blocks.27.attn.linears.wo_b.lora_b.m",
+        "blocks.27.attn.linears.wo_b.lora_b.v",
+        "blocks.27.attn.linears.wq_a.lora_b.m",
+        "blocks.27.attn.linears.wq_a.lora_b.v",
+        "blocks.28.attn.linears.wo_b.lora_b.m",
+        "blocks.28.attn.linears.wo_b.lora_b.v",
+        "blocks.28.attn.linears.wq_a.lora_b.m",
+        "blocks.28.attn.linears.wq_a.lora_b.v",
+        "blocks.29.attn.linears.wo_b.lora_b.m",
+        "blocks.29.attn.linears.wo_b.lora_b.v",
+        "blocks.29.attn.linears.wq_a.lora_b.m",
+        "blocks.29.attn.linears.wq_a.lora_b.v",
+        "blocks.3.attn.linears.wo_b.lora_b.m",
+        "blocks.3.attn.linears.wo_b.lora_b.v",
+        "blocks.3.attn.linears.wq_a.lora_b.m",
+        "blocks.3.attn.linears.wq_a.lora_b.v",
+        "blocks.30.attn.linears.wo_b.lora_b.m",
+        "blocks.30.attn.linears.wo_b.lora_b.v",
+        "blocks.30.attn.linears.wq_a.lora_b.m",
+        "blocks.30.attn.linears.wq_a.lora_b.v",
+        "blocks.31.attn.linears.wo_b.lora_b.m",
+        "blocks.31.attn.linears.wo_b.lora_b.v",
+        "blocks.31.attn.linears.wq_a.lora_b.m",
+        "blocks.31.attn.linears.wq_a.lora_b.v",
+        "blocks.32.attn.linears.wo_b.lora_b.m",
+        "blocks.32.attn.linears.wo_b.lora_b.v",
+        "blocks.32.attn.linears.wq_a.lora_b.m",
+        "blocks.32.attn.linears.wq_a.lora_b.v",
+        "blocks.33.attn.linears.wo_b.lora_b.m",
+        "blocks.33.attn.linears.wo_b.lora_b.v",
+        "blocks.33.attn.linears.wq_a.lora_b.m",
+        "blocks.33.attn.linears.wq_a.lora_b.v",
+        "blocks.34.attn.linears.wo_b.lora_b.m",
+        "blocks.34.attn.linears.wo_b.lora_b.v",
+        "blocks.34.attn.linears.wq_a.lora_b.m",
+        "blocks.34.attn.linears.wq_a.lora_b.v",
+        "blocks.35.attn.linears.wo_b.lora_b.m",
+        "blocks.35.attn.linears.wo_b.lora_b.v",
+        "blocks.35.attn.linears.wq_a.lora_b.m",
+        "blocks.35.attn.linears.wq_a.lora_b.v",
+        "blocks.36.attn.linears.wo_b.lora_b.m",
+        "blocks.36.attn.linears.wo_b.lora_b.v",
+        "blocks.36.attn.linears.wq_a.lora_b.m",
+        "blocks.36.attn.linears.wq_a.lora_b.v",
+        "blocks.37.attn.linears.wo_b.lora_b.m",
+        "blocks.37.attn.linears.wo_b.lora_b.v",
+        "blocks.37.attn.linears.wq_a.lora_b.m",
+        "blocks.37.attn.linears.wq_a.lora_b.v",
+        "blocks.38.attn.linears.wo_b.lora_b.m",
+        "blocks.38.attn.linears.wo_b.lora_b.v",
+        "blocks.38.attn.linears.wq_a.lora_b.m",
+        "blocks.38.attn.linears.wq_a.lora_b.v",
+        "blocks.4.attn.linears.wo_b.lora_b.m",
+        "blocks.4.attn.linears.wo_b.lora_b.v",
+        "blocks.4.attn.linears.wq_a.lora_b.m",
+        "blocks.4.attn.linears.wq_a.lora_b.v",
+        "blocks.5.attn.linears.wo_b.lora_b.m",
+        "blocks.5.attn.linears.wo_b.lora_b.v",
+        "blocks.5.attn.linears.wq_a.lora_b.m",
+        "blocks.5.attn.linears.wq_a.lora_b.v",
+        "blocks.6.attn.linears.wo_b.lora_b.m",
+        "blocks.6.attn.linears.wo_b.lora_b.v",
+        "blocks.6.attn.linears.wq_a.lora_b.m",
+        "blocks.6.attn.linears.wq_a.lora_b.v",
+        "blocks.7.attn.linears.wo_b.lora_b.m",
+        "blocks.7.attn.linears.wo_b.lora_b.v",
+        "blocks.7.attn.linears.wq_a.lora_b.m",
+        "blocks.7.attn.linears.wq_a.lora_b.v",
+        "blocks.8.attn.linears.wo_b.lora_b.m",
+        "blocks.8.attn.linears.wo_b.lora_b.v",
+        "blocks.8.attn.linears.wq_a.lora_b.m",
+        "blocks.8.attn.linears.wq_a.lora_b.v",
+        "blocks.9.attn.linears.wo_b.lora_b.m",
+        "blocks.9.attn.linears.wo_b.lora_b.v",
+        "blocks.9.attn.linears.wq_a.lora_b.m",
+        "blocks.9.attn.linears.wq_a.lora_b.v"
+      ]
+    },
+    "rng": {
+      "exact": true,
+      "count": 1,
+      "different": []
+    }
+  },
+  "control": {
+    "own_baseline": 0.5012578368186951,
+    "fresh_post": 0.5033001955358872,
+    "delta": 0.002042358717192161,
+    "outcome": "regression",
+    "moments": {
+      "changed_b_tensors": 80,
+      "clip_scale": 1.0,
+      "reported_raw_gradient_norm": 0.03827793523669243,
+      "reconstructed_raw_gradient_norm": 0.038277933875577624,
+      "g_dot_actual_delta": -0.0008524634130717974,
+      "tensors": [
+        {
+          "key": "blocks.0.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0038031159632154663,
+          "update_norm": 0.004339664281197964,
+          "g_dot_delta": -1.320487780456258e-05
+        },
+        {
+          "key": "blocks.0.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0013054939999070931,
+          "update_norm": 0.0021415328182240023,
+          "g_dot_delta": -2.2600987747876743e-06
+        },
+        {
+          "key": "blocks.1.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.005332050300427596,
+          "update_norm": 0.004385448801531022,
+          "g_dot_delta": -1.8769217249272025e-05
+        },
+        {
+          "key": "blocks.1.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0026029464789662643,
+          "update_norm": 0.002192364901891991,
+          "g_dot_delta": -4.514118740212189e-06
+        },
+        {
+          "key": "blocks.10.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.007573456807411251,
+          "update_norm": 0.004414256640346494,
+          "g_dot_delta": -2.6182427330746697e-05
+        },
+        {
+          "key": "blocks.10.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.004168867314412613,
+          "update_norm": 0.0022142179368753873,
+          "g_dot_delta": -7.3587600572600645e-06
+        },
+        {
+          "key": "blocks.11.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.004759862792011981,
+          "update_norm": 0.004375997718725648,
+          "g_dot_delta": -1.6904851496804004e-05
+        },
+        {
+          "key": "blocks.11.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.003888930466906909,
+          "update_norm": 0.002212604547356639,
+          "g_dot_delta": -6.8790236334416915e-06
+        },
+        {
+          "key": "blocks.12.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.005833128021642906,
+          "update_norm": 0.004394884533254644,
+          "g_dot_delta": -2.061828633542054e-05
+        },
+        {
+          "key": "blocks.12.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.004223235111173474,
+          "update_norm": 0.0022159945484360793,
+          "g_dot_delta": -7.547179767599758e-06
+        },
+        {
+          "key": "blocks.13.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.006218870135472451,
+          "update_norm": 0.004399011528730765,
+          "g_dot_delta": -2.179111391570534e-05
+        },
+        {
+          "key": "blocks.13.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.003889032372135983,
+          "update_norm": 0.002213164095562664,
+          "g_dot_delta": -6.894273950441065e-06
+        },
+        {
+          "key": "blocks.14.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.010181891856143259,
+          "update_norm": 0.004437717816448394,
+          "g_dot_delta": -3.506354066477856e-05
+        },
+        {
+          "key": "blocks.14.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.006944418329149591,
+          "update_norm": 0.002229123524960164,
+          "g_dot_delta": -1.2321554583442916e-05
+        },
+        {
+          "key": "blocks.15.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.006217631939390418,
+          "update_norm": 0.004389762564264759,
+          "g_dot_delta": -2.0726182829118562e-05
+        },
+        {
+          "key": "blocks.15.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.004750956582547471,
+          "update_norm": 0.0022178509768087454,
+          "g_dot_delta": -8.462651783557935e-06
+        },
+        {
+          "key": "blocks.16.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0069467931148222105,
+          "update_norm": 0.00441273221237861,
+          "g_dot_delta": -2.4518149950500003e-05
+        },
+        {
+          "key": "blocks.16.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.006427892420120278,
+          "update_norm": 0.002227462490308296,
+          "g_dot_delta": -1.1266301424875159e-05
+        },
+        {
+          "key": "blocks.17.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.004837107074925476,
+          "update_norm": 0.004378601733570691,
+          "g_dot_delta": -1.7172833505068206e-05
+        },
+        {
+          "key": "blocks.17.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.004496435400542956,
+          "update_norm": 0.002216483827352125,
+          "g_dot_delta": -7.944155695155755e-06
+        },
+        {
+          "key": "blocks.18.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.00419506879469845,
+          "update_norm": 0.004363970629251614,
+          "g_dot_delta": -1.486073289942281e-05
+        },
+        {
+          "key": "blocks.18.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.004381538557351671,
+          "update_norm": 0.0022173255300906463,
+          "g_dot_delta": -7.7612372571182e-06
+        },
+        {
+          "key": "blocks.19.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.006799581006608472,
+          "update_norm": 0.004415007911516535,
+          "g_dot_delta": -2.4287801929057027e-05
+        },
+        {
+          "key": "blocks.19.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.006147219366641175,
+          "update_norm": 0.0022259918671289026,
+          "g_dot_delta": -1.0684959622891985e-05
+        },
+        {
+          "key": "blocks.2.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.004661580689675379,
+          "update_norm": 0.004358562785483256,
+          "g_dot_delta": -1.5723576826068425e-05
+        },
+        {
+          "key": "blocks.2.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.003929355605032783,
+          "update_norm": 0.002211681535381347,
+          "g_dot_delta": -6.934235376640943e-06
+        },
+        {
+          "key": "blocks.20.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.00415159986723307,
+          "update_norm": 0.004359051790143425,
+          "g_dot_delta": -1.4646513064654884e-05
+        },
+        {
+          "key": "blocks.20.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0037175072945467447,
+          "update_norm": 0.0022117867235563237,
+          "g_dot_delta": -6.5480623320891386e-06
+        },
+        {
+          "key": "blocks.21.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0035035557554474474,
+          "update_norm": 0.004330841800829586,
+          "g_dot_delta": -1.2287946898466848e-05
+        },
+        {
+          "key": "blocks.21.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.004667718204251712,
+          "update_norm": 0.0022118163927636967,
+          "g_dot_delta": -7.721779608354106e-06
+        },
+        {
+          "key": "blocks.22.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.003521868195017242,
+          "update_norm": 0.004337124293982275,
+          "g_dot_delta": -1.2440749604357623e-05
+        },
+        {
+          "key": "blocks.22.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.005107831095808419,
+          "update_norm": 0.002221066430734139,
+          "g_dot_delta": -8.878184065402909e-06
+        },
+        {
+          "key": "blocks.23.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0033517413424313416,
+          "update_norm": 0.004329199706649225,
+          "g_dot_delta": -1.1851916466007568e-05
+        },
+        {
+          "key": "blocks.23.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0028524632045844943,
+          "update_norm": 0.0021983150826888633,
+          "g_dot_delta": -5.044851007576968e-06
+        },
+        {
+          "key": "blocks.24.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0029836203024357897,
+          "update_norm": 0.004309909992655941,
+          "g_dot_delta": -1.0435161209798241e-05
+        },
+        {
+          "key": "blocks.24.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.002512573528379534,
+          "update_norm": 0.0021859301128209826,
+          "g_dot_delta": -4.4101472743928874e-06
+        },
+        {
+          "key": "blocks.25.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.002291260426026134,
+          "update_norm": 0.004263531365962084,
+          "g_dot_delta": -8.021521729050377e-06
+        },
+        {
+          "key": "blocks.25.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0026615614869909387,
+          "update_norm": 0.002185340868353821,
+          "g_dot_delta": -4.519420170512788e-06
+        },
+        {
+          "key": "blocks.26.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0038263307073384926,
+          "update_norm": 0.004345080463480402,
+          "g_dot_delta": -1.328204117682214e-05
+        },
+        {
+          "key": "blocks.26.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0033358398921541923,
+          "update_norm": 0.002206511223915994,
+          "g_dot_delta": -5.985250993269617e-06
+        },
+        {
+          "key": "blocks.27.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.00249315459645365,
+          "update_norm": 0.004271907975573887,
+          "g_dot_delta": -8.611782546909332e-06
+        },
+        {
+          "key": "blocks.27.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0026956540534168972,
+          "update_norm": 0.0021915812435152632,
+          "g_dot_delta": -4.7035086543517484e-06
+        },
+        {
+          "key": "blocks.28.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0032553623477310748,
+          "update_norm": 0.004317258150541994,
+          "g_dot_delta": -1.132407293730704e-05
+        },
+        {
+          "key": "blocks.28.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.002099938825093495,
+          "update_norm": 0.0021780625220411986,
+          "g_dot_delta": -3.6906012885015632e-06
+        },
+        {
+          "key": "blocks.29.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0024358246288650226,
+          "update_norm": 0.004280723079636805,
+          "g_dot_delta": -8.573762730832304e-06
+        },
+        {
+          "key": "blocks.29.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0020890049846218686,
+          "update_norm": 0.0021764034375072712,
+          "g_dot_delta": -3.6451827592476916e-06
+        },
+        {
+          "key": "blocks.3.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.003925103644734232,
+          "update_norm": 0.004346772400676353,
+          "g_dot_delta": -1.3594562698061065e-05
+        },
+        {
+          "key": "blocks.3.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.003983929703471783,
+          "update_norm": 0.002210742132800521,
+          "g_dot_delta": -7.013764686308238e-06
+        },
+        {
+          "key": "blocks.30.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0019357572725583934,
+          "update_norm": 0.004230658456748419,
+          "g_dot_delta": -6.755419052202813e-06
+        },
+        {
+          "key": "blocks.30.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.002108280498312735,
+          "update_norm": 0.002181010598463028,
+          "g_dot_delta": -3.7366772942508668e-06
+        },
+        {
+          "key": "blocks.31.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0025233246214842494,
+          "update_norm": 0.004285089992056911,
+          "g_dot_delta": -8.906110015055489e-06
+        },
+        {
+          "key": "blocks.31.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.00301588935477823,
+          "update_norm": 0.002198336982659993,
+          "g_dot_delta": -5.267401159699574e-06
+        },
+        {
+          "key": "blocks.32.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0022488081871723407,
+          "update_norm": 0.004266872828305056,
+          "g_dot_delta": -7.941291442731518e-06
+        },
+        {
+          "key": "blocks.32.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.002472726155135569,
+          "update_norm": 0.0021932175335460324,
+          "g_dot_delta": -4.417932145679344e-06
+        },
+        {
+          "key": "blocks.33.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0035614157588646856,
+          "update_norm": 0.004324678935706326,
+          "g_dot_delta": -1.2014683113003276e-05
+        },
+        {
+          "key": "blocks.33.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.002442615362874207,
+          "update_norm": 0.0021871338164089447,
+          "g_dot_delta": -4.274425803090345e-06
+        },
+        {
+          "key": "blocks.34.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0037669908783615467,
+          "update_norm": 0.004339271183784337,
+          "g_dot_delta": -1.2965599172274762e-05
+        },
+        {
+          "key": "blocks.34.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.004080514783367039,
+          "update_norm": 0.0022129420343919835,
+          "g_dot_delta": -7.214534691142939e-06
+        },
+        {
+          "key": "blocks.35.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.002907251142456282,
+          "update_norm": 0.004301718985676912,
+          "g_dot_delta": -1.0060593423897685e-05
+        },
+        {
+          "key": "blocks.35.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0031332042838382837,
+          "update_norm": 0.002200708445311975,
+          "g_dot_delta": -5.455073222371323e-06
+        },
+        {
+          "key": "blocks.36.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.002525574630294553,
+          "update_norm": 0.004279058303365148,
+          "g_dot_delta": -8.827408372517746e-06
+        },
+        {
+          "key": "blocks.36.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.002574060400954828,
+          "update_norm": 0.002192515290903605,
+          "g_dot_delta": -4.547178913310455e-06
+        },
+        {
+          "key": "blocks.37.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0025075269845884554,
+          "update_norm": 0.004283095243786706,
+          "g_dot_delta": -8.793393564575954e-06
+        },
+        {
+          "key": "blocks.37.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.004094471043769977,
+          "update_norm": 0.0022143220860436365,
+          "g_dot_delta": -7.2262848984748965e-06
+        },
+        {
+          "key": "blocks.38.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0017233712538724118,
+          "update_norm": 0.004203790656585372,
+          "g_dot_delta": -5.997076014850991e-06
+        },
+        {
+          "key": "blocks.38.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0029972752226905884,
+          "update_norm": 0.002197702593754044,
+          "g_dot_delta": -5.175887976215833e-06
+        },
+        {
+          "key": "blocks.39.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0020868869016030093,
+          "update_norm": 0.004235537067256449,
+          "g_dot_delta": -7.1518312365631635e-06
+        },
+        {
+          "key": "blocks.39.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0027442778392969447,
+          "update_norm": 0.002190559847461934,
+          "g_dot_delta": -4.622257954039086e-06
+        },
+        {
+          "key": "blocks.4.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.004087276211896201,
+          "update_norm": 0.004359364127362118,
+          "g_dot_delta": -1.4478880425901749e-05
+        },
+        {
+          "key": "blocks.4.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.003266339283650836,
+          "update_norm": 0.002202348460124412,
+          "g_dot_delta": -5.771648028810246e-06
+        },
+        {
+          "key": "blocks.5.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.004283849999195542,
+          "update_norm": 0.004367438027469111,
+          "g_dot_delta": -1.5256698232339096e-05
+        },
+        {
+          "key": "blocks.5.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0035550544660756375,
+          "update_norm": 0.0022089193344747033,
+          "g_dot_delta": -6.303916082842825e-06
+        },
+        {
+          "key": "blocks.6.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.0048630409677145065,
+          "update_norm": 0.0043758916611297705,
+          "g_dot_delta": -1.7147844829711048e-05
+        },
+        {
+          "key": "blocks.6.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0039605268345998135,
+          "update_norm": 0.00221073110793096,
+          "g_dot_delta": -6.892094912338296e-06
+        },
+        {
+          "key": "blocks.7.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.00488200048724522,
+          "update_norm": 0.004374213314664336,
+          "g_dot_delta": -1.697971841631362e-05
+        },
+        {
+          "key": "blocks.7.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.0037621811666055834,
+          "update_norm": 0.0022084076799286085,
+          "g_dot_delta": -6.694926313661796e-06
+        },
+        {
+          "key": "blocks.8.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.007647348611567285,
+          "update_norm": 0.004420447967032242,
+          "g_dot_delta": -2.715355998806233e-05
+        },
+        {
+          "key": "blocks.8.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.006852747442586726,
+          "update_norm": 0.0022303725063229788,
+          "g_dot_delta": -1.2216309902843912e-05
+        },
+        {
+          "key": "blocks.9.attn.linears.wo_b.lora_b",
+          "shape": [
+            4,
+            5120
+          ],
+          "raw_gradient_norm": 0.004816954847780675,
+          "update_norm": 0.004369127022376081,
+          "g_dot_delta": -1.674505636255761e-05
+        },
+        {
+          "key": "blocks.9.attn.linears.wq_a.lora_b",
+          "shape": [
+            4,
+            1280
+          ],
+          "raw_gradient_norm": 0.004261742827105813,
+          "update_norm": 0.002217008858415771,
+          "g_dot_delta": -7.588772804241689e-06
+        }
+      ]
+    },
+    "prediction_residual": 0.0028948221302639585
+  },
+  "treatment": {
+    "checkpoint": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/bf16-all-layers-one-step/step-000001",
+    "pre_update_loss": 0.5061723589897156,
+    "fresh_post_loss": 0.5014906038202744,
+    "delta": -0.0046817551694411375,
+    "runtime": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v2",
+    "outcome": "descent"
+  },
+  "delta_bf16_minus_delta_checkpoint": -0.006724113886633298,
+  "observed_regression_to_descent_contrast": true,
+  "limits": [
+    "Different forward objectives; no absolute-quality claim",
+    "Bundled quantizer intervention, routing can differ",
+    "No held-out or generated-code evaluation",
+    "Receipts/checksums are consistency evidence, not independent execution attestation",
+    "Frozen base binding is metadata/manifest, not every payload byte"
+  ],
+  "evidence_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/matched-checkpoint-control-resource-plan.json": "83f6ac58ba5d93b655ef0fb5af1d570ca1a86eec4a4d44a54892bf9308976cbc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/training.json": "b1d2d635c0e3eb063c9c5727504576667c60fdd2a0860003b2e9126d83f16777",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-post.json": "2c9a7b0ef92f05e6ca72526f0b7d26cd31ab70bdf6a3906c84e112e2eeb50e9f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/run_config.json": "3ab0eb64e9a4349b56d6ba5eafa8125d8fb4cd9d13e17ec3948498b768ca4d4f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/step-000001/trainer_state.json": "20c0bae381f33148c4261ad5f26ee6a321fc4058a91f7a72455aa859730dfc02",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/step-000001/adapter.safetensors": "a0634cc41fee0c1073257daea0310a3f2105d5bbc53b5531c01368007adace99",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/step-000001/optimizer.safetensors": "79c1ce66a9c664ae5539fc61394ea4ef7f8c1859d30ca5ebd13c54af55c23f75",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/checkpoint-control-all-layers-76g-one-step/step-000001/random.safetensors": "af6b04bdf2d71a07c7e29ec138a43fd8b6a7a036c22610aedd00684f16a53f77"
+  },
+  "audit_script_sha256": "9e2eb0415e7e37132eed5787e99e855068cbd36213ea9e76d1d7ac0c96df8ab5"
+}

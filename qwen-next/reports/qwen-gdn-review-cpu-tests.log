@@ -1,0 +1,19 @@
+test_all_recurrence_input_adjoints_against_scalar_finite_differences (test_qwen_gdn_reference.QwenGDNTests.test_all_recurrence_input_adjoints_against_scalar_finite_differences) ... ok
+test_fail_closed_shapes_bounds_state_precision_and_domains (test_qwen_gdn_reference.QwenGDNTests.test_fail_closed_shapes_bounds_state_precision_and_domains) ... ok
+test_finite_overflow_does_not_become_plausible_state (test_qwen_gdn_reference.QwenGDNTests.test_finite_overflow_does_not_become_plausible_state) ... ok
+test_gate_helpers_qwen_scale_one_and_stability (test_qwen_gdn_reference.QwenGDNTests.test_gate_helpers_qwen_scale_one_and_stability) ... ok
+test_independent_scalar_recurrence_f32_f64_and_unequal_head_dims (test_qwen_gdn_reference.QwenGDNTests.test_independent_scalar_recurrence_f32_f64_and_unequal_head_dims) ... ok
+test_initial_state_cotangent_alone_and_optional_zero_initial_state (test_qwen_gdn_reference.QwenGDNTests.test_initial_state_cotangent_alone_and_optional_zero_initial_state) ... ok
+test_known_zero_update_decay_and_zero_query (test_qwen_gdn_reference.QwenGDNTests.test_known_zero_update_decay_and_zero_query) ... ok
+test_late_loss_reaches_early_inputs_and_chunk_adjoint_composes (test_qwen_gdn_reference.QwenGDNTests.test_late_loss_reaches_early_inputs_and_chunk_adjoint_composes) ... ok
+test_noncontiguous_inputs_and_float16_promote_to_float32_state (test_qwen_gdn_reference.QwenGDNTests.test_noncontiguous_inputs_and_float16_promote_to_float32_state) ... ok
+test_pinned_source_provenance_and_tamper (test_qwen_gdn_reference.QwenGDNTests.test_pinned_source_provenance_and_tamper) ... ok
+test_recurrence_chunking_is_exact_with_state_carry (test_qwen_gdn_reference.QwenGDNTests.test_recurrence_chunking_is_exact_with_state_carry) ... ok
+test_sigmoid_output_norm_is_after_norm_without_one_plus_weight (test_qwen_gdn_reference.QwenGDNTests.test_sigmoid_output_norm_is_after_norm_without_one_plus_weight) ... ok
+test_split_qkv_is_contiguous_channel_layout_after_conv_only (test_qwen_gdn_reference.QwenGDNTests.test_split_qkv_is_contiguous_channel_layout_after_conv_only) ... ok
+test_three_value_heads_repeat_each_key_head_contiguously (test_qwen_gdn_reference.QwenGDNTests.test_three_value_heads_repeat_each_key_head_contiguously) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.213s
+
+OK

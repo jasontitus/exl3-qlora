@@ -1,0 +1,47 @@
+{
+  "schema": "qwen-hyperconnection-independent-review-v1",
+  "created_utc": "2026-10-13T15:54:05.767884+00:00",
+  "reviewer": "adversarial_code",
+  "blocking_findings": [],
+  "inputs_sha256": {
+    "qwen-next/tools/qwen_hyperconnection_reference.py": "90d46b90d4382443a50b5f54df6d507c770ec842c3373c3ac3dee43753082b76",
+    "qwen-next/tests/test_qwen_hyperconnection_reference.py": "2853a36bfd3f055866cab780dee385041a776e90d1bece629c926232db456a26",
+    "qwen-next/reports/qwen-hyperconnection-reference-implementation.json": "1eb4b8734e4069d1638046fe2066d55438f25879ac9f09a03ffd9da2e3da81cc",
+    "qwen-next/sources/config.json": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1"
+  },
+  "semantic_sources_sha256": {
+    "exllamav3/training/hyperconnections.py": "0d2873bf4fe26416f23db6c8cbd884cded24a473dbb72710f0f25479671dbe6c",
+    "exllamav3/modules/hyperconnections.py": "841ca30d37ea8900b5ae1c9e4b4862d9580ec0c4c92342b1b460968c0926c2f9",
+    "exllamav3/architecture/qwen4_exp.py": "f0781ec11aabc78694ed5084d24fb31093c0500a5c985a00276188c241c165bb",
+    "exllamav3/training/backbone.py": "0265a93b28089470d9d109a61a997403201145456e70c098f3061026c3c076d9",
+    "exllamav3/training/native_llama.py": "12c99ff24bb54067a081ceb9e6b52154cf811afd231bd30a13847c70d5729f5e"
+  },
+  "tests": {
+    "command": "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python -m unittest discover -s qwen-next/tests -p test_qwen_hyperconnection_reference.py -v",
+    "passed": 13,
+    "elapsed_seconds": 0.061,
+    "ruff": "passed"
+  },
+  "source_correspondence": [
+    "Per-stream RMS, prepared1+raw norm, flattened low-rank down/H then SiLU/up/sigmoid and weighted mean match pinned gated_residual_mix/_mix_ref.",
+    "Local loader preparation casts norm toFP32 before adding1 exactly once and casts projection tables toFP16; this does not claim Sushi table dtype parity.",
+    "Residual injection uses raw incoming streams plus2*sigmoid(normalized-flat inject/H) times sublayer output. No DeepSeek Sinkhorn/combine matrix.",
+    "Final combine-less learned mixer precedes the head with no extra RMSNorm; streams_mean is separately labeled feature export, not head collapse."
+  ],
+  "adjoint_review": [
+    "Weighted-mix direct and gate-dependent paths both propagate through normalized streams.",
+    "Post-gate derivative post*(1-post/2) propagates through inject/H into the same normalization adjoint.",
+    "RMS input VJP uses inv*g -x*inv^3*mean(g*x).",
+    "Residual partials preserve identity dx, sum gate-weighted doutput for dy, and sum y*doutput for dpost; composed test feeds dpost back through mix.",
+    "Independent scalar finite differences test site/final and composed input/output derivatives at rtol2e-7/atol2e-8."
+  ],
+  "limits": [
+    "Tiny synthetic hidden<=64/rank<=64/tokens<=32 versus targethidden2560/rank320.",
+    "NumPy math/FP64 continuous adjoints do not establish rounded Torch/CUDA/Metal/Sushi parity.",
+    "No checkpoint payload, attention/GDN/MoE/PLE sublayer, full model, parameter gradients or training integration.",
+    "A caller composing a real sublayer must also propagate dy through that sublayer and its mixed input; the reference returns partial adjoints, not a complete block gradient.",
+    "source_provenance verifies an explicit snapshot when called; arithmetic methods do not auto-authenticate source bytes on every invocation."
+  ],
+  "gpu_operations": false,
+  "active_runtime_changes": false
+}

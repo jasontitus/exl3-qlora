@@ -1,0 +1,35 @@
+{
+  "utc": "2026-10-13T20:39:16.019416+00:00",
+  "scope": "Separate venv/process; read-through reuse of existing pinned MLX dependencies. No dependency installation, upgrade or active-runtime source edits. Not a separately rebuilt MLX distribution.",
+  "cpu_fixture_tests_passed": 5,
+  "gpu_dispatch_pending_independent_review": true,
+  "planned_cases": 108,
+  "max_weight_shape": [
+    32,
+    256
+  ],
+  "memory_limit_mib": 256,
+  "allocator_cache_mib": 16,
+  "files_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/affine_mlx_parity.py": "35ddf745b72ef1764f6ba7cf4802f6e1e6223a473159469dc066d4ca5b6eab7e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/affine_reference.py": "94808a442fd27c8f0705172b654a99d5d0df5c4134ee771ecc1c19bd2886c77f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_affine_mlx_parity.py": "ec1ae0de15cd7529fbe554c459d0093be7e76b60e36364bf9abedcfdd623f1d2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/affine-env/pyvenv.cfg": "e673d9093a2f39586187e83ebbaccac5221e91f205639a487f8345d36a8aa728",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/affine-env/lib/python3.12/site-packages/pinned-mlx.pth": "73c3d3cd09915949711e6ac641ecf97f9b2386cbecd11d20624eec7eac3a3bb4",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/core.cpython-312-darwin.so": "49eeb7232106aa9ab846b20e0417add980b1c7213ef6dda6e25c01d45ca54851",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/lib/libmlx.dylib": "ebc8a5f5465afb79d3d9c8f5b0929de1a9b277b7179db8672f92da77ae110a1e",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/lib/mlx.metallib": "95974b7de464ec2be7833a914ca5a53d283a70789470fd84218738fc8fcea3e1",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/lib/libjaccl.dylib": "949e901df832d600a71ff2bc5f3738d55b010668102f36e071e1890807a965cd"
+  },
+  "decode_comparison": "Exact host dtype-rounded values; binary64 forward/VJP use predeclared dtype tolerances",
+  "relative_l2_limits": {
+    "float32": 0.0001,
+    "float16": 0.01,
+    "bfloat16": 0.05
+  },
+  "review_repairs": [
+    "Array-preserving VJP return and strict output shapes",
+    "Exact dtype-rounded decode",
+    "Relative-L2 gate prevents zero/signed-gradient false passes"
+  ]
+}

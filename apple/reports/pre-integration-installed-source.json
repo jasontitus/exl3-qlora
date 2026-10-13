@@ -1,0 +1,163 @@
+{
+  "scope": "Actual installed source vs immutable training runtime-v3 before final integration",
+  "checked": 39,
+  "all_match": true,
+  "files": {
+    "src/exl3_mlx/__init__.py": {
+      "expected": "6605af1a6c29d74cb5a62c1c268c24632d00e2fe8b1821a772e3cac6a1060c54",
+      "actual": "6605af1a6c29d74cb5a62c1c268c24632d00e2fe8b1821a772e3cac6a1060c54"
+    },
+    "src/exl3_mlx/activation_config.py": {
+      "expected": "7e3ac0956b0f7bf0fa8a5b0dfacbde5f8554f6f75056e6c9979b04c9aa630215",
+      "actual": "7e3ac0956b0f7bf0fa8a5b0dfacbde5f8554f6f75056e6c9979b04c9aa630215"
+    },
+    "src/exl3_mlx/attention.py": {
+      "expected": "322829decc3385ad611ecff007565690ec8cd87e31e6fc3815f15bf391062827",
+      "actual": "322829decc3385ad611ecff007565690ec8cd87e31e6fc3815f15bf391062827"
+    },
+    "src/exl3_mlx/checkpoint.py": {
+      "expected": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d",
+      "actual": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d"
+    },
+    "src/exl3_mlx/cli.py": {
+      "expected": "6a20e242263c4ee512aaa5018fb7386f89a0f93d64ef08da5973c24afa81cc83",
+      "actual": "6a20e242263c4ee512aaa5018fb7386f89a0f93d64ef08da5973c24afa81cc83"
+    },
+    "src/exl3_mlx/context.py": {
+      "expected": "dae6e69baa6f5cda760b784d4abaab91cab7433e223d16f0c5c5e64b8c0c5246",
+      "actual": "dae6e69baa6f5cda760b784d4abaab91cab7433e223d16f0c5c5e64b8c0c5246"
+    },
+    "src/exl3_mlx/data.py": {
+      "expected": "4791c84ad1bff633f3ffd49d9c6cc5f930ad59bdd3fe3e189b5720f868112a15",
+      "actual": "4791c84ad1bff633f3ffd49d9c6cc5f930ad59bdd3fe3e189b5720f868112a15"
+    },
+    "src/exl3_mlx/decode.metal": {
+      "expected": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282",
+      "actual": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282"
+    },
+    "src/exl3_mlx/deepseek.py": {
+      "expected": "1536240ac4249494d61af74503713a385beae953959246f33aeeb6dfc3f77dc9",
+      "actual": "1536240ac4249494d61af74503713a385beae953959246f33aeeb6dfc3f77dc9"
+    },
+    "src/exl3_mlx/engram.py": {
+      "expected": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+      "actual": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff"
+    },
+    "src/exl3_mlx/fit_probe.py": {
+      "expected": "1c5262636f7abfa12117c910f9da7b5eb72efd90ea76dab5751c62d131f69ca4",
+      "actual": "1c5262636f7abfa12117c910f9da7b5eb72efd90ea76dab5751c62d131f69ca4"
+    },
+    "src/exl3_mlx/hyperconnections.py": {
+      "expected": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+      "actual": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f"
+    },
+    "src/exl3_mlx/ktune_cli.py": {
+      "expected": "87395699821ee5a7ffee3373b97ebfdef44f565ff0f77a70644b305f5e3befd1",
+      "actual": "87395699821ee5a7ffee3373b97ebfdef44f565ff0f77a70644b305f5e3befd1"
+    },
+    "src/exl3_mlx/ktune_data.py": {
+      "expected": "5ceee57f664295731a4d4183215ac4d4feb128cb7aa52fd58903aa3470080838",
+      "actual": "5ceee57f664295731a4d4183215ac4d4feb128cb7aa52fd58903aa3470080838"
+    },
+    "src/exl3_mlx/ktune_eval.py": {
+      "expected": "91739cb483ac8e51ed93d0478a5b3a622042d73c87e89593b3baf3d9462ec91e",
+      "actual": "91739cb483ac8e51ed93d0478a5b3a622042d73c87e89593b3baf3d9462ec91e"
+    },
+    "src/exl3_mlx/ktune_patch.py": {
+      "expected": "1e7972d4b4659b42e2284d89c798c915f9930061af260ac3a0f33fd305ebf0f6",
+      "actual": "1e7972d4b4659b42e2284d89c798c915f9930061af260ac3a0f33fd305ebf0f6"
+    },
+    "src/exl3_mlx/linear.py": {
+      "expected": "51ecb3cbc657199e86f4db13b92f1ea6cd13d4550a31ad35602b2e352b3f6379",
+      "actual": "51ecb3cbc657199e86f4db13b92f1ea6cd13d4550a31ad35602b2e352b3f6379"
+    },
+    "src/exl3_mlx/materialize.py": {
+      "expected": "c17735ac8ddac3b46e6b8fd62dc74f730ea31630496749700c2da1e266224e43",
+      "actual": "c17735ac8ddac3b46e6b8fd62dc74f730ea31630496749700c2da1e266224e43"
+    },
+    "src/exl3_mlx/memory.py": {
+      "expected": "5df2ec9ebe5163d8587d4712ded34f87dc528bb07fba8ab58b5c7ef1fac493d8",
+      "actual": "5df2ec9ebe5163d8587d4712ded34f87dc528bb07fba8ab58b5c7ef1fac493d8"
+    },
+    "src/exl3_mlx/moe.py": {
+      "expected": "88b821f17c0eda364cb136170f2de52285f872ef0a6330b4a280518d6d1828e0",
+      "actual": "88b821f17c0eda364cb136170f2de52285f872ef0a6330b4a280518d6d1828e0"
+    },
+    "src/exl3_mlx/native.py": {
+      "expected": "4da811483bf9b358cbbdbcad5db2d11caa70a6e10ccfa101c292f19660f96809",
+      "actual": "4da811483bf9b358cbbdbcad5db2d11caa70a6e10ccfa101c292f19660f96809"
+    },
+    "src/exl3_mlx/prefix_cache.py": {
+      "expected": "62321488c8760e3b075e1737931857f3a6b06fb0c8c730b1ff373df4bbb201f0",
+      "actual": "62321488c8760e3b075e1737931857f3a6b06fb0c8c730b1ff373df4bbb201f0"
+    },
+    "src/exl3_mlx/recompute.py": {
+      "expected": "a7849b0b1b6877b62914b75e21ab7a66305469e2a0c72def94e8b1caa90cd988",
+      "actual": "a7849b0b1b6877b62914b75e21ab7a66305469e2a0c72def94e8b1caa90cd988"
+    },
+    "src/exl3_mlx/reference.py": {
+      "expected": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595",
+      "actual": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595"
+    },
+    "src/exl3_mlx/remote.py": {
+      "expected": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c",
+      "actual": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c"
+    },
+    "src/exl3_mlx/resources.py": {
+      "expected": "02003a49a22ef4008280119275aa94992f274b334076a06f008d716f866b36ea",
+      "actual": "02003a49a22ef4008280119275aa94992f274b334076a06f008d716f866b36ea"
+    },
+    "src/exl3_mlx/sft.py": {
+      "expected": "c4d8f82f59d664329a4323aa557e972e88808a8a34711ca012abd2c688d18c87",
+      "actual": "c4d8f82f59d664329a4323aa557e972e88808a8a34711ca012abd2c688d18c87"
+    },
+    "src/exl3_mlx/sft_cli.py": {
+      "expected": "22a583998b9ffd6ffa3a83a96771caee3144439ce6cd22df3781712e7b713d4d",
+      "actual": "22a583998b9ffd6ffa3a83a96771caee3144439ce6cd22df3781712e7b713d4d"
+    },
+    "src/exl3_mlx/sft_data.py": {
+      "expected": "60bf148fcbb0bda56c32701e31f282a2a074ffb852ae327db8b79a2978d38ceb",
+      "actual": "60bf148fcbb0bda56c32701e31f282a2a074ffb852ae327db8b79a2978d38ceb"
+    },
+    "src/exl3_mlx/sparse_attention.py": {
+      "expected": "620082cc1e12cbb2f66b09054ff9bea08d9dadc6c34bd802ca25ae7aa26a21a7",
+      "actual": "620082cc1e12cbb2f66b09054ff9bea08d9dadc6c34bd802ca25ae7aa26a21a7"
+    },
+    "src/exl3_mlx/storage.py": {
+      "expected": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+      "actual": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16"
+    },
+    "src/exl3_mlx/streaming.py": {
+      "expected": "e60c77729a89fd5a9a76cd2641b5325c5ccf8bc0ec4b80a19ff949a1579d03df",
+      "actual": "e60c77729a89fd5a9a76cd2641b5325c5ccf8bc0ec4b80a19ff949a1579d03df"
+    },
+    "src/exl3_mlx/studio.html": {
+      "expected": "70c002ed8f31a8323a378f553ab144233c95f71babe26a3d92b14145897b74bb",
+      "actual": "70c002ed8f31a8323a378f553ab144233c95f71babe26a3d92b14145897b74bb"
+    },
+    "src/exl3_mlx/studio.py": {
+      "expected": "909b121d2b10bfd3ecf0e50e5b2abafdf27c313116aab176e0f26592727c1af8",
+      "actual": "909b121d2b10bfd3ecf0e50e5b2abafdf27c313116aab176e0f26592727c1af8"
+    },
+    "src/exl3_mlx/train.py": {
+      "expected": "c776ef26b9d59c09ca2544d669d41704674e371ab111826258951722c7a04f42",
+      "actual": "c776ef26b9d59c09ca2544d669d41704674e371ab111826258951722c7a04f42"
+    },
+    "src/exl3_mlx/training.py": {
+      "expected": "aa769f153c0d3bbb02e75df93993b7e37526adc35e1fc75c9af084de0e2c46cf",
+      "actual": "aa769f153c0d3bbb02e75df93993b7e37526adc35e1fc75c9af084de0e2c46cf"
+    },
+    "src/exl3_mlx/trellis.py": {
+      "expected": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d",
+      "actual": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d"
+    },
+    "src/exl3_mlx/validation.py": {
+      "expected": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9",
+      "actual": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9"
+    },
+    "src/exl3_mlx/workflow.py": {
+      "expected": "c680857b9dc7c561be87dfa23c77b35c5fdaf52cf81ac0aa8e46f3a4642c5359",
+      "actual": "c680857b9dc7c561be87dfa23c77b35c5fdaf52cf81ac0aa8e46f3a4642c5359"
+    }
+  }
+}

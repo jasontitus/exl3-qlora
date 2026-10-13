@@ -1,0 +1,114 @@
+{
+  "schema": "remote-training-migration-v1",
+  "updated_utc": "2026-10-13T21:49:08.089060+00:00",
+  "host": "jason-m5-MacBook.local",
+  "hardware": {
+    "chip": "Apple M5 Max",
+    "gpu_cores": 40,
+    "physical_memory_gib": 128,
+    "observed_free_pages_gib": 90,
+    "scratch_available_tib": 2.0,
+    "ac_power": true
+  },
+  "root": "/Volumes/Scratch/exl3-training/2026-10-13",
+  "model": "/Volumes/Scratch/exl3-training/models/deepseek-v4.1-flash-exl3-3.0bpw",
+  "checkpoint_bytes": 426352827347,
+  "transfer": {
+    "status": "running",
+    "exec_session": 23018,
+    "method": "rsync -a --partial",
+    "observed_bytes": 40961509468,
+    "observed_allocated_gib": 88,
+    "remote_pid": 13078,
+    "note": "Observed allocated directory size, not full verified payload count; single rsync remains live."
+  },
+  "runtime": {
+    "snapshot_sha256": "56b38d2b0bed0f2ff3eb991324aec1439d079c6f9a57021ffde071e861f07bcc",
+    "verified_files": 81,
+    "mismatches": 0,
+    "python": "3.12.13",
+    "mlx": "0.32.3",
+    "mlx_lm": "0.32.0"
+  },
+  "tests": {
+    "kernel-library/expansion-v4-hour/remote-m5/tests/test_attention.py": "9e0a8d9628a4c4d3dd29c171afa06550c9ffbdfcc0163234bccf58cd602f9946",
+    "kernel-library/expansion-v4-hour/remote-m5/tests/test_composed_gradient.py": "d4cd590c2aae540f90243bcb5c85b8ad8cf70ee3149a07567da1f60e264549b5",
+    "kernel-library/expansion-v4-hour/remote-m5/tests/test_gradients.py": "4479df5fd4832c89d8ab3bc8ca96b994b9096c62564537a1387a41e7ef444180",
+    "kernel-library/expansion-v4-hour/remote-m5/tests/test_streaming_moe.py": "190df012aa12858c4ee21418fc0ad591edb915196085bb80b81944f4cbb1a763"
+  },
+  "training_started": false,
+  "remaining_gates": [
+    "Complete and verify checkpoint transfer",
+    "M5 numerical/gradient tests",
+    "Final data and strategy independent reviews",
+    "Fresh full-item memory preflight",
+    "Fresh M5 baseline then single serial training/evaluation run"
+  ],
+  "preserved": [
+    "sfideas",
+    "WatchAI",
+    "local model and baseline",
+    "pinned runtime-v5"
+  ],
+  "numerical_qualification": {
+    "default_mode": {
+      "passed": 22,
+      "failed": 13,
+      "log": "reports/numerical-tests.log"
+    },
+    "MLX_ENABLE_TF32=0": {
+      "passed": 34,
+      "failed": 1,
+      "log": "reports/numerical-tests-tf32-off.log"
+    },
+    "remaining_issue": "Strict float64-angle RoPE reference differs by7.08e-6. Measured FP32 frequency rounding produces59.999996ratherthan60. Same-angle independent trig comparison2.38e-7; inverse4.77e-7. Original failed test retained. Independent acceptance pending.",
+    "independent_scope_review": "../mlx/peer-reviews/m5-strategy-independent-review.json"
+  },
+  "full_payload_hashing": {
+    "status": "source_complete_remote_verification_pending",
+    "files": 365,
+    "bytes": 426352827347,
+    "manifest": "kernel-library/expansion-v4-hour/remote-m5/checkpoint-source-sha256.json",
+    "manifest_sha256": "9c17f2ec32118effd3193564725a08f00929bd2b0c0e0e47e59d74a765e0e85b",
+    "source_generator_sha256": "d6e30376366d8373c310aedbb77c956faa742267946c49c80668e85b39e59e53",
+    "verification_script_sha256": "cbb266f1f07d8561e14cef411eab8f3ef85d36ca5557c3eb2fa5ce8563b6553b",
+    "independent_review": "../engines-a/peer-reviews/checkpoint-digest-independent-review.json"
+  },
+  "caffeinate": {
+    "exec_session": 3257,
+    "waits_for_remote_transfer_pid": 13078,
+    "scope": "Prevent idle sleep during existing transfer only"
+  },
+  "larger_training_mix": {
+    "status": "draft_alias_review_in_progress",
+    "exact_edits": 159,
+    "diagnostics": 39,
+    "total": 198,
+    "heldout": 16
+  },
+  "verification_queue": {
+    "status": "waiting_for_existing_rsync_then_verify",
+    "exec_session": 44024,
+    "remote_rsync_pid": 13078,
+    "receipt": "/Volumes/Scratch/exl3-training/2026-10-13/reports/checkpoint-verified-sha256.json",
+    "log": "/Volumes/Scratch/exl3-training/2026-10-13/reports/checkpoint-verification.log",
+    "launches_gpu_training": false
+  },
+  "training_launcher": {
+    "path": "kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py",
+    "status": "mechanics_independently_reviewed_concrete_plan_pending",
+    "pinned_runtime_modified": false,
+    "sha256": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
+    "independent_review": "../engines-a/peer-reviews/m5-launcher-independent-review.json",
+    "cpu_mock_tests_passed": 39
+  },
+  "evidence_sha256": {
+    "kernel-library/expansion-v4-hour/remote-m5/reports/rope-probe.json": "63ce141f7e30e97e11485639fc1077fcef43face4390473e5e53c4200553121d",
+    "kernel-library/expansion-v4-hour/remote-m5/reports/numerical-tests.xml": "af0e32e416bd0eb5ade24ab632680501a7922ec9d19c60e74e74c71050ebd915",
+    "kernel-library/expansion-v4-hour/remote-m5/reports/numerical-tests-tf32-off.xml": "893a6c72876e9adfa8f67092999664646d551a34a7f7a9988c9a2b6fb80de326",
+    "kernel-library/expansion-v4-hour/remote-m5/reports/pytest-startup-sample.txt": "ff94a934454ce94f6bab6596f32993128cba7fc55eb90612c9bcf0f972bd76a5",
+    "kernel-library/expansion-v4-hour/remote-m5/reports/numerical-tests-tf32-off.log": "d2ccccdef12288bd6ca08dc2b63031d7d780a901ee33c35183c691d366003600",
+    "kernel-library/expansion-v4-hour/remote-m5/reports/environment.json": "ebdfef2e6c56e8c837749e07c9afe2a3e25112d6cb6d41b97d27ae6c09c1c662",
+    "kernel-library/expansion-v4-hour/remote-m5/reports/numerical-tests.log": "535f3254d9e6e441bd83049e976926c5d12ae198fec5878871500ddecd434b04"
+  }
+}

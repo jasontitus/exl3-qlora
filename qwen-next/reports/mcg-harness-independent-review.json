@@ -1,0 +1,84 @@
+{
+  "schema": "qwen-mcg-harness-independent-review-v1",
+  "status": "approved_for_bounded_pinned_synthetic_dispatch",
+  "passed": true,
+  "reviewer": "adversarial_code",
+  "created_utc": "2026-10-13T20:10:09.691054+00:00",
+  "gpu_executed": false,
+  "hardware_parity_qualified": false,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/mcg-harness-implementation.json": "2b686b9a54b3c44e7a61d2fad424b3be7f91039fda90c6eaa40c44046d58c9c9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/mcg_decode_harness.swift": "28ccd902a7beae0a0fcc510b333f9fafd399ebb1a063956e90ef2c2523184747",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/make_mcg_harness_fixtures.py": "734edf0e6dc687d0619837ea6a1e69909a97dd763d916eb9758a856efc9afa6b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_mcg_harness.py": "f50b0519666157bd3024b4e258e44fd2914426aef8b578029df08002657f4450",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/kernels/mcg_decode.metal": "3dcc8821ed264ff35e573c80b50b74b6d15b6e5a8f2c1a0229ad08d14a44f0d4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/trellis_reference.py": "36827164c88dd6c25dfde67077abe3ad5fb45067f85940a64035fe79dbf29493",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/src/exl3/expert_exl3.zig": "33d37858ec6647c60fb975e5c011b1354aa4453e9258a0e79a1f781d22a5e0a5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/mcg-harness/mcg_decode_harness": "3e2e4c5d1495894d404dcc6365fee6871f164d7f8c48191928533440432748c4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/mcg-harness/synthetic-v1.json": "521b2113e4881376c55c667774ec22d74430e21d612c1f0d50de7446d978ec82",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/mcg-harness-cpu-tests.log": "0ae20da913877dbb109528349aa2ef6daf8aa00f75d99fd49a3bb2c6cc99e008",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/mcg-harness-validation.json": "df4ead1717c54cd7412a8849ea4c28d77c469cf76c3dc8e86d3ca0371ca82f31"
+  },
+  "cpu_tests": {
+    "command": [
+      "env",
+      "MCG_HARNESS_BIN=qwen-next/artifacts/mcg-harness/mcg_decode_harness",
+      "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "qwen-next/tests",
+      "-p",
+      "test_mcg_harness.py",
+      "-v"
+    ],
+    "passed": 9,
+    "skipped": 0,
+    "elapsed_seconds": 5.743,
+    "includes": [
+      "All51712 generated half-bit expectations versus direct cyclic-bit oracle",
+      "Swift exact value/schema/geometry/hash/mode/no-overwrite/symlink/size rejection tests",
+      "Validation-only receipt explicitly has GPU false and numerical parity false"
+    ]
+  },
+  "independent_checks": {
+    "fixture_exactly_regenerated": true,
+    "cases": 94,
+    "values": 51712,
+    "rates": 57,
+    "windows": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "wrong_window_nonzero_cases_distinguished": 93,
+    "wrong_crop_cases_distinguished": 36,
+    "ring_index_and_shift_domains_exhausted_slots": 14592,
+    "maximum_actual_case_input_plus_output_buffer_bytes_with_guards": 3840,
+    "maximum_host_accepted_single_case_buffer_bytes_with_guards": 196864
+  },
+  "source_review": [
+    "MCG wrapping uint32 multiplier, window mask, tile permutation and final FP32 sum rounded toFP16 match the pinned Sushi decoder and reviewed CPU reference. Metal half inputs convert exactly tofloat before sum.",
+    "All matrix/crop/rate dimensions are validated before allocations; host bounds avoid UInt32 product overflow.32-word prefix/suffix guards produce64-byte binding offsets.37 extra threads exercise the early output-bound guard.",
+    "Pinned source is captured before compilation; successful GPU commands must complete, match everyFP16 bit and preserve input/output guard bytes. Runtime error exitsnonzero without a successful qualification receipt.",
+    "No device is created in --validate-only. I ran CPU tests only; binary/fixture/kernel/reference/upstream identities match the held implementation receipt."
+  ],
+  "findings": [],
+  "required_dispatch_controls": [
+    "Recheck this receipt\u2019s pinned executable,fixture andkernel SHA256 before invoking the author-proposed --dispatch command. Do not substitute arbitrary self-consistent expected answers.",
+    "Use a new output receipt and retain nonzero-exit logs. Apply an external process timeout; command.waitUntilCompleted itself has no deadline."
+  ],
+  "limits": [
+    "Only synthetic innerMCG decode is covered. No converter-known-answer window14, real checkpoint, Hadamard/scales/public weights, packed matmul, VJP, complete architecture or training support is established.",
+    "Every rate/window appears, but this is not the full57x9cross-product or all possible payloads/large matrices. Crop coverage is tile-aligned and the largest actual fixture is32x48.",
+    "The direct-bit oracle is algorithmically different from the kernel funnel extraction but shares the declared MCG/permutation contract. Hardware numerical qualification remains pending actual dispatch.",
+    "Hashes establish local consistency, not authenticity of arbitrary new fixtures. Canary bytes detect writes/mutation; they are not a hardware out-of-bounds-read sanitizer. Source index proof covers this kernel\u2019s admitted domain."
+  ]
+}

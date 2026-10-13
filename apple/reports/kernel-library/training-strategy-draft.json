@@ -1,0 +1,98 @@
+{
+  "schema": "larger-metal-training-strategy-draft-v1",
+  "created_utc": "2026-10-13T21:08:18.925398+00:00",
+  "status": "pending_dataset_seal_and_independent_review",
+  "mining_window_utc": [
+    "2026-10-13T21:05:02Z",
+    "2026-10-13T22:05:02Z"
+  ],
+  "objective": "Measure whether a substantially larger source-reviewed exact-edit and diagnostic curriculum improves the same quantized DeepSeek base and outperforms the prior15-example adapter. Do not assume benefit.",
+  "base_model": "/Volumes/Scratch/exl3-training/models/deepseek-v4.1-flash-exl3-3.0bpw",
+  "runtime": "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5",
+  "initialization": "Fresh zero-output adapters on the same frozen quantized base. Do not resume prior15-example adapter or disposable preflight state.",
+  "data": {
+    "exact": "All core reviewed complete examples <=12288 tokens from sealedv3 plus newly reviewedv4; fixed prior16heldout unchanged.",
+    "reasoning": "Independently reviewed positive diagnostic records, capped at floor(exact_row_count/4), so at most20%of training rows. Prefer repo/commit changes without a selected exact view, then round-robin byrepository with deterministic IDordering and at mostone diagnostic percommit. No heldout scores influence selection. All unused reviewed reasoning stays in library. Enforce at most one diagnostic per declared lineage as well; known port-family grouping requires separate ledger review.",
+    "no_silent_truncation": true,
+    "fit_counts": "Publish exact/diagnostic rows, unique repo/commits, linkedfamilies, lengths and supervisedtokens before launch.",
+    "fallback": "If qualified12K complete-item update does not fit after bounded resource/cache adjustments, create a separately named <=8192 complete-item project with exclusion IDs. Preserve full16heldout evaluation; no active dataset mutation.",
+    "mixing_rationale": "Native trainer normalizes each example loss; including every short diagnostic could dominate update count despite few targettokens. The20%rowcap is a declared heuristic, not an empirically optimal weighting. Report actualtokens andupdate fractions.",
+    "trajectory_limit": "This run contains historical single-edit imitation and evidence diagnostics, not native multi-turn tool-feedback trajectories. runtime-v5 rejects tool observations."
+  },
+  "optimizer": {
+    "rank": 4,
+    "alpha": 8,
+    "layers": [
+      39
+    ],
+    "targets": "Existing qualified attention projections only",
+    "learning_rate": 5e-05,
+    "gradient_accumulation": 1,
+    "clip_norm": 1,
+    "seed": 8,
+    "steps": "2 * final training row count; two complete passes under existing iterator",
+    "checkpoint_selection": "Fixed final checkpoint only; no test-driven early stopping or hyperparameter selection",
+    "save_every": 1,
+    "keep_last": 2
+  },
+  "resources": {
+    "profile": "development",
+    "candidate_memory_gib": [
+      80,
+      72
+    ],
+    "reserve_gib": 8,
+    "packed_cache_mib": 2048,
+    "decoded_cache_mib": 0,
+    "prefix_ram_mib": 1024,
+    "allocator_cache_mib": 256,
+    "prefix_disk_quota_gib": 64,
+    "note": "Pick budget from live doctor/memory evidence before plan seal; no lowering reserve or bypassingguards. Reuse qualified arithmetic/cache capacities. Bound new cache against measured disk availability, preserveolddata. Target M5 Max has128GiB physical memory; choose budget only after transfer and live M5 preflight. Old M1 scores do not replace a fresh M5 baseline."
+  },
+  "phases": [
+    "Seal dataset and independent data review",
+    "Review immutable concrete training/evaluationplan",
+    "Longest full training-item disposable update and longestheldout forward",
+    "Fresh baseline scoring of16heldout and frozen generated probes",
+    "Main fresh-adapter training2N updates",
+    "Fresh finaladapter scoring same16heldout and generatedprobes",
+    "Independent category/coverage/identity audit and honest outcome report"
+  ],
+  "evaluation": {
+    "fixed_heldout": "Same16llama.cpp preparedIDs and loss masks; compare token-weighted all/addedMetalcode/rationale/EOS separately and per-row regressions.",
+    "comparators": [
+      "Base zeroadapter",
+      "Previous30update15example adapter",
+      "New fixedfinal larger-corpus adapter"
+    ],
+    "generation": "Reuse predeclared protected2expression probes, identicalgreedy8tokenbudget, compiler+numericalchecks; recordmalformed/truncated outputs as failures. No speed claim from theseprobes.",
+    "interpretation": "Teacherforcing improvement does not implybetterfullpatches or speed. Twoexpressionprobes are weak/possiblyceilinglimited; report no demonstratedgeneratedgain ifbothpassorbothfail. Fivehistoricalrationaletokens and saturatedEOS are insufficient reasoning evidence.",
+    "causality": "Larger dataset has moreupdates and changedcurriculum; differences are whole-recipe outcomes, not isolatedcausal effectofdatasize.",
+    "no_test_selection": true,
+    "reasoning_extension": "Frozen eight-choice diagnostic plan (five protected historical source families), source-bound before model outputs. Exact label scoring under greedy8token budget; malformed/truncatedfail. Separate decision-accuracy metric, not explanation or iterative-agent quality. Never select training settings from these scores.",
+    "prior_adapter": "Fresh M5 evaluation of prior fixed30update checkpoint; old M1 metrics are historical only."
+  },
+  "protection": [
+    "Preserve completedbaseline andpinnedruntime-v5",
+    "Keep sfideas andWatchAI running",
+    "No modeldownloads/deletions",
+    "No duplicateGPUjobs",
+    "Dailycollector cadence unchanged"
+  ],
+  "review_gates": [
+    "Independentdataset source/evidence/replay/contamination/lengthcheck",
+    "Independentconcrete strategy/resource/stepcoveragecheck",
+    "Independent evaluationcategorymetrics/generationbindings/failureaccountingcheck"
+  ],
+  "research": "coding-data-research.json",
+  "execution_host": "jason-m5-MacBook.local",
+  "source_base_model": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "source_runtime": "loss-fix/apple/artifacts/loss-fix/runtime-v5",
+  "migration": "../remote-m5/migration.json",
+  "numerical_mode": {
+    "environment": {
+      "MLX_ENABLE_TF32": "0"
+    },
+    "requirement": "Bind identically in M5 preflight, baseline, prior-adapter, main train, final eval and generation receipts. Require a new mode-specific prefix cache; no cache reuse from default TF32 or M1. Small fixtures do not establish full-model bit parity."
+  }
+}

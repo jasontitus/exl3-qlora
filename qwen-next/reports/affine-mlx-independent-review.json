@@ -1,0 +1,106 @@
+{
+  "schema": "qwen-affine-mlx-independent-review-v1",
+  "utc": "2026-10-13T20:43:26.749150+00:00",
+  "reviewer": "adversarial_code",
+  "status": "approved_for_bounded_pinned_synthetic_dispatch",
+  "passed": true,
+  "gpu_executed_by_reviewer": false,
+  "scope": "108 bounded synthetic native MLX affine dequantization/forward/transpose/input-only VJP cases. This review authorizes interpretation only within this small component scope, not checkpoint or model support.",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-implementation.json": "fadaac4d67455ee578ff8807021427925e37f795fb02aee16665a66169086908",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/affine_mlx_parity.py": "35ddf745b72ef1764f6ba7cf4802f6e1e6223a473159469dc066d4ca5b6eab7e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/affine_reference.py": "94808a442fd27c8f0705172b654a99d5d0df5c4134ee771ecc1c19bd2886c77f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_affine_mlx_parity.py": "ec1ae0de15cd7529fbe554c459d0093be7e76b60e36364bf9abedcfdd623f1d2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/affine-env/pyvenv.cfg": "e673d9093a2f39586187e83ebbaccac5221e91f205639a487f8345d36a8aa728",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/affine-env/lib/python3.12/site-packages/pinned-mlx.pth": "73c3d3cd09915949711e6ac641ecf97f9b2386cbecd11d20624eec7eac3a3bb4",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/core.cpython-312-darwin.so": "49eeb7232106aa9ab846b20e0417add980b1c7213ef6dda6e25c01d45ca54851",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/lib/libmlx.dylib": "ebc8a5f5465afb79d3d9c8f5b0929de1a9b277b7179db8672f92da77ae110a1e",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/lib/mlx.metallib": "95974b7de464ec2be7833a914ca5a53d283a70789470fd84218738fc8fcea3e1",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/lib/libjaccl.dylib": "949e901df832d600a71ff2bc5f3738d55b010668102f36e071e1890807a965cd"
+  },
+  "all_implementation_file_bindings_unchanged": true,
+  "installed_reference_sources_sha256": {
+    "core/__init__.pyi": "bfa3c09f0f1e3edb925bf92e021f3121f0b953959f43ffd91cfa13895a41e8ce",
+    "include/mlx/backend/metal/kernels/quantized.h": "8e2ca65d8d8dafe67b97120d1127d54ce57032f621bdba161e54a0bc4a948b8c",
+    "include/mlx/backend/common/quantized.h": "e5bfbb9a3d2459b3dab6e50c90c1d7a22b55ac84e372e1dc22ef9429f872d4a7"
+  },
+  "cpu_checks": {
+    "command": "qwen-next/artifacts/affine-env/bin/python -m unittest discover -s qwen-next/tests -p test_affine*.py -v",
+    "tests_passed": 19,
+    "tests_skipped": 0,
+    "additional_direct_dense_oracle_comparisons": 108,
+    "actual_fixture_zero_and_sign_reversal_rejections": 432,
+    "exact_low_precision_input_representability_checks": 432,
+    "mlx_core_imported": false,
+    "maximum_relative_L2_from_host_rounding_only_not_native_MLX": {
+      "float32": 0.0,
+      "float16": 0.0,
+      "bfloat16": 0.004294260133918064
+    }
+  },
+  "findings": [
+    {
+      "id": "array-vjp-unpacking",
+      "severity": "high",
+      "status": "resolved_before_dispatch",
+      "detail": "Original (y,), (dx,) unpacking treated a single-array VJP output as a singleton sequence: batch1 could lose its batch axis and batch3 could raise. Current y, (dx,) preserves output; exact shape guards reject broadcasting."
+    },
+    {
+      "id": "loose-absolute-tolerance",
+      "severity": "medium",
+      "status": "resolved_before_dispatch",
+      "detail": "Original BF16 atol .03 alone accepted zero forward outputs for three actual batch1/group32 fixtures. Current elementwise AND relative-L2 gates reject all actual nonzero fixture outputs replaced by zero or sign reversal. Decode separately requires exact dtype-rounded values."
+    }
+  ],
+  "reviewed_contract": {
+    "bits": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "groups": [
+      32,
+      64,
+      128
+    ],
+    "dtypes": [
+      "float32",
+      "float16",
+      "bfloat16"
+    ],
+    "batch_sizes": [
+      1,
+      3
+    ],
+    "weight_shape": "[32,2*group]",
+    "max_weight_elements": 8192,
+    "cases": 108,
+    "memory_limit_bytes": 268435456,
+    "allocator_cache_bytes": 16777216,
+    "frozen_primal_scope": "Only input tensor is a vjp primal; packed weights and affine metadata are closed-over constants. The reference derivative is dy @ W.",
+    "comparison": "Decode exact dtype-rounded values (including host BF16 RN-even); matrix/gradient both elementwise and relative-L2 thresholds declared before native execution.",
+    "relative_L2_limits": {
+      "float32": 0.0001,
+      "float16": 0.01,
+      "bfloat16": 0.05
+    }
+  },
+  "dispatch_requirements": [
+    "Recheck every bound implementation/environment/library file before and after execution. Use the explicitly pinned affine-env interpreter.",
+    "Use a new receipt path and retain any failed attempt; exit0 requires every case and every comparison to pass.",
+    "Use an external short timeout; this tiny one-process harness has no internal deadline."
+  ],
+  "limitations": [
+    "The fixture uses dyadic exactly representable metadata/input/cotangent values; it tests packing, signed/zero scales, group boundaries and quantized multiplication, not arbitrary metadata quantization error.",
+    "Output rows32 and batch1/3 exercise small GEMV-like shapes only. No large GEMM, long-context shapes, broadcast, partial group or checkpoint tensors are qualified.",
+    "The explicit transpose and input VJP may dispatch the same MLX primitive; each is independently checked against binary64 reference math, but they are not independent native engines.",
+    "The host round-to-dtype projection calculation reported here is a CPU sanity bound, not a prediction or measurement of device error.",
+    "Finite per-fixture tolerances do not certify all elementwise gradient signs near zero or arbitrary model gradient correctness.",
+    "No adapter optimizer, model, external ngram table, EXL3 trellis, QSA/GDN composition or training qualification.",
+    "Read-through .pth isolates process configuration but reuses the existing native MLX distribution; it is not an independently built implementation.",
+    "This review does not qualify GPU results until a successful receipt on the bound runtime is inspected."
+  ]
+}

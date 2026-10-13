@@ -1,0 +1,115 @@
+{
+  "scope": "CPU-only comparison of original full-model first-step block39 gradients with new fixed-prefix block39 gradients; not upstream gradient proof",
+  "passed": true,
+  "predeclared_tolerances": {
+    "relative_l2_max": 1e-05,
+    "cosine_min": 0.99999999,
+    "zero_reference_requires_exact_zero": true
+  },
+  "reconstruction": "First unclipped Adam update m=(1-beta1)*g, beta1=0.9; division by0.1 in NumPy float64 retains original moment rounding",
+  "original_gradient_norm": 0.0382997989654541,
+  "original_clip": 1.0,
+  "initial_A_matches_original": true,
+  "initial_B_all_zero": true,
+  "context_and_targets_identical": true,
+  "tokens": 5809,
+  "supervised_tokens": 811,
+  "cached_uncached_parity_exact": true,
+  "base_nll": 0.5012578592107731,
+  "original_pre_update_nll": 0.5012578368186951,
+  "files": {
+    "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/trainer_state.json": "35364c73c723168bf8fdf309596a45216462387969d5f5ec54abf48cc329f930",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/optimizer.safetensors": "b987a9f20a6adaf91641f9e044b5033fbec117af7983a868f355181a10273e62",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/attempts/attempt-1791843982943262000/train/step-000001/adapter.safetensors": "31a0e93774b1710f9192e14b4828c5cd0ab4ebb699b28b4a7f0538327e2a78c9",
+    "artifacts/loss-fix/last-block-original-row/prefix-cache/prefix-cache.json": "dbb7b99c4b08b9adb8301d2545a3cb63df709bcb19821d05d56f2eea5e79ffbf",
+    "artifacts/loss-fix/last-block-original-row/prefix-cache/initial-adapter/adapter.safetensors": "8ebf08f7bbaa4370a10a55ac2ecb7a8936a0aaf6f11f848eaabae9bec5756c14",
+    "artifacts/loss-fix/last-block-original-row/first-step-gradients.safetensors": "96b3c2f083f55500f0ac431b143a03eaad4191b970114b53a2ea979ccc0864ee",
+    "artifacts/loss-fix/three-metal-changes.jsonl": "ca6fd8c939be9de5f7715e79d5f1ffc9354d251d1092aa9a3cc77d5d5ce80cb3"
+  },
+  "tensors": {
+    "blocks.39.attn.linears.wo_b.lora_b": {
+      "shape": [
+        4,
+        5120
+      ],
+      "finite": true,
+      "old_reconstructed_norm": 0.0020868869016030093,
+      "new_norm": 0.002086886865364098,
+      "max_abs_error": 6.366462912410498e-12,
+      "relative_l2": 4.1070394911158546e-08,
+      "cosine": 0.9999999999999972,
+      "passed": true,
+      "new_nonzero": 20480,
+      "old_nonzero": 20480,
+      "worst_coordinate": [
+        0,
+        927
+      ],
+      "old_at_worst": -5.6544499784649815e-05,
+      "new_at_worst": -5.65444934181869e-05
+    },
+    "blocks.39.attn.linears.wo_b.lora_a": {
+      "shape": [
+        8192,
+        4
+      ],
+      "finite": true,
+      "old_reconstructed_norm": 0.0,
+      "new_norm": 0.0,
+      "max_abs_error": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0,
+      "passed": true,
+      "new_nonzero": 0,
+      "old_nonzero": 0,
+      "worst_coordinate": [
+        0,
+        0
+      ],
+      "old_at_worst": 0.0,
+      "new_at_worst": 0.0
+    },
+    "blocks.39.attn.linears.wq_a.lora_b": {
+      "shape": [
+        4,
+        1280
+      ],
+      "finite": true,
+      "old_reconstructed_norm": 0.0027442778392969447,
+      "new_norm": 0.002744277794220201,
+      "max_abs_error": 1.4551915228366852e-11,
+      "relative_l2": 4.2420223142642274e-08,
+      "cosine": 0.9999999999999994,
+      "passed": true,
+      "new_nonzero": 5120,
+      "old_nonzero": 5120,
+      "worst_coordinate": [
+        1,
+        1078
+      ],
+      "old_at_worst": 0.0001781699393177405,
+      "new_at_worst": 0.00017816992476582527
+    },
+    "blocks.39.attn.linears.wq_a.lora_a": {
+      "shape": [
+        5120,
+        4
+      ],
+      "finite": true,
+      "old_reconstructed_norm": 0.0,
+      "new_norm": 0.0,
+      "max_abs_error": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0,
+      "passed": true,
+      "new_nonzero": 0,
+      "old_nonzero": 0,
+      "worst_coordinate": [
+        0,
+        0
+      ],
+      "old_at_worst": 0.0,
+      "new_at_worst": 0.0
+    }
+  }
+}

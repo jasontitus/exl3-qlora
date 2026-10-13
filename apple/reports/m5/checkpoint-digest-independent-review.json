@@ -1,0 +1,100 @@
+{
+  "schema": "checkpoint-digest-independent-review-v1",
+  "status": "approved_for_quiescent_regular_file_transfer_integrity",
+  "source_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/checkpoint_digest.py",
+  "source_sha256": "cbb266f1f07d8561e14cef411eab8f3ef85d36ca5557c3eb2fa5ce8563b6553b",
+  "test_script_sha256": "4d67612bae50e5ae33e9b09273accbeacceeaea476de0f66210e3b9ac788888c",
+  "cases": [
+    {
+      "case": "source_manifest_success",
+      "expected_success": true,
+      "exit_code": 0
+    },
+    {
+      "case": "portable_verify_identical_bytes",
+      "expected_success": true,
+      "exit_code": 0
+    },
+    {
+      "case": "nonexistent_root",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "empty_root",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "reject_empty_object",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "reject_null",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "reject_list",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "reject_wrong_schema",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "reject_empty_files",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "reject_boolean_size",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "reject_invalid_hash",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "payload_mismatch",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "extra_file",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "missing_file",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "symlink_rejected",
+      "expected_success": false,
+      "exit_code": 1
+    },
+    {
+      "case": "receipt_not_overwritten",
+      "expected_success": false,
+      "exit_code": 1
+    }
+  ],
+  "count": 16,
+  "checks": [
+    "Current verifier rejects nonexistent/empty roots and malformed/falsey manifests.",
+    "All actual bytes and portable relative file inventory are compared against the captured manifest.",
+    "Changed bytes, missing/extra files, symlinks and existing output receipts fail closed."
+  ],
+  "limitations": [
+    "Requires a trusted source manifest and quiescent regular-file source/target. This is transfer integrity, not publisher authentication, semantic model validation or a filesystem snapshot against adversarial concurrent replacement.",
+    "Original v1 source-side hashing is a separate running invocation on a known nonempty existing model directory without --verify; this review does not retroactively claim it used the repaired script."
+  ],
+  "gpu_execution": false
+}

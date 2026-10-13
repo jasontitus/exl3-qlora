@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-13T08:30:47.001919+00:00",
+  "source_sha256": "3dcc8821ed264ff35e573c80b50b74b6d15b6e5a8f2c1a0229ad08d14a44f0d4",
+  "command": [
+    "xcrun",
+    "-sdk",
+    "macosx",
+    "metal",
+    "-fmodules-cache-path=/tmp/qwen-metal-module-cache",
+    "-c",
+    "qwen-next/kernels/mcg_decode.metal",
+    "-o",
+    "/tmp/qwen-mcg-decode.air"
+  ],
+  "exit_code": 0,
+  "initial_attempt": "Default clang module cache was sandbox-write denied; compilation succeeded using a /tmp module cache. No approval rejection.",
+  "scope": "Offline compilation only. No dispatch wrapper, GPU execution, numerical comparison or VJP implemented/qualified."
+}

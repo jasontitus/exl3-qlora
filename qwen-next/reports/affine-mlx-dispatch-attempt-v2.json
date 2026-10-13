@@ -1,0 +1,14 @@
+{
+  "utc": "2026-10-13T20:45:31.549263+00:00",
+  "argv": [
+    "qwen-next/artifacts/affine-env/bin/python",
+    "qwen-next/tools/affine_mlx_parity.py",
+    "--dispatch",
+    "--receipt",
+    "qwen-next/reports/affine-mlx-gpu-parity-v2.json"
+  ],
+  "timeout_seconds": 60,
+  "exit_code": 0,
+  "stdout": "{\"cases\": 108, \"passed\": true, \"peak_mlx_bytes\": 62592}\n",
+  "stderr": "mx.metal.device_info is deprecated and will be removed in a future version. Use mx.device_info instead.\n"
+}

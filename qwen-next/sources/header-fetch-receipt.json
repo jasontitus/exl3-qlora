@@ -1,0 +1,38 @@
+[
+  {
+    "file": "model-exl3-L47-gate.safetensors",
+    "file_bytes_declared": 317850472,
+    "header_bytes": 864,
+    "header_sha256": "c88644314fe50a590ec8e30f50f95fd0214ae23c373f99e4eeee73835d3b59a0",
+    "tensors": 3,
+    "metadata": {
+      "format": "exl3",
+      "k": "3",
+      "codebook": "mcg",
+      "window": "14",
+      "quantizer": "ldlq-rotated",
+      "g_scale": "gss",
+      "imatrix_sha256": "0ccd556feb976a22c335ff4b2db7cf93bb1af99422b6f8ef8c01342aa71d070e",
+      "converter": "qwen4-exl3-2-upstream-skew"
+    },
+    "payload_downloaded": false
+  },
+  {
+    "file": "model-trunk-00002-of-00002.safetensors",
+    "file_bytes_declared": 2408600368,
+    "header_bytes": 167720,
+    "header_sha256": "5c6a44fddca2719d1260105eb7796e84a96a1f7e3a205d7e4c4a39d998da65c5",
+    "tensors": 1110,
+    "metadata": null,
+    "payload_downloaded": false
+  },
+  {
+    "file": "model-lm-head.safetensors",
+    "file_bytes_declared": 655565120,
+    "header_bytes": 312,
+    "header_sha256": "e0b4c8b18b0dee1d6b416820a6398dae5d1308099b0006c9eeffc9b059f918ac",
+    "tensors": 3,
+    "metadata": null,
+    "payload_downloaded": false
+  }
+]

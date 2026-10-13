@@ -1,0 +1,34 @@
+{
+  "argv" : [
+    "qwen-next\/artifacts\/mcg-harness\/mcg_decode_harness",
+    "--validate-only",
+    "--fixtures",
+    "qwen-next\/artifacts\/mcg-harness\/synthetic-v1.json",
+    "--kernel",
+    "qwen-next\/kernels\/mcg_decode.metal",
+    "--receipt",
+    "qwen-next\/reports\/mcg-harness-validation.json"
+  ],
+  "case_count" : 94,
+  "comparison" : "exact-fp16-bits",
+  "cpu_reference_sha256" : "36827164c88dd6c25dfde67077abe3ad5fb45067f85940a64035fe79dbf29493",
+  "executable_sha256" : "3e2e4c5d1495894d404dcc6365fee6871f164d7f8c48191928533440432748c4",
+  "finished_utc" : "2026-10-13T18:49:16Z",
+  "fixture_sha256" : "521b2113e4881376c55c667774ec22d74430e21d612c1f0d50de7446d978ec82",
+  "generator_sha256" : "734edf0e6dc687d0619837ea6a1e69909a97dd763d916eb9758a856efc9afa6b",
+  "gpu_executed" : false,
+  "kernel_sha256" : "3dcc8821ed264ff35e573c80b50b74b6d15b6e5a8f2c1a0229ad08d14a44f0d4",
+  "limitations" : [
+    "Synthetic inner MCG decoder only",
+    "No real checkpoint\/converter-window14 qualification, public transform, serving, matmul, VJP, model or training claim",
+    "Fixture hashes check consistency, not authenticity of independently supplied expected answers"
+  ],
+  "mode" : "--validate-only",
+  "numerical_parity_qualified" : false,
+  "os" : "Version 27.0.1 (Build 26A434)",
+  "process_id" : 77093,
+  "schema" : "qwen-mcg-metal-harness-v1",
+  "tolerance" : 0,
+  "validated_values" : 51712,
+  "validation_passed" : true
+}

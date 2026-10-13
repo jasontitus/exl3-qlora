@@ -1,0 +1,80 @@
+{
+  "schema": "m5-training-strategy-independent-review-v1",
+  "created_utc": "2026-10-13T21:41:28.111264+00:00",
+  "status": "component_explanation_accepted_execution_gates_pending",
+  "reviewer": "adversarial_code",
+  "source_or_gpu_mutations": false,
+  "findings": [
+    {
+      "severity": "medium",
+      "status": "resolved_design",
+      "item": "M5 arithmetic mode",
+      "detail": "Default M5 run13failed/22passed; TF32-disabled34passed/1failed. Bind MLX_ENABLE_TF32=0 to all subprocesses and use a new M5/mode-specific prefix cache. The draft now explicitly requires this."
+    },
+    {
+      "severity": "medium",
+      "status": "bounded_discrepancy_preserved",
+      "item": "RoPE strict test",
+      "detail": "Remaining strict float64-angle test has4/384values outside atol3e-6,max7.0780516e-6. No test/source/tolerance change was made. GPU-created frequency0.099999994 produces59.9999961853 atposition600 versus exact60."
+    },
+    {
+      "severity": "medium",
+      "status": "execution_gate",
+      "item": "Trusted generation binding",
+      "detail": "Choice scorer checks prompt/token/text contracts but cannot alone certify runtime/model/math/checkpoint provenance. A predeclared launch manifest and before/after hashes must bind each actual generation before any model comparison."
+    },
+    {
+      "severity": "low",
+      "status": "resolved_code_scope",
+      "item": "Special-token label false pass",
+      "detail": "Original IDs[0,35,1] rendered BOS+A+EOS but skip-special decoding yieldedA. Parent scorer now declares non-EOS special tokens malformed; final negative tests remain a launch gate."
+    }
+  ],
+  "independent_cpu_check": {
+    "same_fixture_seed": 2,
+    "angle_only_max_abs_output_delta": 7.018446922302246e-06,
+    "reported_same_angle_float64_trig_max_abs": 2.384185791015625e-07,
+    "triangle_bound": 7.256865501403809e-06,
+    "reported_full_test_max_abs": 7.0780516e-06,
+    "max_phase_delta": 3.814697265625e-06,
+    "interpretation": "Independent NumPy binary64 trigonometry applied to captured GPU angles explains the strict-oracle difference within the separately reported residual. This reduces risk of an indexing/rotation defect for this fixture; it is not a whole-model, long-position or gradient certification."
+  },
+  "recommendation": "Keep the frozen runtime arithmetic for the controlled M5 run rather than silently replacing its RoPE formula or loosening the historical test. Preserve the failed strict result and use fresh M5 comparisons under one pinned TF32-disabled mode. Complete full-item preflight before training.",
+  "required_before_training": [
+    "Complete transfer and record payload-integrity scope; six checkpoint_identity content hashes bind metadata/tokenizer, not every tensor byte.",
+    "Recheck all81runtime snapshot files and locked runtime packages on M5; pin launch environment and hardware/OS.",
+    "Seal final raw/prepared/masks/provenance plus independent data audit and resource/optimizer/step-count contract.",
+    "Disposable longest complete item update and longest heldout forward with guard; no continuation from disposable state.",
+    "Fresh zero-adapter M5 baseline before training; fresh prior30update adapter scoring on the same M5 mode for three-way comparison.",
+    "New run-owned prefix cache; no M1/default-TF32 cache reuse. Fixed final checkpoint2N, no heldout-driven selection."
+  ],
+  "research_review": {
+    "status": "sampled_primary_sources_consistent",
+    "sources_checked": [
+      "https://arxiv.org/html/2504.21798v1",
+      "https://arxiv.org/html/2504.07164v1",
+      "https://arxiv.org/html/2507.11948v1",
+      "https://huggingface.co/docs/trl/sft_trainer"
+    ],
+    "conclusion": "The cited sources support execution-grounded tasks, precise problem statements, validated feedback and careful masks; they do not establish this20%diagnostic ratio, final-layer recipe or Metal improvement. The draft explicitly states these limits. Other listed papers were not independently re-reviewed in this bounded pass."
+  },
+  "evaluation_scope": [
+    "Same16heldout token IDs/masks and per-category loss; added code separate from serialization and rationale.",
+    "Eight label decisions from five related protected families assess narrow recognition, not free-form reasoning; two expression completions assess bounded correctness, not full agent edits or optimization speed.",
+    "New corpus+moreupdates+changed learning rate is a whole-recipe comparison, not isolated data-quality causality.",
+    "Small M5 fixture parity does not mean M1/M5 logit/gradient bitwise equality."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/rope_probe.py": "9839c7a13ec856597771e9ae08135118885e37e45b30ad15fcbd110b3778fc88",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/rope-probe.json": "63ce141f7e30e97e11485639fc1077fcef43face4390473e5e53c4200553121d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/numerical-tests-tf32-off.xml": "893a6c72876e9adfa8f67092999664646d551a34a7f7a9988c9a2b6fb80de326",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/numerical-tests-tf32-off.log": "d2ccccdef12288bd6ca08dc2b63031d7d780a901ee33c35183c691d366003600",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/numerical-tests.xml": "af0e32e416bd0eb5ade24ab632680501a7922ec9d19c60e74e74c71050ebd915",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/numerical-tests.log": "535f3254d9e6e441bd83049e976926c5d12ae198fec5878871500ddecd434b04",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/environment.json": "ebdfef2e6c56e8c837749e07c9afe2a3e25112d6cb6d41b97d27ae6c09c1c662",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/strategy/training-strategy-draft.json": "a3eb20d8aa84350e25eba1b03bcfb9c876311ca27d4c5b12d6f4270242f13ff1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/strategy/coding-data-research.json": "771cbf4376aa5cc50e5df944afdbbefb78ddec8a818bdccd0949abf1a054d6eb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/prepare.py": "0a2b16aa7bdb66f3ad3c24a228aae37d79e8e719e3fdfa1892eb9f6add90c943",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/score.py": "bde91be73a8fea9d2c4b9505e095092b67b330dad68939e6713789c22f635086"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "qwen-mcg-harness-implementation-v1",
+  "utc": "2026-10-13T18:50:43.781988+00:00",
+  "status": "held-for-independent-review-before-dispatch",
+  "files_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/mcg_decode_harness.swift": "28ccd902a7beae0a0fcc510b333f9fafd399ebb1a063956e90ef2c2523184747",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/make_mcg_harness_fixtures.py": "734edf0e6dc687d0619837ea6a1e69909a97dd763d916eb9758a856efc9afa6b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_mcg_harness.py": "f50b0519666157bd3024b4e258e44fd2914426aef8b578029df08002657f4450",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/kernels/mcg_decode.metal": "3dcc8821ed264ff35e573c80b50b74b6d15b6e5a8f2c1a0229ad08d14a44f0d4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/trellis_reference.py": "36827164c88dd6c25dfde67077abe3ad5fb45067f85940a64035fe79dbf29493",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/src/exl3/expert_exl3.zig": "33d37858ec6647c60fb975e5c011b1354aa4453e9258a0e79a1f781d22a5e0a5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/mcg-harness/mcg_decode_harness": "3e2e4c5d1495894d404dcc6365fee6871f164d7f8c48191928533440432748c4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/mcg-harness/synthetic-v1.json": "521b2113e4881376c55c667774ec22d74430e21d612c1f0d50de7446d978ec82",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/mcg-harness-cpu-tests.log": "0ae20da913877dbb109528349aa2ef6daf8aa00f75d99fd49a3bb2c6cc99e008",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/mcg-harness-validation.json": "df4ead1717c54cd7412a8849ea4c28d77c469cf76c3dc8e86d3ca0371ca82f31"
+  },
+  "host_compile": {
+    "command": [
+      "swiftc",
+      "-module-cache-path",
+      "/tmp/qwen-swift-module-cache",
+      "-O",
+      "-framework",
+      "Metal",
+      "qwen-next/tools/mcg_decode_harness.swift",
+      "-o",
+      "qwen-next/artifacts/mcg-harness/mcg_decode_harness"
+    ],
+    "exit_code": 0,
+    "warning": "fastMathEnabled is deprecated on macOS15; false explicitly preserves requested non-fast-math mode",
+    "swift_version": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0\n",
+    "platform": "macOS-27.0.1-arm64-arm-64bit"
+  },
+  "tests": {
+    "command": "MCG_HARNESS_BIN=qwen-next/artifacts/mcg-harness/mcg_decode_harness /Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python -m unittest discover -s qwen-next/tests -p test_mcg_harness.py -v",
+    "passed": 9,
+    "ruff": "passed",
+    "scope": "CPU fixture generation, independent direct-bit expected-value oracle, Swift validation and rejection paths only"
+  },
+  "fixtures": {
+    "cases": 94,
+    "values": 51712,
+    "bytes": 434938,
+    "halfword_rates": "all57 even counts16..128 atwindow14",
+    "windows": "all8..16 at rates16,40,48,128 on32x48 with croppedcolumns16..47",
+    "hand_known_answer": "zero payload -> FP16bits0x3f60 for256 entries",
+    "max_case_matrix": [
+      32,
+      48
+    ],
+    "comparison": "zero-tolerance exact FP16bits; input immutability and output prefix/suffix guards;37 extra dispatched threads"
+  },
+  "gpu_executed": false,
+  "hardware_parity_qualified": false,
+  "planned_dispatch_argv": [
+    "qwen-next/artifacts/mcg-harness/mcg_decode_harness",
+    "--dispatch",
+    "--fixtures",
+    "qwen-next/artifacts/mcg-harness/synthetic-v1.json",
+    "--kernel",
+    "qwen-next/kernels/mcg_decode.metal",
+    "--receipt",
+    "qwen-next/reports/mcg-harness-gpu-parity.json"
+  ],
+  "limitations": [
+    "Synthetic inner decoder only; no real checkpoint or converter-known-answer window14 qualification",
+    "No public Hadamard/scales, serving activation rounding, packed matmul, inputVJP, architecture or training support",
+    "Hashes establish local consistency, not authority of arbitrary supplied expected answers",
+    "GPU execution must wait for independent review and parent scheduling; compilation/CPU validation do not prove GPU parity",
+    "Runtime Metal errors reject without successful qualification receipt; no performance or production memory claim"
+  ],
+  "active_runtime_changes": false
+}

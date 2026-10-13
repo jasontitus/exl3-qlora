@@ -1,0 +1,126 @@
+{
+  "scope": "Character-level native tool serialization only; tokenizer IDs, assistant token masks, truncation and EOS token coverage are NOT qualified",
+  "template_kwargs": {
+    "enable_thinking": false,
+    "preserve_thinking": false,
+    "reasoning_effort": "low"
+  },
+  "transformers_version": "5.19.0",
+  "tokenizer_config_sha256": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+  "data_sha256": "8c369a9fed057005099dac2c7565c86f3068e3e6a88755e02e50211ed33bc744",
+  "rows": [
+    {
+      "case_id": "llama-cpp-3347e6d90468",
+      "prompt_chars": 12373,
+      "target_chars": 5104,
+      "serialized_sha256": "900f714a0b89747ee6f0ff74364434b9dc03923b36f674e060c777463f2c6c20",
+      "cmd_sha256": "ddf1bdbf5c65e831008f59a0c65b319cccb700ef4a4787a769d2dbc6d9953a95"
+    },
+    {
+      "case_id": "llama-cpp-f4ce81c45e7b",
+      "prompt_chars": 15657,
+      "target_chars": 6239,
+      "serialized_sha256": "c74bdef95c6bfb49d350f7bfe32523af5202f4e70770634e3ad43e21afe0364e",
+      "cmd_sha256": "74640e93ecc0ee0c2ecaca4c8c4cf36799230a8d45066431f6d06c263b72d4a5"
+    },
+    {
+      "case_id": "llama-cpp-560445bf34c8",
+      "prompt_chars": 6699,
+      "target_chars": 1879,
+      "serialized_sha256": "208026439d3bb88637188ca3865f4c4ca637b56234cfa0906b8b9337a8633075",
+      "cmd_sha256": "48e17219c8766da5c1308501d229a5f73cce8eb0ceb3df544618dd734d9c6370"
+    },
+    {
+      "case_id": "llama-cpp-57ebaf4edd99",
+      "prompt_chars": 14782,
+      "target_chars": 14040,
+      "serialized_sha256": "41a71f8f5f0206ea65a9f583573632e31456b15e2658973abaa98040d82380cc",
+      "cmd_sha256": "851f0cc2eb3724821602e89f498155befe5a7ae7cb85f13db36c3318373afe4b"
+    },
+    {
+      "case_id": "llama-cpp-086a63e3a5d2",
+      "prompt_chars": 15196,
+      "target_chars": 13555,
+      "serialized_sha256": "f94128a0a6382908e9565d4fbe5b4869d635d951b42e4079a5393d2cfb02751f",
+      "cmd_sha256": "5bcc272f1be3070b7d8d5267e9596da935543f9486dd81e074dde8f55143b3b3"
+    },
+    {
+      "case_id": "llama-cpp-793c0d7f4638",
+      "prompt_chars": 20196,
+      "target_chars": 15801,
+      "serialized_sha256": "8cf90467a16d8e13024c2416de0cec0f42934a6a806577bfe8f009a63106b3dd",
+      "cmd_sha256": "9e0e92cdac813ee342e4eaf91e9e274ffb665e7b89ecb290cce39ae6855b5480"
+    },
+    {
+      "case_id": "llama-cpp-22885105a6b0",
+      "prompt_chars": 4951,
+      "target_chars": 2526,
+      "serialized_sha256": "e6259a65ed5e48ce67dc37f56b0e0a45e62063d06aede2fb368e5eedcba67447",
+      "cmd_sha256": "67566bc718d3342ec9fe5d5d3e5a5b5438a003bb466f800bfec09dd0fc3e3b21"
+    },
+    {
+      "case_id": "llama-cpp-13268c533177",
+      "prompt_chars": 8383,
+      "target_chars": 4630,
+      "serialized_sha256": "7905781c9792e32181c84ab866088fea6a3bc8a70691abe62247957cd451341e",
+      "cmd_sha256": "2a01a12b6928992ab62e2dda1de196d3364ddc69c7f253d1b2f9435e0afa0fe4"
+    },
+    {
+      "case_id": "llama-cpp-e8d91589258f",
+      "prompt_chars": 17139,
+      "target_chars": 2498,
+      "serialized_sha256": "afa211b0241a57d8261de9f4233d409d558d150b538543b43e74829f98eff222",
+      "cmd_sha256": "8317384a0ced3d361a3798342153c9a08f56b94042a4c077c5175d15aea10b37"
+    },
+    {
+      "case_id": "llama-cpp-245fc3c37da5",
+      "prompt_chars": 15625,
+      "target_chars": 2706,
+      "serialized_sha256": "a19057cafdf85912c24228f65af877bb8b7868a7213eb0a313b5b325c6870d45",
+      "cmd_sha256": "2df078ccf5a51a33485af8bdd84f6bf82400a86e996e9e234e2f4a762e065826"
+    },
+    {
+      "case_id": "llama-cpp-27ad57a69b85",
+      "prompt_chars": 23408,
+      "target_chars": 9950,
+      "serialized_sha256": "ef3f6fc795daf09454b037dc1270acecc08b100f0b14dd2d34d0e75427c73a09",
+      "cmd_sha256": "16bb1ced716400778ede40ed5898461c058bb9d8436f5c5ab5211e6043e24c71"
+    },
+    {
+      "case_id": "llama-cpp-1cbf561466e9",
+      "prompt_chars": 17759,
+      "target_chars": 5809,
+      "serialized_sha256": "1ed4c87eecc7668554f56339af88fb48edabb7b7b737829bd0e3c8ec7e1dbb6a",
+      "cmd_sha256": "89304203b698e2960ace1f5fc20bc93086f4ee8249ebd1247669198a6a4f2a72"
+    },
+    {
+      "case_id": "llama-cpp-e68c96f7fee8",
+      "prompt_chars": 22613,
+      "target_chars": 10883,
+      "serialized_sha256": "d2b95d86b3ed0f21e5ea6a2bd761952be34054ab0433d6faf23cef320a0c2f43",
+      "cmd_sha256": "587616b10f9c8b8da559548e04e3853b39347472fd4d06fe6f7348c6fb7abce9"
+    },
+    {
+      "case_id": "llama-cpp-ba7ffbb2517f",
+      "prompt_chars": 26343,
+      "target_chars": 8514,
+      "serialized_sha256": "6a769af39b810be2f9f8d0e731bf2bea0d12a5992e004bca921b0d1a784b82ab",
+      "cmd_sha256": "9b0d24f3f1184c99180a621cdbdc3f4d31dd6965dca5e74a6dd4669b46f7ef11"
+    },
+    {
+      "case_id": "llama-cpp-4d76a5f49b9b",
+      "prompt_chars": 25024,
+      "target_chars": 12962,
+      "serialized_sha256": "0ef1e3f00c22f73d55e7fb82bffd7b45422c3267674c9a5849a0ed09ae33cd1d",
+      "cmd_sha256": "0e752c48ed94ddc366b48fcd043221c2533a9271ca7992c1327ce0b8b4037def"
+    },
+    {
+      "case_id": "llama-cpp-785829dfe8ba",
+      "prompt_chars": 24037,
+      "target_chars": 12368,
+      "serialized_sha256": "42e7d0dfafb50c68dead5b4f09cec35d36bc342e877f93a6a1e815f5abe4f9ec",
+      "cmd_sha256": "2c8f6ec791b2edddf53fdba4a2a9e34efdb43511a3a3a33b4da8a06a80324df7"
+    }
+  ],
+  "passed_rows": 16
+}

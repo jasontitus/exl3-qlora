@@ -1,0 +1,150 @@
+{
+  "schema": "coding-data-research-and-application-v1",
+  "date": "2026-10-13",
+  "status": "research_complete_application_pending_review",
+  "question": "How should Metal optimization coding data be formatted and built to teach useful reasoning and improve output quality?",
+  "conclusion": "Prefer executable, evidence-grounded tasks matched to the intended agent interface. Combine complete historical edits with explicit diagnostic decision examples now; collect actual successful tool-feedback trajectories as a separately qualified extension. No universal best ratio or edit syntax is established by these sources.",
+  "sources": [
+    {
+      "id": "swe-smith",
+      "url": "https://arxiv.org/html/2504.21798v1",
+      "finding": "Execution environments and test-validated tasks support collecting successful agent trajectories. Their experiments support diversity of repositories and task types; repeated easy solutions were capped.",
+      "scope_limit": "Software repair in Python; not evidence that our final-layer Metal adapter improves."
+    },
+    {
+      "id": "swe-gym",
+      "url": "https://arxiv.org/html/2412.21139v1",
+      "finding": "Pairs real repository tasks with executable environments and unit tests; trains agents and outcome verifiers from trajectories.",
+      "scope_limit": "A verifier or successful training fit is not an independent proof of numerical correctness."
+    },
+    {
+      "id": "r2e-gym",
+      "url": "https://arxiv.org/html/2504.07164v1",
+      "finding": "Backtranslates commits into task statements using failing tests and execution information, reducing vague prompts relative to changes alone.",
+      "scope_limit": "Backtranslated statements need leakage review: future solution details must not appear as observed pre-change evidence."
+    },
+    {
+      "id": "opencoder",
+      "url": "https://arxiv.org/html/2411.04905v1",
+      "finding": "Documents code-data cleaning, instruction synthesis, staged SFT, and decontamination against evaluation entry points and n-gram overlap.",
+      "scope_limit": "Its large-model/pretraining recipe is not a measured optimum for this small specialized LoRA corpus; generic code overlap needs review, not indiscriminate deletion."
+    },
+    {
+      "id": "trl",
+      "url": "https://huggingface.co/docs/trl/sft_trainer",
+      "finding": "Conversational tool datasets carry messages, tool_calls, tool-role observations and tools schemas. Assistant-only supervision requires correct template masking; completion-only is a separate supported mode.",
+      "scope_limit": "TRL documentation describes TRL, not capabilities automatically present in our MLX trainer."
+    },
+    {
+      "id": "kevin",
+      "url": "https://arxiv.org/html/2507.11948v1",
+      "finding": "CUDA kernel optimization is trained as iterative generation with execution feedback. Authors report benefits of multi-turn RL and identify reward hacking and difficulty imbalance.",
+      "scope_limit": "Their RL outcome does not establish that adding prose reasoning to our SFT will reproduce the gain."
+    },
+    {
+      "id": "kernelbench",
+      "url": "https://arxiv.org/abs/2502.10517",
+      "finding": "Measures generated kernels jointly by correctness and speed, including the fraction correct above a speed threshold.",
+      "scope_limit": "CUDA benchmark results do not transfer to Apple hardware; correct-and-fast needs local measurement."
+    },
+    {
+      "id": "kernelbench-eval",
+      "url": "https://github.com/ScalingIntelligence/KernelBench/blob/main/EVAL.md",
+      "finding": "Current evaluation notes identify reference-result reuse, mutated inputs and timing/stream tricks; include adversarial tests for the harness.",
+      "scope_limit": "Mutable documentation inspected 2026-10-13; design guidance rather than an endorsement of any generated kernel."
+    },
+    {
+      "id": "kernelbench-verified",
+      "url": "https://arxiv.org/abs/2607.16241v1",
+      "finding": "Authors report that stronger hidden input distributions and realistic accelerated baselines reduce apparent speedups, and include memory tradeoffs.",
+      "scope_limit": "Paper findings are author-reported CUDA experiments; Apple adaptation requires its own baseline, timing and numerical gates."
+    }
+  ],
+  "format_contract": {
+    "storage": "Standard JSONL messages/tools for model input; separate hash-bound provenance and validation records. Preserve original source and observed logs independently of rendered teaching text.",
+    "task_input": [
+      "Operation and expected semantics",
+      "Complete relevant baseline source plus required host/build context",
+      "Hardware, shapes, strides/layout, dtype and dispatch constraints actually known",
+      "Observed failure or measured baseline, with units and provenance",
+      "Allowed edit/tool schema and acceptance tests"
+    ],
+    "assistant_target": [
+      "Concise evidence-based diagnosis, explicitly distinguishing observation from hypothesis",
+      "Mechanism and why it addresses the stated regime",
+      "Complete replayable edit using the actual deployed agent tool",
+      "Validation interpretation and remaining uncertainty only when supported by observed results"
+    ],
+    "no_answer_leakage": "For prospective edit/diagnosis tasks, keep post-change source, exact solution hint and achieved speed out of the prompt. Retrospective evidence-interpretation tasks may include them but are labeled separately and cannot count as optimization discovery.",
+    "reasoning": "Teach useful decisions, not length: evidence -> hypothesis -> mechanism -> applicability -> discriminating test. Do not synthesize profiler counters, measurements, author intent or tool observations. Curator inferences are labeled and source-linked.",
+    "deployment_match": "Do not claim unified diff, SEARCH/REPLACE or apply_patch is universally best. Pick the serving agent interface, serialize with the exact tokenizer template, validate function names/schema/control tokens, and replay the edit.",
+    "loss": "Supervise intended assistant actions and explanations; exclude prompts and observed tool output from targets. Check exact token boundaries and EOS. Raw JSON validity alone is insufficient.",
+    "length": "Measure after chat/tool serialization. Keep complete edits. Explicitly exclude over-capacity cases; no silent truncation or conversion of fragments into supposedly complete tasks."
+  },
+  "curriculum": [
+    {
+      "type": "historical_exact_edit",
+      "purpose": "Reproduce a concrete optimization or correctness repair from sufficient baseline context",
+      "gate": "Pinned source/parent, license, complete host/build dependencies, replay and independent review; report local compile/numerical/performance status separately"
+    },
+    {
+      "type": "diagnostic_decision",
+      "purpose": "Choose a bottleneck hypothesis, explain a boundary failure, select a discriminating experiment, or reject an unsupported speed claim",
+      "gate": "Source-grounded answer, explicit inference labels, no fabricated observations; count linked source families once"
+    },
+    {
+      "type": "verified_repair_trajectory",
+      "purpose": "Use an actual compiler error, numerical mismatch or timing regression to revise a kernel",
+      "gate": "Observed tool logs plus successful independent final verification; current runtime does not support native tool-observation training"
+    },
+    {
+      "type": "counterexample_and_preference",
+      "purpose": "Learn when an optimization is invalid or harmful",
+      "gate": "Rejected code is never a positive SFT answer. Keep chosen/rejected pairs separate; current trainer does not implement DPO/RL"
+    },
+    {
+      "type": "abstain_or_measure",
+      "purpose": "Ask for the missing shape/layout/profile or recommend a test when the evidence cannot justify a change",
+      "gate": "Concrete missing fact and actionable test, not generic caution"
+    }
+  ],
+  "quality_gates": [
+    "Deduplicate before split by exact payload, patch, commit and known port/cherry-pick lineage; review semantic near duplicates across engines without assuming different engines are duplicates.",
+    "Freeze held-out task families before creating alternate explanations, repairs or counterexamples; all derived views inherit split.",
+    "Count unique changes/families separately from serialized views and repeated training exposures.",
+    "Report coverage by operation, mechanism, hardware, dtype, shape regime, correctness/performance evidence, repository and difficulty; more paraphrases do not fill missing mechanisms.",
+    "Replay complete edits and validate source identities; compilation requires actual includes/macros/template instantiations and dispatch contracts.",
+    "Numerical tests include tails, degenerate sizes, layouts, extreme values and dtype-specific tolerances; compare with an independent reference and negative controls.",
+    "Performance requires matched hardware/workload/precision, warmup, synchronization, repeated timing and memory measurement; reject input mutation/reference reuse and hidden work outside the timed region.",
+    "Evaluate generated actions under equal token/tool budgets and count parse/compile/runtime failures. NLL remains diagnostic, not a claim of better kernels.",
+    "Report per-task regressions and paired uncertainty; bootstrap by independent task family rather than treating correlated tokens as independent samples."
+  ],
+  "current_implementation_audit": {
+    "runtime": "loss-fix/apple/artifacts/loss-fix/runtime-v5",
+    "supported": "Plain chat final-answer supervision and exactly one terminal native function call; loss_start masks a contiguous final target.",
+    "unsupported": "tool_data.py rejects tool-role observations and nonterminal tool calls. Arbitrary multi-turn agent trajectories, assistant span masks across tool outputs, DPO and RL are not provided.",
+    "immediate_action": "Keep this run on reviewed complete exact edits plus bounded positive diagnostics. Do not pretend reconstructed history is a recorded agent trajectory or change pinned runtime during training.",
+    "extension": "Add separate versioned multi-turn ingestion and assistant-span masking with tokenizer/replay tests, then collect actual measured repair rollouts. Per-turn views require complete prior context and shared lineage/weighting; they are not independent tasks.",
+    "sources_sha256": {
+      "loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/data.py": "b444afd00d50de7eaf3e6343f58b1920bdbd236cf903d90add89c47ecce236c9",
+      "loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/tool_data.py": "65b2dec3f2585469507c0c9cf376bea55660bc6da54c452214f238d88846f651"
+    }
+  },
+  "next_run_application": {
+    "mix": "Use existing exact core and a declared <=20% diagnostic-row heuristic; report both token share and update share. This ratio is not a literature-established optimum.",
+    "split": "Preserve prior 16 held-out examples and protected generated probes; no scoring-based selection.",
+    "claims": "Two expression probes and five rationale tokens cannot establish broad reasoning or optimization quality. Report these as narrow checks; add a separate frozen diagnostic evaluation before generation and a richer executable suite later.",
+    "training_comparison": "A larger set plus more updates tests the whole recipe. Isolating data quality requires matched-budget ablations; do not attribute all change to reasoning data."
+  },
+  "adversarial_questions": [
+    "Can the answer be copied from the prompt or commit message without reading code?",
+    "Does the rationale invent a bottleneck that was never measured?",
+    "Does every declared speedup identify hardware, workload, precision and source?",
+    "Is the edit replayable but uncompilable because required host/build changes were omitted?",
+    "Do ports or explanation variants leak across splits or inflate independent example counts?",
+    "Can a zero-output, input-mutating or hardcoded kernel pass our tests?",
+    "Does averaging per-example losses overweight short diagnostic prose?",
+    "Can the current serving agent actually parse and execute the trained action format?",
+    "Are we claiming reasoning gains from serialization loss or a saturated two-question evaluation?"
+  ]
+}

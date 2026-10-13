@@ -1,0 +1,379 @@
+{
+  "format": "qwen-composition-independent-probe-v1",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_qwen_conv_gdn_composition.py": "695131eba2adf55a287fa8ed427342b28fc9343f356ec2a9dd9cf68ff71b682d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/qwen_conv_reference.py": "abf905f59bc1be6e5d0707bd798332242524fb5e2639e90df98b999da249d65a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/qwen_gdn_reference.py": "96f48929fda71119f63f66a9f78e2589a48eed511bdc43b203d2724f48baac7b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen_composition_independent_probe.py": "ca48e4131c9e02e8b807847dddfe7edde6c5d22cdfea492e4a189b342c9a5265",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen_conv_independent_probe.py": "8f39629803cf00e129e3d5ca99ac5447b30b671baebb59d63d78e2fcd1a5fd80"
+  },
+  "checks": [
+    {
+      "name": "projector-forward-0-output",
+      "max_abs_error": 6.938893903907228e-17,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "projector-forward-0-conv_history",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "projector-forward-0-gdn_state",
+      "max_abs_error": 5.551115123125783e-17,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-0-x",
+      "max_abs_error": 2.7550156600497644e-11,
+      "tolerance": 2.87340682605841e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-0-weight",
+      "max_abs_error": 2.660539843990506e-11,
+      "tolerance": 1.889756313626755e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-0-history",
+      "max_abs_error": 2.0223024210092033e-11,
+      "tolerance": 1.0122150076165006e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-0-initial_state",
+      "max_abs_error": 1.1243705619334854e-11,
+      "tolerance": 1.1253766845898951e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-0-g",
+      "max_abs_error": 4.0281139535025545e-11,
+      "tolerance": 1.3427799616373405e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-0-beta",
+      "max_abs_error": 6.689510057000803e-13,
+      "tolerance": 1.1832036877758014e-07,
+      "passed": true
+    },
+    {
+      "name": "chunk-forward-0-output",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-forward-0-conv_history",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-forward-0-gdn_state",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-0-x",
+      "max_abs_error": 2.168404344971009e-19,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-0-weight",
+      "max_abs_error": 1.3877787807814457e-17,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-0-history",
+      "max_abs_error": 2.168404344971009e-19,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-0-initial_state",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-0-g",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-0-beta",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "detached-negative-control-0-conv_history",
+      "input_gradient_difference_norm": 0.04720527978168722,
+      "minimum_detectable_difference": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "detached-negative-control-0-gdn_state",
+      "input_gradient_difference_norm": 0.008672096335998677,
+      "minimum_detectable_difference": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "projector-forward-1-output",
+      "max_abs_error": 6.938893903907228e-17,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "projector-forward-1-conv_history",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "projector-forward-1-gdn_state",
+      "max_abs_error": 5.551115123125783e-17,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-1-x",
+      "max_abs_error": 3.8803738000581234e-11,
+      "tolerance": 4.46490122593579e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-1-weight",
+      "max_abs_error": 4.3915593384014073e-11,
+      "tolerance": 3.1859188814588037e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-1-history",
+      "max_abs_error": 1.0842672246158536e-11,
+      "tolerance": 1.1093969081988888e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-1-initial_state",
+      "max_abs_error": 8.692461203954616e-11,
+      "tolerance": 1.0097904950813187e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-1-g",
+      "max_abs_error": 5.3929624654891484e-11,
+      "tolerance": 1.0919010045841162e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-1-beta",
+      "max_abs_error": 2.7881655317862908e-11,
+      "tolerance": 1.6805716468161193e-07,
+      "passed": true
+    },
+    {
+      "name": "chunk-forward-1-output",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-forward-1-conv_history",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-forward-1-gdn_state",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-1-x",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-1-weight",
+      "max_abs_error": 1.1102230246251565e-16,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-1-history",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-1-initial_state",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-1-g",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-1-beta",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "detached-negative-control-1-conv_history",
+      "input_gradient_difference_norm": 0.6145612051226597,
+      "minimum_detectable_difference": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "detached-negative-control-1-gdn_state",
+      "input_gradient_difference_norm": 0.003276899076769483,
+      "minimum_detectable_difference": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "projector-forward-2-output",
+      "max_abs_error": 1.3877787807814457e-17,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "projector-forward-2-conv_history",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "projector-forward-2-gdn_state",
+      "max_abs_error": 2.7755575615628914e-17,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-2-x",
+      "max_abs_error": 2.259339937360494e-11,
+      "tolerance": 3.446433959024663e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-2-weight",
+      "max_abs_error": 5.2363946512201665e-12,
+      "tolerance": 1.4504694470219838e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-2-history",
+      "max_abs_error": 3.600534106973363e-11,
+      "tolerance": 1.1537191685052619e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-2-initial_state",
+      "max_abs_error": 3.341821264157829e-11,
+      "tolerance": 1.425730161124349e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-2-g",
+      "max_abs_error": 2.0230810082733086e-11,
+      "tolerance": 1.337888155232946e-07,
+      "passed": true
+    },
+    {
+      "name": "independent-directional-2-beta",
+      "max_abs_error": 4.057559843673175e-12,
+      "tolerance": 2.2871786769785842e-07,
+      "passed": true
+    },
+    {
+      "name": "chunk-forward-2-output",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-forward-2-conv_history",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-forward-2-gdn_state",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-2-x",
+      "max_abs_error": 5.551115123125783e-17,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-2-weight",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-2-history",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-2-initial_state",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-2-g",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "chunk-adjoint-2-beta",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "name": "detached-negative-control-2-conv_history",
+      "input_gradient_difference_norm": 1.2268686675094531,
+      "minimum_detectable_difference": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "detached-negative-control-2-gdn_state",
+      "input_gradient_difference_norm": 0.0762887597058305,
+      "minimum_detectable_difference": 1e-07,
+      "passed": true
+    }
+  ],
+  "checks_passed": 60,
+  "passed": true,
+  "numpy_version": "2.5.4",
+  "gpu_used": false,
+  "torch_imported": false,
+  "mlx_imported": false,
+  "scope": "Tiny continuous FP64 conv/SiLU+GDN composition, not a full layer or backend."
+}

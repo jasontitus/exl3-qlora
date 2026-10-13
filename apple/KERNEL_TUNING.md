@@ -13,6 +13,136 @@ but the *choice of lines* comes from the answer. This is useful for checking the
 training mechanism and practicing edit syntax. It is not a task-disjoint kernel
 optimization benchmark or evidence of discovering a new optimization.
 
+## Structured upstream-history flow
+
+The earlier three training examples were full-parent historical patches. The new
+[upstream importer](docs/UPSTREAM_INTAKE.md) constructs task/baseline/constraints
+prompts and rationale/optimized-source answers. It preserves source attribution,
+unknown fields, dependencies, full edit replay, fork deduplication, evidence and
+exclusions. Post-change task metadata is allowed only with explicit retrospective
+conditioning; it is not independent profiling evidence. Compilation results come
+from the verifier, never from generated "tests passed" prose.
+
+Historical preparation example: this llama.cpp case is now protected evaluation
+data. The command below illustrates preparation only; do not train on it.
+
+```bash
+cd ~/experiments/exl3-qlora/apple
+uv run exl3-mlx ktune finetune-upstream \
+  --source artifacts/loss-fix/upstream-inventory/reviewed-units/llama-conv-manifest.json \
+  --model ~/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw \
+  --output artifacts/my-upstream-project \
+  --steps 4 --adapter-layers 39 --rank 4 --learning-rate 1e-4 \
+  --chunk-size 8192 --activation-mode checkpoint \
+  --profile development --memory-gib 72 --reserve-gib 8 \
+  --packed-cache-mib 8192 --decoded-cache-mib 0 --prefix-cache-mib 2048 \
+  --allocator-cache-mib 256 --prepare-only
+
+# After inspecting the complete prompt/answer and source evidence:
+# Historical prepare-only illustration: llama-conv is now protected evaluation data.
+# Do not train or resume this example; use a reviewed non-held-out training corpus.
+uv run exl3-mlx status artifacts/my-upstream-project
+```
+
+Preparation binds provenance before training is possible. This example contains
+3,394 serialized tokens. Its original preparation used a train-only split, but
+it has since been reserved for evaluation and must be excluded from new training.
+The illustrated 72+8 GiB startup requirement is explicit; available system memory
+is checked before running.
+
+For a reviewed, self-contained Metal translation unit with `metal_stdlib` as its
+only include:
+
+```bash
+uv run exl3-mlx ktune compile-metal \
+  --before before.metal --after after.metal \
+  --standard metal3.1 --output artifacts/new-compile-check
+```
+
+The command snapshots both inputs and records exact compiler flags, toolchain,
+AIR hashes, errors and success status. `metal4.0` is also accepted when installed.
+Project headers, inline generated shaders, host dispatch and architecture-specific
+features require their own build context. A compiler pass does not prove numerical
+parity or performance and does not silently admit `execution_verified` examples.
+
+Historical early inventory (superseded by the October 13 expansion below): the [100-candidate audit](reports/upstream-corpus-inventory.md) yielded 93 source
+reconstructions, five whole-file token-fit rows, 88 overlength rows and seven
+source failures. The five include integration/loader changes and an unresolved
+finite-difference issue. They are not five verified kernel optimizations. Reviewed
+source units make larger monolithic files practical without cropping. The requested
+100–200-example target had not been reached at that cutoff. The October 13 expansion below supersedes those preparation counts; broad locally verified optimization quality remains unproven.
+
+## Source-kernel qualification
+
+The compiler gate is reusable for self-contained source pairs. Runtime tests need
+the operation's ABI, legal layouts, dispatch and reference calculation. Two
+operation-specific harnesses have now run on this M1 Ultra:
+
+- TensorFold EXLR8 projection: 162 fixed projection cases and all 65,536 codebook
+  states match before/after bit for bit; all tested values are finite and tail
+  canaries are unchanged. This does not validate the commit's other kernels or
+  provide an independent absolute projection oracle.
+- llama.cpp transposed 1D convolution: 16 cases with FP32/FP16 weights match
+  before/after and an independent CPU oracle. The fixtures use exactly
+  representable dyadic values, including overlapping windows, support holes,
+  noncontiguous columns and output padding. These tests cover geometry, not all
+  rounding-sensitive or exceptional inputs.
+
+See the [scopes and bound receipts](reports/metal-tuning-result.md#executed-source-kernel-qualification).
+These tests did not measure speed, exercise model-generated code, or automatically
+admit examples through the strict `execution_verified` importer gate. Host dispatch
+and dependencies are retained when necessary to interpret the kernel. Extracting
+a function alone is insufficient if its template instantiations, types, layout or
+dispatch contract are missing.
+
+The saved, source-pinned binaries can repeat their fixed tests with **new** receipt
+paths. From this checkout, whose `artifacts/loss-fix` points to the experiment:
+
+```bash
+./artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/verify_tensorfold_exlr8 \
+  artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/before.metallib \
+  artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/after.metallib \
+  artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/manifest.json \
+  artifacts/tensorfold-parity-repeat.json
+
+./artifacts/loss-fix/llama-conv-parity-v2/verify_llama_conv \
+  artifacts/loss-fix/llama-conv-parity-v2/compile-link-manifest.json \
+  artifacts/llama-conv-parity-repeat.json
+```
+
+For future model comparison, freeze held-out operation families before training,
+give base and adapter the same prompts and candidate budget, retain every attempt,
+compile candidates in their required build context, check numerical tolerances
+against an independent reference, and only then rank measured GPU latency. Repeat
+the selected winner against the baseline in an independent timing run. That full
+best-of-N pipeline and any synthetic-data/RL loop are not implemented yet.
+
+## Current normal SFT recipe
+
+A later final-block experiment fitted the complete 5,809-token Metal edit: NLL
+fell from 0.5012578592 to 0.4735794807 over eight updates, with exact same-process
+uncached final-logit parity. It trained one distinct change; most gain came from
+comments/headers and added-code accuracy stayed 112/114. The separate BF16-mode
+one-step experiment descended against its own baseline. A completed same-runtime
+checkpoint-mode control regressed, but did not reproduce the historical update
+exactly; a unique cause remains unproven. See the [current measured results](reports/metal-tuning-result.md).
+The normal [three-change flow](reports/standard-three-change-run.md) completed
+12 updates on three complete examples (3,606 / 5,809 / 5,822 tokens), four passes
+per example. Fresh uncached NLL fell **0.35555322 → 0.32627658 (8.23%)**, and all
+three rows improved. The saved adapter exactly reproduced the warm training
+logits. Training took 30.14 minutes including the final probe and peaked at
+53.08 GiB MLX. The [result and saved-adapter recipe](reports/metal-tuning-result.md)
+include all category regressions: comments/headers account for 92.1% of the
+loss decrease, and added-code top-1 improved by one teacher-forced token. All three share one lineage,
+with no held-out quality claim. The first failed all40-layer trial below remains
+preserved as historical evidence.
+
+The completed normal training recipe uses final-block adapters, a 2 GiB frozen-prefix
+cache, an 80 GiB process cap and an explicit 8 GiB reserve in pinned runtime-v3.
+Use its linked recipe for exact paths and preparation/verification commands.
+The archive-import and original pilot commands below document the earlier
+all40-layer attempt; they are retained for provenance and reproduction.
+
 ## Command-line recipe
 
 The full-parent pilot **completed one optimizer update** using the complete
@@ -50,11 +180,10 @@ and adaptive +10 gave 0.5074643706. This bounded series is complete; no adapter
 was promoted as an improvement and none of these probes is an optimizer update.
 The [aggregate](reports/ktune-strength-diagnostics.json) records all scores, exact
 A/B derivation checks and unchanged source/checkpoint identities. Native/head
-and sparse-attention component VJP checks pass, and the current suite passes
+and sparse-attention component VJP checks pass, and that revision’s suite passed
 **518 tests plus 27 subtests**. Those results do not resolve the fitting failure;
 see the [diagnosis update](reports/first-step-diagnosis-update.md).
-**5,809 tokens is the largest complete training example tested**, while 32,768 is
-only the implementation ceiling.
+At the October 12 three-example cutoff, the completed standard run reached **5,822 complete tokens**. The later 15-example run used complete items under a 12K preparation cap. Neither result qualifies arbitrary 32K training.
 The earlier 32 GiB attempt completed
 the forward pass but failed during backward before an update; it is not an
 established recipe for this length.
@@ -112,23 +241,14 @@ the project's numerical contract. The measured same-chunk cache parity and
 single-layer timings are in the [memory review](reports/high-memory-cache-review.md);
 they do not establish full-model numerical parity or an end-to-end speedup.
 
-The commands below describe deliberate continuation of the saved checkpoint.
-The first update and all three tested strength variants failed the fitting
-check; no further update was run in this bounded series. These commands document
-continuation mechanics, not a recommended remedy or promise of improvement:
-
-
-```bash
-# Total target: 2 updates, so this adds one update after completed step 1.
-# Omitting resource flags preserves this project's saved 80/12 GiB limits,
-# packed cache, and immutable chunk 8192.
-uv run exl3-mlx resume \
-  artifacts/ktune-20261012/full-parent-pilot-development --steps 2 --no-compare
-
-# Fresh base/adapter teacher-forced scoring after that continuation.
-uv run exl3-mlx ktune verify \
-  artifacts/ktune-20261012/full-parent-pilot-development
-```
+The historical checkpoint remains preserved. Its first update and all three
+tested strength variants failed the fitting check; no further update was run in
+that bounded series. The currently installed engine deliberately rejects resume
+of this older project because its implementation identity differs. Do not run
+the current CLI against it or substitute an approximate source backup. An exact
+historical replay requires reconstructing and verifying every recorded source,
+dependency and runtime identity first. For the completed three-example project,
+use the [runtime-pinned entry point](reports/metal-tuning-result.md#use-the-saved-result).
 
 `resume --steps` is a total update target. To raise the reserve on a later resume,
 add `--reserve-gib 32`; this is recorded for the attempt and inherited by later
@@ -137,6 +257,23 @@ defaults, including the reserve back to 32 GiB, unless further flags override
 them. Neither form changes the project's chunk, learning rate, data or optimizer
 contract. Resume requires the recorded engine and dependency identity; keep
 source frozen until training and the automatic fresh fit checks have finished.
+
+For a **new** controlled experiment, `ktune finetune --adapter-layers 39` targets
+only the last block's `wq_a` and `wo_b` adapters. IDs are zero-based and multiple
+IDs are separated by spaces; omitting the option preserves all 40 blocks, as in
+the original run above. The entire backbone still runs. Layer selection is
+saved with the project and checkpoint and cannot change on resume; it is a
+fitting experiment, not an established remedy for the failed update. See the
+[current localization research](reports/loss-fix-research.md).
+
+Another explicit **new-project** experiment is `ktune finetune --activation-mode
+bf16`; the default is `checkpoint`. BF16 bypasses differentiable-path activation
+roundtrips while preserving packed weights, FrozenIndexer quantizers, BF16 casts
+and normal routing. It changes the zero-adapter result and therefore requires
+its own matched baseline. `--verify-fit`/`ktune verify` use the project's saved
+mode for both conditions; resume and adapter loading reject a mode mismatch.
+This is an experimental arithmetic contrast, not a verified improvement or a
+quantization-free model. See [activation arithmetic](SIMPLE_FLOW.md#experimental-activation-arithmetic).
 
 `--verify-fit` and `ktune verify` compare base/adapter likelihood on the first N
 immutable training rows, labeled as a fitting check. `--fit-examples N` records
@@ -438,3 +575,42 @@ task's file allowlist and edit-size limit.
 Archive the new runner's correctness and timing receipts with the generated
 patch. Conversion success establishes edit compatibility only; the independent
 kernel harness establishes correctness and any speedup.
+
+## Expanded library and next experiment (2026-10-13)
+
+The fourth curation pass has 226 reviewed complete historical edits at a 32,768
+serialized-token preparation limit; 159 fit 12,288 tokens without truncation.
+The intended next recipe combines those 159 exact edits with 39 selected diagnostic
+items. These are library/preparation counts, not completed training counts.
+The prior completed fit used 15 distinct edits and 30 updates. Its held-out NLL
+receipt is `reports/final-30-update-heldout-overview.json`; that result does not
+establish faster or more correct generated kernels.
+
+The research review in `reports/kernel-library/coding-data-research.json` favors
+executable, source-grounded coding tasks, deployment-matched tool serialization,
+explicitly observed feedback, and lineage-aware splits. The present native trainer
+supports one terminal tool call and a final assistant loss span. It does not yet
+train complete multi-turn tool-feedback trajectories. Our exact targets preserve
+complete changed implementation, host, build and test edits, but dependency closure
+and upstream compilation are not generally verified.
+
+Diagnostic records distinguish historical evidence interpretation from reconstructed
+baseline-only tasks. They teach evidence, a bounded hypothesis, a mechanism, limits,
+and a discriminating next check. Inferred explanations and author-reported timings
+are labeled. No invented profiler observations or tool results are used. Reviewed
+cross-engine ports and related changes share an exposure group; distinct commits
+are not automatically independent optimization concepts.
+
+The proposed diagnostic cap is floor(exact_rows/4), at most 20% of update rows with
+one item per update. It is an experimental heuristic, not a proven optimal ratio or
+a bound on gradient influence. The fixed final adapter follows two complete passes;
+the protected 16-item evaluation is unchanged and is not used for model selection.
+Report code, rationale, EOS and per-item regressions separately, then score the
+frozen generated probes. Narrow choice/expression probes cannot establish broad
+agent reasoning quality, full-patch correctness or kernel speed.
+
+The source library, large captured before/after trees, prepared corpora, caches and
+model payloads remain in the experiment workspace rather than this source checkout.
+Small release/strategy/review receipts are archived here. Their historical absolute
+paths and hashes identify the original evidence; they are not portable download
+links. The 32K preparation count is not a 32K hardware-training claim.

@@ -1,0 +1,183 @@
+{
+  "format": "qwen-gdn-reference-review-v1",
+  "created_utc": "2026-10-13T16:29:52.855030+00:00",
+  "reviewer": "adversarial_process",
+  "reviewer_independent_of_author": false,
+  "review_scope": "Separate read-only adversarial pass by implementation author; not an independent-author approval. CPU NumPy only.",
+  "source_sha256": "f2784bd1237aee3106dcaf909bdb9d8e3299535ab01e249b68af52693e067680",
+  "test_sha256": "22e9108624d3807dcd19be47ceb69dc94983a3e6ac7ebad1e98c3b4d734fa054",
+  "reviewed_implementation_receipt_sha256": "c92f1d8336da9e9f46b2686a70e5a3a41421b1558f3ed84d138b14150f0507a5",
+  "source_pins_verified": {
+    "exllamav3/training/gdn.py": "e1de1f6112715a7868388972872a5f37b0d8198d98246527650ce791d9b33a57",
+    "exllamav3/modules/gated_delta_net_fn/gated_delta_rule.py": "a47e3ac514277ca77e73db51ee6306515dc5f1fbb24747dc7d7da0538823c99d",
+    "exllamav3/modules/gated_delta_net.py": "0c7c2e53a20445991a6b750b9a17e58f4eed6a349b7876f9dfc148e47cd1f87e",
+    "exllamav3/modules/gated_rmsnorm.py": "0823e3f45abfaf76707f213821980af08ab53cbb7c93c6a3c33a0f2f8548808f",
+    "exllamav3/architecture/qwen4_exp.py": "f0781ec11aabc78694ed5084d24fb31093c0500a5c985a00276188c241c165bb",
+    "exllamav3/training/native_llama.py": "12c99ff24bb54067a081ceb9e6b52154cf811afd231bd30a13847c70d5729f5e"
+  },
+  "config_sha256": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1",
+  "validation": {
+    "unittest_count": 14,
+    "returncode": 0,
+    "wall_seconds": 0.3081625420600176,
+    "log": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/qwen-gdn-review-cpu-tests.log",
+    "log_sha256": "8e2c788d691bc2d04f4fcefe3d8f2c2c5fb8c78c8a8a0d5b3213f681ac195e09",
+    "additional_directional_checks": 18,
+    "directional_finite_difference_step": 1e-06,
+    "directional_tolerance": "absolute error <=1e-7+3e-6*abs(fd)",
+    "directional_checks": [
+      {
+        "seed": 731,
+        "input": "q",
+        "predicted": -0.476229923845857,
+        "finite_difference": -0.47622992482843074,
+        "absolute_error": 9.825737445900984e-10
+      },
+      {
+        "seed": 731,
+        "input": "k",
+        "predicted": -0.026055256622959863,
+        "finite_difference": -0.026055257729140635,
+        "absolute_error": 1.1061807719814354e-09
+      },
+      {
+        "seed": 731,
+        "input": "v",
+        "predicted": -0.057285002229645,
+        "finite_difference": -0.057285001631157684,
+        "absolute_error": 5.984873152620196e-10
+      },
+      {
+        "seed": 731,
+        "input": "g",
+        "predicted": 0.04894624396571404,
+        "finite_difference": 0.048946244168845965,
+        "absolute_error": 2.0313192794496615e-10
+      },
+      {
+        "seed": 731,
+        "input": "beta",
+        "predicted": -2.9896142571864734,
+        "finite_difference": -2.98961425770905,
+        "absolute_error": 5.22576648620543e-10
+      },
+      {
+        "seed": 731,
+        "input": "initial_state",
+        "predicted": 0.3886961787713398,
+        "finite_difference": 0.38869617924319755,
+        "absolute_error": 4.718577750750796e-10
+      },
+      {
+        "seed": 1099,
+        "input": "q",
+        "predicted": -0.32511567839671973,
+        "finite_difference": -0.3251156786010512,
+        "absolute_error": 2.0433144065634679e-10
+      },
+      {
+        "seed": 1099,
+        "input": "k",
+        "predicted": 0.7611367215637874,
+        "finite_difference": 0.7611367212057019,
+        "absolute_error": 3.5808556120286994e-10
+      },
+      {
+        "seed": 1099,
+        "input": "v",
+        "predicted": -0.13894027995099217,
+        "finite_difference": -0.1389402797258299,
+        "absolute_error": 2.2516227771163244e-10
+      },
+      {
+        "seed": 1099,
+        "input": "g",
+        "predicted": -0.41184614180325474,
+        "finite_difference": -0.41184614185674207,
+        "absolute_error": 5.348732567966863e-11
+      },
+      {
+        "seed": 1099,
+        "input": "beta",
+        "predicted": -0.3263739447583377,
+        "finite_difference": -0.3263739448700065,
+        "absolute_error": 1.1166878532975488e-10
+      },
+      {
+        "seed": 1099,
+        "input": "initial_state",
+        "predicted": -0.1869593342305288,
+        "finite_difference": -0.18695933423629185,
+        "absolute_error": 5.763056698526725e-12
+      },
+      {
+        "seed": 3119,
+        "input": "q",
+        "predicted": 0.2768919184616315,
+        "finite_difference": 0.27689191850477357,
+        "absolute_error": 4.3142045491606495e-11
+      },
+      {
+        "seed": 3119,
+        "input": "k",
+        "predicted": -0.3930081744052832,
+        "finite_difference": -0.3930081748926284,
+        "absolute_error": 4.873452197351469e-10
+      },
+      {
+        "seed": 3119,
+        "input": "v",
+        "predicted": 0.15141730771608086,
+        "finite_difference": 0.151417308025259,
+        "absolute_error": 3.09178127544385e-10
+      },
+      {
+        "seed": 3119,
+        "input": "g",
+        "predicted": 0.0018282519095073196,
+        "finite_difference": 0.0018282517721956992,
+        "absolute_error": 1.3731162040730993e-10
+      },
+      {
+        "seed": 3119,
+        "input": "beta",
+        "predicted": -1.525259234086385,
+        "finite_difference": -1.5252592340253557,
+        "absolute_error": 6.10294037528547e-11
+      },
+      {
+        "seed": 3119,
+        "input": "initial_state",
+        "predicted": 0.12141990608575608,
+        "finite_difference": 0.12141990635150535,
+        "absolute_error": 2.657492698121544e-10
+      }
+    ]
+  },
+  "blockers": [],
+  "findings": [
+    {
+      "severity": "low",
+      "id": "fp32-epsilon-cast-overflow",
+      "location": "tools/qwen_gdn_reference.py:280 and :422",
+      "observed": "eps=1e100 passes the positive-finite Python scalar check, casts to FP32 infinity, and returns finite zero recurrence/output-norm values rather than rejecting.",
+      "impact": "The pinned Qwen epsilon1e-6 and documented tiny test fixtures are unaffected. The broad nonfinite/overflow-rejection claim should be limited or epsilon representability checked.",
+      "suggested_fix": "Validate eps after conversion to selected dtype and validate normalization denominator before sqrt; add an oversized and underflow-to-zero epsilon case.",
+      "source_changed": false
+    }
+  ],
+  "verified_claims": [
+    "Pinned local training source normalizes q/k by sqrt(sum(x*x)+eps), repeats key/query heads contiguously for value heads, reads decayed state in delta, then applies inverse-sqrt dk to output. The NumPy recurrence matches that order of operations algebraically.",
+    "Reverse recurrence accounts for output and final-state cotangents; grouped head derivatives are summed before the raw q/k normalization transpose. Independent scalar finite differences pass for all six primal categories.",
+    "Tests verify exact FP32/FP64 recurrence chunk carry over multiple partitions; later-only output loss reaches early k/v but not early q. Detached-state negative control removes the early gradient.",
+    "Qwen split projections, beta_scale1, scalar value-head decay, sigmoid-after-weighted-RMS output gate are supported by pinned architecture/module source.",
+    "No full GDN convolution or projected block claim is made; recurrence-only chunk parity does not certify layer/model streaming."
+  ],
+  "limits": [
+    "No author-independent review supplied by this report.",
+    "No Torch/MLX backend or GPU parity, actual payload, realistic16K backward, performance or production memory qualification.",
+    "FP64 VJP is a continuous mathematical oracle; it does not differentiate FP32/FP16 rounding, gate helper nonlinearities, convolution, output norm or projections.",
+    "Target16key/48value heads and128dimensions exceed tiny reference caps; no target-sized qualification implied.",
+    "No source/test files modified."
+  ]
+}

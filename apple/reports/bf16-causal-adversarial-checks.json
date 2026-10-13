@@ -1,0 +1,22 @@
+{
+  "scope": "Independent CPU receipt and interpretation review; no GPU rerun",
+  "audit_rerun_exact": true,
+  "input_hashes_verified": 18,
+  "pinned_runtime_files_verified": 42,
+  "post_implementation_files_match_pin": 38,
+  "launch_snapshot_protocol_match": true,
+  "post_stdout_json_exact": true,
+  "post_token_metrics_self_consistent": true,
+  "train_post_expert_identities_match": true,
+  "own_mode_relative_nll_reduction_percent": 0.924932996891729,
+  "post_minus_historical_checkpoint_baseline": 0.00023274460950128972,
+  "matched_causal_control_replay_available": false,
+  "quality_certified": false,
+  "reviewed_artifacts": {
+    "reports/bf16-all-layers-one-step-audit.json": "b1277bdb470feb37e67ef604b58437f6bb63cc7c9a70df6cc1d33a4e3389acea",
+    "artifacts/loss-fix/bf16-all-layers-post.json": "66d412a85da4a1b23f7e0a2821976293341cce728b90052901ea458ce744928e",
+    "artifacts/loss-fix/bf16-all-layers-one-step/training.json": "a336b11d88a8db383883185da362bc5d9c28d7e7f2d766699422633312b1f169",
+    "artifacts/loss-fix/bf16-all-layers-launch.json": "f557032925d882d04e6471bb97eb8345f85c179f36db5f329598cf0afaf250e4",
+    "artifacts/loss-fix/runtime-v2/snapshot.json": "707e6a6996f08c60ef99aafc4b690a0d3ea360710b7aec61110980b053de2917"
+  }
+}

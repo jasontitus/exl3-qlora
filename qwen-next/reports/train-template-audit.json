@@ -1,0 +1,119 @@
+{
+  "scope": "Character-level native tool serialization only; tokenizer IDs, assistant token masks, truncation and EOS token coverage are NOT qualified",
+  "template_kwargs": {
+    "enable_thinking": false,
+    "preserve_thinking": false,
+    "reasoning_effort": "low"
+  },
+  "transformers_version": "5.19.0",
+  "tokenizer_config_sha256": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+  "data_sha256": "3860d9f16e5e25ca13fc14820f699aa6bfe83fb029be49fc91de629c20c5b89e",
+  "rows": [
+    {
+      "case_id": "tensorfold-5a6cd223796e-radix_parallel_threshold",
+      "prompt_chars": 8789,
+      "target_chars": 1897,
+      "serialized_sha256": "1bcf51b3cef2534dfd8156216252234e312bd689db081bcd579eea617fb4f23b",
+      "cmd_sha256": "426f5474fcd4f1c1de1cdf2e1d015030bb33dbab01796ff1cf8d0c54be6f5143"
+    },
+    {
+      "case_id": "tensorfold-3e117e518d54-decode_index_tensor",
+      "prompt_chars": 22346,
+      "target_chars": 11098,
+      "serialized_sha256": "5482aeb15abea9ebd49a6ded8ebbf1f92486ae49923182822049bf7401890dc3",
+      "cmd_sha256": "1224e57d6ca0fdc08e7258b46099a151bfb135595e6d6da561f9b6dee00b6e10"
+    },
+    {
+      "case_id": "tensorfold-c5cae004e008-hc_four_lane_columns",
+      "prompt_chars": 14050,
+      "target_chars": 2887,
+      "serialized_sha256": "c733e91ede93bd2bcfe27c15097219fbdfd393425f7553325dc2cef2ebf7fdae",
+      "cmd_sha256": "57e7cfe3f6eb551a832925ca2632ae504ae18a5efeab35725e232b5cc6069bee"
+    },
+    {
+      "case_id": "tensorfold-9a92139a530e-sparse_skip_identity_rescale",
+      "prompt_chars": 23834,
+      "target_chars": 547,
+      "serialized_sha256": "95ea880874eb6531826f01201558269723f0df3657cf452b49f0771efe208213",
+      "cmd_sha256": "9887eb27cfa6719e5c2089514bea7f31374350f9027915b40ab7b75eddf4a8f7"
+    },
+    {
+      "case_id": "tensorfold-3d338260abd3-prompt_index_reuse",
+      "prompt_chars": 14527,
+      "target_chars": 8891,
+      "serialized_sha256": "10b423401261cd64c6e9d0b460948821b3fa03d19e41f6efd45d5d5426df0e79",
+      "cmd_sha256": "45d102c20ba06bdac16cf7f42eace8821ce5fb345bb6cfe396e804eda3c795c0"
+    },
+    {
+      "case_id": "tensorfold-7422e20606e8-sparse_vector_loads",
+      "prompt_chars": 23735,
+      "target_chars": 7588,
+      "serialized_sha256": "feba2f50ff38f8bc180b1cd209cd542528b7c927441caf4edd5748c744b364fb",
+      "cmd_sha256": "4c5a0fd1d7a5698f2db2de4e6c81664a18c7ee7ba87e4b4b07648d8b26c81c33"
+    },
+    {
+      "case_id": "tensorfold-2985ed7e2bf7-nemotron_weight_outer_loop",
+      "prompt_chars": 15700,
+      "target_chars": 12840,
+      "serialized_sha256": "6a5ba76dec3a341559c84d132036603a11dbb9db08c02854201db66494f89acd",
+      "cmd_sha256": "c29a015df53d671772b7ae473d0d675df1f0099b61d9b46e4c5d385eb11c1d0f"
+    },
+    {
+      "case_id": "mlx-serve-431ac5d7a9d9",
+      "prompt_chars": 13185,
+      "target_chars": 3043,
+      "serialized_sha256": "a3fcbe57be78f89907357ca74b83a1557531ef7949a3244f44ae7a24fc56a5f7",
+      "cmd_sha256": "b9aebed43127f01cf7dff86e777d12af123c892253f077650010d101dd61c0c2"
+    },
+    {
+      "case_id": "mlx-serve-cc2b07cfc400",
+      "prompt_chars": 9666,
+      "target_chars": 846,
+      "serialized_sha256": "2ab9c6ef1cea234bd7c722fb7da7c81f1909ae4faf0dc76fef036571cace3294",
+      "cmd_sha256": "89b00616623481e0d72d73d63d370fb39d53dc786723124daeec71360dfc4fa1"
+    },
+    {
+      "case_id": "mlx-serve-9f4e58793c34",
+      "prompt_chars": 14377,
+      "target_chars": 13123,
+      "serialized_sha256": "b9e909037849a00d9b4291b57e20aabf77803eb6834e517591a211e6dab93da9",
+      "cmd_sha256": "c1c7f23292a2865f80da6df7d870de036db1974d4cbdb024b549832e5f9d6d52"
+    },
+    {
+      "case_id": "mlx-serve-d344c4e259d6",
+      "prompt_chars": 17182,
+      "target_chars": 4155,
+      "serialized_sha256": "43ae11a7cb30b6226aa945c592cc99bae55a93068501339766bbf5f402ade195",
+      "cmd_sha256": "ae1bdf76e7dccb2dbfdb45c96dfc52495463b86bc0f0ad36d46e8b2be2f7b364"
+    },
+    {
+      "case_id": "mlx-serve-a453794f9e95",
+      "prompt_chars": 9705,
+      "target_chars": 11537,
+      "serialized_sha256": "c80e9d2a803b61f7c0a4a5f0410101e3f89c8843d9af3fe7719221e4b335cb0a",
+      "cmd_sha256": "a22a655f736e88125118b1814839b4d825ab4114163a6b36044a01b37c75957a"
+    },
+    {
+      "case_id": "mlx-serve-bbf652a589d8",
+      "prompt_chars": 10913,
+      "target_chars": 3625,
+      "serialized_sha256": "2fd34458fcaa5fce133f173a9283503f961095582cbf7def9b15ab6a2159da10",
+      "cmd_sha256": "6e0e5e3fb084d8c7fff0cd53426efbd2c8a156cac231862491cf166645d686d9"
+    },
+    {
+      "case_id": "sushi-1dd27c838a07",
+      "prompt_chars": 18297,
+      "target_chars": 11430,
+      "serialized_sha256": "76336cb2b322e22847b10dc0c9a4009120d19f4daa816fcfbaea73c54ad8b140",
+      "cmd_sha256": "a697c3eb48e556c3fe252b2ba6bca22a1b8fd879211bb23fef5a7e1275ff072e"
+    },
+    {
+      "case_id": "sushi-062db8d26242",
+      "prompt_chars": 10249,
+      "target_chars": 10665,
+      "serialized_sha256": "f38d8dc6e6688f20e9d42673ac0e7e1d141e9b9e3b6c712626f30441cedf2631",
+      "cmd_sha256": "f8ebb4723964429c326ef063c26e0adfeef2f25e93d1ae7e9a6ff53c3b5b5ace"
+    }
+  ],
+  "passed_rows": 15
+}

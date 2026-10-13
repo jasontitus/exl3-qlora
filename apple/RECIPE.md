@@ -5,6 +5,11 @@ start with the [standard SFT guide](SIMPLE_FLOW.md). This page documents advance
 engine controls. Project `resume --steps` means total updates; engine `train
 --steps` below means additional updates.
 
+For the latest measured Metal-data fitting and the active three-change normal
+flow, see the [result and recipe](reports/last-block-training-result-and-recipe.md)
+and [standard project run](reports/standard-three-change-run.md). These distinguish
+completed one-row fitting from pending three-row verification and kernel quality.
+
 This is an **experimental text adapter pipeline** for the
 DeepSeek V4.1 **streaming repack** already on this Mac. It trains against frozen
 EXL3 weights on Metal, saves adapters, resumes Adam, evaluates held-out text, and
@@ -264,7 +269,7 @@ engine rather than treating a standalone load as a validated continuation.
 ## Memory and throughput
 
 The 5,809-token full-parent ktune attempt at 32 GiB completed its forward pass
-but failed during backward before an optimizer update. The new project completed
+but failed during backward before an optimizer update. The earlier all40-layer project completed
 **one update in 1,862.1 seconds**, peaking at **73.95 GiB MLX**, with an **80 GiB
 process cap, explicit 12 GiB system reserve, 8 GiB packed cache, decoded cache off,
 and explicit chunk 8192**. The checkpoint audit found all 160 adapter tensors and
@@ -275,8 +280,8 @@ changed logits. This is an operational pass, not an improved adapter. The origin
 checkpoint is preserved. All three tested inference strengths (+0.1, -0.1,
 adaptive +10) also worsened NLL; the bounded series is complete, with no adapter
 promoted as an improvement. See the [aggregate](reports/ktune-strength-diagnostics.json).
-Component VJP checks and the current
-518-test plus 27-subtest suite pass, but do not resolve the first fitting failure.
+Component VJP checks and that revision’s
+518-test plus 27-subtest suite passed, but do not resolve the first fitting failure.
 See the [diagnosis update](reports/first-step-diagnosis-update.md).
 The saved 27.66 GiB observed-process reading is an end-of-run observation, not
 peak memory. See the [checkpoint audit](reports/ktune-full-parent-checkpoint-audit.json)

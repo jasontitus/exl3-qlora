@@ -1,0 +1,42 @@
+{
+  "schema": "qwen-expert-decode-independent-review-v1",
+  "created_utc": "2026-10-13T15:25:06.738600+00:00",
+  "reviewer": "adversarial_code",
+  "inputs_sha256": {
+    "qwen-next/tools/expert_decode_reference.py": "26ba55a67582e6f51002e68cc994fc999c029cb29fe95ef085ae4136567eaecb",
+    "qwen-next/tests/test_expert_decode_reference.py": "040be1f822e9c8b096dda8635631b7b16cb62f6822acbec59d9f651b4a8a2375",
+    "qwen-next/tools/expert_row_reader.py": "29ebecb52fce85b2bcd6b03538dc6cd74c44b9f580fd8d3889a7f99d5ba94a3a",
+    "qwen-next/tools/trellis_reference.py": "36827164c88dd6c25dfde67077abe3ad5fb45067f85940a64035fe79dbf29493",
+    "qwen-next/sources/pack-format.md": "804e27430b9be332b48c720eef43f1252100ed70b504c01d37fcbf5990265d85",
+    "qwen-next/reports/expert-decode-reference-implementation.json": "0e9cb9414750015f0f8967a87a9adc47f4582ba106cde63626e8039baea476a1"
+  },
+  "blocking_findings": [],
+  "tests": {
+    "command": "python3 -m unittest discover -s qwen-next/tests -p test_expert_decode_reference.py -v",
+    "passed": 15,
+    "elapsed_seconds": 10.84,
+    "ruff": "passed"
+  },
+  "reviewed_guarantees": [
+    "Canonical local identity pin and copied metadata pass through the reviewed three-span reader.",
+    "Window and fractional rate come from bound tile metadata, with orientation and scale vector dimensions rechecked.",
+    "Stored finite F16 suh/svh are applied exactly once under the pinned folded-scale contract.",
+    "Strict element and Hadamard-work caps plus estimated Python-memory budget are enforced before payload read; overrides cannot exceed hard caps.",
+    "Post-decode file/stat and implementation guards remain active; nonfinite scales/results and overflow fail closed.",
+    "Returned FP16 bits are immutable and receipts are detached copies; forward/transpose are explicitly float64 mathematical references."
+  ],
+  "numerical_evidence_scope": [
+    "Independent constant-codeword H128 identity oracles and non-square signed-scale forward/transpose check.",
+    "Nonconstant composition equality reuses the existing decoder and is not a second independent decoder.",
+    "Window14 evidence is synthetic, not a converter-produced real expert known-answer test."
+  ],
+  "limits": [
+    "Actual 2560x640 experts are deliberately above the 65536-element cap.",
+    "16MiB Python estimate is not a measured RSS guarantee; raw FP16/F32 byte counts understate Python storage.",
+    "Public matrix computation differs from serving transformed-activation FP16 rounding.",
+    "No actual-model payload, Metal/GPU, architecture or training qualification.",
+    "Local checksum pinning is consistency validation, not authenticated upstream provenance."
+  ],
+  "active_runtime_changes": false,
+  "gpu_operations": false
+}

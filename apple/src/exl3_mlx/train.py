@@ -8,6 +8,7 @@ import mlx.core as mx
 import mlx.nn as nn
 from mlx.utils import tree_flatten
 
+from .activation_config import activation_description, normalize_adapter_config
 from .context import ENGINE_SEMANTICS, MAX_CONTEXT_TOKENS
 
 
@@ -92,6 +93,7 @@ def _verify_adapter_integrity(directory, config):
 
 
 def save_adapter(model, directory, extra):
+    model_config = normalize_adapter_config(model.adapter_config)
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
     weights = dict(tree_flatten(model.trainable_parameters()))
@@ -99,11 +101,11 @@ def save_adapter(model, directory, extra):
     config = {
         "format": "exl3-mlx-deepseek-short-text-v1",
         "adapter_sha256": _file_sha256(directory / "adapter.safetensors"),
-        **model.adapter_config,
+        **model_config,
         "base_identity": checkpoint_identity(model._root),
         "max_seq_length": MAX_CONTEXT_TOKENS,
         "engine_semantics": ENGINE_SEMANTICS,
-        "activation_quantization": "fp8/fp4 with identity STE",
+        "activation_quantization": activation_description(model_config["activation_mode"]),
         "training": extra,
     }
     (directory / "adapter_config.json").write_text(json.dumps(config, indent=2) + "\n")
@@ -116,13 +118,23 @@ def save_adapter(model, directory, extra):
 
 
 def load_adapter_config(directory):
-    """Read verified settings before model allocation or parameter mutation."""
+    """Read verified settings before model allocation or parameter mutation.
+
+    Legacy adapters without an arithmetic version remain readable, with unknown
+    numerical provenance. An explicit incompatible version is never silently
+    migrated. Exact project/checkpoint resume has its separate strict contract.
+    """
     directory = Path(directory).expanduser()
     config = json.loads((directory / "adapter_config.json").read_text())
     if not isinstance(config, dict) or config.get("format") != "exl3-mlx-deepseek-short-text-v1":
         raise ValueError("Unsupported adapter format")
     _verify_adapter_integrity(directory, config)
-    return config
+    if "engine_semantics" in config and config["engine_semantics"] != ENGINE_SEMANTICS:
+        raise ValueError(
+            "Adapter engine_semantics differ; use its recorded implementation "
+            "or explicitly migrate and revalidate it"
+        )
+    return normalize_adapter_config(config)
 
 
 def load_adapter(model, directory):
@@ -130,8 +142,11 @@ def load_adapter(model, directory):
     c = load_adapter_config(directory)
     if c["base_identity"] != checkpoint_identity(model._root):
         raise ValueError("Adapter checkpoint identity mismatch")
-    if any(c[k] != v for k, v in model.adapter_config.items()):
-        raise ValueError("Construct the model with the saved rank, alpha and layer selection")
+    expected_config = normalize_adapter_config(model.adapter_config)
+    if any(c[k] != v for k, v in expected_config.items()):
+        raise ValueError(
+            "Construct the model with the saved rank, alpha, layer selection and activation_mode"
+        )
     weights = mx.load(str(directory / "adapter.safetensors"))
     expected = dict(tree_flatten(model.trainable_parameters()))
     if set(weights) != set(expected) or any(

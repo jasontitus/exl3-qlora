@@ -1,0 +1,336 @@
+{
+  "format": "exl3-checkpoint-reproducibility-source-review-v1",
+  "date": "2026-10-12",
+  "scope": "CPU-only source and artifact inspection; no GPU replay; not a causal diagnosis",
+  "historical_project": "/Users/jasontitus/experiments/exl3-qlora/apple/artifacts/ktune-20261012/full-parent-pilot-development/project.json",
+  "historical_project_sha256": "02333d836d6b3845e9433f0ff31d40cfa474d295bcfac27afd1cfda83bc31a23",
+  "historical_git_commit": "b766887941695bc0c28e25b59ca24db63916e8b8",
+  "runtime_v2_snapshot": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v2/snapshot.json",
+  "runtime_v2_snapshot_sha256": "707e6a6996f08c60ef99aafc4b690a0d3ea360710b7aec61110980b053de2917",
+  "source_checks": {
+    "__init__.py": {
+      "historical_recorded_sha256": "6605af1a6c29d74cb5a62c1c268c24632d00e2fe8b1821a772e3cac6a1060c54",
+      "git_b7668879_sha256": "6605af1a6c29d74cb5a62c1c268c24632d00e2fe8b1821a772e3cac6a1060c54",
+      "runtime_v2_sha256": "6605af1a6c29d74cb5a62c1c268c24632d00e2fe8b1821a772e3cac6a1060c54",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "attention.py": {
+      "historical_recorded_sha256": "a22ffd2e0fe128949f045eb95dc332367bca6c70fbf96324b959813e2be3e2c4",
+      "git_b7668879_sha256": "a22ffd2e0fe128949f045eb95dc332367bca6c70fbf96324b959813e2be3e2c4",
+      "runtime_v2_sha256": "322829decc3385ad611ecff007565690ec8cd87e31e6fc3815f15bf391062827",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "checkpoint.py": {
+      "historical_recorded_sha256": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d",
+      "git_b7668879_sha256": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d",
+      "runtime_v2_sha256": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "cli.py": {
+      "historical_recorded_sha256": "6a20e242263c4ee512aaa5018fb7386f89a0f93d64ef08da5973c24afa81cc83",
+      "git_b7668879_sha256": "6a20e242263c4ee512aaa5018fb7386f89a0f93d64ef08da5973c24afa81cc83",
+      "runtime_v2_sha256": "6a20e242263c4ee512aaa5018fb7386f89a0f93d64ef08da5973c24afa81cc83",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "context.py": {
+      "historical_recorded_sha256": "dae6e69baa6f5cda760b784d4abaab91cab7433e223d16f0c5c5e64b8c0c5246",
+      "git_b7668879_sha256": "dae6e69baa6f5cda760b784d4abaab91cab7433e223d16f0c5c5e64b8c0c5246",
+      "runtime_v2_sha256": "dae6e69baa6f5cda760b784d4abaab91cab7433e223d16f0c5c5e64b8c0c5246",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "data.py": {
+      "historical_recorded_sha256": "4791c84ad1bff633f3ffd49d9c6cc5f930ad59bdd3fe3e189b5720f868112a15",
+      "git_b7668879_sha256": "4791c84ad1bff633f3ffd49d9c6cc5f930ad59bdd3fe3e189b5720f868112a15",
+      "runtime_v2_sha256": "4791c84ad1bff633f3ffd49d9c6cc5f930ad59bdd3fe3e189b5720f868112a15",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "decode.metal": {
+      "historical_recorded_sha256": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282",
+      "git_b7668879_sha256": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282",
+      "runtime_v2_sha256": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "deepseek.py": {
+      "historical_recorded_sha256": "8ab19c61590f390d0fd1a9e72229b72f35332cb838244dd83c1446acb9f1073b",
+      "git_b7668879_sha256": "8ab19c61590f390d0fd1a9e72229b72f35332cb838244dd83c1446acb9f1073b",
+      "runtime_v2_sha256": "1536240ac4249494d61af74503713a385beae953959246f33aeeb6dfc3f77dc9",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "engram.py": {
+      "historical_recorded_sha256": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+      "git_b7668879_sha256": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+      "runtime_v2_sha256": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "hyperconnections.py": {
+      "historical_recorded_sha256": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+      "git_b7668879_sha256": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+      "runtime_v2_sha256": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "ktune_cli.py": {
+      "historical_recorded_sha256": "83aedcb55c7a19f066ded36208516a8f3e6708ee6d7ddac7e2a57a1e5c9b9d6a",
+      "git_b7668879_sha256": "83aedcb55c7a19f066ded36208516a8f3e6708ee6d7ddac7e2a57a1e5c9b9d6a",
+      "runtime_v2_sha256": "514918ebfbedda9a3410423716568e103597c3d2c0c98630f75edf01e3266ce1",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "ktune_data.py": {
+      "historical_recorded_sha256": "5ceee57f664295731a4d4183215ac4d4feb128cb7aa52fd58903aa3470080838",
+      "git_b7668879_sha256": "5ceee57f664295731a4d4183215ac4d4feb128cb7aa52fd58903aa3470080838",
+      "runtime_v2_sha256": "5ceee57f664295731a4d4183215ac4d4feb128cb7aa52fd58903aa3470080838",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "ktune_eval.py": {
+      "historical_recorded_sha256": "91739cb483ac8e51ed93d0478a5b3a622042d73c87e89593b3baf3d9462ec91e",
+      "git_b7668879_sha256": "91739cb483ac8e51ed93d0478a5b3a622042d73c87e89593b3baf3d9462ec91e",
+      "runtime_v2_sha256": "91739cb483ac8e51ed93d0478a5b3a622042d73c87e89593b3baf3d9462ec91e",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "ktune_patch.py": {
+      "historical_recorded_sha256": "1e7972d4b4659b42e2284d89c798c915f9930061af260ac3a0f33fd305ebf0f6",
+      "git_b7668879_sha256": "1e7972d4b4659b42e2284d89c798c915f9930061af260ac3a0f33fd305ebf0f6",
+      "runtime_v2_sha256": "1e7972d4b4659b42e2284d89c798c915f9930061af260ac3a0f33fd305ebf0f6",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "linear.py": {
+      "historical_recorded_sha256": "51ecb3cbc657199e86f4db13b92f1ea6cd13d4550a31ad35602b2e352b3f6379",
+      "git_b7668879_sha256": "51ecb3cbc657199e86f4db13b92f1ea6cd13d4550a31ad35602b2e352b3f6379",
+      "runtime_v2_sha256": "51ecb3cbc657199e86f4db13b92f1ea6cd13d4550a31ad35602b2e352b3f6379",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "materialize.py": {
+      "historical_recorded_sha256": "c17735ac8ddac3b46e6b8fd62dc74f730ea31630496749700c2da1e266224e43",
+      "git_b7668879_sha256": "c17735ac8ddac3b46e6b8fd62dc74f730ea31630496749700c2da1e266224e43",
+      "runtime_v2_sha256": "c17735ac8ddac3b46e6b8fd62dc74f730ea31630496749700c2da1e266224e43",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "memory.py": {
+      "historical_recorded_sha256": "5df2ec9ebe5163d8587d4712ded34f87dc528bb07fba8ab58b5c7ef1fac493d8",
+      "git_b7668879_sha256": "5df2ec9ebe5163d8587d4712ded34f87dc528bb07fba8ab58b5c7ef1fac493d8",
+      "runtime_v2_sha256": "5df2ec9ebe5163d8587d4712ded34f87dc528bb07fba8ab58b5c7ef1fac493d8",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "moe.py": {
+      "historical_recorded_sha256": "88b821f17c0eda364cb136170f2de52285f872ef0a6330b4a280518d6d1828e0",
+      "git_b7668879_sha256": "88b821f17c0eda364cb136170f2de52285f872ef0a6330b4a280518d6d1828e0",
+      "runtime_v2_sha256": "88b821f17c0eda364cb136170f2de52285f872ef0a6330b4a280518d6d1828e0",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "native.py": {
+      "historical_recorded_sha256": "dc470bc7925db2f74d00a5cd68a9e916e66987d8afc749a23daae7a7e9a67e5d",
+      "git_b7668879_sha256": "dc470bc7925db2f74d00a5cd68a9e916e66987d8afc749a23daae7a7e9a67e5d",
+      "runtime_v2_sha256": "4da811483bf9b358cbbdbcad5db2d11caa70a6e10ccfa101c292f19660f96809",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "recompute.py": {
+      "historical_recorded_sha256": "a7849b0b1b6877b62914b75e21ab7a66305469e2a0c72def94e8b1caa90cd988",
+      "git_b7668879_sha256": "a7849b0b1b6877b62914b75e21ab7a66305469e2a0c72def94e8b1caa90cd988",
+      "runtime_v2_sha256": "a7849b0b1b6877b62914b75e21ab7a66305469e2a0c72def94e8b1caa90cd988",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "reference.py": {
+      "historical_recorded_sha256": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595",
+      "git_b7668879_sha256": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595",
+      "runtime_v2_sha256": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "remote.py": {
+      "historical_recorded_sha256": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c",
+      "git_b7668879_sha256": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c",
+      "runtime_v2_sha256": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "resources.py": {
+      "historical_recorded_sha256": "83836b272859acc76a754b9c858d9fe415b3c05ceecd4e9a0b4281f9a8575ada",
+      "git_b7668879_sha256": "83836b272859acc76a754b9c858d9fe415b3c05ceecd4e9a0b4281f9a8575ada",
+      "runtime_v2_sha256": "02003a49a22ef4008280119275aa94992f274b334076a06f008d716f866b36ea",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "sft.py": {
+      "historical_recorded_sha256": "9467543ea16c839e9b19118234e85ab095962111073afbcaf9ef9c9f144efa6f",
+      "git_b7668879_sha256": "9467543ea16c839e9b19118234e85ab095962111073afbcaf9ef9c9f144efa6f",
+      "runtime_v2_sha256": "f8f7e16ea9521ce28a3926ccbc7fcff495d746e34f918d0b14e683a2846e46b6",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "sft_cli.py": {
+      "historical_recorded_sha256": "55876e672e6dc8cc7a09012d5e5d18a257cbc3ed3eb172a569bea8ae410b8d6e",
+      "git_b7668879_sha256": "55876e672e6dc8cc7a09012d5e5d18a257cbc3ed3eb172a569bea8ae410b8d6e",
+      "runtime_v2_sha256": "ccc99fb6865aa5ba420758617b0888a93236336e855dc486f59c56666be09005",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "sft_data.py": {
+      "historical_recorded_sha256": "60bf148fcbb0bda56c32701e31f282a2a074ffb852ae327db8b79a2978d38ceb",
+      "git_b7668879_sha256": "60bf148fcbb0bda56c32701e31f282a2a074ffb852ae327db8b79a2978d38ceb",
+      "runtime_v2_sha256": "60bf148fcbb0bda56c32701e31f282a2a074ffb852ae327db8b79a2978d38ceb",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "sparse_attention.py": {
+      "historical_recorded_sha256": "620082cc1e12cbb2f66b09054ff9bea08d9dadc6c34bd802ca25ae7aa26a21a7",
+      "git_b7668879_sha256": "620082cc1e12cbb2f66b09054ff9bea08d9dadc6c34bd802ca25ae7aa26a21a7",
+      "runtime_v2_sha256": "620082cc1e12cbb2f66b09054ff9bea08d9dadc6c34bd802ca25ae7aa26a21a7",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "storage.py": {
+      "historical_recorded_sha256": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+      "git_b7668879_sha256": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+      "runtime_v2_sha256": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "streaming.py": {
+      "historical_recorded_sha256": "e60c77729a89fd5a9a76cd2641b5325c5ccf8bc0ec4b80a19ff949a1579d03df",
+      "git_b7668879_sha256": "e60c77729a89fd5a9a76cd2641b5325c5ccf8bc0ec4b80a19ff949a1579d03df",
+      "runtime_v2_sha256": "e60c77729a89fd5a9a76cd2641b5325c5ccf8bc0ec4b80a19ff949a1579d03df",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "studio.html": {
+      "historical_recorded_sha256": "4764156c9769462bfc1732b20867b9bbe0727ea4e940d2884e029cccf8de81e0",
+      "git_b7668879_sha256": "4764156c9769462bfc1732b20867b9bbe0727ea4e940d2884e029cccf8de81e0",
+      "runtime_v2_sha256": "70c002ed8f31a8323a378f553ab144233c95f71babe26a3d92b14145897b74bb",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "studio.py": {
+      "historical_recorded_sha256": "63f8b56e5a8698023a3cce509001d73eeb833a9283b8bd34de352b324815230b",
+      "git_b7668879_sha256": "63f8b56e5a8698023a3cce509001d73eeb833a9283b8bd34de352b324815230b",
+      "runtime_v2_sha256": "909b121d2b10bfd3ecf0e50e5b2abafdf27c313116aab176e0f26592727c1af8",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "train.py": {
+      "historical_recorded_sha256": "b820893532405ad46a84aedc170242d5ce98f830c9573eaddfc046859d165de1",
+      "git_b7668879_sha256": "b820893532405ad46a84aedc170242d5ce98f830c9573eaddfc046859d165de1",
+      "runtime_v2_sha256": "c776ef26b9d59c09ca2544d669d41704674e371ab111826258951722c7a04f42",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "training.py": {
+      "historical_recorded_sha256": "684cb6281c9d37ae3803a0437c9d7d946c5fffabae9458b65dbab7ab3bfb9826",
+      "git_b7668879_sha256": "684cb6281c9d37ae3803a0437c9d7d946c5fffabae9458b65dbab7ab3bfb9826",
+      "runtime_v2_sha256": "aaa8ccaa4a44deb566c40a87899a48a06f1f67213c29a7f3d9a4cb716fbe1273",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    },
+    "trellis.py": {
+      "historical_recorded_sha256": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d",
+      "git_b7668879_sha256": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d",
+      "runtime_v2_sha256": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "validation.py": {
+      "historical_recorded_sha256": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9",
+      "git_b7668879_sha256": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9",
+      "runtime_v2_sha256": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": true
+    },
+    "workflow.py": {
+      "historical_recorded_sha256": "40371fb3fa90bd5f32c30d78363f02612cc9f0fbba03ccdefb68aed39aead945",
+      "git_b7668879_sha256": "40371fb3fa90bd5f32c30d78363f02612cc9f0fbba03ccdefb68aed39aead945",
+      "runtime_v2_sha256": "1ed9bfbe07e99070682e75d6ed3439fefb18f901a28b20496ab4fd7b2c93b08f",
+      "historical_git_match": true,
+      "runtime_v2_snapshot_match": true,
+      "same_source": false
+    }
+  },
+  "source_binding_mismatches": [],
+  "historical_runtime": {
+    "mlx": "0.32.3",
+    "mlx-lm": "0.32.0",
+    "numpy": "2.5.4",
+    "transformers": "5.19.0",
+    "tokenizers": "0.23.3",
+    "safetensors": "0.8.0"
+  },
+  "historical_python": "3.12.13",
+  "training_unchanged_definitions": [
+    "batch_for",
+    "supervised_hidden",
+    "projected_cross_entropy",
+    "masked_loss",
+    "sample_indices",
+    "optimizer_step",
+    "save_checkpoint",
+    "load_checkpoint"
+  ],
+  "training_changed_definitions": [
+    "evaluate"
+  ],
+  "historical_reproduced": false,
+  "cause_identified": false,
+  "candidate_mechanism": "Repeated-index FP32 scatter-add in sparse attention KV-gradient accumulation maps to MLX Metal atomic adds. Cross-thread accumulation order is not fixed; whether it caused this observed difference is untested.",
+  "dependency_lock_historical_sha256": "40a2c42b352bac86b8b24566543b2a0e76c418047a05d4e4d326c55ae89461ee",
+  "dependency_lock_runtime_v2_sha256": "40a2c42b352bac86b8b24566543b2a0e76c418047a05d4e4d326c55ae89461ee",
+  "dependency_lock_equal": true,
+  "process_agent_tensor_evidence_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/matched-control-training-interim-independent-review.json",
+  "process_agent_tensor_evidence_observed_sha256": "4ed47fc026252e03f82c416e9ac73e9d5c82bed88e77117d2d004c89ce5ff20c",
+  "header_evidence": {
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/include/mlx/backend/metal/kernels/indexing/scatter.h": "fa799c286378c59fbb3aeb973e74bf471861e3356ce2817968fe5d6872c3d9ad",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/include/mlx/backend/metal/kernels/reduction/ops.h": "78d06730fc9564a73944e7f1fe3897d25c8789b28a939bf418e1968db311da41",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/include/mlx/backend/metal/kernels/atomic.h": "4c35ea2798a2335502865247aee878149fc9ada0d7e84c05d771baef0c7fcc60"
+  }
+}

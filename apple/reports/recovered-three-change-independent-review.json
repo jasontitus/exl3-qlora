@@ -1,0 +1,190 @@
+{
+  "schema": "recovered-three-change-independent-review-v1",
+  "created_utc": "2026-10-13T03:01:34.264266+00:00",
+  "status": "CPU_review_complete",
+  "quality_certified": false,
+  "no_gpu_work": true,
+  "recovery_assembly_exact": true,
+  "summary_input_hashes_verified": 154,
+  "recovery_input_hashes_verified": 34,
+  "fresh_process_ids": [
+    49558,
+    64418
+  ],
+  "resource_caps_gib": [
+    80,
+    72
+  ],
+  "reserve_gib": 8,
+  "distinct_training_edits": 3,
+  "independent_lineages": 1,
+  "held_out_examples": 0,
+  "per_row": [
+    {
+      "row": 0,
+      "tokens": 204,
+      "base_nll": 0.31742358993378444,
+      "trained_nll": 0.24123094192846378,
+      "added_code_delta": 0.00040293973251528947,
+      "eos": {
+        "count": 1,
+        "base": {
+          "loss": 2.138422966003418,
+          "correct_tokens": 0
+        },
+        "trained": {
+          "loss": 1.444017767906189,
+          "correct_tokens": 0
+        },
+        "loss_delta": -0.694405198097229
+      }
+    },
+    {
+      "row": 1,
+      "tokens": 811,
+      "base_nll": 0.5012578621402244,
+      "trained_nll": 0.46115149473761147,
+      "added_code_delta": 0.00047382079610483463,
+      "eos": {
+        "count": 1,
+        "base": {
+          "loss": 1.1137710809707642,
+          "correct_tokens": 1
+        },
+        "trained": {
+          "loss": 1.4212894439697266,
+          "correct_tokens": 0
+        },
+        "loss_delta": 0.3075183629989624
+      }
+    },
+    {
+      "row": 2,
+      "tokens": 1877,
+      "base_nll": 0.2967423428650892,
+      "trained_nll": 0.2772439499113509,
+      "added_code_delta": -0.003541240206058588,
+      "eos": {
+        "count": 1,
+        "base": {
+          "loss": 1.75359308719635,
+          "correct_tokens": 0
+        },
+        "trained": {
+          "loss": 1.146439552307129,
+          "correct_tokens": 0
+        },
+        "loss_delta": -0.6071535348892212
+      }
+    }
+  ],
+  "categories": {
+    "all": {
+      "tokens": 2892,
+      "base_nll": 0.35555322133471184,
+      "trained_nll": 0.3262765796574049,
+      "base_correct": 2670,
+      "trained_correct": 2679,
+      "share_of_total_nll_decrease": 1.0
+    },
+    "diff_header": {
+      "tokens": 405,
+      "base_nll": 0.6450484956738075,
+      "trained_nll": 0.5462348467899322,
+      "base_correct": 350,
+      "trained_correct": 357,
+      "share_of_total_nll_decrease": 0.47266387817543704
+    },
+    "unchanged_context": {
+      "tokens": 505,
+      "base_nll": 0.031398879676488564,
+      "trained_nll": 0.02982026451653704,
+      "base_correct": 498,
+      "trained_correct": 498,
+      "share_of_total_nll_decrease": 0.009415602191637474
+    },
+    "removed_code": {
+      "tokens": 128,
+      "base_nll": 0.000497434302430988,
+      "trained_nll": 0.0005846644724363803,
+      "base_correct": 128,
+      "trained_correct": 128,
+      "share_of_total_nll_decrease": -0.00013187338151688911
+    },
+    "added_code": {
+      "tokens": 1527,
+      "base_nll": 0.062244552017292724,
+      "trained_nll": 0.059036639442830795,
+      "base_correct": 1501,
+      "trained_correct": 1502,
+      "share_of_total_nll_decrease": 0.057855148813394444
+    },
+    "eos": {
+      "tokens": 3,
+      "base_nll": 1.6685957113901775,
+      "trained_nll": 1.3372489213943481,
+      "base_correct": 1,
+      "trained_correct": 0,
+      "share_of_total_nll_decrease": 0.011740442783662007
+    },
+    "added_comment": {
+      "tokens": 324,
+      "base_nll": 2.00938873907463,
+      "trained_nll": 1.8921974987425425,
+      "base_correct": 192,
+      "trained_correct": 194,
+      "share_of_total_nll_decrease": 0.44845680141738525
+    }
+  },
+  "weighted_loss_reduction_percent": 8.2341095286397,
+  "macro_loss_reduction_percent": 12.174512412036743,
+  "added_code_argmax_changes": [
+    {
+      "row": 2,
+      "index": 249,
+      "category": "added_code",
+      "base_correct": false,
+      "trained_correct": true,
+      "target": " if",
+      "base_prediction": " const",
+      "trained_prediction": " if"
+    }
+  ],
+  "eos_argmax_changes": [
+    {
+      "row": 1,
+      "index": 810,
+      "category": "eos",
+      "base_correct": true,
+      "trained_correct": false,
+      "target": "",
+      "base_prediction": "",
+      "trained_prediction": "diff"
+    }
+  ],
+  "warm_cache_parity": {
+    "status": "exact",
+    "rows_verified": 3,
+    "per_row_logits_exact": true,
+    "per_row_loss_atol": 1e-06,
+    "all_probe_rows_were_cache_hits": true,
+    "real_model_warm_cache_parity_verified": true,
+    "note": "Warm training-mode logits match fresh uncached evaluation.",
+    "quality_certified": false,
+    "training_report_sha256": "b1e13ca0efaef50b56b875cd6df376352dd784703a256905c4e9bee83d1f1631"
+  },
+  "input_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit.json": "9f0687a75ad3608ff7113a189e9806e37ac24d92c8b91ac759b873d36f389563",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/three-changes-standard-fit-result.json": "5ac1ca67c2cc530059c0573785be8895933d895b03bf93f34a8ceb8dc2e47e9c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/three-change-category-totals.json": "486a169643819e1299b8809fc9c3e4694339f09e9db81b358b88706420ae3f4c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/scripts/recover_standard_fit.py": "74822118b21e5ebc9912c26ac7c876ff6ac5533c9b549fa6ba78ad846495b5a3",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b"
+  },
+  "limitations": [
+    "No autonomous generation, compilation, numerical kernel check or benchmark performed.",
+    "Categories reused from dataset-bound lexical labels; majority-character boundary assignments are not semantic proof.",
+    "All three rows were trained four times and share one lineage.",
+    "Checksum/receipt replay is consistency verification, not independent execution attestation.",
+    "Overall improvement does not erase row0/1 added-code NLL regressions or lost EOS top1."
+  ]
+}

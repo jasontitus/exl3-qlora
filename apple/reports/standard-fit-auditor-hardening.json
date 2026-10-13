@@ -1,0 +1,39 @@
+{
+  "schema": "standard-fit-auditor-hardening-v1",
+  "auditor_version": "standard-sft-three-change-auditor-v2-provenance",
+  "auditor_sha256": "9c0aaf36c20b2560c37caa702dadf6b1fc55b127ed54b83bddbe763ac3092289",
+  "tests_sha256": "1304cb948145ee270912d89495211a17582f2122d280a59063f646d19888f354",
+  "cpu_tests_passed": 42,
+  "junit_sha256": "3d03ddf0d2709367e6e3714771b0e4cbdeea98c3686001cc85445ae8137e9bf0",
+  "actual_prepared_case_binding": {
+    "raw_sha256": "9d058b2b163cbcbd7d28c021188dc941f65b9d07d5bbf1c24d5baa50daec8d36",
+    "raw_source": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-metal-changes-raw.jsonl",
+    "provenance_sha256": "78588e4c34312923849dfe83840d61b682c283134397eb6d832d2f2a5ffcae8f",
+    "rows": [
+      {
+        "row_index": 0,
+        "case_id": "official:qwen38-125b-a6b-mlx-v1:c0e42c7e-268c-454f-a9cb-e705f952b819",
+        "source_row": 1,
+        "source_id": "ktune-lineage:f85c13c0896fd4a695fd5d56",
+        "tokens_sha256": "adab17a79008faf6df9cf453290671fdbdab43f0ee479dbbd5c9b5ac910c241b"
+      },
+      {
+        "row_index": 1,
+        "case_id": "official:qwen38-125b-a6b-mlx-v1:1a621870-4993-4c43-9472-6f7d8f745140",
+        "source_row": 2,
+        "source_id": "ktune-lineage:f85c13c0896fd4a695fd5d56",
+        "tokens_sha256": "03e6f5ec4e828f5bb4684c9195f402ded0bfcd6b97b1871f5c3501b27eb26cdd"
+      },
+      {
+        "row_index": 2,
+        "case_id": "official:qwen38-125b-a6b-mlx-v1:8a690716-8068-4da8-9532-26047c96aa9c",
+        "source_row": 3,
+        "source_id": "ktune-lineage:f85c13c0896fd4a695fd5d56",
+        "tokens_sha256": "b87a15be3b7ed46292a10e2857a8c484d06684aaa40dd3b3119305d74ac0a4d3"
+      }
+    ]
+  },
+  "protocol_sha256": "531a047d07f65c04cdca51e147f31125a6bbdf266de9a663d744f62ac3d139d9",
+  "scope": "Post-launch CPU audit hardening only. No engine/pinned-runtime/project changes or model computation; this is not a completed three-case fitting result.",
+  "quality_certified": false
+}

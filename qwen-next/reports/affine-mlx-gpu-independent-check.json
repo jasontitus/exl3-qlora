@@ -1,0 +1,151 @@
+{
+  "schema": "qwen-affine-mlx-gpu-independent-check-v1",
+  "utc": "2026-10-13T20:46:37.002580+00:00",
+  "reviewer": "adversarial_code",
+  "status": "passed_bounded_synthetic_affine_scope",
+  "passed": true,
+  "gpu_executed_by_reviewer": false,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-independent-review-v2.json": "b767a0990e4e4b947ba884985b0c61788934f50acaaafb14a0f61c2eecdbf598",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-gpu-parity-v2.json": "b4f78b6331cf39b3d8f86bab66776ba1b779c3971cc3a896b0ed2457f02894fd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-dispatch-attempt-v2.json": "191b02bcf4d4afbad3d87a0b8dac6ef1be71cb462e0bcd3143915bcc1eb755f7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-independent-review.json": "850630c4d08284f794df2d2cbb9311b8b3287fc1724c9c1ba3228cde5f9b212c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-implementation.json": "07168cb7c10078dddde30803425774c2e2117e32b584ac8bad79004b10e08b9a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-gpu-parity.json": "d4f786ed481a42ef613e8e04f0c46f9afb07914a3d000393467e57adf6b04feb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-dispatch-attempt.json": "4adfe5f3f0d80b3a3277f85e0b957c7327de040ead7dc6314fea094235699280",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/affine_mlx_parity.py": "92c18a2d607b738d8318aa0d94c53125896bce61aec2d63a1a13e319ac610ea2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/affine_reference.py": "94808a442fd27c8f0705172b654a99d5d0df5c4134ee771ecc1c19bd2886c77f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_affine_mlx_parity.py": "eb06e91c990cd262024533d6d733fe9e563904f32a2f28e613468d81803dbe24",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/affine-env/pyvenv.cfg": "e673d9093a2f39586187e83ebbaccac5221e91f205639a487f8345d36a8aa728",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/artifacts/affine-env/lib/python3.12/site-packages/pinned-mlx.pth": "73c3d3cd09915949711e6ac641ecf97f9b2386cbecd11d20624eec7eac3a3bb4",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/core.cpython-312-darwin.so": "49eeb7232106aa9ab846b20e0417add980b1c7213ef6dda6e25c01d45ca54851",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/lib/libmlx.dylib": "ebc8a5f5465afb79d3d9c8f5b0929de1a9b277b7179db8672f92da77ae110a1e",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/lib/mlx.metallib": "95974b7de464ec2be7833a914ca5a53d283a70789470fd84218738fc8fcea3e1",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx/lib/libjaccl.dylib": "949e901df832d600a71ff2bc5f3738d55b010668102f36e071e1890807a965cd"
+  },
+  "all_reviewed_bindings_unchanged": true,
+  "receipt_verification": {
+    "recorded_exit_code": 0,
+    "recorded_timeout_seconds": 60,
+    "cases": 108,
+    "exact_expected_case_order_and_geometry": true,
+    "duplicate_or_missing_cases": 0,
+    "error_rows": 0,
+    "comparison_checks": 432,
+    "passed_checks": 432,
+    "zero_decode_error_cases": 108,
+    "forward_and_input_gradient_dtypes_match_requested_cases": 108,
+    "cases_per_dtype": {
+      "float32": 36,
+      "float16": 36,
+      "bfloat16": 36
+    },
+    "values_compared": {
+      "decode": 516096,
+      "forward": 6912,
+      "input_vjp": 32256,
+      "transpose": 32256
+    },
+    "total_values_compared": 587520,
+    "tolerances_unchanged": {
+      "float32": [
+        2e-05,
+        2e-05
+      ],
+      "float16": [
+        0.004,
+        0.004
+      ],
+      "bfloat16": [
+        0.03,
+        0.03
+      ]
+    },
+    "relative_l2_limits_unchanged": {
+      "float32": 0.0001,
+      "float16": 0.01,
+      "bfloat16": 0.05
+    },
+    "all_per_case_relative_l2_finite_and_within_limit": true
+  },
+  "observed_maxima_from_receipt": {
+    "float32": {
+      "forward": {
+        "max_abs_error": 0.0,
+        "relative_l2": 0.0
+      },
+      "input_vjp": {
+        "max_abs_error": 0.0,
+        "relative_l2": 0.0
+      },
+      "transpose": {
+        "max_abs_error": 0.0,
+        "relative_l2": 0.0
+      }
+    },
+    "float16": {
+      "forward": {
+        "max_abs_error": 0.0001220703125,
+        "relative_l2": 0.0002467377169936439
+      },
+      "input_vjp": {
+        "max_abs_error": 0.000244140625,
+        "relative_l2": 0.00019422150741723956
+      },
+      "transpose": {
+        "max_abs_error": 0.000244140625,
+        "relative_l2": 0.00019422150741723956
+      }
+    },
+    "bfloat16": {
+      "forward": {
+        "max_abs_error": 0.0018310546875,
+        "relative_l2": 0.00248742456939922
+      },
+      "input_vjp": {
+        "max_abs_error": 0.00177001953125,
+        "relative_l2": 0.002080539286568402
+      },
+      "transpose": {
+        "max_abs_error": 0.00177001953125,
+        "relative_l2": 0.002080539286568402
+      }
+    }
+  },
+  "hardware": {
+    "device": {
+      "device_name": "Apple M1 Ultra",
+      "max_recommended_working_set_size": 115448725504,
+      "memory_size": 137438953472,
+      "architecture": "applegpu_g13d",
+      "max_buffer_length": 86586540032,
+      "resource_limit": 499000
+    },
+    "mlx_version": "0.32.3",
+    "python_version": "3.12.13",
+    "memory_limit_bytes": 268435456,
+    "peak_mlx_bytes": 62592,
+    "allocator_cache_bytes_from_reviewed_harness": 16777216
+  },
+  "method": "CPU-only receipt audit against the fixed Cartesian case plan, predeclared tolerances, dtype expectations, all four per-case checks, reported maxima and bound source/native-library identities. The reviewed hashed harness performs the elementwise comparisons and exact shape guards. This is not a second independent GPU execution or recomputation from raw device arrays, which the receipt does not persist.",
+  "preserved_failure": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-mlx-gpu-parity.json",
+    "sha256": "d4f786ed481a42ef613e8e04f0c46f9afb07914a3d000393467e57adf6b04feb",
+    "cases": 108,
+    "numerical_comparison_cases": 0,
+    "cause": "Harness treated an observed list VJP output as an array; prior review had made this wrong API assumption. Explicit container normalization fixed it; no tolerance changes."
+  },
+  "qualification": "On the recorded M1 Ultra and pinned MLX0.32.3 distribution, the 108 small synthetic affine cases pass exact dtype-rounded dequantization and the predeclared binary64 forward/transpose/input-VJP tolerances. FP32 reported zero error on these dyadic fixtures; low precision uses tolerances and is not an overall bitwise parity claim.",
+  "limitations": [
+    "The fixture uses dyadic exactly representable metadata/input/cotangent values; it tests packing, signed/zero scales, group boundaries and quantized multiplication, not arbitrary metadata quantization error.",
+    "Output rows32 and batch1/3 exercise small GEMV-like shapes only. No large GEMM, long-context shapes, broadcast, partial group or checkpoint tensors are qualified.",
+    "The explicit transpose and input VJP may dispatch the same MLX primitive; each is independently checked against binary64 reference math, but they are not independent native engines.",
+    "The host round-to-dtype projection calculation reported here is a CPU sanity bound, not a prediction or measurement of device error.",
+    "Finite per-fixture tolerances do not certify all elementwise gradient signs near zero or arbitrary model gradient correctness.",
+    "No adapter optimizer, model, external ngram table, EXL3 trellis, QSA/GDN composition or training qualification.",
+    "Read-through .pth isolates process configuration but reuses the existing native MLX distribution; it is not an independently built implementation.",
+    "Successful qualification is limited to this recorded runtime and these exact synthetic shapes. No actual Qwen checkpoint affine tensors, large GEMM, adapter update, model output or training run is qualified.",
+    "No performance benchmark was conducted; peak MLX allocation is a bounded-workload observation, not full-model memory evidence."
+  ],
+  "findings": []
+}

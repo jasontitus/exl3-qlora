@@ -12,8 +12,20 @@ from mlx.utils import tree_flatten, tree_map
 from .materialize import materialize
 
 
-def recompute(module, *args, progress=None):
+def recompute(module, *args, progress=None, frozen_inputs=False):
+    """Recompute a block, optionally differentiating its parameters alone.
+
+    ``frozen_inputs=True`` is an explicit caller contract: every supplied input
+    is constant with respect to the training objective's trainable parameters.
+    Their returned cotangents are zero. Use this only at a verified frozen-prefix
+    boundary, never between two trainable blocks or for input-gradient queries.
+    General callers retain the existing complete input/parameter VJP by default.
+    """
+    if type(frozen_inputs) is not bool:
+        raise ValueError("frozen_inputs must be boolean")
     original_parameters = module.trainable_parameters()
+    if frozen_inputs and not tree_flatten(original_parameters):
+        raise ValueError("Frozen-input recomputation requires trainable module parameters")
 
     def inner(parameters, *inputs):
         module.update(parameters)
@@ -37,7 +49,11 @@ def recompute(module, *args, progress=None):
         # Flatten both sides so nested shared-attention state remains functional
         # across the boundary without asking MLX to differentiate integer leaves.
         leaves = [mx.stop_gradient(v) for _, v in tree_flatten(primals)]
-        differentiable = [mx.issubdtype(v.dtype, mx.floating) for v in leaves]
+        parameter_count = len(tree_flatten(primals[0]))
+        differentiable = [
+            mx.issubdtype(v.dtype, mx.floating) and (not frozen_inputs or index < parameter_count)
+            for index, v in enumerate(leaves)
+        ]
         output_leaves = [v for _, v in tree_flatten(outputs)]
         output_differentiable = [mx.issubdtype(v.dtype, mx.floating) for v in output_leaves]
 

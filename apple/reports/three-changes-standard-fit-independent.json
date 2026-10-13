@@ -1,0 +1,728 @@
+{
+  "schema": "standard-sft-three-change-fit-audit-v1",
+  "auditor": {
+    "version": "standard-sft-three-change-auditor-v3-recovery",
+    "sha256": "a4cacd641b99bd3180dfaabf970435f6b8ceaecfcc02b92b062a06380c3931a3",
+    "scope": "Post-run CPU auditor; not asserted to be the frozen launch script"
+  },
+  "status": "completed",
+  "scope": "All three predeclared training rows; teacher forcing supplies preceding answer tokens",
+  "quality_certified": false,
+  "held_out_rows": 0,
+  "independent_lineages": 1,
+  "distinct_changes": 3,
+  "case_binding": {
+    "raw_sha256": "9d058b2b163cbcbd7d28c021188dc941f65b9d07d5bbf1c24d5baa50daec8d36",
+    "raw_source": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-metal-changes-raw.jsonl",
+    "provenance_sha256": "78588e4c34312923849dfe83840d61b682c283134397eb6d832d2f2a5ffcae8f",
+    "rows": [
+      {
+        "row_index": 0,
+        "case_id": "official:qwen38-125b-a6b-mlx-v1:c0e42c7e-268c-454f-a9cb-e705f952b819",
+        "source_row": 1,
+        "source_id": "ktune-lineage:f85c13c0896fd4a695fd5d56",
+        "tokens_sha256": "adab17a79008faf6df9cf453290671fdbdab43f0ee479dbbd5c9b5ac910c241b"
+      },
+      {
+        "row_index": 1,
+        "case_id": "official:qwen38-125b-a6b-mlx-v1:1a621870-4993-4c43-9472-6f7d8f745140",
+        "source_row": 2,
+        "source_id": "ktune-lineage:f85c13c0896fd4a695fd5d56",
+        "tokens_sha256": "03e6f5ec4e828f5bb4684c9195f402ded0bfcd6b97b1871f5c3501b27eb26cdd"
+      },
+      {
+        "row_index": 2,
+        "case_id": "official:qwen38-125b-a6b-mlx-v1:8a690716-8068-4da8-9532-26047c96aa9c",
+        "source_row": 3,
+        "source_id": "ktune-lineage:f85c13c0896fd4a695fd5d56",
+        "tokens_sha256": "b87a15be3b7ed46292a10e2857a8c484d06684aaa40dd3b3119305d74ac0a4d3"
+      }
+    ]
+  },
+  "supervised_tokens": 2892,
+  "selected_checkpoint": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012",
+  "completed_updates": {
+    "optimizer_updates": 12,
+    "sample_cursor": 12,
+    "samples": [
+      {
+        "cursor": 1,
+        "derived_row": 2,
+        "recorded_supervised_tokens": 1877
+      },
+      {
+        "cursor": 2,
+        "derived_row": 1,
+        "recorded_supervised_tokens": 811
+      },
+      {
+        "cursor": 3,
+        "derived_row": 0,
+        "recorded_supervised_tokens": 204
+      },
+      {
+        "cursor": 4,
+        "derived_row": 0,
+        "recorded_supervised_tokens": 204
+      },
+      {
+        "cursor": 5,
+        "derived_row": 2,
+        "recorded_supervised_tokens": 1877
+      },
+      {
+        "cursor": 6,
+        "derived_row": 1,
+        "recorded_supervised_tokens": 811
+      },
+      {
+        "cursor": 7,
+        "derived_row": 1,
+        "recorded_supervised_tokens": 811
+      },
+      {
+        "cursor": 8,
+        "derived_row": 0,
+        "recorded_supervised_tokens": 204
+      },
+      {
+        "cursor": 9,
+        "derived_row": 2,
+        "recorded_supervised_tokens": 1877
+      },
+      {
+        "cursor": 10,
+        "derived_row": 0,
+        "recorded_supervised_tokens": 204
+      },
+      {
+        "cursor": 11,
+        "derived_row": 2,
+        "recorded_supervised_tokens": 1877
+      },
+      {
+        "cursor": 12,
+        "derived_row": 1,
+        "recorded_supervised_tokens": 811
+      }
+    ],
+    "exposures_per_row": {
+      "2": 4,
+      "1": 4,
+      "0": 4
+    },
+    "sample_identity_scope": "Verified cursor+seed+bound sampler source, independently reconstructed order; per-step target counts also match",
+    "checkpoints": [
+      {
+        "step": 1,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 2,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 3,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 4,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 5,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 6,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 7,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 8,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 9,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 10,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 11,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      },
+      {
+        "step": 12,
+        "adapter_tensors": 4,
+        "adapter_parameters": 78848,
+        "optimizer_tensors": 10,
+        "finite": true,
+        "nonzero_B_elements": 25600
+      }
+    ]
+  },
+  "resource_recovery": {
+    "used": true,
+    "base_process_memory_gib": 80,
+    "adapter_process_memory_gib": 72,
+    "reserve_gib": 8,
+    "baseline_reused_without_rerun": true,
+    "math_data_checkpoint_and_cache_settings_unchanged": true,
+    "amendment": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/recovery-launch.json",
+    "actual_retry_launch": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/actual-launch.json",
+    "raw_base_report": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/1791857030575085000/base.json",
+    "raw_adapter_report": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/adapter.json",
+    "failed_invocations": [
+      {
+        "kind": "original_memory_preflight",
+        "stage": "startup_before_model_load",
+        "log": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/1791857030575085000/fit-adapter.log",
+        "sha256": "b60ada9c6b3c7ff0f08752a51bafbc3f118b67216d422e9e6dff37ed79d9e67d"
+      },
+      {
+        "kind": "retry_path_typo_before_load",
+        "stage": "data_loading_before_model_load",
+        "receipt": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/typo-failure.json",
+        "receipt_sha256": "917959354fb9246bf93be8663a5a7ee9b3530de142453316eecced7dc3e20729",
+        "log": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/fit-adapter-typo-failed.log",
+        "sha256": "5c56bd58791b8cdd754ca94a947d4feb7188e16adbea29fc55f15e4e2658cb22",
+        "exit_code": 1
+      }
+    ],
+    "reason": "Adapter child failed before model loading because 86.48 GiB available was below 80+8 startup headroom. Retry adapter evaluation only at cap72GiB, reserve8 unchanged. Reuse bound completed baseline; preserve original failed attempt.",
+    "verification_scope": "Checksummed local launch/receipt evidence, not independent process attestation; failed starts add no training updates."
+  },
+  "weighted": {
+    "base_loss": 0.35555322133471173,
+    "trained_loss": 0.3262765796574049,
+    "loss_delta": -0.029276641677306814
+  },
+  "macro": {
+    "base_loss": 0.371807931646366,
+    "trained_loss": 0.3265421288591421,
+    "loss_delta": -0.04526580278722392
+  },
+  "every_row_improved": true,
+  "aggregate_fit_improved": true,
+  "rows": {
+    "0": {
+      "categories": {
+        "all": {
+          "count": 204,
+          "base": {
+            "loss": 0.31742358993378444,
+            "correct_tokens": 189
+          },
+          "trained": {
+            "loss": 0.24123094192846378,
+            "correct_tokens": 191
+          },
+          "loss_delta": -0.07619264800532066
+        },
+        "added_code": {
+          "count": 13,
+          "base": {
+            "loss": 0.06447917644219978,
+            "correct_tokens": 12
+          },
+          "trained": {
+            "loss": 0.06488211617471507,
+            "correct_tokens": 12
+          },
+          "loss_delta": 0.00040293973251528947
+        },
+        "diff_header": {
+          "count": 87,
+          "base": {
+            "loss": 0.7083317959346245,
+            "correct_tokens": 74
+          },
+          "trained": {
+            "loss": 0.5368614861068332,
+            "correct_tokens": 76
+          },
+          "loss_delta": -0.17147030982779132
+        },
+        "eos": {
+          "count": 1,
+          "base": {
+            "loss": 2.138422966003418,
+            "correct_tokens": 0
+          },
+          "trained": {
+            "loss": 1.444017767906189,
+            "correct_tokens": 0
+          },
+          "loss_delta": -0.694405198097229
+        },
+        "removed_code": {
+          "count": 14,
+          "base": {
+            "loss": 7.814443616080016e-05,
+            "correct_tokens": 14
+          },
+          "trained": {
+            "loss": 0.0001122319648766888,
+            "correct_tokens": 14
+          },
+          "loss_delta": 3.4087528715888644e-05
+        },
+        "unchanged_context": {
+          "count": 89,
+          "base": {
+            "loss": 0.0017056159361959098,
+            "correct_tokens": 89
+          },
+          "trained": {
+            "loss": 0.002416925128386139,
+            "correct_tokens": 89
+          },
+          "loss_delta": 0.000711309192190229
+        }
+      },
+      "serialized_tokens": 3606,
+      "loss_start": 3402,
+      "input_ids_sha256": "51b32759c4d48283f746c617f7f1dc19e9bfdf8b9e45226fb99f41ea2f27f22c",
+      "target_ids_sha256": "c2d0a8607144abfd7f18db0ca6e96576f8dab5b9ee9eb5b6deae450ba62f8d6d",
+      "row_sha256": "adab17a79008faf6df9cf453290671fdbdab43f0ee479dbbd5c9b5ac910c241b",
+      "logits_changed": true,
+      "added_code_predictions_corrected": [],
+      "added_code_predictions_regressed": [],
+      "case_id": "official:qwen38-125b-a6b-mlx-v1:c0e42c7e-268c-454f-a9cb-e705f952b819"
+    },
+    "1": {
+      "categories": {
+        "all": {
+          "count": 811,
+          "base": {
+            "loss": 0.5012578621402244,
+            "correct_tokens": 714
+          },
+          "trained": {
+            "loss": 0.46115149473761147,
+            "correct_tokens": 717
+          },
+          "loss_delta": -0.04010636740261292
+        },
+        "added_code": {
+          "count": 114,
+          "base": {
+            "loss": 0.06160583428770961,
+            "correct_tokens": 112
+          },
+          "trained": {
+            "loss": 0.062079655083814446,
+            "correct_tokens": 112
+          },
+          "loss_delta": 0.00047382079610483463
+        },
+        "added_comment": {
+          "count": 175,
+          "base": {
+            "loss": 1.5455660317417435,
+            "correct_tokens": 111
+          },
+          "trained": {
+            "loss": 1.4380411656402028,
+            "correct_tokens": 112
+          },
+          "loss_delta": -0.10752486610154066
+        },
+        "diff_header": {
+          "count": 208,
+          "base": {
+            "loss": 0.5931216193116409,
+            "correct_tokens": 180
+          },
+          "trained": {
+            "loss": 0.5242059410843066,
+            "correct_tokens": 183
+          },
+          "loss_delta": -0.06891567822733424
+        },
+        "eos": {
+          "count": 1,
+          "base": {
+            "loss": 1.1137710809707642,
+            "correct_tokens": 1
+          },
+          "trained": {
+            "loss": 1.4212894439697266,
+            "correct_tokens": 0
+          },
+          "loss_delta": 0.3075183629989624
+        },
+        "removed_code": {
+          "count": 105,
+          "base": {
+            "loss": 0.0005925759664326809,
+            "correct_tokens": 105
+          },
+          "trained": {
+            "loss": 0.0006938350973613405,
+            "correct_tokens": 105
+          },
+          "loss_delta": 0.00010125913092865965
+        },
+        "unchanged_context": {
+          "count": 208,
+          "base": {
+            "loss": 0.021527486335819707,
+            "correct_tokens": 205
+          },
+          "trained": {
+            "loss": 0.022743267744635396,
+            "correct_tokens": 205
+          },
+          "loss_delta": 0.0012157814088156887
+        }
+      },
+      "serialized_tokens": 5809,
+      "loss_start": 4998,
+      "input_ids_sha256": "a306507c3170ce4e81a1576b0a6a5aa1bfd5cbe33886ad3d2fddba81d15b225a",
+      "target_ids_sha256": "8ecac8e31400dc70849bd6e5e4fe887e902cea5b9363e4b422a56d8843278077",
+      "row_sha256": "03e6f5ec4e828f5bb4684c9195f402ded0bfcd6b97b1871f5c3501b27eb26cdd",
+      "logits_changed": true,
+      "added_code_predictions_corrected": [],
+      "added_code_predictions_regressed": [],
+      "case_id": "official:qwen38-125b-a6b-mlx-v1:1a621870-4993-4c43-9472-6f7d8f745140"
+    },
+    "2": {
+      "categories": {
+        "all": {
+          "count": 1877,
+          "base": {
+            "loss": 0.2967423428650892,
+            "correct_tokens": 1767
+          },
+          "trained": {
+            "loss": 0.2772439499113509,
+            "correct_tokens": 1771
+          },
+          "loss_delta": -0.01949839295373834
+        },
+        "added_code": {
+          "count": 1400,
+          "base": {
+            "loss": 0.06227581180561321,
+            "correct_tokens": 1377
+          },
+          "trained": {
+            "loss": 0.05873457159955462,
+            "correct_tokens": 1378
+          },
+          "loss_delta": -0.003541240206058588
+        },
+        "added_comment": {
+          "count": 149,
+          "base": {
+            "loss": 2.5541469523850675,
+            "correct_tokens": 81
+          },
+          "trained": {
+            "loss": 2.4256025879567003,
+            "correct_tokens": 82
+          },
+          "loss_delta": -0.12854436442836725
+        },
+        "diff_header": {
+          "count": 110,
+          "base": {
+            "loss": 0.6931861607705309,
+            "correct_tokens": 96
+          },
+          "trained": {
+            "loss": 0.5953029810281116,
+            "correct_tokens": 98
+          },
+          "loss_delta": -0.09788317974241922
+        },
+        "eos": {
+          "count": 1,
+          "base": {
+            "loss": 1.75359308719635,
+            "correct_tokens": 0
+          },
+          "trained": {
+            "loss": 1.146439552307129,
+            "correct_tokens": 0
+          },
+          "loss_delta": -0.6071535348892212
+        },
+        "removed_code": {
+          "count": 9,
+          "base": {
+            "loss": 3.967690327597337e-05,
+            "correct_tokens": 9
+          },
+          "trained": {
+            "loss": 4.590219340469856e-05,
+            "correct_tokens": 9
+          },
+          "loss_delta": 6.225290128725192e-06
+        },
+        "unchanged_context": {
+          "count": 208,
+          "base": {
+            "loss": 0.05397556375218649,
+            "correct_tokens": 204
+          },
+          "trained": {
+            "loss": 0.04862272862279172,
+            "correct_tokens": 204
+          },
+          "loss_delta": -0.005352835129394773
+        }
+      },
+      "serialized_tokens": 5822,
+      "loss_start": 3945,
+      "input_ids_sha256": "8bb1b82e48aa5c9811dcde750f80c7b1ccd0448e2c6692e4915829e30197d49f",
+      "target_ids_sha256": "763dbfcca34f850fbe03107bc6fc58fec5390f78fec3c556b50c7403c73a7bc2",
+      "row_sha256": "b87a15be3b7ed46292a10e2857a8c484d06684aaa40dd3b3119305d74ac0a4d3",
+      "logits_changed": true,
+      "added_code_predictions_corrected": [
+        {
+          "answer_token_index": 249,
+          "target_id": 855,
+          "base_prediction_id": 1600,
+          "trained_prediction_id": 855,
+          "context_token_range": [
+            244,
+            255
+          ],
+          "target_context": "_grid.y;\n+        if (dv_idx >= D",
+          "target_text": " if",
+          "base_prediction_text": " const",
+          "trained_prediction_text": " if"
+        }
+      ],
+      "added_code_predictions_regressed": [],
+      "case_id": "official:qwen38-125b-a6b-mlx-v1:8a690716-8068-4da8-9532-26047c96aa9c"
+    }
+  },
+  "warm_cache_verification": {
+    "status": "exact",
+    "rows_verified": 3,
+    "per_row_logits_exact": true,
+    "per_row_loss_atol": 1e-06,
+    "all_probe_rows_were_cache_hits": true,
+    "real_model_warm_cache_parity_verified": true,
+    "note": "Warm training-mode logits match fresh uncached evaluation.",
+    "quality_certified": false
+  },
+  "tool_verification_complete": true,
+  "tool_verification_scope": "This three-case saved-optimizer, adapter-reload and warm/fresh-cache path only; not full-model oracle correctness or useful kernel quality",
+  "source_hashes": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/three-change-standard-protocol-v2.json": "531a047d07f65c04cdca51e147f31125a6bbdf266de9a663d744f62ac3d139d9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/project.json": "2b343d9b2837694dacc36a36abedffd2798a96ced150b12ea55a74cae43e546d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit.json": "9f0687a75ad3608ff7113a189e9806e37ac24d92c8b91ac759b873d36f389563",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/data/raw-valid.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/data/train.jsonl": "ca6fd8c939be9de5f7715e79d5f1ffc9354d251d1092aa9a3cc77d5d5ce80cb3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/data/test.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/data/raw-test.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/data/provenance.jsonl": "78588e4c34312923849dfe83840d61b682c283134397eb6d832d2f2a5ffcae8f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/data/raw-train.jsonl": "e7d5e10e7585b98d7b394794a07a79d91b18c9297b5eb0bea3e57a931df5731c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/data/valid.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/data/dataset.json": "d3dd7e68ef75e72d46c75d88ebcbaafa8a56f38f8275b0b736fcb134285f9268",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/__init__.py": "6605af1a6c29d74cb5a62c1c268c24632d00e2fe8b1821a772e3cac6a1060c54",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/activation_config.py": "7e3ac0956b0f7bf0fa8a5b0dfacbde5f8554f6f75056e6c9979b04c9aa630215",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/attention.py": "322829decc3385ad611ecff007565690ec8cd87e31e6fc3815f15bf391062827",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/checkpoint.py": "0bdaef467fef3e98c6aaaf099bfbec86f633758aa335cde3d46b0accf80d265d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/cli.py": "6a20e242263c4ee512aaa5018fb7386f89a0f93d64ef08da5973c24afa81cc83",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/context.py": "dae6e69baa6f5cda760b784d4abaab91cab7433e223d16f0c5c5e64b8c0c5246",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/data.py": "4791c84ad1bff633f3ffd49d9c6cc5f930ad59bdd3fe3e189b5720f868112a15",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/decode.metal": "87d593c2aac9eb9905f7d41a2797a38433d058a85b0ea36d03000b9a75bd3282",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/deepseek.py": "1536240ac4249494d61af74503713a385beae953959246f33aeeb6dfc3f77dc9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/engram.py": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/fit_probe.py": "1c5262636f7abfa12117c910f9da7b5eb72efd90ea76dab5751c62d131f69ca4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/hyperconnections.py": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/ktune_cli.py": "87395699821ee5a7ffee3373b97ebfdef44f565ff0f77a70644b305f5e3befd1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/ktune_data.py": "5ceee57f664295731a4d4183215ac4d4feb128cb7aa52fd58903aa3470080838",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/ktune_eval.py": "91739cb483ac8e51ed93d0478a5b3a622042d73c87e89593b3baf3d9462ec91e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/ktune_patch.py": "1e7972d4b4659b42e2284d89c798c915f9930061af260ac3a0f33fd305ebf0f6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/linear.py": "51ecb3cbc657199e86f4db13b92f1ea6cd13d4550a31ad35602b2e352b3f6379",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/materialize.py": "c17735ac8ddac3b46e6b8fd62dc74f730ea31630496749700c2da1e266224e43",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/memory.py": "5df2ec9ebe5163d8587d4712ded34f87dc528bb07fba8ab58b5c7ef1fac493d8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/moe.py": "88b821f17c0eda364cb136170f2de52285f872ef0a6330b4a280518d6d1828e0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/native.py": "4da811483bf9b358cbbdbcad5db2d11caa70a6e10ccfa101c292f19660f96809",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/prefix_cache.py": "62321488c8760e3b075e1737931857f3a6b06fb0c8c730b1ff373df4bbb201f0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/recompute.py": "a7849b0b1b6877b62914b75e21ab7a66305469e2a0c72def94e8b1caa90cd988",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/reference.py": "07f21f744cc2398a81f8476cd995096092fb5ac24b85cf72e64adb54ae1a0595",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/remote.py": "fb2895704e6963a58d2eb8d0b5d6eb2999159e8dcc6d76206a5b69855700f08c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/resources.py": "02003a49a22ef4008280119275aa94992f274b334076a06f008d716f866b36ea",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/sft.py": "c4d8f82f59d664329a4323aa557e972e88808a8a34711ca012abd2c688d18c87",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/sft_cli.py": "22a583998b9ffd6ffa3a83a96771caee3144439ce6cd22df3781712e7b713d4d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/sft_data.py": "60bf148fcbb0bda56c32701e31f282a2a074ffb852ae327db8b79a2978d38ceb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/sparse_attention.py": "620082cc1e12cbb2f66b09054ff9bea08d9dadc6c34bd802ca25ae7aa26a21a7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/storage.py": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/streaming.py": "e60c77729a89fd5a9a76cd2641b5325c5ccf8bc0ec4b80a19ff949a1579d03df",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/studio.html": "70c002ed8f31a8323a378f553ab144233c95f71babe26a3d92b14145897b74bb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/studio.py": "909b121d2b10bfd3ecf0e50e5b2abafdf27c313116aab176e0f26592727c1af8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/train.py": "c776ef26b9d59c09ca2544d669d41704674e371ab111826258951722c7a04f42",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/training.py": "aa769f153c0d3bbb02e75df93993b7e37526adc35e1fc75c9af084de0e2c46cf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/trellis.py": "fe412384e152f72193b5af815a9fd320c7de63f7e2113f67df7a33435a1c568d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/validation.py": "6ea040b69c72fc0c21b7ff8f7009d2ddeec03df0fb96b637f9aa7eb50b4099d9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/src/exl3_mlx/workflow.py": "c680857b9dc7c561be87dfa23c77b35c5fdaf52cf81ac0aa8e46f3a4642c5359",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/uv.lock": "40a2c42b352bac86b8b24566543b2a0e76c418047a05d4e4d326c55ae89461ee",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-metal-changes-raw.jsonl": "9d058b2b163cbcbd7d28c021188dc941f65b9d07d5bbf1c24d5baa50daec8d36",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012/trainer_state.json": "d674979a4c1643235ca62a5af61d6100870e34daaddbf2bc3c0194a1d322d72f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000001/trainer_state.json": "181057cc7c5234d60bec67d126e78a424ef302cdf190fe561f1dc61259fb208f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000001/adapter.safetensors": "5fb1156c74af4d07be464cba5da716c776ef94da47dcb99886692326ede29d91",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000001/adapter_config.json": "e0f6519265d4107fd43f9512b7ffd6a33517f66ff3a7ab03ba308e31707a1cbc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000001/optimizer.safetensors": "89824310cae891986fc4527f88e3b902e66c36e39af07f242852cdb4131e1f2f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000001/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000002/trainer_state.json": "cc1c276ae2f69a6251a2246dc0f9f111607c37116f708e6e8c8551b747d2d259",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000002/adapter.safetensors": "d74650beb26257143ecad22f90c24e7251a3b73affbff5d3483b4577408c9d11",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000002/adapter_config.json": "cd605c66c78405f3c01de192f4308fa6becce19bdf8c21e28bbc96142d3c9b20",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000002/optimizer.safetensors": "826fe757649914daaed8ca3e4f1169a07f0448777540d18490593fb248146dc3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000002/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000003/trainer_state.json": "dc881449dd1b9bc0b9cc13a28dfca62c14a356ba24003f3088f07a2bf1c43dcc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000003/adapter.safetensors": "7e6edfdd2dc8db1c7d14fd865e3736df802d5cfe3f2c0c26e90c4e628186fa4c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000003/adapter_config.json": "f3e16528fef9f69bbf808912cb3ca91d3c82f86651b1ec8ad2d49ef92b7299c0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000003/optimizer.safetensors": "100a90bd91a508303348fbe6eae727d6b2e474cc7e5370525fdfd5b44349d5e3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000003/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000004/trainer_state.json": "3dcc4e3d5d0582770c1b0a72dafa8fbb6b82a231baef416844085a246b680fc9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000004/adapter.safetensors": "0b93dfc377c71b93b22806cbd6520694b35c2360b1e6d231633f517d4fe7d44b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000004/adapter_config.json": "918aa647bf89387ac52ec00787439934dd95495b50afca3cde729a7a34016989",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000004/optimizer.safetensors": "6863c339b5db87f014f93deb5c3cf8bcd005a68c574d1ed71cb544ece6ed56bb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000004/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000005/trainer_state.json": "fa16a74ed23b17c04ebafac4a2652f79fdc4b60601f833b338ff5af8f7b292c3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000005/adapter.safetensors": "56fc126e596663d8cde9b7473ad885d9dac05ab9d061a359b9b3ebbbe35a2e6e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000005/adapter_config.json": "dfa072004afc6fb18ad90ff949e92ec7df3c6423a8eea55e9139e55416fbbd8a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000005/optimizer.safetensors": "54b26921a95a6ee3af3fca60f5cacdcddb75e30d9dd6d9a9531b12bcd15b1556",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000005/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000006/trainer_state.json": "e8068532841397d5fc65f732ab8733a2cf7acb85233afb322fcd3c6a1b558b48",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000006/adapter.safetensors": "be4eb57c10e6f66715d7f0a9e919ee2acc8df730dcc165f406b3a5088292dbc8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000006/adapter_config.json": "5e7e2c590108c539ab84f90895398bc41dbb4a3a81e5205f7b8c2c8e1c8161a7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000006/optimizer.safetensors": "515048979b4a765dafe8ae4c9336b11d8aeb7767459be3aa80a29cad5fdab5d8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000006/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000007/trainer_state.json": "41ac3cacb4bad42ec1ad011671edee6a296dcfe7f0df4181144957b1a92449fb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000007/adapter.safetensors": "e61ff20421cab06e3ca7d81bc3d3d4d37204a6dbb26d08bc5980bd81765dd4cd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000007/adapter_config.json": "37a347ba46d4bb4cf8d30fff45de8d5a15a4a641b8d6d0c79dba81e312948a7b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000007/optimizer.safetensors": "2134bd64ed062e1fc613782f13fb3b3c9b2bd072cf8e6458f98ee2470288de4f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000007/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000008/trainer_state.json": "543d11d30f125b21e2c988e28324969d5b5abb1d22e44af9708bf612ca966fe4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000008/adapter.safetensors": "60790729cc687999cfee93deca45d6766e2d9d6f4e4ec32d8471e3f7ef72ec32",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000008/adapter_config.json": "fa8f8d95863071e6819c40975ed68df38e13f74671a41ce2913d293e135495e7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000008/optimizer.safetensors": "05eb663af4f7601625e08e95f92d6fca792edd844060ee28ae40b51225826548",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000008/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000009/trainer_state.json": "0345a476d7d965e73b6b91c0f1a963fc8f214d75f630da166c17c816416ecb68",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000009/adapter.safetensors": "cc9f3907109ff0bfb2b985a06fa0bcb7d60e2d77ce5117c1d72f770b94dd8802",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000009/adapter_config.json": "89e721496c6016877049a2e2257ea14f6666151aa97f49b6552123dd2a549e48",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000009/optimizer.safetensors": "a3ff25ee22df7a5cbf9ebdf590edf29ff87f72fae0dd96c3964b9994fa2d98b9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000009/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000010/trainer_state.json": "104abcfbe5ad128ad4f112779f066e5bb22b8bd88269e4648ed3f3bc44fff6ad",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000010/adapter.safetensors": "637fbd99082b192c2758f6b1b639c6c51411753f617464710aae1b2be2778ff2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000010/adapter_config.json": "680ce8cae26cca4db937d78c5a4990fafe33985c44fee1dac5bf6b6d09647eac",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000010/optimizer.safetensors": "6837d5ffe72febd3da42ac2ab75b9006317154030734bcb844d7addc2bee6f3b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000010/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000011/trainer_state.json": "ede0d3a74309b947b5b44a7dc90fcb54cd4114b7b0c351f8295f3830ab6d7af5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000011/adapter.safetensors": "a772acee857070b1d7c4a64002c59ad9aa7fb24eeb3b8dba3cd08fa20fee0837",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000011/adapter_config.json": "3b835ae72f0ef1eb2c939fb8ae707bd6ea16b8eeb1eb0431b67ee1ae52c0d449",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000011/optimizer.safetensors": "9e4f785e653ae9d67149bc2aa17d01b21da2c17920a7eb69c50bff57e5f7963b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000011/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012/adapter.safetensors": "8d555564edb6f1ead8a796a8dc21040da3b56463b3cf5a6520292a5dbd83f8d2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012/adapter_config.json": "02bd0178d9a3315674007d94742c81ab1b81e0e833308efd7a4d0f07084571b6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012/optimizer.safetensors": "cfd89247476d4b17104223ca256e28e6438ace05fa9d6218a0afd35d7c3d86e3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/step-000012/random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/training.json": "b1e13ca0efaef50b56b875cd6df376352dd784703a256905c4e9bee83d1f1631",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/run_config.json": "f1ade4b1aa47a9f4327aa0e1e3954e2d91597e121cd9828e3f6064eb702239a3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/recovery-launch.json": "399d43ea4a13dbe307c5fd41741b42c15b6493ba39ed08ce43ad566336402291",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-launch.json": "19e79a42897a864793a3987c1aacdd8526a588869fd017327c89a0ee28bcdd33",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/reports/standard12-training-independent-audit.json": "c344f65b0337c756c3f4c3e33d2d787bffd185ca20285153af89bd9e05dc934a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/scripts/recover_standard_fit.py": "74822118b21e5ebc9912c26ac7c876ff6ac5533c9b549fa6ba78ad846495b5a3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/1791857030575085000/base.json": "0c5696c1faf5388b3b31dfd57e919b1108e360881e9558cac0ea137e839a98b1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/1791857030575085000/fit-adapter.log": "b60ada9c6b3c7ff0f08752a51bafbc3f118b67216d422e9e6dff37ed79d9e67d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/typo-failure.json": "917959354fb9246bf93be8663a5a7ee9b3530de142453316eecced7dc3e20729",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/fit-adapter-typo-failed.log": "5c56bd58791b8cdd754ca94a947d4feb7188e16adbea29fc55f15e4e2658cb22",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/actual-launch.json": "80fdf92de2f964acb52ee6de59fb3dee35780614f86650ddc353d8c6235d0be3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/attempts/attempt-1791855213422635000/train/training-fit-probe.json": "2390d1b8ccc3a78defbce36339a05ce55515b5dca433418ef8c402ab3af379e3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/snapshot.json": "370f61975af7b351a94659a1ba81414bd925764e6cb8107a1caa3b06f98c5201",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/fit-adapter.log": "80ff84b80c235f75f82d63afc84ff4a308a08a66a65ecca9c826273bfc0be425",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/three-changes-standard-prefix/fit-checks/recovery-72g/adapter.json": "33c6ec6b6d7456994be40dabbdfabe443d90fab85105e0c09daefd4441651bbc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/pyproject.toml": "047cb0600a7009b1fa39042bd5da4a613d43d5708556a513c5cf23f299145113",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/adapter_family_ablation.py": "702dcdd3ac717e35b68fd0e2c8740d055886839c38276dfaa533e9c2dbbf24f4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/audit_activation_one_step.py": "9895c72d7770fb586f022778c6f7f2cb241785f97ea5f002c3b2499acededdda",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/audit_ktune_pilot.py": "7a029ec5e36b5b09d0a2f59ca82adbfcd1b49d5e049561e910fb515e38c01fa4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/audit_metal_fit_data.py": "b557be11eaa31d7b39da1510dbf3b0823ef5e193b94dd2078d9e61fb81d70cb5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/benchmark_decoded_cache.py": "29ab07e60341e5092e623fdd904c505b045a00e9546142ce83be3b8c36651ada",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/benchmark_moe_cache.py": "083ad6c3114a9b512727658c81e174320decb0d71f679afa241e48e4294777c7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/benchmark_moe_packed_cache.py": "2b809baa42ded0629598ffc43dfaf2ae6558063e75d259e21fe3c41153f55e49",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/diagnose_adapter_rounding.py": "085ef072ecd6acf09aa041618fd867a9cf5c69747c82e270611b8b4d5fdfdb6f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/diagnose_frozen_prefix.py": "2535aae1d984b3adfb5fd13da424446c816022dcff654f181c0daf56a5e03f8a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/diagnose_native_vjp.py": "6dffc2914c73fb31858ed3dc7e5d53797f0852b5cebf6c28ade202ddd522afa2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/diagnose_sparse_attention_vjp.py": "31c4193814d744d97fe7036f96479f4099834cedb5823faa09860749f224c168",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/probe_final_block_memory.py": "cd940a4d645bbba473ccd8f1716ec8a065c1d328316fd0ea2ef949b2750b1872",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/probe_model.py": "a1a5736ff647cd44a66efcb5d0b609f8f876ed2071c9fba706dbb455d5d4ef25",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/quality_probe.py": "d9431f53cc2dc52dfcadd027c701ddf2d458df57077319cd621674c7a9e05517",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/summarize_fit_tokens.py": "f1228638abdfd0e699338f965f5b162b14966245fd356f52d4f42fd8940c727d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/summarize_standard_fit.py": "211a3f345c91bfd2d96dea1793360e30fd033fe125c68769b7ce9a12a1653b9e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/validate_expert.py": "036f9d86b2aa3e5c0b9adde0a0970f2e0e86316f947c3bd6e1111609c84faccf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/validate_target.py": "2a49aa0f11bd13bfd8b7e34a495e3ca574282a5c9e8ea4fdc9f9e9844f322b84",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/verify_behavior.py": "66bc1772c154e73ffd54f8812d5753ed2cee62e35e97d32ce65031d3fe6007c9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v3/scripts/verify_workflow.py": "74c1cbbdddaef1472536d0a92685a05d6d3ab02046a0df147421277cedfdfcb2",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/token-categories-0.json": "7abde1445fee1968c7438a7d8d16d4a966214525d44032c0b09222bbb337cf95",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/token-categories-1.json": "5729b124db8ce3ab78c4df00d604ae302e981416dc9f1c7b3ac5ea05afddf145",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/token-categories-2.json": "f8ea58d3c50c136ad1d35252d6eafca35054290283f88288740538aefa42eaed",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/scripts/summarize_standard_fit.py": "a4cacd641b99bd3180dfaabf970435f6b8ceaecfcc02b92b062a06380c3931a3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/scripts/summarize_fit_tokens.py": "f1228638abdfd0e699338f965f5b162b14966245fd356f52d4f42fd8940c727d"
+  },
+  "limitations": [
+    "No held-out/generalization or generated-patch evaluation.",
+    "Diff token categories are coarse lexical labels, not semantic correctness.",
+    "Code top-1 predictions use correct preceding tokens; they are not autonomous generation.",
+    "Checksum/source receipts bind local evidence, not independent attestation or full weight-byte authentication.",
+    "Report every regressing row/category; aggregate gain is not all-case success."
+  ]
+}

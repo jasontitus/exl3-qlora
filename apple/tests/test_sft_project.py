@@ -122,7 +122,8 @@ def _checkpoint(trainer, step, *, path=None, contract_change=None, config_change
         "base_identity": expected_base,
         "rank": args.rank,
         "alpha": args.lora_alpha,
-        "adapter_layers": list(range(40)),
+        "adapter_layers": list(args.adapter_layers),
+        "activation_mode": args.activation_mode,
         "expert_adapter_layers": [],
         **(config_change or {}),
     }
@@ -184,6 +185,37 @@ def _arg(command, name):
     return command[command.index(name) + 1]
 
 
+def _evaluation_result(trainer, command, **values):
+    """Bound fake child receipt; no model or Metal is loaded."""
+    data = Path(_arg(command, "--data"))
+    rows = [json.loads(line) for line in data.read_text().splitlines() if line.strip()]
+    selected = rows[: int(_arg(command, "--max-examples"))]
+    argv = list(map(str, command))
+    if "--verbose" not in argv:
+        argv.append("--verbose")
+    return {
+        "loss": 1.0,
+        "examples": len(selected),
+        "supervised_tokens": sum(len(row["input_ids"]) - row["loss_start"] for row in selected),
+        "checkpoint": trainer.model,
+        "adapter": str(_arg(command, "--adapter")) if "--adapter" in command else None,
+        "activation_mode": trainer.args.activation_mode,
+        "evaluation_context": {
+            "argv": argv,
+            "process_id": 123,
+            "data": str(data.resolve()),
+            "input_identity": {"data_sha256": sft.digest(data)},
+            "selected_examples_sha256": hashlib.sha256(
+                json.dumps(selected, sort_keys=True, separators=(",", ":")).encode()
+            ).hexdigest(),
+            "seq_length": int(_arg(command, "--seq-length")),
+            "requested_max_examples": int(_arg(command, "--max-examples")),
+            "implementation": sft.implementation_identity(),
+        },
+        **values,
+    }
+
+
 @pytest.mark.parametrize(
     "change",
     [
@@ -210,7 +242,7 @@ def test_config_rejects_unsupported_or_invalid_settings(tmp_path, change):
         sft.SFTConfig(output_dir=str(tmp_path), **change)
 
 
-@pytest.mark.parametrize("memory", [0.5, 81])
+@pytest.mark.parametrize("memory", [0.5, 1025])
 def test_config_rejects_budget_outside_backend_supported_range(tmp_path, memory):
     with pytest.raises(ValueError):
         sft.SFTConfig(output_dir=str(tmp_path), memory_gib=memory)
@@ -548,9 +580,7 @@ def test_comparison_keeps_metrics_and_checkpoint_identity_distinct(project, monk
     selected = _checkpoint(project, 1)
 
     def child(command, *, label, directory):
-        result = {"loss": 1.0 if label == "adapter" else 2.0, "examples": 1}
-        if label == "adapter":
-            result["adapter"] = str(selected)
+        result = _evaluation_result(project, command, loss=1.0 if label == "adapter" else 2.0)
         _write(Path(_arg(command, "--report")), result)
 
     monkeypatch.setattr(project, "_child", child)
@@ -574,9 +604,10 @@ def test_training_fit_is_explicit_and_has_no_generation_or_quality_claim(project
         seen.append(command)
         assert command[0] == "evaluate"
         assert Path(_arg(command, "--data")).name == "train.jsonl"
+        assert "--token-metrics" in command
         _write(
             Path(_arg(command, "--report")),
-            {"loss": 2.0 if label == "fit-base" else 1.8, "examples": 1, "supervised_tokens": 2},
+            _evaluation_result(project, command, loss=2.0 if label == "fit-base" else 1.8),
         )
 
     monkeypatch.setattr(project, "_child", child)
@@ -793,6 +824,7 @@ def test_prepare_publishes_required_provenance_in_initial_manifest(project, tmp_
 def test_resource_profile_is_explicit_and_all_limits_reach_children(tmp_path):
     low = sft.SFTConfig(output_dir=str(tmp_path / "low"))
     assert (low.memory_gib, low.decoded_cache_mib, low.packed_cache_mib) == (16, 0, 128)
+    assert low.prefix_cache_mib == 0
     high = sft.SFTConfig(output_dir=str(tmp_path / "high"), profile="development")
     assert (high.memory_gib, high.reserve_gib) == (80, 32)
     assert (high.packed_cache_mib, high.decoded_cache_mib, high.allocator_cache_mib) == (
@@ -803,21 +835,28 @@ def test_resource_profile_is_explicit_and_all_limits_reach_children(tmp_path):
     trainer = sft.SFTTrainer(model="unused", args=high)
     flags = trainer._resources()
     for key in sft.RESOURCE_FIELDS:
-        assert _arg(flags, "--" + key.replace("_", "-")) == getattr(high, key)
+        if getattr(high, key) is None:
+            assert "--" + key.replace("_", "-") not in flags
+        else:
+            assert _arg(flags, "--" + key.replace("_", "-")) == getattr(high, key)
 
 
 def test_resource_only_resume_preserves_math_contract_and_records_attempt(project, monkeypatch):
     first = _checkpoint(project, 7)
     original_contract = _read(first / "trainer_state.json")["contract"]
     trainer = sft.SFTTrainer.from_project(
-        project.root, max_steps=8, resources={"profile": "development", "decoded_cache_mib": 16384}
+        project.root,
+        max_steps=8,
+        resources={"profile": "development", "decoded_cache_mib": 16384, "prefix_cache_mib": 2048},
     )
     assert trainer.args.memory_gib == 80
     assert trainer.args.decoded_cache_mib == 16384
+    assert trainer.args.prefix_cache_mib == 2048
 
     def child(command, *, label, directory):
         assert _arg(command, "--memory-gib") == 80
         assert _arg(command, "--decoded-cache-mib") == 16384
+        assert _arg(command, "--prefix-cache-mib") == 2048
         recorded = _read(Path(directory) / "resources.json")
         assert recorded["profile"] == "development"
         if label == "training":
@@ -830,6 +869,7 @@ def test_resource_only_resume_preserves_math_contract_and_records_attempt(projec
     saved = sft.SFTTrainer.from_project(project.root)
     assert saved.args.memory_gib == 80
     assert saved.args.decoded_cache_mib == 16384
+    assert saved.args.prefix_cache_mib == 2048
     assert _read(saved._recover()[1] / "trainer_state.json")["contract"] == original_contract
     with pytest.raises(ValueError, match="Only resource"):
         sft.SFTTrainer.from_project(project.root, resources={"learning_rate": 1e-3})
@@ -850,11 +890,14 @@ def test_cli_development_profile_allows_explicit_cache_override(tmp_path):
             "development",
             "--decoded-cache-mib",
             "1024",
+            "--prefix-cache-mib",
+            "2048",
         ]
     )
     trainer = cli.start_trainer(args, parser)
     assert trainer.args.memory_gib == 80
     assert trainer.args.decoded_cache_mib == 1024
+    assert trainer.args.prefix_cache_mib == 2048
 
     config = tmp_path / "low-config.json"
     _write(config, dataclasses.asdict(sft.SFTConfig(output_dir=str(tmp_path / "new-project"))))
@@ -929,7 +972,7 @@ def test_saved_chunk_reaches_all_children_and_cannot_change_on_resume(
         elif command[0] == "evaluate":
             _write(
                 Path(_arg(command, "--report")),
-                {"loss": 1.0, "examples": 1, "supervised_tokens": 2},
+                _evaluation_result(project, command),
             )
         elif command[0] == "generate":
             _write(Path(_arg(command, "--report")), _generation_result())
@@ -950,3 +993,12 @@ def test_saved_chunk_reaches_all_children_and_cannot_change_on_resume(
         project.train(resume_from_checkpoint=True, compare=False)
     with pytest.raises(ValueError, match="Checkpoint does not belong"):
         project._checkpoints()
+
+
+def test_native_tool_preview_never_counts_empty_content_as_success(tmp_path):
+    trainer = sft.SFTTrainer(model="unused", args=sft.SFTConfig(output_dir=str(tmp_path)))
+    result = trainer._paired_preview(
+        {"tools": [], "messages": [{"role": "assistant", "tool_calls": []}]}, None, tmp_path
+    )
+    assert result["status"] == "skipped" and result["tool_action_verified"] is False
+    assert "exact_answer_with_eos" not in result

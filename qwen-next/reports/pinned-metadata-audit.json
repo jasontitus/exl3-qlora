@@ -1,0 +1,50 @@
+{
+  "format": "qwen-m0-metadata-audit-v1",
+  "scope": "Pinned remote metadata and3representative headers only; no payload decoding/model support/capacity proof",
+  "identities": {
+    "model-exl3-L47-gate.safetensors.header.json": "c88644314fe50a590ec8e30f50f95fd0214ae23c373f99e4eeee73835d3b59a0",
+    "model-lm-head.safetensors.header.json": "e0b4c8b18b0dee1d6b416820a6398dae5d1308099b0006c9eeffc9b059f918ac",
+    "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+    "config.json": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1",
+    "model-trunk-00002-of-00002.safetensors.header.json": "5c6a44fddca2719d1260105eb7796e84a96a1f7e3a205d7e4c4a39d998da65c5",
+    "model.safetensors.index.json": "7d9d288b98bcc1cd6aaaf0755223cb4c54f2fb5ed7a976f471fa2843a5bd398f"
+  },
+  "model_type": "qwen4_exp",
+  "text_model_type": "qwen4_exp_text",
+  "layers": 48,
+  "final_layer_type": "full_attention",
+  "expert_quant": {
+    "format": "exl3",
+    "k": 3,
+    "codebook": "mcg",
+    "window": 14,
+    "out_scales": "svh",
+    "source": "convert",
+    "quantizer": "ldlq-rotated",
+    "calibration": "imatrix-diagonal",
+    "imatrix_sha256": "0ccd556feb976a22c335ff4b2db7cf93bb1af99422b6f8ef8c01342aa71d070e",
+    "converter": "qwen4-exl3-2-upstream-skew"
+  },
+  "ngram_table": {
+    "file": "ngram_table.bin",
+    "bits": 4,
+    "group_size": 32
+  },
+  "index_tensor_count": 3070,
+  "index_shard_count": 203,
+  "declared_safetensors_payload_bytes": 52965953530,
+  "external_ngram_included_in_that_total": false,
+  "ple_history_token_id": 248044,
+  "chat_eos_token": "<|im_end|>",
+  "chat_eos_token_id": 248046,
+  "a0_target": "language_model.model.layers.47.self_attn.o_proj",
+  "remaining": [
+    "all-shard header/ownership verification",
+    "external PLE file format/size inventory",
+    "converter-produced payload decode fixtures",
+    "affine forward/input-gradient qualification",
+    "Qwen architecture port",
+    "actual Qwen tokenization/mask verification",
+    "GPU capacity/quality/serving gates"
+  ]
+}

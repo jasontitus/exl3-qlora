@@ -1,5 +1,12 @@
 # Kernel-training applicability review
 
+Later-results pointer (2026-10-12): this body preserves its review cutoff. The
+[completed one-row diagnostic and BF16 own-mode result](last-block-training-result-and-recipe.md)
+and [active normal three-change recipe](standard-three-change-run.md) supersede
+pending-result wording below. The launched normal run uses protocol v2,
+runtime-v3, an explicit 8 GiB reserve and all 12 checkpoints retained. Its fresh
+three-row fitting/cache-parity results are still pending.
+
 Date: 2026-10-12. Scope: read-only review of the staged importer, project CLI,
 training-fit scoring and actual prepared full-parent pilot. The reviewer also
 implemented the importer; this is an adversarial effectiveness pass, not an

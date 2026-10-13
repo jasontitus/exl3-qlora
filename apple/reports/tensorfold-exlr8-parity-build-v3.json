@@ -1,0 +1,56 @@
+{
+  "format": "exl3-tensorfold-compile-link-v1",
+  "commit": "51426b8e668b181d28c0bb6964c1882183e292fd",
+  "parent": "e463e48bc7d796101a49fab5a8116016fc33c527",
+  "compile_receipt_sha256": "403d5e0e539779c3babf096a437f13818a8f39eacd69672b98ae936233cf7fa4",
+  "builder_sha256": "debb6205a4c9ee4dce3f5ec2e0419f6500a654a896d6a7858f1842a429880eee",
+  "harness_source_sha256": "03a0a2722f775d0f49eb80b25e73ea4fba0641a28378af7178d228c8947f120a",
+  "libraries": {
+    "before": {
+      "source_sha256": "5f6378c6e2c7a6b74bc9c6e6283a02a2b036693898f1227365e40437927177ba",
+      "air_sha256": "8ad914e8673edf89d7f4f8131246bb71e5917339d806032e05fb8dde3a186d63",
+      "argv": [
+        "xcrun",
+        "--sdk",
+        "macosx",
+        "metal",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/before.air",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/before.metallib"
+      ],
+      "link_exit_code": 0,
+      "stderr": "",
+      "library_sha256": "d827ed329e420a7691a619a161cada25adebb92c085f1328e92b659c6ca29bae"
+    },
+    "after": {
+      "source_sha256": "216dc0cadf64b313283981b107288de42fb551237a1b4390585fc90b101c97de",
+      "air_sha256": "b25736a5ac478ff1249a69daadd69a71991c4fa07b911ed41a359699f2ebad06",
+      "argv": [
+        "xcrun",
+        "--sdk",
+        "macosx",
+        "metal",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/after.air",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/after.metallib"
+      ],
+      "link_exit_code": 0,
+      "stderr": "",
+      "library_sha256": "d3df250e3dad84c180f82bf363aa5b6d8cfb9409951a8c6b524c56462d83cae9"
+    }
+  },
+  "swift_build": {
+    "argv": [
+      "swiftc",
+      "-O",
+      "-module-cache-path",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/swift-module-cache",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/verify_tensorfold_exlr8.swift",
+      "-o",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/tensorfold-exlr8-parity-build-v3/verify_tensorfold_exlr8"
+    ],
+    "exit_code": 0,
+    "stderr": ""
+  },
+  "harness_executable_sha256": "0f55dd2b737bfa7d2eb8fed8669bdb9453f7b7cb2b02f879336433dd21151076"
+}

@@ -1,0 +1,123 @@
+{
+  "format": "upstream-bounded100-actual-cli-audit-v1",
+  "completed_at": "2026-10-13T03:29:11.296281+00:00",
+  "invocation": [
+    "python",
+    "-m",
+    "exl3_mlx.cli",
+    "ktune",
+    "prepare-upstream",
+    "--source",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-inventory/bounded100-manifest.json",
+    "--model",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+    "--output",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/upstream-bounded100-fullfiles",
+    "--max-length",
+    "32768"
+  ],
+  "exit_code": 0,
+  "selection_plan_sha256": "6b5703f0aba188296defcfd53a5de5d5a850eff6eb5360f0ae07c48dc2267d7d",
+  "manifest_file_sha256": "f6f7e31e24c88090470803e5e31d9f9913cb0ccba01043e7f90dbf7204920d7c",
+  "source_sha256": {
+    "upstream_data.py": "fe2701b339fda1cb8c1843a85932f9ebc91424ebbacf33365b9ad583fda6850a",
+    "ktune_cli.py": "493816ad6046d499f478ef1f909c9bb5550fe7bd4a5bca490ea2a2a5cac90888",
+    "context.py": "dae6e69baa6f5cda760b784d4abaab91cab7433e223d16f0c5c5e64b8c0c5246"
+  },
+  "import_report_sha256": "9b376d2e753a03c508c1b9de86f9d3911317c5cd90cd5e1c81ac93ba5feda69a",
+  "verified_artifacts_sha256": {
+    "ledger.jsonl": "af640d33975c70a660a3a08312be8156509d0c8b6d2927b4e9d43e38c906bcaf",
+    "length-audit.jsonl": "7cb349628c35f3ede60839470ab8514913cfcb7c0cd9a195c12d9c16a8a71c1a",
+    "provenance.jsonl": "04b1e9b424ea47a211215c1b26f15da3aa9479102525147960c68691fbb79a1a",
+    "test.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "train.jsonl": "afd306405f0a2907aea17556725e9df1017b450089653046ff4aa06d6562afa1",
+    "valid.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "counts": {
+    "candidates": 100,
+    "excluded": 95,
+    "source_reconstructed": 93,
+    "test": 0,
+    "train": 5,
+    "unique_normalized_patches": 93,
+    "valid": 0
+  },
+  "exclusion_counts": {
+    "full_serialized_example_exceeds_context": 88,
+    "source_reconstruction_failed": 7
+  },
+  "selected_rows": [
+    {
+      "case_id": "mlx-serve-cc2b07cfc400",
+      "complete_target_sha256": "0f4639c04958945a3b9d5bfe189743b4be91869e322d38a05c603f8b5d1bd862",
+      "exclusion_reasons": [],
+      "prompt_tokens": 8751,
+      "selected": true,
+      "source_id": "ktune-lineage:90ca7204289e2c061443d266",
+      "target_tokens": 9042,
+      "token_ids_sha256": "706f9d1d5ea3027762d363000c2a7c590cafedcdc97ce88fa93c965e0e9bc0cd",
+      "total_tokens": 17793,
+      "truncated": false
+    },
+    {
+      "case_id": "tensorfold-eca8490bb868",
+      "complete_target_sha256": "545097f34308f1d571aa16e2800e6d9a78b90f33ade58814d939b5888b7adb4d",
+      "exclusion_reasons": [],
+      "prompt_tokens": 12283,
+      "selected": true,
+      "source_id": "ktune-lineage:7df2524e968cf18f995001a4",
+      "target_tokens": 13775,
+      "token_ids_sha256": "c55548f916db9cc7a2ccbf071f31773c5a9575aa114ec4b862f55af2c9bc1382",
+      "total_tokens": 26058,
+      "truncated": false
+    },
+    {
+      "case_id": "tensorfold-57097f7eb6ac",
+      "complete_target_sha256": "a53bd14cf8b62d37e3c504d2f0e6f7f781cb4ea2b049995c2b7d6461590751ac",
+      "exclusion_reasons": [],
+      "prompt_tokens": 3820,
+      "selected": true,
+      "source_id": "ktune-lineage:7df2524e968cf18f995001a4",
+      "target_tokens": 3962,
+      "token_ids_sha256": "bd1254a7c16da227b47806c0cb3f7853fe6a2d1e75c8194bf2c00d277297ba99",
+      "total_tokens": 7782,
+      "truncated": false
+    },
+    {
+      "case_id": "tensorfold-9a92139a530e",
+      "complete_target_sha256": "7458bd0ae22e89d235a5bd00abcd748ae47aab38371d6079eb076d83e3e6d106",
+      "exclusion_reasons": [],
+      "prompt_tokens": 4700,
+      "selected": true,
+      "source_id": "ktune-lineage:7df2524e968cf18f995001a4",
+      "target_tokens": 4915,
+      "token_ids_sha256": "8cffb3a9038da933b7f911a6910b612a101b0c34f63de6717743e4ddd56ca9c6",
+      "total_tokens": 9615,
+      "truncated": false
+    },
+    {
+      "case_id": "tensorfold-e82ab6949e0f",
+      "complete_target_sha256": "b264d8e9267ecc470b8da43080a87b638fdf44ff188292e49b2f5b68a4bdfb3e",
+      "exclusion_reasons": [],
+      "prompt_tokens": 10777,
+      "selected": true,
+      "source_id": "ktune-lineage:7df2524e968cf18f995001a4",
+      "target_tokens": 12492,
+      "token_ids_sha256": "729e0b4c70a48c27644675190229c859c616c44c46cfe5e780c7588c652a7f39",
+      "total_tokens": 23269,
+      "truncated": false
+    }
+  ],
+  "source_materialized_bytes": 342918221,
+  "execution_verified_examples": 0,
+  "model_loaded": false,
+  "gpu_used": false,
+  "limitations": [
+    "Five means mechanically reconstructed and token-fit, not manually reviewed positive optimization quality.",
+    "The fixed metadata selection used 25 candidates per repository; it is not random sampling or a 300-example corpus.",
+    "Complete before/after target format differs from the preliminary diff-target audit with 14 fits.",
+    "The partial finite-difference result in 57097f7 remains visible; classify it as integration/review-required, not a verified kernel.",
+    "Inherited protection, family overlap and contradiction review remain necessary before benchmark use.",
+    "All five rows exceed the largest validated training context of 5,822 tokens."
+  ]
+}

@@ -100,6 +100,8 @@ class StudioState:
                     max_steps=value.get("steps", 2),
                     max_length=value.get("max_length"),
                     chunk_size=value.get("chunk_size", 512),
+                    adapter_layers=value.get("adapter_layers"),
+                    activation_mode=value.get("activation_mode", "checkpoint"),
                     demo=value.get("demo", False),
                     learning_rate=value.get("learning_rate", 1e-4),
                     profile=value.get("profile", "low-memory"),
@@ -107,6 +109,7 @@ class StudioState:
                     reserve_gib=value.get("reserve_gib"),
                     packed_cache_mib=value.get("packed_cache_mib"),
                     decoded_cache_mib=value.get("decoded_cache_mib"),
+                    prefix_cache_mib=value.get("prefix_cache_mib", 0),
                     allocator_cache_mib=value.get("allocator_cache_mib"),
                     prompt_column=value.get("prompt_column") or None,
                     response_column=value.get("response_column") or None,
@@ -137,6 +140,14 @@ class StudioState:
                 if self.project is None or not (self.project / "project.json").is_file():
                     raise ValueError("Check data or open a project first")
                 if action == "train":
+                    if "activation_mode" in value:
+                        raise ValueError(
+                            "Activation mode is fixed at preparation; create a new project and baseline"
+                        )
+                    if "adapter_layers" in value:
+                        raise ValueError(
+                            "Adapter layers are fixed at preparation; create a new project"
+                        )
                     steps = value.get("steps", 2)
                     if type(steps) is not int or steps < 1:
                         raise ValueError("Total steps must be a positive integer")

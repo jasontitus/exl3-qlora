@@ -1,0 +1,256 @@
+{
+  "schema": "qwen-plan-adversarial-review-v1",
+  "reviewed_at_local": "2026-10-13",
+  "reviewer": "independent adversarial-code subagent",
+  "scope": "Read-only review of revised design, pinned checkpoint metadata, local native architecture/training references and installed MLX-LM source. No implementation qualification.",
+  "verdict": "proceed_with_isolated_M0_and_staged_A0_implementation; do_not_claim_Qwen_training_or_16K_support",
+  "blocking_plan_findings_remaining": 0,
+  "source_snapshot_note": "Individual source hashes bound below; reads were not an atomic snapshot. Parent edited the design to resolve four findings during review. Report does not certify unreviewed future implementation.",
+  "source_files": [
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/docs/qwen38-flash-next-16k-finetuning-design.md",
+      "sha256": "d60c2277e316c101c850cec6a88d736785cc2a7a8eb07f9ed336fe44d0c03e70"
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/config.json",
+      "sha256": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1"
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/tokenizer_config.json",
+      "sha256": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27"
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/model.safetensors.index.json",
+      "sha256": "7d9d288b98bcc1cd6aaaf0755223cb4c54f2fb5ed7a976f471fa2843a5bd398f"
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/pack-format.md",
+      "sha256": "804e27430b9be332b48c720eef43f1252100ed70b504c01d37fcbf5990265d85"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/exllamav3/architecture/qwen4_exp.py",
+      "sha256": "f0781ec11aabc78694ed5084d24fb31093c0500a5c985a00276188c241c165bb"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/exllamav3/training/native_llama.py",
+      "sha256": "12c99ff24bb54067a081ceb9e6b52154cf811afd231bd30a13847c70d5729f5e"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/exllamav3/training/hyperconnections.py",
+      "sha256": "0d2873bf4fe26416f23db6c8cbd884cded24a473dbb72710f0f25479671dbe6c"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/exllamav3/training/gdn.py",
+      "sha256": "e1de1f6112715a7868388972872a5f37b0d8198d98246527650ce791d9b33a57"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/exllamav3/training/ple.py",
+      "sha256": "22756b61feb5ce0b0f85f2be05378b8b07e48ec90256ff8144fb4137f7b3c295"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/exllamav3/modules/qsa_indexer.py",
+      "sha256": "b20e6beac6bf277cdd716538416d80f2370e1cba2ed45954f6cdfc929be037ee"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/data.py",
+      "sha256": "b444afd00d50de7eaf3e6343f58b1920bdbd236cf903d90add89c47ecce236c9"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/tool_data.py",
+      "sha256": "65b2dec3f2585469507c0c9cf376bea55660bc6da54c452214f238d88846f651"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/workflow.py",
+      "sha256": "51025ede97a12e257ad77287713d76081990efed236b324e2290a041f1f3f708"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx_lm/models/qwen3_next.py",
+      "sha256": "67ca08a4d08cb7be124965e95399735e556f1eaeb21a16bc23cb88d1ac035e11"
+    },
+    {
+      "path": "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/lib/python3.12/site-packages/mlx_lm/models/gated_delta.py",
+      "sha256": "f69e837ea68641dbb06fdb5dcc024a9a7e1d9353f08ae58c05275253a0c39428"
+    }
+  ],
+  "findings": [
+    {
+      "id": "QW-A0-BOUNDARY",
+      "severity": "high",
+      "status": "addressed-design",
+      "title": "A0 requires three independent boundary payloads, not attention context alone",
+      "sources": [
+        "design:134-142",
+        "exllamav3/training/native_llama.py:1362-1406,1554-1574",
+        "exllamav3/training/hyperconnections.py:17-30,72-78"
+      ],
+      "detail": "The o_proj input is the flattened attention context after the sigmoid gate from interleaved q_proj. Its output is injected into the original four FP32 residual streams using attention HC post coefficients. All three are independent of the A0 adapters; downstream states and routes are not. The revised draft binds these fields and rejects upstream adaptation.",
+      "required_fix": "Implement a typed A0 boundary containing gated_context, incoming_streams and attention_post with explicit shapes/dtypes; scan every trainable leaf for placement before allowing caching. The uncached path must use the identical explicit cut, not merely freeze weights. Never retain or reuse downstream MLP states or expert routes across updates.",
+      "acceptance_gate": "Nonzero-B cut-vs-uncut tiny composed loss/input/adapter gradient comparisons; cache miss/hit and suffix update parity; reject adding q_proj, HC, PLE or any other upstream trainable leaf; boundary corruption/field omission must fail closed."
+    },
+    {
+      "id": "QW-SUFFIX-GRADIENTS",
+      "severity": "high",
+      "status": "implementation-gate",
+      "title": "Frozen downstream weights still require their full input-gradient paths",
+      "sources": [
+        "design:138-149",
+        "exllamav3/training/native_llama.py:1640-1665,1704-1727",
+        "exllamav3/training/hyperconnections.py:46-78"
+      ],
+      "detail": "A0 changes the residual before MLP HC, routed/shared experts and final mixer. Selected expert probabilities and the shared-expert sigmoid gate depend on that changed input. Hard top-k IDs are locally nondifferentiable but selected probabilities remain differentiable. Detaching weights/probabilities or caching post-o_proj values can produce apparent adapter learning with the wrong derivative.",
+      "required_fix": "Port full HC/mixer derivatives, packed expert input VJPs, selected router softmax derivatives and shared gate derivatives. Replay a given forward route during backward but recompute routes for each new forward/update. Explicitly declare the CE-only objective and any optional auxiliary routing loss; do not silently inherit framework defaults.",
+      "acceptance_gate": "Independent tiny FP64 composed suffix directional-gradient checks with nonzero LoRA B and nonuniform routing; verify gradients against oracle both when routes are held fixed locally and after a fresh forward changes the selected set."
+    },
+    {
+      "id": "QW-FINAL-MIXER",
+      "severity": "high",
+      "status": "addressed-design",
+      "title": "Do not add an extra final RMSNorm",
+      "sources": [
+        "exllamav3/architecture/qwen4_exp.py:281-300",
+        "exllamav3/training/native_llama.py:2323-2331",
+        "exllamav3/training/hyperconnections.py:5-30"
+      ],
+      "detail": "The initial revised draft called the final operation mixer/norm. This architecture collapses all four streams with a combine-less GatedResidual; no additional final model RMSNorm follows it. The parent corrected the draft after this review.",
+      "required_fix": "Implement exactly the combine-less final HC mixer, including its internal per-stream normalization and defined output cast. Do not reuse the DeepSeek head pre-norm or the plain mean used by feature taps.",
+      "acceptance_gate": "Independent final-mixer forward and input-gradient fixture, plus full zero-adapter logits parity."
+    },
+    {
+      "id": "QW-TOKEN-CONTRACT",
+      "severity": "high",
+      "status": "addressed-design",
+      "title": "PLE history token and chat termination token differ",
+      "sources": [
+        "qwen-next/sources/config.json:/text_config/eos_token_id,/text_config/bos_token_id",
+        "qwen-next/sources/tokenizer_config.json:/eos_token,/bos_token,/added_tokens_decoder",
+        "exllamav3/architecture/qwen4_exp.py:74-80,250-263",
+        "apple/src/exl3_mlx/data.py:53-90",
+        "apple/src/exl3_mlx/workflow.py:712-743",
+        "design:186"
+      ],
+      "detail": "Pinned model configuration uses248044 (<|endoftext|>) for PLE history padding and model BOS/EOS metadata; the tokenizer exposes chat EOS248046 (<|im_end|>) and bos_token=None. Existing DeepSeek preparation rejects token129264 and text preparation inserts tokenizer.bos_token_id. Reusing these assumptions can change n-gram rows, reject valid text, insertNone or stop generation on the wrong token. The draft now distinguishes these contracts.",
+      "required_fix": "Create model-specific token capability metadata and keep PLE history padding separate from generation stop IDs and serialization. Do not import DeepSeek prepared token IDs or hardcoded forbidden IDs. Require actual tokenizer vocabulary files before claiming tokenization support; tokenizer_config alone is metadata.",
+      "acceptance_gate": "Golden exact token IDs/spans for ordinary text, Unicode/code, special-token-looking source text, terminal tool calls and BOS/EOS boundaries; independently verify first two positions of PLE hashes with config248044, and reject DeepSeek IDs/receipts as incompatible."
+    },
+    {
+      "id": "QW-TEMPLATE-MODE",
+      "severity": "medium",
+      "status": "addressed-design",
+      "title": "Template keyword defaults change both prompt and target",
+      "sources": [
+        "qwen-next/sources/tokenizer_config.json:/chat_template",
+        "design:186",
+        "apple/src/exl3_mlx/tool_data.py:223-239"
+      ],
+      "detail": "The actual Qwen template defaults enable_thinking to true, reasoning_effort to xhigh and preserve_thinking to true. It injects instructions and think delimiters, and renders tool arguments as parameter XML rather than DeepSeek DSML. The draft now binds the keyword contract and chooses enable_thinking=false for initial edit fixtures.",
+      "required_fix": "Bind every supplied/resolved template keyword and target-mask convention in prepared-data identity. Render tools through the exact pinned template. Use a verified exact-prefix or explicit span method; fail unsupported conversation structures. Preserve command text after the model-specific rendering without inventing tool observations.",
+      "acceptance_gate": "CPU golden serialization tests for defaults and explicitly supported mode, exact assistant spans and full terminal suffix. Compare all IDs and target offsets to an independent invocation of the pinned tokenizer/template, including arguments containing newlines or delimiter-looking text."
+    },
+    {
+      "id": "QW-A0-CACHE-BUDGET",
+      "severity": "medium",
+      "status": "addressed-design",
+      "title": "Residual-only625GiB estimate understates A0 corpus cache",
+      "sources": [
+        "design:140,202,222,294",
+        "qwen-next/sources/config.json:/text_config/num_attention_heads,/text_config/head_dim,/text_config/hidden_size,/text_config/hc_count"
+      ],
+      "detail": "At backboneT=16384, streams consume0.625GiB. A half-precision gated context of shape[T,24*256] adds0.1875GiB and four FP32 post coefficients add0.000244140625GiB. The illustrative minimum is0.812744140625GiB per item, not0.625; optional fields, identity and staging are extra. Parent corrected the draft.",
+      "required_fix": "Inventory actual stored dtypes and byte counts and include admission/eviction/loading overlap. Differentiate A0 and A1 storage schemas and budgets; no quota or memory guarantee may rely only on residual bytes.",
+      "acceptance_gate": "Byte-exact cache accounting, oversize bypass without evicting useful entries, source/adapter-placement invalidation, bounded disk quota, and cold/warm measured whole-system memory."
+    },
+    {
+      "id": "QW-A1-QSA",
+      "severity": "high",
+      "status": "implementation-gate",
+      "title": "A1 needs full gated Q/K/V and sparse attention VJP, even though A0 does not",
+      "sources": [
+        "design:144-182",
+        "exllamav3/training/native_llama.py:1399-1406,1554-1570",
+        "exllamav3/modules/qsa_indexer.py:13-26,146-238,469-471"
+      ],
+      "detail": "Adding q_proj adapters changes both queries and the per-head output-gate half. A1 needs gradient through that sigmoid gate, Q/K normalization with1+weight, partial RoPE, selected K/V, GQA reduction and causal sparse softmax. Correct frozen sparse forward is required for all12 QSA layers even in A0. Local native training refuses long sparse sequences and cannot certify16K.",
+      "required_fix": "Implement the whole bounded QSA custom VJP and capture actual forward routes. Retain no full[T,T]mask or all-query selected K/V. Respect completed four-token block pooling in FP32, rounding/norm order, pooled-key RoPE at block starts, invalid slots and always-visible causal tail. Reference and serving precision/tie policies must be pinned.",
+      "acceptance_gate": "Reduced-budget binding oracle; full-budget lengths2051/2052 plus nonmultiple tails; independent actual selected sets, forward and Q/K/V/gate gradients; memory scaling with query tile size; recomputation route replay and duplicate/shared KV accumulation."
+    },
+    {
+      "id": "QW-RECURRENCE",
+      "severity": "high",
+      "status": "implementation-gate",
+      "title": "Earlier-layer adapters require recurrent and convolution adjoints",
+      "sources": [
+        "design:156-172",
+        "exllamav3/training/gdn.py:20-42,108-166",
+        "apple/.venv/lib/python3.12/site-packages/mlx_lm/models/qwen3_next.py:264-295",
+        "apple/.venv/lib/python3.12/site-packages/mlx_lm/models/gated_delta.py:557-647"
+      ],
+      "detail": "The installed Qwen3-Next implementation uses a sequential operation recurrence when training and an inference Metal kernel otherwise. It is a different architecture (including SiLU gated norm and ordinary layer norms). Neither is a proven Qwen3.8 bounded backward. A0/A1 have no adapted path crossing a GDN layer; stageB does.",
+      "required_fix": "Keep A0/A1 scopes fail-closed. StageB needs chunk-boundary FP32 state adjoints, causal convolution halos and gradients,16 key/48 value head ordering, exact decay/beta math and sigmoid output gate. Forward-only inference code must not be described as autograd support.",
+      "acceptance_gate": "Independent tiny full recurrence versus chunk-adjoint gradients; late loss produces matching early-input/adapter gradients across multiple chunks; explicit initial/history state tests; long-context memory measurements without retaining all per-token states."
+    },
+    {
+      "id": "QW-FORMAT",
+      "severity": "high",
+      "status": "implementation-gate",
+      "title": "The selected Sushi pack is not the current Apple EXL3 layout",
+      "sources": [
+        "design:120-128",
+        "qwen-next/sources/config.json:/expert_quant,/quantization,/ngram_table",
+        "qwen-next/sources/pack-format.md:17-57,59-95,150-160"
+      ],
+      "detail": "Selected metadata specifiesMCG/window14, U16 expert-axis payloads, affine per-weight overrides, folded codebook scale and external4-bit/group32 ngram_table.bin. The current DeepSeek decoder/manifest is not sufficient. Config+index declarations do not verify actual payload identity, header geometry, converter decode or external-table layout.",
+      "required_fix": "Qualify bounded affine forward/input VJP and row reads separately from EXL3 converter-derived fixtures. Validate per-weight shard stamps, rate/group mapping, window and codebook, and exact external n-gram header/row bounds/checksum. Keep metadata-only status distinct from complete/loadable checkpoint status.",
+      "acceptance_gate": "Independent converter or trusted external decode fixtures for window14MCG, tail/edge geometry and scale folding; adjoint tests on the same frozen decoded matrix; reject missing/truncated external payload or unverified unsupported format; exact base-identity binding through adapters/caches."
+    },
+    {
+      "id": "QW-STAGED-CLAIMS",
+      "severity": "medium",
+      "status": "implementation-gate",
+      "title": "Capacity, training correctness, usefulness and serving remain separate claims",
+      "sources": [
+        "design:3-31,247-274,306-365"
+      ],
+      "detail": "The revised design correctly marks implementation authorized but Qwen support/16K capacity unimplemented and unqualified. Metadata/header tools, a tiny update, lower fit NLL and inference support cannot establish full16K training, held-out code quality or portable Sushi adapter application. Existing DeepSeek12K preflight is not Qwen evidence.",
+      "required_fix": "Use separate architecture-specific runtime/dependency/cache/adapter/prepared-data schemas, and leave active DeepSeek pinned source untouched. Record the actually measured serialized/backbone lengths and adapter targets per stage. Keep payload downloads and GPU qualification coordinated with resource availability.",
+      "acceptance_gate": "A0 full-length update and fresh uncached reload before support claim; held-out code-only/EOS/rationale metrics plus generated apply/compile/numerical/performance tests for usefulness; serving exact-base adapter application parity before portable export claim."
+    }
+  ],
+  "verified_cpu_metadata": {
+    "layers": 48,
+    "final_layer_index": 47,
+    "final_layer_type": "full_attention",
+    "qsa_layers": 12,
+    "gdn_layers": 36,
+    "residual_streams": 4,
+    "qsa_q_width": 6144,
+    "ple_layer_ids_are_one_based": [
+      2
+    ],
+    "ple_history_token_id": 248044,
+    "chat_eos_token_id": 248046,
+    "illustrative_A0_boundary_bytes_at_T16384": 872677376,
+    "illustrative_A0_boundary_GiB_at_T16384": 0.812744140625,
+    "weight_payload_loaded": false
+  },
+  "required_stage_order": [
+    "M0 metadata/token-template/format contracts and CPU fixtures",
+    "M1 exact selected-base decoder/affine/PLE rows and architecture forward",
+    "A0 complete cut before final o_proj plus full differentiable suffix and measured capacity ramp",
+    "A1 separately qualified QKV/output-gate sparse VJP and distinct layer-input boundary",
+    "B recurrent chunk adjoints before any adapter whose gradient traverses GDN",
+    "Independent generated-code usefulness and serving qualification"
+  ],
+  "limitations": [
+    "No GPU/model forward or gradient tests ran in this review.",
+    "No numerical parity with the selected Sushi checkpoint has been demonstrated by this review.",
+    "Tokenizer config/template inspected; tokenizer.json/vocabulary payload was not available in the metadata-only source directory.",
+    "The pinned Sushi source commit was not materialized in the local blob-filtered mirror; an attempted read could not obtain it without network. Review uses the already captured pinned pack specification plus actual local native references, not a claim that its complete serving implementation was inspected.",
+    "External Axolotl/NeMo/MS-SWIFT/community performance claims were not independently reverified by this local review.",
+    "CPU metadata assertions and byte arithmetic are not evidence of loadability, throughput, numerical correctness, training quality or memory fit."
+  ],
+  "executed_checks": [
+    "JSON metadata parsing and exact architecture count/final-layer assertions",
+    "Static source inspection only; no MLX or Torch import",
+    "A0 retained-buffer arithmetic using pinned dimensions"
+  ]
+}

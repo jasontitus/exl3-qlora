@@ -1,0 +1,49 @@
+{
+  "format": "exl3-upstream-intake-independent-review-v1",
+  "created_utc": "2026-10-13T03:22:23.215622+00:00",
+  "scope": "CPU source reconstruction, intake provenance, tokenization and CLI review; no execution-quality certification",
+  "source_sha256": {
+    "src/exl3_mlx/upstream_data.py": "fe2701b339fda1cb8c1843a85932f9ebc91424ebbacf33365b9ad583fda6850a",
+    "src/exl3_mlx/ktune_cli.py": "0ecbcaa3fd9e9362ecbb8b302f9e187cff187e2065b0ec1794ca13349d367bc5",
+    "docs/UPSTREAM_INTAKE.md": "298fb9fb66964d7b3905b54cf1fc7038691f3993336640bb227ff9682aa50ead",
+    "tests/test_upstream_data.py": "e408901448a03d8532d922aeffc95f328f5927ed04c446dc36222690c7052ed2",
+    "tests/test_ktune_cli.py": "f93f181ceb88997a33ed8fac9e9c39dac2b2b9201ee8991cab3f956eedee35a8"
+  },
+  "checks": [
+    {
+      "command": "PYTHONPATH=src /Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python -m pytest -q tests/test_upstream_data.py tests/test_ktune_cli.py",
+      "passed": 70,
+      "failed": 0,
+      "seconds": 20.41,
+      "reviewer_ran": true
+    },
+    {
+      "name": "Real DeepSeek tokenizer versus AST-isolated installed CompletionsDataset",
+      "cases": 4,
+      "token_ids_exact": true,
+      "loss_start_exact": true,
+      "mlx_imported": false,
+      "reviewer_ran": true,
+      "scope": "ordinary text, Unicode code/JSON, literal special-token text, empty completion"
+    }
+  ],
+  "resolved_findings": [
+    "Opaque Git/blob/source hashes removed from rendered targets and retained in provenance.",
+    "Unchanged dependencies remain context-only; complete target files or reviewed units are not duplicated by patch targets.",
+    "Improvement classification is curator-declared; exact quote containment is not semantic entailment or performance verification.",
+    "Reviewed-unit replay covers all changed bytes across all changed files, including UTF-8 boundaries, empty new/deleted sides and multiple replacements.",
+    "Default task context is pre-change-only; optional historical source conditioning is explicitly retrospective and answer-derived.",
+    "Deduplication permits a fitting eligible alias when a prior equivalent view was oversized; known negative equivalents and protected related lineages remain excluded.",
+    "The CPU tokenizer path matches the standard preparation contract, preserves EOS, and never truncates examples."
+  ],
+  "remaining_execution_blockers_for_source_intake": [],
+  "limitations": [
+    "This receipt does not claim100\u2013200 admitted examples; actual corpus counts require their separate inventory/import receipts.",
+    "All imported examples are training-only, with no independent held-out efficacy evaluation.",
+    "Source identity/reconstruction, reported metrics, compilation, numerical correctness and performance remain separate evidence dimensions.",
+    "Complete-unit/dependency declarations and semantic grounding of author paraphrases remain curator assertions.",
+    "Cross-repository ports and unrecorded later reverts are not fully discovered automatically.",
+    "Importer reports execution_verified_examples=0; independent compile-only receipts do not promote that count.",
+    "No broad-corpus training, generated-kernel execution or performance efficacy was evaluated by this reviewer."
+  ]
+}

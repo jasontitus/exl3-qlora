@@ -1,0 +1,31 @@
+test_cli_exclusive_output_and_malformed_nonzero (test_checkpoint_inventory.InventoryTests.test_cli_exclusive_output_and_malformed_nonzero) ... ok
+test_duplicate_names_across_shards_rejected (test_checkpoint_inventory.InventoryTests.test_duplicate_names_across_shards_rejected) ... ok
+test_external_ple_is_declared_not_inventoried_even_when_present (test_checkpoint_inventory.InventoryTests.test_external_ple_is_declared_not_inventoried_even_when_present) ... ok
+test_file_mutation_between_reads_rejected (test_checkpoint_inventory.InventoryTests.test_file_mutation_between_reads_rejected) ... ok
+test_header_limit_rejects_before_reading_header (test_checkpoint_inventory.InventoryTests.test_header_limit_rejects_before_reading_header) ... ok
+test_headers_only_read_exactly_eight_plus_declared_header (test_checkpoint_inventory.InventoryTests.test_headers_only_read_exactly_eight_plus_declared_header) ... ok
+test_index_declared_total_size_must_match (test_checkpoint_inventory.InventoryTests.test_index_declared_total_size_must_match) ... ok
+test_index_omitted_extra_tensor (test_checkpoint_inventory.InventoryTests.test_index_omitted_extra_tensor) ... ok
+test_index_ownership_mismatch (test_checkpoint_inventory.InventoryTests.test_index_ownership_mismatch) ... ok
+test_invalid_header_json_and_duplicate_keys (test_checkpoint_inventory.InventoryTests.test_invalid_header_json_and_duplicate_keys) ... ok
+test_invalid_metadata_values (test_checkpoint_inventory.InventoryTests.test_invalid_metadata_values) ... ok
+test_metadata_only_checkpoint_is_not_inventory (test_checkpoint_inventory.InventoryTests.test_metadata_only_checkpoint_is_not_inventory) ... ok
+test_metadata_size_bound (test_checkpoint_inventory.InventoryTests.test_metadata_size_bound) ... ok
+test_missing_index_owner (test_checkpoint_inventory.InventoryTests.test_missing_index_owner) ... ok
+test_multi_file_categories_and_component_precedence (test_checkpoint_inventory.InventoryTests.test_multi_file_categories_and_component_precedence) ... ok
+test_overlapping_tensor_ranges (test_checkpoint_inventory.InventoryTests.test_overlapping_tensor_ranges) ... ok
+test_payload_gap_and_trailing_garbage_rejected (test_checkpoint_inventory.InventoryTests.test_payload_gap_and_trailing_garbage_rejected) ... ok
+test_scalar_and_empty_tensor_shapes (test_checkpoint_inventory.InventoryTests.test_scalar_and_empty_tensor_shapes) ... ok
+test_shape_dtype_and_offsets_validation (test_checkpoint_inventory.InventoryTests.test_shape_dtype_and_offsets_validation) ... ok
+test_symlink_shard_and_external_refused (test_checkpoint_inventory.InventoryTests.test_symlink_shard_and_external_refused) ... ok
+test_truncated_header (test_checkpoint_inventory.InventoryTests.test_truncated_header) ... ok
+test_truncated_length_prefix (test_checkpoint_inventory.InventoryTests.test_truncated_length_prefix) ... ok
+test_truncated_payload (test_checkpoint_inventory.InventoryTests.test_truncated_payload) ... ok
+test_unsafe_owner_or_external_path (test_checkpoint_inventory.InventoryTests.test_unsafe_owner_or_external_path) ... ok
+test_valid_indexed_inventory_counts_only_tensor_payload (test_checkpoint_inventory.InventoryTests.test_valid_indexed_inventory_counts_only_tensor_payload) ... ok
+test_zero_header_and_negative_limits_rejected (test_checkpoint_inventory.InventoryTests.test_zero_header_and_negative_limits_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.105s
+
+OK

@@ -1,0 +1,47 @@
+......F............................                                      [100%]
+=================================== FAILURES ===================================
+___________ test_rope_matches_adjacent_complex_reference_and_inverse ___________
+
+    def test_rope_matches_adjacent_complex_reference_and_inverse():
+        c = {
+            "qk_rope_head_dim": 8,
+            "rope_theta": 10000,
+            "compress_rope_theta": 160000,
+            "rope_scaling": {
+                "original_max_position_embeddings": 65536,
+                "factor": 16,
+                "beta_fast": 32,
+                "beta_slow": 1,
+            },
+        }
+        x = np.random.default_rng(2).normal(size=(2, 3, 4, 16)).astype(np.float32)
+        pos = np.array([0, 7, 600], np.float32)
+        z = x[..., 8::2] + 1j * x[..., 9::2]
+        z = z * np.exp(1j * pos[:, None] / (10000 ** (np.arange(0, 8, 2) / 8)))[None, :, None, :]
+        want = x.copy()
+        want[..., 8::2] = z.real
+        want[..., 9::2] = z.imag
+        got = rope(mx.array(x), mx.array(pos), c)
+>       np.testing.assert_allclose(np.array(got), want, atol=3e-6)
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=3e-06
+E       
+E       Mismatched elements: 4 / 384 (1.04%)
+E       Mismatch at indices:
+E        [0, 2, 2, 11]: 0.009563565254211426 (ACTUAL), 0.009567567147314548 (DESIRED)
+E        [0, 2, 3, 11]: 0.04313372075557709 (ACTUAL), 0.04313068836927414 (DESIRED)
+E        [1, 2, 0, 10]: -0.13661354780197144 (ACTUAL), -0.1366206258535385 (DESIRED)
+E        [1, 2, 1, 11]: -0.7442398071289062 (ACTUAL), -0.7442429065704346 (DESIRED)
+E       Max absolute difference among violations: 7.0780516e-06
+E       Max relative difference among violations: 0.00041828
+E        ACTUAL: array([[[[ 0.189053, -0.522748, -0.413064, -2.441467,  1.799707,
+E                  1.144166, -0.325423,  0.773807,  0.281211, -0.553823,
+E                  0.977567, -0.310557, -0.328824, -0.792147,  0.454958,...
+E        DESIRED: array([[[[ 0.189053, -0.522748, -0.413064, -2.441467,  1.799707,
+E                  1.144166, -0.325423,  0.773807,  0.281211, -0.553823,
+E                  0.977567, -0.310557, -0.328824, -0.792147,  0.454958,...
+
+tests/test_attention.py:101: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_attention.py::test_rope_matches_adjacent_complex_reference_and_inverse
+1 failed, 34 passed in 2.16s

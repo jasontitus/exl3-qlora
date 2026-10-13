@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-12",
+  "scope": "Independent CPU-only review of prospective resource-only control amendment; no GPU launch",
+  "plan_sha256": "83f6ac58ba5d93b655ef0fb5af1d570ca1a86eec4a4d44a54892bf9308976cbc",
+  "config_sha256": "ca3f5fb266632e96792455404e70171ba64af0d62afeee229196c02ba370bee2",
+  "auditor_sha256": "9e2eb0415e7e37132eed5787e99e855068cbd36213ea9e76d1d7ac0c96df8ab5",
+  "launcher_sha256": "c09e4a0de0f2b5a9e747012ba810f24fb692fcf718cd48c91b7a3bf92a9d15b0",
+  "tests_sha256": {
+    "tests/test_matched_control_audit.py": "a450d5d7d1ccb9a559d7f50b59e2537e3a9752a523ce12393785f2766581d31f",
+    "tests/test_matched_control_launcher.py": "0de221f5f8b6dcbdf0ba9db64eb1c1a597dc58593d03e712d06db51e54c01900"
+  },
+  "original_plan_sha256": "3606cd6f3d01af73ff6ebc85b23a91c22f14b61b1030dac0e4d4b758957f757a",
+  "original_config_sha256": "4aead354935a2b2337d4e0d815d52474f2b699e63f30f9d471548d1538e3fa80",
+  "cpu_tests": 56,
+  "actual_verify_only": "passed; no files or subprocesses created",
+  "phase_caps_gib": {
+    "treatment_training": 80,
+    "treatment_evaluation": 80,
+    "control_training": 76,
+    "control_evaluation": 72
+  },
+  "reserve_gib": 8,
+  "cache_math_runtime_unchanged": true,
+  "exact_resources_matched_to_treatment": false,
+  "control_previously_launched": false,
+  "new_output_absent_at_review": true,
+  "post_absent_at_review": true,
+  "historical_peak_margin_gib": 2.051722320728004,
+  "finding": "Initial unvalidated redundant changes metadata now bound to authoritative phase resources; no remaining blocker in reviewed scope",
+  "limitations": [
+    "Caps change operational admission/watchdog/MLX allocation limits, not configured mathematical recipe.",
+    "Completion is not guaranteed at76GiB; transient/RSS growth can still abort.",
+    "No unique root cause, universal fix, held-out quality or generated-kernel claim.",
+    "Launch receipts and final checkpoint/logits reproduction remain post-run gates."
+  ]
+}

@@ -9,6 +9,7 @@ from types import SimpleNamespace
 
 import pytest
 
+from exl3_mlx.activation_config import ACTIVATION_MODES, validate_activation_mode
 from exl3_mlx.resources import (
     RESOURCE_FIELDS,
     add_resource_arguments,
@@ -23,7 +24,7 @@ from exl3_mlx.resources import (
         {"memory_gib": float("nan")},
         {"memory_gib": float("inf")},
         {"memory_gib": True},
-        {"memory_gib": 81},
+        {"memory_gib": 1025},
         {"memory_gib": 10**1000},
         {"reserve_gib": float("nan")},
         {"reserve_gib": -1},
@@ -35,6 +36,11 @@ from exl3_mlx.resources import (
         {"allocator_cache_mib": 1025},
         {"allocator_cache_mib": False},
         {"decoded_cache_mib": 16384},
+        {"prefix_cache_mib": -1},
+        {"prefix_cache_mib": True},
+        {"prefix_cache_mib": 2.5},
+        {"prefix_cache_mib": "2048"},
+        {"prefix_cache_mib": 16384},
     ],
 )
 def test_invalid_or_overcommitted_resource_configuration_fails(change):
@@ -50,6 +56,9 @@ def test_development_cache_bounds_are_inside_process_budget():
         reserve_gib=32,
         packed_cache_mib=8192,
         decoded_cache_mib=0,
+        prefix_cache_mib=0,
+        prefix_disk_cache=None,
+        prefix_disk_cache_gib=0.0,
         allocator_cache_mib=256,
     )
     with pytest.raises(ValueError, match="Combined"):
@@ -57,6 +66,10 @@ def test_development_cache_bounds_are_inside_process_budget():
     reduced = resolve_resources("development", memory_gib=32, decoded_cache_mib=8192)
     assert reduced["memory_gib"] == 32
     assert resolve_resources(default_memory_gib=32)["memory_gib"] == 32
+    assert resolve_resources()["prefix_cache_mib"] == 0
+    assert resolve_resources("development", prefix_cache_mib=2048)["prefix_cache_mib"] == 2048
+    with pytest.raises(ValueError, match="Combined"):
+        resolve_resources("development", prefix_cache_mib=65536)
 
 
 def workflow_namespace():
@@ -74,6 +87,7 @@ def workflow_namespace():
             "build_parser",
             "parse_args",
             "make_model",
+            "model_settings",
         }
     ]
     namespace = dict(
@@ -84,6 +98,8 @@ def workflow_namespace():
         add_resource_arguments=add_resource_arguments,
         resources_from_args=resources_from_args,
         RESOURCE_FIELDS=RESOURCE_FIELDS,
+        ACTIVATION_MODES=ACTIVATION_MODES,
+        validate_activation_mode=validate_activation_mode,
         __doc__="CPU parser test",
     )
     exec(compile(ast.Module(body=functions, type_ignores=[]), str(source), "exec"), namespace)
@@ -101,7 +117,17 @@ def test_workflow_profile_cli_config_override_and_legacy_alias(tmp_path):
     config.write_text(
         json.dumps(dict(model="M", data="D", output="O", profile="development", cache_mib=2048))
     )
-    args = parse(["train", "--config", str(config), "--decoded-cache-mib", "4096"])
+    args = parse(
+        [
+            "train",
+            "--config",
+            str(config),
+            "--decoded-cache-mib",
+            "4096",
+            "--prefix-cache-mib",
+            "2048",
+        ]
+    )
     assert (args.memory_gib, args.cache_mib, args.decoded_cache_mib) == (80, 2048, 4096)
     seen = {}
 
@@ -112,6 +138,7 @@ def test_workflow_profile_cli_config_override_and_legacy_alias(tmp_path):
     namespace.update(DeepSeekTextModel=model, model_settings=lambda _: {})
     namespace["make_model"](args, lambda _: None)
     assert (seen["cache_mib"], seen["decoded_cache_mib"], seen["chunk_size"]) == (2048, 4096, 512)
+    assert seen["prefix_cache_mib"] == 2048
     config.write_text(json.dumps(dict(model="M", data="D", output="O", **resolve_resources())))
     args = parse(
         [
@@ -216,3 +243,33 @@ def test_layer_progress_reports_current_cumulative_cache_phase_evidence():
     assert "backward complete" in messages[1]
     assert "decoded loads/hits/evictions 100/100/3" in messages[1]
     assert "retained packed/decoded 1.00/4.00 GiB" in messages[1]
+
+
+@pytest.mark.parametrize(
+    "settings",
+    [
+        {"prefix_disk_cache": "cache"},
+        {"prefix_disk_cache_gib": 8},
+        {"prefix_disk_cache": "", "prefix_disk_cache_gib": 8},
+        {"prefix_disk_cache": 3, "prefix_disk_cache_gib": 8},
+        {"prefix_disk_cache": "cache", "prefix_disk_cache_gib": float("nan")},
+        {"prefix_disk_cache": "cache", "prefix_disk_cache_gib": True},
+        {"prefix_disk_cache": "cache", "prefix_disk_cache_gib": -1},
+        {"prefix_disk_cache": "cache", "prefix_disk_cache_gib": 1025},
+    ],
+)
+def test_disk_prefix_cache_resource_pair_validation(settings):
+    with pytest.raises(ValueError, match="required together"):
+        resolve_resources(**settings)
+
+
+def test_disk_prefix_cache_is_not_counted_as_resident_memory():
+    values = resolve_resources(prefix_disk_cache="cache", prefix_disk_cache_gib=64)
+    assert values["prefix_disk_cache"] == "cache"
+    assert values["prefix_disk_cache_gib"] == 64
+    assert values["memory_gib"] == 16
+
+
+def test_explicit_budget_above_eighty_is_supported_with_runtime_headroom_guard():
+    result = resolve_resources("development", memory_gib=90, reserve_gib=8)
+    assert result["memory_gib"] == 90 and result["reserve_gib"] == 8
