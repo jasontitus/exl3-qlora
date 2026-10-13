@@ -1,0 +1,61 @@
+{
+  "schema": "diagnostic-launchers-independent-review-v1",
+  "created_utc": "2026-10-13T22:33:41.337906+00:00",
+  "reviewer": "quality_research",
+  "status": "approved_implementation_pending_concrete_request_review",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/launch.py": "bf0871c5c7b67924723b71a85efbbf92374b08875fd5d05718c4977bf86835e9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/prior_nll.py": "e774b563868a87e0a0b4e20f767a839a9158c54cc5edb17db54cf3caa9a92209",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/tests/test_launch.py": "dceeaba5da103b876c8f78811805bde2091b7bd09d4f2ea9efb83825836c98b5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/tests/test_prior_nll.py": "1652e46ce6493b86512288add4e022a7bebe66811e75e33af04f8568451a3a1f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/launcher-implementation.json": "36e9e0c5dcb5f3cf0b585b705a155938a0ab54aaa1d9754b443f556d09e7b07c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/prior-nll-implementation.json": "03dbf5d045f80bba6a09ea273de8973979024ca54b4eb463dbbb7874f2aa6ad6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/LAUNCHER.md": "70cd6d3977e390348d638c828e2649c7b4a3f0b189c3179628a77618ef922a80",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/PRIOR_NLL.md": "4836c6248a1cb59dc9d39d49c691b893aad24a4cd04b36ca61c22bf1155c957d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/test_diagnostic_launch_boundaries.py": "b1573e5fc2d32e6abc39586af67806e9ae91661a900242948356b2d5777bdd1c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/diagnostic-launchers-independent-pytest-final.xml": "1e9160c1da6f88cec1f325b627ab065bec5014e1a8b95ab7a14e46592bb0997f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/fit_probe.py": "1c5262636f7abfa12117c910f9da7b5eb72efd90ea76dab5751c62d131f69ca4"
+  },
+  "independent_validation": {
+    "test_methods_passed": 35,
+    "subtests_passed": 34,
+    "junit_cases": 69,
+    "failed": 0,
+    "gpu_executed": false,
+    "model_loaded": false,
+    "remote_executed": false,
+    "methods": [
+      "Read complete launcher and prior-NLL source, fixed decoder/scorer contracts and pinned process runner.",
+      "Reran author lifecycle and negative CPU tests, plus seven independently written guard tests with 24 subtests.",
+      "Independent tests exercise real payload receipt schema validator, tiny local files, same-length post-verification mutation, symlink rejection, environment drift, generation report bindings.",
+      "Rehashed both final implementation receipts and all their bound inputs."
+    ]
+  },
+  "findings": [
+    {
+      "issue": "Relative or symlink-alias adapter paths could be accepted during preparation then rejected by later output checks.",
+      "severity": "bounded_prepare_time_clarity",
+      "resolution": "Author added canonical absolute path checks before helper imports and duplicate adapter-directory rejection; current source/tests pass.",
+      "state": "resolved"
+    }
+  ],
+  "confirmed_boundaries": [
+    "Fixed eight task messages, prompt IDs, source evidence and greedy eight-token cap are hash bound; model, runtime, installed packages, Python executable, adapter configs/weights/state, arithmetic mode and TF32-off environment are guarded.",
+    "Generation uses serial observed child PIDs, bound argv/cwd/environment and output/log hashes; child failure is preserved and no retry/resume or checkpoint selection is automatic.",
+    "The prior-NLL path separately requires a completed five-phase training launch, exact final checkpoint selected by the frozen training helper, the same 16 prepared test rows/masks, and observed independent evaluation PID.",
+    "Prefix and decoded caches are disabled for these comparisons.",
+    "Payload receipts require previous full-byte source/destination equality; subsequent local inventory/stat guards reject changed files without rereading the full checkpoint for every question."
+  ],
+  "required_before_actual_execution": [
+    "Independently review the concrete generation request and sealed plan against the completed M5 training launch and its fixed 396-step final checkpoint. Generic generation launcher configuration alone does not bind that training-selection decision.",
+    "Require actual completed full-payload transfer verification, both adapters, correct execution-host paths and reviewed source/runtime/package hashes before sealing.",
+    "Independently audit actual child receipts and scores afterward; these CPU tests are not evidence that M5 inference or training has completed."
+  ],
+  "limitations": [
+    "Trusted local quiescent-filesystem integrity, not hostile-host/process attestation or proof against forged consistent local receipts.",
+    "Mocked lifecycle tests plus real small CPU guard fixtures; no real subprocess inference/model computation was executed in this review.",
+    "Diagnostic score concerns fixed short choices and prior held-out teacher-forced NLL; no generated-kernel compilation, correctness, speed or generalization result is implied.",
+    "No new model-quality result or unique causal mechanism is established."
+  ]
+}

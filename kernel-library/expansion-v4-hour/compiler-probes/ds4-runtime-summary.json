@@ -1,0 +1,12 @@
+{
+  "schema": "ds4-runtime-compilation-summary-v1",
+  "created_utc": "2026-10-13T22:31:55.417059+00:00",
+  "counts": {
+    "compiled": 8
+  },
+  "unique_changes": 4,
+  "receipt_sha256": "8da839d5d4ca8070b5ac993fbb210827574fe6213ca2e0f7db001ba13143c459",
+  "script_sha256": "6a791c47a27ff547f051f6d8ec26def896f3f6a995570dba37ead83bda58507e",
+  "scope": "Default historical host prelude plus ordered Metal source composition;8compiledversions4changes. No host linking/function-constant pipeline/GPU/numerical/performance qualification. Independent review pending.",
+  "sealed_dataset_changed": false
+}

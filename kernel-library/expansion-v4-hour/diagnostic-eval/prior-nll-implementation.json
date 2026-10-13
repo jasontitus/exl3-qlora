@@ -1,0 +1,18 @@
+{
+  "schema": "prior-nll-implementation-v1",
+  "status": "held_pending_independent_review",
+  "created_utc": "2026-10-13T22:17:43.189090+00:00",
+  "cpu_tests": 9,
+  "cpu_tests_result": "passed",
+  "ruff": "passed",
+  "gpu_executed": false,
+  "remote_executed": false,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/prior_nll.py": "e774b563868a87e0a0b4e20f767a839a9158c54cc5edb17db54cf3caa9a92209",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/tests/test_prior_nll.py": "1652e46ce6493b86512288add4e022a7bebe66811e75e33af04f8568451a3a1f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/prior-nll-cpu-tests.log": "5b2bb12cef1e48f4e7fe13f2a006d496ea9d4842aa9be34864ea6cf62989ad2b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/PRIOR_NLL.md": "4836c6248a1cb59dc9d39d49c691b893aad24a4cd04b36ca61c22bf1155c957d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/launch.py": "bf0871c5c7b67924723b71a85efbbf92374b08875fd5d05718c4977bf86835e9"
+  },
+  "scope": "Separate one-child prior adapter heldout NLL on completed M5 experiment exact16 rows. No actual request or plan has been sealed or executed."
+}

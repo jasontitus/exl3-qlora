@@ -1,0 +1,36 @@
+{
+  "schema": "qwen-affine-row-span-independent-review-v1",
+  "created_utc": "2026-10-13T22:34:31.393869+00:00",
+  "reviewer": "quality_research",
+  "status": "approved_geometry_planner_only",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/affine_row_views.py": "120be86f5051b70f45c2a064bde51f5d4500eb3a1e0e7ec83aa29713568db4da",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_affine_row_views.py": "f2d483bb1ef56978bad2a78809254d7b4e3dd78b68427ee0c88a2bf0a8a110c6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-row-span-progress.json": "e67d8bdcafca62739d714064f0269f4b0958afc29d9236ff18f508899f5bb82b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/config.json": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/sources/model-trunk-00002-of-00002.safetensors.header.json": "5c6a44fddca2719d1260105eb7796e84a96a1f7e3a205d7e4c4a39d998da65c5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/test_affine_row_views_independent.py": "5ae1a7fd1091d4480a3aa79feff3d5026274ed807ad49ea2f381892c5ebc206b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/qwen-row-spans-independent-pytest.xml": "0a48004f25ac4aca45921f5d09a878a49e95d75df828025f13dd46d7456f294f"
+  },
+  "validation": {
+    "cpu_tests_passed": 77,
+    "author_tests": 15,
+    "additional_independent_tests": 62,
+    "bit_group_dtype_combinations_checked": 54,
+    "pinned_header_matrix_geometries": 360,
+    "gpu_executed": false,
+    "payload_downloaded_or_read": false
+  },
+  "findings": [],
+  "confirmed": [
+    "Requested rows are deduplicated while preserving first occurrence and original ordering map.",
+    "Independent arithmetic oracle matches all spans at 2/3/4/5/6/8 bits, groups32/64/128, BF16/F16/F32 metadata, with explicit nonzero file and tensor offsets.",
+    "Byte cap counts actual unique-row reads; negative/boolean/fractional geometry, bad payload extents, partial groups, overlapping selected tensors and invalid metadata fail.",
+    "Pinned trunk header is exercised with synthetic file origin; inputs remain unchanged."
+  ],
+  "limitations": [
+    "Consumes an already validated header; does not validate ownership against a checkpoint index or global safetensors structure.",
+    "No actual payload reader, full-byte identity, decoding, MLX/native model integration, numerical correctness or training support has been established.",
+    "The source and progress report correctly retain these limitations; no implementation blocker found within this narrow API."
+  ]
+}

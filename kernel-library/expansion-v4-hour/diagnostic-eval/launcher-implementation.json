@@ -1,0 +1,18 @@
+{
+  "schema": "diagnostic-launcher-implementation-v1",
+  "status": "held_pending_independent_review",
+  "created_utc": "2026-10-13T22:13:04.939846+00:00",
+  "cpu_tests": 19,
+  "cpu_tests_result": "passed",
+  "ruff": "passed",
+  "gpu_executed": false,
+  "remote_executed": false,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/launch.py": "bf0871c5c7b67924723b71a85efbbf92374b08875fd5d05718c4977bf86835e9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/tests/test_launch.py": "dceeaba5da103b876c8f78811805bde2091b7bd09d4f2ea9efb83825836c98b5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/launcher-cpu-tests.log": "a2506a50f7d3c2deac7e7e5bb6d2faaf1b5bc2c74bc862590b69978e91651a34",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/diagnostic-eval/LAUNCHER.md": "70cd6d3977e390348d638c828e2649c7b4a3f0b189c3179628a77618ef922a80"
+  },
+  "scope": "Trusted local fixed eight-task three-condition generation and score lifecycle. No actual campaign is sealed or executed. Actual remote runtime/package/adapter/payload bindings happen only during explicit CPU preparation.",
+  "updated_utc": "2026-10-13T22:28:35.624882+00:00"
+}

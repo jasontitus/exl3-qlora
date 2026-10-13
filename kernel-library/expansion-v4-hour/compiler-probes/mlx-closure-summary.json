@@ -1,0 +1,14 @@
+{
+  "schema": "mlx-closure-compilation-summary-v1",
+  "created_utc": "2026-10-13T22:29:02.437058+00:00",
+  "counts": {
+    "compiled": 11
+  },
+  "unique_commits": 5,
+  "source_revision_files": 125,
+  "receipt_sha256": "e96294d04f4af283c4bd0e55111b52a49c5e61d43f5e0f80b0a46d7fcadfcd46",
+  "script_sha256": "33c8f90b60c748ce53fb6e6e23fcd88a64a6c6afb11866c0066057156bab66f4",
+  "compiler_version": "Apple metal version 32023.921 (metalfe-32023.921.6)\nTarget: air64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.vYU8g3/Metal.xctoolchain/usr/metal/current/bin\n",
+  "compiler_version_exit_code": 0,
+  "qualification": "11 historical file-side translation units from5changes compiled with captured exact quoted headers. Compile-only; no whole-engine linking, GPU parity or timing. Frozen training data unchanged. Independent review pending."
+}

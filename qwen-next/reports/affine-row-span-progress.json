@@ -1,0 +1,18 @@
+{
+  "schema": "qwen-affine-row-span-progress-v1",
+  "created_utc": "2026-10-13T22:16:32.542955+00:00",
+  "status": "implemented_cpu_tests_passed_pending_independent_review",
+  "tests_passed": 15,
+  "scope": "Deduplicated bounded row-span planning for2/3/4/5/6/8bit affine weights and scale/bias metadata, explicit per-weight metadata, geometry and byte budgets. Tests include pinned trunk header geometry only.",
+  "not_implemented": [
+    "Checkpoint index ownership binding",
+    "Actual bounded file reader",
+    "Payload identity verification",
+    "Decode/native MLX integration",
+    "Real checkpoint/model/training qualification"
+  ],
+  "files_sha256": {
+    "tools/affine_row_views.py": "120be86f5051b70f45c2a064bde51f5d4500eb3a1e0e7ec83aa29713568db4da",
+    "tests/test_affine_row_views.py": "f2d483bb1ef56978bad2a78809254d7b4e3dd78b68427ee0c88a2bf0a8a110c6"
+  }
+}
