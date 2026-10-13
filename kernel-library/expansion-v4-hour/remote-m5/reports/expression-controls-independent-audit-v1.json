@@ -1,0 +1,525 @@
+{
+  "schema": "m5-expression-controls-independent-audit-v1",
+  "created_utc": "2026-10-13T22:57:47.601009+00:00",
+  "reviewer": "quality_research",
+  "status": "qualified_controls_for_exact_relocated_expression_plan",
+  "expression_plan_sha256": "f80d46e660b89ae5f4e83a78878d2b6613e31e9bcd79cc5c6590dc8630b56f53",
+  "device": "Apple M5 Max",
+  "host": "Jason-M5-MacBook.localdomain",
+  "controls": {
+    "golden": {
+      "counts": {
+        "reference_pass": 15,
+        "reference_outputs": 656,
+        "candidate_pass": 15,
+        "candidate_outputs": 656
+      },
+      "per_probe": {
+        "sum_simd_collective": {
+          "reference_pass": 9,
+          "candidate_pass": 9
+        },
+        "broadcast_mul_index": {
+          "reference_pass": 6,
+          "candidate_pass": 6
+        }
+      },
+      "lease_released": true,
+      "exit_code": 0,
+      "child_pid": 24423,
+      "controller_pid": 24419,
+      "started_utc": "2026-10-13T22:54:31.916038+00:00",
+      "finished_utc": "2026-10-13T22:54:32.535560+00:00",
+      "numerical_report_sha256": "f88aa8dbfce64b9735044c6292b01ac76ce7b09c061c2c56a7405d2e8086c0d7",
+      "case_checks": [
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 0,
+          "variant": "reference",
+          "output_elements": 0,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 0,
+          "variant": "candidate",
+          "output_elements": 0,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 1,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 1,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 2,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 2,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 3,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 3,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 4,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 4,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 5,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 5,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 6,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 6,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 7,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 7,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 8,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 8,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 0,
+          "variant": "reference",
+          "output_elements": 4,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 0,
+          "variant": "candidate",
+          "output_elements": 4,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 1,
+          "variant": "reference",
+          "output_elements": 28,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 1,
+          "variant": "candidate",
+          "output_elements": 28,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 2,
+          "variant": "reference",
+          "output_elements": 24,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 2,
+          "variant": "candidate",
+          "output_elements": 24,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 3,
+          "variant": "reference",
+          "output_elements": 140,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 3,
+          "variant": "candidate",
+          "output_elements": 140,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 4,
+          "variant": "reference",
+          "output_elements": 204,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 4,
+          "variant": "candidate",
+          "output_elements": 204,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 5,
+          "variant": "reference",
+          "output_elements": 248,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 5,
+          "variant": "candidate",
+          "output_elements": 248,
+          "independently_reconstructed_mismatches": 0
+        }
+      ]
+    },
+    "negative": {
+      "counts": {
+        "reference_pass": 15,
+        "reference_outputs": 656,
+        "candidate_pass": 5,
+        "candidate_outputs": 656,
+        "candidate_fail": 10
+      },
+      "per_probe": {
+        "sum_simd_collective": {
+          "reference_pass": 9,
+          "candidate_pass": 3,
+          "candidate_fail": 6
+        },
+        "broadcast_mul_index": {
+          "reference_pass": 6,
+          "candidate_pass": 2,
+          "candidate_fail": 4
+        }
+      },
+      "lease_released": true,
+      "exit_code": 1,
+      "child_pid": 24459,
+      "controller_pid": 24456,
+      "started_utc": "2026-10-13T22:54:42.885777+00:00",
+      "finished_utc": "2026-10-13T22:54:43.533380+00:00",
+      "numerical_report_sha256": "a12f0438687dd570d422c47ba10a8a6993dbff96af002c4cacc61573608aad9f",
+      "case_checks": [
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 0,
+          "variant": "reference",
+          "output_elements": 0,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 0,
+          "variant": "candidate",
+          "output_elements": 0,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 1,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 1,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 2,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 2,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 3,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 3,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 1
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 4,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 4,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 1
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 5,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 5,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 1
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 6,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 6,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 1
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 7,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 7,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 1
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 8,
+          "variant": "reference",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "sum_simd_collective",
+          "case_index": 8,
+          "variant": "candidate",
+          "output_elements": 1,
+          "independently_reconstructed_mismatches": 1
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 0,
+          "variant": "reference",
+          "output_elements": 4,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 0,
+          "variant": "candidate",
+          "output_elements": 4,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 1,
+          "variant": "reference",
+          "output_elements": 28,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 1,
+          "variant": "candidate",
+          "output_elements": 28,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 2,
+          "variant": "reference",
+          "output_elements": 24,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 2,
+          "variant": "candidate",
+          "output_elements": 24,
+          "independently_reconstructed_mismatches": 16
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 3,
+          "variant": "reference",
+          "output_elements": 140,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 3,
+          "variant": "candidate",
+          "output_elements": 140,
+          "independently_reconstructed_mismatches": 117
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 4,
+          "variant": "reference",
+          "output_elements": 204,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 4,
+          "variant": "candidate",
+          "output_elements": 204,
+          "independently_reconstructed_mismatches": 190
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 5,
+          "variant": "reference",
+          "output_elements": 248,
+          "independently_reconstructed_mismatches": 0
+        },
+        {
+          "probe": "broadcast_mul_index",
+          "case_index": 5,
+          "variant": "candidate",
+          "output_elements": 248,
+          "independently_reconstructed_mismatches": 231
+        }
+      ]
+    }
+  },
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/expression-control-independent-remote-capture-v1.json": "849f4e3bcbe01dd1aff6d6c4db486d28bf2317a0062c3a726bad4befb512e706",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/control-input-bindings-v1.json": "bdd8771e1a132808d78b7d26bef536305dfcc8ecefeb9dce6b0b5c6bb3f73f72",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-probes-m5-v1/plan.json": "f80d46e660b89ae5f4e83a78878d2b6613e31e9bcd79cc5c6590dc8630b56f53",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-golden-lease-request-v1.json": "5a93afe6ec2c98575a8aeeeddea38ec5ecae98d077ea03a8d7b23d651c797c32",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/expression-golden-lease-v1.json": "d6dbb41dfe89a812a0929900e14d83844900b01ecf5f9308c80dfd48f7d4f0fa",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/expression-golden-numerical-v1.json": "f88aa8dbfce64b9735044c6292b01ac76ce7b09c061c2c56a7405d2e8086c0d7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared_gpu_lease.py": "c0ba867f7889e533c905a964bae9a0e58546284a27a5ee04bac0a4c71da6af21",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/sushi-lease-protocol/gpu-lock.sh": "b50468be43cda9970f0d0919af1e0fa8657d26fbac66da368eb109c756abee41",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-probes-m5-v1/assets/sum_simd_collective-template.metal": "273e5d0dc7313f2f2b52c7ef4a7d1de763953c982d1661d67cce4c290e521007",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-probes-m5-v1/assets/sum_simd_collective-golden_source.metal": "cd78409f7e07a2b127a70fee0f6c3bd86c5846032236af22a763b644cd46cbd5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-probes-m5-v1/assets/broadcast_mul_index-template.metal": "4d8a251adbedc3ce6849cae7cc824e21a45cf1389dca93350dea4e287c557ae3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-probes-m5-v1/assets/broadcast_mul_index-golden_source.metal": "bf607ce641c7cbd6b109603f47aaa8a53fa2301d1dc50594b9e6ca04626d8e97",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-negative-lease-request-v1.json": "199b19456382a36d03e1f63b35ccb61007a1f27a2823e5c991ff336ac1ef38bb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/expression-negative-lease-v1.json": "5c5453325fae783764674433fd0867458419d3c57e8cf214298aa284b3b5a9fa",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/expression-negative-numerical-v1.json": "a12f0438687dd570d422c47ba10a8a6993dbff96af002c4cacc61573608aad9f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/peer-reviews/audit_m5_expression_controls.py": "7ed9802e360e294b1d21aab4fa0b384fb725600b1adfac14824efbdb52137fa1"
+  },
+  "independent_checks": [
+    "Independently captured59 remote file identities and bounded job/response/log/recovery contents using read-only SSH. Both31-input inventories match request and execution receipts.",
+    "Rehashed jobs/source/library/AIR/harness bindings, exact plan/probe order, predeclared golden/negative expression composition, source identities and compiler receipt fields.",
+    "Independently regenerated all input/output/guard buffers for60 GPU result rows from exact dyadic arithmetic. Golden/reference sums and negative lane-zero-only sum, plus correct row broadcast and negative constant-index broadcast, match full output SHA256 and per-case mismatch counts.",
+    "Confirmed complete15-case matrix per reference/candidate/condition, each negative probe discriminated, zero nonfinite/guard/input mutations, no errors and serial bounded completion times.",
+    "Both own lease records released normally with cleanup_verified=true and recovery_required=false; no process signals or foreign-object removal reported."
+  ],
+  "qualification": "These fresh M5 positive/negative control results qualify the fixed expression harness admission gate. They are not model-generated outputs, held-out training improvement, performance evidence or general kernel correctness.",
+  "execution_by_reviewer": {
+    "gpu": false,
+    "compiler": false,
+    "model": false,
+    "remote": "Read-only source/receipt/file hashing only"
+  },
+  "limitations": [
+    "Trusted local/remote receipt and source consistency, not hostile-host attestation.",
+    "Fixed15 cases and dyadic inputs establish bounded discrimination only; timing/performance was not run.",
+    "No blanket training-launch lifecycle approval follows from these single-process Swift controls."
+  ]
+}

@@ -1,0 +1,602 @@
+{
+  "argv" : [
+    "\/Volumes\/Scratch\/exl3-training\/2026-10-13\/expression-controls-golden-v1\/verify_expression_probes",
+    "\/Volumes\/Scratch\/exl3-training\/2026-10-13\/expression-controls-golden-v1\/job.json",
+    "\/Volumes\/Scratch\/exl3-training\/2026-10-13\/reports\/expression-golden-numerical-v1.json"
+  ],
+  "bindings_verified" : true,
+  "candidate_passed" : true,
+  "candidate_statuses" : [
+    "compiled",
+    "compiled"
+  ],
+  "cases" : [
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 0,
+        "threads" : 32
+      },
+      "case_index" : 0,
+      "input_mutation" : false,
+      "input_sha256" : "68bccec6125ad2caae0f204dd7b5ee2f0cc2e69d4407b5267489f66f48c09633",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 0,
+      "output_sha256" : "5a8a39fb8befd4ff188a1a0d54f0b12704d65834620bcc2bc3cd858c5bbb50f3",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 0,
+        "threads" : 32
+      },
+      "case_index" : 0,
+      "input_mutation" : false,
+      "input_sha256" : "68bccec6125ad2caae0f204dd7b5ee2f0cc2e69d4407b5267489f66f48c09633",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 0,
+      "output_sha256" : "5a8a39fb8befd4ff188a1a0d54f0b12704d65834620bcc2bc3cd858c5bbb50f3",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 1,
+        "threads" : 32
+      },
+      "case_index" : 1,
+      "input_mutation" : false,
+      "input_sha256" : "68bccec6125ad2caae0f204dd7b5ee2f0cc2e69d4407b5267489f66f48c09633",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "68bccec6125ad2caae0f204dd7b5ee2f0cc2e69d4407b5267489f66f48c09633",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 1,
+        "threads" : 32
+      },
+      "case_index" : 1,
+      "input_mutation" : false,
+      "input_sha256" : "68bccec6125ad2caae0f204dd7b5ee2f0cc2e69d4407b5267489f66f48c09633",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "68bccec6125ad2caae0f204dd7b5ee2f0cc2e69d4407b5267489f66f48c09633",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 17,
+        "threads" : 32
+      },
+      "case_index" : 2,
+      "input_mutation" : false,
+      "input_sha256" : "5d73b6999fc0e8d7b8c1771598722031aeeec3ff4d777e46bdee1619fd96e75f",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "68bccec6125ad2caae0f204dd7b5ee2f0cc2e69d4407b5267489f66f48c09633",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 17,
+        "threads" : 32
+      },
+      "case_index" : 2,
+      "input_mutation" : false,
+      "input_sha256" : "5d73b6999fc0e8d7b8c1771598722031aeeec3ff4d777e46bdee1619fd96e75f",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "68bccec6125ad2caae0f204dd7b5ee2f0cc2e69d4407b5267489f66f48c09633",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 32,
+        "threads" : 32
+      },
+      "case_index" : 3,
+      "input_mutation" : false,
+      "input_sha256" : "d811f82391eb54c04180a7043db79aba59c04397a2ada8eb2172a932f05582cd",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "3cdbcae52d345e3a90f4a445b411fec4135568ce94912ab92ab9c905e4a29a5d",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 32,
+        "threads" : 32
+      },
+      "case_index" : 3,
+      "input_mutation" : false,
+      "input_sha256" : "d811f82391eb54c04180a7043db79aba59c04397a2ada8eb2172a932f05582cd",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "3cdbcae52d345e3a90f4a445b411fec4135568ce94912ab92ab9c905e4a29a5d",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 33,
+        "threads" : 64
+      },
+      "case_index" : 4,
+      "input_mutation" : false,
+      "input_sha256" : "e375406bc5d32e3fc50f9b33645acc00a900d1e0cb86a0d6dab1b48afbd210e8",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "1bad9ec096d4f64ac1600abc4627eab130e4921389f36f0ba8a6ecf766b813c9",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 33,
+        "threads" : 64
+      },
+      "case_index" : 4,
+      "input_mutation" : false,
+      "input_sha256" : "e375406bc5d32e3fc50f9b33645acc00a900d1e0cb86a0d6dab1b48afbd210e8",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "1bad9ec096d4f64ac1600abc4627eab130e4921389f36f0ba8a6ecf766b813c9",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 65,
+        "threads" : 64
+      },
+      "case_index" : 5,
+      "input_mutation" : false,
+      "input_sha256" : "5d6d7809a72416274bd91f767124377967f4cd628d57b5984cbe68f7ab0e3920",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "7b9fa482867fa2109d7717c9f70a8116d0bbcae24f31da872b4c7b913e4957a0",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 65,
+        "threads" : 64
+      },
+      "case_index" : 5,
+      "input_mutation" : false,
+      "input_sha256" : "5d6d7809a72416274bd91f767124377967f4cd628d57b5984cbe68f7ab0e3920",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "7b9fa482867fa2109d7717c9f70a8116d0bbcae24f31da872b4c7b913e4957a0",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 511,
+        "threads" : 128
+      },
+      "case_index" : 6,
+      "input_mutation" : false,
+      "input_sha256" : "17a0c55b794d83040383dec123fa90bc18f6dfff7a8db86e1af718cf3254cb8e",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "b321e7fe188ba00c834cc631cf03ab69c2661a3bcbd9c819c7f1f40ce224c26b",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 511,
+        "threads" : 128
+      },
+      "case_index" : 6,
+      "input_mutation" : false,
+      "input_sha256" : "17a0c55b794d83040383dec123fa90bc18f6dfff7a8db86e1af718cf3254cb8e",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "b321e7fe188ba00c834cc631cf03ab69c2661a3bcbd9c819c7f1f40ce224c26b",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 1025,
+        "threads" : 256
+      },
+      "case_index" : 7,
+      "input_mutation" : false,
+      "input_sha256" : "62f6dc3b5e2f465211f2e154d7aabea0958410a95b7e96bdbfe50bb77cb761ea",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "133b9cab506c2db6370d8b4e4f0cb7c157357b06b815b1a5a8347683c7eaa786",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 1025,
+        "threads" : 256
+      },
+      "case_index" : 7,
+      "input_mutation" : false,
+      "input_sha256" : "62f6dc3b5e2f465211f2e154d7aabea0958410a95b7e96bdbfe50bb77cb761ea",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "133b9cab506c2db6370d8b4e4f0cb7c157357b06b815b1a5a8347683c7eaa786",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 4097,
+        "threads" : 128
+      },
+      "case_index" : 8,
+      "input_mutation" : false,
+      "input_sha256" : "98ec262d96b11ef70ea4c8b5bdd939e6244f9b64a911e5d3ed7fee0f5e2c3c1d",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "7b9fa482867fa2109d7717c9f70a8116d0bbcae24f31da872b4c7b913e4957a0",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "n" : 4097,
+        "threads" : 128
+      },
+      "case_index" : 8,
+      "input_mutation" : false,
+      "input_sha256" : "98ec262d96b11ef70ea4c8b5bdd939e6244f9b64a911e5d3ed7fee0f5e2c3c1d",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 1,
+      "output_sha256" : "7b9fa482867fa2109d7717c9f70a8116d0bbcae24f31da872b4c7b913e4957a0",
+      "passed" : true,
+      "probe" : "sum_simd_collective",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 1,
+        "vectors_per_row" : 1
+      },
+      "case_index" : 0,
+      "input_mutation" : false,
+      "input_sha256" : "97045bc8a7c1ee2cec4240a2d9ae58caae3649447c6182b744c1785dc0aa19ef",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 4,
+      "output_sha256" : "dfc1bda614eb8ebd15ab6bfcb6d9de0224a1a8e13e53e7d5a2fba189fb356b78",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 1,
+        "vectors_per_row" : 1
+      },
+      "case_index" : 0,
+      "input_mutation" : false,
+      "input_sha256" : "97045bc8a7c1ee2cec4240a2d9ae58caae3649447c6182b744c1785dc0aa19ef",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 4,
+      "output_sha256" : "dfc1bda614eb8ebd15ab6bfcb6d9de0224a1a8e13e53e7d5a2fba189fb356b78",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 7,
+        "vectors_per_row" : 1
+      },
+      "case_index" : 1,
+      "input_mutation" : false,
+      "input_sha256" : "4a754a7cd23b180be3ad9e67eb8a0d92e604b6d022a6b7f6d9fdebaaaf9ae242",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 28,
+      "output_sha256" : "b34d3a6cf7ab42a66cfabb0f7daa859437622bc8dddc30eaf6d8a64e5f9dfedd",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "c58c7404b2f85ec781a944f184583fa53c4ca79270d93afeafb79c335d7b78f4",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 7,
+        "vectors_per_row" : 1
+      },
+      "case_index" : 1,
+      "input_mutation" : false,
+      "input_sha256" : "4a754a7cd23b180be3ad9e67eb8a0d92e604b6d022a6b7f6d9fdebaaaf9ae242",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 28,
+      "output_sha256" : "b34d3a6cf7ab42a66cfabb0f7daa859437622bc8dddc30eaf6d8a64e5f9dfedd",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "e99c6967d2e223faa4e55a0450251586ba27f0064f7e9db91ddd7a131364f02e",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 2,
+        "vectors_per_row" : 3
+      },
+      "case_index" : 2,
+      "input_mutation" : false,
+      "input_sha256" : "e9d24b272765e0fbff9871b0422ffd89e7d48c0eab333eee88497e213a48608e",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 24,
+      "output_sha256" : "f1b56a5a444f12d69c799645078f3d2fa8d91d1e7bc07f3e7687b9b96cf83d74",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "e99c6967d2e223faa4e55a0450251586ba27f0064f7e9db91ddd7a131364f02e",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 2,
+        "vectors_per_row" : 3
+      },
+      "case_index" : 2,
+      "input_mutation" : false,
+      "input_sha256" : "e9d24b272765e0fbff9871b0422ffd89e7d48c0eab333eee88497e213a48608e",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 24,
+      "output_sha256" : "f1b56a5a444f12d69c799645078f3d2fa8d91d1e7bc07f3e7687b9b96cf83d74",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "e3146d22f5cf0acfc902a8a1414d2c0a6e2cce6df74e5f0f379ee03d0c761866",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 5,
+        "vectors_per_row" : 7
+      },
+      "case_index" : 3,
+      "input_mutation" : false,
+      "input_sha256" : "87d46048329c81cd301b52ebb4a2615bffcb6d74c47dd22cd0bbcef0fef46642",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 140,
+      "output_sha256" : "6161514ff4139449d419c434598808d952bc5bfd14906a80e3f969fbd614c87d",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "e3146d22f5cf0acfc902a8a1414d2c0a6e2cce6df74e5f0f379ee03d0c761866",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 5,
+        "vectors_per_row" : 7
+      },
+      "case_index" : 3,
+      "input_mutation" : false,
+      "input_sha256" : "87d46048329c81cd301b52ebb4a2615bffcb6d74c47dd22cd0bbcef0fef46642",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 140,
+      "output_sha256" : "6161514ff4139449d419c434598808d952bc5bfd14906a80e3f969fbd614c87d",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "69f1c65d113635cca5f01f50cf6c55db6c948dec357d6b2a811f1a56902ab534",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 3,
+        "vectors_per_row" : 17
+      },
+      "case_index" : 4,
+      "input_mutation" : false,
+      "input_sha256" : "4508e797ac1549cd83b330a8b6799a2218e4136dddd34f4e0ab08330f111c278",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 204,
+      "output_sha256" : "af9901863fafc541ff1058b7dd1fa6ef454daa370ab8e2387d29c9c745bfca80",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "69f1c65d113635cca5f01f50cf6c55db6c948dec357d6b2a811f1a56902ab534",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 3,
+        "vectors_per_row" : 17
+      },
+      "case_index" : 4,
+      "input_mutation" : false,
+      "input_sha256" : "4508e797ac1549cd83b330a8b6799a2218e4136dddd34f4e0ab08330f111c278",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 204,
+      "output_sha256" : "af9901863fafc541ff1058b7dd1fa6ef454daa370ab8e2387d29c9c745bfca80",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    },
+    {
+      "broadcast_source_sha256" : "8b08724562e94294ff305ac963f2cde8b582d6c8aaeb141e6db74231884659a6",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 2,
+        "vectors_per_row" : 31
+      },
+      "case_index" : 5,
+      "input_mutation" : false,
+      "input_sha256" : "2bcf04d5bc02e33392b1c79c0fae5b80433097517b3b0f50a9dc025327789ade",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 248,
+      "output_sha256" : "5d017a92a5808679e4eecfc3230e0904481ed9f33a12ce1d9252c27f54ad1086",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "reference"
+    },
+    {
+      "broadcast_source_sha256" : "8b08724562e94294ff305ac963f2cde8b582d6c8aaeb141e6db74231884659a6",
+      "canary_mutations" : 0,
+      "case" : {
+        "rows" : 2,
+        "vectors_per_row" : 31
+      },
+      "case_index" : 5,
+      "input_mutation" : false,
+      "input_sha256" : "2bcf04d5bc02e33392b1c79c0fae5b80433097517b3b0f50a9dc025327789ade",
+      "nonfinite_values" : 0,
+      "oracle_bit_mismatches" : 0,
+      "output_elements" : 248,
+      "output_sha256" : "5d017a92a5808679e4eecfc3230e0904481ed9f33a12ce1d9252c27f54ad1086",
+      "passed" : true,
+      "probe" : "broadcast_mul_index",
+      "reference_buffer_equal" : true,
+      "variant" : "candidate"
+    }
+  ],
+  "compiler" : "Apple metal version 32023.921 (metalfe-32023.921.6)\nTarget: air64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: \/private\/var\/run\/com.apple.security.cryptexd\/mnt\/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.HonQeB\/Metal.xctoolchain\/usr\/metal\/current\/bin\n",
+  "device" : "Apple M5 Max",
+  "finished_unix" : 1791932072.35163,
+  "format" : "heldout-expression-result-v1",
+  "gpu_executed" : true,
+  "job_sha256" : "5b53a33a22a6df55f87795c25f60ec8d1bfdbff2089774055d9aafbfe4926d71",
+  "numerical" : "completed_fixed_cases",
+  "origin" : "source_reference_not_model",
+  "os" : "Version 26.6.2 (Build 25G83)",
+  "passed" : true,
+  "performance" : "not_run",
+  "plan_sha256" : "f80d46e660b89ae5f4e83a78878d2b6613e31e9bcd79cc5c6590dc8630b56f53",
+  "reference_passed" : true,
+  "registry_id" : "4294968937",
+  "response_sha256" : "b1a3e36161b509478c0a6836035f3010ab0083ac549aba253e5e9d9aa986b55e",
+  "scope" : "Two predeclared expression completions, exact fixed source composition, bounded finite inputs and independent CPU references. No optimization discovery, whole patch generation, or speed claim.",
+  "started_unix" : 1791932072.0265388
+}
