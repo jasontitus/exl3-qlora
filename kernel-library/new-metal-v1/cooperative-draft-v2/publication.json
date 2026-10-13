@@ -1,0 +1,63 @@
+{
+  "schema": "reviewed-new-metal-compatibility-publication-v1",
+  "status": "ready_for_future_explicit_compatibility_intake",
+  "id": "mlx-91c83d19bf02-new-metal-v1",
+  "reviewed_index": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/case-index-reviewed.json",
+  "reviewed_index_sha256": "4da14c35accdb524fec09fccc3f6b61416415a0365f4116c7182d6ac171bb01b",
+  "peer_review_sha256": "0ccf47cd631f862fa4fa988f92bf63d22385a6c314547596d3102ea40a43ed00",
+  "packer_acceptance": {
+    "accepted": 1,
+    "excluded": 0,
+    "tier": "correctness",
+    "total_serialized_ids": 9153,
+    "supervised_tokens": 2603,
+    "raw_and_prepared_equal_reviewed_payloads": true,
+    "output": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/packer-validation-12288",
+    "active198_modified": false
+  },
+  "active_dataset_checks": {
+    "bound_files_rehashed": 8,
+    "train_rows": 198,
+    "test_rows": 16,
+    "inputs_sha256": {
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/ktune-import.json": "b80a3c38637546565c517311f8785e1ac3e803267b98b70976b125b523bf60fb",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/provenance.jsonl": "bf9da40c1e2edd466ee3f781e28eb9ea54b04456913f682e7a44a7606988ada6",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/selection.json": "a22cfbee7cfa9065569989261eee9b71590c989e157d76821221d805cee69544",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/test.jsonl": "42cd97436334db78fb465bc73275fb588dd76732ab3830506acfe735a0f8c18c",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/test.prepared.jsonl": "0720ead3d696e6e9215e99cbf18dd26e532def8c309add06bbbe21efe1841ad0",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/train.jsonl": "9bbc1807934d8454c4a9a359d96cdfb6b31048f6df9d478db3f1f792e7343b3e",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/train.prepared.jsonl": "3391c6fa2aaf9656574b082e53643eb8adbadf7ff0281dcb037598d159a7462c",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/valid.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "qualification": {
+    "compatibility_source_edit": true,
+    "measured_optimization": false,
+    "compiler": "not_run",
+    "numerical": "not_run",
+    "performance": "not_run",
+    "model_gpu_upstream_scripts_executed": false,
+    "no_truncation": true,
+    "four_file_complete_patch": true,
+    "original_draft_preserved": true,
+    "independent_inputs_rechecked_after_packing": 78
+  },
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/case-index.json": "18d44b0f9b8692e11ef4238660f18568c49429e23f122a245ccc94a6f95d7d3c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/case-index-reviewed.json": "4da14c35accdb524fec09fccc3f6b61416415a0365f4116c7182d6ac171bb01b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/independent-review.json": "0ccf47cd631f862fa4fa988f92bf63d22385a6c314547596d3102ea40a43ed00",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/attach_review.py": "63be6c1e46a815bd4cb9912e7ee7c9777042d57d97d780389aeac16559adf666",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/author-verification.json": "d8b1da07ed0376bc83f1adbb13c996901915a1e9aae22398390587787fa41004",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/source-context-proof.json": "30f8178080ccf88bff0d53ed834484aa34d30f2702622c0746143a2befba81e0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/qualification.json": "d91249245608240777960ea053d8b5fa354f50a04b5829a7569eaa2b4600eee3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.source.json": "959f743f1bb4b7789682d16642f384e30d4a6d9d32e6921240e0fe583234b3e7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.raw.json": "96c1b890212fb1e846ff62fbf0b92989eb3524baf37006e66f9c2e947f7c8752",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.prepared.json": "5033601b9365cb076a9b26c3310f06ad3df4be0f88c8b149d1b871a3f07570ab",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.replay.json": "74c953279e089c040478d40c8698cf0bf69e5ccc132356e9def7724dd7b73e90",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/packer-validation-12288/audit.json": "1b87997e9dd35343fa4a2cd80e7be65fa870b62af920880e2bce82265577a51f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/packer-validation-12288/cross-split-code-overlap.json": "07b3329d90508ef736722dee4fd034e7c35529bd600747aabc7523da56a2c012",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/packer-validation-12288/mlx-91c83d19bf02-new-metal-v1.provenance.json": "d3121db7c4fb4e58ab6f3c1302667e87a8a475dad315f46671296d304d98daae",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/packer-validation-12288/train.jsonl": "0e8bf3e99cbe9a8febd696b425bb23d00f85f956159fe6aab971bc4e41026289",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/packer-validation-12288/train.prepared.jsonl": "3bdcd1dfb2937134ca2e3901f50e3fb19b6d7353951fe9c75150c6c02ed9db50"
+  }
+}

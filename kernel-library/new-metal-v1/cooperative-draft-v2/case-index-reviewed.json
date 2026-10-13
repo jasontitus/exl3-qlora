@@ -1,0 +1,256 @@
+{
+  "format": "historical-kernel-curation-index-v1",
+  "status": "reviewed_compatibility_only_future_intake",
+  "tokenizer": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "cases": [
+    {
+      "id": "mlx-91c83d19bf02-new-metal-v1",
+      "repo": "https://github.com/ml-explore/mlx",
+      "commit": "91c83d19bf022d7bc3e906582435f69fdc77ec63",
+      "parent": "238bca641d10988493970cf682e2a4e6e8976a62",
+      "lineage": "patch:c601169a7e9a73c7d01b9269259071018540ae69",
+      "source_group": "mlx-derived-framework-training",
+      "task_kind": "kernel",
+      "outcome_class": "correctness",
+      "licenses": [
+        {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/91c83d19bf022d7bc3e906582435f69fdc77ec63/before/LICENSE",
+          "sha256": "ccfab7ccb2ea306f71531c8ca77bb55507606cd90768b1e32b8b52ab5b48cf01",
+          "side": "before"
+        },
+        {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/91c83d19bf022d7bc3e906582435f69fdc77ec63/after/LICENSE",
+          "sha256": "ccfab7ccb2ea306f71531c8ca77bb55507606cd90768b1e32b8b52ab5b48cf01",
+          "side": "after"
+        }
+      ],
+      "status": "independently_reviewed_compatibility_edit_for_future_intake",
+      "stable_patch_id": "c601169a7e9a73c7d01b9269259071018540ae69",
+      "curriculum_tier": "correctness",
+      "purpose": "compiler_template_compatibility_not_measured_optimization",
+      "recommended_core": true,
+      "exact_edit_eligible": true,
+      "total_serialized_ids": 9153,
+      "supervised_tokens": 2603,
+      "fits_12k": true,
+      "fits_32k": true,
+      "exact_replay": true,
+      "protection_review": {
+        "status": "cleared",
+        "reviewed_by": "adversarial_code",
+        "reason": "Finite source-training scope: exact head/parent, declared PR4594 and stable patch pass the bound captured-protection/prior-index screen. The actual edit changes cooperative-tensor destination-factory type spelling and retains the complete historical cleanup. Related MLX GDN/NAX ancestry is disclosed; no independent-family evaluation or exhaustive semantic nonoverlap is claimed.",
+        "evidence_sha256": {
+          "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/captured-admission-screen.json": "27ba11e84739a94a953c63cb72cd847279573654584396bc3ad4709c77f3e840",
+          "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/91c83d19bf022d7bc3e906582435f69fdc77ec63/receipt.json": "0707e1db0b4d54bde9d76fba6ddcbfaa18186edd8ae7da64a5b625cf1e9c8edf",
+          "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/91c83d19bf022d7bc3e906582435f69fdc77ec63/edit.patch": "b8681a734c89d7b802ec30e6fd17d9fc3e7623bd12be6621013a143c26fdb5ce",
+          "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/91c83d19bf022d7bc3e906582435f69fdc77ec63/replay-receipt.json": "cd384f195dc4bcbe935576a5717511da8cd0f64fb525ec9ef5f33bc95f3651d9",
+          "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source-independent-review.json": "9279b0bca775de0e617ea7fea734607dd43db5916e18255f592e94c40de036a6",
+          "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/reviewed-teaching-evidence.json": "7a9fc39812dfd0e292c4b9ac14e00a01e64cc072dc06fcdf5cf3cf43d339baa3"
+        }
+      },
+      "selected_declarations": [
+        {
+          "path": "mlx/backend/metal/gated_delta_update.cpp",
+          "kind": "complete_declaration",
+          "label": "Complete include/namespace-use/function-constant prelude; only copyright changes in this file",
+          "before": {
+            "start": 0,
+            "end": 345,
+            "sha256": "536c23cf86f2d7a4c2c6cf22062917d47ea0ea6b0506d901539ff5f7fd5c6180",
+            "line_start": 1,
+            "line_end": 12,
+            "full_file_sha256": "b444f688983c68142941cf866187d11b92829282210c09504e72a82d77aca633",
+            "git_blob": "953c04578c9957a25f12eccb68fd6a34ab4251da"
+          },
+          "after": {
+            "start": 0,
+            "end": 345,
+            "sha256": "be3c669ade8f98b205ddd6bc991cd0ae409b619cde4b3e18dc4ec6adceaeb361",
+            "line_start": 1,
+            "line_end": 12,
+            "full_file_sha256": "1c23a6766781291a75e5675007d90fef7ffb42998715c116bdf9d217699802ab",
+            "git_blob": "9e49072e2f39967fd821cb106d2cc0cdbe79c398"
+          }
+        },
+        {
+          "path": "mlx/backend/metal/kernels/gated_delta_nax_ops.h",
+          "kind": "complete_declaration",
+          "label": "Complete include/type-alias prelude and AT_NAX macro",
+          "before": {
+            "start": 0,
+            "end": 628,
+            "sha256": "78ff23dac878c58eb85620c3448583f60acecf58bf1960c0829ce3379b15fc68",
+            "line_start": 1,
+            "line_end": 21,
+            "full_file_sha256": "bcfd279b9cda4cc8d97d55dc406c0b2ccde8b56fa4ee55499881860d2ed5be99",
+            "git_blob": "60e46865fef081b21183adda39cc1000d793f0aa"
+          },
+          "after": {
+            "start": 0,
+            "end": 456,
+            "sha256": "6774fb98de44b8739595be6ec2c00d4e0db078c0905c4968e15092ad9b68187d",
+            "line_start": 1,
+            "line_end": 20,
+            "full_file_sha256": "6b4d31735e51a72ba7202d71082a35fbc2611db44a3e24b55bd115204b2192fb",
+            "git_blob": "e8e4069f6d3fc2d2ce7a42d896b49f94331faafb"
+          }
+        },
+        {
+          "path": "mlx/backend/metal/kernels/gated_delta_nax_ops.h",
+          "kind": "complete_declaration",
+          "label": "Complete closed mlx::steel namespace: both mma overloads and mman, including all template prefixes",
+          "before": {
+            "start": 9773,
+            "end": 14756,
+            "sha256": "82c31687a7ca279df7a2eb859d9e616d90c126d1622c40686d7d67ece0f11b05",
+            "line_start": 242,
+            "line_end": 397,
+            "full_file_sha256": "bcfd279b9cda4cc8d97d55dc406c0b2ccde8b56fa4ee55499881860d2ed5be99",
+            "git_blob": "60e46865fef081b21183adda39cc1000d793f0aa"
+          },
+          "after": {
+            "start": 9601,
+            "end": 15622,
+            "sha256": "1e5580ecf99a68d63f85ec66e17c7d6f80bdbade65ada4f07679b84be05e8228",
+            "line_start": 241,
+            "line_end": 420,
+            "full_file_sha256": "6b4d31735e51a72ba7202d71082a35fbc2611db44a3e24b55bd115204b2192fb",
+            "git_blob": "e8e4069f6d3fc2d2ce7a42d896b49f94331faafb"
+          }
+        },
+        {
+          "path": "mlx/backend/metal/kernels/gated_delta_nax_ops.h",
+          "kind": "complete_declaration",
+          "label": "Complete five retained matmul wrapper macros and their old explanatory comment",
+          "before": {
+            "start": 14757,
+            "end": 19949,
+            "sha256": "bdcb599b2664c7fca3ec8efdc3adfe125effa85bbc2113b115b9e409368ca4b5",
+            "line_start": 399,
+            "line_end": 480,
+            "full_file_sha256": "bcfd279b9cda4cc8d97d55dc406c0b2ccde8b56fa4ee55499881860d2ed5be99",
+            "git_blob": "60e46865fef081b21183adda39cc1000d793f0aa"
+          },
+          "after": {
+            "start": 15623,
+            "end": 20401,
+            "sha256": "259ddf23818534e7e4ab7145f383ff7f06fa4c02bb4441bedd0877202382c508",
+            "line_start": 422,
+            "line_end": 497,
+            "full_file_sha256": "6b4d31735e51a72ba7202d71082a35fbc2611db44a3e24b55bd115204b2192fb",
+            "git_blob": "e8e4069f6d3fc2d2ce7a42d896b49f94331faafb"
+          }
+        },
+        {
+          "path": "mlx/backend/metal/kernels/gated_delta_nax_ops.h",
+          "kind": "complete_declaration",
+          "label": "Final complete SCALE2_P definition and the complete three removed helper macros, preserving exact EOF",
+          "before": {
+            "start": 24535,
+            "end": 28184,
+            "sha256": "f9472337ec913366ecae95ccbb6a206fb03ef36bf1af024eae6d47c623f70cbe",
+            "line_start": 564,
+            "line_end": 622,
+            "full_file_sha256": "bcfd279b9cda4cc8d97d55dc406c0b2ccde8b56fa4ee55499881860d2ed5be99",
+            "git_blob": "60e46865fef081b21183adda39cc1000d793f0aa"
+          },
+          "after": {
+            "start": 24987,
+            "end": 25480,
+            "sha256": "cf4e06a5c249879216eb178978e762941a63e5a24be762605da8069c8fb73371",
+            "line_start": 581,
+            "line_end": 588,
+            "full_file_sha256": "6b4d31735e51a72ba7202d71082a35fbc2611db44a3e24b55bd115204b2192fb",
+            "git_blob": "e8e4069f6d3fc2d2ce7a42d896b49f94331faafb"
+          }
+        },
+        {
+          "path": "mlx/backend/metal/kernels/gated_delta_update_nax.h",
+          "kind": "complete_declaration",
+          "label": "Complete include/namespace-use/function-constant prelude; only copyright changes in this file",
+          "before": {
+            "start": 0,
+            "end": 395,
+            "sha256": "d9c8655311964b9e4df1b030a508357430acd7800ebfb6a38e2a9e00fffdfdeb",
+            "line_start": 1,
+            "line_end": 14,
+            "full_file_sha256": "ce01c11f6546fa61665882543536cc9bd7924c1e87907407219efdbdf23523ce",
+            "git_blob": "a69e9df359e059b39a14e4dc090437ddfbfd2241"
+          },
+          "after": {
+            "start": 0,
+            "end": 427,
+            "sha256": "f597f7312b437487e58381d2b2aaaa685546f405064c27fe5c57751401c9f308",
+            "line_start": 1,
+            "line_end": 15,
+            "full_file_sha256": "3d7f4fbb936abfa4d5aab48b7d5049057515615a50ffbf43152915285c0d924d",
+            "git_blob": "09986fe807e8059197fb0051922bd178c079e02c"
+          }
+        },
+        {
+          "path": "mlx/backend/metal/kernels/gated_delta_update_nax_vjp.h",
+          "kind": "complete_declaration",
+          "label": "Complete include/namespace-use/function-constant prelude; only copyright changes in this file",
+          "before": {
+            "start": 0,
+            "end": 223,
+            "sha256": "537138ff27466fb9b51f9232e048066d583fb9a1c5c18a4aa61e4f7e933444e8",
+            "line_start": 1,
+            "line_end": 11,
+            "full_file_sha256": "201614d5221d5a0753743f1359a167346ab9877c703f10fd481d04eaf67c888c",
+            "git_blob": "f00ea00a1ad26f6b32035e5c57a003eea6a1ca18"
+          },
+          "after": {
+            "start": 0,
+            "end": 255,
+            "sha256": "d5c88baebb329fbf61937e82a57ebf9fd073b082f4404325bca192995105e07c",
+            "line_start": 1,
+            "line_end": 12,
+            "full_file_sha256": "dafad2750d2c5528c3b8d7d8f7d8be158feb3260ba2ebbfb614d033e8ab18886",
+            "git_blob": "3c2190f049feb14a65c9c11baa51202bd3d0d3ba"
+          }
+        }
+      ],
+      "paths": {
+        "source": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.source.json",
+        "raw": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.raw.json",
+        "prepared": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.prepared.json",
+        "replay": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.replay.json"
+      },
+      "files_sha256": {
+        "source": "959f743f1bb4b7789682d16642f384e30d4a6d9d32e6921240e0fe583234b3e7",
+        "raw": "96c1b890212fb1e846ff62fbf0b92989eb3524baf37006e66f9c2e947f7c8752",
+        "prepared": "5033601b9365cb076a9b26c3310f06ad3df4be0f88c8b149d1b871a3f07570ab",
+        "replay": "74c953279e089c040478d40c8698cf0bf69e5ccc132356e9def7724dd7b73e90"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "quality_research",
+        "receipt": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/independent-review.json",
+        "sha256": "0ccf47cd631f862fa4fa988f92bf63d22385a6c314547596d3102ea40a43ed00"
+      },
+      "admission_scope": {
+        "purpose": "compiler_template_compatibility_correctness",
+        "performance_optimization": false,
+        "compile_qualified": false,
+        "numerically_qualified": false,
+        "performance_qualified": false,
+        "included_in_active_corpus": false,
+        "requires_future_explicit_dataset_selection": true
+      }
+    }
+  ],
+  "draft_index": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/case-index.json",
+    "sha256": "18d44b0f9b8692e11ef4238660f18568c49429e23f122a245ccc94a6f95d7d3c",
+    "preserved_unchanged": true
+  },
+  "review_receipt": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/independent-review.json",
+    "sha256": "0ccf47cd631f862fa4fa988f92bf63d22385a6c314547596d3102ea40a43ed00"
+  }
+}

@@ -33,3 +33,7 @@ The separate v2 GPU lease guard passed long-campaign lifecycle review with 45 CP
 ## Protected newer Metal candidate
 
 Independent admission review excluded SDPA commit `5778a97c04b40753cb5d7c255aec76c2156e916a`: its exact parent is the captured reserved MLX PR4461 head. No training rows were exported. This is the existing finite head/parent identity policy, not an exclusion of all related MLX history. All eight active corpus artifacts still match the sealed release, with 198 training and 16 held-out items. The receipts bind the local source evidence; bulk source remains outside this checkout. Other newer Metal drafts remain separate from this run.
+
+## Reviewed cooperative-tensor compatibility example
+
+Commit `91c83d19bf022d7bc3e906582435f69fdc77ec63` now has an independently reviewed agent-facing example for future compatibility-focused intake. It preserves the complete four-file historical edit and seven complete context groups, with 9,153 serialized tokens and 2,603 supervised tokens. Native edit replay, source identities, tokenization, masking and finite protected/prior overlap checks passed. The actual packer accepted the isolated example; the active 198/16 corpus remains unchanged. Compilation, numerical correctness and performance have not been qualified. Committed receipts bind the local full payloads; they do not make this checkout a standalone copy of those payloads.

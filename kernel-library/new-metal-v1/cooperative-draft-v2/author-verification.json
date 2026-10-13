@@ -1,0 +1,32 @@
+{
+  "schema": "new-metal-draft-author-verification-v1",
+  "status": "passed_author_checks_pending_independent_review",
+  "id": "mlx-91c83d19bf02-new-metal-v1",
+  "checks": {
+    "all_qualification_inputs_rehashed": 16,
+    "exact_git_blob_and_mode_pairs": 8,
+    "full_changed_file_set_and_native_git_apply": 4,
+    "bound_complete_declaration_groups": 7,
+    "post_template_ids_and_mask_exact": true,
+    "loss_start": 6550,
+    "total_serialized_ids": 9153,
+    "supervised_tokens": 2603,
+    "no_source_or_target_truncation": true,
+    "full_header_variant_assistant_and_supervised_tokens_identical": true,
+    "missing_final_newline_preserved": true
+  },
+  "scope": "Historical compiler/template compatibility edit, not measured optimization; no compiler, native numerical tests, GPU or upstream scripts executed.",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.source.json": "959f743f1bb4b7789682d16642f384e30d4a6d9d32e6921240e0fe583234b3e7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.raw.json": "96c1b890212fb1e846ff62fbf0b92989eb3524baf37006e66f9c2e947f7c8752",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.prepared.json": "5033601b9365cb076a9b26c3310f06ad3df4be0f88c8b149d1b871a3f07570ab",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/reviewed/mlx-91c83d19bf02-new-metal-v1.replay.json": "74c953279e089c040478d40c8698cf0bf69e5ccc132356e9def7724dd7b73e90",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/verify_draft.py": "2615cf147bea7d4c8585576b1190f8bec0fe8c8159cd5b9bb7cf39758536213f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/prepare.py": "25b0a40495f4fff7880d85ddfd8eda5302105b5f77369bc2ff3bc97b43668170",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/case-index.json": "18d44b0f9b8692e11ef4238660f18568c49429e23f122a245ccc94a6f95d7d3c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/source-context-proof.json": "30f8178080ccf88bff0d53ed834484aa34d30f2702622c0746143a2befba81e0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/qualification.json": "d91249245608240777960ea053d8b5fa354f50a04b5829a7569eaa2b4600eee3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v1/reviewed/mlx-91c83d19bf02-new-metal-v1.raw.json": "0de494c413ee1e7781fa6a58bbf81e67cfe0dee5a9ffc632503568065d2cb749",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v1/reviewed/mlx-91c83d19bf02-new-metal-v1.prepared.json": "cc69b0f3f940bc70abf18ed64b01f9613fefb543616dfe2861121852c388ee68"
+  }
+}

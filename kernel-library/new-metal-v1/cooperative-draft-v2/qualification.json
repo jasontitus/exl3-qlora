@@ -1,0 +1,68 @@
+{
+  "status": "draft_source_reconstruction_only",
+  "id": "mlx-91c83d19bf02-new-metal-v1",
+  "total_serialized_ids": 9153,
+  "supervised_tokens": 2603,
+  "fits_12k": true,
+  "fits_32k": true,
+  "truncation": false,
+  "local_git_replay": {
+    "patch_applies": true,
+    "exact_scoped_replay": true,
+    "compile": "not_run",
+    "numerical": "not_run",
+    "performance": "not_run",
+    "patch_sha256": "526d822c4c755211e32c0b6b429f15cb96d5420c1ee5c30618352385cbeb7b85",
+    "files": {
+      "mlx/backend/metal/gated_delta_update.cpp": {
+        "before": "b444f688983c68142941cf866187d11b92829282210c09504e72a82d77aca633",
+        "after": "1c23a6766781291a75e5675007d90fef7ffb42998715c116bdf9d217699802ab"
+      },
+      "mlx/backend/metal/kernels/gated_delta_nax_ops.h": {
+        "before": "bcfd279b9cda4cc8d97d55dc406c0b2ccde8b56fa4ee55499881860d2ed5be99",
+        "after": "6b4d31735e51a72ba7202d71082a35fbc2611db44a3e24b55bd115204b2192fb"
+      },
+      "mlx/backend/metal/kernels/gated_delta_update_nax.h": {
+        "before": "ce01c11f6546fa61665882543536cc9bd7924c1e87907407219efdbdf23523ce",
+        "after": "3d7f4fbb936abfa4d5aab48b7d5049057515615a50ffbf43152915285c0d924d"
+      },
+      "mlx/backend/metal/kernels/gated_delta_update_nax_vjp.h": {
+        "before": "201614d5221d5a0753743f1359a167346ab9877c703f10fd481d04eaf67c888c",
+        "after": "dafad2750d2c5528c3b8d7d8f7d8be158feb3260ba2ebbfb614d033e8ab18886"
+      }
+    },
+    "format": "synthetic_single_edit_native_tool_v1",
+    "not_recorded_agent_trajectory": true,
+    "target_scope": "complete_commit_edits_except_reviewed_documentation",
+    "full_commit_replay": false,
+    "exact_selected_file_replay": true,
+    "omitted_documentation": {},
+    "task_is_historically_target_selected": true
+  },
+  "cpu_tokenization": true,
+  "compiler": "not_run_external_MLX_dependencies",
+  "gpu": "not_run",
+  "performance": "no_measurement_no_speedup_claim",
+  "compiler_diagnostic": "not_captured",
+  "macro_removal_necessity": "not_established",
+  "sdk_os_hardware_availability": "unknown_beyond_author_Mac_OS_27_problem_statement",
+  "active_dataset_modified": false,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/captured-admission-screen.json": "27ba11e84739a94a953c63cb72cd847279573654584396bc3ad4709c77f3e840",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/91c83d19bf022d7bc3e906582435f69fdc77ec63/receipt.json": "0707e1db0b4d54bde9d76fba6ddcbfaa18186edd8ae7da64a5b625cf1e9c8edf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/91c83d19bf022d7bc3e906582435f69fdc77ec63/edit.patch": "b8681a734c89d7b802ec30e6fd17d9fc3e7623bd12be6621013a143c26fdb5ce",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/91c83d19bf022d7bc3e906582435f69fdc77ec63/replay-receipt.json": "cd384f195dc4bcbe935576a5717511da8cd0f64fb525ec9ef5f33bc95f3651d9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source-independent-review.json": "9279b0bca775de0e617ea7fea734607dd43db5916e18255f592e94c40de036a6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/reviewed-teaching-evidence.json": "7a9fc39812dfd0e292c4b9ac14e00a01e64cc072dc06fcdf5cf3cf43d339baa3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/91c83d19bf022d7bc3e906582435f69fdc77ec63/before/LICENSE": "ccfab7ccb2ea306f71531c8ca77bb55507606cd90768b1e32b8b52ab5b48cf01",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/complete-source/91c83d19bf022d7bc3e906582435f69fdc77ec63/after/LICENSE": "ccfab7ccb2ea306f71531c8ca77bb55507606cd90768b1e32b8b52ab5b48cf01",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/cooperative-draft-v2/prepare.py": "25b0a40495f4fff7880d85ddfd8eda5302105b5f77369bc2ff3bc97b43668170",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/prepare.py": "f09f77bb578a7b3a45ac01e06ac1c5542c86129becc4fe96d348811d3a11ed2e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/group-b/refined_units.py": "80d4161f5da456aaa875cc77344a88577ccb9ee361c8132d1ebc83a5cd18f49c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v3-hour/tools/exact_edit_renderer.py": "f6af9157401949bfb18cd9966042ec844ce110d8133a76c48992392d04a352d0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/src/exl3_mlx/agent_edits.py": "db6ba4440075fb4c25942899bb0e46c6ee352a42c66d790cd1ba0ca9092a8a9f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/src/exl3_mlx/data.py": "b444afd00d50de7eaf3e6343f58b1920bdbd236cf903d90add89c47ecce236c9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/src/exl3_mlx/tool_data.py": "65b2dec3f2585469507c0c9cf376bea55660bc6da54c452214f238d88846f651",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/src/exl3_mlx/upstream_data.py": "534ab77ca7d715d06f527ed6a7de28895ef0c6968433b770dbf82be1fddc5c26"
+  }
+}
