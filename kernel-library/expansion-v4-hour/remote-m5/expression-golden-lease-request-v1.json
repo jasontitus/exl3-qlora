@@ -1,0 +1,57 @@
+{
+  "schema": "shared-gpu-lease-command-v1",
+  "hostname": "Jason-M5-MacBook.localdomain",
+  "argv": [
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/verify_expression_probes",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/job.json",
+    "/Volumes/Scratch/exl3-training/2026-10-13/reports/expression-golden-numerical-v1.json"
+  ],
+  "cwd": "/Volumes/Scratch/exl3-training/2026-10-13",
+  "expected_exit_codes": [
+    0
+  ],
+  "completion_receipt": "/Volumes/Scratch/exl3-training/2026-10-13/reports/expression-golden-numerical-v1.json",
+  "completion_expect": {
+    "gpu_executed": true,
+    "numerical": "completed_fixed_cases",
+    "reference_passed": true,
+    "candidate_passed": true,
+    "passed": true
+  },
+  "no_detached_background_children": true,
+  "scope": "Fixed reviewed 15-case expression control; expected negative numerical failure is not infrastructure success unless full completion criteria hold.",
+  "observed_harness_sha256": "7f2d6d7c28426bf86b94999bb5e095a9466cdeb188396a9ef2628eb5e4edc58f",
+  "inputs_sha256": {
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/job.json": "5b53a33a22a6df55f87795c25f60ec8d1bfdbff2089774055d9aafbfe4926d71",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/plan.json": "f80d46e660b89ae5f4e83a78878d2b6613e31e9bcd79cc5c6590dc8630b56f53",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/responses.json": "b1a3e36161b509478c0a6836035f3010ab0083ac549aba253e5e9d9aa986b55e",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/sum_simd_collective/reference/source.metal": "cd78409f7e07a2b127a70fee0f6c3bd86c5846032236af22a763b644cd46cbd5",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/sum_simd_collective/reference/source.air": "e1d31cebc2af84407dbb5f10cdb252e1859ba9eefab29c14df8b9ef5cdf8378b",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/sum_simd_collective/reference/source.metallib": "59a04d98a828986a0cdd2c0a15e5b962fe0003c22a426a9b9e5a0649c0b75fd7",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/sum_simd_collective/candidate/source.metal": "cd78409f7e07a2b127a70fee0f6c3bd86c5846032236af22a763b644cd46cbd5",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/sum_simd_collective/candidate/source.air": "d55637d977aa300ddc1e9c91275d8b8d3c8a5e1fd86c1b3b21edcfd6181da73b",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/sum_simd_collective/candidate/source.metallib": "59a04d98a828986a0cdd2c0a15e5b962fe0003c22a426a9b9e5a0649c0b75fd7",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/broadcast_mul_index/reference/source.metal": "bf607ce641c7cbd6b109603f47aaa8a53fa2301d1dc50594b9e6ca04626d8e97",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/broadcast_mul_index/reference/source.air": "8e23a6358d430f24166753bab809b411fbdd1ec77ee0bc00ef0d3c38ffe617ab",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/broadcast_mul_index/reference/source.metallib": "d085aee922d32785f28eba8698b544237f0971ce33b3cfba9fdf4d6cdf90f755",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/broadcast_mul_index/candidate/source.metal": "bf607ce641c7cbd6b109603f47aaa8a53fa2301d1dc50594b9e6ca04626d8e97",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/broadcast_mul_index/candidate/source.air": "328067c69243e645ebcb91fe52b556c66a1416fabe386ea9205ab4a5abdbb34a",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/broadcast_mul_index/candidate/source.metallib": "d085aee922d32785f28eba8698b544237f0971ce33b3cfba9fdf4d6cdf90f755",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/verify_expression_probes.swift": "7fb205dad382b48786a56f70ef57eff6e0dc3ad72a2d9056e4ad82137cee7ab7",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/verify_expression_probes": "7f2d6d7c28426bf86b94999bb5e095a9466cdeb188396a9ef2628eb5e4edc58f",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-controls-golden-v1/builder.py": "09d31c2dda0a2c9b1b04cd9d0b07a18dc102ebce3a8285f8e9e1815827b720ec",
+    "/Volumes/Scratch/exl3-training/models/deepseek-v4.1-flash-exl3-3.0bpw/tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "/Volumes/Scratch/exl3-training/models/deepseek-v4.1-flash-exl3-3.0bpw/tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "/Volumes/Scratch/exl3-training/models/deepseek-v4.1-flash-exl3-3.0bpw/chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-probes-m5-v1/assets/sum_simd_collective-source_record.json": "3d998974897b008fe1afccacbaf8a4421df67839924d27816e7dbac2bad1182a",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-probes-m5-v1/assets/sum_simd_collective-golden_source.metal": "cd78409f7e07a2b127a70fee0f6c3bd86c5846032236af22a763b644cd46cbd5",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-probes-m5-v1/assets/sum_simd_collective-template.metal": "273e5d0dc7313f2f2b52c7ef4a7d1de763953c982d1661d67cce4c290e521007",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-probes-m5-v1/assets/sum_simd_collective-messages.json": "2e421693f9e2c94c232e2b94d4fb3a7928448bcc99219fc5956dc3c59b22e38d",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-probes-m5-v1/assets/sum_simd_collective-prompt_token_ids.json": "a640643151068cc67162369015fb45e48135aad8ec734e966d47d0f9980b9de9",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-probes-m5-v1/assets/broadcast_mul_index-source_record.json": "6c424a97a329539e9b24e0a2e2e373cb36ddb8120d6be975a7b6d3cb2f748bb5",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-probes-m5-v1/assets/broadcast_mul_index-golden_source.metal": "bf607ce641c7cbd6b109603f47aaa8a53fa2301d1dc50594b9e6ca04626d8e97",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-probes-m5-v1/assets/broadcast_mul_index-template.metal": "4d8a251adbedc3ce6849cae7cc824e21a45cf1389dca93350dea4e287c557ae3",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-probes-m5-v1/assets/broadcast_mul_index-messages.json": "e2d0aa42d0e0dd8f543fc10a436e5cd7d27718d72f078d15050dc41530dd8385",
+    "/Volumes/Scratch/exl3-training/2026-10-13/expression-probes-m5-v1/assets/broadcast_mul_index-prompt_token_ids.json": "feda770bec11fdfe13509f2820fddd6f93517e695c33e939b42dcc52251be4c2"
+  }
+}

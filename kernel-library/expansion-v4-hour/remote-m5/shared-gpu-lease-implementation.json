@@ -1,0 +1,25 @@
+{
+  "schema": "shared-gpu-lease-implementation-v1",
+  "created_utc": "2026-10-13T22:53:21.763053+00:00",
+  "status": "held_pending_independent_review",
+  "cpu_tests_passed": 23,
+  "ruff": "passed",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared_gpu_lease.py": "c0ba867f7889e533c905a964bae9a0e58546284a27a5ee04bac0a4c71da6af21",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/tests/test_shared_gpu_lease.py": "d95870d1b48f684048b02fc63704c9fdec5c4703117f03b851944daa7febaaf5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared-gpu-lease-cpu-tests.xml": "d92d9cee029f834a376eb8977791a56ad23988e6a0acb71d28176dbc84a06c89",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/SHARED_GPU_LEASE.md": "2ef6bed3ee3c96ccffe6b49e0cf28913dba90f58cacc296fa0ce091e6d490ca9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/sushi-lease-protocol/gpu-lock.sh": "b50468be43cda9970f0d0919af1e0fa8657d26fbac66da368eb109c756abee41",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/sushi-lease-protocol/gpu-session-excerpt.py": "dff6ac7e8cdba40fa018c7f3dd2ab7581da60792002dbc194e1d3598a08c4f17",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/sushi-lease-protocol/capture.json": "78a0fc7df2da85a07c0c81d74767d6b83cc468b414bcd7ac49ec75965dad0b34"
+  },
+  "remote_actions": "Read-only protocol and known-owner observations only. No remote acquire/release/break or process signals.",
+  "gpu_executed": false,
+  "existing_launcher_or_runtime_changed": false,
+  "notes": [
+    "Two peer findings repaired: require and recheck declared command/input hashes; exempt only the exact initially fresh completion output from immutable input enumeration.",
+    "Tests use temporary local fixture lock paths and mocked process boundaries; actual shared M5 lock untouched.",
+    "No concurrency qualification against a live Sushi process or actual M5 command execution claimed.",
+    "Concrete request and source require independent review before execution."
+  ]
+}

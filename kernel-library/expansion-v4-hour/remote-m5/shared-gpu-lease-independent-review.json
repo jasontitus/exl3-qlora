@@ -1,0 +1,87 @@
+{
+  "schema": "shared-gpu-lease-independent-review-v1",
+  "status": "approved_for_scoped_control_attempt",
+  "reviewer": "adversarial_code",
+  "created_utc": "2026-10-13T22:54:10.737132+00:00",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared_gpu_lease.py": "c0ba867f7889e533c905a964bae9a0e58546284a27a5ee04bac0a4c71da6af21",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/tests/test_shared_gpu_lease.py": "d95870d1b48f684048b02fc63704c9fdec5c4703117f03b851944daa7febaaf5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/test_lease_request_boundaries.py": "077bb8d08616bfe272cb1971dfb834b1d40255622640afe16da23b9b51f03d7a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared-gpu-lease-implementation.json": "ce461bcc7e51ca44cf2afe0cafe30f25dcb7b9071d21d612958e1d2f089a5449",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/SHARED_GPU_LEASE.md": "2ef6bed3ee3c96ccffe6b49e0cf28913dba90f58cacc296fa0ce091e6d490ca9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/sushi-lease-protocol/gpu-lock.sh": "b50468be43cda9970f0d0919af1e0fa8657d26fbac66da368eb109c756abee41",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/sushi-lease-protocol/capture.json": "78a0fc7df2da85a07c0c81d74767d6b83cc468b414bcd7ac49ec75965dad0b34",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/control-input-bindings-v1.json": "bdd8771e1a132808d78b7d26bef536305dfcc8ecefeb9dce6b0b5c6bb3f73f72",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-golden-lease-request-v1.json": "5a93afe6ec2c98575a8aeeeddea38ec5ecae98d077ea03a8d7b23d651c797c32",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-negative-lease-request-v1.json": "199b19456382a36d03e1f63b35ccb61007a1f27a2823e5c991ff336ac1ef38bb"
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "status": "fixed_and_retested",
+      "finding": "Original observed executable hash was recorded but not enforced. Current required input map pins executable, input file arguments and concrete job/assets, checked before acquisition, immediately before command launch and after completion."
+    },
+    {
+      "severity": "medium",
+      "status": "fixed_and_retested",
+      "finding": "First hash fix misclassified the newly created completion output as an unpinned input at postcheck. Exact declared output is now exempt; initial freshness and all other input checks remain enforced."
+    }
+  ],
+  "checks": {
+    "author_cpu_tests_independently_rerun": 23,
+    "additional_independent_request_boundary_tests": 6,
+    "total_cpu_tests_passed": 29,
+    "actual_shared_lock_mutated_by_review": false,
+    "remote_commands_run_by_review": false,
+    "gpu_executed_by_review": false,
+    "protocol_inspected": true,
+    "input_maps_match_captured_remote_binding_inventory": true
+  },
+  "requests": [
+    {
+      "condition": "golden",
+      "request": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-golden-lease-request-v1.json",
+      "request_sha256": "5a93afe6ec2c98575a8aeeeddea38ec5ecae98d077ea03a8d7b23d651c797c32",
+      "immutable_input_count": 31,
+      "expected_exit_codes": [
+        0
+      ],
+      "expected_completion": {
+        "gpu_executed": true,
+        "numerical": "completed_fixed_cases",
+        "reference_passed": true,
+        "candidate_passed": true,
+        "passed": true
+      }
+    },
+    {
+      "condition": "negative",
+      "request": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/expression-negative-lease-request-v1.json",
+      "request_sha256": "199b19456382a36d03e1f63b35ccb61007a1f27a2823e5c991ff336ac1ef38bb",
+      "immutable_input_count": 31,
+      "expected_exit_codes": [
+        1
+      ],
+      "expected_completion": {
+        "gpu_executed": true,
+        "numerical": "completed_fixed_cases",
+        "reference_passed": true,
+        "candidate_passed": false,
+        "passed": false
+      }
+    }
+  ],
+  "supported_guarantees": [
+    "Uses the same stable lockf mutation lock and compatible atomic holder symlink/owner file and FIFO ticket namespace as captured Sushi protocol. Busy, malformed, uncertain owners or any pending ticket block before the reviewed GPU command.",
+    "Never breaks/prunes another lease or ticket and never signals processes. Release requires own symlink/inode/holder/content identities plus successful reviewed completion and observed child cleanup.",
+    "Failed/interrupted/uncertain cleanup retains own lease and recovery receipt rather than advertising the GPU as free.",
+    "Both concrete requests bind all31 captured input file hashes and precise expected numerical completion. Expected negative exit1 alone is not accepted without completed numerical fields and absent error."
+  ],
+  "limits": [
+    "These are CPU tests and source review; real cross-process race behavior on the M5 mutation lock has not been stress tested.",
+    "Process polling cannot prove absence of an unsampled child that detached and reparented between samples. The concrete reviewed Swift controls are single-process and must not launch detached background work; the generic wrapper is not a universal process containment mechanism.",
+    "Remote files were not read by this reviewer. Local request hashes were compared with the captured parent inventory; the actual wrapper enforces those hashes on the M5 before and after execution.",
+    "Shared-lease cooperation cannot prevent unrelated software that ignores this lock from using the GPU. New command types require their own lifecycle and input-closure review.",
+    "This gate authorizes only the scoped golden/negative control attempt. Actual numeric result and receipt identities still need post-run review; no model training or generated-kernel quality conclusion follows."
+  ]
+}
