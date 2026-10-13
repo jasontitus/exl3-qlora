@@ -1,0 +1,605 @@
+{
+  "schema": "new-metal-source-teaching-review-v1",
+  "status": "reviewed_evidence_only_not_dataset_admission",
+  "reviewer": "adversarial_code",
+  "created_utc": "2026-10-13T22:52:01.929798+00:00",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/review_evidence.py": "100e778fa7f3c809f421f2ae2a144d9cc079106ccaaaa9153fd2c7757c2c3346",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/inventory.py": "7407791fae70d74a40df4b19735d186abf04e207b73f84812a2d2fce2cd07099",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/inventory.json": "e5db383205eeeaff4df391587ae00cfe4874106fc88b6d2ffc9613a6c536ca73",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/inventory-message-refs-only.json": "c90169e509058c6f342c8ef864ac0ecebcb03b621ee79945308f0dd227cdf06e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/inventory-metadata-roots-v1.json": "d55a306fffca2bdaf344859474e781100db342cac4d0b5ac06bb73d4b925c324",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/discovery-summary-metadata-roots-v1.json": "4e883dfa2b692203b6c98c760a54e4f7c2f25ece48a3ad0f3c2810277e5c20df",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/tests/test_inventory.py": "67ac5bda81753b7b3b1f2eb287b10b711f1a69e0224349ada3b08ee5761c1fc2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/summarize.py": "8a60cff34a875f25d32665426cb7a8b8e380a9a0a93284573f1c280c7a767bdc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/discovery-summary.json": "c32da6e5e230bb00671fd62e9f849edf9a0d034773348c0991b81a247f4dc408",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/capture.json": "993ff3f4282f5acf5df4b89f6abc79f494caaeacf33af0c548d27a032ffa4068",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/capture-retry.json": "87cc924324bf4a20037090d4838e0a014dbed0f55b6e6b71522710fa6aa4760c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/c7ff35d9714c78bcdf4620deb1d189f7ffb7c3b9/change.patch": "eaf93835f3fd5fc358b575942197b7cb4dd1479f8540fe33a5918a5139e0bb6d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/91c83d19bf022d7bc3e906582435f69fdc77ec63/change-retry.patch": "073272d8ea356fecc26674925e649b074610ec2bb96a136540cb72cbe6260da5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/5778a97c04b40753cb5d7c255aec76c2156e916a/change-retry.patch": "093a6643dca65a2ae50d8ac3911eda34a3615b4c32318035de065acc647643e5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/ef5fc0fab27c63e6976e96b07c234c9e2601d8a7/change-retry.patch": "a570d84e5c4b0d1d96623f48326b5a37d82ab55b3da31f70515bd2fc84a64b3e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/ae3db54247c59de87309deaa3e956ddda30d4825/change-retry.patch": "7c9b92dac5e6c1553367bc6a7ac0bdd7b20221a5ca2f04d9cc433e298ae2cb02",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/case-index.json": "7b2470641b1c8e0d9ad953b96d57117b1c09cc7f298bdc07a6ad56f69efbf78a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/batch2/case-index.json": "0639457e0b0ae03d39cb6092dfc7bd6751b47a0d042fb5b635bd89642a256a98",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/case-index-reviewed-v2.json": "5df1bf3a0317c943a0666cb3d61e86e5e390534de6a3aee9878ac0c6d3cfcdb3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/case-index-reviewed-v2.json": "95353177e2a8006131d20eb7e903ca9084d36ea01a610fa7c919fa305bbfb4f1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/evidence/mlx-pr-4352.txt": "a43cf51e8c0a2d95bf1d478a296bfb19cf008b432904fc83da23860882272bb3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/case-index.json": "792c8d90daf093ac8a6bdf935c77efcc27fbdaed70156bd480362db1196e77cc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/case-index-draft.json": "4cfb9e82e3994e5e3f9ff234c8108c3e21f248b61cdb8a2e3e51a2dac0becf83",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/case-index-revised-v2.json": "9d9b7a0ab1c823fa355533905722aba47b80566e059c7609684856c5e56e9330",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/inventory-all.json": "73511770f9654972575a4461cb6f9572cebffa8b82826f6a948a04d15967c7fc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/inventory-performance.json": "3c05c60045419836c940ed8c86fc5358f043f6b343242c10ce79e3b4882edad5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/inventory.json": "12cb8894318410984d7178f9bd5f1a558a455de11d37c0923c22111d995b0674",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/selection.json": "5df5bb6818240f0b25b84e959308e682e9e8ba711c3e9dcc3c8712ac99ecbc46",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v1/selection.json": "a87d4afca6947d196bcb4ddd1c0f98a96efac8b7fcb117bc52a35fdf6bcf9bdc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v2/selection.json": "97e46327c42c4007e4bc23160ecd7e571ddf5294f667e1eca6b82c12adccea59",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/selection.json": "a22cfbee7cfa9065569989261eee9b71590c989e157d76821221d805cee69544",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/metadata-summaries.json": "135200e6ed7e8d97365e9e200d6cde75eae9967abaae6512a694f0edefdf3e0a"
+  },
+  "counts": {
+    "selected_commits": 5,
+    "captured_successfully": 5,
+    "v4_exact_duplicate_commits": 1,
+    "not_in_checked_v4_case_indices": 4,
+    "candidate_inventory": 348,
+    "unique_candidate_commit_ids": 323,
+    "reachable_commits_scanned": 6244,
+    "nonempty_log_mirrors": 11
+  },
+  "coverage": [
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/mirrors/ds4.git",
+      "commits_scanned": 764,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 15,
+      "history_complete": false,
+      "traversal_exit_code": 0,
+      "traversal_error": null,
+      "direct_root_recovery": false,
+      "current_local_ref_count": 0,
+      "independent_local_count_matches": true
+    },
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/mirrors/mlx-serve.git",
+      "commits_scanned": 821,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 14,
+      "history_complete": false,
+      "traversal_exit_code": 0,
+      "traversal_error": null,
+      "direct_root_recovery": false,
+      "current_local_ref_count": 0,
+      "independent_local_count_matches": true
+    },
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/mirrors/splash.git",
+      "commits_scanned": 1079,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 20,
+      "history_complete": false,
+      "traversal_exit_code": 0,
+      "traversal_error": null,
+      "direct_root_recovery": false,
+      "current_local_ref_count": 0,
+      "independent_local_count_matches": true
+    },
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-a/mirrors/sushi.git",
+      "commits_scanned": 1208,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 19,
+      "history_complete": false,
+      "traversal_exit_code": 0,
+      "traversal_error": null,
+      "direct_root_recovery": false,
+      "current_local_ref_count": 0,
+      "independent_local_count_matches": true
+    },
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/mirrors/mtplx.git",
+      "commits_scanned": 5,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 5,
+      "history_complete": false,
+      "traversal_exit_code": 128,
+      "traversal_error": "error: Could not read 8ee6b61258f3ee788778545f952d56d739e3cab5\nfatal: Failed to traverse parents of commit 3f095273f7386066c4ae1b79357f1d659df58c30",
+      "direct_root_recovery": true,
+      "current_local_ref_count": 0,
+      "independent_local_count_matches": true
+    },
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/mirrors/omlx.git",
+      "commits_scanned": 13,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 13,
+      "history_complete": false,
+      "traversal_exit_code": 128,
+      "traversal_error": "error: Could not read 09be4f420c7409298656bcfa13699dee3a0ed938\nfatal: Failed to traverse parents of commit e1293f8460e8545c23a23c9b649a6f9cb41654f2",
+      "direct_root_recovery": true,
+      "current_local_ref_count": 0,
+      "independent_local_count_matches": true
+    },
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/mirrors/tensorfold.git",
+      "commits_scanned": 32,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 32,
+      "history_complete": false,
+      "traversal_exit_code": 0,
+      "traversal_error": null,
+      "direct_root_recovery": false,
+      "current_local_ref_count": 0,
+      "independent_local_count_matches": true
+    },
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/engines-b/mirrors/vllm-metal.git",
+      "commits_scanned": 23,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 23,
+      "history_complete": false,
+      "traversal_exit_code": 128,
+      "traversal_error": "error: Could not read 8172dc5112891329ef4f263da4c21f120a436af3\nfatal: Failed to traverse parents of commit 0ce80fdb06ba13c79bb8d1aea8a42f14b0c3049d",
+      "direct_root_recovery": true,
+      "current_local_ref_count": 0,
+      "independent_local_count_matches": true
+    },
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/mirrors/mlx-lm.git",
+      "commits_scanned": 500,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 11,
+      "history_complete": false,
+      "traversal_exit_code": 0,
+      "traversal_error": null,
+      "direct_root_recovery": false,
+      "current_local_ref_count": 1,
+      "independent_local_count_matches": true
+    },
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/mirrors/mlx-vlm.git",
+      "commits_scanned": 1199,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 9,
+      "history_complete": false,
+      "traversal_exit_code": 0,
+      "traversal_error": null,
+      "direct_root_recovery": false,
+      "current_local_ref_count": 1,
+      "independent_local_count_matches": true
+    },
+    {
+      "mirror": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/mirrors/mlx.git",
+      "commits_scanned": 600,
+      "limit": 5000,
+      "fresh_fetch": false,
+      "metadata_commit_roots": 63,
+      "history_complete": false,
+      "traversal_exit_code": 0,
+      "traversal_error": null,
+      "direct_root_recovery": false,
+      "current_local_ref_count": 1,
+      "independent_local_count_matches": true
+    }
+  ],
+  "summary_review": {
+    "counts_grouped_attribution_tags_and_statuses_independently_verified": true,
+    "status": "no_false_qualification_claim_found",
+    "wording_limit": "hardware_mention_only describes the keyword match, not proof that actual code uses no newer feature. Source review remains required. Exact duplicate grouping does not clear stable-patch/semantic lineage or protected tasks."
+  },
+  "superseded_ref_only_scan": {
+    "candidate_inventory": 24,
+    "reachable_commits_scanned": 2299,
+    "nonempty_log_mirrors": 3,
+    "finding": "Initial --all-only scan omitted ref-less local commit objects. The updated metadata-root scan addresses this without fetching history; old receipt preserved."
+  },
+  "discovery_limitations": [
+    "The scanner inspects commit messages only. It misses relevant source/API changes with no selected keywords, and long multi-change commit messages can mix an API mention with unrelated edits. Mentions do not establish that a final changed unit uses that feature. Discovery tags are not availability evidence.",
+    "Metadata-root discovery includes selection and metadata-summary files. Mirrors with missing parents retain partial traversal output and direct verified commit-object roots; their nonzero traversal statuses and errors remain explicit. Neither this fallback nor nonzero counts establish complete history.",
+    "Inventory row and exact-commit counts above precede stable-patch or conceptual-lineage deduplication. Shared commit objects can appear in multiple mirrors; do not count these as independent training examples. The earlier335/310 snapshot remains preserved separately.",
+    "Metadata seeding examines only direct lane case-index/inventory/selection/metadata-summaries files under expansion-v4-hour, excluding deeper supplement metadata and all llama.cpp history outside this root. Commit-object type checking is conservative, but does not make discovery exhaustive.",
+    "The MLX mirror is shallow; max5000 is a per-mirror upper bound, not demonstrated historical coverage. There is no fresh remote inventory claim.",
+    "One of five selected commits is already a sealed v4 exact optimization example. Other four lack matching exact heads in the four bound canonical case indices; this is not semantic-family/protected-task clearance.",
+    "Initial four zero-byte failed patch captures are preserved. Successful retry receipts and all five actual patch hashes were checked; no missing patch is silently counted as reviewed.",
+    "The four new-by-v4-head records are teaching evidence, not trainable/compiled/validated rows. Full before/after reconstruction, licenses, protected identities/finite-operation screening, exact replay and canonical token lengths remain admission gates."
+  ],
+  "records": [
+    {
+      "commit": "91c83d19bf022d7bc3e906582435f69fdc77ec63",
+      "parent": "238bca641d10988493970cf682e2a4e6e8976a62",
+      "repository": "https://github.com/ml-explore/mlx",
+      "url": "https://github.com/ml-explore/mlx/commit/91c83d19bf022d7bc3e906582435f69fdc77ec63",
+      "title": "Cooperative-tensor template-type compatibility",
+      "source_patch": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/91c83d19bf022d7bc3e906582435f69fdc77ec63/change-retry.patch",
+        "sha256": "073272d8ea356fecc26674925e649b074610ec2bb96a136540cb72cbe6260da5"
+      },
+      "teaching_points": [
+        {
+          "statement": "The three mma/mman helpers name operand types from the factory-expression decltype, then pass those aliases to get_destination_cooperative_tensor instead of decltype of the local ct_a/ct_b objects. This is a concrete compiler/template compatibility technique, not a claimed algorithmic speedup.",
+          "basis": "inspected_patch",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/91c83d19bf022d7bc3e906582435f69fdc77ec63/change-retry.patch",
+            "sha256": "073272d8ea356fecc26674925e649b074610ec2bb96a136540cb72cbe6260da5",
+            "quote": "+  using ct_a_t = decltype(gemm_op.template get_left_input_cooperative_tensor<",
+            "line": 49
+          }
+        },
+        {
+          "statement": "The stated motivating environment is a Mac OS 27 build failure. This title does not imply that macOS27 is the minimum supported runtime for the resulting kernel.",
+          "basis": "author_reported_problem",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/91c83d19bf022d7bc3e906582435f69fdc77ec63/change-retry.patch",
+            "sha256": "073272d8ea356fecc26674925e649b074610ec2bb96a136540cb72cbe6260da5",
+            "quote": "Fixing cooperative tensor build issues on Mac OS 27 (#4594)",
+            "line": 7
+          }
+        },
+        {
+          "statement": "The same commit removes operand-typed SDPA helper macros and a tile-cast macro. A faithful edit task must retain this scope or explain it; the patch alone does not establish why these removals were necessary to the build fix.",
+          "basis": "inspected_patch_scope",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/91c83d19bf022d7bc3e906582435f69fdc77ec63/change-retry.patch",
+            "sha256": "073272d8ea356fecc26674925e649b074610ec2bb96a136540cb72cbe6260da5",
+            "quote": "-#define CAST_NAX(DST, SRC)",
+            "line": 199
+          }
+        }
+      ],
+      "availability": {
+        "minimum_metal_version": null,
+        "minimum_macos_version": null,
+        "supported_gpu_families": null,
+        "scoped_code_or_author_conditions": [
+          "Commit title names Mac OS27; actual supported OS/GPU minimum remains unestablished."
+        ],
+        "scope": "Unknown fields deliberately remain unknown. Repository build predicates and runtime branch conditions do not establish a universal API/device support matrix."
+      },
+      "qualification_limits": [
+        "No compiler diagnostic, compile receipt or measurement is captured for this selected revision.",
+        "Do not infer the precise compiler type-system root cause or removed-macro deadness without instantiation/use-site evidence."
+      ],
+      "proposed_checks_not_run": [
+        "Compile the real GDN forward and VJP translation units with all used A/B/accumulator types under the affected and a prior supported toolchain.",
+        "Check helper use sites before isolating the alias change from the macro cleanup; retain complete before/after code and dependency closure."
+      ],
+      "sealed_v4_exact_head_matches": [],
+      "sealed_v4_parent_matches": [],
+      "additional_source_evidence": [],
+      "validation": {
+        "local_compile": "not_run",
+        "local_numerical": "not_run",
+        "local_performance": "not_run",
+        "dataset_admission": "not_requested_not_performed"
+      }
+    },
+    {
+      "commit": "5778a97c04b40753cb5d7c255aec76c2156e916a",
+      "parent": "365bd0fbac2e96631a1b2c4a34ca5a0771cdfde5",
+      "repository": "https://github.com/ml-explore/mlx",
+      "url": "https://github.com/ml-explore/mlx/commit/5778a97c04b40753cb5d7c255aec76c2156e916a",
+      "title": "Shape-aware SDPA dispatch by zero padding",
+      "source_patch": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/5778a97c04b40753cb5d7c255aec76c2156e916a/change-retry.patch",
+        "sha256": "093a6643dca65a2ae50d8ac3911eda34a3615b4c32318035de065acc647643e5"
+      },
+      "teaching_points": [
+        {
+          "statement": "For D72/D80, the change zero-pads Q/K/V to96, retains the caller-provided scale, calls NAX attention, and copies only the original output width back. Changing the scale to one derived from96 would alter the attention contract.",
+          "basis": "inspected_patch",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/5778a97c04b40753cb5d7c255aec76c2156e916a/change-retry.patch",
+            "sha256": "093a6643dca65a2ae50d8ac3911eda34a3615b4c32318035de065acc647643e5",
+            "quote": "+  // are zero and the caller's scale is retained.",
+            "line": 22
+          }
+        },
+        {
+          "statement": "Default admission requires both qL and kL at least512, no causal mode, mask or sinks; outer gates require NAX availability and FP16/BF16. The per-call MLX_SDPA_PAD_HEAD_DIM override can broaden shape/mask admission while retaining the outer feature/dtype gates.",
+          "basis": "inspected_patch",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/5778a97c04b40753cb5d7c255aec76c2156e916a/change-retry.patch",
+            "sha256": "093a6643dca65a2ae50d8ac3911eda34a3615b4c32318035de065acc647643e5",
+            "quote": "+  bool pad_default = qL >= 512 && kL >= 512 && !do_causal_ && !mask && !sinks;",
+            "line": 25
+          }
+        },
+        {
+          "statement": "The copies carry explicit source/destination strides instead of falsely marking a narrow view into padded storage contiguous. Temporary lifetimes are registered with the command encoder.",
+          "basis": "inspected_patch",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/5778a97c04b40753cb5d7c255aec76c2156e916a/change-retry.patch",
+            "sha256": "093a6643dca65a2ae50d8ac3911eda34a3615b4c32318035de065acc647643e5",
+            "quote": "+      // non-contiguous with span > size, so it cannot carry xp's flags.",
+            "line": 39
+          }
+        },
+        {
+          "statement": "The added tests cover masked/causal and sink cases under opt-in, plus FP32 fallback cases. They check GPU availability, not NAX execution itself; these are source tests, not executed evidence in this review.",
+          "basis": "inspected_test_scope",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/5778a97c04b40753cb5d7c255aec76c2156e916a/change-retry.patch",
+            "sha256": "093a6643dca65a2ae50d8ac3911eda34a3615b4c32318035de065acc647643e5",
+            "quote": "+            self.test_sdpa_head_dim_72_80_sinks()",
+            "line": 112
+          }
+        }
+      ],
+      "availability": {
+        "minimum_metal_version": null,
+        "minimum_macos_version": null,
+        "supported_gpu_families": null,
+        "scoped_code_or_author_conditions": [
+          "Runtime predicate metal::is_nax_available()",
+          "D in{72,80}; dtypeFP16/BF16; defaultqL/kL>=512 and unmasked/noncausal/no-sinks; explicit override policy as captured."
+        ],
+        "scope": "Unknown fields deliberately remain unknown. Repository build predicates and runtime branch conditions do not establish a universal API/device support matrix."
+      },
+      "qualification_limits": [
+        "No timing measurements were captured here; amortization is the code comment rationale, not a measured result.",
+        "GPU-only tests can pass via fallback on hardware without NAX. Added short-shape tests do not alone demonstrate the new default long-shape branch.",
+        "Padding/copy allocation overhead and noncontiguous input/output paths need independent checks."
+      ],
+      "proposed_checks_not_run": [
+        "Instrument the actual dispatch and test511/512 boundary pairs with overrideunset/0/1 on NAX-capable hardware.",
+        "Compare to independent attention reference forD72/D80, FP16/BF16, GQA, strides, masked/sinks override and FP32 fallback; retain originalscale.",
+        "Benchmark totalcall time including padding/copy and memory for both short and long shapes; report regressions and scope."
+      ],
+      "sealed_v4_exact_head_matches": [],
+      "sealed_v4_parent_matches": [],
+      "additional_source_evidence": [],
+      "validation": {
+        "local_compile": "not_run",
+        "local_numerical": "not_run",
+        "local_performance": "not_run",
+        "dataset_admission": "not_requested_not_performed"
+      }
+    },
+    {
+      "commit": "c7ff35d9714c78bcdf4620deb1d189f7ffb7c3b9",
+      "parent": "e2c1e286e00922c7db0d79e0aa1f4b6ae99d627f",
+      "repository": "https://github.com/ml-explore/mlx",
+      "url": "https://github.com/ml-explore/mlx/commit/c7ff35d9714c78bcdf4620deb1d189f7ffb7c3b9",
+      "title": "Skip discarded SIMD-group MoE work without skipping barriers",
+      "source_patch": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/c7ff35d9714c78bcdf4620deb1d189f7ffb7c3b9/change.patch",
+        "sha256": "eaf93835f3fd5fc358b575942197b7cb4dd1479f8540fe33a5918a5139e0bb6d"
+      },
+      "teaching_points": [
+        {
+          "statement": "Move expert-row overlap bounds before the K loop and form sg_active from a nonempty intersection. Only an active SIMD group loads its A/B fragments and performs its local matrix work.",
+          "basis": "inspected_patch",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/c7ff35d9714c78bcdf4620deb1d189f7ffb7c3b9/change.patch",
+            "sha256": "eaf93835f3fd5fc358b575942197b7cb4dd1479f8540fe33a5918a5139e0bb6d",
+            "quote": "+    const bool sg_active = m_hi_lim > m_lo_lim;",
+            "line": 23
+          }
+        },
+        {
+          "statement": "The surrounding threadgroup barriers remain outside sg_active. Teaching the distinction between SIMD-group-local work and threadgroup-cooperative synchronization is more important than applying a blanket early return.",
+          "basis": "inspected_patch_and_inferred_safety_invariant",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/c7ff35d9714c78bcdf4620deb1d189f7ffb7c3b9/change.patch",
+            "sha256": "eaf93835f3fd5fc358b575942197b7cb4dd1479f8540fe33a5918a5139e0bb6d",
+            "quote": "         threadgroup_barrier(mem_flags::mem_threadgroup);",
+            "line": 146
+          }
+        },
+        {
+          "statement": "Both affine and floating-format NAX gather kernels are changed; the accumulator is still initialized and original row-range stores retained.",
+          "basis": "inspected_patch_scope",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/c7ff35d9714c78bcdf4620deb1d189f7ffb7c3b9/change.patch",
+            "sha256": "eaf93835f3fd5fc358b575942197b7cb4dd1479f8540fe33a5918a5139e0bb6d",
+            "quote": " mlx/backend/metal/kernels/fp_quantized_nax.h | 109",
+            "line": 9
+          }
+        }
+      ],
+      "availability": {
+        "minimum_metal_version": null,
+        "minimum_macos_version": null,
+        "supported_gpu_families": null,
+        "scoped_code_or_author_conditions": [
+          "Primary PR benchmarks M5 Pro24GB and M5 Max128GB; full GPU-family support unknown."
+        ],
+        "scope": "Unknown fields deliberately remain unknown. Repository build predicates and runtime branch conditions do not establish a universal API/device support matrix."
+      },
+      "qualification_limits": [
+        "This exact commit is already admitted in sealed v4 and is not a new independent example.",
+        "The captured primary PR reports model-level prefill improvement2.23\u20136.97% and unchanged decode on specified M5Pro/Max models/prompts. These are author results, not a local isolated-kernel benchmark or universal support statement."
+      ],
+      "proposed_checks_not_run": [
+        "Use mixed active/inactive groups in one threadgroup and partial expert boundary/tail tiles; detect hangs and untouched/incorrect stores.",
+        "Cover affine and FP quantization, transpose/alignment branches, skewed expert routing; compare before/after outputs and end-to-end prefill separately from decode."
+      ],
+      "sealed_v4_exact_head_matches": [
+        {
+          "id": "mlx-c7ff35d9714c-hour-v4",
+          "commit": "c7ff35d9714c78bcdf4620deb1d189f7ffb7c3b9",
+          "parent": "e2c1e286e00922c7db0d79e0aa1f4b6ae99d627f",
+          "index": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/case-index.json",
+          "eligible": true,
+          "core": true,
+          "tier": "optimization"
+        }
+      ],
+      "sealed_v4_parent_matches": [],
+      "additional_source_evidence": [
+        {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/mlx/evidence/mlx-pr-4352.txt",
+          "sha256": "a43cf51e8c0a2d95bf1d478a296bfb19cf008b432904fc83da23860882272bb3",
+          "url": "https://github.com/ml-explore/mlx/pull/4352",
+          "quote": "The benchmarks were run on M5 Pro (24GB) and M5 max (128GB) using `mlx_lm.benchmark`",
+          "basis": "author_reported_benchmark_scope"
+        }
+      ],
+      "validation": {
+        "local_compile": "not_run",
+        "local_numerical": "not_run",
+        "local_performance": "not_run",
+        "dataset_admission": "not_requested_not_performed"
+      }
+    },
+    {
+      "commit": "ef5fc0fab27c63e6976e96b07c234c9e2601d8a7",
+      "parent": "24482988e9cf08b6f3bbdd7b2af505d028d389e5",
+      "repository": "https://github.com/ml-explore/mlx",
+      "url": "https://github.com/ml-explore/mlx/commit/ef5fc0fab27c63e6976e96b07c234c9e2601d8a7",
+      "title": "Explicit Metal member-function receiver address spaces",
+      "source_patch": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/ef5fc0fab27c63e6976e96b07c234c9e2601d8a7/change-retry.patch",
+        "sha256": "a570d84e5c4b0d1d96623f48326b5a37d82ab55b3da31f70515bd2fc84a64b3e"
+      },
+      "teaching_points": [
+        {
+          "statement": "Repository documentation explains that Metal4.1 changes the implicit this address space from thread to __metal_generic. Returning a thread-qualified reference can then fail; a trailing thread qualifier constrains the member-function receiver.",
+          "basis": "author_documented_language_contract",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/ef5fc0fab27c63e6976e96b07c234c9e2601d8a7/change-retry.patch",
+            "sha256": "a570d84e5c4b0d1d96623f48326b5a37d82ab55b3da31f70515bd2fc84a64b3e",
+            "quote": "+    is ``__metal_generic`` rather than ``thread``. Member functions in Metal",
+            "line": 72
+          }
+        },
+        {
+          "statement": "The repair propagates receiver qualifiers through member operators, constructors, accessors and declarations/definitions throughout kernel headers; it is not merely a return-type annotation.",
+          "basis": "inspected_patch",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/ef5fc0fab27c63e6976e96b07c234c9e2601d8a7/change-retry.patch",
+            "sha256": "a570d84e5c4b0d1d96623f48326b5a37d82ab55b3da31f70515bd2fc84a64b3e",
+            "quote": "+  T operator()(T x, T y) thread {",
+            "line": 219
+          }
+        },
+        {
+          "statement": "Both built-in and extension compilation add -Wmetal-addr-spaces so missing receiver qualifiers can be detected before they become errors on affected toolchains.",
+          "basis": "inspected_patch",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/ef5fc0fab27c63e6976e96b07c234c9e2601d8a7/change-retry.patch",
+            "sha256": "a570d84e5c4b0d1d96623f48326b5a37d82ab55b3da31f70515bd2fc84a64b3e",
+            "quote": "+                             -Wmetal-addr-spaces)",
+            "line": 57
+          }
+        }
+      ],
+      "availability": {
+        "minimum_metal_version": null,
+        "minimum_macos_version": null,
+        "supported_gpu_families": null,
+        "scoped_code_or_author_conditions": [
+          "MLX documentation explicitly attributes receiver-address-space behavior to Metal4.1; universal OS/GPU minimum remainsunknown."
+        ],
+        "scope": "Unknown fields deliberately remain unknown. Repository build predicates and runtime branch conditions do not establish a universal API/device support matrix."
+      },
+      "qualification_limits": [
+        "The captured primary source is MLX documentation, not a locally executed compiler reproduction or independently checked Apple specification.",
+        "No broad minimum OS/GPU requirement follows from a source-language compatibility repair.",
+        "The36-file patch should not be misrepresented as a standalone complete kernel; dependency/declaration closure matters."
+      ],
+      "proposed_checks_not_run": [
+        "Compile a receiver/accessor reproduction and actual affected extension/kernel header closures with the pinned affected toolchain, then earlier supported versions.",
+        "Check warning-flag availability separately and declaration/definition consistency; run numerical regression after compilation without claiming arithmetic changes were measured."
+      ],
+      "sealed_v4_exact_head_matches": [],
+      "sealed_v4_parent_matches": [],
+      "additional_source_evidence": [],
+      "validation": {
+        "local_compile": "not_run",
+        "local_numerical": "not_run",
+        "local_performance": "not_run",
+        "dataset_admission": "not_requested_not_performed"
+      }
+    },
+    {
+      "commit": "ae3db54247c59de87309deaa3e956ddda30d4825",
+      "parent": "269e099dfc01ba6a2f5dfdaadc4a4fc388b87381",
+      "repository": "https://github.com/ml-explore/mlx",
+      "url": "https://github.com/ml-explore/mlx/commit/ae3db54247c59de87309deaa3e956ddda30d4825",
+      "title": "Keep SDK, language and deployment target separate",
+      "source_patch": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/ae3db54247c59de87309deaa3e956ddda30d4825/change-retry.patch",
+        "sha256": "7c9b92dac5e6c1553367bc6a7ac0bdd7b20221a5ca2f04d9cc433e298ae2cb02"
+      },
+      "teaching_points": [
+        {
+          "statement": "Building with a new SDK does not alone opt a binary into NAX: the captured MLX build gate requires Metal>=400, SDK>=26.2 and deploymenttarget>=26.2. This is an explicit repository build policy at this revision.",
+          "basis": "inspected_build_policy",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/ae3db54247c59de87309deaa3e956ddda30d4825/change-retry.patch",
+            "sha256": "7c9b92dac5e6c1553367bc6a7ac0bdd7b20221a5ca2f04d9cc433e298ae2cb02",
+            "quote": "+     AND CMAKE_OSX_DEPLOYMENT_TARGET VERSION_GREATER_EQUAL 26.2)",
+            "line": 158
+          }
+        },
+        {
+          "statement": "If no deployment target is supplied, the patch sets it from the host OS, then passes -mmacosx-version-min into the Metal preprocessor version probe. The host OS, SDK and effective language version are printed separately.",
+          "basis": "inspected_patch",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/ae3db54247c59de87309deaa3e956ddda30d4825/change-retry.patch",
+            "sha256": "7c9b92dac5e6c1553367bc6a7ac0bdd7b20221a5ca2f04d9cc433e298ae2cb02",
+            "quote": "+    set(XCRUN_FLAGS \"-mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}\")",
+            "line": 133
+          }
+        },
+        {
+          "statement": "The release matrix changes its new-OS package from26.0 to26.2 while retaining14/15 targets; JACCL gets its own SDK/deployment gates. This is not a blanket claim that all MLX needs macOS26.2.",
+          "basis": "inspected_build_scope",
+          "evidence": {
+            "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/new-metal-v1/evidence/ae3db54247c59de87309deaa3e956ddda30d4825/change-retry.patch",
+            "sha256": "7c9b92dac5e6c1553367bc6a7ac0bdd7b20221a5ca2f04d9cc433e298ae2cb02",
+            "quote": "+        macos-target: [\"14.0\", \"15.0\", \"26.2\"]",
+            "line": 40
+          }
+        }
+      ],
+      "availability": {
+        "minimum_metal_version": null,
+        "minimum_macos_version": null,
+        "supported_gpu_families": null,
+        "scoped_code_or_author_conditions": [
+          "At this revision, NAX precompiled-kernel gate: MLX_METAL_VERSION>=400 AND macOS SDK>=26.2 AND deploymenttarget>=26.2.",
+          "MLX minimumgeneralSDK/deployment checks remain14.0 in this patch; that is scopedbuildcode, not a current product recommendation."
+        ],
+        "scope": "Unknown fields deliberately remain unknown. Repository build predicates and runtime branch conditions do not establish a universal API/device support matrix."
+      },
+      "qualification_limits": [
+        "A build predicate establishes what this source enables, not a universal runtime support matrix for all Metal devices or all MLX wheels.",
+        "No builds or deployment tests have run in this review; source CI definitions are not successful CI receipts.",
+        "New-target performance and compatibility with older systems require distinct qualification."
+      ],
+      "proposed_checks_not_run": [
+        "Configure the actual project with SDK/deployment combinations around26.2 and inspect which NAX/JACCL targets are compiled; verify version-aware comparisons.",
+        "Retain old-target fallback build checks and run resulting binaries on declared target systems."
+      ],
+      "sealed_v4_exact_head_matches": [],
+      "sealed_v4_parent_matches": [],
+      "additional_source_evidence": [],
+      "validation": {
+        "local_compile": "not_run",
+        "local_numerical": "not_run",
+        "local_performance": "not_run",
+        "dataset_admission": "not_requested_not_performed"
+      }
+    }
+  ],
+  "execution": {
+    "upstream_scripts_executed": false,
+    "network_used_by_review": false,
+    "compiler_executed": false,
+    "gpu_executed": false,
+    "dataset_modified": false
+  },
+  "source_review_scope": "Read five selected patches; inspected relevant compatibility/dispatch/arithmetic/synchronization changes and existing primary PR4352. Did not independently audit every declaration in the large address-space migration or prove complete runtime hardware support."
+}

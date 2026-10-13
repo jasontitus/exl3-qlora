@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "commit": "91c83d19bf022d7bc3e906582435f69fdc77ec63",
+      "changed_files": 4,
+      "captured_bytes": 225042
+    },
+    {
+      "commit": "5778a97c04b40753cb5d7c255aec76c2156e916a",
+      "changed_files": 2,
+      "captured_bytes": 138256
+    },
+    {
+      "commit": "ef5fc0fab27c63e6976e96b07c234c9e2601d8a7",
+      "changed_files": 36,
+      "captured_bytes": 1228571
+    },
+    {
+      "commit": "ae3db54247c59de87309deaa3e956ddda30d4825",
+      "changed_files": 7,
+      "captured_bytes": 81197
+    }
+  ]
+}
