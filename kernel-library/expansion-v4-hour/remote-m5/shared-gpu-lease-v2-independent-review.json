@@ -1,0 +1,68 @@
+{
+  "schema": "shared-gpu-lease-v2-independent-review-v1",
+  "status": "approved_implementation_pending_concrete_campaign_gate",
+  "reviewer": "adversarial_code",
+  "created_utc": "2026-10-13T23:06:32.303908+00:00",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared_gpu_lease_v2.py": "21c6b89ca67e7bd08aed7de54642ccb830102a1704680eda6c1a7a11325aa7d1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared_gpu_lease.py": "c0ba867f7889e533c905a964bae9a0e58546284a27a5ee04bac0a4c71da6af21",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/tests/test_shared_gpu_lease_v2.py": "afff8bab18dc46148e2694bc84c4d856fde94e18dc6a234cd00d615f21fea236",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/test_lease_v2_boundaries.py": "dc3b33e6306c38a75527df8f6def32043f0d4415ed3be83adeed3e34ec9116c1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/lease-v2-independent-final-tests.xml": "611c5c67d0881ddc71f50721e118ad8b191ac8d08cde8c14fe36b4f89941a042",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/pid-reuse-reproduction.json": "e43c1d0864037aeed8c59fcbbec11e0e787b6e4f534d5380b85fc0f5e5bedc15",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/v2-unobserved-group-survivor-reproduction.json": "7a7147a6aafa625968df706b71173561a7a569b33b8ebb888e1486d184804d5e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared-gpu-lease-v2-implementation.json": "e15eac712c6814b81a32de216cb8bcc2dbfe4ab0150eb6455b23ca6ed0105e4a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/SHARED_GPU_LEASE_V2.md": "4d9c218e25a45ce3659ff750050661e8929f61fc9539db30e887b9274467e352",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/sushi-lease-protocol/gpu-lock.sh": "b50468be43cda9970f0d0919af1e0fa8657d26fbac66da368eb109c756abee41"
+  },
+  "tests": {
+    "author_methods_independently_rerun": 37,
+    "additional_independent_boundary_methods": 8,
+    "methods_passed": 45,
+    "subtests_passed": 5,
+    "remote_or_gpu_or_real_shared_lock_operations": false
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "status": "fixed_and_retested",
+      "finding": "Expired tracked PID prevented admission of a genuinely new descendant generation. Current loop re-admits only on live owned ancestry/original live leader group evidence and records old/new generations."
+    },
+    {
+      "severity": "high",
+      "status": "fixed_and_retested",
+      "finding": "Initial v2 ignored a first-seen same-group survivor after the original leader exited. Current tracker raises uncertainty and retains the owned lease unless that generation has independently proven live owned ancestry."
+    },
+    {
+      "severity": "medium",
+      "status": "fixed_and_retested",
+      "finding": "Initial process-table validation rejected unrelated PID/PGID0 system entries. Current global inventory allows zero; owned leader/admission remains positive."
+    }
+  ],
+  "lifecycle_review": {
+    "model_phases": [
+      "preflight-train",
+      "preflight-test",
+      "baseline",
+      "train",
+      "adapter"
+    ],
+    "serial_children": "15 direct command/model/verifier processes, plus synchronous SFT workflow descendants. New sessions retain parent ancestry; observed reparented descendants stay tracked by birth.",
+    "completion": "Require exact reviewed runner operational status completed_pending_quality_audit, exact plan/payload/numerical environment, exit0, absent error, input hashes unchanged, and no live or ambiguous tracked survivors. This does not certify model quality.",
+    "failure": "Outer wrapper never signals any process and retains its own lease for explicit recovery on failure or uncertain cleanup. Inner reviewed runner retains its separate authorized child-cleanup behavior.",
+    "original_controls_preserved": true
+  },
+  "remaining_execution_gates": [
+    "Fresh completed checkpoint full-payload receipt and immutable source manifest, exact model/config binding, newly prepared plan, and concrete request independently reviewed before launch.",
+    "Pin absolute planned Python executable/resolved target, run_m5_plan, helper, plan, runtime snapshot and completed payload receipt/source manifest in the request; do not pin legitimate mutable outputs.",
+    "Set only reviewed MLX_ENABLE_TF32=0 mode for the inner runner; use fresh prefix cache, baseline, logs and receipts. No automatic retries/resume.",
+    "Completion criteria must bind exact plan, payload receipt, expected status and quality_certified=false; verified_only or exit0 alone cannot release a model campaign lease."
+  ],
+  "qualification_limits": [
+    "CPU source review and synthetic process-table/temporary-file tests only; no actual long campaign or remote mutation-lock stress test performed.",
+    "Cooperative shared lock cannot exclude software ignoring it. ps birth timestamps have limited resolution and polling cannot prove absence of a completely unsampled daemonized/reparented child; reviewed commands must synchronously wait for children and not detach background work.",
+    "Quiescent trusted input files remain required; this is not containment against hostile concurrent writers or OS-level process attestation.",
+    "Original single-process control receipts remain separate and unchanged. Final numerical quality, prior/final checkpoint selection, generated-code results and scientific claims require their own audits."
+  ]
+}

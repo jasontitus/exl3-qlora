@@ -1,0 +1,112 @@
+{
+  "schema": "shared-gpu-lease-long-campaign-review-v2",
+  "created_utc": "2026-10-13T23:05:41.530875+00:00",
+  "status": "author_cpu_qualified_pending_independent_review_and_concrete_plan",
+  "reviewer": "quality_research (wrapper author; independent v2 review requested from adversarial_code)",
+  "source_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared_gpu_lease.py": "c0ba867f7889e533c905a964bae9a0e58546284a27a5ee04bac0a4c71da6af21",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared_gpu_lease_v2.py": "21c6b89ca67e7bd08aed7de54642ccb830102a1704680eda6c1a7a11325aa7d1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/tests/test_shared_gpu_lease_v2.py": "afff8bab18dc46148e2694bc84c4d856fde94e18dc6a234cd00d615f21fea236",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/shared-gpu-lease-v2-cpu-tests.xml": "e6d7969ce4b397c8041803e3ef134064379c988b5abb07d3ca53e5e80d0c8b4e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/shared-lease-pid-reuse-reproduction-v1.json": "c2f5af474a399101a3396ab125cc6116b46634dadbc69b404846395b493c1e69",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/run_agent_corpus_plan-v1.py": "f515006dcb0252382757286183226cdcbfc0338c7d9998ea367d8cb06e480afe",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/sft.py": "3b5dd1b482140aea41415a12f6ff7aa335b21b3ff676ac6b09954a396762b60c"
+  },
+  "original_controls_wrapper_preserved": true,
+  "old_runner_lifecycle_ast_equal": {
+    "process_table": true,
+    "observed_children": true,
+    "cleanup": true,
+    "handle_stop": true,
+    "direct_phase_lock": true
+  },
+  "tests": {
+    "methods_passed": 37,
+    "subtests_passed": 5,
+    "ruff": "passed",
+    "actual_process_or_gpu_run": false,
+    "process_tables": "Synthetic CPU snapshots with nested sessions; local temporary lease filesystem only"
+  },
+  "fixed_finding": {
+    "original_behavior": "A new descendant generation reusing an old PID was not registered, which could hide its survivor at lease release.",
+    "v2_behavior": "Replace an expired descendant identity only when current ancestry is proven through a live owned parent or original live leader process group; retain historical starts. A changed leader generation or malformed process metadata fails closed. An unrelated reused PID is never adopted. A new group member first observed after the leader exits fails closed unless its live owned-parent ancestry is proven."
+  },
+  "compatible_lifecycle": {
+    "phases": [
+      "preflight-train",
+      "preflight-test",
+      "baseline",
+      "train",
+      "adapter"
+    ],
+    "serial_child_structure": "Each phase has CPU command emitter, model child, CPU verifier:15 direct serial children. The train SFT process can synchronously wait for another start_new_session workflow child.",
+    "sessions": "start_new_session changes session/process group, not parent ancestry; v2 traverses live parent chains and keeps observed reparented child identities.",
+    "successful_release": "Requires top-level runner exit0, completed_pending_quality_audit receipt with no error, no observed live descendants, unchanged pinned inputs/request/wrapper/protocol and unchanged own lease.",
+    "failure": "Runner errors stop later phases and its existing cleanup may signal only its own observed descendants/process group. Outer wrapper never signals and deliberately keeps its own lease after failed/interrupted/mismatched/uncertain completion, even if child cleanup already succeeded.",
+    "quality": "completed_pending_quality_audit is operational completion. quality_certified remains false; lease release is not scientific validation.",
+    "environment": "Outer wrapper inherits environment. Set MLX_ENABLE_TF32=0 before invocation and ensure no other MLX_* variables. Inner guard enforces exact MLX environment and each child records TF32=0."
+  },
+  "concrete_request_requirements": {
+    "execution_gate": "Completed checkpoint full-byte copy verification, newly prepared immutable plan and independent concrete-plan review are still required. No concrete plan/checkpoint SHA is fabricated here.",
+    "argv": [
+      "<absolute planned Python>",
+      "<absolute reviewed run_m5_plan.py>",
+      "--plan",
+      "<absolute sealed plan>",
+      "--plan-sha256",
+      "<actual plan SHA256>",
+      "--receipt",
+      "<absolute fresh launcher receipt>",
+      "--payload-receipt",
+      "<absolute completed full-payload receipt>",
+      "--payload-sha256",
+      "<actual full-payload receipt SHA256>"
+    ],
+    "cwd": "Exact canonical plan cwd (frozen runtime root).",
+    "input_hashes_required": [
+      "planned Python executable path and fully resolved target when symlinked",
+      "run_m5_plan.py",
+      "sealed plan",
+      "plan helper",
+      "frozen runtime snapshot.json",
+      "completed full-payload verification receipt",
+      "source full-payload manifest bound by that receipt"
+    ],
+    "transitively_guarded": "The hash-bound helper/plan/runtime snapshot retain their original runtime, dataset, adapter and model validation responsibilities. Do not add repeated entire-model reads to the lease wrapper.",
+    "never_pin_mutable_outputs": [
+      "completion receipt",
+      "project.json (initial hash is checked by the inner plan before training; legitimate project state can change)",
+      "attempts/checkpoints/logs",
+      "fresh project-owned prefix cache"
+    ],
+    "completion_expect": {
+      "format": "native-agent-corpus-launch-v1",
+      "status": "completed_pending_quality_audit",
+      "quality_certified": false,
+      "plan": "<exact absolute plan path>",
+      "plan_sha256": "<actual plan SHA256>",
+      "numerical_environment": {
+        "MLX_ENABLE_TF32": "0"
+      },
+      "payload_verification": {
+        "path": "<exact absolute full-payload receipt>",
+        "sha256": "<actual receipt SHA256>"
+      }
+    },
+    "expected_exit_codes": [
+      0
+    ],
+    "no_detached_background_children": true,
+    "unique_fresh_paths": "Outer request, wrapper receipt/log/state and inner launcher receipt/logs must be distinct. Completion output absent initially; original failed attempts preserved.",
+    "campaign_boundary": "Hold shared lease only for this immediate serial model campaign. Complete transfer/CPU preparation/review first. No unrelated download, analysis, compilation or follow-up workloads inside it."
+  },
+  "limitations": [
+    "No actual long-campaign launch or stress test was performed.",
+    "ps lstart has limited timestamp resolution; observed ancestry supports cooperative reviewed processes, not malicious daemon/OS attestation.",
+    "A very short unobserved parent that intentionally daemonizes cannot be proven absent by polling; current reviewed runner/runtime synchronously wait for their children.",
+    "Source/input stat and hash checks require a quiescent trusted execution host, not protection against a hostile concurrent writer.",
+    "An interrupted outer wrapper does not forward a stop signal; its children may remain active behind the retained lease until explicit coordinator review.",
+    "Final model quality and fixed final checkpoint/step selection require separate result audits."
+  ]
+}
