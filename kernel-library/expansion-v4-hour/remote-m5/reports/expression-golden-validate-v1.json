@@ -1,0 +1,30 @@
+{
+  "argv" : [
+    "expression-controls-golden-v1\/verify_expression_probes",
+    "expression-controls-golden-v1\/job.json",
+    "reports\/expression-golden-validate-v1.json",
+    "--validate-only"
+  ],
+  "bindings_verified" : true,
+  "candidate_statuses" : [
+    "compiled",
+    "compiled"
+  ],
+  "cases" : [
+
+  ],
+  "compiler" : "Apple metal version 32023.921 (metalfe-32023.921.6)\nTarget: air64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: \/private\/var\/run\/com.apple.security.cryptexd\/mnt\/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.HonQeB\/Metal.xctoolchain\/usr\/metal\/current\/bin\n",
+  "finished_unix" : 1791931351.635483,
+  "format" : "heldout-expression-result-v1",
+  "gpu_executed" : false,
+  "job_sha256" : "5b53a33a22a6df55f87795c25f60ec8d1bfdbff2089774055d9aafbfe4926d71",
+  "numerical" : "not_run",
+  "origin" : "source_reference_not_model",
+  "passed" : false,
+  "performance" : "not_run",
+  "plan_sha256" : "f80d46e660b89ae5f4e83a78878d2b6613e31e9bcd79cc5c6590dc8630b56f53",
+  "response_sha256" : "b1a3e36161b509478c0a6836035f3010ab0083ac549aba253e5e9d9aa986b55e",
+  "scope" : "Two predeclared expression completions, exact fixed source composition, bounded finite inputs and independent CPU references. No optimization discovery, whole patch generation, or speed claim.",
+  "started_unix" : 1791931351.6195121,
+  "status" : "bindings_verified_no_gpu"
+}

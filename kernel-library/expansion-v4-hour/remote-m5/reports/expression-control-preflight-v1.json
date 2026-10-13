@@ -1,0 +1,16 @@
+{
+  "schema": "m5-expression-control-preflight-v1",
+  "created_utc": "2026-10-13T22:42:53.444829+00:00",
+  "golden_job_sha256": "5b53a33a22a6df55f87795c25f60ec8d1bfdbff2089774055d9aafbfe4926d71",
+  "negative_job_sha256": "0bd8c77d5d818e3624118a17374d7016c324c7cbc639778bcdc6d8dd1eaeb7b1",
+  "compiled_candidates_per_job": 2,
+  "cpu_binding_validation": "passed_both_jobs",
+  "gpu_executed": false,
+  "numerical": "pending",
+  "reason": "Unrelated Sushi experiment controller21341 owns shared GPU lease; preserved. CPU preparation proceeds.",
+  "next_gate": "Compatible shared GPU ownership before positive/negative numerical controls and training.",
+  "validation_receipts": [
+    "expression-golden-validate-v1.json",
+    "expression-negative-validate-v1.json"
+  ]
+}
