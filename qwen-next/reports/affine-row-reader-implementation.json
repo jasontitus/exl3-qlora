@@ -1,0 +1,57 @@
+{
+  "schema": "affine-row-reader-implementation-v1",
+  "created_utc": "2026-10-13T23:00:22.945790+00:00",
+  "status": "synthetic_cpu_tests_passed_pending_independent_review",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/affine_row_reader.py": "b6ae2c129da181a8ca79040d3cabf36a5522c6271b1934174107780783dea4ce",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/affine_row_views.py": "120be86f5051b70f45c2a064bde51f5d4500eb3a1e0e7ec83aa29713568db4da",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/checkpoint_inventory.py": "9682fcae99d00cab9791e8621cb93df092d1d1ddfb6d7f281de772d20d4b072f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_affine_row_reader.py": "af156c36ddb5f5c2d33b6d50c6f3a1f8a921a706acc2043b88cc8ddda3b46fa4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_affine_row_views.py": "f2d483bb1ef56978bad2a78809254d7b4e3dd78b68427ee0c88a2bf0a8a110c6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_expert_row_reader.py": "68820a7fe1ef139ab3cc9b0c66ca95046abb65aa4a5f538000d0e87591e3f4f1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tests/test_checkpoint_inventory.py": "6b15317d0eb04aac9fbcc7b4107b0f3db971b12fd620a04b1dcad1ceefe7cc95",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/reports/affine-row-reader-cpu-tests.xml": "846f7ebd95c90cbb5f453572d70357517334f8b214bdc294cc29184c342635fd"
+  },
+  "implementation": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/qwen-next/tools/affine_row_reader.py",
+  "api": [
+    "bind_rows(checkpoint,prefix=...,rows=[...]) -> canonical-pinned selected-row identity",
+    "AffineRowReader(checkpoint, identity, expected_sha256=...).read(rows) -> raw unique-row bytes, request mapping and receipt",
+    "CLI bind/read; read prints receipts only, never raw payloads"
+  ],
+  "tests": {
+    "new_reader_cases": 49,
+    "planner_cases": 15,
+    "existing_expert_reader_cases": 17,
+    "existing_inventory_cases": 26,
+    "total_passed": 107,
+    "failures": 0,
+    "errors": 0,
+    "ruff": "passed",
+    "subtests_passed": 57
+  },
+  "guarantees": [
+    "Config/index and exact selected physical-shard ownership validated; weight/scales/biases must share one shard.",
+    "Selected spans regenerated from existing affine planner, with bits2/3/4/5/6/8, groups32/64/128, U32 packed weights and same-dtype F16/BF16/F32 metadata.",
+    "Canonical external identity pin, implementation hashes, metadata/header/stat bindings, descriptor checks at open and after I/O, opened-header hash, and every selected component hash before returning.",
+    "Duplicate requests incur no repeated payload reads; unbound rows and exceeded budgets fail before selected payload reads.",
+    "Binding and reads each perform exactly one pread per unique row/component, plus one bounded opened-header verification; no complete shard scan or decoded allocation."
+  ],
+  "budget_contract": {
+    "max_requested_rows_including_duplicates": 4096,
+    "max_unique_selected_payload_bytes_per_bind_or_read": 8388608,
+    "max_header_bytes": 16777216,
+    "max_config_or_index_bytes_each": 33554432,
+    "max_file_size_stat_only": 68719476736,
+    "max_identity_json_bytes": 16777216,
+    "metadata_accounting": "8MiB budget is tensor payload only; metadata uses separately capped reads. Opened-header verification byte count is explicit in bind/read receipts; metadata inspection also reads header/config/index during bind/constructor."
+  },
+  "limitations": [
+    "Raw storage bytes only: no decode/finiteness assertion for affine values, native MLX integration, actual model payload, GPU, numerical forward/VJP or training qualification.",
+    "Only selected payload hashes are established. No full-file payload SHA is computed, and no duplicate-name audit of unselected physical shards occurs.",
+    "Bindings are local inode/stat/source-bound consistency identities, not portable/authenticated model provenance. Rebinding explicitly rereads selected bytes after replacement or implementation change.",
+    "All tests use synthetic temporary shards. The current architecture remains unsupported for end-to-end Qwen model execution/training."
+  ],
+  "no_gpu": true,
+  "no_real_model_payload_reads": true,
+  "existing_readers_modified": false
+}

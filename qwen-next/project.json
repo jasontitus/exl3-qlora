@@ -145,5 +145,27 @@
     "real_checkpoint_qualified": false,
     "model_training_qualified": false,
     "post_dispatch_review": "reports/affine-mlx-gpu-independent-check.json"
+  },
+  "affine_row_span_planner": {
+    "implementation": "tools/affine_row_views.py",
+    "tests": "tests/test_affine_row_views.py",
+    "tests_passed": 15,
+    "scope": "CPU-only bounded deduplicated row byte-span geometry; explicit per-weight affine configuration",
+    "review_status": "pending independent review",
+    "payload_reader_implemented": false,
+    "hardware_qualified": false,
+    "receipt": "reports/affine-row-span-progress.json"
+  },
+  "affine_selected_row_reader": {
+    "implementation": "tools/affine_row_reader.py",
+    "tests": "tests/test_affine_row_reader.py",
+    "tests_passed": 49,
+    "scope": "CPU-only selected-row raw payload binding/read; exact selected-shard index ownership and row hashes, no full-shard scan",
+    "independent_review": "reports/affine-row-reader-independent-review.json",
+    "real_payload_qualified": false,
+    "hardware_qualified": false,
+    "model_training_qualified": false,
+    "receipt": "reports/affine-row-reader-implementation.json",
+    "status": "approved_synthetic_cpu_selected_raw_row_scope"
   }
 }
