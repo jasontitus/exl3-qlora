@@ -1,3 +1,11 @@
+## Completed cache diagnostic — 2026-10-14T22:27:34.484241+00:00
+
+All six native diagnostic phases completed, released their owned leases, and passed a separate actual-evidence audit. Root rehashed all 235 audit inputs. Fresh process tables excluded all 25 recorded IDs and their process closure; the shared lock was free. All three traced/untraced comparisons were bitwise equal. The full-prefill control reproduced the prior fresh-prefix logits exactly; split prefill before handover and normal decode after handover both reproduced the prior cached logits exactly. The mismatch therefore precedes handover in this test; neither serving parity nor a causal fault is qualified.
+
+The first-layer attention input matches exactly. Query-normalization/KV values differ slightly, followed by a much larger attention-output difference. These five landmarks combine attention-core/inverse-RoPE and output-projection work, so they do not identify a faulty operation. A separate seven-landmark revision adds the actual BF16 projection input and intermediate projection output; isolated CPU compilation/review is underway. Original results, runtime and production code remain preserved.
+
+M5 worker 47890 remains live with saved pointer197/458 and the next backward pass active. The fresh source/count audit through194 verifies155 exact-edit views +39 diagnostics,366584 supervised targets and941481 serialized token presentations. It binds transferred original history bytes after explicit human approval and unchanged165/188 prefixes. This is exposure/health evidence, not a learning-quality or optimizer-state proof. Source collection remains paused; final458/full-heldout/generated compilation-correctness-performance evaluation remains outstanding.
+
 ## Diagnostic build and training update — 2026-10-14T22:04:54.466132+00:00
 
 M5 worker 47890 remains live with pointer step-000192 of 458; recent logs advance through layer 32 of the next update. This is a liveness/pointer observation, not a fresh checkpoint payload or quality audit. The most recent independently checked saved metrics cover update 188.

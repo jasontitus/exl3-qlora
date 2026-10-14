@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-14T21:43:00.401855+00:00",
+  "updated_utc": "2026-10-14T22:27:34.484241+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -11,7 +11,7 @@
   "train_examples": 229,
   "heldout_examples": 16,
   "planned_updates": 458,
-  "completed_main_updates": 180,
+  "completed_main_updates": 194,
   "prior_campaign": "198 stopped intentionally after completed preflight; artifacts preserved; ownedlease released",
   "no_duplicate_gpu_job": true,
   "evaluation_pid": null,
@@ -235,7 +235,7 @@
     "GPU_executed": false,
     "runtime_changed": false
   },
-  "previous_pointer_archive": "kernel-library/next-round-v5/m5-successor/current-run-before-health188-20261014T214617Z.json",
+  "previous_pointer_archive": "kernel-library/next-round-v5/m5-successor/current-run-before-sixphase-result-20261014T222734Z.json",
   "generated_candidate_replay": {
     "status": "independently_approved_CPU_syntax_replay_only",
     "author_seal_sha256": "d6db3b45c38fc69d3bab5466fe9bf32a4371c5492f56187f325e825e523bfa0f",
@@ -609,17 +609,18 @@
     "training_admission": false
   },
   "latest_training_observation_current": {
-    "observed_utc": "2026-10-14T21:46:17.481805+00:00",
-    "source": "actual read-only SSH ps/latest/layer logs",
-    "saved_update": 188,
+    "observed_utc": "2026-10-14T22:27:34.484241+00:00",
+    "source": "actual read-only SSH ps/latest/log",
+    "saved_update": 197,
     "worker_pid": 47890,
     "worker_live": true,
-    "worker_elapsed": "17:08:24",
-    "worker_cpu_time": "728:18.86",
-    "worker_rss_kib": 18489072,
-    "latest_log_layer": 14,
-    "latest_log_active_mlx_gib": 15.32,
-    "scope": "Live worker and latest pointer; payload integrity not checked"
+    "worker_elapsed": "17:48:01",
+    "worker_cpu_time": "755:55.63",
+    "worker_rss_kib": 18002096,
+    "latest_log_layer": 40,
+    "latest_log_phase": "recomputing backward",
+    "active_mlx_gib": 15.17,
+    "scope": "Live pointer/process/log; saved source/count audit remains through194"
   },
   "native_single_prefill_result": {
     "status": "terminal_failed_after_completed_33_token_prefill",
@@ -843,15 +844,22 @@
   },
   "new_source_collection_status": "paused_by_user",
   "latest_training_history_audit": {
-    "through_update": 165,
-    "distinct_views": 165,
-    "exact_views": 133,
-    "diagnostic_views": 32,
-    "target_presentations": 316247,
+    "through_update": 194,
+    "distinct_views": 194,
+    "exact_views": 155,
+    "diagnostic_views": 39,
+    "target_presentations": 366584,
+    "serialized_token_presentations": 941481,
+    "max_complete_serialized_tokens": 12173,
     "finite_losses_and_gradient_norms": true,
-    "peak_reported_mlx_gib": 71.27977485954762,
-    "recent20_mean_seconds": 360.188585268741,
-    "scope": "Source and saved-metric consistency; not learning benefit"
+    "peak_reported_mlx_gib": 71.75135742407292,
+    "recent20_mean_seconds": 273.5879638625076,
+    "recent20_median_seconds": 156.41415593738202,
+    "audit_sha256": "317e14048aeaaa1a760ffbdc40478e4040ccc046d000720ec0df92beecc21475",
+    "remote_raw_history_sha256": "27437a3dcfdf35f5f9da99623a6818f1df492ecfe6b273955ef621601b6bf61a",
+    "root_rehashed_inputs": 15,
+    "first165_and188_unchanged": true,
+    "scope": "Saved source/cursor/mask/count continuity and original transferred history bytes; not optimizer/checkpoint integrity or learning benefit. Timing spans different complete items."
   },
   "checkpoint150_paired_result": {
     "examples": 4,
@@ -894,13 +902,25 @@
     "next_action": "Isolated CPU diagnostic comparing full prefill, split prefill before handover and decode after handover; independent review before GPU launch"
   },
   "latest_training_saved_metric_review": {
-    "through_update": 188,
-    "review_sha256": "bdc17ba717bda4c870aa876884ae27da7e16b6b7747e4637632622855576973b",
-    "reported_peak_mlx_gib": 71.75135742407292,
-    "last20_mean_seconds": 347.832878264552,
-    "last20_median_seconds": 285.8853540830314,
-    "target_presentations": 356877,
-    "unchanged_prior_prefix_updates": 180,
-    "scope": "Parsed saved metrics, unchanged180 prefix; remote original history digest reported only"
+    "through_update": 194,
+    "audit": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261014T2202Z/captured194-review-v1.json",
+    "scope": "Saved source/cursor/mask/count continuity and original transferred history bytes; not optimizer/checkpoint integrity or learning benefit. Timing spans different complete items."
+  },
+  "cache_diagnostic_current": {
+    "status": "completed_six_phases_independently_audited_serving_parity_unqualified",
+    "completed_phases": 6,
+    "all_owned_releases_verified": true,
+    "all25_recorded_process_ids_absent": true,
+    "shared_lock_free": true,
+    "all3_trace_controls_bitwise_equal": true,
+    "split_prompt_and_split_decode_bitwise_equal": true,
+    "full_vs_split_max_abs_logit_difference": 13.21875,
+    "attention_input_layer0_bitwise_equal": true,
+    "attention_output_layer0_relative_l2_full_reference": 1.569697024260139,
+    "actual_independent_review_sha256": "a911412ea788cbcee6ee12b5833b898f57ae2decc60862dc58bab209c4f6be08",
+    "root_rehashed_inputs": 235,
+    "cause_localized": false,
+    "generated_quality_verified": false,
+    "next_action": "Separate7tap projection-input/output witness CPUlink andreview; no speculativeproductionrepair"
   }
 }
