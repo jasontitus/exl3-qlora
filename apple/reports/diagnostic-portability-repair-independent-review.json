@@ -1,0 +1,47 @@
+{
+  "actual_bundle_recheck": {
+    "batch5_v2_missing_proof": "rejected",
+    "batch5_v3_complete": "accepted; original proof now included in Capture.files",
+    "batch5_v3_disposable_corrupt_proof": "rejected",
+    "batch5_v3_disposable_missing_proof": "rejected"
+  },
+  "closed_finding": "Optional portability.original_execution and path_mapping now enter bounded Capture, original roles are translated exactly and all non-path execution metadata is equal; original historical paths are never opened.",
+  "created_at": "2026-10-14T03:53:51.954975+00:00",
+  "findings": [],
+  "implementation_edited_by_reviewer": false,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/diagnostic-portability-repair-actual-bundles.json": "53d6ed32740de764605ef272e1556e8d902a490a7fbb9406a5cc26d560136b4b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/verify_diagnostic_portability_repair.py": "75507016a1a147e69de2c8f8e12a57418c0b34808d08b4796fdf1776fdb40ce5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/reviewed_corpus.py": "211e41bbd42aa0ea61d544865d0fc2b924f7b7395f67f70e6461497981f7e19e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/reviewed_diagnostics.py": "08ba8b1f5143b474c278971816d7aa724ea622d5381fccec25924e6e57081c11",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_reviewed_corpus.py": "e917773158605ab3d90c044bb6c351f191c0a381a944936a0c9941c77b5ad9c6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_reviewed_diagnostics.py": "dc9594b56c9e399c8c824ee102382e79232be4022c5e2a6f7c2f56f2df2606e2"
+  },
+  "limits": [
+    "Read-only application to original held bundles; corruption tests only in disposable copies.",
+    "No supplied execution command runs, no MLX/GPU/model import, no active corpus/runtime changes.",
+    "This verifies byte provenance consistency for the exact optional schema, not receipt authenticity or semantic truth."
+  ],
+  "reviewer": "adversarial_code",
+  "schema": "independent-tool-repair-review-v1",
+  "source_assessment": [
+    "Exact optional portability keys and nonempty explanation required; original JSON uses duplicate-key-safe parser and cannot contain nested portability.",
+    "Every map entry has a unique original path and captured bytes checked through standard size/path/SHA/drift gates. Missing and unused mappings fail; SHA and ordered input/output roles preserved.",
+    "Normal local evidence kind/backend/environment/output checks remain active before and after optional path remapping. Execution authentication stays explicitly false."
+  ],
+  "status": "approved_scoped_repair",
+  "tests": {
+    "command": "PYTHONPATH=src /Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python -m pytest -q tests/test_reviewed_diagnostics.py tests/test_reviewed_corpus.py",
+    "cwd": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple",
+    "independently_added_integration_cases": 4,
+    "integration_coverage": [
+      "Full actual prepare_reviewed_corpus success adds original proof, command source and output to source_files_sha256.",
+      "Historical absolute path access raises in test; success proves portable captured copies suffice.",
+      "Missing or corrupt original proof rejects before publication.",
+      "Reordered portable input list rejects through actual importer."
+    ],
+    "observed_exit_code": 0,
+    "observed_result": "97 passed in 9.09s",
+    "static_check": "Ruff passed for tests/test_reviewed_diagnostics.py"
+  }
+}

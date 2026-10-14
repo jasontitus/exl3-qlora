@@ -16,6 +16,65 @@ KINDS = {"before_source", "after_source", "author_report", "local_cpu", "local_g
 CLASSES = {"source_observation", "inferred", "author_reported", "local_cpu", "local_gpu"}
 
 
+def validate_execution_portability(execution, capture):
+    """Bind a single path-only receipt transformation without opening historical paths."""
+    if "portability" not in execution:
+        return
+    from .evaluation_audit import _json
+
+    portable = mapping(execution["portability"], "execution portability")
+    require(
+        set(portable) == {"original_execution", "path_mapping", "transformation"},
+        "Invalid execution portability fields",
+    )
+    require(
+        isinstance(portable["transformation"], str) and portable["transformation"].strip(),
+        "Missing portability transformation",
+    )
+    original = mapping(_json(capture.read(portable["original_execution"])), "original execution")
+    require("portability" not in original, "Nested execution portability is unsupported")
+    require(
+        canonical({k: v for k, v in original.items() if k not in {"inputs", "outputs"}})
+        == canonical(
+            {k: v for k, v in execution.items() if k not in {"inputs", "outputs", "portability"}}
+        ),
+        "Execution portability changed non-path metadata",
+    )
+    require(isinstance(portable["path_mapping"], list), "Invalid execution path mapping")
+    paths = {}
+    for entry in portable["path_mapping"]:
+        mapping(entry, "execution path entry")
+        require(set(entry) == {"original_path", "captured"}, "Invalid execution path entry")
+        name = entry["original_path"]
+        require(
+            isinstance(name, str) and name and name not in paths,
+            "Invalid or duplicate original execution path",
+        )
+        capture.read(entry["captured"])
+        paths[name] = entry["captured"]
+    used = set()
+    for role in ("inputs", "outputs"):
+        bindings = original.get(role)
+        require(isinstance(bindings, list) and bindings, "Missing original execution bindings")
+        remapped = []
+        for binding in bindings:
+            mapping(binding, "original execution binding")
+            require(set(binding) == {"path", "sha256"}, "Invalid original execution binding")
+            name = binding["path"]
+            require(isinstance(name, str) and name in paths, "Unmapped original execution path")
+            require(
+                binding["sha256"] == paths[name]["sha256"],
+                "Execution portability changed file hash",
+            )
+            used.add(name)
+            remapped.append(paths[name])
+        require(
+            canonical(remapped) == canonical(execution[role]),
+            "Execution portability changed role or binding order",
+        )
+    require(used == set(paths), "Unused execution path mapping")
+
+
 def span(text, record, label):
     """Ranges are half-open UTF-8 byte offsets; hashes bind exact text, not normalized prose."""
     mapping(record, label, {"start", "end", "sha256"})
@@ -216,6 +275,7 @@ def admit_diagnostic(source, raw, evidence, capture):
                 )
                 for binding in execution[role]:
                     capture.read(binding)
+            validate_execution_portability(execution, capture)
             require(
                 reference["file"] in execution["outputs"],
                 "Local evidence is not a bound execution output",

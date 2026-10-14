@@ -100,3 +100,16 @@ new approval pending until the revised evidence is reviewed. Do not replace rows
 inside a running campaign. Report any substantive defects found in its frozen
 training set alongside that campaign's results; an unchanged held-out set does
 not make those defects disappear.
+
+### Portable execution receipts
+
+The diagnostic importer validates an optional `portability` object on local CPU
+or GPU execution assertions. It captures the original receipt by relative path
+and SHA-256, then checks that the portable receipt changed only input/output file
+paths. The mapping must cover exactly the original bindings, preserving hashes,
+roles, order and all other metadata. Duplicate or unused mappings, nested
+portability, missing originals and altered originals are rejected. Historical
+absolute paths are metadata only and are never opened or executed.
+
+This is a reproducible provenance consistency check, not authentication of who
+ran an experiment or certification of numerical correctness or performance.

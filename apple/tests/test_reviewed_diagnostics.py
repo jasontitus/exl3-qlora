@@ -559,3 +559,161 @@ def test_same_text_different_modes_cannot_cross_splits(bundle, tmp_path):
     update(bundle, values)
     with pytest.raises(ValueError, match="crosses explicit splits"):
         intake.prepare_reviewed_corpus(root / "corpus.json", model, tmp_path / "data")
+
+
+@pytest.mark.parametrize(
+    "fault",
+    [
+        None,
+        "missing",
+        "corrupt",
+        "duplicate",
+        "extra",
+        "unmapped",
+        "hash",
+        "metadata",
+        "nested",
+        "escape",
+        "role",
+    ],
+)
+def test_execution_portability(tmp_path, fault):
+    from exl3_mlx.reviewed_corpus import Capture
+    from exl3_mlx.reviewed_diagnostics import validate_execution_portability
+
+    (tmp_path / "payload").write_bytes(b"payload")
+    captured = bind(tmp_path, "payload")
+    original = {
+        "argv": ["never-execute"],
+        "inputs": [{"path": "/absent/input", "sha256": captured["sha256"]}],
+        "outputs": [{"path": "/absent/output", "sha256": captured["sha256"]}],
+    }
+    if fault == "nested":
+        original["portability"] = {}
+    write(tmp_path / "original.json", original)
+    execution = {
+        "argv": ["never-execute"],
+        "inputs": [captured],
+        "outputs": [captured],
+        "portability": {
+            "original_execution": bind(tmp_path, "original.json"),
+            "transformation": "Paths only",
+            "path_mapping": [
+                {"original_path": "/absent/input", "captured": captured},
+                {"original_path": "/absent/output", "captured": captured},
+            ],
+        },
+    }
+    port = execution["portability"]
+    if fault == "missing":
+        (tmp_path / "original.json").unlink()
+    elif fault == "corrupt":
+        (tmp_path / "original.json").write_bytes(b"corrupt")
+    elif fault == "duplicate":
+        port["path_mapping"].append(port["path_mapping"][0])
+    elif fault == "extra":
+        port["path_mapping"].append({"original_path": "/extra", "captured": captured})
+    elif fault == "unmapped":
+        port["path_mapping"].pop()
+    elif fault == "hash":
+        original["inputs"][0]["sha256"] = "0" * 64
+        write(tmp_path / "original.json", original)
+        port["original_execution"] = bind(tmp_path, "original.json")
+    elif fault == "metadata":
+        execution["argv"] = ["changed"]
+    elif fault == "escape":
+        port["original_execution"]["path"] = "../outside.json"
+    elif fault == "role":
+        execution["inputs"] = []
+    capture = Capture(tmp_path)
+    if fault:
+        with pytest.raises((ValueError, OSError)):
+            validate_execution_portability(execution, capture)
+    else:
+        validate_execution_portability(execution, capture)
+        assert set(capture.files) == {"original.json", "payload"}
+
+
+@pytest.mark.parametrize("fault", [None, "missing_original", "corrupt_original", "reordered"])
+def test_portable_execution_through_corpus_admission(bundle, tmp_path, monkeypatch, fault):
+    """The actual importer captures nested proof, never the historical absolute paths."""
+    from pathlib import Path
+
+    values = diagnostic(bundle)
+    root, model, _, _ = bundle
+    (root / "check.py").write_text("# Captured only; never executed.\n")
+    output = b"CPU counterexample: expected 1, observed 2.\n"
+    (root / "cpu-output.txt").write_bytes(output)
+    inputs = [bind(root, "diagnostic-baseline.txt"), bind(root, "check.py")]
+    outputs = [bind(root, "cpu-output.txt")]
+    original = {
+        "executed": True,
+        "kind": "local_cpu",
+        "backend": "cpu",
+        "argv": ["python", "/historical-unavailable/check.py"],
+        "cwd": "/historical-unavailable",
+        "environment": {"python": "test fixture assertion"},
+        "inputs": [dict(x, path="/historical-unavailable/" + x["path"]) for x in inputs],
+        "outputs": [dict(x, path="/historical-unavailable/" + x["path"]) for x in outputs],
+    }
+    write(root / "original.json", original)
+    execution = {
+        **original,
+        "inputs": inputs,
+        "outputs": outputs,
+        "portability": {
+            "original_execution": bind(root, "original.json"),
+            "transformation": "Paths only; historical files need not exist.",
+            "path_mapping": [
+                {"original_path": old["path"], "captured": new}
+                for old, new in zip(original["inputs"] + original["outputs"], inputs + outputs)
+            ],
+        },
+    }
+    if fault == "reordered":
+        execution["inputs"] = inputs[::-1]
+    write(root / "execution.json", execution)
+    e = values["evidence"]
+    e["references"].append(
+        {
+            "id": "cpu",
+            "kind": "local_cpu",
+            "file": outputs[0],
+            "start": 0,
+            "end": len(output),
+            "sha256": intake.sha(output),
+            "execution": bind(root, "execution.json"),
+        }
+    )
+    e["prompt_mode"] = "supplied_observations"
+    e["prompt_spans"][0]["refs"] = ["before", "cpu"]
+    e["claims"][0].update(refs=["cpu"], **{"class": "local_cpu"})
+    update(bundle, values)
+    if fault == "missing_original":
+        (root / "original.json").unlink()
+    elif fault == "corrupt_original":
+        (root / "original.json").write_bytes(b"corrupt nested proof")
+
+    original_open = Path.open
+
+    def guarded_open(path, *args, **kwargs):
+        assert not str(path).startswith("/historical-unavailable"), "Opened historical path"
+        return original_open(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "open", guarded_open)
+    destination = tmp_path / "portable-output"
+    if fault:
+        expected = {
+            "missing_original": "Missing or oversized input",
+            "corrupt_original": "Input SHA256 mismatch",
+            "reordered": "changed role or binding order",
+        }[fault]
+        with pytest.raises(ValueError, match=expected):
+            intake.prepare_reviewed_corpus(root / "corpus.json", model, destination)
+        assert not destination.exists()
+    else:
+        result = intake.prepare_reviewed_corpus(root / "corpus.json", model, destination)
+        assert result["quality_certified"] is False
+        assert {"original.json", "execution.json", "check.py", "cpu-output.txt"} <= set(
+            result["source_files_sha256"]
+        )
