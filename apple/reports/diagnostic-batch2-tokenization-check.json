@@ -1,0 +1,24 @@
+{
+  "status": "pass",
+  "scope": "Independent fresh CPU tokenization using product importer, complete IDs and loss_start equality",
+  "index_sha256": "7d18aacb545c182b43d77c51e5d7f2cbf363b72078ca673fc20f5e7bfd13b2ec",
+  "tokenizer_identity": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "cases": [
+    {
+      "id": "splash-7d7cadd19113-hour-v3-reasoning-corrected-v4-spacing",
+      "exact_prepared_match": true,
+      "tokens": 676,
+      "supervised_tokens": 183
+    },
+    {
+      "id": "sushi-497d71d94eed-hour-v4-reasoning-corrected-v4",
+      "exact_prepared_match": true,
+      "tokens": 563,
+      "supervised_tokens": 158
+    }
+  ]
+}
