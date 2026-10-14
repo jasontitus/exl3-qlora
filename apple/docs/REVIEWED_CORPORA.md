@@ -113,3 +113,15 @@ absolute paths are metadata only and are never opened or executed.
 
 This is a reproducible provenance consistency check, not authentication of who
 ran an experiment or certification of numerical correctness or performance.
+
+### Match answers to the agent-visible evidence
+
+A provenance-backed statement is not automatically an appropriate target answer.
+For a baseline-only diagnosis task, the answer may propose a repair, explain its
+mechanism and specify an experiment. It must not assert that the proposed repair
+already produced an exact speedup, numerical parity or memory reduction when
+those observations are absent from the prompt. Keep historical outcomes in
+provenance, or create a separate report-conditioned task with the observations
+explicitly supplied. Likewise, do not assert unrelated repairs from omitted code.
+Review prompt/answer compatibility separately from source truth and hash checks;
+the importer cannot determine this semantic relationship mechanically.
