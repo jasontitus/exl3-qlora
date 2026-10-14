@@ -86,3 +86,20 @@ Existing project provenance checks still run. A malformed receipt, changed
 input, or category mismatch fails without replacing a previous comparison.
 Failed attempts remain available for diagnosis. The audit checks receipt
 consistency; it does not independently attest process or checkpoint provenance.
+
+### Source-review caveats
+
+Pass `--source-review companion.json` to report a complete predeclared
+`frozen-heldout-source-reference-audit-v1` companion alongside the paired metrics.
+It must bind the exact prepared-file SHA256, every complete prepared row including
+its prompt and loss mask, ordered indices, unique case IDs, target counts,
+source-review statuses and limitations. Accepted statuses are
+`approved_source_scoped` and `requires_reference_contract_resolution`.
+
+The auditor keeps all primary rows and categories. Supplemental strata preserve
+source-review findings and compute token-weighted metrics for each status; they
+do not exclude disputed references, select checkpoints or certify review claims.
+A lower loss on a disputed historical target may reflect imitation of its defect.
+Source-review authenticity, semantic correctness and generated-kernel compilation,
+numerical parity and timing require their own evidence. The companion file's bytes
+are included in the output's input hashes.

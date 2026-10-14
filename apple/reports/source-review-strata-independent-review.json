@@ -1,0 +1,89 @@
+{
+  "status": "approved_cpu_supplemental_source_strata",
+  "created_utc": "2026-10-14T06:27:57.409044+00:00",
+  "inputs": [
+    {
+      "path": "publish-exl3/apple/src/exl3_mlx/evaluation_audit.py",
+      "sha256": "f7ac34a887730fa57439072bb28b4ef16931b36b8c1755e3a7e8392d5d1f31ef"
+    },
+    {
+      "path": "publish-exl3/apple/tests/test_source_review_strata.py",
+      "sha256": "fdff69b9b62066662d263683ec3c4809d99c79bf2fe454c432111c63f1b6d515"
+    },
+    {
+      "path": "publish-exl3/apple/tests/test_evaluation_audit.py",
+      "sha256": "4546edd3c7baed9ad7e4da3c649c4debaeb82c80e0c1452d4f49b9d9eadf8766"
+    },
+    {
+      "path": "publish-exl3/apple/docs/EVALUATION_AUDIT.md",
+      "sha256": "ac0a5989eb3f5e63e6b081a860e8add54f0dc6f649035100cdb1f2c1ae10c454"
+    },
+    {
+      "path": "kernel-library/next-round-v5/evaluation-reference-audit/product-source-strata-tests-v1.log",
+      "sha256": "365bfa251bec726c986d90c5cb36a628c5e27c4215db45d3437dc40cb0b6021a"
+    },
+    {
+      "path": "kernel-library/next-round-v5/evaluation-reference-audit/heldout-source-audit-v1.json",
+      "sha256": "13016776120d6388c227f1d2306bed64f77b55ff15e4d0b8991918846a896026"
+    },
+    {
+      "path": "kernel-library/next-round-v5/evaluation-reference-audit/product-source-strata-author-v1.json",
+      "sha256": "dc93beca5252732867e2ba3abfa511bf8201558cd24fe69f203a5c0732efbd86"
+    },
+    {
+      "path": "kernel-library/next-round-v5/engines-b/peer-reviews/product-source-strata-v1/probe.py",
+      "sha256": "f465b11d10510672d2995aa218fb9c9d3f37dd19a0dd42bd15e35bc10448b23f"
+    },
+    {
+      "path": "kernel-library/next-round-v5/engines-b/peer-reviews/product-source-strata-v1/results.json",
+      "sha256": "02c80dd1dd662e51f85306c1fdff87b694433a2b31292919aeccab163a77ec54"
+    },
+    {
+      "path": "kernel-library/next-round-v5/expanded-candidate-12288-v3/test.prepared.jsonl",
+      "sha256": "0720ead3d696e6e9215e99cbf18dd26e532def8c309add06bbbe21efe1841ad0"
+    },
+    {
+      "path": "kernel-library/expansion-v4-hour/evaluation-audit/heldout-token-categories-v1.json",
+      "sha256": "0edf4d4fbb282bef4722df40afd8663abdfefdf5d160a7fd0d4665a2a6f5e9c0"
+    }
+  ],
+  "author_tests_independently_passed": 89,
+  "actual_frozen_data_synthetic_probe": {
+    "scope": "FABRICATED CPU token metrics; not model scores",
+    "actual_frozen_rows": 16,
+    "actual_frozen_targets": 47069,
+    "primary_unchanged": true,
+    "both_strata_weighted_arithmetic_pass": true,
+    "negative_cases": [
+      "index_bool",
+      "count_bool",
+      "targets_bool",
+      "duplicate_id",
+      "reordered",
+      "loss_start",
+      "prompt",
+      "false_certification",
+      "partial",
+      "raw_digest",
+      "no_overwrite",
+      "duplicate_json",
+      "input_drift"
+    ],
+    "source_counts": {
+      "approved_source_scoped": 9,
+      "requires_reference_contract_resolution": 7
+    }
+  },
+  "assessment": [
+    "All primary rows/categories/aggregate retained unchanged",
+    "Full prepared object and exact raw file bound; row order/case ID/counts checked",
+    "Strata sums token weighted; no macro substitution",
+    "CLI optional; no report claiming source authenticity or semantic correctness",
+    "Exclusive publication refuses overwrite and input drift"
+  ],
+  "limits": [
+    "Probe values fabricated CPU metrics, not model outputs",
+    "Source-reviewed label not kernel-correctness certification",
+    "No active runtime/data/model/GPU changes"
+  ]
+}

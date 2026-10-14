@@ -269,7 +269,85 @@ def compare_token_evaluations(prepared, categories, base, adapter):
     }
 
 
-def audit_files(*, prepared, categories, base, adapter, output):
+def source_review_strata(prepared, result, review, *, prepared_sha256):
+    """Report complete, predeclared source-review strata without excluding rows.
+
+    Review labels are supplied evidence, not a certification by this auditor.
+    The paired metrics must already have passed ``compare_token_evaluations``.
+    """
+    _mapping(review, "source review")
+    _require(review.get("format") == "frozen-heldout-source-reference-audit-v1",
+             "Unknown source-review format")
+    _require(review.get("heldout_sha256") == prepared_sha256,
+             "Source review binds a different prepared file")
+    _require(isinstance(review.get("review_sha256"), str)
+             and bool(_HEX64.fullmatch(review["review_sha256"])), "Invalid review digest")
+    _require(_integer(review.get("complete_rows"), "review rows", 1) == len(prepared),
+             "Incomplete source-review scope")
+    rows = _list(review.get("rows"), "source-review rows")
+    _require(len(rows) == len(prepared), "Incomplete source-review rows")
+    statuses = {"approved_source_scoped", "requires_reference_contract_resolution"}
+    counts, tokens, groups, identities = defaultdict(int), defaultdict(int), defaultdict(list), set()
+    for i, (p, r, measured) in enumerate(zip(prepared, rows, result["rows"], strict=True)):
+        _mapping(r, "source-review row")
+        _require(_integer(r.get("index"), "review index") == i, "Source-review order mismatch")
+        identity = hashlib.sha256(_canonical(p)).hexdigest()
+        _require(r.get("prepared_identity") == identity, "Source-review prompt/mask mismatch")
+        case = r.get("case_id")
+        _require(isinstance(case, str) and case.strip() == case and bool(case)
+                 and case not in identities, "Missing/duplicate source case ID")
+        identities.add(case)
+        status = r.get("source_review_status")
+        _require(isinstance(status, str) and status in statuses, "Unknown source-review status")
+        _require(isinstance(r.get("limits_and_findings"), str)
+                 and bool(r["limits_and_findings"].strip()), "Missing source-review limitations")
+        n = _integer(r.get("supervised_tokens"), "review target count", 1)
+        _require(n == len(p["input_ids"]) - p["loss_start"]
+                 == measured["metrics"]["all"]["tokens"], "Source-review target count mismatch")
+        _require(r.get("kernel_quality_certified") is False,
+                 "Source companion cannot certify kernel quality")
+        counts[status] += 1
+        tokens[status] += n
+        groups[status].append(measured["metrics"])
+    for name, expected in (("counts_by_source_status", counts), ("tokens_by_source_status", tokens)):
+        supplied = _mapping(review.get(name), "source-review totals")
+        _require(all(type(v) is int and v > 0 for v in supplied.values())
+                 and supplied == dict(expected), "Source-review totals mismatch")
+    _require(_integer(review.get("supervised_tokens"), "review global targets", 1)
+             == sum(tokens.values()) == result["aggregate"]["all"]["tokens"],
+             "Source-review global token mismatch")
+    output = {}
+    for status, metric_rows in groups.items():
+        buckets = defaultdict(list)
+        for metrics in metric_rows:
+            for category, metric in metrics.items():
+                buckets[category].append(metric)
+        summaries = {}
+        for category, values in buckets.items():
+            n = sum(v["tokens"] for v in values)
+            b = math.fsum(v["base_nll_sum"] for v in values)
+            a = math.fsum(v["adapter_nll_sum"] for v in values)
+            summaries[category] = {
+                "tokens": n, "base_nll_sum": b, "adapter_nll_sum": a,
+                "base_nll": b / n, "adapter_nll": a / n, "nll_delta": (a - b) / n,
+                **{key: sum(v[key] for v in values) for key in
+                   ("base_correct", "adapter_correct", "corrected_tokens", "regressed_tokens")},
+            }
+        output[status] = {"examples": counts[status], "metrics": summaries}
+    return {
+        "status": "supplemental_declared_source_review_strata",
+        "strata": output,
+        "rows": [{key: r[key] for key in
+                  ("index", "case_id", "source_review_status", "limits_and_findings")} for r in rows],
+        "review_sha256": review["review_sha256"],
+        "quality_certified": False,
+        "limits": ["All primary metrics retain every original row; no exclusions or checkpoint selection",
+                   "Checks supplied review-to-data consistency, not review authenticity or semantic correctness",
+                   "Historical-target imitation is not generated-kernel compilation, correctness or speed"],
+    }
+
+
+def audit_files(*, prepared, categories, base, adapter, output, source_review=None):
     """Capture input files, audit their content and exclusively publish a JSON result."""
     destination = Path(output).expanduser().absolute()
     _require(not destination.exists(), "Output already exists")
@@ -282,11 +360,18 @@ def audit_files(*, prepared, categories, base, adapter, output):
             "adapter": adapter,
         }.items()
     }
+    if source_review is not None:
+        paths["source_review"] = Path(source_review).expanduser().resolve(strict=True)
     captured = {name: path.read_bytes() for name, path in paths.items()}
     examples = [_json(line) for line in captured["prepared"].splitlines() if line.strip()]
     result = compare_token_evaluations(
         examples, *(_json(captured[name]) for name in ("categories", "base", "adapter"))
     )
+    if source_review is not None:
+        result["source_review"] = source_review_strata(
+            examples, result, _json(captured["source_review"]),
+            prepared_sha256=hashlib.sha256(captured["prepared"]).hexdigest(),
+        )
     result["inputs_sha256"] = {
         str(paths[name]): hashlib.sha256(value).hexdigest() for name, value in captured.items()
     }
@@ -316,6 +401,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("prepared", "categories", "base", "adapter", "output"):
         parser.add_argument("--" + name, required=True)
+    parser.add_argument("--source-review", help="Optional complete source-review companion; supplemental only")
     args = parser.parse_args(argv)
     try:
         result = audit_files(**vars(args))
