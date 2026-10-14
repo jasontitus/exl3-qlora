@@ -1,0 +1,77 @@
+{
+  "schema": "reviewed-exact-export-v1",
+  "source_index_sha256": "40a952693031d944aef5376f61c28bcb9bc7fa27a1b156014b2fe0d44410d552",
+  "scope": "Next-round library only; no active dataset changed. Three related MLA commits, not independent model families. No local compilation/performance qualification.",
+  "outputs": [
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/approved-export-v1/exact-12288.raw.jsonl",
+      "sha256": "0311ab15c3d2787e1b6027bca69e155a8dd3df8aed1a3ee0f9627fe529aaf151",
+      "kind": "raw",
+      "capacity": 12288,
+      "rows": 2,
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5"
+      ]
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/approved-export-v1/exact-12288.prepared.jsonl",
+      "sha256": "4fa21aa604731e5f57d9df30f643a5a82f797bcc48bd5133596ebafae39b98e7",
+      "kind": "prepared",
+      "capacity": 12288,
+      "rows": 2,
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5"
+      ]
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/approved-export-v1/exact-16384.raw.jsonl",
+      "sha256": "4643645703db9169303e8cd04a818ff3f504276c7db1ce4bd97e05859d69e4c8",
+      "kind": "raw",
+      "capacity": 16384,
+      "rows": 3,
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5"
+      ]
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/approved-export-v1/exact-16384.prepared.jsonl",
+      "sha256": "8c0713ba59ec8355ce0cda7da227185a0a69dc2bdf6f5bcf593dda84f4f23b3f",
+      "kind": "prepared",
+      "capacity": 16384,
+      "rows": 3,
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5"
+      ]
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/approved-export-v1/exact-32768.raw.jsonl",
+      "sha256": "4643645703db9169303e8cd04a818ff3f504276c7db1ce4bd97e05859d69e4c8",
+      "kind": "raw",
+      "capacity": 32768,
+      "rows": 3,
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5"
+      ]
+    },
+    {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/approved-export-v1/exact-32768.prepared.jsonl",
+      "sha256": "8c0713ba59ec8355ce0cda7da227185a0a69dc2bdf6f5bcf593dda84f4f23b3f",
+      "kind": "prepared",
+      "capacity": 32768,
+      "rows": 3,
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "exact-edit-independent-review-v1",
+  "status": "approved",
+  "reviewer": "adversarial_code",
+  "cases": [
+    {
+      "id": "vllm-metal-668197543e4a-next-v5",
+      "inputs_sha256": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/review-bound-v3/vllm-metal-668197543e4a-next-v5/source.json": "868d4554120e6c2a78e5681616686470ea01472da55a7fd912d3860c652f0164",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-668197543e4a-next-v5/raw.json": "0ff78c225825934548155067bc01979638add8f1d6ffb742e6daea2ea1cdf0af",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-668197543e4a-next-v5/prepared.json": "3e0dbe1460cd08c306de57df9a0ea80b5c8349bcf23ee4cda3f7dfe25a7192c0",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/drafts/vllm-metal-668197543e4a-next-v5/replay.json": "9aec746b3e969f0beb3e811e906eaa84f7327b5a36507e75f75a318537edb164"
+      },
+      "serialized_ids": 7663,
+      "shared_lineage": "vllm-metal-mla-related-lineage"
+    },
+    {
+      "id": "vllm-metal-2098a2d64a13-next-v5",
+      "inputs_sha256": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/review-bound-v3/vllm-metal-2098a2d64a13-next-v5/source.json": "13c565b12b076c40bb0918453c9fd7ecbd44c8845164f0ebcbb574272c44fe3b",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-2098a2d64a13-next-v5/raw.json": "750005580044344063f9ab0cec0829a888fd15d428f286ec3f84758022796c96",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-2098a2d64a13-next-v5/prepared.json": "472a331b95994365a54761520e400febb7bd762a1fcff41f10950bb224f3f0dd",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/drafts/vllm-metal-2098a2d64a13-next-v5/replay.json": "0fcb828d24731b630a509b1d6321079eda83d43aa5d0ea4ae8d90dd5544ae934"
+      },
+      "serialized_ids": 6933,
+      "shared_lineage": "vllm-metal-mla-related-lineage"
+    },
+    {
+      "id": "vllm-metal-2c7b640bab92-next-v5",
+      "inputs_sha256": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/review-bound-v3/vllm-metal-2c7b640bab92-next-v5/source.json": "b51510832a49a655b805f4cacddf0bbfd03ead6a0abe41457870efa2ec606cb0",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-2c7b640bab92-next-v5/raw.json": "b5d516380f7fc6ad90f4ae887d204d2f788840343cf1706cdabddfc13eb41dbe",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-2c7b640bab92-next-v5/prepared.json": "2eb554dd1edc09fd128d2faf756ff443428119358ef2effd8f558a5f2e45d3a7",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/drafts/vllm-metal-2c7b640bab92-next-v5/replay.json": "cc90bbeb6cd7203319338846da7bf790e89604115ac810253a81702f2f673f53"
+      },
+      "serialized_ids": 14429,
+      "shared_lineage": "vllm-metal-mla-related-lineage"
+    }
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/review-bound-v3/vllm-metal-668197543e4a-next-v5/source.json": "868d4554120e6c2a78e5681616686470ea01472da55a7fd912d3860c652f0164",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-668197543e4a-next-v5/raw.json": "0ff78c225825934548155067bc01979638add8f1d6ffb742e6daea2ea1cdf0af",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-668197543e4a-next-v5/prepared.json": "3e0dbe1460cd08c306de57df9a0ea80b5c8349bcf23ee4cda3f7dfe25a7192c0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/drafts/vllm-metal-668197543e4a-next-v5/replay.json": "9aec746b3e969f0beb3e811e906eaa84f7327b5a36507e75f75a318537edb164",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/review-bound-v3/vllm-metal-2098a2d64a13-next-v5/source.json": "13c565b12b076c40bb0918453c9fd7ecbd44c8845164f0ebcbb574272c44fe3b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-2098a2d64a13-next-v5/raw.json": "750005580044344063f9ab0cec0829a888fd15d428f286ec3f84758022796c96",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-2098a2d64a13-next-v5/prepared.json": "472a331b95994365a54761520e400febb7bd762a1fcff41f10950bb224f3f0dd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/drafts/vllm-metal-2098a2d64a13-next-v5/replay.json": "0fcb828d24731b630a509b1d6321079eda83d43aa5d0ea4ae8d90dd5544ae934",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/review-bound-v3/vllm-metal-2c7b640bab92-next-v5/source.json": "b51510832a49a655b805f4cacddf0bbfd03ead6a0abe41457870efa2ec606cb0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-2c7b640bab92-next-v5/raw.json": "b5d516380f7fc6ad90f4ae887d204d2f788840343cf1706cdabddfc13eb41dbe",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/revised-prompts-v2/vllm-metal-2c7b640bab92-next-v5/prepared.json": "2eb554dd1edc09fd128d2faf756ff443428119358ef2effd8f558a5f2e45d3a7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/drafts/vllm-metal-2c7b640bab92-next-v5/replay.json": "cc90bbeb6cd7203319338846da7bf790e89604115ac810253a81702f2f673f53",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/review-bound-v3/index.json": "4ba9509259e5b7dee2f9f6fefb4613bdfb9f027dfa7d2ac9bc2f4f794eb35f44",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/manifest-reviewed-v3.json": "ee099e2fe227868f53ac803f56072197b0218c3199ddee0868ffced97cf23596",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/engines-b-finite-admission-review.json": "ee452c2b02435f6c90c5a614028bc74c3f43825a52eb8bc3053b4bee3b052917",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/engines-b-v2-mechanical-check.json": "b9872dff40ced2035bbecf41e44a126d1b1f019c5be4709098b6935475fd80ac",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/finalize_engines_b.py": "1dbae9ad829feef4371127747b53cea1c44ce6e3c4385942129fc6f05894849d"
+  },
+  "scope": "Approved exactly three hash-bound historical MLA host-dispatch edits after complete Git/source, native patch replay, actual tokenizer/mask and finite source/admission review. Refreshed sources differ only in newly bound input_metadata.",
+  "findings": [],
+  "limits": [
+    "Host/wrapper measurements remain upstream-reported and are not end-to-end or locally qualified speed claims. No compiler, GPU, model, or upstream script execution.",
+    "All three cases remain related MLA lineage, not three independent model families. Target-selected contexts are historical imitation tasks, not optimization-discovery trials.",
+    "Ragged batching memory cap assumes supported row sizes; single-row over-budget inputs are not a universal hard cap."
+  ],
+  "counts": {
+    "exact_32k": 3,
+    "exact_12k": 2
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "approved-export-consumption-audit-v1",
+  "status": "passed",
+  "unique_edits": 3,
+  "declared_lineages": 1,
+  "outputs": [
+    {
+      "capacity": 12288,
+      "kind": "raw",
+      "rows": 2,
+      "sha256": "0311ab15c3d2787e1b6027bca69e155a8dd3df8aed1a3ee0f9627fe529aaf151"
+    },
+    {
+      "capacity": 12288,
+      "kind": "prepared",
+      "rows": 2,
+      "sha256": "4fa21aa604731e5f57d9df30f643a5a82f797bcc48bd5133596ebafae39b98e7"
+    },
+    {
+      "capacity": 16384,
+      "kind": "raw",
+      "rows": 3,
+      "sha256": "4643645703db9169303e8cd04a818ff3f504276c7db1ce4bd97e05859d69e4c8"
+    },
+    {
+      "capacity": 16384,
+      "kind": "prepared",
+      "rows": 3,
+      "sha256": "8c0713ba59ec8355ce0cda7da227185a0a69dc2bdf6f5bcf593dda84f4f23b3f"
+    },
+    {
+      "capacity": 32768,
+      "kind": "raw",
+      "rows": 3,
+      "sha256": "4643645703db9169303e8cd04a818ff3f504276c7db1ce4bd97e05859d69e4c8"
+    },
+    {
+      "capacity": 32768,
+      "kind": "prepared",
+      "rows": 3,
+      "sha256": "8c0713ba59ec8355ce0cda7da227185a0a69dc2bdf6f5bcf593dda84f4f23b3f"
+    }
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/case-index-reviewed-v3.json": "40a952693031d944aef5376f61c28bcb9bc7fa27a1b156014b2fe0d44410d552",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/approved-export-v1/receipt.json": "20f9d8ce7ffc6ab33e33f5d92954d30ddb71e9883a6ab72618a09658bd9b36f7"
+  },
+  "limits": "Checks export matches separately reviewed source rows, hashes, capacities and masks; not a new semantic, compilation, numerical or performance review. Active dataset unchanged."
+}

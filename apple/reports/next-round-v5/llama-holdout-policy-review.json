@@ -1,0 +1,41 @@
+{
+  "schema": "finite-llama-holdout-policy-review-v1",
+  "status": "archive_pending_future_split_design",
+  "facts": {
+    "existing_build_explicit_protected_keys": [
+      "repository:https://github.com/ggml-org/llama.cpp"
+    ],
+    "existing_build_connected_family_scope": "Build-level source groups conservatively connect entire repositories and declared/shared-key families; mlx-serve and Sushi always connect.",
+    "existing_build_allowed_test": [
+      "https://github.com/ggml-org/llama.cpp"
+    ],
+    "current_candidate": "988190680d5a89fce97de3c20df2c2813731fd61",
+    "candidate_exact_screen": {
+      "id": "llama-cpp-988190680d5a-next-v5",
+      "commit": "988190680d5a89fce97de3c20df2c2813731fd61",
+      "stable_patch_id": "6e250e9eea58cfc199aec56e85daa7d3046e8fa8",
+      "protected_identity_hits": [],
+      "protected_pr_hits": [],
+      "prior_identity_patch_hits": [],
+      "decision": "pass_exact_gate_pending_semantic_review",
+      "declared_prs": [
+        30065
+      ]
+    }
+  },
+  "interpretation": [
+    "The prior corpus builder explicitly protected the whole llama.cpp repository, not only individual reserved commits. This policy is a real artifact and must remain intact for the frozen active198/16 experiment.",
+    "The current candidate passes exact reserved head/base, declared PR and prior stable-patch screens. No exact contamination has been found by that finite screen.",
+    "Repository grouping is a conservative evaluation design, not proof that every newer llama.cpp optimization duplicates a protected task. No universal semantic overlap claim is justified.",
+    "Admitting non-overlapping newer llama.cpp edits to a future dataset would require a separately reviewed split policy and explicit removal of cross-repository-generalization claims for that new experiment; it must not alter existing heldout examples or retroactively relabel the active run.",
+    "Before any such future admission, compare complete selected kernel/context/patch with protected task units and declared related PRs; absence of an exact SHA match alone is insufficient."
+  ],
+  "next_action": "Keep candidate in archive for now; parent can design a future finite lineage split after direct source-unit comparison. Do not permanently ban collection from llama.cpp.",
+  "inputs_sha256": {
+    "kernel-library/integration-v1/corpus-12288-v2/source-policy.json": "20475c02dea4889e1e582a4de296d3fb28bed3f7fc5c4b924845901cce5a64d9",
+    "kernel-library/expansion-v4-hour/training-mix-12288-v3/ktune-import.json": "b80a3c38637546565c517311f8785e1ac3e803267b98b70976b125b523bf60fb",
+    "kernel-library/integration-v1/group-a/evidence/reserved-metadata.json": "f4eef3821f220de8903d19de9452bdd524648215cc99c0af8ee3106b48aab92b",
+    "kernel-library/next-round-v5/engines-b/llama/screen.json": "8a1d1265122d167a211840811d40979aec015ed931909c5f58654c18f748df17"
+  },
+  "active_dataset_changed": false
+}

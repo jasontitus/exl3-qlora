@@ -1,0 +1,53 @@
+{
+  "schema": "two-machine-work-allocation-v1",
+  "created_utc": "2026-10-14T00:11:49.649161+00:00",
+  "purpose": "MacStudio ingests and curates next-round data concurrently while M5 verifies, trains and evaluates sealed198 run",
+  "local_cpu_lanes": {
+    "engines-a": {
+      "owner": "adversarial_code",
+      "sources": [
+        "sushi",
+        "TensorFold",
+        "mlx-serve",
+        "ds4",
+        "omlx"
+      ]
+    },
+    "mlx": {
+      "owner": "quality_research",
+      "sources": [
+        "mlx",
+        "mlx-lm",
+        "mlx-vlm"
+      ],
+      "priority": "mlx.fast, newer Metal and measured optimizations"
+    },
+    "engines-b": {
+      "owner": "ingest_engines_b",
+      "sources": [
+        "llama.cpp",
+        "splash",
+        "MTPLX",
+        "vllm-metal"
+      ]
+    }
+  },
+  "m5_lane": {
+    "owner": "root",
+    "phase": "longest-item preflight: model payload hashing",
+    "wrapper_pid": 37886,
+    "runner_pid": 37889,
+    "preflight_pid": 37893,
+    "next": "Complete guarded preflights, fresh baseline,396 updates on198 examples, fresh final evaluation"
+  },
+  "constraints": [
+    "Preserve sealed198train/16test and pinnedruntime-v5",
+    "No GPU or upstream-script execution in local ingestion",
+    "Preserve sfideas and WatchAI",
+    "Keep exact source/license/provenance, replay, tokenization and independent-review evidence",
+    "Separate discovery, reviewed examples and compiler/numerical/performance qualification",
+    "Daily automation cadence unchanged"
+  ],
+  "status": "M5 campaign live; Mac Studio three parallel CPU ingestion and independent review lanes",
+  "updated_utc": "2026-10-14T00:29:13.846003+00:00"
+}
