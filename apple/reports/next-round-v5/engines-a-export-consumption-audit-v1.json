@@ -1,0 +1,45 @@
+{
+  "schema": "engines-a-export-consumption-audit-v1",
+  "status": "passed",
+  "outputs": [
+    {
+      "capacity": 12288,
+      "rows": 7,
+      "ids": [
+        "ds4-3826f5217577-next-v5",
+        "ds4-4e01ef9dec6f-next-v5",
+        "ds4-643d4cb5bc46-next-v5",
+        "ds4-9e91baccdaef-next-v5",
+        "sushi-2ec9a48cd853-next-v5",
+        "tensorfold-ec131fd35d70-next-v5",
+        "ds4-d6580a5ffcfd-next-v5"
+      ]
+    },
+    {
+      "capacity": 32768,
+      "rows": 12,
+      "ids": [
+        "ds4-3826f5217577-next-v5",
+        "ds4-4e01ef9dec6f-next-v5",
+        "ds4-643d4cb5bc46-next-v5",
+        "ds4-9e91baccdaef-next-v5",
+        "sushi-1386382dc0ec-next-v5",
+        "sushi-2ec9a48cd853-next-v5",
+        "sushi-99e10533ea24-next-v5",
+        "sushi-ad5e6be85c29-next-v5",
+        "tensorfold-c2bede8fd7d3-next-v5",
+        "tensorfold-ec131fd35d70-next-v5",
+        "ds4-d6580a5ffcfd-next-v5",
+        "tensorfold-5d7fbf3034e7-next-v5"
+      ]
+    }
+  ],
+  "inputs_sha256": {
+    "kernel-library/next-round-v5/mlx/peer-reviews/engines-a-exact-independent-review.json": "95fa79f619e91f52c309e795554d31109e29ad200c73fe9a8a744b49816331e2",
+    "kernel-library/next-round-v5/engines-a/export-core-12288/train.jsonl": "f5e11f91ffe567be3831c419d0808b69a436e0a356dd83743dd6f2a77621578e",
+    "kernel-library/next-round-v5/engines-a/export-core-12288/train.prepared.jsonl": "072f56c740fdaeed4eac813048054c9bfab8272b0cc53bc04f3a41cad9d6dc6e",
+    "kernel-library/next-round-v5/engines-a/export-core-32768/train.jsonl": "54d9aa5c12c4d6cc5c98e71cd02a1fee18415877c2a7ce1b9d569b95f268eac2",
+    "kernel-library/next-round-v5/engines-a/export-core-32768/train.prepared.jsonl": "0cfc1d7dbe5d1d00538e78b82ccefb524f38e355a2fd9f97f3f397a52517644b"
+  },
+  "limits": "Checks exports against independently reviewed rows and core tier/capacity; no new compilation, numerical or performance qualification; active198/16 unchanged"
+}

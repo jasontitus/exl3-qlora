@@ -1,0 +1,105 @@
+{
+  "status": "independently_reviewed_future_intake_exports",
+  "created_utc": "2026-10-14T00:41:36.955481+00:00",
+  "outputs": {
+    "export-core-12288": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288",
+      "count": 7,
+      "by_tier": {
+        "optimization": 5,
+        "correctness": 2
+      },
+      "supervised_tokens": 7587,
+      "max_actual_serialized_ids": 6976,
+      "artifacts_sha256": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/audit.json": "91b4330b2006356fba7de7abcfa7aee95a75742b5adc81ebb7670287757ee614",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/cross-split-code-overlap.json": "350157d0269d13d7a41d482d47cd94966788a0f8cd65f39d91f06e100da87f89",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/ds4-3826f5217577-next-v5.provenance.json": "5347145b24867a5aec8c15551c49070eeeb06c91bdfca64abdb1eba67f26dd1f",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/ds4-4e01ef9dec6f-next-v5.provenance.json": "d3a5f3301c318ca10e449c002aa8bc6ad8e391f498749c1c456450aae9db9b4b",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/ds4-643d4cb5bc46-next-v5.provenance.json": "47e13486c03c47f1f1bc3174600055afe431f5db0d1d7e2192a947f7fe487140",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/ds4-9e91baccdaef-next-v5.provenance.json": "1243e9e3bbaef4536f58f2da42518a16b58e5de699fafd865098a65aeaeeff93",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/ds4-d6580a5ffcfd-next-v5.provenance.json": "ccb7dc661e1bed4a560f5d4bc37ff69fc40341a5398320d4931f7688b05d1888",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/sushi-2ec9a48cd853-next-v5.provenance.json": "632d63ef71a9f3eb90390ac9243059051507f67b6ccb3a760c3e5080de449932",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/tensorfold-ec131fd35d70-next-v5.provenance.json": "eae10911abdbcd9f7c1ace98e7ae2d4d3b5788fac88b0b3730be9139a4e6b564",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/train.jsonl": "f5e11f91ffe567be3831c419d0808b69a436e0a356dd83743dd6f2a77621578e",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-12288/train.prepared.jsonl": "072f56c740fdaeed4eac813048054c9bfab8272b0cc53bc04f3a41cad9d6dc6e"
+      }
+    },
+    "export-core-32768": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768",
+      "count": 12,
+      "by_tier": {
+        "optimization": 10,
+        "correctness": 2
+      },
+      "supervised_tokens": 56425,
+      "max_actual_serialized_ids": 29716,
+      "artifacts_sha256": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/audit.json": "ec16ab0aee2054de4e7b0d917c2546c29dd4490e9b1a3d0900bafe7e0bdbce5e",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/cross-split-code-overlap.json": "8699536769eddb28618c4c95d95d987e757a0fb1a16bd871a48d48525287a7be",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/ds4-3826f5217577-next-v5.provenance.json": "5347145b24867a5aec8c15551c49070eeeb06c91bdfca64abdb1eba67f26dd1f",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/ds4-4e01ef9dec6f-next-v5.provenance.json": "d3a5f3301c318ca10e449c002aa8bc6ad8e391f498749c1c456450aae9db9b4b",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/ds4-643d4cb5bc46-next-v5.provenance.json": "47e13486c03c47f1f1bc3174600055afe431f5db0d1d7e2192a947f7fe487140",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/ds4-9e91baccdaef-next-v5.provenance.json": "1243e9e3bbaef4536f58f2da42518a16b58e5de699fafd865098a65aeaeeff93",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/ds4-d6580a5ffcfd-next-v5.provenance.json": "ccb7dc661e1bed4a560f5d4bc37ff69fc40341a5398320d4931f7688b05d1888",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/sushi-1386382dc0ec-next-v5.provenance.json": "2e677b5950bf187a60185fbac2d029ff2be814aaf021fa1432dde42558e33b32",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/sushi-2ec9a48cd853-next-v5.provenance.json": "632d63ef71a9f3eb90390ac9243059051507f67b6ccb3a760c3e5080de449932",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/sushi-99e10533ea24-next-v5.provenance.json": "0f8e9367a4416cb95a2795e8cdb9a256b9cd7f61e28a037a61da162784357c28",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/sushi-ad5e6be85c29-next-v5.provenance.json": "90aa9b2080e0ee661a7f1ee0fef79aa53014b503a71079ef5ddd5923cf7eb913",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/tensorfold-5d7fbf3034e7-next-v5.provenance.json": "a03891cce0e8072f004edd4a2b9476e91b3300bc86e10834fa5b638f40396d97",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/tensorfold-c2bede8fd7d3-next-v5.provenance.json": "1d231a4d53605455635b2e337f00ccf3ea811d66ef9899f0664d3ea67d4a35d3",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/tensorfold-ec131fd35d70-next-v5.provenance.json": "eae10911abdbcd9f7c1ace98e7ae2d4d3b5788fac88b0b3730be9139a4e6b564",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/train.jsonl": "54d9aa5c12c4d6cc5c98e71cd02a1fee18415877c2a7ce1b9d569b95f268eac2",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-core-32768/train.prepared.jsonl": "0cfc1d7dbe5d1d00538e78b82ccefb524f38e355a2fd9f97f3f397a52517644b"
+      }
+    },
+    "export-optional-unmeasured": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-optional-unmeasured",
+      "count": 1,
+      "by_tier": {
+        "source_grounded_unmeasured": 1
+      },
+      "supervised_tokens": 6845,
+      "max_actual_serialized_ids": 9619,
+      "artifacts_sha256": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-optional-unmeasured/audit.json": "a4221285f4d41296eb998a7d69af2e902cd25b47b8b326c19a9b6bd39fa3a761",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-optional-unmeasured/cross-split-code-overlap.json": "48fd87e36a2ab0632d5e1b0acd5e187b41d0c07975e66f4c615a339da9917002",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-optional-unmeasured/tensorfold-d8fa534f0628-next-v5.provenance.json": "8525b346fa578319ed63091ebbe4a1af44f9fdad3b709b47cd335d1f730340c1",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-optional-unmeasured/train.jsonl": "b2b2ca8596d8d79aab83cd702f31f33bc19ee2d9f4eb8dafbdcf8e80acab1d38",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/export-optional-unmeasured/train.prepared.jsonl": "9c549354dbf8cf2e053b472d56377e9c6df002bdcba73cc1c9c61ce9b4f7ed4f"
+      }
+    }
+  },
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/case-index.json": "0a633aed3638084041b89ee788f786b3398996665978e2ed7db82b97a58727a8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/case-index-reviewed.json": "83875b85b716d4b7648cd7124d74a351be082a361445487479fa6798ee5f2651",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/case-index-unmeasured-reviewed.json": "8dee62ad80d7634587aab87c46c5bfb1ddbd9128f544c817998079a487c9c542",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/held-payloads.json": "772ca53327898b0e603bea285c9ffbd54dfff261bdfe6933b831e5bdbbb77e81",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/mlx/peer-reviews/engines-a-exact-independent-review.json": "95fa79f619e91f52c309e795554d31109e29ad200c73fe9a8a744b49816331e2"
+  },
+  "excluded_archive": [
+    {
+      "id": "sushi-0382aee97906-next-v5",
+      "tier": "optimization",
+      "reason": "auxiliary_compute_or_validation_not_default_kernel_core"
+    },
+    {
+      "id": "sushi-d343f3375b1a-next-v5",
+      "tier": "correctness",
+      "reason": "auxiliary_compute_or_validation_not_default_kernel_core"
+    },
+    {
+      "id": "sushi-fc1c0ff50641-next-v5",
+      "tier": "measured_tradeoff",
+      "reason": "optional_precision_or_noisy_performance_tradeoff"
+    },
+    {
+      "id": "tensorfold-9b5e1b032c32-next-v5",
+      "tier": "measured_tradeoff",
+      "reason": "optional_precision_or_noisy_performance_tradeoff"
+    }
+  ],
+  "distinctness": "17 source changes captured;12 default exact changes,1 separate unmeasured optional,4 archives. Known GDN/QSA ports preserve source family and are not counted as independent algorithmic discoveries.",
+  "qualification": "Exact captured-source/native-patch replay and real tokenizer/mask checks; source-reported performance only, no local compiler/numerical/GPU/benchmark qualification. Historical targeted editing, not observed agent tool trajectories.",
+  "active_training_data": "Sealed198train/16test and active runtime were not modified. Future exports only."
+}

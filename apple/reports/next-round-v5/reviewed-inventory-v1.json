@@ -1,0 +1,53 @@
+{
+  "schema": "next-round-reviewed-inventory-v1",
+  "observed_utc": "2026-10-14T00:40:51.741636+00:00",
+  "status": "partial_inventory_reviews_continuing",
+  "core_exact": {
+    "12288": {
+      "exact_rows": 9,
+      "ids": [
+        "ds4-3826f5217577-next-v5",
+        "ds4-4e01ef9dec6f-next-v5",
+        "ds4-643d4cb5bc46-next-v5",
+        "ds4-9e91baccdaef-next-v5",
+        "sushi-2ec9a48cd853-next-v5",
+        "tensorfold-ec131fd35d70-next-v5",
+        "ds4-d6580a5ffcfd-next-v5",
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5"
+      ]
+    },
+    "32768": {
+      "exact_rows": 15,
+      "ids": [
+        "ds4-3826f5217577-next-v5",
+        "ds4-4e01ef9dec6f-next-v5",
+        "ds4-643d4cb5bc46-next-v5",
+        "ds4-9e91baccdaef-next-v5",
+        "sushi-1386382dc0ec-next-v5",
+        "sushi-2ec9a48cd853-next-v5",
+        "sushi-99e10533ea24-next-v5",
+        "sushi-ad5e6be85c29-next-v5",
+        "tensorfold-c2bede8fd7d3-next-v5",
+        "tensorfold-ec131fd35d70-next-v5",
+        "ds4-d6580a5ffcfd-next-v5",
+        "tensorfold-5d7fbf3034e7-next-v5",
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5"
+      ]
+    }
+  },
+  "evidence_sha256": {
+    "reports/engines-a-export-consumption-audit-v1.json": "6306e022c7f321eba95e40d1d46409ff2c522476c61ab7242c435f69508caebe",
+    "reports/engines-b-export-consumption-audit-v1.json": "cc9bda80e590cd7e15e7261808c169ae6c76fc5d75e91cc0bd964690eaed7fa9"
+  },
+  "scope": "Only independently approved and export-verified A/B rows at this snapshot; excluded optional and pending MLX/B rows",
+  "limits": [
+    "Related MLA edits are one declared family; row count is not independent technique count",
+    "Source/replay/tokenization qualified; no local GPU numerical/performance qualification",
+    "Not a new assembled train/test split and not permission to modify active198/16"
+  ],
+  "active_training_items": 198,
+  "protected_heldout_items": 16
+}

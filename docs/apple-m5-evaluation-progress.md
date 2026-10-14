@@ -55,3 +55,9 @@ Mac Studio runs three independent CPU ingestion/review lanes covering all twelve
 ## Predeclared token comparison audit
 
 The exact16 held-out items reconstruct47,069 supervised tokens, including18,364 added Metal-code tokens,16 EOS tokens and only5 rationale tokens. Independently revalidated lexical categories will keep code, comments, metadata and EOS metrics separate. This set cannot establish reasoning quality from its five rationale tokens. The CPU comparison utility reproduces the historical audited aggregate and all16 per-row metrics. Independent synthetic unequal-length tests and22 malformed-input cases pass, including vocabulary bounds and a concurrent-file-change receipt test. The utility hashes the same bytes it parses. It remains a metric calculator: exact-base, runtime, checkpoint and completed-launch provenance must still pass separately. No new M5 quality result exists yet.
+
+## Next-round exports and adversarial finding
+
+Independent review and export-consumption checks now cover15 core historical edits across the two engine lanes:9 fit12K and all15 fit32K. These are additional next-round library items; the current198/16 experiment is untouched. A separate unmeasured item remains opt-in, and the remaining MLX batch is still under review. These counts establish source/edit/tokenization admission, not local compiler, numerical or performance qualification.
+
+The review found a source-arithmetic counterexample in captured MLX commit9ab977b5649154590d598ea5d545aa1b3c97f883: its small-depth3D convolution dispatch accepts flip=true but the decomposed depth views use the same unflipped index. A scalar16-channel example gives208/416 where the declared flipped contract requires176/352. This is a CPU expansion of pinned source, not an executed GPU regression or a claim about current upstream HEAD. The case is being removed from positive intake and retained for reviewed failure analysis.

@@ -1,0 +1,68 @@
+{
+  "status": "confirmed_source_arithmetic_counterexample",
+  "scope": "CPU scalar expansion of exact source pointer offsets and the declared flip contract; no compiled backend or GPU run.",
+  "commit": "9ab977b5649154590d598ea5d545aa1b3c97f883",
+  "shape": {
+    "input": [
+      1,
+      3,
+      1,
+      1,
+      16
+    ],
+    "weights": [
+      16,
+      2,
+      1,
+      1,
+      16
+    ],
+    "output": [
+      1,
+      2,
+      1,
+      1,
+      16
+    ]
+  },
+  "parameters": {
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "kernel_dilation": [
+      1,
+      1,
+      1
+    ],
+    "input_dilation": [
+      1,
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0,
+      0
+    ],
+    "groups": 1,
+    "flip": true
+  },
+  "input": "Each depth broadcasts [1,2,4] across16 channels",
+  "weights": "Each output channel broadcasts depth coefficients [3,5] over16 input channels",
+  "source_decomposition_per_output_channel": [
+    208,
+    416
+  ],
+  "required_convolution_per_output_channel": [
+    176,
+    352
+  ],
+  "explanation": "KD2 passes the new fast path. Both input and weight views select identical kd. The 2D flip is a no-op on KH=KW=1, so depth remains unflipped. eval_gpu forwards flip_ unchanged through conv_3D_gpu. Added tests call conv_general with default flip=false.",
+  "required_disposition": "Quarantine this whole-patch positive until a source-qualified correction/guard is independently reviewed; retain source-bound failure-analysis diagnostic.",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/mlx/reviewed/mlx-9ab977b56491-next-v5.source.json": "5e792049bd429321be6b7c463be3cfbd272812a75331c29dd1d174d712c51ecd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/conv_flip_counterexample.py": "023829a19a9a8cee104c99dd1ecc720676d316c8921e5ba34bce64fe15ce6bf4"
+  }
+}
