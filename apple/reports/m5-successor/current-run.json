@@ -72,15 +72,13 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "observed_utc": "2026-10-14T20:55:33.887429+00:00",
-    "source": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/training-progress-observation-20261014T205533Z/stdout.json",
-    "saved_update": 180,
-    "planned_updates": 458,
+    "saved_checkpoint": 204,
     "worker_pid": 47890,
-    "worker_live": true,
-    "independent_exposure_audit_through": 165,
-    "scope": "Live process/latest pointer observation, not checkpoint168 bytes or matched learning audit",
-    "saved_metric_health_review_through": 180
+    "elapsed": "18:15:43",
+    "rss_kib": 18570592,
+    "forward_layer": 3,
+    "active_mlx_gib": 15.61,
+    "history_audit_checkpoint": 194
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -922,5 +920,16 @@
     "cause_localized": false,
     "generated_quality_verified": false,
     "next_action": "Separate7tap projection-input/output witness CPUlink andreview; no speculativeproductionrepair"
+  },
+  "projection_diagnostic_current": {
+    "status": "completed_independently_audited",
+    "phases": 6,
+    "comparisons": 51,
+    "review_sha256": "6867554ad1bc74369e00fa4641b6c9e5ba9afde64f92f25c5c46c8545f675c91",
+    "root_verified_inputs": 386,
+    "trace_and_cross_build_controls_bitwise_equal": true,
+    "large_divergence_before_output_projection": true,
+    "correct_path_established": false,
+    "next": "bounded attention operand capture and independent CPU oracle"
   }
 }
