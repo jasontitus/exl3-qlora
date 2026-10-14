@@ -1,0 +1,62 @@
+{
+  "capacity_16k_qualified": false,
+  "dependencies": "Private forward validator/sigmoid seams exactly hash-bound; no upstream code imported",
+  "derivation": "Curator-derived softmax Jacobian-vector product plus weighted values and stable elementwise sigmoid slope; shared KV contributions summed across queries/heads. Not derivative of finite rounding.",
+  "files_sha256": {
+    "LICENSE": "27a32b6263fcd96c79d3beeecf221c4366780bdf15ad51986f48650bd7369bff",
+    "exllamav3/architecture/qwen4_exp.py": "f0781ec11aabc78694ed5084d24fb31093c0500a5c985a00276188c241c165bb",
+    "exllamav3/modules/attention_fn/qsa_triton.py": "5663156cdcca43457a5e6150ac778d115fe43dc1ad654f469e8833210bc7640c",
+    "exllamav3/modules/attn.py": "369d312a2f9caa3974966f52c392fd20e66624e9e0c2cbd96b52f19a977621fb",
+    "exllamav3/modules/qsa_indexer.py": "b20e6beac6bf277cdd716538416d80f2370e1cba2ed45954f6cdfc929be037ee",
+    "exllamav3/training/native_llama.py": "12c99ff24bb54067a081ceb9e6b52154cf811afd231bd30a13847c70d5729f5e",
+    "qwen-next/README.md": "d375bfbd3dde7f8797438533348ed0c59c17b654d914b3decf4c7a54b1fc8f1c",
+    "qwen-next/docs/QSA_ADJOINT_REFERENCE.md": "ee8883be5da4a519763af4c33de450a64ee1caf6bdeea4314b0d5330e91495d6",
+    "qwen-next/project.json": "878a02a6567ef27fb866d2885824f18938aafde43b59b7f5e2c8f7a565219d98",
+    "qwen-next/reference-contracts/qsa-cpu-v2.json": "c16fd1d7341eb3e3d1801db25184c624b679bb67a493d79b9f15170a02bff761",
+    "qwen-next/sources/config.json": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1",
+    "qwen-next/tests/test_qsa_adjoint_source_contract.py": "e94df0129b72a344cd52ed436e6de11e44ba0bd97ca08a888d87f26833ef2de3",
+    "qwen-next/tests/test_qsa_source_contract.py": "314511065ecb7c8a5a630732cdcefcee63d2ac4dd359f5aba792db95694fc223",
+    "qwen-next/tests/test_qwen_qsa_attention_adjoint.py": "2f2d4eef330f9273457261259134f24cb59fbaacd013842fd98dec922e6b726a",
+    "qwen-next/tests/test_qwen_qsa_attention_reference.py": "3d7cd6801ba7fd1a1635e948189b86fc6ac106b20e511806c6f0cbe18348ec4d",
+    "qwen-next/tests/test_qwen_qsa_selector_reference.py": "f273747972bd65fc645281c7b66eeb34d874ae25d7b9a243f81b94d8d0a3a7ea",
+    "qwen-next/tools/qwen_qsa_attention_adjoint.py": "4b99b2fece618d2c5aec7d5c9e56c9af76d63edb234e14d6da3088db37307b71",
+    "qwen-next/tools/qwen_qsa_attention_reference.py": "6fbfec657e371a8abcf0dfab55340c5c30999b68e6e9d556f8ae146f0f66e02a",
+    "qwen-next/tools/qwen_qsa_selector_reference.py": "1909c45825224a85954c01827347c8b68103228c9d6ca8c29afd23b6e09f4221"
+  },
+  "fixed_route_mathematical_input_adjoint": true,
+  "forward_contract": "qwen-next/reference-contracts/qsa-cpu-v2.json",
+  "limits": {
+    "aggregate_input_bytes": 1048576,
+    "batch": 2,
+    "dimension": 256,
+    "gradient_bytes": 1048576,
+    "history": 64,
+    "kv_heads": 2,
+    "queries": 8,
+    "query_heads": 24,
+    "route_width": 64,
+    "selected_components": 262144
+  },
+  "model_or_training_supported": false,
+  "native_backward_qualified": false,
+  "omitted_boundaries": [
+    "QKV projection/norm/RoPE/pooling",
+    "selection-ID gradient",
+    "output projection",
+    "parameter/adapter gradients",
+    "cache/checkpoint",
+    "complete A0/block",
+    "native kernel/model training/16K"
+  ],
+  "qualification": {
+    "author_methods": 17,
+    "independent_methods": 8,
+    "review_sha256": "7c173b9743b6d39aa0f2812079ba9ca03a05ac76631e9c907eca9e5961fe4b1b",
+    "review_status": "approved_scoped_CPU_mathematical_reference_only",
+    "scope": "Historical isolated reference review; product integration has separate review."
+  },
+  "schema": "qwen-qsa-adjoint-cpu-reference-contract-v1",
+  "scope": "Preprocessed selected-token attention mathematical input adjoint, fixed routes, NumPy CPU only",
+  "selector_membership_gradient": false,
+  "source_identity_changes_require_review": true
+}
