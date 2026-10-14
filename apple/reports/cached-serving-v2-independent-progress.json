@@ -1,0 +1,34 @@
+{
+  "status": "independent_cpu_tests_passed_source_review_pending",
+  "time_utc": "2026-10-14T02:58:22.632439+00:00",
+  "seal_sha256": "fe78087b6f533d54503e89645d68722e101c8d8f38a5f43d4fbe9da77d74438a",
+  "bound_files": 556,
+  "mismatches": [],
+  "tests": {
+    "command": "python3 -m unittest discover -s kernel-library/next-round-v5/cached-inference-v2/prototype/tests -v",
+    "passed": 29,
+    "seconds": 0.79
+  },
+  "hardware_approved": false,
+  "remaining": [
+    "Native route/source review; CPU fixture success does not establish real model parity",
+    "Complete host link and device/cached numerical qualification",
+    "Matched baseline/adapter generation and kernel quality evaluation"
+  ],
+  "native_tests": {
+    "command": "python3 kernel-library/next-round-v5/cached-inference-v2/prototype/qualification/run_cpu.py",
+    "adapter_tests_passed": 23,
+    "host_fake_tests_passed": 3,
+    "module_entrypoints_unlinked_compile": "passed",
+    "gpu_executed": false
+  },
+  "source_review_observations": [
+    "Execution checks request/input identities before launch and after child completion.",
+    "Explicit environment, deadline, owned-child termination and outer lease validation replace inherited unbounded execution.",
+    "Paired serving comparison binds resource/deadline/environment profile as well as arithmetic, warmup, tokenizer and loaded routes.",
+    "Graph diff applies query adapter before query normalization in RC, compiled and eager paths; compiled adapter regions have distinct identities.",
+    "Output branches use the input to wo_b for the residual, including the BF16 Dense16 input before widening; no second application was found in inspected branch exits.",
+    "Compiled scale2 is specific to the strictly constrained rank4/alpha8 adapter contract, not generic adapter support.",
+    "Model construction seals adapter handles and route identities, while module guard refuses draft execution for both exact-token conditions."
+  ]
+}
