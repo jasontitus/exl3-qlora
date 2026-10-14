@@ -1,0 +1,58 @@
+{
+  "schema": "evaluation-progress-independent-review-v1",
+  "status": "approved_cpu_ledger_only",
+  "passed": true,
+  "reviewer": "adversarial_code",
+  "created_utc": "2026-10-14T05:17:01.520302+00:00",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reusable-evaluation-design/design-v2.json": "9f561f1e900da16ae02ac9831e0662f043b73d62bbd5961fe59719992dccaaa0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reusable-evaluation-design/implementation-spec-v2.json": "2d2798ed8c5a2bfb76c8bac24b406d014512873256018f6097a371a716e88fb3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reusable-evaluation-design/independent-review-v1.json": "b4a9bf5577a6c5af58ae6be06b56454da5db1b9eab123c8172da8e55b30d33e6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reusable-evaluation-design/ledger-review/author-pytest-v2.log": "3732bf6d7e8fe0b7419dac1b03a23c54af8e6b6544b1b0515f5ec51fec9fd92d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reusable-evaluation-design/ledger-review/author-pytest-v2.xml": "8a940efa19140f1dd4f6b02ef4f7a63ff98a36d6f68b669a385d0d0abfb91add",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/EVALUATION_PROGRESS.md": "f63c419de4fb3a50b58518d428e5cc5e5c012219f3104518c27bd07c7340e61e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/evaluation_audit.py": "1725b6fad0c4bf85ae7d8323853ea584d7815fb9cf5e03940f56c98400be62ff",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/evaluation_progress.py": "fb4b378d0ca7964cb92567667359d2be2d70ee613fda02c121e3fec7e0c894a3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/logits_audit.py": "61beb4bae1d8056d20da42ecd7a1945ad92cd5aeaceab8f469fa273bf2cadf7f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_evaluation_audit.py": "4546edd3c7baed9ad7e4da3c649c4debaeb82c80e0c1452d4f49b9d9eadf8766",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_evaluation_progress.py": "66ea8e2bfde6203fa84f6f9a73a2f3b45f1702166658f7ec0dd37616d89712d8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_logits_audit.py": "0af71e7c503cd3dd479088bfd3ae40b0f27449f701b2f8f1d27a897589961285",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reusable-evaluation-design/ledger-review/author-review-v2.json": "13cb92ddbab26613ba63205d12c329f2ad0e46e1b45bef6d2516d80238474307",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/test_evaluation_ledger_independent.py": "646c76dfeebb0f7d4172609c2bcba5e3bd4ea8d17fb2c61cfb6f3e1fd6b1ee99"
+  },
+  "findings": [],
+  "validation": {
+    "ledger_author_methods": 32,
+    "ledger_subtests": 41,
+    "additional_independent_methods": 11,
+    "combined_author_auditor_and_independent_methods": 174,
+    "combined_passed": 174,
+    "combined_subtests_passed": 41,
+    "cpu_only": true,
+    "gpu_executed": false,
+    "model_payloads_read": false,
+    "workflow_execution": false
+  },
+  "independent_cases": [
+    "Seven canonically rewritten row corruptions (producer, attempt hash, target, reduction, identity, index, dtype) refuse complete-row reuse.",
+    "A second real OS process cannot take the same stable file lock while the writer is live and can acquire after release.",
+    "Crash after durable attempt publication is recovered as unknown exposure; a later complete producer remains distinct and aggregate totals preserve all attempts.",
+    "Changed adapter graph refuses namespace reuse even when every row is already complete.",
+    "Complete-file drift immediately before aggregate publication rejects without publishing output."
+  ],
+  "assessed_contract": [
+    "Exact ordered prepared rows, masks, completeEOS, vocabulary/capacity and full conservative declared semantic identity are rebuilt rather than trusted as opaque JSON.",
+    "New rows cannot overwrite earlier receipts; attempt must originate from current writer; original producer/attempt/row bindings remain preserved across resumed assembly.",
+    "Stable flock spans scan, scoring interface and publication; complete-file drift and context checks precede each exclusive durable link; row itself is atomic completion.",
+    "Complete aggregation recomputes one flattened binary64 math.fsum over ordered per-token NLL; macro row mean is separate. Ordered hash descriptors retain occurrence, row,scope,shape,dtype andbyteorder.",
+    "All-complete path requires no scorer/model callable; isolated author test forbids MLX imports; actual workflow callers must preserve this path when integrated."
+  ],
+  "limitations": [
+    "Approval is for an opt-in stdlib receipt ledger, not actual evaluation resume or a workflow/SFT feature. No existing evaluation job was changed.",
+    "Caller verify_context must validate actual underlying base/runtime/adapter/device/arithmetic evidence. A callback returning an expected digest alone is not verification; hashes and producer fields are assertions rather than process/model attestation.",
+    "Future integration needs actual score-one-row materialization, multi-producer SFT validation, composed project/lock/train-first/all-complete tests and real-model fresh-versus-resumed numerical qualification.",
+    "Advisory locking assumes cooperating callers and private ledger ownership; no hostile-process attestation is claimed.",
+    "Attempt/adoption counters are local to this progress namespace, not global heldout exposure accounting.",
+    "The v2 metric and ordered digest are deliberately different from historical FP32/blockwise reduction and concatenated-logits hash; no historical bitwise equivalence claim."
+  ]
+}
