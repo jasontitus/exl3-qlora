@@ -61,3 +61,32 @@ Version 2 preserves captured input files as flat content-addressed `.bin` artifa
 These gates establish **binding consistency**, not semantic truth, complete factual support, absence of prompt leakage, primary-source authenticity, numerical correctness, or performance improvement. Those remain explicit independent review and execution requirements. The tests include deliberately labelled imported assertions to verify this distinction; acceptance must not be described as hardware qualification.
 
 Diagnostic source inspection supports regular UTF-8 text modes `100644` and `100755`, including new executable-text files and transitions between those modes. It records the full before/after content-and-mode transition hash separately from text patch identity; mode differences do not evade shared text/commit lineage protection. It never executes executable-text files or claims mode replay. Exact-edit rendering rules are unchanged. Binary/symlink source modes, deleted files, empty-file additions and pure mode-only diagnostics remain explicit refusals in this increment.
+
+## Independent semantic review before approval
+
+Passing the importer checks does not settle whether an answer teaches a sound
+optimization decision. Review each claim against the captured passage, and
+record required corrections before issuing `diagnostic-review-v1` approval:
+
+- Separate observed code behavior, author measurements, local reproductions and
+  recommendations. A suggested experiment is an inference even when motivated
+  by a measured result. Bind reported timings to the report, not just the source
+  code that implemented the change.
+- Preserve qualifications: partial register-count recovery is not full recovery;
+  a numerical difference reported inside a rounding floor is not an established
+  quality regression. “Remains enabled independently” does not establish that a
+  component was independently tested.
+- Check the information available in the prompt. Symptoms learned from a later
+  report require an explicit supplied-observation boundary and evidence binding.
+  They cannot be justified by labelling the prompt `before_only`.
+- Date limitations of collection or rendering tools. A historical inability to
+  replay a change does not establish that the current importer cannot handle it.
+- Check every factual clause in a mixed claim span; split the span when one part
+  is source-supported and another is a recommendation or hypothesis.
+
+Corrected prompt or answer text creates a new dataset revision with newly
+prepared token IDs and masks. Preserve the original data and receipts, and keep
+new approval pending until the revised evidence is reviewed. Do not replace rows
+inside a running campaign. Report any substantive defects found in its frozen
+training set alongside that campaign's results; an unchanged held-out set does
+not make those defects disappear.
