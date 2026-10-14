@@ -1,0 +1,158 @@
+{
+  "schema": "min-p-boundary-independent-negative-review-v1",
+  "status": "confirmed_source_api_contract_regression",
+  "reviewer": "adversarial_code",
+  "created_utc": "2026-10-14T05:26:44.431050+00:00",
+  "case_id": "mlx-lm-f79dba78325b-expansion-v2",
+  "source_head": "f79dba78325b8476abf750a51f2c86fc253a853b",
+  "source_parent": "3f9d179fd1c917d4b5bc6ed98a95780bb769a40a",
+  "captured_api_repository": "https://github.com/ml-explore/mlx",
+  "captured_api_revision": "8ab5b08d1772cea506021599e18ca6810095fab7",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v2/corpus-12288-v3/mlx-lm-f79dba78325b-expansion-v2.provenance.json": "3761632a43f24d86161070f6f07233bc5a1e4dde4a9e18e4c68a5f78223988f4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/portable-next229-pending-v2/exact/cases/mlx-lm-f79dba78325b-expansion-v2/source.json": "e75d575cbf0b3d3024c9d72b4d96efea6762f3e59adc50488406a77fc6ec6616",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/portable-next229-pending-v2/exact/cases/mlx-d9add9d11f31-expansion-v2/source.json": "286ffd4aa86cb4611cb65e7a3e821a4da0f4e38959db198d564f4d2398fa0089",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/verify_min_p_boundary.py": "fd70a684485209af852350e1e6fa37b280bb4e057840613052a201a66d2ab1dd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/min-p-boundary-scalar-results-v1.json": "61117970977d44dbfd40e2dff7de13cb59825a347abe79ea8e9d6b3056944c04"
+  },
+  "source_evidence": [
+    {
+      "repo_relative_path": "mlx_lm/sample_utils.py",
+      "blob": "e56242763f6f7be44cd18652220338f8fbd341ed",
+      "full_content_sha256": "c81cc6716198e7f5bdb7d05d35f9d43ebdcf9dc70e7d7b485bd1fae170f619ea",
+      "first_line": 180,
+      "last_line": 185,
+      "excerpt_sha256": "5b122b844c393c8dbe402aec5513634fd15989f778583c718f6431afddb45f6a",
+      "text": "    if not isinstance(min_tokens_to_keep, int) or (min_tokens_to_keep < 1):\n        raise ValueError(\n            f\"`min_tokens_to_keep` has to be a positive integer, but is {min_tokens_to_keep}\"\n        )\n    # reference implementation: https://github.com/huggingface/transformers/blob/main/src/transformers/generation/logits_process.py#L531-L605\n\n"
+    },
+    {
+      "repo_relative_path": "mlx_lm/sample_utils.py",
+      "blob": "e56242763f6f7be44cd18652220338f8fbd341ed",
+      "full_content_sha256": "c81cc6716198e7f5bdb7d05d35f9d43ebdcf9dc70e7d7b485bd1fae170f619ea",
+      "first_line": 197,
+      "last_line": 199,
+      "excerpt_sha256": "f69397e734037a7e3e8ccedcc61f545e3f26a4db7a24b14763f6165847a7d796",
+      "text": "    tokens_to_remove = sorted_logprobs < scaled_min_p\n    tokens_to_remove[..., :min_tokens_to_keep] = False\n\n"
+    },
+    {
+      "repo_relative_path": "mlx_lm/sample_utils.py",
+      "blob": "05a45fc600d2003eb1b0f942198fc2f4e63f0650",
+      "full_content_sha256": "c0ce439f8dbf0d4e6d0f37f728a324f3f72878e6a9123df41be520804c596d67",
+      "first_line": 191,
+      "last_line": 201,
+      "excerpt_sha256": "85f149511da13b58e636c9756884ee7c51e6a3ad24958c3c83ce9e9585425b75",
+      "text": "    if min_tokens_to_keep > 1:\n        top_indices = mx.argpartition(logprobs, kth=-min_tokens_to_keep, axis=-1)\n        top_indices = top_indices[..., -min_tokens_to_keep:]\n        tokens_to_remove = mx.put_along_axis(\n            tokens_to_remove,\n            top_indices,\n            False,\n            axis=-1,\n        )\n\n    return mx.where(tokens_to_remove, -float(\"inf\"), logprobs)\n"
+    },
+    {
+      "repo_relative_path": "mlx_lm/sample_utils.py",
+      "blob": "05a45fc600d2003eb1b0f942198fc2f4e63f0650",
+      "full_content_sha256": "c0ce439f8dbf0d4e6d0f37f728a324f3f72878e6a9123df41be520804c596d67",
+      "first_line": 53,
+      "last_line": 54,
+      "excerpt_sha256": "6b457aaa625b4a83ecb40ce23c25f00691656fcde79e6abf400f0ae83d1dbc8a",
+      "text": "    if min_p != 0.0:\n        sampling_methods.append(lambda x: apply_min_p(x, min_p, min_tokens_to_keep))\n"
+    },
+    {
+      "repo_relative_path": "mlx/ops.cpp",
+      "blob": "1a41688d2812fcb312f6e773d23be23c625bf0c8",
+      "full_content_sha256": "7cf1107972ae6d8e3e663efa14a881f46091504822b5e7df69588111bead35bc",
+      "first_line": 2839,
+      "last_line": 2845,
+      "excerpt_sha256": "5294320289493354cad1066a838cf5bca590aaca4d3667261a218d8c303f3183",
+      "text": "  int kth_ = kth < 0 ? kth + a.shape(axis) : kth;\n  if (kth_ < 0 || kth_ >= a.shape(axis_)) {\n    std::ostringstream msg;\n    msg << \"[partition] Received invalid kth \" << kth << \"along axis \" << axis\n        << \" for array with shape: \" << a.shape();\n    throw std::invalid_argument(msg.str());\n  }\n"
+    },
+    {
+      "repo_relative_path": "mlx/ops.cpp",
+      "blob": "1a41688d2812fcb312f6e773d23be23c625bf0c8",
+      "full_content_sha256": "7cf1107972ae6d8e3e663efa14a881f46091504822b5e7df69588111bead35bc",
+      "first_line": 729,
+      "last_line": 788,
+      "excerpt_sha256": "a57325faabe499af99db8ca6d4873f751bbaaadf406e663b84e0baef8cd99cf4",
+      "text": "normalize_slice(const Shape& shape, Shape& start, Shape stop, Shape& strides) {\n  // - Start indices are normalized\n  // - End indices are unchanged as -1 means something different\n  //   pre-normalization (the end of the axis) versus post normalization (the\n  //   position left of 0).\n  // - Any strides corresponding to singleton dimension are set to 1\n\n  Shape out_shape(shape.size());\n  bool has_neg_strides = false;\n\n  for (int i = 0; i < shape.size(); ++i) {\n    // Following numpy docs\n    //  Negative i and j are interpreted as n + i and n + j where n is\n    //  the number of elements in the corresponding dimension. Negative\n    //  k makes stepping go towards smaller indices\n\n    auto n = shape[i];\n    auto s = start[i];\n    s = s < 0 ? s + n : s;\n    auto e = stop[i];\n    e = e < 0 ? e + n : e;\n\n    // Note: -ve strides require start >= stop\n    if (strides[i] < 0) {\n      has_neg_strides = true;\n\n      // Clamp to bounds\n      auto st = std::min(s, n - 1);\n      auto ed = e > -1 ? e : -1;\n\n      start[i] = st;\n      ed = ed > st ? st : ed;\n\n      auto str = -strides[i];\n      out_shape[i] = (start[i] - ed + str - 1) / str;\n\n    } else {\n      // Clamp to bounds\n      auto st = std::max(static_cast<ShapeElem>(0), std::min(s, n));\n      auto ed = std::max(static_cast<ShapeElem>(0), std::min(e, n));\n\n      start[i] = st;\n      ed = ed < st ? st : ed;\n\n      out_shape[i] = (ed - start[i] + strides[i] - 1) / strides[i];\n    }\n    // Simplify the stride if it's unused\n    if (out_shape[i] == 1) {\n      strides[i] = 1;\n    }\n  }\n\n  return std::make_pair(has_neg_strides, out_shape);\n}\n\nvoid normalize_dynamic_slice_inputs(\n    const array& a,\n    const array& start,\n    std::vector<int>& axes,\n    std::string_view prefix) {\n"
+    },
+    {
+      "repo_relative_path": "mlx/ops.cpp",
+      "blob": "1a41688d2812fcb312f6e773d23be23c625bf0c8",
+      "full_content_sha256": "7cf1107972ae6d8e3e663efa14a881f46091504822b5e7df69588111bead35bc",
+      "first_line": 928,
+      "last_line": 932,
+      "excerpt_sha256": "a426c5299e5bffc4d7ee1cec3ec94aad64910c81278605af3a46670f3b5dc44d",
+      "text": "  // If the entire src is the slice, just return the update\n  if (!has_neg_strides && upd_shape == src.shape()) {\n    return upd;\n  }\n  return array(\n"
+    }
+  ],
+  "finding": {
+    "severity": "blocks_unqualified_positive_re_admission",
+    "trigger": "Nonempty vocabulary V, positive integer min_tokens_to_keep k>V, and active min-p filtering; concrete V=4, k=5, min_p=0.5.",
+    "original_behavior": "The sorted mask assignment [...,:k]=False saturates to V entries; all available tokens survive and inverse-index reconstruction restores input order.",
+    "changed_behavior": "The new k>1 branch calls argpartition(kth=-k). Captured MLX host API normalizes kth to V-k, then rejects if negative before constructing the partition primitive. For V4/k5 this is -1 and invalid.",
+    "validation_gap": "Function validation only rejects noninteger or k<1; neither apply_min_p nor make_sampler supplies a k<=V precondition or clamp. The training prompt asks to preserve operation semantics and supported shapes and does not constrain k<=V.",
+    "unaffected_scope": "This specific failure does not apply to default k=1 (no partition call) or k=V (normalized kth0 is valid), and does not refute performance numbers for the source-reported benchmark workload.",
+    "possible_future_repair": "A separately reviewed change could retain the saturated minimum contract by returning the unchanged logprobs for k>=V or clamping k toV before partition; require boundary tests. No such edit is included or authorized by this receipt."
+  },
+  "validation": {
+    "source_blob_hashes_and_git_ids_checked": 3,
+    "scalar_cases": [
+      {
+        "vocab": 4,
+        "min_p": 0.5,
+        "minimum_to_keep": 1,
+        "old_removed": [
+          false,
+          true,
+          true,
+          true
+        ],
+        "new_bound": {
+          "partition_called": false,
+          "accepted": true
+        }
+      },
+      {
+        "vocab": 4,
+        "min_p": 0.5,
+        "minimum_to_keep": 4,
+        "old_removed": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "new_bound": {
+          "partition_called": true,
+          "kth": -4,
+          "normalized_kth": 0,
+          "accepted": true
+        }
+      },
+      {
+        "vocab": 4,
+        "min_p": 0.5,
+        "minimum_to_keep": 5,
+        "old_removed": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "new_bound": {
+          "partition_called": true,
+          "kth": -5,
+          "normalized_kth": -1,
+          "accepted": false
+        }
+      }
+    ],
+    "general_boundary_pairs_checked": 8,
+    "source_fetched_or_executed": false,
+    "mlx_imported": false,
+    "gpu_executed": false,
+    "live_dataset_or_runtime_mutated": false
+  },
+  "limitations": [
+    "The MLX API source is pinned to the separately captured revision8ab5b08d1772cea506021599e18ca6810095fab7, not proven to be the exact runtime dependency used by historical MLX-LM PR1083. Local missing dependency blobs were not fetched.",
+    "This is a source/API-contract proof with independently authored scalar arithmetic; no actual MLX array execution or historical benchmark reproduction occurred.",
+    "The old slice saturation is supported by captured MLX normalize_slice/slice_update code and Python slice semantics; the exact historical Python binding build was not executed.",
+    "This concerns one supervised code-edit example, not evidence that the current training engine calls apply_min_p or that a checkpoint is invalid. It supplies no training restart or runtime-change authorization.",
+    "Future migration should quarantine this unchanged exact target as an unqualified positive until an explicit admissible domain or corrected target is independently reviewed; preserve historical evidence and failed/negative ledger."
+  ]
+}
