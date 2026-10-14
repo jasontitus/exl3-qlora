@@ -13,6 +13,7 @@ import json
 import math
 import os
 import re
+import sys
 import tempfile
 from collections import defaultdict
 from pathlib import Path
@@ -307,6 +308,11 @@ def audit_files(*, prepared, categories, base, adapter, output):
 
 
 def main(argv=None):
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == "logits":
+        from .logits_audit import main as logits_main
+
+        return logits_main(argv[1:])
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("prepared", "categories", "base", "adapter", "output"):
         parser.add_argument("--" + name, required=True)

@@ -1,0 +1,85 @@
+{
+  "checks": {
+    "author_suite": {
+      "log": "logits-auditor-independent-author-tests.log",
+      "passed": 131
+    },
+    "independent_cases": {
+      "coverage": [
+        "Impossible resealed prefix trajectory rejected before publication",
+        "Late evidence mutation after internal comparison recheck rejected by final publication guard",
+        "Competing output publication cannot overwrite an existing file; temporary file removed",
+        "Malformed duplicate-key manifest exits2 without report",
+        "Coherently resealed adapter holes, bool offsets/dimensions, missing pair, infinity and duplicate name rejected through actual publish API",
+        "Signed-zero bit distinction, full-vector error and same-argmax nonzero difference preserved"
+      ],
+      "log": "logits-auditor-independent-negatives.log",
+      "passed": 11
+    },
+    "native_fixture_replay": {
+      "fresh_cached_vs_uncached_execution": false,
+      "mlx_imported": false,
+      "original_request_bytes_retained": false,
+      "original_rows_produced_by_native_cpu_fixture": true,
+      "rows": 2,
+      "status": "observations_consistent_descriptive_only",
+      "values": 10
+    }
+  },
+  "created_at": "2026-10-14T04:18:03.741216+00:00",
+  "findings": [
+    {
+      "finding": "The initial source accepted mutually inconsistent prefix histories at later selected positions within one condition/request when each metadata hash and cross-condition counterpart was coherently resealed. This is an internally impossible native observation trajectory.",
+      "id": "L1",
+      "location": "logits_audit._condition",
+      "repair": "Every later prefix must extend the complete preceding selected prefix; author added positive nonconsecutive selectors and rejection tests, and independent composed regression rejects without output.",
+      "severity": "medium",
+      "status": "fixed_and_independently_reproduced"
+    }
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/logits-auditor-independent-author-tests.log": "10306600e1b0f62e9a1d5e21ebd4fe103d6d507bc30ccff8f8e73fe11139b478",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/logits-auditor-independent-author-tests.xml": "d0edfeef093471575f547ececf125b7a6332381aec6dd481d77781fa80f09365",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/logits-auditor-independent-negatives.log": "a1be914db631b340553d5b4ca73e313ec3ce1b006329c82674be2b42fb04cb27",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/logits-auditor-independent-negatives.xml": "e4cfb440e52345c784e2554f1b2298ef65d3c1e09c18f1c952981c2bd5b8e7db",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/logits-native-fixture-independent-audit.json": "1547e4514e01d44b3c4febe09e5063990549ef6c4329781246bf941544659d74",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/test_logits_auditor_independent.py": "45bdeea357fcc1f73d112eb577e6c11ef7e491587e39aca63b2598cca356759b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/cpu-tests-v2.log": "02026cd6056246561f605bc6463c27d0c7a467ee614f75abb3463eb2a6b2b11b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/cpu-tests-v2.xml": "17a3e3d85c4bda985e9b94bafeeded9944a13fe945ff8b759461183025adbaf8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/implementation-v2.json": "1351c48cf4ac1ec61a96369038fc3fc556ad823716f4522d18e20d83845a0000",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/adapter/adapter.safetensors": "809bf044dc713700e70b131a178ee27d29183b76c143defa9e2cc7998abc169c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/adapter/adapter_config.json": "fca515e70b01bed60aa89cda501169b57f677fa463919ee99c47d23186a52432",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/audit-v2.json": "1547e4514e01d44b3c4febe09e5063990549ef6c4329781246bf941544659d74",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/composition.json": "2d5c348e738834a529fb310e5df16af482e3a0455f80694810f34af245f48a6c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/evidence/native-cross-language-construction-v4.json": "127e928e3cba3fd08032953449920d475df79f234d0c2b3de5c2bd49c51ebdfb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/evidence/native-cross-language-v4.json": "c699daf4d8b9b5140801a9d9865f2af025e4e05af2d0cb7217bde1df0123d345",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/evidence/native-observer-v4.json": "49d2271a3bb0d29c35019b3e43eaf81479ee2c85414393a89d4c5125cae1da7f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/manifest.json": "6ddf16a85a5ea37766bb95d0bcad54d4dd6e934935119586783048157775d2a7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/rows/logits-3.f32": "2bbde3bde9ef86b341b39b2baec2fe805171f64db3fb819d3e23c77d180208bf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/rows/logits-3.json": "421f0fa7018341ce493a57b0b202a8c88dd4559d7d96a886d1e8d150776e3e2d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/rows/logits-4.f32": "8deb90668ea3a6845d5c04454798ccb63829a88ff827892f2dc11c808baac7af",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/logits-auditor/native-fixture/rows/logits-4.json": "f6e0f4428097ca5943a671828d8507fe6116f81e424a6ed5b9074ffc94b269a6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/LOGITS_AUDIT.md": "68ab3fad753890a17df3c47eba7ea61d4cb04e867a07bc872aa370dc6f3e3dea",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/evaluation_audit.py": "1725b6fad0c4bf85ae7d8323853ea584d7815fb9cf5e03940f56c98400be62ff",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/logits_audit.py": "61beb4bae1d8056d20da42ecd7a1945ad92cd5aeaceab8f469fa273bf2cadf7f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_evaluation_audit.py": "4546edd3c7baed9ad7e4da3c649c4debaeb82c80e0c1452d4f49b9d9eadf8766",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_logits_audit.py": "0af71e7c503cd3dd479088bfd3ae40b0f27449f701b2f8f1d27a897589961285"
+  },
+  "remaining_blockers": [],
+  "reviewer": "adversarial_code",
+  "schema": "reusable-logits-auditor-independent-review-v1",
+  "scope_limits": [
+    "CPU/source audit and tiny captured native-fixture ingestion only; no engine, model base payload, GPU, remote execution or active runtime/corpus changes.",
+    "The historical native composition receipt retains its original source hash. The current independent audit binds repaired source and reruns the same captured two-row fixture; it is not a new native/device run.",
+    "Full device readback, actual cache-path provenance, base checkpoint identity, serving/trainer parity, throughput and downstream quality need separate qualification."
+  ],
+  "source_assessment": [
+    "The stdlib parser enforces bounded complete finite F32 LoRA pairs, exact payload/config fingerprint and unchanged A/config plus actual zero B against reference. This parses the declared format; it does not attest production adapter/model compatibility.",
+    "Metadata and complete vocabulary bytes are checked against actual prefix IDs, hashes, source dtype, finite values and earliest argmax. Comparisons require every declared position and exact matching prefix; no automatic divergent-prefix intersection.",
+    "Baseline/control/cache roles and shared producer identity assertions are checked. Producer identities and optional receipt blobs are assertions/hash-bound evidence, not independent process or base-model verification.",
+    "Required zero-B/cache numerical failures publish a complete failed audit and exit1; invalid evidence exits2 without new output. Descriptive adapter delta does not imply improvement or become a required equality.",
+    "Publication performs final manifest/evidence rechecks, writes a temporary complete report and links exclusively. Existing output and ordinary mutation/race failures preserve existing files; this is not a hostile-filesystem/process attestation boundary.",
+    "Numerical equality and bitwise equality are separate, explicit symmetric tolerances remain visible, and all qualification flags remain false."
+  ],
+  "status": "approved_cpu_source_scope"
+}
