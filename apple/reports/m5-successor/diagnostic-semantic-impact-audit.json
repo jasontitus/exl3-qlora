@@ -1,0 +1,43 @@
+{
+  "status": "review_findings_recorded_no_corpus_mutation",
+  "time_utc": "2026-10-14T02:59:23.858145+00:00",
+  "review_sha256": "e745127df3aa085cc4aa2b658315b575c366229b4f41c0473514d554f3153e49",
+  "independent_checks": [
+    "All43 cases four bound inputs match recorded SHA256.",
+    "Root read captured primary reports for DS4 independent-enablement, Splash partial register restoration, and Sushi rounding-floor findings; findings are supported."
+  ],
+  "impact": {
+    "action": "Preserve the running frozen229 campaign, all source data and its eventual evaluation receipts. Apply any corrections only to a separately versioned future intake.",
+    "historical_diagnostic_rows": 43,
+    "direct_answer_caveat_corrections": {
+      "count": 3,
+      "ids": [
+        "ds4-3d14d1c10684-hour-v4-reasoning",
+        "splash-7d7cadd19113-hour-v3-reasoning",
+        "sushi-497d71d94eed-hour-v4-reasoning"
+      ],
+      "scope": "Unsupported independent-testing wording; overgeneralized register restoration; omitted KLD rounding-noise caveat. These are narrow reasoning-target defects, not evidence that exact tool-call targets or test data changed."
+    },
+    "historical_context_answer_revision_recommended": {
+      "count": 1,
+      "ids": [
+        "sushi-1ea9492abc01-hour-v4-reasoning"
+      ],
+      "scope": "Date the old renderer limitation and bind the historical exclusion receipt. If left unchanged, it must explicitly be interpreted only as historical collection context, not current product capability."
+    },
+    "prompt_boundary_metadata_revision": {
+      "count": 1,
+      "ids": [
+        "mlx-serve-fa76a4b50b3f-hour-v4-next-test"
+      ],
+      "scope": "The reported baseline-memory symptom needs supplied-observations evidence. This can be metadata-only with unchanged prompt; a before-only replacement would require a newly worded hypothetical condition."
+    },
+    "other_binding_changes": "Classification, narrower source/report references, external CPU execution receipts and alias-policy binding are metadata-only unless the author elects to rewrite a mixed span. They do not themselves change existing token IDs or masks.",
+    "required_or_recommended_answer_revisions": 4,
+    "answer_revision_fraction_of_diagnostics": 0.09302325581395349,
+    "answer_revision_fraction_of_training_rows": 0.017467248908296942,
+    "evaluation_limit": "Numerical NLL improvement on the unchanged heldout set would not certify these43 diagnostic answers, evidence taxonomy, independent optimization discovery or generated-kernel correctness. Mechanical43/43 consistency is not a quality pass. No new heldout contamination or payload mutation was found by this review."
+  },
+  "action": "Preserve running229 data; prepare and review separate corrected dataset. Carry limitations into final quality report.",
+  "quality_demonstrated": false
+}
