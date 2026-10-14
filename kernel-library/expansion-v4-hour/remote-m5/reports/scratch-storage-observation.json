@@ -1,0 +1,17 @@
+{
+  "observed_utc": "2026-10-13T23:46:17.968331+00:00",
+  "host": "jason-m5-MacBook.local",
+  "mount": "/Volumes/Scratch",
+  "filesystem": "APFS",
+  "protocol": "USB",
+  "physical_store": "disk8s2",
+  "volume": "disk9s1",
+  "external": true,
+  "iostat_two_one_second_samples_MB_s": [
+    176.2,
+    188.3
+  ],
+  "scope": "Whole physical disk samples during active checkpoint verifier PID15232; not isolated benchmark or training throughput",
+  "qualification": "Verification is still running; source manifest comparison not complete",
+  "action": "Keep verifier running; assess cold preflight throughput before cache or storage changes"
+}

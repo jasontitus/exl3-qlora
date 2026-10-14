@@ -1,0 +1,274 @@
+{
+  "schema": "m5-storage-cache-strategy-review-v1",
+  "status": "review_complete_observations_required_before_changes",
+  "reviewer": "adversarial_code",
+  "created_utc": "2026-10-13T23:54:56.446441+00:00",
+  "scope": "CPU-only source, metadata and receipt review. No model/tensor payload read, GPU, remote execution, or runtime/plan/corpus modification. Local checkpoint file sizes are used, not a new content verification.",
+  "recommendation": "Keep fixed runtime-v5 and current plan for qualification. The 64 GiB disk quota plausibly holds all planned prefix entries. Observe startup hashing and packed-cache churn in actual M5 preflight before a separately reviewed resource amendment.",
+  "verification": {
+    "runtime_snapshot_files_verified": 81,
+    "prepared_rows_checked": 214,
+    "prior_local_prefix_headers_formula_verified": 31,
+    "all_inputs_still_unchanged": true
+  },
+  "capacity": {
+    "frozen_boundary": "After block 38; before attention/expert adapters in block 39",
+    "sequence_definition": "S = len(serialized input_ids) - 1, batch 1; no padding to maximum length.",
+    "state_layout": [
+      {
+        "name": "h",
+        "shape": "[1,S,4,5120]",
+        "dtype": "BF16"
+      },
+      {
+        "name": "pre",
+        "shape": "[1,S,4]",
+        "dtype": "FP32"
+      },
+      {
+        "name": "kv0",
+        "shape": "[1,S,512]",
+        "dtype": "BF16"
+      },
+      {
+        "name": "kv1",
+        "shape": "[1,S,128]",
+        "dtype": "BF16"
+      },
+      {
+        "name": "kv2",
+        "shape": "[1,S,min(S,512)]",
+        "dtype": "I32"
+      },
+      {
+        "name": "kv3",
+        "shape": "[1,S,ceil(S/64)]",
+        "dtype": "U8"
+      }
+    ],
+    "tensor_bytes_formula": "S*(40960 + 16 + 1024 + 256 + 4*min(S,512) + ceil(S/64))",
+    "quota_reservation_formula": "tensor bytes + 16*S + 65536; follows runtime per-entry reservation, including hex-encoded complete token keys.",
+    "split_totals": {
+      "train": {
+        "count": 198,
+        "unique_keys": 198,
+        "sum_input_positions": 1010942,
+        "min_input_positions": 137,
+        "max_input_positions": 12172,
+        "mean_input_positions": 5105.767676767677,
+        "median_input_positions": 4579.5,
+        "tensor_bytes": 44906867241,
+        "tensor_gib": 41.82277921680361,
+        "conservative_reserved_bytes": 44936018441,
+        "conservative_reserved_gib": 41.84992838744074,
+        "largest_tensor_mib": 516.5034675598145,
+        "largest_reserved_mib": 516.7516975402832
+      },
+      "test": {
+        "count": 16,
+        "unique_keys": 16,
+        "sum_input_positions": 121242,
+        "min_input_positions": 2598,
+        "max_input_positions": 11644,
+        "mean_input_positions": 7577.625,
+        "median_input_positions": 8092.5,
+        "tensor_bytes": 5388550685,
+        "tensor_gib": 5.0184788974002,
+        "conservative_reserved_bytes": 5391539133,
+        "conservative_reserved_gib": 5.021262106485665,
+        "largest_tensor_mib": 493.9985122680664,
+        "largest_reserved_mib": 494.23868560791016
+      }
+    },
+    "reserved_total_gib": 46.871190493926406,
+    "quota_gib": 64,
+    "margin_gib": 17.128809506073594,
+    "assumptions": [
+      "198 unique training-mode entries and 16 unique evaluation-mode entries; separate mode keys intentionally remain separate.",
+      "The longest-row preflights reuse their corresponding later train/eval entries. Baseline/final evaluation share immutable frozen-prefix entries, with adapter-dependent suffix recomputed.",
+      "Empty validation and disabled final-fit/reload probes do not create additional training-row eval entries. Additional campaigns, changed tokenization/modes or reused cache namespaces are outside this estimate.",
+      "The reservation sum excludes the small root binding/lock metadata; approximately 17.13 GiB headroom is ample for those, but stored_bytes remains the actual gate. Quota exhaustion raises instead of evicting persistent entries.",
+      "The 31 matching existing local headers validate layout arithmetic only, not M5 bitwise parity or availability of reusable local entries. Fresh M5 TF32-off binding is required."
+    ],
+    "ram_cache": "1 GiB holds only a few typical entries and at most one of the largest entries; persistent disk reuse, not full-corpus RAM residency, is intended."
+  },
+  "startup_hashing": {
+    "policy": "Pinned prefix_disk.hash_payloads requires complete payload SHA256 once per constructed model and explicitly forbids persisted stat-only digest reuse.",
+    "selected_local_payload_bytes": 426352720323,
+    "selected_local_payload_gib": 397.0719131855294,
+    "five_phase_model_constructions": [
+      "preflight-train",
+      "preflight-test",
+      "baseline",
+      "train",
+      "adapter"
+    ],
+    "transfer_verifier_is_not_runtime_hash_bypass": true,
+    "storage_observation": {
+      "observed_utc": "2026-10-13T23:46:17.968331+00:00",
+      "host": "jason-m5-MacBook.local",
+      "mount": "/Volumes/Scratch",
+      "filesystem": "APFS",
+      "protocol": "USB",
+      "physical_store": "disk8s2",
+      "volume": "disk9s1",
+      "external": true,
+      "iostat_two_one_second_samples_MB_s": [
+        176.2,
+        188.3
+      ],
+      "scope": "Whole physical disk samples during active checkpoint verifier PID15232; not isolated benchmark or training throughput",
+      "qualification": "Verification is still running; source manifest comparison not complete",
+      "action": "Keep verifier running; assess cold preflight throughput before cache or storage changes"
+    },
+    "illustrative_scan_minutes_at_observed_disk_rates": [
+      37.73700834864578,
+      40.32848281526674
+    ],
+    "interpretation": "Approximately 38\u201340 minutes is byte-count/rate arithmetic only. The two whole-disk samples during active verification are not an isolated benchmark or a future rate guarantee. Each new model process performs the scan even when its prefix entries exist.",
+    "timer_caveat": "training.json elapsed_seconds starts after model construction/hash; evaluate elapsed_seconds includes startup. Use actual launcher phase timestamps and timestamped identity progress to compare wall time.",
+    "io_policy": "Pinned v5 uses ordinary buffered 8 MiB file reads. The later staged F_NOCACHE implementation is not part of this plan."
+  },
+  "packed_cache": {
+    "current_gib": 2,
+    "layer39_all_routed_packed_bytes": 5113184256,
+    "layer39_all_routed_packed_gib": 4.76202392578125,
+    "fraction_of_layer39_bank": 0.41998949000910013,
+    "meaning": "The current cache cannot retain all three projections for all 384 suffix experts. Actual routes may use fewer experts; this is a capacity fact, not a throughput prediction. Cold prefix processing spans 39 other layers.",
+    "prior_warm_prefix_example": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/native-code-training-12k-80g/experiment/preflight-train/training.json",
+      "device": "Apple M1 Ultra",
+      "prefix_disk_hits": 1,
+      "prefix_disk_writes": 0,
+      "streaming": {
+        "loads": 3051,
+        "hits": 1017,
+        "evictions": 2568,
+        "loaded_bytes": 13541948928,
+        "cached_bytes": 2143809024,
+        "peak_cached_bytes": 2143809024,
+        "forward_calls": 3051,
+        "backward_calls": 1017,
+        "decoded_loads": 9492,
+        "decoded_hits": 0,
+        "decoded_evictions": 0,
+        "decoded_loaded_bytes": 95976161280,
+        "decoded_cached_bytes": 0,
+        "decoded_peak_cached_bytes": 0
+      },
+      "training_only_seconds": 122.74318033293821
+    },
+    "prior_evidence_limit": "An earlier M1 Ultra update with a warm prefix and the same 2 GiB packed quota still recorded 12.61 GiB logical packed loads and 2568 evictions. It demonstrates reread opportunity, not an M5 timing forecast.",
+    "possible_later_amendment": "If measured suffix misses dominate and memory headroom permits, a separately pinned packed quota above the 4.762 GiB whole-layer payload (for example 6 GiB) is a bounded experiment. Retain chunk2048, decoded0, TF32-off, data/math and exact output/gradient checks. Do not assume decoded caching helps or change current resources now."
+  },
+  "available_counters": [
+    {
+      "name": "streaming.loads/hits/evictions/loaded_bytes/cached_bytes/peak_cached_bytes",
+      "meaning": "Cumulative MatrixStore packed tensor loads and retained bytes. loaded_bytes sums materialized parameter bytes, not physical disk transfers; excludes checkpoint identity scan/native/Engram reads."
+    },
+    {
+      "name": "streaming.forward_calls/backward_calls; decoded_*",
+      "meaning": "Projection call counts and decoded tile work. decoded_loaded_bytes is reconstructed FP16 tile traffic, not disk bytes. Decoded cache remains disabled."
+    },
+    {
+      "name": "prefix_cache + prefix_cache.disk",
+      "meaning": "RAM-plus-disk hits, misses and retained bytes; disk hits/writes/read_bytes/written_bytes/stored_bytes/quota are separately available in final model reports."
+    },
+    {
+      "name": "prefix disk read_bytes caveat",
+      "meaning": "Counts each validated state load once. Loading also hashes the full state first. Writing serializes once, hashes it, then validates via another hash and load. Repeated OS reads may hit page cache; counters are not physical I/O."
+    },
+    {
+      "name": "engram_bytes_read",
+      "meaning": "Logical gathered Engram reads; report separately. Native TensorArchive loads and complete identity hashing have no summed physical-byte counter here."
+    },
+    {
+      "name": "verbose layer logs + launcher receipts",
+      "meaning": "Layer logs provide cumulative packed reads/hits and decoded counts/retained sizes. Final training/eval reports carry full byte counters. Per-step history does not expose per-step loaded_bytes; no unsupported per-step claim."
+    }
+  ],
+  "observe_before_changes": [
+    "Record full-hash start/end, actual phase wall time, first forward, phase peak memory, and first update duration separately. Keep existing full verifier and v5 hashes intact.",
+    "Compare actual prefix entry shapes/dtypes/stored_bytes after longest train/test preflights to this estimate; expect cold misses and writes in fresh namespaces, then same-mode hits during later phases.",
+    "Capture packed logical loaded_bytes, loads/hits/evictions, forward/backward calls and prefix hits together. Compare OS disk I/O separately; OS cache and checksum reads prevent equating the counters.",
+    "Observe prefix hit progression and suffix churn across the first and second visits without changing sampler/order. The 396-update schedule visits each of the 198 rows twice.",
+    "Observe available memory/pressure and swap growth over each phase, not historical swap total or a sum of overlapping inactive/file-backed categories.",
+    "Only consider an internal prefix-cache location after checking current free space and preserving reserve; roughly 47 GiB may fit the reported 101 GiB internal free, but moving it does not move or eliminate the approximately 397 GiB model scans. A path change requires a new reviewed request/binding."
+  ],
+  "future_immutable_identity_design": {
+    "current_action": "Accept measured startup cost for fixed-v5 qualification; no memo bypass or runtime-v6 change is requested.",
+    "conditional_safe_direction": "A future loader could reuse digests only when they attest the exact filesystem-enforced immutable snapshot/artifact that every tensor read resolves through. Verify bytes and membership of that immutable view once, bind its unambiguous identity, all model/external payload paths and metadata, and fail if the view or mapping changes.",
+    "required_review": [
+      "Prove every later read uses the verified immutable view, including expert banks, Engram banks, configuration and external paths; prevent symlink/path replacement into mutable originals.",
+      "Establish snapshot creation/verification race rules, lifetime and trusted identity, and tests for deletion/replacement or loss of immutability. Mutable-origin stats cannot attest snapshot contents.",
+      "A readonly permission bit, restored mtime, inode/size tuple, transfer receipt for a mutable directory or unverified clone is insufficient. Keep full hashing when immutability cannot be proven.",
+      "Cache schema and integrity contract would change and require separate implementation, adversarial review and parity qualification. No specific platform snapshot API is qualified by this report."
+    ]
+  },
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/prepare-request-v1.json": "5141f14b0ce3948f992ec1257d45095ffa4bc1b014eb71984f98c24703221f34",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/scratch-storage-observation.json": "e464c83fb9bcefdeb46105821f031cb3208019dbf887c5019143be3f1d76f2c6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/prefix-cache-capacity-calculation.json": "92a4b7ae98d1a3a63a3e9bb76fd8a74967097204790df7d20c0aea6676241b3a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/snapshot.json": "56b38d2b0bed0f2ff3eb991324aec1439d079c6f9a57021ffde071e861f07bcc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/scripts/prepare_agent_corpus_run.py": "08227583a6fbd17b5f26c2ba4e83f78d5d79a076fb25679535904c709c0ebfa9",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/config.json": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/expert-manifest-v2.json": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/native-code-training-12k-80g/experiment/preflight-train/training.json": "48f5964fc88962e0dd2489d0e9c7de904a5f62a2d58e0cbd0e23af058be76bd6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/ktune-import.json": "b80a3c38637546565c517311f8785e1ac3e803267b98b70976b125b523bf60fb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/train.jsonl": "9bbc1807934d8454c4a9a359d96cdfb6b31048f6df9d478db3f1f792e7343b3e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/test.jsonl": "42cd97436334db78fb465bc73275fb588dd76732ab3830506acfe735a0f8c18c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/valid.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/train.prepared.jsonl": "3391c6fa2aaf9656574b082e53643eb8adbadf7ff0281dcb037598d159a7462c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/test.prepared.jsonl": "0720ead3d696e6e9215e99cbf18dd26e532def8c309add06bbbe21efe1841ad0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/selection.json": "a22cfbee7cfa9065569989261eee9b71590c989e157d76821221d805cee69544",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/deepseek.py": "4890c6f9705899d28a0c663c1c8c747830e1c353081f98ed492025db3bb900f2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/attention.py": "3020714a748ca41df3bcaa5b391fa5d8245c832cf7f6ab56615404e6577b6a8a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/sparse_attention.py": "620082cc1e12cbb2f66b09054ff9bea08d9dadc6c34bd802ca25ae7aa26a21a7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/hyperconnections.py": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/prefix_cache.py": "d5bd906344fa51e4e54033ac261269ff4d3b11cffae2504f567975bd5229f9e3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/prefix_disk.py": "7cfeabbc522d2270d96af195a6aaa53c770bfa88eccd8e2d043d54516dbec340",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/streaming.py": "e60c77729a89fd5a9a76cd2641b5325c5ccf8bc0ec4b80a19ff949a1579d03df",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/storage.py": "50947ab825cf6effa3b481141117905d814732ff97b99d1f3cea9507755a8f16",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/engram.py": "38e85459d24a7592007d76f40fde2059fe4f260acdf9da2dc3886255f4b401ff",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/training.py": "b43a2d9d3c23ebf80fe9d908349a517e1fbb61c9a3ec090fc4c90f04de1d677e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/workflow.py": "51025ede97a12e257ad77287713d76081990efed236b324e2290a041f1f3f708",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/src/exl3_mlx/sft.py": "3b5dd1b482140aea41415a12f6ff7aa335b21b3ff676ac6b09954a396762b60c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/032acc976f7359c0dbd21d38fa37a486da5fceb043f9eecfba7125341c034e2b/entry.json": "54b49fa8cb0619aa847ada3dc7a4b03d0eef2075ed05f1dc1ed0507e01cd4c58",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/08773af1c7e8416d04b27680f53424806a60ae0641d435a3fdf235f2606bf9db/entry.json": "3e9b66b8ef9e3e22e5a9bb0205cb7bb884150b4c55d61a42d19eca71d4fe06f2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/08f84fe9aadb64c043830996273ad67124a8eb27b875ba5d797e86e637b2d278/entry.json": "9ee97992b11d4ada69697b071911ad184434e8f596cd742fe3ff083c93727ce9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/0dce6cc4587ef88a6aae640d8c9ef609b396189793a5da11df39af4906697dde/entry.json": "525ab11fd99d41d6577f90a91d4cfba3e7a1af7365cadfdadd52b80d92b44046",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/0e702b814b95250b0b1d16b9526d9013c707a0d410abfa7e912f255e3df0a028/entry.json": "d8b86f81b65137aa2d39e13cded62aca0ba9b137885b4350011ae5abb8d92832",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/10cf25757072202f2014fc5f8f9192f7a9411c7876e0bcf4260a57cae18c80c2/entry.json": "7e2c801b1eaf54d1fac933f973471ee8f55abd8c29d83fbc589d83885ee8421a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/112cfe6f2c7934141ce7de24ebfac9b2ad65678f6ef1b98ae027214a2f4f3683/entry.json": "d58de4b8a89aaf71f95b6430bdc429c4f33d258797627eea1baa9c3dbfc2612a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/22c4837037cd66fc8d8293fad2ea332d5c5bb3562da7f7774aba42c59d8c6b8a/entry.json": "3360cafb9cac889ed24b7b99e968f9df445ff20e20f7aa5ae1f479d3c77b22fa",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/2b1207cdf67cb092504d53130a0ca35c428913cb33cead3dc930db464834b96f/entry.json": "ed79038d0a9e518b8b8f81bf7f2920dc98b1ef545e8b2435910a01e21eb71c6c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/349778526cafabee3cb24c8a414fcca82b6666398b0e57cde48da4c9ceb5c9a8/entry.json": "311d837eb864319a95ae1e3de5329913b6e81be21c02acd0c2c90bfa16cdd047",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/4174973ea2a72d54609221740d65900481d30ac6aaa19520ae184327cc529f7c/entry.json": "e9ae9b4803ba9adebcc52edd6a847c3740fcf4b65bd051637f851ddba25cbfb4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/44daef18b48c34b9b5fb5e1e4718a62d101cd386c6be2198aa42c31d5106bccd/entry.json": "ef9aff4f8fed44ec8d4ca76bd30db6681469bb1a5317e35ff72aacdf16c313d6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/4789c291f60929a72b0fc5e001b5a6dea328fb652c042f7d8c093d2978bee3ae/entry.json": "04fe6f36f80b9f0ee33844b627c4aa441877f4011e735f8e38a891f12c4e55b7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/5d91336fbb63cedb7a0bd426bb51daf71ce9dd915a2611362f33a5380adcc204/entry.json": "79a4a790e9476c92348ff5a18cda4bcfd08b29fdc2d138865051708ab91d0b62",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/607fdcaeac27fbfdffb54531593df7ef6bce8367a420ff6398fa5ac682bf5cbf/entry.json": "ff1d28391253f965f478841c6a4ce74d55769180d296bf7f8ef7b758b8cb97bf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/60dfa248af10fb72ae536ee73226f4ba6f471aee179df41f0b3a4d13e085f139/entry.json": "63a77546eb1acc8a83ccf188f64bc14f228dbbc5f802d8222b554e27e922cb6e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/6976d5d203b6051895b2b41c1292af4bf875fe2a9ed9405a177a96e80ad44f4f/entry.json": "03502dc7799f2cbdbf33f038e0ed32c303afae44a74ee246e098e9155d2aad12",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/6bde28d22822d8717e2f9cdbb591dc2176a77190baeb6eddf8fb0a9f70fca60d/entry.json": "1ab551d55dc96c34028f4af2f6d3a51421a0a19aba0b62345d0bb98d8b7d4c80",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/82dfde3ea5de5fd9472e12c5ea7e68c46490b56822e631871bc7e90c2acc760c/entry.json": "9e4dddf91813b8bfca30a89d34e15f49b4181aa67b5c8eed1d2e67e626c7afbb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/8c55b66901973bc046d6e6bad7634b74bf7a4d08d7d4ab6c1d1ab92dcea1d115/entry.json": "1ae56a34ee54580993d976e0669ca28bf60921b849833e05af2b3d69b441f7fe",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/94890473f9374d69e87c61ed1584de3ea99ba5d49f114d122f252dbab968e8b4/entry.json": "0c66333ea891e813c32627637c98665dea0c3137f09b20336ea962d8a747e505",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/a1dbb1e3827dd096d5523b0034c0bf91cb95dc8de0c71e9b9cbcfbb07e0ba6d6/entry.json": "f58891edbc03aa2df06209dec5a67f02b223f1afd657750eac85d32564f9ccbf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/a816bbba948879fc8b8e0534ba9f16b078d8c702576f61892fb7a8a9af6fb395/entry.json": "7141084d18f2579e28e8e85704a543dcc6a62c6bd1c9def9f876c5739b662a4f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/aafcb3525a3a0887d6b315b24094f14c810c3d016f817995d4a2ab963f23a42c/entry.json": "49c661d9b4c73737ad16b85d953f27bb790c389f8bc87f2dc02141a1e856aa07",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/c1fcbb2ee509195ecda522cec7eaddd5aa39212c24016071f9b8d76638506694/entry.json": "e0feb36b36d46a74f83c6de2440ffba06c2452c58067c70253c0f5ad68969f1c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/c93e9df8b6e55b41ed6f096afe158da10fcab86431047a3b0d14ac735910afe1/entry.json": "14c9923295d1f89f99d8eba1016b1fa4b5da03d6fade73af70fc32734edab6c3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/cbf1ecc936083ef8686b83cbbf03ae83ae4bb604696e9a853941f058730a5ef3/entry.json": "71299be7ce58ff1a6135884abc0ac383e0f859d784f2bd6cf2d122ffa6c15a5e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/e160f28e01752e7325d01fe673936003310e94b832d1913b6cf7d647f8d8996f/entry.json": "25cbf64614abad66c90fc6e6daccbad30cefd78c98345b7e63b004a39efc313c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/e2fbcd0c5a06473a82764e333371bd1ae650d67f01dff7acb78441252a49dbff/entry.json": "313861544e4ffb105c267b536703338c9a7037413eb0f7ef806a488e51386e7a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/e3586b7938ca9f6bd43bf21d275208a6a347d4df3ee2ca36c90a9238f678dcd1/entry.json": "201109d51b3d50baba8388f2724c133f1828fb4b9333f785ba9d264d90c4d530",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/kernel-corpus-v1/prefix-cache-v5/f4a983090f581f970c00643b514a09a833588f09ed2caec6d0eebc916f99ab50/entry.json": "27fbbdfbad76c36c3a4f518c060d141712d5dfc2e2b39aaab90fb18eeb4abd49"
+  },
+  "limitations": [
+    "No M5 cold/warm timing has been measured here. No end-to-end training ETA or speedup promise.",
+    "Capacity uses source layout, actual serialized row lengths and local checkpoint metadata, not new M5 payload inspection.",
+    "No runtime, source plan, corpus, adapter, cache contents or GPU state was changed."
+  ]
+}

@@ -37,3 +37,9 @@ Independent admission review excluded SDPA commit `5778a97c04b40753cb5d7c255aec7
 ## Reviewed cooperative-tensor compatibility example
 
 Commit `91c83d19bf022d7bc3e906582435f69fdc77ec63` now has an independently reviewed agent-facing example for future compatibility-focused intake. It preserves the complete four-file historical edit and seven complete context groups, with 9,153 serialized tokens and 2,603 supervised tokens. Native edit replay, source identities, tokenization, masking and finite protected/prior overlap checks passed. The actual packer accepted the isolated example; the active 198/16 corpus remains unchanged. Compilation, numerical correctness and performance have not been qualified. Committed receipts bind the local full payloads; they do not make this checkout a standalone copy of those payloads.
+
+## External storage and cache review
+
+The checkpoint transfer completed successfully (365 files, 426,352,827,347 bytes); full destination hashing is running. Scratch is an external USB APFS volume. Two one-second physical-disk samples during verification measured 176–188 MB/s; these are observations, not an isolated training benchmark. Internal storage has only about 101 GiB free, so the checkpoint cannot move there intact.
+
+Independent review checked all 81 pinned runtime files, 214 prepared rows and 31 existing cache headers. Prefix reservations total 46.871 GiB, within the 64 GiB quota. The final layer's packed bank is 4.762 GiB versus a 2 GiB cache; this warrants measurement but does not prove a bottleneck. The fixed runtime fully hashes about 397 GiB at each model construction, and its training timer excludes that startup. Preserve the current runtime, reserve and cache settings until M5 preflight measurements; report wall-clock phase duration separately from training-loop timing. No integrity memo bypass or storage migration was performed.
