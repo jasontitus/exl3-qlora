@@ -76,6 +76,16 @@ record required corrections before issuing `diagnostic-review-v1` approval:
   a numerical difference reported inside a rounding floor is not an established
   quality regression. “Remains enabled independently” does not establish that a
   component was independently tested.
+- Keep benchmark configuration and measurement meaning exact. A grouped or
+  ungrouped implementation/test does not establish the grouping used for a
+  separately reported benchmark. Peak memory is not the same measurement as
+  temporary workspace. Leave missing hardware, precision, workload and grouping
+  fields unknown rather than filling them from nearby code.
+- Distinguish an algebraic repair from an executed numerical result. A formula
+  can avoid the stated overflow while still failing near the dtype maximum;
+  retain that limitation. An author showing the old failure does not itself
+  provide an after-change test result. Bind claims about widened declarations
+  to both before and after source when describing the transition.
 - Check the information available in the prompt. Symptoms learned from a later
   report require an explicit supplied-observation boundary and evidence binding.
   They cannot be justified by labelling the prompt `before_only`.

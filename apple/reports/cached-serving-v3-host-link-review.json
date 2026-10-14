@@ -1,0 +1,36 @@
+{
+  "status": "corrected_v3_host_link_and_static_artifact_verified",
+  "artifact": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-inference-host-build-v4/work/cache/local/o/00d4cb121ea279d91efad9891c73f66f/mlx-serve",
+    "sha256": "92ec824140378b3dbfb85ed18c812ae49c9df3063bd97f0d8f1f5a6065c293a8",
+    "bytes": 25424616,
+    "embedded_markers": {
+      "MLX_STREAM_ADAPTER_REQUEST": true,
+      "mlx-stream-adapter-construction-v1": true,
+      "serial_owned_v1": true,
+      "--prompt-token-ids-file": true,
+      "ignored_fixed_defaults_v1": true
+    }
+  },
+  "execution_receipt_sha256": "5e631e9b9bbceb0c2d0509c98d769892c279d1ebeb68b926dede8fb980307343",
+  "dependency_plan_sha256": "caf4ac651941f31ced182cbfbc6204aca1db54e6e854225a9d75b708905d8da1",
+  "checks": [
+    "Independent binary size and SHA check",
+    "Independently reproduced file, dylib and load-command outputs",
+    "Independently verified five library/metallib source hashes and two absolute host dependency resolutions/hashes"
+  ],
+  "checked_dependencies": [
+    "lib/mlx/lib/libmlx.dylib",
+    "lib/mlx/lib/libmlxc.dylib",
+    "lib/mlx/lib/libjaccl.dylib",
+    "lib/mlx/lib/mlx.metallib",
+    "lib/llama/lib/libllama.dylib",
+    "/opt/homebrew/opt/webp/lib/libwebp.7.dylib",
+    "/opt/homebrew/opt/webp/lib/libsharpyuv.0.dylib"
+  ],
+  "limits": [
+    "No binary execution, model loading or GPU qualification",
+    "Static dependency layout is proposed, not staged or dynamically validated",
+    "Corrected source CPU review and successful linking do not establish numerical parity or model quality"
+  ]
+}

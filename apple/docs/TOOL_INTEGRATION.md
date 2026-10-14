@@ -19,7 +19,7 @@ new product changes must not alter an active run.
 | Safe phase-boundary replacement of a campaign | Independently reviewed experimental operator | Integrate only after concrete identity checks and operational evidence; not a general public stop/recovery API yet |
 | Exact-base generated-code evaluation | Experiment probes and separate compiler/correctness gates | General benchmark manifests and end-to-end generated patch evaluation |
 | Layer-major frozen-prefix preparation | Isolated group-two prototype passed independent CPU review; no cache publication | Original-runtime boundary/gradient parity, measured resources and speed, then project integration |
-| Cached adapter inference | Isolated native/Python and host prototypes; full host build linked successfully without executing the engine | Fingerprint, early file-read and ambient settings fixes passed independent source/CPU review; corrected full-host linking, device/full-model parity and matched serving evaluation remain |
+| Cached adapter inference | Isolated native/Python and host prototypes; full host build linked successfully without executing the engine | Fingerprint, early file-read and ambient settings fixes passed independent source/CPU review; corrected full host now links; device/full-model parity and matched serving evaluation remain |
 
 The next product work should close these gaps rather than accumulate another
 host-specific script. In particular, a user should be able to prepare a versioned
@@ -133,3 +133,8 @@ methods). Review evidence is in
 `apple/reports/cached-serving-v3-independent-repair-review.json`. These tests close
 the three identified integration defects at source/CPU scope; they do not establish
 GPU correctness, full-model parity or a supported production serving feature.
+
+The corrected host link and static dependency inventory were independently
+verified in `apple/reports/cached-serving-v3-host-link-review.json`. The binary
+was not executed. Library layout, dynamic loading, Metal execution and adapter
+quality remain separate qualification steps.
