@@ -1,0 +1,78 @@
+{
+  "status": "partial_scoped_approval",
+  "reviewer": "root independent of editor",
+  "reviewed_at": "2026-10-14T03:58:05.763546+00:00",
+  "index_sha256": "1a1993957feed19c2cd65d77d9d799139eb52884f63200f5c651f83e536499d9",
+  "approved_cases": [
+    {
+      "row": 188,
+      "id": "sushi-6755ff2426b7-hour-v3-reasoning-scoped-v15",
+      "inputs": {
+        "evidence": {
+          "path": "cases/sushi-6755ff2426b7-hour-v3-reasoning-scoped-v15/evidence.json",
+          "sha256": "215abb14cf8e11975b91ae96118524b5cf6fe26ac814f74134450b8727bc4dc0"
+        },
+        "prepared": {
+          "path": "cases/sushi-6755ff2426b7-hour-v3-reasoning-scoped-v15/prepared.json",
+          "sha256": "16509c12b5331c985c534249f744ec70aa3d5884394175fd4c2279242dacbb2e"
+        },
+        "raw": {
+          "path": "cases/sushi-6755ff2426b7-hour-v3-reasoning-scoped-v15/raw.json",
+          "sha256": "eb71025a55143f7ff77dadb90bb89ce562db32c984bef976fe06c6c659aca984"
+        },
+        "source": {
+          "path": "cases/sushi-6755ff2426b7-hour-v3-reasoning-scoped-v15/source.json",
+          "sha256": "028c949fdfd7c37d377b004d0549a31d3db8cb50f5fa3ecc571f112a176a978f"
+        }
+      },
+      "tokens": 798,
+      "loss_start": 653
+    },
+    {
+      "row": 189,
+      "id": "mlx-serve-9a5467375008-hour-v3-reasoning-scoped-v15",
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-serve-9a5467375008-hour-v3-reasoning-scoped-v15/evidence.json",
+          "sha256": "ab87cc980af328abd7ef046efc3922afd3a2a04b8a74a2726344a2c170baeb16"
+        },
+        "prepared": {
+          "path": "cases/mlx-serve-9a5467375008-hour-v3-reasoning-scoped-v15/prepared.json",
+          "sha256": "2d7fb1fb08655001f16808382402df95d5e778a1e75112f8b1517bd453824592"
+        },
+        "raw": {
+          "path": "cases/mlx-serve-9a5467375008-hour-v3-reasoning-scoped-v15/raw.json",
+          "sha256": "1055d4d6d0a38bda71da46552d85dcdaae37242d11b26b0ca5397597191487ad"
+        },
+        "source": {
+          "path": "cases/mlx-serve-9a5467375008-hour-v3-reasoning-scoped-v15/source.json",
+          "sha256": "680a4699e211c9e08c087e6ad4aa10df62e848a97c1cc4672f1c491dc665e3bc"
+        }
+      },
+      "tokens": 1714,
+      "loss_start": 1563
+    }
+  ],
+  "pending_rows": [
+    228
+  ],
+  "checks": [
+    "Read complete supplied reports, answers and scoped references for188/189",
+    "188 preserves absolute cache coordinates versus dispatch-local staging, bounded dequant slices and same-dequantized-values parity scope",
+    "188 distinguishes admission accounting from measured throughput",
+    "189 recognizes selector gating as distinct from kernel implementation and pointer alignment from reported strides",
+    "189 distinguishes dispatch-count reduction from elapsed-time improvement",
+    "Both prompts explicitly supply author reports; targets do not invent unseen achieved measurements",
+    "Fresh exact tokenization and input/reference/claim hashes verified"
+  ],
+  "tokenizer_identity": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "limits": [
+    "Row228 requires prompt-visible evidence repair and is not approved",
+    "No GPU numerical/performance reproduction",
+    "No full-corpus approval or active training changes"
+  ]
+}
