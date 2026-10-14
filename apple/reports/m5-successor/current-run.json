@@ -235,7 +235,7 @@
     "GPU_executed": false,
     "runtime_changed": false
   },
-  "previous_pointer_archive": "kernel-library/next-round-v5/m5-successor/current-run-before-cache-mismatch-20261014T214300Z.json",
+  "previous_pointer_archive": "kernel-library/next-round-v5/m5-successor/current-run-before-health188-20261014T214617Z.json",
   "generated_candidate_replay": {
     "status": "independently_approved_CPU_syntax_replay_only",
     "author_seal_sha256": "d6db3b45c38fc69d3bab5466fe9bf32a4371c5492f56187f325e825e523bfa0f",
@@ -609,18 +609,17 @@
     "training_admission": false
   },
   "latest_training_observation_current": {
-    "observed_utc": "2026-10-14T21:43:00.401855+00:00",
-    "source": "actual read-only SSH ps/latest and recent layer logs",
-    "saved_update": 187,
-    "planned_updates": 458,
+    "observed_utc": "2026-10-14T21:46:17.481805+00:00",
+    "source": "actual read-only SSH ps/latest/layer logs",
+    "saved_update": 188,
     "worker_pid": 47890,
     "worker_live": true,
-    "worker_elapsed": "17:04:41",
-    "worker_cpu_time": "725:43.09",
-    "worker_rss_kib": 18159408,
-    "latest_log_layer": 38,
-    "latest_log_active_mlx_gib": 16.03,
-    "scope": "Live worker and saved pointer; not checkpoint-byte or optimizer-state verification"
+    "worker_elapsed": "17:08:24",
+    "worker_cpu_time": "728:18.86",
+    "worker_rss_kib": 18489072,
+    "latest_log_layer": 14,
+    "latest_log_active_mlx_gib": 15.32,
+    "scope": "Live worker and latest pointer; payload integrity not checked"
   },
   "native_single_prefill_result": {
     "status": "terminal_failed_after_completed_33_token_prefill",
@@ -895,11 +894,13 @@
     "next_action": "Isolated CPU diagnostic comparing full prefill, split prefill before handover and decode after handover; independent review before GPU launch"
   },
   "latest_training_saved_metric_review": {
-    "through_update": 180,
-    "review_sha256": "9eec1c4b72acfe144ab2a76079ad2c1ce0069bffba5c30476d50b4811d7bf8b9",
-    "reported_peak_mlx_gib": 71.27977485954762,
-    "last20_mean_seconds": 348.68757697085385,
+    "through_update": 188,
+    "review_sha256": "bdc17ba717bda4c870aa876884ae27da7e16b6b7747e4637632622855576973b",
+    "reported_peak_mlx_gib": 71.75135742407292,
+    "last20_mean_seconds": 347.832878264552,
     "last20_median_seconds": 285.8853540830314,
-    "scope": "Finite saved metrics and unchanged169prefix, not learning benefit/checkpoint/sampler audit"
+    "target_presentations": 356877,
+    "unchanged_prior_prefix_updates": 180,
+    "scope": "Parsed saved metrics, unchanged180 prefix; remote original history digest reported only"
   }
 }
