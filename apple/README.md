@@ -318,3 +318,5 @@ are intentionally kept outside Git. Historical receipts distinguish observed res
 from proposals and record the original evidence paths.
 
 Reviewed portable bundles can use [prepare-reviewed](docs/REVIEWED_CORPORA.md) for strict edit replay, bounded diagnostic evidence bindings, frozen splits and ordinary SFT preparation. Existing mixed corpora require explicit version-2 evidence migration and review.
+
+Evaluation and training-fit checks use [captured report snapshots](docs/EVALUATION_RECEIPTS.md) to validate the same bytes that are bound in their published results. These local consistency checks do not certify process authenticity or model quality.

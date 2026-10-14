@@ -24,7 +24,8 @@ from pathlib import Path
 
 from .activation_config import normalize_adapter_config, validate_activation_mode
 from .context import ENGINE_SEMANTICS, MAX_CONTEXT_TOKENS
-from .evaluation_audit import _json, audit_files
+from .evaluation_audit import audit_files
+from .evaluation_receipts import capture_receipts
 from .fit_probe import compare_final_fit_probe, validate_final_fit_examples
 from .resources import RESOURCE_FIELDS, resolve_resources
 
@@ -979,6 +980,7 @@ class SFTTrainer:
             directory = self.root / "fit-checks" / str(time.time_ns())
             directory.mkdir(parents=True)
             results = {}
+            receipt_snapshots = {}
             fit_options = self._engine_options()
             # A new child plus disabled prefix reuse gives the probe an actual
             # uncached comparison, independent of this project's train cache.
@@ -1007,18 +1009,29 @@ class SFTTrainer:
                 if condition == "adapter":
                     command += ["--adapter", adapter]
                 self._child(command, label=f"fit-{condition}", directory=directory)
-                results[condition] = _json(path.read_bytes())
+                snapshot = capture_receipts({condition: path})
+                receipt_snapshots[condition] = snapshot
                 self._manifest()
-                self._verify_evaluation_receipt(
-                    results[condition],
-                    expected,
-                    selected_rows,
-                    command,
-                    adapter if condition == "adapter" else None,
+                results[condition] = snapshot.validate_json(
+                    condition,
+                    lambda value: self._verify_evaluation_receipt(
+                        value,
+                        expected,
+                        selected_rows,
+                        command,
+                        adapter if condition == "adapter" else None,
+                    ),
                 )
+                for accepted in receipt_snapshots.values():
+                    accepted.recheck()
             token_count = sum(len(row["input_ids"]) - row["loss_start"] for row in selected_rows)
             parity = self._final_fit_parity(
-                adapter, results["adapter"], rows, selected_rows, expected
+                adapter,
+                results["adapter"],
+                rows,
+                selected_rows,
+                expected,
+                receipt_snapshots=receipt_snapshots,
             )
             result = {
                 "available_examples": len(rows),
@@ -1036,22 +1049,35 @@ class SFTTrainer:
                 "training_data_sha256": manifest["data_files"]["train.jsonl"],
                 "loss_delta": results["adapter"]["loss"] - results["base"]["loss"],
                 "training_mode_probe_parity": parity,
+                "receipt_inputs_sha256": {
+                    role: checksum
+                    for snapshot in receipt_snapshots.values()
+                    for role, checksum in snapshot.hashes.items()
+                },
                 **results,
             }
+            self._manifest()
+            for snapshot in receipt_snapshots.values():
+                snapshot.recheck()
             write_json(directory / "fit.json", result)
             write_json(self.root / "fit.json", result)
             return result
 
-    def _final_fit_parity(self, adapter, fresh, rows, selected_rows, expected):
+    def _final_fit_parity(
+        self, adapter, fresh, rows, selected_rows, expected, *, receipt_snapshots=None
+    ):
         report_path = adapter.parent / "training.json"
         unavailable = {
             "status": "unavailable",
             "real_model_warm_cache_parity_verified": False,
             "quality_certified": False,
         }
-        if not report_path.exists():
+        if not report_path.exists() and not report_path.is_symlink():
             return {**unavailable, "reason": "Selected checkpoint has no completed training report"}
-        report = json.loads(report_path.read_text())
+        snapshot = capture_receipts({"training_report": report_path})
+        if receipt_snapshots is not None:
+            receipt_snapshots["training_report"] = snapshot
+        report = snapshot.validate_json("training_report", lambda value: None)
         probe = report.get("training_fit_probe")
         if probe is None:
             return {**unavailable, "reason": "No final training-mode fit probe was recorded"}
@@ -1077,7 +1103,8 @@ class SFTTrainer:
                 "chunk_size": self.args.chunk_size,
             },
         )
-        result["training_report_sha256"] = digest(report_path)
+        snapshot.recheck()
+        result["training_report_sha256"] = snapshot.hashes["training_report"]
         return result
 
     def evaluate(self, *, categories=None):
@@ -1113,6 +1140,7 @@ class SFTTrainer:
                 write_json(self.root / "project.json", manifest)
             results = {}
             receipt_hashes = {}
+            receipt_snapshots = {}
             for condition in ("base", "adapter"):
                 path = directory / f"{condition}.json"
                 command = [
@@ -1133,17 +1161,22 @@ class SFTTrainer:
                 if condition == "adapter":
                     command += ["--adapter", adapter]
                 self._child(command, label=condition, directory=directory)
-                receipt_bytes = path.read_bytes()
-                receipt_hashes[condition] = hashlib.sha256(receipt_bytes).hexdigest()
-                results[condition] = _json(receipt_bytes)
+                snapshot = capture_receipts({condition: path})
+                receipt_snapshots[condition] = snapshot
+                receipt_hashes[condition] = snapshot.hashes[condition]
                 self._manifest()
-                self._verify_evaluation_receipt(
-                    results[condition],
-                    expected,
-                    selected_rows,
-                    command,
-                    adapter if condition == "adapter" else None,
+                results[condition] = snapshot.validate_json(
+                    condition,
+                    lambda value: self._verify_evaluation_receipt(
+                        value,
+                        expected,
+                        selected_rows,
+                        command,
+                        adapter if condition == "adapter" else None,
+                    ),
                 )
+                for accepted in receipt_snapshots.values():
+                    accepted.recheck()
             verify_category_source(category_source)
             token_audit = audit_files(
                 prepared=prepared_path,
@@ -1201,6 +1234,8 @@ class SFTTrainer:
             if result["test_previously_observed"]:
                 result["evaluation_scope"] = "previously_observed_test"
             self._manifest()
+            for snapshot in receipt_snapshots.values():
+                snapshot.recheck()
             write_json(directory / "comparison.json", result)
             write_json(self.root / "comparison.json", result)
             manifest.update(
