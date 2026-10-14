@@ -1,0 +1,254 @@
+{
+  "schema": "reviewed-b-v2-export-consumption-audit-v1",
+  "status": "passed",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/approved-export-v2/receipt.json": "0207316999da28fc0daad3854f13ac633385789cb636c4fae455be50acbef218"
+  },
+  "outputs": [
+    {
+      "capacity": 12288,
+      "kind": "exact",
+      "format": "raw",
+      "rows": 4,
+      "sha256": "e893fff96e212a99c56239c194a95cf8db5477550a53d6989814c1d85384d7ce",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5"
+      ]
+    },
+    {
+      "capacity": 12288,
+      "kind": "exact",
+      "format": "prepared",
+      "rows": 4,
+      "sha256": "0566ad2b7e008e0b45ee6bf4b81f8ef1e5004c99ca8b3ecd7f3b77200378fd73",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5"
+      ]
+    },
+    {
+      "capacity": 12288,
+      "kind": "reasoning",
+      "format": "raw",
+      "rows": 2,
+      "sha256": "944505c071db455bad469187b69df8debefd4cf4f0d75bdc12970660b0d3b3a4",
+      "ids": [
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 12288,
+      "kind": "reasoning",
+      "format": "prepared",
+      "rows": 2,
+      "sha256": "5e3c9b0c1ce6ee23a96991d1d914951b2dd30df1bff074588faf7ca7e48af8a7",
+      "ids": [
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 12288,
+      "kind": "mixed",
+      "format": "raw",
+      "rows": 6,
+      "sha256": "26de9712b54752ed53393697b0bdaaa8e47325ef51407b91a0ef8adcca784b18",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5",
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 12288,
+      "kind": "mixed",
+      "format": "prepared",
+      "rows": 6,
+      "sha256": "43ecc0c0c976e02e2628dd88d68782f1dcd785e7c1d95d1b9c22c4720d7016fe",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5",
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 16384,
+      "kind": "exact",
+      "format": "raw",
+      "rows": 5,
+      "sha256": "c4d43ec56d52e6be0bc7fa5cda6e920de6a1f0ace18d83d721d0043691611187",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5"
+      ]
+    },
+    {
+      "capacity": 16384,
+      "kind": "exact",
+      "format": "prepared",
+      "rows": 5,
+      "sha256": "31f9e94e93df19bc51f387822237cb5a2f6f4b0b490d61192f729f6130a2cb26",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5"
+      ]
+    },
+    {
+      "capacity": 16384,
+      "kind": "reasoning",
+      "format": "raw",
+      "rows": 2,
+      "sha256": "944505c071db455bad469187b69df8debefd4cf4f0d75bdc12970660b0d3b3a4",
+      "ids": [
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 16384,
+      "kind": "reasoning",
+      "format": "prepared",
+      "rows": 2,
+      "sha256": "5e3c9b0c1ce6ee23a96991d1d914951b2dd30df1bff074588faf7ca7e48af8a7",
+      "ids": [
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 16384,
+      "kind": "mixed",
+      "format": "raw",
+      "rows": 7,
+      "sha256": "2683cd5d995f5c9a3155d4d434113cd57af390dd9e32e57dce2123b66bea3ce6",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5",
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 16384,
+      "kind": "mixed",
+      "format": "prepared",
+      "rows": 7,
+      "sha256": "2607345b27a969617edfc5b0d47ecfe7113d101bc11331574eb0884380fa85f8",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5",
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 32768,
+      "kind": "exact",
+      "format": "raw",
+      "rows": 5,
+      "sha256": "c4d43ec56d52e6be0bc7fa5cda6e920de6a1f0ace18d83d721d0043691611187",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5"
+      ]
+    },
+    {
+      "capacity": 32768,
+      "kind": "exact",
+      "format": "prepared",
+      "rows": 5,
+      "sha256": "31f9e94e93df19bc51f387822237cb5a2f6f4b0b490d61192f729f6130a2cb26",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5"
+      ]
+    },
+    {
+      "capacity": 32768,
+      "kind": "reasoning",
+      "format": "raw",
+      "rows": 2,
+      "sha256": "944505c071db455bad469187b69df8debefd4cf4f0d75bdc12970660b0d3b3a4",
+      "ids": [
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 32768,
+      "kind": "reasoning",
+      "format": "prepared",
+      "rows": 2,
+      "sha256": "5e3c9b0c1ce6ee23a96991d1d914951b2dd30df1bff074588faf7ca7e48af8a7",
+      "ids": [
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 32768,
+      "kind": "mixed",
+      "format": "raw",
+      "rows": 7,
+      "sha256": "2683cd5d995f5c9a3155d4d434113cd57af390dd9e32e57dce2123b66bea3ce6",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5",
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    },
+    {
+      "capacity": 32768,
+      "kind": "mixed",
+      "format": "prepared",
+      "rows": 7,
+      "sha256": "2607345b27a969617edfc5b0d47ecfe7113d101bc11331574eb0884380fa85f8",
+      "ids": [
+        "vllm-metal-668197543e4a-next-v5",
+        "vllm-metal-2098a2d64a13-next-v5",
+        "vllm-metal-2c7b640bab92-next-v5",
+        "vllm-metal-5785cc9ee701-next-v5",
+        "vllm-metal-d3b68fc0d531-next-v5",
+        "vllm-metal-dd5eabb524cb-next-v5",
+        "splash-99aa99db046a-next-v5"
+      ]
+    }
+  ],
+  "unique_exact_rows": 5,
+  "unique_reasoning_rows": 2,
+  "limits": "Export/source/review hash and content consistency only, no new semantic/compile/numerical/performance qualification. Active198/16 unchanged."
+}

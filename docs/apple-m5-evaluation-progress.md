@@ -61,3 +61,11 @@ The exact16 held-out items reconstruct47,069 supervised tokens, including18,364 
 Independent review and export-consumption checks now cover15 core historical edits across the two engine lanes:9 fit12K and all15 fit32K. These are additional next-round library items; the current198/16 experiment is untouched. A separate unmeasured item remains opt-in, and the remaining MLX batch is still under review. These counts establish source/edit/tokenization admission, not local compiler, numerical or performance qualification.
 
 The review found a source-arithmetic counterexample in captured MLX commit9ab977b5649154590d598ea5d545aa1b3c97f883: its small-depth3D convolution dispatch accepts flip=true but the decomposed depth views use the same unflipped index. A scalar16-channel example gives208/416 where the declared flipped contract requires176/352. This is a CPU expansion of pinned source, not an executed GPU regression or a claim about current upstream HEAD. The case is being removed from positive intake and retained for reviewed failure analysis.
+
+## Long-item forward and further library checks
+
+The live M5 preflight finished model payload hashing at1051.6seconds and reached layer8/40 at1336.3seconds. Observed activeMLX allocation was10.7–11.3GiB in the early layers; this is not a peak or completed capacity test. One shared external-disk sample measured183.53MB/s, while swap usage remained3597.88MiB; no isolated I/O benchmark or cache change was performed.
+
+Both captured versions of TensorFold5d7fbf3034e7 qmm6_nax.metal compiled with their exact Git header closures under Metal4.0/O3/no-fast-math. Independent review checked Git bytes, arguments and AIR hashes. Metal32023.921/SDK27.0/compiler hash were observed immediately afterward, not pinned at invocation. No GPU numerical/performance qualification follows.
+
+The reviewed B export now contains5 exact edits plus2 reasoning-only examples;4 exact edits fit12K. Export bytes, IDs, masks and independent approval bindings were rechecked. Deeper MLX review also quarantined a grouped-SSM whole-patch regression in80c217ff96de: source-derived geometry produces a256-wide update for128-wide state. The CPU source counterexample is not a claim about current upstream HEAD or an executedGPU test.

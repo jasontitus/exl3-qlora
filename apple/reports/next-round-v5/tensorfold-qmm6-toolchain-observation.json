@@ -1,0 +1,18 @@
+{
+  "xcrun -sdk macosx metal --version": {
+    "exit_code": 0,
+    "stdout": "Apple metal version 32023.921 (metalfe-32023.921.6)\nTarget: air64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.vYU8g3/Metal.xctoolchain/usr/metal/current/bin\n",
+    "stderr": ""
+  },
+  "xcrun -sdk macosx --show-sdk-version": {
+    "exit_code": 0,
+    "stdout": "27.0\n",
+    "stderr": ""
+  },
+  "xcrun -sdk macosx --find metal": {
+    "exit_code": 0,
+    "stdout": "/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.vYU8g3/Metal.xctoolchain/usr/bin/metal\n",
+    "stderr": ""
+  },
+  "compiler_sha256": "ac3dcce4f331e301def076a2280c973c978f72e6622f8576eb3f7c34d1486dd6"
+}

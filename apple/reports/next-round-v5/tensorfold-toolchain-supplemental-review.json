@@ -1,0 +1,13 @@
+{
+  "status": "supplemental_post_run_toolchain_observation_bound",
+  "compile_review_sha256": "0851c8158a5960b86d31e221a6597a737ea46fc04750a34f34a7873f180bb9a1",
+  "observation_sha256": "d73cf55b2b8ae6f0a21b1c3783fa7fa89d93c154cbb851f67e6d56b0b222c7fe",
+  "observed_compiler_sha256": "ac3dcce4f331e301def076a2280c973c978f72e6622f8576eb3f7c34d1486dd6",
+  "compiler_path": "/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.vYU8g3/Metal.xctoolchain/usr/bin/metal",
+  "version": "Apple metal version 32023.921 (metalfe-32023.921.6)",
+  "sdk_version": "27.0",
+  "limits": [
+    "Observation captured after compilation. Current binary hash matches captured observation, but does not prove which binary hash xcrun executed at historical invocation.",
+    "No compiler rerun, GPU work, linking, numerical or performance qualification."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "status": "approved_compile_receipt_scope_only",
+  "reviewer": "ingest_engines_b",
+  "receipt_sha256": "fe9e88e8f0ad9a21235919e8828a529c1d8345497dbb5263238582830ce0c53d",
+  "checks": [
+    {
+      "side": "before",
+      "revision": "b1874a91035b1c605658e75d527015eceb7837e6",
+      "git_source_and_header_exact": true,
+      "compiler_arguments_exact": true,
+      "air_sha256": "b86c2f3b41d8ac7d4d8b9c7d8dd32c4e60db352a4734da6d9e13dad969822a63",
+      "air_file_type": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/tensorfold-qmm6-v1/before/output.air: LLVM bitcode, wrapper",
+      "air_bytes": 25520
+    },
+    {
+      "side": "after",
+      "revision": "5d7fbf3034e79a5f06012859ebf25b58bf32e950",
+      "git_source_and_header_exact": true,
+      "compiler_arguments_exact": true,
+      "air_sha256": "cb14b73e076c325a1a0fc32fe6bc67a534a9ffce2ac17f5e1e607cda2d06a3d8",
+      "air_file_type": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/tensorfold-qmm6-v1/after/output.air: LLVM bitcode, wrapper",
+      "air_bytes": 33472
+    }
+  ],
+  "limits": [
+    "Independent byte/argument/closure/AIR review of captured successful compiler receipts; compiler not rerun by this reviewer",
+    "No linking, GPU execution, numerical parity, runtime performance or complete project integration qualification",
+    "Compiler/SDK version identities are absent from this receipt; flags alone do not make a fully reproducible toolchain pin",
+    "Captured header closure has only explicit standard Metal headers plus quoted ../nax.h, whose historical Git bytes match exactly"
+  ]
+}

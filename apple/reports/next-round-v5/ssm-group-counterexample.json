@@ -1,0 +1,46 @@
+{
+  "status": "confirmed_source_geometry_regression",
+  "scope": "CPU shape/address arithmetic from captured source; no MLX/GPU/native execution.",
+  "commit": "80c217ff96de66694668e6705f233e0ef8d80aa9",
+  "configuration": {
+    "batch": 1,
+    "prefill_length": 2,
+    "num_heads": 4,
+    "head_dim": 8,
+    "mamba_n_groups": 2,
+    "mamba_d_state": 128
+  },
+  "baseline_expanded_B_shape": [
+    1,
+    2,
+    4,
+    128
+  ],
+  "state_shape": [
+    1,
+    4,
+    8,
+    128
+  ],
+  "new_B_shape": [
+    1,
+    2,
+    4,
+    256
+  ],
+  "new_addend_shape": [
+    1,
+    4,
+    8,
+    256
+  ],
+  "cpu_multitoken_failure": "Last dimensions256 and128 do not broadcast.",
+  "decode_state_elements_allocated": 4096,
+  "decode_largest_source_address_index": 8191,
+  "explanation": "Old caller grouped B/C by n_groups then repeated heads_per_group. New caller removes expansion and passes raw group-concatenated B/C without a guard. Both new CPU/multitoken helper and Metal template infer state width from total B width. A narrow prompt/benchmark does not restrict the full repository patch dispatch.",
+  "required_disposition": "Quarantine whole-patch positive until a reviewed grouped fallback/validation fix exists; retain bounded ungrouped historical results only in diagnostic evidence.",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/mlx/reviewed/mlx-lm-80c217ff96de-next-v5.source.json": "f6b48de43b3dbffde70f28e0019c67b2d4c7b1c2d82c167f0dfc70eca37eef22",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/ssm_group_counterexample.py": "8d7886492db1eed8df85f74c69530bbcf410b925f6c1b1aa9e286b1ce6075e2d"
+  }
+}

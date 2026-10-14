@@ -1,0 +1,79 @@
+{
+  "schema": "next-round-historical-compiler-v1",
+  "case_id": "tensorfold-5d7fbf3034e7-next-v5",
+  "created_utc": "2026-10-14T00:43:01.584377+00:00",
+  "results": [
+    {
+      "side": "before",
+      "file": "zig/kernels/metal/prefill/qmm6_nax.metal",
+      "revision": "b1874a91035b1c605658e75d527015eceb7837e6",
+      "status": "compiled",
+      "files_sha256": {
+        "zig/kernels/metal/prefill/qmm6_nax.metal": "0febadc1c81bc9737175a0aa0cb38782ca4a84e344ddf01dea8deec63d417cfc",
+        "zig/kernels/metal/nax.h": "fcd2ecae0113a6141fc309a5a64f4b3aa7d81ba7bfcd0a9d4fa21d6782a0a548"
+      },
+      "argv": [
+        "xcrun",
+        "-sdk",
+        "macosx",
+        "metal",
+        "-std=metal4.0",
+        "-O3",
+        "-fno-fast-math",
+        "-I",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/tensorfold-qmm6-v1/before",
+        "-fmodules-cache-path=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/tensorfold-qmm6-v1/module-cache",
+        "-c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/tensorfold-qmm6-v1/before/zig/kernels/metal/prefill/qmm6_nax.metal",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/tensorfold-qmm6-v1/before/output.air"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "air_sha256": "b86c2f3b41d8ac7d4d8b9c7d8dd32c4e60db352a4734da6d9e13dad969822a63"
+    },
+    {
+      "side": "after",
+      "file": "zig/kernels/metal/prefill/qmm6_nax.metal",
+      "revision": "5d7fbf3034e79a5f06012859ebf25b58bf32e950",
+      "status": "compiled",
+      "files_sha256": {
+        "zig/kernels/metal/prefill/qmm6_nax.metal": "eb74f0f18e55c869e14f8633bead96458139e8445824ef7fbb0b0daffc91ff01",
+        "zig/kernels/metal/nax.h": "fcd2ecae0113a6141fc309a5a64f4b3aa7d81ba7bfcd0a9d4fa21d6782a0a548"
+      },
+      "argv": [
+        "xcrun",
+        "-sdk",
+        "macosx",
+        "metal",
+        "-std=metal4.0",
+        "-O3",
+        "-fno-fast-math",
+        "-I",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/tensorfold-qmm6-v1/after",
+        "-fmodules-cache-path=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/tensorfold-qmm6-v1/module-cache",
+        "-c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/tensorfold-qmm6-v1/after/zig/kernels/metal/prefill/qmm6_nax.metal",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/tensorfold-qmm6-v1/after/output.air"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "air_sha256": "cb14b73e076c325a1a0fc32fe6bc67a534a9ffce2ac17f5e1e607cda2d06a3d8"
+    }
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/reviewed/tensorfold-5d7fbf3034e7-next-v5/source.json": "f5c842e23a4157ce18142d994d24290772d27784d61f0155728d4cdff9f1425d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/mlx/peer-reviews/engines-a-exact-independent-review.json": "95fa79f619e91f52c309e795554d31109e29ad200c73fe9a8a744b49816331e2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/compiler-probes/compile_tensorfold_closure.py": "496b65f450064fbd7a218caee9ba2c941581d6e0a8eee4884a2c7263c62d0818",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/compiler-probes/compile_tensorfold.py": "2dbfe302b8f15d711b6b77b6c1ec98560341acc884eb74a1d898f4b5f7007fb7"
+  },
+  "limits": [
+    "Exact historical file/header compilation with explicit Metal4.0/O3/no-fast-math flags",
+    "No fetched scripts, GPU, linking, numerical or timing execution",
+    "Compiler success is not full project integration or runtime qualification",
+    "No training data changed"
+  ]
+}

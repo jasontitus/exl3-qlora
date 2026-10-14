@@ -1,0 +1,61 @@
+{
+  "schema": "source-grounded-reasoning-independent-review-v1",
+  "status": "approved",
+  "reviewer": "adversarial_code",
+  "cases": [
+    {
+      "id": "vllm-metal-dd5eabb524cb-next-v5",
+      "inputs_sha256": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/vllm-metal-dd5eabb524cb-next-v5/source.json": "5427224586d606b313d2f890002f18c45608983d8dd4cb651548154efa685f24",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/calibration-reasoning/raw.json": "6ceaa7c773b1129591dd12ab090ff14771640013dbfe77c3dfe80b59c888554c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/calibration-reasoning/prepared.json": "2c561b70206d6fb6eaae17b0e6793d6cd066e6f08c7bd0d1b183f89b0521c1b8",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/vllm-metal-dd5eabb524cb-next-v5/reasoning-receipt.json": "dd439fbca96527db1cd69b79f9de0a2ffca664db0482b66b2f2a2f489059ba84"
+      },
+      "serialized_ids": 532
+    },
+    {
+      "id": "splash-99aa99db046a-next-v5",
+      "inputs_sha256": {
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/splash-99aa99db046a-next-v5/source.json": "176d5d9c2364c27e6d6af67a93d9e02a1c66dc422a7b9e68b5401e0f5b126b21",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/splash-bf16/reasoning/raw.json": "a4045da1cc04e76e41e9d268148b76e1584f7701fcdf09036a7dc441085d8ec3",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/splash-bf16/reasoning/prepared.json": "7e12ea2a450fd6d253f2fcfb968a09e9d4e96ae89843473510573c3310a75395",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/splash-99aa99db046a-next-v5/reasoning-receipt.json": "3bc91b01b72f1b0f69f20c2641ac78f4c9d20d6db5ce103b00a240a609061ee4"
+      },
+      "serialized_ids": 384
+    }
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/index.json": "8f4a283a1b163b84bc4d15eca5f38460569d7573a8d7d1b8fcabe2789839d72b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/engines-b-memory-reasoning-admission.json": "e7a675b25e97e834bf2cb8e2c51a6f7e2fe984a84fc0139d247940e37a59ec46",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/screen.json": "0d29f10e31bad8e66f3b1f75e8d44a7cffd8f21d9300839aeefc02d88245eca0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/vllm-metal-5785cc9ee701-next-v5/source.json": "ab2ca81966bfdc2e5664ab126f6a9c1ddbc1a370f0de28d32e1369053b0e36fd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/drafts/vllm-metal-5785cc9ee701-next-v5/raw.json": "8bc32ae5f39ac4eda3e80668678c9cf0eaebbe8f9a7b1370e660df00a5218165",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/drafts/vllm-metal-5785cc9ee701-next-v5/prepared.json": "c9639bdf6d46bc9c2f03d366f16d29f84873e1a23e524962bb8d751749328425",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/drafts/vllm-metal-5785cc9ee701-next-v5/replay.json": "9218b244a9cdd845bcf7711afc0f52806f43081a2a49ee1b261c61c9ce5cecb1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/vllm-metal-d3b68fc0d531-next-v5/source.json": "510fbe30247940a3cb4d1392504ee8e6979d408db39e76d85bedf7ee626ff206",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/revised-v2/vllm-metal-d3b68fc0d531-next-v5/raw.json": "ace8a4ab86f53686f2ae981424e26f31589ec28b0c086b381bf8dc9af6d62ae4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/revised-v2/vllm-metal-d3b68fc0d531-next-v5/prepared.json": "eec7ab89aa7ed59a787769afa4b8bbd75f9fae5209305917d16f134ee3e50d00",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/drafts/vllm-metal-d3b68fc0d531-next-v5/replay.json": "efe58d026612f137c5de065465080c2fe833599d6ec6939417d57dec871bdd5e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/vllm-metal-dd5eabb524cb-next-v5/source.json": "5427224586d606b313d2f890002f18c45608983d8dd4cb651548154efa685f24",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/calibration-reasoning/raw.json": "6ceaa7c773b1129591dd12ab090ff14771640013dbfe77c3dfe80b59c888554c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/vllm-batch2/calibration-reasoning/prepared.json": "2c561b70206d6fb6eaae17b0e6793d6cd066e6f08c7bd0d1b183f89b0521c1b8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/vllm-metal-dd5eabb524cb-next-v5/reasoning-receipt.json": "dd439fbca96527db1cd69b79f9de0a2ffca664db0482b66b2f2a2f489059ba84",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/splash-bf16/screen.json": "b8cbdba9bdf2a0f1932ad667139cd4603008c6efd3f179c836f858b6c1895e84",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/splash-99aa99db046a-next-v5/source.json": "176d5d9c2364c27e6d6af67a93d9e02a1c66dc422a7b9e68b5401e0f5b126b21",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/splash-bf16/reasoning/raw.json": "a4045da1cc04e76e41e9d268148b76e1584f7701fcdf09036a7dc441085d8ec3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/splash-bf16/reasoning/prepared.json": "7e12ea2a450fd6d253f2fcfb968a09e9d4e96ae89843473510573c3310a75395",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/memory-review-bound-v3/splash-99aa99db046a-next-v5/reasoning-receipt.json": "3bc91b01b72f1b0f69f20c2641ac78f4c9d20d6db5ce103b00a240a609061ee4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/engines-b-memory-reasoning-mechanical-v2.json": "f550a0dd27350f9bbd64a6452dc8949a429dfed2a3b944866c31d2de5551684c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/finalize_memory_review.py": "24149c0401d92f4f933998acfce9b965ad543fdbac5e1cfe74438d679bfeee68"
+  },
+  "findings": [],
+  "resolved_findings": [],
+  "scope": "Two separately serialized source-grounded prose views with exact prompt/target/token masks and source identity; not executable target qualification.",
+  "limits": [
+    "No compiler/GPU/upstream test/benchmark executed. Memory/capacity source reports are not speed guarantees.",
+    "Historical targeted reconstruction, not observed optimization discovery or agent trajectories.",
+    "d3 preserves prompt-logprobs excess-memory caveat; lazy allocation retains needs_kv_cache_zeroing guard.",
+    "TurboQuant and Splash full edits exceed32K and remain unadmitted; reasoning views do not count new distinct source changes.",
+    "Shared allocator/attention/GDN mechanisms remain related lineage; finite review is not global semantic nonoverlap certification."
+  ]
+}
