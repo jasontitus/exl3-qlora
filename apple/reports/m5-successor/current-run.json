@@ -1,7 +1,7 @@
 {
-  "updated_utc": "2026-10-14T20:19:27.415743+00:00",
+  "updated_utc": "2026-10-14T20:24:47.402794+00:00",
   "host": "jason-m5-MacBook.local",
-  "status": "m5_saved172_live_checkpoint150_pair_completed_independent_provenance_review_pending",
+  "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
   "wrapper_pid": 47859,
   "runner_pid": null,
@@ -868,6 +868,8 @@
     "boilerplate_share": 0.5940240334680362,
     "generated_kernel_quality_demonstrated": false,
     "independent_metrics_review_complete": true,
-    "independent_provenance_review_pending": true
+    "independent_provenance_review_pending": false,
+    "independent_provenance_review_complete": true,
+    "independent_provenance_review_sha256": "5b8a5bba62b70931663e99f340254701875d1f09e11ed2bf41fe178a1afb8da1"
   }
 }
