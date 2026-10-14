@@ -13,12 +13,13 @@ new product changes must not alter an active run.
 | Standard data import, project preparation, training, resume and paired comparison | CLI, SFTTrainer and Studio | Improve end-to-end usability as orchestration is integrated |
 | Complete agent edits and source evidence | `ktune prepare-reviewed` validates exact edits and v2 evidence-bound diagnostics, split protection, token identities and optional standard SFT project | Historical mixed-corpus migration requires separate evidence review; see [contract](REVIEWED_CORPORA.md) |
 | Packed-cache budget for gated corpus campaigns | Preparation script now accepts `--packed-cache-mib`; 40 CPU tests | A cache-size setting is not evidence of a speedup |
+| Evaluation progress | Standard evaluator and CLI report complete-item start/completion, item lengths and cumulative supervised tokens; regression tests | New runtimes only; active pinned runs remain unchanged |
 | Detailed paired token audit | Package module, `exl3-mlx-audit`, and automatic standard project comparison; local tokenizer/EOS categories plus optional reviewed categories | [Input contract and limits](EVALUATION_AUDIT.md); semantic code/rationale categorization and generated-patch quality remain separate |
 | Mac Studio ingestion / M5 training | Experiment orchestration with reviewed lease and runner scripts | Generalize host/path configuration and integrate with project status/resume |
 | Safe phase-boundary replacement of a campaign | Independently reviewed experimental operator | Integrate only after concrete identity checks and operational evidence; not a general public stop/recovery API yet |
 | Exact-base generated-code evaluation | Experiment probes and separate compiler/correctness gates | General benchmark manifests and end-to-end generated patch evaluation |
 | Layer-major frozen-prefix preparation | Isolated group-two prototype passed independent CPU review; no cache publication | Original-runtime boundary/gradient parity, measured resources and speed, then project integration |
-| Cached adapter inference | Isolated stock-route prototype passed independent 18-test CPU review including prior adapter loading | Optimized routes, CLI loading, device and full-model cached parity, then matched serving evaluation |
+| Cached adapter inference | Isolated native/Python and host prototypes; full host build linked successfully without executing the engine | Independent review found fingerprint, early file-read and ambient settings defects; revised fixes need review, then device/full-model parity and matched serving evaluation |
 
 The next product work should close these gaps rather than accumulate another
 host-specific script. In particular, a user should be able to prepare a versioned
@@ -108,3 +109,20 @@ The review is retained in
 `apple/reports/m5-successor/successor-evaluation-sealer-independent-review-v2.json`.
 The sealer itself remains experimental; these are integration requirements, not
 a claim that remote orchestration is already available in the public CLI.
+
+## Current productization boundary
+
+The evaluation progress implementation is committed in `9fbfd8b2`; its callback
+reports complete-item boundaries without changing scoring or loss aggregation.
+The importer, paired audit and progress reporting are package features, whereas
+the remote campaign coordinator, grouped-prefix preparation and cached serving
+remain experiments. A linked serving binary establishes build compatibility only.
+It does not establish adapter correctness or inference quality.
+
+Prioritize promoting these experiments through the existing project workflow,
+with configurable workers, resource budgets, durable phase status, resumption and
+paired evaluation. Preserve composed regression tests for the actual native/Python
+receipt contract and host settings handling, rather than testing only simulated
+receipts. Dataset corrections must likewise become general evidence-validation
+and preparation checks where mechanically testable; human semantic review remains
+an explicit gate that an importer cannot replace.
