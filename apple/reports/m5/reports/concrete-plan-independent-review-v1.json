@@ -1,0 +1,69 @@
+{
+  "schema": "m5-concrete-plan-independent-review-v1",
+  "status": "approved_for_serial_preflight_then_gated_run",
+  "reviewer": "quality_research",
+  "created_utc": "2026-10-14T00:24:43.154833+00:00",
+  "plan_sha256": "c1072a24a83d098e7b75366062c4721177b4fa097fb49ee33ef90797bd3bd621",
+  "checks": [
+    "81 source/runtime files remotely hashed and compared to local frozen v5",
+    "Remote Python and six dependency versions match plan",
+    "Remote plan/helper/runner match reviewed local hashes",
+    "198/0/16 raw corpus artifacts match sealed local release",
+    "176train+16test IDs/masks match sealed prepared rows exactly;22train rows only have reviewed schema-key-order canonicalization. All198 supervised targets unchanged,39diagnostics exact, all198 reproduced by pinned raw normalization; no truncation",
+    "Longest train12173 and test11645 are complete selected rows",
+    "396 fixed updates, batch1, accumulation1, rank4/alpha8, layer39, checkpoint activation, seed8",
+    "80GiB cap/reserve8, packed2GiB, decoded0, prefixRAM1GiB, prefixdisk64GiB, chunk2048 unchanged",
+    "Disposable preflight output is separate; project attempts/cache/output paths absent at observation",
+    "Completed365-file payload receipt structurally validated and matches project metadata/root; no tensor bytes reread"
+  ],
+  "counts": {
+    "train": 198,
+    "valid": 0,
+    "test": 16
+  },
+  "serialization_exception": {
+    "receipt": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/concrete-plan/preparation-normalization-diagnosis-final.json",
+    "sha256": "5be4591dc5b26deaba919d351730cc952b05db0cc224d2b2579b6c9325f26812",
+    "scope": "Explicit acceptance for these22rows only; original sealed sidecars are preserved and are not claimed identical. General prepare helper still lacks an automated postprepare token-drift guard."
+  },
+  "lengths": {
+    "train": {
+      "rows": 198,
+      "max": 12173,
+      "min": 138,
+      "supervised_tokens": 390604
+    },
+    "test": {
+      "rows": 16,
+      "max": 11645,
+      "min": 2599,
+      "supervised_tokens": 47069
+    }
+  },
+  "execution_contract": {
+    "numerical_environment": {
+      "MLX_ENABLE_TF32": "0"
+    },
+    "runner_enforces_environment": "Only this MLX_ variable permitted by guard; explicitly inherited in every emit/phase/verify subprocess. Plan environment only contains PYTHONPATH and therefore must be executed through reviewed run_m5_plan, not unguarded copied argv.",
+    "preflight": "Full longest training row one disposable update then complete longest test forward before baseline; initial project remains gradient-free. Persistent prefix cache contains frozen state, not trained adapter parameters.",
+    "selection": "Fixed step396 final checkpoint only; no validation/evaluation result selects checkpoint. Separate fresh base/adapter processes."
+  },
+  "limits": [
+    "Approval is plan/data/source consistency, not preflight memory feasibility, trained output quality, or independent process attestation.",
+    "Longest-row memory may not bound every shorter row routing pattern; runtime resource guard remains required.",
+    "Dataset importer independent_groups=214 counts its metadata groups; it is not proof of214 independent optimization concepts. Known family aliases remain corpus selection provenance.",
+    "No run was launched by this review. Concrete v2 lease/launch bindings are separately approved in concrete-launch-independent-review-v2.json."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/metal-mix198-tf32off-plan-v1.json": "c1072a24a83d098e7b75366062c4721177b4fa097fb49ee33ef90797bd3bd621",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/concrete-plan/remote-capture.json": "4ec7093c51c0335a27a221cd5b014cbd3887b46b84942d4ef3ea714ff888f781",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/concrete-plan/preparation-normalization-diagnosis-final.json": "5be4591dc5b26deaba919d351730cc952b05db0cc224d2b2579b6c9325f26812",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/concrete-plan/remote-launch-capture.json": "ad12b69d140323e3cf74c8cc5865ccac9780305d542d0987f7b28a234f96f45a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/concrete-plan/audit.py": "42fef00abca6d4a293ab8b6461ff75129b0d75653d1e2d9865f7bfb0fa20acaf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/checkpoint-verified-sha256.json": "928633c47696f521ed9031b9859b163b5693ce0f2c7163f0bc8cd8a0c2f9db99",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/snapshot.json": "56b38d2b0bed0f2ff3eb991324aec1439d079c6f9a57021ffde071e861f07bcc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/scripts/prepare_agent_corpus_run.py": "08227583a6fbd17b5f26c2ba4e83f78d5d79a076fb25679535904c709c0ebfa9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/training-mix-12288-v3/ktune-import.json": "b80a3c38637546565c517311f8785e1ac3e803267b98b70976b125b523bf60fb"
+  }
+}

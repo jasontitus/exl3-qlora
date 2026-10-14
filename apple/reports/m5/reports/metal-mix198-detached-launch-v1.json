@@ -1,0 +1,45 @@
+{
+  "schema": "m5-concrete-detached-launch-v1",
+  "status": "wrapper_started",
+  "created_utc": "2026-10-14T00:25:26.083410+00:00",
+  "argv": [
+    "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5/.venv/bin/python",
+    "/Volumes/Scratch/exl3-training/2026-10-13/shared_gpu_lease_v2.py",
+    "run",
+    "--request",
+    "/Volumes/Scratch/exl3-training/2026-10-13/training-lease-request-v2.json",
+    "--sha256",
+    "33549532854732e70b9640ec2a605e7afb7eae0d52f04d148c43c1a8489bc17d",
+    "--receipt",
+    "/Volumes/Scratch/exl3-training/2026-10-13/reports/metal-mix198-wrapper-v1.json"
+  ],
+  "cwd": "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5",
+  "request_sha256": "33549532854732e70b9640ec2a605e7afb7eae0d52f04d148c43c1a8489bc17d",
+  "launcher_sha256": "fb3d114790080f91ae688005de5fb11efa53193a2b233ea77bc6a41a544559c8",
+  "inputs_sha256": {
+    "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5/.venv/bin/python": "f1c4ad59c4adf1e5dfb5e9f558f7b95e4d7a62387d4bb4572fcf84f42648fee3",
+    "/Users/jasontitus/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/bin/python3.12": "f1c4ad59c4adf1e5dfb5e9f558f7b95e4d7a62387d4bb4572fcf84f42648fee3",
+    "/Volumes/Scratch/exl3-training/2026-10-13/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
+    "/Volumes/Scratch/exl3-training/2026-10-13/shared_gpu_lease_v2.py": "21c6b89ca67e7bd08aed7de54642ccb830102a1704680eda6c1a7a11325aa7d1",
+    "/Volumes/Scratch/exl3-training/2026-10-13/metal-mix198-tf32off-plan-v1.json": "c1072a24a83d098e7b75366062c4721177b4fa097fb49ee33ef90797bd3bd621",
+    "/Volumes/Scratch/exl3-training/2026-10-13/prepare_agent_corpus_run.py": "08227583a6fbd17b5f26c2ba4e83f78d5d79a076fb25679535904c709c0ebfa9",
+    "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5/snapshot.json": "56b38d2b0bed0f2ff3eb991324aec1439d079c6f9a57021ffde071e861f07bcc",
+    "/Volumes/Scratch/exl3-training/2026-10-13/reports/checkpoint-verified-sha256.json": "928633c47696f521ed9031b9859b163b5693ce0f2c7163f0bc8cd8a0c2f9db99",
+    "/Volumes/Scratch/exl3-training/2026-10-13/checkpoint-source-sha256.json": "9c17f2ec32118effd3193564725a08f00929bd2b0c0e0e47e59d74a765e0e85b",
+    "/Volumes/Scratch/exl3-training/2026-10-13/reports/preparation-normalization-diagnosis.json": "d7b464453ab39ef34d4d1e84798e5bb321d38067e98d828cfd711ca462296417"
+  },
+  "numerical_environment": {
+    "MLX_ENABLE_TF32": "0"
+  },
+  "stdout": "/Volumes/Scratch/exl3-training/2026-10-13/reports/metal-mix198-wrapper-v1.stdout.log",
+  "stderr": "/Volumes/Scratch/exl3-training/2026-10-13/reports/metal-mix198-wrapper-v1.stderr.log",
+  "wrapper_receipt": "/Volumes/Scratch/exl3-training/2026-10-13/reports/metal-mix198-wrapper-v1.json",
+  "quality_certified": false,
+  "wrapper_pid": 37886,
+  "observed_exit_code": null,
+  "process_identity": "37886 37885 37886 Tue Oct 13 17:25:26 2026     /Volumes/Scratch/exl3-training/2026-10-13/runtime-v5/.venv/bin/python /Volumes/Scratch/exl3-training/2026-10-13/shared_gpu_lease_v2.py run --request /Volumes/Scratch/exl3-training/2026-10-13/training-lease-request-v2.json --sha256 33549532854732e70b9640ec2a605e7afb7eae0d52f04d148c43c1a8489bc17d --receipt /Volumes/Scratch/exl3-training/2026-10-13/reports/metal-mix198-wrapper-v1.json",
+  "caffeinate": {
+    "pid": 37897,
+    "waits_for_pid": 37886
+  }
+}

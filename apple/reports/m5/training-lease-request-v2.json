@@ -1,0 +1,52 @@
+{
+  "schema": "shared-gpu-lease-command-v1",
+  "hostname": "Jason-M5-MacBook.localdomain",
+  "argv": [
+    "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5/.venv/bin/python",
+    "/Volumes/Scratch/exl3-training/2026-10-13/run_m5_plan.py",
+    "--plan",
+    "/Volumes/Scratch/exl3-training/2026-10-13/metal-mix198-tf32off-plan-v1.json",
+    "--plan-sha256",
+    "c1072a24a83d098e7b75366062c4721177b4fa097fb49ee33ef90797bd3bd621",
+    "--receipt",
+    "/Volumes/Scratch/exl3-training/2026-10-13/reports/metal-mix198-campaign-v1.json",
+    "--payload-receipt",
+    "/Volumes/Scratch/exl3-training/2026-10-13/reports/checkpoint-verified-sha256.json",
+    "--payload-sha256",
+    "928633c47696f521ed9031b9859b163b5693ce0f2c7163f0bc8cd8a0c2f9db99"
+  ],
+  "cwd": "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5",
+  "expected_exit_codes": [
+    0
+  ],
+  "completion_receipt": "/Volumes/Scratch/exl3-training/2026-10-13/reports/metal-mix198-campaign-v1.json",
+  "completion_expect": {
+    "format": "native-agent-corpus-launch-v1",
+    "status": "completed_pending_quality_audit",
+    "quality_certified": false,
+    "plan": "/Volumes/Scratch/exl3-training/2026-10-13/metal-mix198-tf32off-plan-v1.json",
+    "plan_sha256": "c1072a24a83d098e7b75366062c4721177b4fa097fb49ee33ef90797bd3bd621",
+    "numerical_environment": {
+      "MLX_ENABLE_TF32": "0"
+    },
+    "payload_verification": {
+      "path": "/Volumes/Scratch/exl3-training/2026-10-13/reports/checkpoint-verified-sha256.json",
+      "sha256": "928633c47696f521ed9031b9859b163b5693ce0f2c7163f0bc8cd8a0c2f9db99"
+    }
+  },
+  "no_detached_background_children": true,
+  "scope": "Fixed serial longest-train/longest-test/base/396-update/final-NLL campaign; no automatic retry. Prior and generated evaluations remain separate.",
+  "inputs_sha256": {
+    "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5/.venv/bin/python": "f1c4ad59c4adf1e5dfb5e9f558f7b95e4d7a62387d4bb4572fcf84f42648fee3",
+    "/Users/jasontitus/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/bin/python3.12": "f1c4ad59c4adf1e5dfb5e9f558f7b95e4d7a62387d4bb4572fcf84f42648fee3",
+    "/Volumes/Scratch/exl3-training/2026-10-13/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
+    "/Volumes/Scratch/exl3-training/2026-10-13/shared_gpu_lease_v2.py": "21c6b89ca67e7bd08aed7de54642ccb830102a1704680eda6c1a7a11325aa7d1",
+    "/Volumes/Scratch/exl3-training/2026-10-13/metal-mix198-tf32off-plan-v1.json": "c1072a24a83d098e7b75366062c4721177b4fa097fb49ee33ef90797bd3bd621",
+    "/Volumes/Scratch/exl3-training/2026-10-13/prepare_agent_corpus_run.py": "08227583a6fbd17b5f26c2ba4e83f78d5d79a076fb25679535904c709c0ebfa9",
+    "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5/snapshot.json": "56b38d2b0bed0f2ff3eb991324aec1439d079c6f9a57021ffde071e861f07bcc",
+    "/Volumes/Scratch/exl3-training/2026-10-13/reports/checkpoint-verified-sha256.json": "928633c47696f521ed9031b9859b163b5693ce0f2c7163f0bc8cd8a0c2f9db99",
+    "/Volumes/Scratch/exl3-training/2026-10-13/checkpoint-source-sha256.json": "9c17f2ec32118effd3193564725a08f00929bd2b0c0e0e47e59d74a765e0e85b",
+    "/Volumes/Scratch/exl3-training/2026-10-13/reports/preparation-normalization-diagnosis.json": "d7b464453ab39ef34d4d1e84798e5bb321d38067e98d828cfd711ca462296417"
+  },
+  "preparation_normalization": "22 exact-edit prompt schemas differ only in JSON object key order, +1 prompt token each; supervised targets unchanged. Independent diagnosis is hash-bound. All198 rows reproduce sealedraw+pinnedruntime;16heldout exact."
+}

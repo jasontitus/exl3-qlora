@@ -1,0 +1,42 @@
+{
+  "schema": "concrete-m5-launch-independent-review-v2",
+  "status": "approved_for_concrete_guarded_serial_campaign",
+  "reviewer": "quality_research",
+  "created_utc": "2026-10-14T00:25:03.752410+00:00",
+  "request_sha256": "33549532854732e70b9640ec2a605e7afb7eae0d52f04d148c43c1a8489bc17d",
+  "detached_launcher_sha256": "fb3d114790080f91ae688005de5fb11efa53193a2b233ea77bc6a41a544559c8",
+  "plan_sha256": "c1072a24a83d098e7b75366062c4721177b4fa097fb49ee33ef90797bd3bd621",
+  "checks": [
+    "v2 exact request delta adds only reviewed normalization diagnosis input and explicit note; original nine input bindings unchanged",
+    "All nine original remote input SHA values verified against read-only capture including Python symlink and resolved executable",
+    "Detached launcher v2 differs only in request name/hash; parent current remote request/script hashes match reviewed local copies",
+    "No model payload reread; completed full365file verification receipt matched model root/base metadata/source manifest binding",
+    "81 runtime files, fixed198/0/16 project/data/provenance, longest rows,396updates and five phase arguments checked in separate plan receipt",
+    "Strict MLX_ENABLE_TF32=0 environment and reviewed runner per-child guards preserved",
+    "Fresh exclusive launch/stdout/stderr, detached process session with DEVNULL stdin, recorded PID/start identity, optional caffeinate waits on wrapper PID",
+    "Reviewed v2 shared lease owns children conservatively; nested launch lifecycle preserved; uncertain descendants retain lease",
+    "Completion requires completed_pending_quality_audit and quality_certified=false; no retries and no arbitrary final checkpoint selection"
+  ],
+  "canonicalization_exception": {
+    "bound_request_receipt_sha256": "d7b464453ab39ef34d4d1e84798e5bb321d38067e98d828cfd711ca462296417",
+    "supplemental_stronger_proof_sha256": "5be4591dc5b26deaba919d351730cc952b05db0cc224d2b2579b6c9325f26812",
+    "scope": "22 prompt-only semantically equivalent JSON key-order changes; all198 supervised token targets and39 diagnostic sequences exact, all16heldout sequences exact; all198 reproduced from sealed raw via pinned v5. This is a fixed-run reviewed exception, not prepared-sidecar identity."
+  },
+  "limits": [
+    "This is CPU/read-only input and launch-lifecycle approval, not a claim the preflight or training has run or fits memory.",
+    "Live shared-lock/resource checks remain launch-time gates. Preserve80GiB process cap and8GiB reserve.",
+    "No automatic retry after failure; retain all receipts and inspect before a new explicit plan.",
+    "General prepare helper lacks automated postprepare token drift checking; this concrete dataset was fully independently reproduced and explicitly reviewed."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/training-lease-request-v2.json": "33549532854732e70b9640ec2a605e7afb7eae0d52f04d148c43c1a8489bc17d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/launch_training_v2.py": "fb3d114790080f91ae688005de5fb11efa53193a2b233ea77bc6a41a544559c8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/reports/concrete-plan-independent-review-v1.json": "487318f8f4c2bbe7f6f209b502842c8267bbcee1b2eca48613377547c91cef32",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/concrete-plan/check_launch.py": "2d982d8e2c15621645dcf1245d5a326f0dfd07bb1fa6b860b7e23004f8623e65",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/concrete-plan/remote-launch-capture.json": "ad12b69d140323e3cf74c8cc5865ccac9780305d542d0987f7b28a234f96f45a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/concrete-plan/preparation-normalization-diagnosis.json": "d7b464453ab39ef34d4d1e84798e5bb321d38067e98d828cfd711ca462296417",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/independent-review/concrete-plan/preparation-normalization-diagnosis-final.json": "5be4591dc5b26deaba919d351730cc952b05db0cc224d2b2579b6c9325f26812",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/shared_gpu_lease_v2.py": "21c6b89ca67e7bd08aed7de54642ccb830102a1704680eda6c1a7a11325aa7d1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schema": "remote-training-migration-v1",
-  "updated_utc": "2026-10-13T21:49:08.089060+00:00",
+  "updated_utc": "2026-10-14T00:17:36.494290+00:00",
   "host": "jason-m5-MacBook.local",
   "hardware": {
     "chip": "Apple M5 Max",
@@ -8,19 +8,26 @@
     "physical_memory_gib": 128,
     "observed_free_pages_gib": 90,
     "scratch_available_tib": 2.0,
-    "ac_power": true
+    "ac_power": true,
+    "latest_scratch_available_tib": 1.7,
+    "resource_note": "Original free-page inventory is historical; remeasure available memory and ownership before GPU launch."
   },
   "root": "/Volumes/Scratch/exl3-training/2026-10-13",
   "model": "/Volumes/Scratch/exl3-training/models/deepseek-v4.1-flash-exl3-3.0bpw",
   "checkpoint_bytes": 426352827347,
   "transfer": {
-    "status": "running",
+    "status": "completed",
     "exec_session": 23018,
     "method": "rsync -a --partial",
-    "observed_bytes": 40961509468,
-    "observed_allocated_gib": 88,
+    "observed_allocated_gib": 291,
     "remote_pid": 13078,
-    "note": "Observed allocated directory size, not full verified payload count; single rsync remains live."
+    "note": "Completed365 files with full remote verification; prior allocated-size observation is historical.",
+    "observed_utc": "2026-10-13T23:40:55.516356+00:00",
+    "earlier_progress_bytes": 40961509468,
+    "observed_transferred_bytes": 426352827347,
+    "observation_source": "exec session23018 terminal success",
+    "exit_code": 0,
+    "files_transferred": 365
   },
   "runtime": {
     "snapshot_sha256": "56b38d2b0bed0f2ff3eb991324aec1439d079c6f9a57021ffde071e861f07bcc",
@@ -38,11 +45,8 @@
   },
   "training_started": false,
   "remaining_gates": [
-    "Complete and verify checkpoint transfer",
-    "M5 numerical/gradient tests",
-    "Final data and strategy independent reviews",
-    "Fresh full-item memory preflight",
-    "Fresh M5 baseline then single serial training/evaluation run"
+    "Complete longest-item training and evaluation preflights",
+    "Fresh M5 baseline,396 updates,final/prior evaluations and generated probe audit"
   ],
   "preserved": [
     "sfideas",
@@ -61,42 +65,53 @@
       "failed": 1,
       "log": "reports/numerical-tests-tf32-off.log"
     },
-    "remaining_issue": "Strict float64-angle RoPE reference differs by7.08e-6. Measured FP32 frequency rounding produces59.999996ratherthan60. Same-angle independent trig comparison2.38e-7; inverse4.77e-7. Original failed test retained. Independent acceptance pending.",
+    "remaining_issue": "Strict float64-angle RoPE reference differs by7.08e-6. Measured FP32 frequency rounding produces59.999996ratherthan60. Same-angle independent trig comparison2.38e-7; inverse4.77e-7. Original failed test retained. Independent review accepted the component explanation with execution gates pending; original34-pass/1-fail result remains unchanged.",
     "independent_scope_review": "../mlx/peer-reviews/m5-strategy-independent-review.json"
   },
   "full_payload_hashing": {
-    "status": "source_complete_remote_verification_pending",
+    "status": "remote_full_verification_passed",
     "files": 365,
     "bytes": 426352827347,
     "manifest": "kernel-library/expansion-v4-hour/remote-m5/checkpoint-source-sha256.json",
     "manifest_sha256": "9c17f2ec32118effd3193564725a08f00929bd2b0c0e0e47e59d74a765e0e85b",
     "source_generator_sha256": "d6e30376366d8373c310aedbb77c956faa742267946c49c80668e85b39e59e53",
     "verification_script_sha256": "cbb266f1f07d8561e14cef411eab8f3ef85d36ca5557c3eb2fa5ce8563b6553b",
-    "independent_review": "../engines-a/peer-reviews/checkpoint-digest-independent-review.json"
+    "independent_review": "../engines-a/peer-reviews/checkpoint-digest-independent-review.json",
+    "remote_receipt_sha256": "928633c47696f521ed9031b9859b163b5693ce0f2c7163f0bc8cd8a0c2f9db99",
+    "remote_files": 365,
+    "remote_total_bytes": 426352827347
   },
   "caffeinate": {
     "exec_session": 3257,
     "waits_for_remote_transfer_pid": 13078,
-    "scope": "Prevent idle sleep during existing transfer only"
+    "scope": "Prevent idle sleep through own transfer and queued full verification; display sleep unaffected.",
+    "verification_wait_pid": 15232,
+    "verification_exec_session": 92204
   },
   "larger_training_mix": {
-    "status": "draft_alias_review_in_progress",
+    "status": "independently_reviewed_staged_hash_verified",
     "exact_edits": 159,
     "diagnostics": 39,
     "total": 198,
-    "heldout": 16
+    "heldout": 16,
+    "manifest_sha256": "b80a3c38637546565c517311f8785e1ac3e803267b98b70976b125b523bf60fb",
+    "remote_path": "/Volumes/Scratch/exl3-training/2026-10-13/training-mix-12288-v3",
+    "remote_artifacts_verified": 7,
+    "release": "../release.json",
+    "release_independent_review": "../engines-a/peer-reviews/release-v4-independent-review.json"
   },
   "verification_queue": {
-    "status": "waiting_for_existing_rsync_then_verify",
+    "status": "completed_exit0",
     "exec_session": 44024,
     "remote_rsync_pid": 13078,
     "receipt": "/Volumes/Scratch/exl3-training/2026-10-13/reports/checkpoint-verified-sha256.json",
     "log": "/Volumes/Scratch/exl3-training/2026-10-13/reports/checkpoint-verification.log",
-    "launches_gpu_training": false
+    "launches_gpu_training": false,
+    "observed_live_remote_pid": 15232
   },
   "training_launcher": {
     "path": "kernel-library/expansion-v4-hour/remote-m5/run_m5_plan.py",
-    "status": "mechanics_independently_reviewed_concrete_plan_pending",
+    "status": "concrete_review_approved; campaign_live_in_preflight_payload_hashing",
     "pinned_runtime_modified": false,
     "sha256": "b7e3bc71f14b73808101963b4ba71e2e73becb51f5dd0fece1160bf6ef7a05ab",
     "independent_review": "../engines-a/peer-reviews/m5-launcher-independent-review.json",
@@ -110,5 +125,60 @@
     "kernel-library/expansion-v4-hour/remote-m5/reports/numerical-tests-tf32-off.log": "d2ccccdef12288bd6ca08dc2b63031d7d780a901ee33c35183c691d366003600",
     "kernel-library/expansion-v4-hour/remote-m5/reports/environment.json": "ebdfef2e6c56e8c837749e07c9afe2a3e25112d6cb6d41b97d27ae6c09c1c662",
     "kernel-library/expansion-v4-hour/remote-m5/reports/numerical-tests.log": "535f3254d9e6e441bd83049e976926c5d12ae198fec5878871500ddecd434b04"
+  },
+  "prior_adapter_staging": {
+    "remote_path": "/Volumes/Scratch/exl3-training/2026-10-13/prior-15-example-step-000030",
+    "purpose": "fresh M5 evaluation only; never new-run initialization",
+    "source_files_sha256": {
+      "adapter.safetensors": "aeca9385f6acc2217ca7f7f23e6499ae24eca05a01ca7b5ee436ded7cdb9244e",
+      "adapter_config.json": "72de3ad2758b1956393f3016e2c16a6d567726860525a7398f00aa2979e0f1ec",
+      "optimizer.safetensors": "fb06619e7cf8545796ae9fd445f4aaca718283cf2b25aba06f5a6b1102f463ad",
+      "random.safetensors": "233b8c75ac745e10dce8dc0ea9e8ec3cebf56a4c3982e5ff4030a134d0b90f57",
+      "trainer_state.json": "b6dc7f0e55af70da54c70bc589c15b92a00fa77dc8cf9bdf3e230c027ec74de7"
+    },
+    "remote_verification": "all five file hashes match source"
+  },
+  "cpu_preparation": {
+    "request": "prepare-request-v1.json",
+    "status": "completed_198_train_16_test",
+    "review": "../engines-a/peer-reviews/m5-preparation-request-independent-review.json",
+    "concrete_plan": "metal-mix198-tf32off-plan-v1.json",
+    "concrete_plan_sha256": "c1072a24a83d098e7b75366062c4721177b4fa097fb49ee33ef90797bd3bd621"
+  },
+  "diagnostic_evaluation": {
+    "plan": "diagnostic-plan-m5-v1/plan.json",
+    "remote_files_verified": 14,
+    "equivalence_review": "../engines-a/peer-reviews/diagnostic-relocation-independent-review.json",
+    "trusted_launcher": "independently reviewed and staged; no model generation launched",
+    "launcher_review": "../engines-a/peer-reviews/diagnostic-launchers-independent-review.json"
+  },
+  "expression_evaluation": {
+    "package": "expression-probes-m5-v1",
+    "status": "M5 golden/negative controls executed and independently qualified",
+    "plan_sha256": "f80d46e660b89ae5f4e83a78878d2b6613e31e9bcd79cc5c6590dc8630b56f53",
+    "remaining": [
+      "Trusted fixed base/prior/final generation execution after final checkpoint",
+      "Compile and numerically evaluate admitted actual model completions"
+    ],
+    "claim_limits": "Two expression completions only; no full patch, optimization discovery or timing claim.",
+    "relocation_review": "reports/expression-relocation-independent-review.json",
+    "control_review": "reports/expression-controls-independent-audit-v1.json"
+  },
+  "shared_gpu_lease": {
+    "short_controls": "qualified, completed, clean release",
+    "source_sha256_for_completed_controls": "c0ba867f7889e533c905a964bae9a0e58546284a27a5ee04bac0a4c71da6af21",
+    "long_campaign": "v2 independently reviewed, acquired by wrapper37886; live",
+    "foreign_workload": "Sushi21341 completed naturally; released lock; no interruption",
+    "v2_source_sha256": "21c6b89ca67e7bd08aed7de54642ccb830102a1704680eda6c1a7a11325aa7d1"
+  },
+  "campaign_started": true,
+  "campaign_observation": {
+    "utc": "2026-10-14T00:29:13.846003+00:00",
+    "wrapper_pid": 37886,
+    "runner_pid": 37889,
+    "preflight_pid": 37893,
+    "phase": "preflight-train",
+    "latest_log": "Prefix disk identity: hashed payload 7/110",
+    "main_training_updates_observed": 0
   }
 }
