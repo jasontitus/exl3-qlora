@@ -1,0 +1,73 @@
+{
+  "status": "approved_for_semantic_evidence_scope_only",
+  "reviewer": "root independent of editor",
+  "reviewed_at": "2026-10-14T03:28:41.948028+00:00",
+  "index_sha256": "804add4c77b8cde070c9baac9c15cd41632228238f1283ed10d5e7ba1086da87",
+  "cases": [
+    {
+      "id": "mlx-0840c42a7aab-diagnose-hour-v3-corrected-v4",
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-0840c42a7aab-diagnose-hour-v3-corrected-v4/evidence.json",
+          "sha256": "586bcac6645415315f8a44f0a1458be6af5ec9fe9c8ceed631f4267323007e74"
+        },
+        "prepared": {
+          "path": "cases/mlx-0840c42a7aab-diagnose-hour-v3-corrected-v4/prepared.json",
+          "sha256": "914f9d939f29918b7d24cd72263d0d2639ba09bb162943f5c655d38e2ccac98b"
+        },
+        "raw": {
+          "path": "cases/mlx-0840c42a7aab-diagnose-hour-v3-corrected-v4/raw.json",
+          "sha256": "b88c3788730c34e8baba48b37ce8c5d4627ed94465c841fbab136733c6c1770c"
+        },
+        "source": {
+          "path": "cases/mlx-0840c42a7aab-diagnose-hour-v3-corrected-v4/source.json",
+          "sha256": "f0833c6488556ab0a0753ef0836dd9b347d481cde566d8c70165e4f8f67d0a01"
+        }
+      },
+      "tokens": 186,
+      "loss_start": 59,
+      "claims": 7
+    },
+    {
+      "id": "mlx-4089fd56ff29-diagnose-hour-v4-corrected-v4-arithmetic-v2",
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-4089fd56ff29-diagnose-hour-v4-corrected-v4-arithmetic-v2/evidence.json",
+          "sha256": "f97d463ced2be76a76cc220aeff1b5873dcd1772182cc312998c1d9e7f4d0650"
+        },
+        "prepared": {
+          "path": "cases/mlx-4089fd56ff29-diagnose-hour-v4-corrected-v4-arithmetic-v2/prepared.json",
+          "sha256": "cf82175b9837ae197ba3e44a0b8a7e932b17ab9aa13b98ffcb6f396344cb8e71"
+        },
+        "raw": {
+          "path": "cases/mlx-4089fd56ff29-diagnose-hour-v4-corrected-v4-arithmetic-v2/raw.json",
+          "sha256": "1a7d94d639ee96b392ef1750a70f738d2cc1cc839ab90737aa07af8f68a63296"
+        },
+        "source": {
+          "path": "cases/mlx-4089fd56ff29-diagnose-hour-v4-corrected-v4-arithmetic-v2/source.json",
+          "sha256": "113293652fb53bf7680b74094d3d5030d2d3fc8d08f7b912c95db3e34b9a9786"
+        }
+      },
+      "tokens": 181,
+      "loss_start": 53,
+      "claims": 6
+    }
+  ],
+  "checks": [
+    "Read full prompts/answers and narrowed before/after source regions in preceding v2; non-evidence inputs unchanged",
+    "CPU declarations before and after substantiate widening; Metal data_size bound explicitly visible",
+    "Complex ratio inference limited to stated finite example; removed unsupported after-execution claim and stale metadata attribution",
+    "Independent offline product tokenization equals complete prepared token IDs and loss boundaries",
+    "All input, captured source, reference-range and claim-range hashes independently verified"
+  ],
+  "tokenizer_identity": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "limits": [
+    "Not kernel compilation, Metal execution, full numerical qualification or performance reproduction",
+    "CPU float32 arithmetic sanity check separately recorded in batch4-v2/root-arithmetic-check.json; not a backend proof",
+    "Does not approve other corpus rows, split admission or active dataset modification"
+  ]
+}

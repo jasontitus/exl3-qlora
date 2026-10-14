@@ -1,0 +1,24 @@
+{
+  "scope": "CPU NumPy float32 arithmetic sanity check of stated balanced finite example and explicit near-maximum limitation; not Metal execution or general complex division qualification",
+  "numpy_version": "2.5.4",
+  "rows": [
+    {
+      "equal_real_imag_value": 1e+20,
+      "squared_formula_real": "nan",
+      "ratio_formula_real": "1.0",
+      "mathematical_reference_real": 1
+    },
+    {
+      "equal_real_imag_value": 1e-30,
+      "squared_formula_real": "nan",
+      "ratio_formula_real": "1.0",
+      "mathematical_reference_real": 1
+    },
+    {
+      "equal_real_imag_value": 3e+38,
+      "squared_formula_real": "nan",
+      "ratio_formula_real": "nan",
+      "mathematical_reference_real": 1
+    }
+  ]
+}
