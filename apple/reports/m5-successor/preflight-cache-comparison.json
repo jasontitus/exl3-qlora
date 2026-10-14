@@ -1,0 +1,28 @@
+{
+  "status": "observed_single_item_cache_comparison_not_speedup_qualification",
+  "inputs_sha256": {
+    "kernel-library/next-round-v5/m5-successor/completed-preflight-train.json": "dc6576f24f1f4016d36d3204189c9a5c556059ae205b083edc93133feade6cdd",
+    "kernel-library/next-round-v5/engines-b/m5-handoff-preserved-artifact-hashes-v1.json": "80d6d522f595f9a2fbd96d632b03f54677d4b79c29f3f5e4ba8bce356c6a143b"
+  },
+  "same_training_contract": true,
+  "exact_metrics_equal": {
+    "loss": true,
+    "gradient_norm": true,
+    "supervised_tokens": true
+  },
+  "old_packed_cache_mib": 2048,
+  "new_packed_cache_mib": 6144,
+  "old_peak_mlx_gib": 67.32201765105128,
+  "new_peak_mlx_gib": 71.32413787394762,
+  "old_training_seconds": 1312.2782282920089,
+  "new_training_seconds": 1318.8722659589257,
+  "logical_packed_bytes_saved": 9214384128,
+  "decoded_loads_equal": true,
+  "limits": [
+    "One observation per cache setting, not a controlled repeated benchmark",
+    "Training interval excludes initial full payload hashing",
+    "Logical packed reads are not physical SSD traffic",
+    "Larger cache reduced logical loads but did not establish faster cold-item training",
+    "No claim about held-out model improvement"
+  ]
+}

@@ -114,3 +114,16 @@ confirmed live. The new 6 GiB-cache longest-item preflight is running; there are
 no main updates or successor quality results yet. Actual M5 prepared token IDs
 and masks matched all 245 reviewed rows, and the held-out bytes are unchanged.
 The plan SHA-256 is `1c51251d4bf4404c3f6e21de6b255d96da5e84b3cac4c264181e1ebff5799f33`.
+
+## Successor longest-item training preflight completed
+
+The new campaign completed its full 12,173-ID training preflight (9,747
+supervised targets), including backward and one optimizer update. The runner
+verified the checkpoint, optimizer and RNG artifacts, then automatically started
+the longest-test evaluation preflight as PID 73629. Main training remains pending.
+The completed receipt is retained under `apple/reports/m5-successor/` with SHA-256
+`dc6576f24f1f4016d36d3204189c9a5c556059ae205b083edc93133feade6cdd`.
+Peak MLX allocation was 71.324 GiB under the unchanged 80 GiB process budget.
+This is a capacity observation for that item, not a model-quality result or a
+whole-system peak measurement. Larger-cache timing limits are recorded in
+`apple/docs/TOOL_INTEGRATION.md`.

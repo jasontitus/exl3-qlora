@@ -49,6 +49,15 @@ does not remove the initial reads of previously unseen frozen-prefix weights.
 Choose a budget from observed resource headroom and measured phase timing, not
 from an assumption that more cache accelerates every phase.
 
+The M5 longest-item preflight supplied a concrete counterexample to that
+assumption: increasing the packed cache from 2 to 6 GiB reduced logical packed
+loads by 9,214,384,128 bytes, but the measured training intervals were 1,312.28
+and 1,318.87 seconds. Peak MLX allocation increased from 67.32 to 71.32 GiB.
+Loss and gradient norm matched exactly. These are single observations, exclude
+initial payload hashing, and do not establish a wall-time speedup. Logical
+application reads are not physical disk traffic. See
+`apple/reports/m5-successor/preflight-cache-comparison.json`.
+
 ## Preparation must reproduce reviewed token identities
 
 The advanced corpus preparation helper requires `train.prepared.jsonl` and
