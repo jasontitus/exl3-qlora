@@ -1,0 +1,47 @@
+{
+  "status": "counts_verified_row162_requires_separate_semantic_approval",
+  "reviewer": "root",
+  "reviewed_at": "2026-10-14T04:13:27.198493+00:00",
+  "index_sha256": "a0c48791faa39eb6a7122ad53ca9eec0d90139d0f4ec22c6e82be8f09bcae771",
+  "rows_checked": 43,
+  "changed_metadata_or_context_rows": [
+    179,
+    191,
+    195,
+    225,
+    226,
+    162,
+    165,
+    168,
+    187,
+    172,
+    182,
+    183,
+    169,
+    194,
+    196,
+    193,
+    197,
+    161,
+    173,
+    175,
+    189,
+    228,
+    186,
+    190,
+    227
+  ],
+  "payload_change_rows": [
+    162
+  ],
+  "later16_inputs_unchanged": true,
+  "checks": [
+    "All43 index token and supervised counts match actual complete prepared payloads",
+    "All input hashes match current index",
+    "All original inputs unchanged except explicit row162 context revision"
+  ],
+  "limits": [
+    "Mechanical counts/input continuity only; row162 independent semantics gate remains",
+    "No active corpus changes"
+  ]
+}
