@@ -1,0 +1,72 @@
+{
+  "status": "approved_for_semantic_evidence_scope_only",
+  "reviewer": "root independent of editor",
+  "reviewed_at": "2026-10-14T03:56:54.074367+00:00",
+  "index_sha256": "291c6124c1deb3418c5600617753be33e640971c21d7f072c401a4f1a4e75922",
+  "cases": [
+    {
+      "row": 193,
+      "id": "mlx-serve-fa76a4b50b3f-hour-v4-next-test-corrected-v4-scoped-v13-visible-context-v2",
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-serve-fa76a4b50b3f-hour-v4-next-test-corrected-v4-scoped-v13-visible-context-v2/evidence.json",
+          "sha256": "046884d5b13cbec65078ead4f4ed9ccb39c7cd82c487b485ce7297302fc60a93"
+        },
+        "prepared": {
+          "path": "cases/mlx-serve-fa76a4b50b3f-hour-v4-next-test-corrected-v4-scoped-v13-visible-context-v2/prepared.json",
+          "sha256": "cb1a38f3229bc3686632fe3d729c3dd13d7938de56daa194100190bb746ee2a8"
+        },
+        "raw": {
+          "path": "cases/mlx-serve-fa76a4b50b3f-hour-v4-next-test-corrected-v4-scoped-v13-visible-context-v2/raw.json",
+          "sha256": "e41672d3e2e43b13476fbeb649bd6a424bf4c99c926afa3a42a98b1a5318fbd2"
+        },
+        "source": {
+          "path": "cases/mlx-serve-fa76a4b50b3f-hour-v4-next-test-corrected-v4-scoped-v13/source.json",
+          "sha256": "09d3554abeca87ecc80cbe99a25ed0d95e62a5c0d160335b5011da3aae2f3bea"
+        }
+      },
+      "tokens": 1502,
+      "loss_start": 1327
+    },
+    {
+      "row": 197,
+      "id": "mlx-serve-ff7f359bd024-hour-v4-next-test-corrected-v4-scoped-v13-visible-context-v2",
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-serve-ff7f359bd024-hour-v4-next-test-corrected-v4-scoped-v13-visible-context-v2/evidence.json",
+          "sha256": "7634135dabdd3a10ae709b74b96ad8bb9e8362b6fa3a8d803004ec6552812c1d"
+        },
+        "prepared": {
+          "path": "cases/mlx-serve-ff7f359bd024-hour-v4-next-test-corrected-v4-scoped-v13-visible-context-v2/prepared.json",
+          "sha256": "fc35ecdbe216916f3ba43dfd4e4ee69b7a49f3c32b13f7b84b13eb88d569043e"
+        },
+        "raw": {
+          "path": "cases/mlx-serve-ff7f359bd024-hour-v4-next-test-corrected-v4-scoped-v13-visible-context-v2/raw.json",
+          "sha256": "c96b5d11a15be766a06ab012a3c8f33edd101eded920c7c1f335137548d068e4"
+        },
+        "source": {
+          "path": "cases/mlx-serve-ff7f359bd024-hour-v4-next-test-corrected-v4-scoped-v13/source.json",
+          "sha256": "add2aa00bbd0e1ffbf3ed0eefe260041e9718c7bd848e466d252ffe04dff113d"
+        }
+      },
+      "tokens": 2032,
+      "loss_start": 1898
+    }
+  ],
+  "checks": [
+    "Read visible baseline code, revised complete answers and claim references",
+    "Row193 now proposes owned-copy, cadence and measured planner experiment without asserting unseen achieved memory or parity results",
+    "Row197 proposes preserving error ownership and original failure attribution, without unrelated absent layout/cache claims",
+    "Targets respect agent-visible evidence; missing helper implementation explicitly acknowledged in prompt",
+    "Fresh exact tokenization and all input/reference/claim hashes verified"
+  ],
+  "tokenizer_identity": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "limits": [
+    "No historical source execution or GPU validation",
+    "No full-corpus approval or active training data changes"
+  ]
+}

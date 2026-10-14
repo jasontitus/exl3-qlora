@@ -1,0 +1,19 @@
+{
+  "status": "changes_requested",
+  "reviewer": "root independent of editor",
+  "index_sha256": "e9af9f736735e1faa9bdb1cb03a3cb5ca7fd0209e2141b63bba93825ce640989",
+  "reviewed_at": "2026-10-14T03:55:29.518585+00:00",
+  "findings": [
+    {
+      "row": 193,
+      "issue": "Baseline-only diagnosis prompt supplies no achieved result, yet target asserts historical owned-copy implementation, byte parity and 2.5GB measured reduction. Truth in provenance does not justify an agent claiming unseen measurements.",
+      "required_change": "Frame repair and validation as proposed; retain outcomes in provenance or separate report-conditioned example."
+    },
+    {
+      "row": 197,
+      "issue": "Prompt explicitly omits unrelated launch/layout code, but target asserts row-count config-cache and strided-index repair details.",
+      "required_change": "Narrow to error ownership or supply relevant observations in prompt."
+    }
+  ],
+  "scope": "Prompt-answer semantic compatibility; no GPU run or active corpus changes"
+}

@@ -1,0 +1,96 @@
+{
+  "status": "approved_for_semantic_evidence_scope_only",
+  "reviewer": "root independent of editor",
+  "reviewed_at": "2026-10-14T03:53:38.118338+00:00",
+  "index_sha256": "f85ecec71aa9d65f7ff0fa3fbcb2cc8110d90326b30534578d2b1ba8b11ab9f8",
+  "cases": [
+    {
+      "id": "sushi-1ea9492abc01-hour-v4-reasoning-corrected-v4-scoped-v11-review-v2",
+      "row": 169,
+      "inputs": {
+        "evidence": {
+          "path": "cases/sushi-1ea9492abc01-hour-v4-reasoning-corrected-v4-scoped-v11-review-v2/evidence.json",
+          "sha256": "6e2853f8ad7a1500e26842f26bc166da00e2c015f4325fcd4fd68c47309abf09"
+        },
+        "prepared": {
+          "path": "cases/sushi-1ea9492abc01-hour-v4-reasoning-corrected-v4-scoped-v11-review-v2/prepared.json",
+          "sha256": "21b455d47d59eb176eb0c823db03a8c9b4e5cca64378a00c07e50320deeced5c"
+        },
+        "raw": {
+          "path": "cases/sushi-1ea9492abc01-hour-v4-reasoning-corrected-v4-scoped-v11-review-v2/raw.json",
+          "sha256": "8e7db22f5a308b82ff1c49d6d6431b92c7808fe2d4ff4285fb115b8bb0154c90"
+        },
+        "source": {
+          "path": "cases/sushi-1ea9492abc01-hour-v4-reasoning-corrected-v4-scoped-v11/source.json",
+          "sha256": "20aba09d0a5a78686e6011d24dda4d16ac23a78fe40a916ebbccae4ee90e7fa1"
+        }
+      },
+      "tokens": 798,
+      "loss_start": 657
+    },
+    {
+      "id": "mlx-90089440bcf3-interpret_benchmark-hour-v4-corrected-v4-scoped-v11-review-v2",
+      "row": 194,
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-90089440bcf3-interpret_benchmark-hour-v4-corrected-v4-scoped-v11-review-v2/evidence.json",
+          "sha256": "83c20fb14580b8f316db97ecfcf3dbd54b90e6af7472bd5a312c1f9a5095c447"
+        },
+        "prepared": {
+          "path": "cases/mlx-90089440bcf3-interpret_benchmark-hour-v4-corrected-v4-scoped-v11-review-v2/prepared.json",
+          "sha256": "adc11cc91e2aed49207a82a7f0fddcf4638e4c4ee30368fe50f57f99aee1dcf1"
+        },
+        "raw": {
+          "path": "cases/mlx-90089440bcf3-interpret_benchmark-hour-v4-corrected-v4-scoped-v11-review-v2/raw.json",
+          "sha256": "d682ce20f4921b64cf7bce337b38b6592d609fe51bbcc6cfa5d810ceb2f1de2a"
+        },
+        "source": {
+          "path": "cases/mlx-90089440bcf3-interpret_benchmark-hour-v4-corrected-v4-scoped-v11/source.json",
+          "sha256": "da373d150626279bb4e0e85456a20df41237f3450a7ee5d8aa08ac5b4744c151"
+        }
+      },
+      "tokens": 171,
+      "loss_start": 63
+    },
+    {
+      "id": "sushi-8e991af832ac-hour-v4-reasoning-scoped-v11-review-v2",
+      "row": 196,
+      "inputs": {
+        "evidence": {
+          "path": "cases/sushi-8e991af832ac-hour-v4-reasoning-scoped-v11-review-v2/evidence.json",
+          "sha256": "e903f24851d677a7c2f61e134115fc3b6dfa259c5492789f17970e08380423fb"
+        },
+        "prepared": {
+          "path": "cases/sushi-8e991af832ac-hour-v4-reasoning-scoped-v11-review-v2/prepared.json",
+          "sha256": "6fa36d6e83bf415578ca2d75f0603c979b79940921eaf13509284d31d834d4dc"
+        },
+        "raw": {
+          "path": "cases/sushi-8e991af832ac-hour-v4-reasoning-scoped-v11-review-v2/raw.json",
+          "sha256": "214af0ad7c24746ea160e7f5db4534874e8392ef4454a108ec7d2f719e68bd69"
+        },
+        "source": {
+          "path": "cases/sushi-8e991af832ac-hour-v4-reasoning-scoped-v11/source.json",
+          "sha256": "c1cb4bcc44bbacd18c60964d41e370ffe6b8756b4ee53f160c549c9728587bc0"
+        }
+      },
+      "tokens": 896,
+      "loss_start": 711
+    }
+  ],
+  "checks": [
+    "Read full prompts/answers and every scoped reference and claim",
+    "Preserves K4 packed-reader exception and author-reported n32\u201364 coverage",
+    "Standalone model-shaped gathered SwiGLU benchmark distinguished from full-model throughput; hardware absence limited to captured body",
+    "KV8 slowdown at2048 distinguished from rounded KV4 tie; occupancy inference and precision differences explicit",
+    "Independent complete token reproduction and input/reference/claim hash verification"
+  ],
+  "tokenizer_identity": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "limits": [
+    "No source scripts or GPU kernels executed",
+    "No numerical/performance certification, full corpus approval or active dataset changes"
+  ]
+}
