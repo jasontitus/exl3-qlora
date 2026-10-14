@@ -1,8 +1,22 @@
 # EXL3 Apple training and Metal optimization handoff
 
-Snapshot: **2026-10-14 11:18 UTC / 04:18 PDT**. Recheck live processes before taking action. Training is still running on the M5. The Studio checkpoint-50 comparison has finished. It shows better teacher-forced probabilities, but no increase in correct predictions or demonstrated improvement in generated kernels.
+Snapshot: **2026-10-14 12:02 UTC / 05:02 PDT**. Recheck live processes before taking action. Training is still running on the M5. The Studio checkpoint-50 comparison has finished. It shows better teacher-forced probabilities, but no increase in correct predictions or demonstrated improvement in generated kernels.
 
 The goal remains active: build a larger, well reviewed Metal optimization corpus, finish the authorized DeepSeek fine-tune, and evaluate whether it improves useful coding results. This handoff does not pause or complete that goal.
+
+## Latest verified state
+
+The original 11:18 UTC snapshot is preserved in `HANDOFF-2026-10-14-at-1118UTC.md` and Git commit `201944ab`. This document incorporates subsequent completed operations:
+
+- M5 worker 47890 was confirmed live at 12:01:59 UTC with saved step **79 of 458**. The independent exposure audit remains through 69.
+- The exact failed-job lease was released through the reviewed copied-state operation after fresh checks. `controller-v2/recovery-numerical-controls-v1/release-result.json` SHA is `8cf369deb6821e89ca1aa10d9af6ac75ed481261ffadd773e0b3739a41aed0dc`. No signals were sent; original failures remain preserved.
+- Fresh full-payload verification and current continuity passed independent review: `exact-generation-qualification-v1/payload-full-verification-independent-v1/review-v1.json`, SHA `5b06b7dcd478fe3f9fc21d9df99326fb9621b29edfffd13ae341c7ab69936c11`.
+- Corrected numerical controls actually completed **896 GPU dispatches** and released their lease. Output is `full-kernel-evaluation-v1/controller-posix-v3/numerical-controls-run-v2`. Baseline and golden passed all 224 cases each; wrong-row and zero-output controls failed 120 and 181 cases as expected. Independent actual review SHA `cd862660530ecfb22974fb6495e576c5ccaf6afeca883c08f36cc03e497c6915`; native companion SHA `5ebe52f4a22e74bef801d0ec87a8b61f081c13d2fc02afd4901fb98f95e5712c`. Only fixed controls are qualified; no generated model outputs or timing result exists. Golden passing raw floats were not retained, so its qualification relies on the reviewed native checks and recorded errors/digests, not independently reconstructed passing floats.
+- Timing and generated-candidate consumers require separate reviewed POSIX-host and v4-qualification rebindings. New drafts fail closed until timing artifacts are compiled and pinned. Do not use the old v3 qualification hash as a substitute.
+- Six actual 33/129-token serving requests pass isolated CPU validation. Their execution is disabled: the old `ea5f...` binary incorrectly reads top-level vocabulary/context fields that actually live under `text_config`. The isolated Python revision also handles the actual adapter's null metadata and declared 183 MiB runtime metallib. The native parser needs integration and a new linked binary.
+- The old Python serving guard's misleading `memory_cap_gib` only configures a total native box ceiling; it does not enforce process RSS or system reserve. A separate frontend/guard draft distinguishes proposed **40 GiB process / 96 GiB native box / 32 GiB reserve on 128 GiB physical RAM**. Its selected-term estimate is 31.516 GiB, not a measured peak or fit guarantee. Preserve native 16K load preflight, retained draft residents and the fixed 8 GiB wired margin. Bundle: `exact-generation-qualification-v1/short-serving-requests-v1/author-seal-v1.json`, SHA `20348594c63f413d19a1efd1a69f09c5c1ba4f73c31c0d5a5f05d60629157336`; source/resource/native integration review is pending.
+
+Do not repeat completed cleanup or control runs. The next priorities are reviewed timing compilation/rebinding, reviewed native serving parser integration/build, and continued M5 observation/final evaluation.
 
 ## Workspace and operating constraints
 
@@ -31,7 +45,7 @@ Remote root and active attempt:
 /Volumes/Scratch/exl3-training/2026-10-13/metal-mix229-internal-split-v1/attempts/attempt-1791952639336825000
 ```
 
-At 11:18 UTC, worker **47890**, parent **47866**, was live at elapsed **06:40:39**, CPU time **284:01.16**, RSS **18,762,192 KiB**. `train/latest.txt` contained **step-000074**. This is a liveness and checkpoint observation; the independently audited exposure count is through step 69.
+At 12:01:59 UTC, worker **47890**, parent **47866**, was live at elapsed **07:24:38**, CPU time **315:52.80**, RSS **17,315,872 KiB**. `train/latest.txt` contained **step-000079**. This is a liveness and checkpoint observation; the independently audited exposure count is through step 69.
 
 The fixed campaign has **229 training views**, **16 held-out items**, and **458 planned updates**. Each update consumes one complete item. It trains rank-4, alpha-8 LoRA on **layer 39 only**, targeting `wq_a` and `wo_b`: **78,848 parameters**, with no expert adapters. Base weights are frozen.
 
@@ -113,7 +127,7 @@ All paths here are under `kernel-library/next-round-v5/full-kernel-evaluation-v1
 
 Preserved failed run: `controller-v2/numerical-controls-run-v1/{controller.json,native.json,lease.json,authorization.json,stdout.log,stderr.log}`.
 
-Retained owner:
+Historical failed-job owner, now released:
 
 ```text
 ktune-engine-59638-ddf6991af15749f2808f902417f27c6d
@@ -123,11 +137,11 @@ ktune-engine-59638-ddf6991af15749f2808f902417f27c6d
 
 Do not treat the native failure alone as cleanup authorization. Confirm current PID births, parent links, process groups, command closure, lock/claim inodes and owner hashes before release. Never signal unrelated processes or remove another owner's lease.
 
-### Prepared recovery
+### Completed recovery (historical procedure)
 
-`controller-v2/recovery-numerical-controls-v1` contains the exact operation specification, copied original state, read-only observations, guarded `execute_reviewed_release.py`, and tests. Author seal SHA: `bffc04883f449eb55853ca5ee087cd2a26f4c48051685692ac47ad7b85558142`. Eleven CPU tests and two actual read-only checks passed. **No release has been executed at this snapshot.**
+`controller-v2/recovery-numerical-controls-v1` contains the exact operation specification, copied original state, read-only observations, guarded `execute_reviewed_release.py`, and tests. Author seal SHA: `bffc04883f449eb55853ca5ee087cd2a26f4c48051685692ac47ad7b85558142`. Eleven CPU tests and two actual read-only checks passed. **Release completed after review and fresh ownership checks; do not repeat it.**
 
-Independent review is now held at `controller-v2/recovery-independent-v1/review-v1.json`, SHA `e965f0319391d70370795814ae6b896fbcc39f556226c2ed1efcc600fe11ed83`, status `approved_conditional_owned_release`. Eleven author and five independent CPU methods passed; root rehashed all 34 review inputs. Root's fresh concrete ownership and process check remains required. Specification SHA: `630507b4afffe0745a2e87e42b8737a695ed8869e4ccf81e5dbd19c3b04c40cc`; script SHA: `ee283c73dc49f2f1652cfb129ce770757a5bce7bbaf6c56ebb6823d15ea3e9a6`.
+Independent review is now held at `controller-v2/recovery-independent-v1/review-v1.json`, SHA `e965f0319391d70370795814ae6b896fbcc39f556226c2ed1efcc600fe11ed83`, status `approved_conditional_owned_release`. Eleven author and five independent CPU methods passed; root rehashed all 34 review inputs. Root completed the fresh concrete ownership and process check before release. Specification SHA: `630507b4afffe0745a2e87e42b8737a695ed8869e4ccf81e5dbd19c3b04c40cc`; script SHA: `ee283c73dc49f2f1652cfb129ce770757a5bce7bbaf6c56ebb6823d15ea3e9a6`.
 
 Default invocation is read-only and cannot release:
 
@@ -146,7 +160,7 @@ Only after checking the held review, original failure, fresh process closure, un
   --review-sha256 e965f0319391d70370795814ae6b896fbcc39f556226c2ed1efcc600fe11ed83
 ```
 
-The script repeats checks and uses the unchanged helper's mutex with only the copied owned state. Preserve the original failed receipts. This handoff has not executed that command and a release does not authorize the v4 GPU retry.
+The script repeats checks and uses the unchanged helper's mutex with only the copied owned state. Preserve the original failed receipts. This reviewed release has now completed successfully; preserve this command as historical recovery documentation and do not run it again. It did not itself authorize the subsequent separately reviewed v4 run.
 
 ### Prepared hostname repair
 
@@ -156,28 +170,28 @@ The narrow repair uses checked POSIX `gethostname`, the same contract as Python,
 - New fixed job: `qualification-v4/build-01/job.json`, SHA `74f89e4cff4f55f2bc395fd60247d0ce9ed840081520f5d82d9c0c7342d9042f`
 - New binary SHA: `595f30f4509b1eab378f94f175cc0d1a62370b0ffabf756cb4bbed604dc23a7e`
 - `controller-posix-v3/run_control.py`, SHA `d3995fa72670e35a3a5692e1453e25bd963eceb4df28ccd281711dcc54b15263`
-- Pending strict binder: `numeric-request-builder-posix-v2/{bind_numeric.py,pending-v1.json,review-required-v1.json}`
+- Original pending binder documentation (actual binding subsequently completed): `numeric-request-builder-posix-v2/{bind_numeric.py,pending-v1.json,review-required-v1.json}`
 
-Native CPU validation passed; the separate controller passed 17 CPU tests. Four control kernels, 224 input cases, source/dispatch hashes, ABI and tolerances remain unchanged. Fresh compiled-source/ABI/controller/rebind reviews and a final concrete request are still required. The old request `f36192e5...` binds the failing v3 job and must not be reused for v4.
+Native CPU validation passed; the separate controller passed 17 CPU tests. Four control kernels, 224 input cases, source/dispatch hashes, ABI and tolerances remain unchanged. Fresh compiled-source/ABI/controller/rebind reviews and concrete request review completed before the successful v4 run recorded above. The old request `f36192e5...` binds the failing v3 job and must not be reused for v4.
 
-Timing's `timing-v2/timing_body.swift` has the same Foundation hostname bug. Repair and review it separately before timing execution.
+Timing's original `timing-v2/timing_body.swift` has the same Foundation hostname bug and must not execute. Separate `timing-posix-v4` source fixes both hostname selection and explicit numerical-receipt host/API consistency. Independent CPU review: `timing-posix-independent-v1/review-v2.json`, SHA `6197f9d627208b7483467188480b36adb01064cc0bee99faddb8fb5f081f237b`. A compiled timing artifact and concrete execution request remain required.
 
 ## Serving and generated kernel evaluation
 
-The completed control runs have **not** qualified GPU numerical or timing behavior: the only actual control child stopped before device creation. The fixed suite is 28 shapes × 8 families = **224 input instances**, 14,664 output rows per variant. Four curator variants require 896 dispatches. Baseline and golden must pass; intentional negatives must fail as specified.
+Fixed-control GPU numerical behavior is independently qualified by the successful v4 run recorded above. Original v3 failures remain preserved. Timing and model-generated kernels are still unqualified. The fixed suite is 28 shapes × 8 families = **224 input instances**, 14,664 output rows per variant. Four curator variants require 896 dispatches. Baseline and golden must pass; intentional negatives must fail as specified.
 
 The generated-candidate controller is separately reviewed at `generated-controller-v2`. A complete numerical rejection can release only after verified cleanup and permit the other candidate; a rejected candidate cannot enter timing. Infrastructure, unsafe, incomplete, or uncertain runs retain ownership. Review: `generated-controller-independent-v2/review-v2.json`, SHA `89317372a3831f643318aeaab51dda9fb7d58f6bbd71049c5dd67f4d09f8df11`. Twenty-one author methods and 12 independent scenarios passed. Preserve v1 reproductions.
 
 The task prompt remains the fixed **774-token** native agent prompt; final evaluation uses one greedy output each from final458 and its matching zero-B control, cap 4,096, with no retries or repairs. The task is a single curator row-sum task, not 224 independent coding tasks. Real model-generated task outputs are not available yet.
 
-Before generation, qualify serving construction, adapter projection, cached/fresh logits, trainer/serving arithmetic differences, and task-length/context capacity. Use `exact-generation-qualification-v1/PLAN.md`; several CPU helpers now exist beyond that older plan's status text. The serving binary is the reviewed host-build-v5 artifact SHA `ea5f55e4e7ff2cf8fd5905151ba8c39466ac05d2a5712b438fea4c8c37e04bd3`, from serving-v4 source. Do not substitute older binaries or newer libraries.
+Before generation, qualify serving construction, adapter projection, cached/fresh logits, trainer/serving arithmetic differences, and task-length/context capacity. Use `exact-generation-qualification-v1/PLAN.md`; several CPU helpers now exist beyond that older plan's status text. The preserved serving binary is the reviewed host-build-v5 artifact SHA `ea5f55e4e7ff2cf8fd5905151ba8c39466ac05d2a5712b438fea4c8c37e04bd3`, from serving-v4 source. It is not usable with the actual nested text configuration until the isolated parser rebuild is complete. Pin a separately reviewed new build; do not substitute unreviewed binaries or libraries.
 
 ### Runtime and full payload preparation
 
 Under `kernel-library/next-round-v5/exact-generation-qualification-v1`:
 
 - `runtime-package-v1/runtime` contains six byte-identical runtime files, 252,477,016 bytes. Independent static review verified 38 dependency edges, including exact external webp/sharpyuv files and their symlink chain. Review SHA `3498037be7892064d27a13a0258047e5a2ff9621763e5d94b905d317f9665898`. Static closure is not dynamic-loader or GPU qualification.
-- `payload-full-verification-plan-v1/full-verification-attempt-v1/{full-payload.json,identity-continuity.json}` now exists. The unchanged verifier completed successfully at **11:14:24 UTC**, freshly reading **365 files / 426,352,827,347 bytes**. Session 62242 exited 0. Logs are in the parent directory. **Independent receipt and current-continuity audit is pending.**
+- `payload-full-verification-plan-v1/full-verification-attempt-v1/{full-payload.json,identity-continuity.json}` now exists. The unchanged verifier completed successfully at **11:14:24 UTC**, freshly reading **365 files / 426,352,827,347 bytes**. Session 62242 exited 0. Logs are in the parent directory. **Independent receipt and current-continuity audit passed**, SHA `5b06b7dcd478fe3f9fc21d9df99326fb9621b29edfffd13ae341c7ab69936c11`.
 - The legacy 120-file verification remains intact. The new verification adds required actual host/global-before/after fields and 245 incidental files, instead of relabelling old metadata as fresh full verification.
 
 For future launches, measure available memory rather than assuming 80 or 100 GiB is free. The last numerical startup observed about 83.5 billion available bytes, roughly 77.8 GiB; retain explicit units. Do not blindly use an 80 GiB process plus 32 GiB reserve for a Studio serving job. Inventory buffers and caches, prepare a separate reviewed budget that fits, and ramp capacity. No such serving launch is authorized by a static package receipt alone.
@@ -195,7 +209,7 @@ Recent additions are separate library tiers, not automatically training-ready ex
 | `new-metal-batch2-v1` | 2, previously inventoried IDs | CE diagnostic reviewed; positive CE held for nonfinite-target backward behavior. GEMV whole edit 17,173 tokens held for capacity/protected-parent policy. Three historical Metal units compiled. |
 | `cross-source-batch3-v1` | 2 newly captured IDs | TensorFold and oMLX diagnostics source reviewed. TF whole edit 8,729 tokens held for prescale/caller-domain qualification; before/after Metal compiled. oMLX whole edit 64,281 tokens preserved untruncated. |
 | `cross-source-batch3-v1/omlx-7b9e49acee5f/derived-single-score-v1` | Same oMLX change | Complete 6,241-token / 1,423-target component API addition; 11 CPU checks and independent source/replay/index review passed. It is not full split-K integration or an isolated measured speedup. Review SHA `5a4531c7b75884322592920c08f53609a055ea5be40311dd6ddfca233d7f1ba3`. |
-| `historical-batch4-v1` | 3 newly captured IDs | MLX quantized split-K, segmented NAX and split-K routing/AddMM; 18 complete changed files. Three reasoning drafts fit 12K; full edits at 69,166 / 52,142 / 33,053 tokens remain archived untruncated. Independent semantic/lineage review pending. Author seal `c4dcc5cb433eae1e6291ffa061e7b3305384ea6ae82d700da007625151b1bdc7`. |
+| `historical-batch4-v1` | 3 newly captured IDs | MLX quantized split-K, segmented NAX and split-K routing/AddMM; 18 complete changed files. Three reasoning drafts fit 12K; full edits at 69,166 / 52,142 / 33,053 tokens remain archived untruncated. Independent semantic/lineage review passed for three scoped report diagnostics, SHA `f455c0832a014072003e0556b8f88750a623109a98f3c6d0181b0c96e27aee40`; related NAX/AddMM lineage is explicitly recorded. No runtime or active-corpus admission. Author seal `c4dcc5cb433eae1e6291ffa061e7b3305384ea6ae82d700da007625151b1bdc7`. |
 
 This is seven complete captures across those three bundles, of which five IDs are new to the prior local inventory. Multiple exact/diagnostic/component views of one change do not create additional independent optimizations. Keep source review, compilation, numerical validation, and measured performance separate. Author-reported timing remains reported timing unless locally reproduced.
 
@@ -209,28 +223,29 @@ CPU storage/decoder/reference work and QSA selection are available. QSA tests co
 
 ## Resume order and completion requirements
 
-1. Verify M5 worker and saved checkpoint progress; inspect memory and logs without changing the fixed campaign.
-2. Finish independent review of the owned numerical-control lease recovery; root rechecks current process/owner/inode/hash closure and executes only the reviewed copied-state release. No foreign cleanup.
-3. Audit the fresh full-payload receipts and current same-host identity continuity. Assemble actual serving contract/requests from the reviewed runtime and exact metadata.
-4. Obtain fresh v4 native/source/ABI/controller reviews; bind a new concrete numerical request, CPU-validate, independently review, and run with fresh ownership/headroom. Do not reuse the old failing v3 request. Audit actual baseline/golden/negative numerical results.
-5. Repair timing's hostname binding separately. Qualify serving projection/cache/reference/context in serialized reviewed phases. Preserve numerical failures and arithmetic differences; do not loosen tolerances post hoc.
-6. Continue source/lineage review of historical batch4 and source-scoped component data; export only a separately recorded future corpus. Preserve lineage splits and full-item lengths.
-7. After update 458 actually completes, use the existing `two-host-split-v1/final-transfer/check_final_bundle.py` guard to capture/transfer exact final state. Fresh-process evaluate all 16 held-out items, all review strata and code/rationale/EOS categories. Generate the fixed final/zero-B samples, compile, check numerical correctness and time valid candidates with scalar and direct paired comparisons.
+1. Verify M5 worker and checkpoint progress without changing the fixed 229-view / 458-update campaign. Current saved step is 79; the independent exposure audit remains through 69.
+2. Finish the metadata-only reseal and independent receipt for `short-serving-requests-v2`. Its nested text configuration, null adapter metadata, runtime artifact size and explicit-null validation fixes pass CPU tests. Execution remains disabled. Preserve v1. The old binary cannot parse the actual nested model configuration correctly.
+3. Prepare and independently review an isolated native host build using the reviewed build-only workflow, replacing the parser with the staged native patch. Preserve original source, binary, runtime and dependencies. No fetched build scripts or dependency upgrades. Rebind the new binary/runtime package into six actual short requests only after build review.
+4. Qualify actual serving construction, adapter projection, cached/fresh logits, arithmetic bridge and context capacity in serialized guarded phases. Initial six cached children plus twelve fresh-prefix children are 18 total; missing observations remain incomplete. Proposed resource terms are 40 GiB process / 96 GiB native box / 32 GiB reserve, not a measured fit guarantee. Preserve native load preflight and memory guards.
+5. Build the separately reviewed timing POSIX v4 source in a new namespace, pin its artifact/job and review a concrete request. The fixed schedule remains 840 batches / 84,000 dispatches. Source approval is not execution approval; no timing GPU run has occurred.
+6. Continue future library curation using completed historical batch4 and component reviews. Preserve source lineage, explicit reported-versus-local timing and complete-item lengths; do not swap active training data or admit oversized full edits as fitting examples.
+7. After update 458 actually completes, use `two-host-split-v1/final-transfer/check_final_bundle.py` to verify and transfer exact final state. Fresh-process evaluate all 16 held-out items, both review strata and code/rationale/EOS categories. Generate fixed final/zero-B samples, compile, check numerical correctness, and time only valid candidates with scalar and direct paired comparisons. Apply the predeclared rationale rubric without rewarding verbosity.
+8. Continue isolated Qwen CPU work when practical; complete-model forward, sparse attention backward and recurrent backward remain missing. Do not claim 16K support.
 
 Complete the goal only when the larger training run and final evaluation are finished and benefit or lack of benefit is honestly reported. Lower pooled loss, a changing adapter, or a successful save does not prove useful generated Metal optimization.
 
 ## Git and agent handoff
 
-Latest completed local product commit before this handoff: **`72d73b7d`**, documenting audited exposures/evaluation work in `apple/reports/m5-successor/progress-step69.json`. Other useful local commits: `bf180022` Qwen design; `17454054` reusable historical Metal closure compiler; `f9e4250f` prior baseline/training progress.
+Original handoff commit: **`201944ab`**. Earlier completed product commit: **`72d73b7d`**, documenting audited exposures/evaluation work in `apple/reports/m5-successor/progress-step69.json`. Other useful local commits: `bf180022` Qwen design; `17454054` reusable historical Metal closure compiler; `f9e4250f` prior baseline/training progress.
 
 Push remains unperformed after an earlier automatic review rejected public-fork publication without explicit public-sharing consent. Do not retry or bypass that rejection. Local documentation/commits are authorized.
 
 Continuation ledger: `kernel-library/next-round-v5/m5-successor/current-run.json`. Some historical fields remain old observations; prefer explicitly dated live observations and actual receipts. The product report is a snapshot, not the live ledger.
 
-Available agent tasks:
+Available agent tasks at this handoff:
 
-- `/root/adversarial_code`: current recovery review, v4/native/controller approval, then remaining audit backlog.
-- `/root/ingest_engines_b`: v4 compiled bundle/controller/binder held; awaits fresh reviews before final request binding.
-- `/root/quality_research`: recovery operation held; data component and rubric sealed. No release executed.
+- `/root/adversarial_code`: historical batch4 and timing v4 CPU reviews complete; finish serving v2 reseal review, then review the new native build and concrete requests.
+- `/root/ingest_engines_b`: timing host/API repair sealed and independently CPU approved. No timing compilation or GPU action; next work requires the new build plan/artifact review.
+- `/root/quality_research`: six serving requests CPU validated; source repair passes 22 author Python, eight independent CPU and four pure Zig methods. Metadata-only reseal pending after separating the extended reviewer test filename. No native rebuild or serving execution.
 
-Use `followup_task` to wake completed agents; `send_message` alone does not start an idle agent. Agents were asked to preserve current work for this handoff, not to stop the live M5 run.
+Use `followup_task` to wake completed agents; `send_message` alone does not start an idle agent. Handoff does not stop the live M5 run. All completed baselines, failed attempts and receipts remain preserved.
