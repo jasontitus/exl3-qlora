@@ -1,0 +1,20 @@
+{
+  "time": "2026-10-14T02:44:07.903924+00:00",
+  "status": "independently_reviewed",
+  "reviewer": "adversarial_code",
+  "files": {
+    "apple/src/exl3_mlx/upstream_data.py": "fee21e5f425e6d6ff399d43263d37141e5e5244266935301ef698bfd36c30613",
+    "apple/tests/test_upstream_data.py": "4eed24b2f81a3e2efc40c068d3925ae5a1957879931b647f3f01241016f7705d"
+  },
+  "root_tests": {
+    "passed": 136,
+    "seconds": 33.16,
+    "scope": "upstream plus exact and diagnostic reviewed import"
+  },
+  "independent_tests": {
+    "passed": 60,
+    "seconds": 25.84,
+    "scope": "all upstream tests and fresh import identity check"
+  },
+  "findings": "No blocker. Same local-only loader; shared embedded/separate template identity; pairing and complete-token checks unchanged. Fresh helper import did not import mlx or mlx_lm."
+}

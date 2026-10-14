@@ -73,18 +73,9 @@ def _validate_tokens(row, *, seq_length, vocab_size, truncate):
 
 
 def _helpers():
-    from transformers import PreTrainedTokenizerFast
+    from .data import load_tokenizer, tokenizer_identity
 
-    def load(root):
-        return PreTrainedTokenizerFast.from_pretrained(str(root), local_files_only=True)
-
-    def identity(root):
-        return {
-            name: _file_sha(Path(root) / name)
-            for name in ("tokenizer.json", "tokenizer_config.json", "chat_template.jinja")
-        }
-
-    return load, _tokenize_pair, identity, _validate_tokens
+    return load_tokenizer, _tokenize_pair, tokenizer_identity, _validate_tokens
 
 
 def _oid(value):

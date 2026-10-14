@@ -21,6 +21,25 @@ sys.modules[spec.name] = data
 spec.loader.exec_module(data)
 
 
+def test_upstream_identity_supports_embedded_template_and_detects_override(tmp_path):
+    (tmp_path / "tokenizer.json").write_text("{}")
+    (tmp_path / "tokenizer_config.json").write_text(
+        json.dumps({"chat_template": "{{ messages }}"})
+    )
+    identity = data._helpers()[2]
+    embedded = identity(tmp_path)
+    assert set(embedded) == {"tokenizer.json", "tokenizer_config.json"}
+    (tmp_path / "chat_template.jinja").write_text("{{ messages | length }}")
+    separate = identity(tmp_path)
+    assert set(separate) == {*embedded, "chat_template.jinja"}
+    assert separate != embedded
+    (tmp_path / "chat_template.jinja").unlink()
+    assert identity(tmp_path) == embedded
+    (tmp_path / "tokenizer_config.json").write_text("{}")
+    with pytest.raises(ValueError, match="No valid explicit local chat template"):
+        identity(tmp_path)
+
+
 def git(repo, *args):
     return (
         subprocess.check_output(["git", "-C", str(repo), *args], stderr=subprocess.DEVNULL)
