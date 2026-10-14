@@ -12,7 +12,7 @@ import sys
 import tempfile
 from pathlib import Path, PurePosixPath
 
-from .agent_edits import full_commit_images, parse_command, replay, unified_patch
+from .agent_edits import _path, full_commit_images, parse_command, replay, unified_patch
 from .context import MAX_CONTEXT_TOKENS
 from .evaluation_audit import _json
 
@@ -148,14 +148,23 @@ def validate_source_blobs(source):
     require(isinstance(source.get("files"), dict) and source["files"], "Missing source files")
     for name, pair in source["files"].items():
         require(isinstance(name, str), "Source path must be text")
+        _path(name)
         mapping(pair, "source file pair", {"role", "before", "after"})
-        require(pair.get("role") in {"changed", "context"}, "Unknown source role")
+        require(
+            isinstance(pair["role"], str) and pair["role"] in {"changed", "context"},
+            "Unknown source role",
+        )
         for side in ("before", "after"):
             value = pair[side]
             if value is None:
                 continue
             mapping(value, "source blob", {"content", "mode", "sha256", "blob"})
             require(isinstance(value["content"], str), "Source content must be text")
+            require(
+                isinstance(value["mode"], str) and value["mode"] in {"100644", "100755"},
+                "Source requires regular text modes",
+            )
+            require("\0" not in value["content"], "Binary source unsupported")
             content = value["content"].encode()
             require(
                 sha(content) == value["sha256"]
@@ -166,14 +175,85 @@ def validate_source_blobs(source):
                 "Captured source blob mismatch: " + name,
             )
 
+        require(
+            pair["role"] != "context" or pair["before"] == pair["after"],
+            "Changed source cannot be hidden as context",
+        )
+
 
 def source_images(source):
     validate_source_blobs(source)
     return full_commit_images(source)
 
 
-def source_edit(source, raw, prior):
-    before, after = source_images(source)
+def scoped_images(source, before, after, prior, *, allow_scoped):
+    scope = source.get("edit_scope")
+    if scope is None:
+        require(not prior.get("omitted_documentation"), "Omitted edits unsupported")
+        return before, after
+    require(allow_scoped, "File-scoped edits require mixed v2 admission")
+    mapping(scope, "edit scope")
+    require(
+        set(scope) == {"format", "coverage", "selected_paths", "omitted_paths"}
+        and scope["format"] == "reviewed-file-edit-scope-v1"
+        and scope["coverage"] == "complete_selected_file_edits",
+        "Invalid edit scope",
+    )
+    selected, omitted = scope["selected_paths"], scope["omitted_paths"]
+    require(
+        isinstance(selected, list)
+        and selected
+        and all(isinstance(p, str) for p in selected)
+        and selected == sorted(set(selected)),
+        "Invalid selected paths",
+    )
+    require(isinstance(omitted, dict) and omitted, "Explicit nonempty omissions required")
+    require(
+        set(selected).isdisjoint(omitted) and set(selected) | set(omitted) == set(before),
+        "Incomplete changed-file partition",
+    )
+    for name, declaration in omitted.items():
+        pair = source["files"][name]
+        mapping(declaration, "omitted documentation")
+        require(
+            set(declaration) == {"classification", "before_sha256", "after_sha256", "reason"}
+            and declaration["classification"] == "documentation"
+            and isinstance(declaration["reason"], str)
+            and declaration["reason"].strip(),
+            "Invalid documentation omission",
+        )
+        require(
+            PurePosixPath(name).suffix == ".md"
+            and pair["before"] is not None
+            and pair["after"] is not None
+            and pair["before"]["mode"] == pair["after"]["mode"],
+            "Only existing unchanged-mode Markdown omissions supported",
+        )
+        require(
+            declaration["before_sha256"] == sha(before[name])
+            and declaration["after_sha256"] == sha(after[name]),
+            "Omission source hash mismatch",
+        )
+    historical = prior.get("omitted_documentation")
+    if historical:
+        require(
+            isinstance(historical, dict) and set(historical) == set(omitted),
+            "Historical omission receipt conflicts with scope",
+        )
+        for name, declaration in historical.items():
+            mapping(declaration, "historical omission", {"before_sha256", "after_sha256", "reason"})
+            require(
+                declaration["before_sha256"] == omitted[name]["before_sha256"]
+                and declaration["after_sha256"] == omitted[name]["after_sha256"]
+                and isinstance(declaration["reason"], str)
+                and declaration["reason"].strip(),
+                "Historical omission receipt conflicts with scope",
+            )
+    return ({p: before[p] for p in selected}, {p: after[p] for p in selected})
+
+
+def source_edit(source, raw, prior, *, allow_scoped=False):
+    full_before, full_after = source_images(source)
     mapping(raw, "raw", {"messages", "tools"})
     mapping(prior, "replay", {"files", "patch_sha256", "exact_scoped_replay"})
     from .tool_data import normalize_tool_row
@@ -191,7 +271,7 @@ def source_edit(source, raw, prior):
     args = function["arguments"]
     args = _json(args) if isinstance(args, str) else args
     require(function["name"] == "exec_command" and set(args) == {"cmd"}, "Unexpected edit tool")
-    require(not prior.get("omitted_documentation"), "Omitted edits unsupported")
+    before, after = scoped_images(source, full_before, full_after, prior, allow_scoped=allow_scoped)
     parse_command(args["cmd"])
     try:
         current = replay(args["cmd"], before, after)
@@ -203,7 +283,20 @@ def source_edit(source, raw, prior):
         and current["files"] == prior.get("files"),
         "Replay receipt mismatch",
     )
-    stable, payload = source_identity(before, after)
+    stable, payload = source_identity(full_before, full_after)
+    selected_stable, selected_payload = source_identity(before, after)
+    current.update(
+        {
+            "coverage": "complete_selected_file_edits"
+            if source.get("edit_scope")
+            else "complete_commit_text_edits",
+            "full_commit_replay": not bool(source.get("edit_scope")),
+            "selected_stable_patch_id": selected_stable,
+            "selected_payload_sha256": selected_payload,
+            "full_stable_patch_id": stable,
+            "full_payload_sha256": payload,
+        }
+    )
     return current, stable, payload
 
 
@@ -398,7 +491,9 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
         reviews.setdefault(entry["review"]["path"], [review, set()])[1].add(entry["id"])
         source_record, raw, prepared = values["source"], values["raw"], values["prepared"]
         if entry["kind"] == "exact_edit":
-            current, stable, payload = source_edit(source_record, raw, values["replay"])
+            current, stable, payload = source_edit(
+                source_record, raw, values["replay"], allow_scoped=mixed
+            )
         else:
             from .reviewed_diagnostics import admit_diagnostic
 
@@ -424,6 +519,11 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
             "Invalid lineage IDs",
         )
         keys = {"patch:" + stable, "payload:" + payload, "repo-commit:" + repository + ":" + commit}
+        if entry["kind"] == "exact_edit":
+            keys |= {
+                "patch:" + current["selected_stable_patch_id"],
+                "payload:" + current["selected_payload_sha256"],
+            }
         require(
             mixed or not seen.intersection(keys),
             "Duplicate commit/patch/payload; select explicitly",
@@ -433,7 +533,11 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
         require(view not in seen_views, "Duplicate training view")
         seen_views.add(view)
         seen.update(keys)
-        connected = set(lineage) | {"commit:" + c for c in commits} | {"patch:" + stable}
+        connected = (
+            set(lineage)
+            | {"commit:" + c for c in commits}
+            | {k for k in keys if k.startswith(("patch:", "payload:"))}
+        )
         groups.append((entry["split"], connected, entry["id"]))
         normalized, _, _ = _normalize(raw, None, None)
         actual = tokenize_row(normalized, tokenizer)

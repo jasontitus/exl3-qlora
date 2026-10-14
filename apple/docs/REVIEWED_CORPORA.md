@@ -125,3 +125,25 @@ provenance, or create a separate report-conditioned task with the observations
 explicitly supplied. Likewise, do not assert unrelated repairs from omitted code.
 Review prompt/answer compatibility separately from source truth and hash checks;
 the importer cannot determine this semantic relationship mechanically.
+
+## Explicit documentation scope in version 2
+
+An exact edit may omit independently reviewed documentation changes while retaining
+all captured source. This requires a source `edit_scope` object with format
+`reviewed-file-edit-scope-v1`, coverage `complete_selected_file_edits`, sorted unique
+`selected_paths`, and `omitted_paths`. Selected and omitted paths must partition
+all changed files exactly. Every omission declares `classification: documentation`,
+exact `before_sha256`/`after_sha256`, and a nonempty review reason. This increment
+accepts only existing `.md` files with unchanged regular modes. A filename is not
+proof of documentation semantics: the independent review must establish that no
+runtime, build, test or host edit is omitted. Context records must have identical
+before/after images and modes, so changed files cannot hide under a context role.
+
+The final action must replay the complete selected files exactly. Historical
+`omitted_documentation` receipts, when present, must agree on paths and hashes.
+Version 1 continues to refuse scoped edits. Output explicitly records
+`full_commit_replay: false` for a scoped edit, along with both full-source and
+selected-edit identities. Both identities participate in duplicate, protected
+source and cross-split checks: changing unrelated documentation cannot disguise
+an identical executable edit. All omitted source bytes remain in provenance;
+scoped replay does not establish full-commit compilation or benchmark results.

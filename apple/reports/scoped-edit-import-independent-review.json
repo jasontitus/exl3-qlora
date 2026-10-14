@@ -1,0 +1,45 @@
+{
+  "format": "scoped-documentation-import-independent-review-v1",
+  "status": "approved_cpu_scoped_implementation",
+  "passed": true,
+  "reviewer": "adversarial_code",
+  "created_utc": "2026-10-14T05:15:50.247617+00:00",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/reviewed_corpus.py": "ac1a7ba0508f8fe6ca492c515f3da624ddd99eaca0f86eade2d3c9baf82cfd11",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/agent_edits.py": "a22102959a064209c85f2b34c0f206e52a2cc5e1c38ea21a72924112035a3625",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_reviewed_scope.py": "2a873e79328254a9fc032c436837d2a4ddb9a692e7822abe38dc9cedc4720fff",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_reviewed_corpus.py": "e917773158605ab3d90c044bb6c351f191c0a381a944936a0c9941c77b5ad9c6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_reviewed_diagnostics.py": "dc9594b56c9e399c8c824ee102382e79232be4022c5e2a6f7c2f56f2df2606e2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/docs/REVIEWED_CORPORA.md": "0f611be92615d68acc6e39f6b2f76b3667a200d95e5270e8c96a2765d428c0bd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/test_scoped_import_independent.py": "099541efd9792582837ac20cec7c7f7bef296d021062bb37cbb26f067a22c85f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/replay_migration_scope_independent.py": "56645aa1ecc677fabf607e03e6b0f0f11149d812869094304a0f0941620f1caa",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/scoped-migration-202-independent-replay.json": "62c4b2c3df197dc3cf30844bf79660873dbb9c07c2a4bb8960681bd9278c9ae3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-a/peer-reviews/scoped-documentation-migration-independent-review-v1.json": "d628effc6aa32726c46e098d89d251511c7257290c478e81c54d60e5be1c1f1b"
+  },
+  "validation": {
+    "author_regressions": 115,
+    "additional_independent_regressions": 10,
+    "combined_passed": 125,
+    "actual_captured_source_replays": 202,
+    "scoped_cases": 19,
+    "omitted_markdown_paths": 39,
+    "dependency_role_mapping_cases": 12,
+    "heldout_raw_prepared_unchanged": 16,
+    "gpu_executed": false,
+    "model_tensor_payloads_read": false
+  },
+  "findings": [],
+  "assessed_contract": [
+    "Version1 refuses optional file scope; version2 requires a nonempty exact selected/omitted partition of actual changed paths.",
+    "All source paths/blobs/modes are validated before filtering; context requires exact before/after equality.",
+    "Omitted existing unchanged-mode Markdown blobs require both hashes and reviewer reason; the prior omission receipt must agree.",
+    "Complete selected-file Git replay is repeated; full_commit_replay is false. Full and selected identities both participate in protected-source, source-view, and cross-split checks.",
+    "Independent malformed-source and protected-full/selected-payload tests reject before publication; malformed role type now produces an actionable CLI error."
+  ],
+  "limitations": [
+    "Markdown extension is a schema restriction, not semantic proof; all39 actual omissions were separately reviewed in the bound migration receipt.",
+    "This approval covers the implementation and exact source replay, not final approval or authenticity of245 portable review wrappers.",
+    "No compile, numerical, performance, or whole-commit replay qualification is implied for scoped edits.",
+    "Stable normalized patch and exact payload checks do not establish absence of all semantic duplicates."
+  ]
+}
