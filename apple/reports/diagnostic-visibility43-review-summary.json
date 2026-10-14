@@ -1,0 +1,27 @@
+{
+  "status": "independently_reviewed_reasoning_candidates",
+  "reviewed_at": "2026-10-14T04:16:08.193175+00:00",
+  "counts": {
+    "candidates": 43,
+    "root_reviewed": 16,
+    "independent_agent_reviewed": 27,
+    "supervised_tokens": 5888,
+    "max_serialized_tokens": 3455
+  },
+  "inputs": {
+    "corrected_index_sha256": "a0c48791faa39eb6a7122ad53ca9eec0d90139d0f4ec22c6e82be8f09bcae771",
+    "root_later16_review_sha256": "a7253047c52ab6fd47f266d3005e922aee90fef13fe1ef79330d62ac4807c0b0",
+    "independent_earlier27_review_sha256": "912f13da6ea360b8b1f523c92bee5017a81d5165cb99d68e64f5c472427dc59b",
+    "root_count_continuity_sha256": "b677335f95ccae23083e04eb389b6041670db6b24e75a46dee3ca2b13f3e08d9"
+  },
+  "checks": [
+    "Root verified all290 input pins of independent27review",
+    "Corrected index actual counts and allinputhashes independently verified",
+    "Both reviews consider actual agent-visible prompts and inference/measurement distinction"
+  ],
+  "limits": [
+    "Candidate semantic approval does not mean every historical shader is locally compiled, numerically validated or benchmarked",
+    "Full mixed-corpus importer/package gate still pending",
+    "Active229campaign unchanged; its original43diagnostics differ from corrected candidates"
+  ]
+}
