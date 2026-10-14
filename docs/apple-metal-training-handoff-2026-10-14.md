@@ -1,5 +1,24 @@
 # EXL3 Apple training and Metal optimization handoff
 
+## Latest result — 2026-10-14 20:18 UTC
+
+M5 worker **47890** remains live, with **172/458 updates saved**. The campaign still uses 229 complete training views (186 exact edits, 43 diagnostics), 16 held-out items, fixed runtime-v5 and layer39 attention LoRA on wq_a/wo_b (rank 4, 78,848 parameters). Independent exposure/sampler audit covers 165 updates; the separate saved-metric continuity review covers 169, with finite losses/gradient norms and reported peak MLX 71.2798 GiB. Consecutive losses refer to different items and do not measure convergence.
+
+The Studio checkpoint 150 matched comparison has completed both fresh processes on the four predeclared held-out items / 11,077 targets. Worker11734, runner68766 and controller68761 are terminal; the original owned lease completed exit0 and reports released, cleanup_verified=true. Root rehashed 202 static/accepted evidence/log identities. The independent CPU metric replay exactly equals the primary result; independent metric review passed. Final independent process/provenance review is pending at this snapshot.
+
+- Overall token-weighted NLL **0.1332943283→0.1227578220**, **7.9047% lower**. All four whole-item losses improve. Correct predictions **10,707→10,717**:23 corrected, 13 regressed.
+- Added Metal code:4,607 targets, NLL **0.0839454901→0.0802981948**, **4.3448% lower**, correct predictions **4,502→4,502** (6 corrected, 6 regressed). Item 3347's added-code loss worsens and correctness falls 710→709. Within the two source-scoped reviewed cases, added-code correctness falls 961→960.
+- Added host code:261 targets, NLL **0.3402387049→0.3332594515**, correctness 235→237. Added Metal+host union has 4,868 targets, NLL 0.0976867656→0.0938608259, correctness 4,737→4,739.
+- **59.4% of total NLL-sum improvement comes from edit-format boilerplate.** Five rationale targets show lower loss but unchanged 1 correct; four EOS targets remain 4 correct. Neither supports a broad reasoning claim.
+
+This demonstrates a narrow improvement in teacher-forced held-out historical-target likelihood. It does not demonstrate better generated patches, fewer Metal errors, faster inference or faster kernels. All four cases are from llama.cpp and are fixed length representatives, not random independent tasks. Two references retain unresolved memory-access/barrier contracts; lower loss may imitate their defects. Preserve these rows and disclose both source strata. Final 458/all 16 and generated-patch compilation, numerical parity and timing remain outstanding; do not select settings/checkpoints using this interim probe.
+
+Receipts are under `kernel-library/next-round-v5/intermediate-evaluation150-v1`: `future-execution/paired-token-audit.json`, `reporting-audit-v1/actual-independent-token-replay.json`, `actual-metrics-review-v1/review-v1.json` (SHA84f1f61f580b9c88fa63323a20bf69706b1ef36636901142cf44462dd54ef971), and `root-actual-completion-observation-v1`.
+
+**New source collection remains paused.** The reviewed inventory is `docs/metal-optimization-library-inventory-2026-10-14.md` (commit6adb96bd). No new collection, model download or GPU job was launched during this result audit. Existing Qwen side work is not resumed under the user's evaluation-only focus.
+
+The preceding result supersedes the historical status below; dated observations are preserved.
+
 ## Latest verified state — 2026-10-14 19:02 UTC
 
 M5 worker **47890** is live, with **160/458 updates saved** (fresh SSH: elapsed 14:25:08, CPU 612:08.73, RSS 18,469,728 KiB). The 229 training views, 16 held-out items, runtime-v5 and final-458 choice remain unchanged. Independently audited exposure remains through 150: 121 exact edits / 29 diagnostics, 280,642 target presentations.
