@@ -39,5 +39,37 @@
     "evaluation_limit": "Numerical NLL improvement on the unchanged heldout set would not certify these43 diagnostic answers, evidence taxonomy, independent optimization discovery or generated-kernel correctness. Mechanical43/43 consistency is not a quality pass. No new heldout contamination or payload mutation was found by this review."
   },
   "action": "Preserve running229 data; prepare and review separate corrected dataset. Carry limitations into final quality report.",
-  "quality_demonstrated": false
+  "quality_demonstrated": false,
+  "exposure_audit": {
+    "train_sha256": "eace04e707b6627f6c600f9f2c286dbe15bdfa9f4de9062ddc9cb90c6ed5dcb3",
+    "train_rows": 229,
+    "total_target_tokens": 427072,
+    "affected_answers": [
+      {
+        "id": "ds4-3d14d1c10684-hour-v4-reasoning",
+        "zero_based_train_row": 159,
+        "whole_answer_target_tokens": 149
+      },
+      {
+        "id": "splash-7d7cadd19113-hour-v3-reasoning",
+        "zero_based_train_row": 163,
+        "whole_answer_target_tokens": 150
+      },
+      {
+        "id": "sushi-1ea9492abc01-hour-v4-reasoning",
+        "zero_based_train_row": 169,
+        "whole_answer_target_tokens": 165
+      },
+      {
+        "id": "sushi-497d71d94eed-hour-v4-reasoning",
+        "zero_based_train_row": 184,
+        "whole_answer_target_tokens": 150
+      }
+    ],
+    "affected_whole_answer_target_tokens": 614,
+    "whole_answer_token_fraction": 0.0014376966881462611,
+    "planned_affected_item_updates": 8,
+    "planned_total_item_updates": 458,
+    "limits": "614 tokens count complete affected answers, not inaccurate spans. Equal per-item updates mean token share is not optimizer weight or evidence of negligible impact. Actual completed exposures require final training cursor audit."
+  }
 }
