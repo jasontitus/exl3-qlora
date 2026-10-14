@@ -1,0 +1,35 @@
+{
+  "schema": "product-prepared-gate-independent-review-v1",
+  "status": "approved_scoped_preparation_gate",
+  "reviewer": "adversarial_code",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/scripts/prepare_agent_corpus_run.py": "1e459d866c19a13209ae03eaef956f8cb2d5a43ddb2aaed7daa0c8bb891b2cf7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_prepare_agent_corpus_run.py": "ac78d9def6b0c504a45f7475b8292ddb784e342a270acc78c7309a2579a0396b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/product-prepared-gate-independent-tests.xml": "756cc7c9278e514a159fb78ffc220a0889bb102d60e3f639525b82ff79523ac8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/expanded-candidate-12288-v3/ktune-import.json": "fba890f2a5fb4c362c32db8a2d0f72c0904a1553a890baf254832b56561b6735",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/expanded-candidate-12288-v2/ktune-import.json": "7eb5352580703765806dfe5c3d8fa1238141ec7f20fc9fba363569a44326aefa",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/prepared-project/project.json": "938219736e869f8b151cebf6a33df302a41af9154aabbd363cf5d603f0addaa8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/prepared-project/data/train.jsonl": "eace04e707b6627f6c600f9f2c286dbe15bdfa9f4de9062ddc9cb90c6ed5dcb3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/prepared-project/data/test.jsonl": "0720ead3d696e6e9215e99cbf18dd26e532def8c309add06bbbe21efe1841ad0"
+  },
+  "checks": [
+    "40 author CPU tests independently passed with no model/MLX/GPU calls.",
+    "Actual corrected229train+16test M5-prepared rows pass exact sidecar IDs/masks; actual earlier four-row mismatch rejects at trainrow221 beforeprovenancebinding.",
+    "Source capture precedes projectcreation; afterimport strict types/counts/IDs/masks checked beforeprovenancebind, then entire corpus rechecked.",
+    "Dangling symlink in optionalemptyvalid sidecar originallyaccepted as missing; fixed and independently repro now rejects.",
+    "Only optional packed-cache configuration passthrough plus equality gate; existing active successor helper/runtime untouched."
+  ],
+  "findings": [
+    {
+      "id": "optional-valid-dangling-symlink",
+      "severity": "low",
+      "status": "fixed_before_approval"
+    }
+  ],
+  "limitations": [
+    "Token-sidecar equality proves imported identities, not independent semantic/source quality or kernel correctness.",
+    "This helper requires explicit reviewed sidecars; new incompatibility for old corpora lacking sidecars is intentional failclosed.",
+    "Vocabulary/forbiddentoken checks remain actual SFT importer responsibilities; gate structurally rejects noninteger/bool/negative IDs and invalid masks.",
+    "No retroactive approval or mutation of active runtime/project; product future use only."
+  ]
+}

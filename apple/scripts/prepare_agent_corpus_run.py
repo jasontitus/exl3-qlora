@@ -20,7 +20,7 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def read_json(path):
+def decode_json(value):
     def pairs(items):
         result = {}
         for key, value in items:
@@ -32,7 +32,11 @@ def read_json(path):
     def invalid(value):
         raise ValueError(f"Nonfinite JSON: {value}")
 
-    return json.loads(Path(path).read_text(), object_pairs_hook=pairs, parse_constant=invalid)
+    return json.loads(value, object_pairs_hook=pairs, parse_constant=invalid)
+
+
+def read_json(path):
+    return decode_json(Path(path).read_text())
 
 
 def write_new(path, value):
@@ -128,6 +132,84 @@ def corpus_inputs(corpus, max_length):
     return root, {**report, "manifest_sha256": digest(root / "ktune-import.json")}, counts
 
 
+def prepared_rows(payload, *, split, count, max_length):
+    """Decode complete token rows, refusing bool/int equivalence and ambiguous JSON."""
+    rows = [decode_json(line) for line in payload.splitlines() if line.strip()]
+    if len(rows) != count:
+        raise ValueError(f"Prepared {split} row count differs from the bound corpus")
+    for i, row in enumerate(rows):
+        if not isinstance(row, dict) or set(row) != {"input_ids", "loss_start"}:
+            raise ValueError(f"Prepared {split} row {i} must contain input_ids and loss_start")
+        ids, start = row["input_ids"], row["loss_start"]
+        if (
+            not isinstance(ids, list)
+            or not 2 <= len(ids) <= max_length
+            or any(type(v) is not int or v < 0 for v in ids)
+            or type(start) is not int
+            or not 1 <= start < len(ids)
+        ):
+            raise ValueError(f"Prepared {split} row {i} has invalid token IDs or loss mask")
+    return rows
+
+
+def capture_prepared_sidecars(corpus, report, counts, max_length):
+    """Require pre-reviewed token identities before creating a trainable project."""
+    captured = {}
+    for split, count in counts.items():
+        name = f"{split}.prepared.jsonl"
+        path = corpus / name
+        expected = report["artifacts_sha256"].get(name)
+        if expected is None and count == 0 and not path.exists() and not path.is_symlink():
+            captured[split] = {"path": None, "sha256": None, "rows": []}
+            continue
+        if expected is None:
+            raise ValueError(f"Corpus must hash-bind {name} before preparation")
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(f"Prepared sidecar must be a regular file: {name}")
+        payload = path.read_bytes()
+        actual = hashlib.sha256(payload).hexdigest()
+        if actual != expected:
+            raise ValueError(f"Prepared sidecar changed: {name}")
+        rows = prepared_rows(payload, split=split, count=count, max_length=max_length)
+        captured[split] = {"path": str(path), "sha256": actual, "rows": rows}
+    return captured
+
+
+def verify_prepared_identity(project, captured, counts, max_length):
+    """Fail before provenance binding if reserialization changed any ID or mask."""
+    splits = {}
+    for split, expected in captured.items():
+        path = project / "data" / f"{split}.jsonl"
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(f"Prepared project {split} must be a regular file")
+        payload = path.read_bytes()
+        rows = prepared_rows(payload, split=split, count=counts[split], max_length=max_length)
+        if rows != expected["rows"]:
+            mismatch = next(i for i, (a, b) in enumerate(zip(rows, expected["rows"])) if a != b)
+            raise ValueError(
+                f"Prepared token identity differs for {split} row {mismatch}; "
+                "provenance remains pending, do not train. Rebuild and review the published "
+                "raw/prepared corpus together; prompt-only normalization is not waived."
+            )
+        if expected["path"] and digest(expected["path"]) != expected["sha256"]:
+            raise ValueError(f"Prepared source sidecar changed during import: {split}")
+        splits[split] = {
+            "examples": len(rows),
+            "source_path": expected["path"],
+            "source_sha256": expected["sha256"],
+            "project_path": str(path),
+            "project_sha256": hashlib.sha256(payload).hexdigest(),
+            "selected_examples_sha256": hashlib.sha256(
+                json.dumps(rows, sort_keys=True, separators=(",", ":")).encode()
+            ).hexdigest(),
+        }
+    return {
+        "schema": "prepared-token-identity-v1",
+        "status": "exact_ids_and_masks",
+        "splits": splits,
+    }
+
+
 def argv(python, module, values):
     return [str(python), "-m", module, *map(str, values)]
 
@@ -216,6 +298,7 @@ def prepare(args):
         raise FileExistsError("Use fresh plan and project paths")
     runtime, snapshot, sft = activate(args.runtime)
     corpus, report, counts = corpus_inputs(args.corpus, args.max_length)
+    expected_prepared = capture_prepared_sidecars(corpus, report, counts, args.max_length)
     config = sft.SFTConfig(
         output_dir=str(project),
         max_steps=2 * counts["train"],
@@ -250,6 +333,11 @@ def prepare(args):
         raise ValueError(
             "SFT import changed corpus counts; provenance remains pending, do not train"
         )
+    prepared_identity = verify_prepared_identity(
+        project, expected_prepared, counts, args.max_length
+    )
+    if corpus_inputs(corpus, args.max_length)[1] != report:
+        raise ValueError("Corpus identity changed during preparation; provenance remains pending")
     trainer.bind_provenance(corpus, report)
     manifest = trainer._manifest()
     folder = project / "experiment"
@@ -288,6 +376,7 @@ def prepare(args):
         "project": str(project),
         "initial_project_sha256": digest(project / "project.json"),
         "corpus_manifest_sha256": report["manifest_sha256"],
+        "prepared_identity": prepared_identity,
         "counts": counts,
         "config": dataclasses.asdict(config),
         "resources": {key: getattr(config, key) for key in sft.RESOURCE_FIELDS},

@@ -36,6 +36,12 @@ def corpus(tmp_path):
     rows = {"train": [{"text": "one"}, {"text": "two"}], "valid": [], "test": [{"text": "test"}]}
     for name, values in rows.items():
         (root / (name + ".jsonl")).write_text("".join(json.dumps(row) + "\n" for row in values))
+    for name, lengths in [("train", [5, 8]), ("test", [6])]:
+        (root / (name + ".prepared.jsonl")).write_text(
+            "".join(
+                json.dumps({"input_ids": list(range(n)), "loss_start": 2}) + "\n" for n in lengths
+            )
+        )
     report = {
         "format": "exl3-agent-kernel-corpus-v1",
         "truncated": 0,
@@ -96,7 +102,7 @@ def test_corpus_integrity_admission_guards(tmp_path, mutation):
         helper.corpus_inputs(root, 8)
 
 
-def prepare_fixture(tmp_path, monkeypatch, *, changed_count=False):
+def prepare_fixture(tmp_path, monkeypatch, *, changed_count=False, mutate_after_import=None):
     from exl3_mlx.sft import RESOURCE_FIELDS, SFTConfig, SFTTrainer
 
     runtime = snapshot(tmp_path)
@@ -134,6 +140,8 @@ def prepare_fixture(tmp_path, monkeypatch, *, changed_count=False):
                     )
                 )
             dump(self.root / "project.json", self.manifest)
+            if mutate_after_import is not None:
+                mutate_after_import(self.root, source)
             return self.manifest
 
         def bind_provenance(self, source, report):
@@ -180,7 +188,106 @@ def test_prepare_bound_fixed_recipe_and_commands_without_execution(tmp_path, mon
     for phase in ["baseline", "adapter", "preflight-test"]:
         assert "--token-metrics" in plan["commands"][phase]
     assert plan["commands"]["adapter"][-1] == "<FIXED_FINAL_CHECKPOINT>"
+    assert plan["prepared_identity"]["status"] == "exact_ids_and_masks"
+    for split, count in (("train", 2), ("test", 1), ("valid", 0)):
+        assert plan["prepared_identity"]["splits"][split]["examples"] == count
     assert not (Path(args.project) / "attempts").exists()
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        "prompt",
+        "target",
+        "mask",
+        "serialization_prompt",
+        "bool_id",
+        "bool_mask",
+        "duplicate_key",
+        "source_drift",
+    ],
+)
+def test_same_count_token_drift_rejected_before_provenance(tmp_path, monkeypatch, mutation):
+    def alter(project, source):
+        path = project / "data/train.jsonl"
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        if mutation == "prompt":
+            rows[0]["input_ids"][0] = 42
+        elif mutation == "target":
+            rows[0]["input_ids"][-1] = 42
+        elif mutation == "mask":
+            rows[0]["loss_start"] = 3
+        elif mutation == "serialization_prompt":
+            rows[0]["input_ids"].insert(0, 42)
+            rows[0]["loss_start"] += 1
+            # Exactly the discovered failure: same count and all supervised tokens unchanged.
+            assert rows[0]["input_ids"][rows[0]["loss_start"] :] == [2, 3, 4]
+        elif mutation == "bool_id":
+            rows[0]["input_ids"][1] = True  # Python True == 1 must not pass identity.
+        elif mutation == "bool_mask":
+            rows[0]["loss_start"] = True
+        elif mutation == "source_drift":
+            (source / "train.prepared.jsonl").write_text("[]\n")
+            return
+        path.write_text("".join(json.dumps(row) + "\n" for row in rows))
+        if mutation == "duplicate_key":
+            path.write_text(
+                path.read_text().replace('"loss_start": 2', '"loss_start": 0,"loss_start": 2', 1)
+            )
+
+    args, events = prepare_fixture(tmp_path, monkeypatch, mutate_after_import=alter)
+    with pytest.raises(ValueError):
+        helper.prepare(args)
+    assert events == [("prepare", True)]
+    assert not Path(args.plan).exists()
+    assert not (Path(args.project) / "experiment").exists()
+
+
+@pytest.mark.parametrize("mutation", ["missing", "unbound", "invalid", "symlink"])
+def test_prepared_sidecars_required_before_project_creation(tmp_path, monkeypatch, mutation):
+    args, events = prepare_fixture(tmp_path, monkeypatch)
+    source = Path(args.corpus)
+    path = source / "train.prepared.jsonl"
+    report = helper.read_json(source / "ktune-import.json")
+    if mutation == "missing":
+        path.unlink()
+        report["artifacts_sha256"].pop(path.name)
+    elif mutation == "unbound":
+        report["artifacts_sha256"].pop(path.name)
+    elif mutation == "invalid":
+        path.write_text('{"input_ids":[0,true,2],"loss_start":2}\n')
+        report["artifacts_sha256"][path.name] = helper.digest(path)
+    else:
+        other = tmp_path / "token-rows.jsonl"
+        path.rename(other)
+        path.symlink_to(other)
+    dump(source / "ktune-import.json", report)
+    with pytest.raises(ValueError):
+        helper.prepare(args)
+    assert events == []
+    assert not Path(args.project).exists()
+    assert not Path(args.plan).exists()
+
+
+def test_raw_or_manifest_mutation_after_import_blocks_binding(tmp_path, monkeypatch):
+    def alter(project, source):
+        (source / "train.jsonl").write_text('{"text":"replaced"}\n')
+
+    args, events = prepare_fixture(tmp_path, monkeypatch, mutate_after_import=alter)
+    with pytest.raises(ValueError, match="artifact changed"):
+        helper.prepare(args)
+    assert events == [("prepare", True)]
+    assert not Path(args.plan).exists()
+
+
+def test_dangling_empty_validation_sidecar_is_not_treated_as_absent(tmp_path, monkeypatch):
+    args, events = prepare_fixture(tmp_path, monkeypatch)
+    (Path(args.corpus) / "valid.prepared.jsonl").symlink_to(tmp_path / "does-not-exist")
+    with pytest.raises(ValueError):
+        helper.prepare(args)
+    assert events == []
+    assert not Path(args.project).exists()
+    assert not Path(args.plan).exists()
 
 
 def test_changed_counts_fail_before_provenance_binding(tmp_path, monkeypatch):
@@ -393,17 +500,17 @@ def test_explicit_cache_is_bound_to_all_direct_phases(tmp_path, monkeypatch):
     args.packed_cache_mib = 6144
     helper.prepare(args)
     plan = helper.read_json(args.plan)
-    assert plan['config']['packed_cache_mib'] == plan['resources']['packed_cache_mib'] == 6144
-    assert plan['config']['memory_gib'] == 86
-    assert plan['config']['reserve_gib'] == 8
-    for phase in ('preflight-train', 'preflight-test', 'baseline', 'adapter'):
-        command = plan['commands'][phase]
-        assert command.count('--packed-cache-mib') == 1
-        assert command[command.index('--packed-cache-mib') + 1] == '6144'
-    assert plan['config']['decoded_cache_mib'] == 0
+    assert plan["config"]["packed_cache_mib"] == plan["resources"]["packed_cache_mib"] == 6144
+    assert plan["config"]["memory_gib"] == 86
+    assert plan["config"]["reserve_gib"] == 8
+    for phase in ("preflight-train", "preflight-test", "baseline", "adapter"):
+        command = plan["commands"][phase]
+        assert command.count("--packed-cache-mib") == 1
+        assert command[command.index("--packed-cache-mib") + 1] == "6144"
+    assert plan["config"]["decoded_cache_mib"] == 0
 
 
-@pytest.mark.parametrize('quota', [-1, 1.5, True, 1000000])
+@pytest.mark.parametrize("quota", [-1, 1.5, True, 1000000])
 def test_invalid_cache_does_not_create_project(tmp_path, monkeypatch, quota):
     args, events = prepare_fixture(tmp_path, monkeypatch)
     args.packed_cache_mib = quota
