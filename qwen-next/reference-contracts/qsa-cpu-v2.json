@@ -1,0 +1,129 @@
+{
+  "attention_input_contract": "Plain ndarray only for all seven roles; no ndarray subclasses or masks. Noncontiguous views supported.",
+  "backward_implemented": false,
+  "model_or_training_supported": false,
+  "native_arithmetic_parity": false,
+  "reference_files_sha256": {
+    "qwen-next/tests/test_qwen_qsa_attention_reference.py": "3d7cd6801ba7fd1a1635e948189b86fc6ac106b20e511806c6f0cbe18348ec4d",
+    "qwen-next/tests/test_qwen_qsa_selector_reference.py": "f273747972bd65fc645281c7b66eeb34d874ae25d7b9a243f81b94d8d0a3a7ea",
+    "qwen-next/tools/qwen_qsa_attention_reference.py": "6fbfec657e371a8abcf0dfab55340c5c30999b68e6e9d556f8ae146f0f66e02a",
+    "qwen-next/tools/qwen_qsa_selector_reference.py": "1909c45825224a85954c01827347c8b68103228c9d6ca8c29afd23b6e09f4221"
+  },
+  "schema": "qwen-qsa-cpu-reference-contract-v2",
+  "scope": "CPU logical selector and selected-token GQA/gate reference, not production dispatch",
+  "source_review_required_on_semantic_change": true,
+  "source_versions": "Captured exact file identities, not a claim the current checkout is one pristine upstream revision. Source files are data and are never imported by the references.",
+  "sources": {
+    "LICENSE": {
+      "ranges": [],
+      "sha256": "27a32b6263fcd96c79d3beeecf221c4366780bdf15ad51986f48650bd7369bff"
+    },
+    "exllamav3/architecture/qwen4_exp.py": {
+      "ranges": [
+        {
+          "first_line": 138,
+          "last_line": 183,
+          "purpose": "Qwen gated QSA construction; no softmax scale override, interleaved gate",
+          "sha256": "a6e9a71ba2c7e8aa4256737136e63b8e553b6a9831ff7fd4edd2806fb03e1950"
+        }
+      ],
+      "sha256": "f0781ec11aabc78694ed5084d24fb31093c0500a5c985a00276188c241c165bb"
+    },
+    "exllamav3/modules/attention_fn/qsa_triton.py": {
+      "ranges": [
+        {
+          "first_line": 175,
+          "last_line": 252,
+          "purpose": "Contiguous GQA mapping, -1 masks, softmax and explicit probability cast",
+          "sha256": "1a8d85cefb29d902dacce7e1212330940f90109ebd082b65913304adfb8946d3"
+        }
+      ],
+      "sha256": "5663156cdcca43457a5e6150ac778d115fe43dc1ad654f469e8833210bc7640c"
+    },
+    "exllamav3/modules/attn.py": {
+      "ranges": [
+        {
+          "first_line": 211,
+          "last_line": 218,
+          "purpose": "Default head-dimension softmax scale",
+          "sha256": "eb816237824b9d53f5f7e460ec4255334b33a89793458d9b6eda686c441481a9"
+        },
+        {
+          "first_line": 814,
+          "last_line": 834,
+          "purpose": "Interleaved query/gate carrier and output projection boundary",
+          "sha256": "8c3434a7642bbe63a72e9294d28b01a725067b8d3dae717e307d893ed8427642"
+        },
+        {
+          "first_line": 899,
+          "last_line": 980,
+          "purpose": "Q/K normalization and RoPE precede selected attention; sigmoid gating precedes projection",
+          "sha256": "169d815ca8da9b68628a7a2cd9ab4afc0223545301f363baeada3c6925606c82"
+        }
+      ],
+      "sha256": "369d312a2f9caa3974966f52c392fd20e66624e9e0c2cbd96b52f19a977621fb"
+    },
+    "exllamav3/modules/qsa_indexer.py": {
+      "ranges": [
+        {
+          "first_line": 427,
+          "last_line": 442,
+          "purpose": "Noncached sequence-local routes flattened per batch for sparse attention",
+          "sha256": "b41ea5cca37fdf682d10e2d34a4811642635d8f142226f3a75e8ba196d77b06e"
+        },
+        {
+          "first_line": 197,
+          "last_line": 202,
+          "purpose": "FP32 indexer dot, per-head ReLU, head sum and scale",
+          "sha256": "c664cdba1221dd3cd3172ab485ea4b1ec0e8a2a9680020965dfe6f9c029192e5"
+        },
+        {
+          "first_line": 265,
+          "last_line": 268,
+          "purpose": "Route width rounded to32 including incomplete tail",
+          "sha256": "c7fd546971b1230dc8959ab6e7d35a31cba08eee7162a9b440a16a2fbd03764c"
+        },
+        {
+          "first_line": 275,
+          "last_line": 286,
+          "purpose": "Native selector documented descending score/index-ascending tie order",
+          "sha256": "8009d20e8546a4ab9ad838d8c2db7a7f2f98b32706a2a1e57fc0b6a1b93285f3"
+        },
+        {
+          "first_line": 388,
+          "last_line": 426,
+          "purpose": "Torch reference complete blocks, causal selected pool masking and tail; logical semantics only",
+          "sha256": "56c4cd749b75f13a2c8609e21b06203aba963f18693dfd4724ff60fcdd81a48e"
+        }
+      ],
+      "sha256": "b20e6beac6bf277cdd716538416d80f2370e1cba2ed45954f6cdfc929be037ee"
+    },
+    "exllamav3/training/native_llama.py": {
+      "ranges": [
+        {
+          "first_line": 1397,
+          "last_line": 1408,
+          "purpose": "Per-head Q/gate split",
+          "sha256": "dd9221c316cec2a50277a337f6e1673f23d4f207e270d359f52fd6c6afeb8abe"
+        },
+        {
+          "first_line": 1534,
+          "last_line": 1560,
+          "purpose": "Dense training-reference GQA/softmax and output gate; not long sparse support",
+          "sha256": "2c94ecde7b67da976ec4f87629c68483ebedc801edd553bc5b71e60950e1bc01"
+        }
+      ],
+      "sha256": "12c99ff24bb54067a081ceb9e6b52154cf811afd231bd30a13847c70d5729f5e"
+    },
+    "qwen-next/sources/config.json": {
+      "contract": {
+        "head_dim": 256,
+        "indexer_budget": 2048,
+        "indexer_compress_ratio": 4,
+        "num_attention_heads": 24,
+        "num_key_value_heads": 2
+      },
+      "sha256": "f8adca807ce1deef83a781d28560fc38d2335e592939d9cf31930fa9a553eda1"
+    }
+  }
+}
