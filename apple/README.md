@@ -317,4 +317,4 @@ published dataset. Large source captures, corpora, model weights and training ou
 are intentionally kept outside Git. Historical receipts distinguish observed results
 from proposals and record the original evidence paths.
 
-Reviewed portable exact-edit bundles can use [prepare-reviewed](docs/REVIEWED_CORPORA.md) for strict replay, frozen splits and ordinary SFT preparation. Mixed diagnostic corpora remain explicitly unsupported in this first stage.
+Reviewed portable bundles can use [prepare-reviewed](docs/REVIEWED_CORPORA.md) for strict edit replay, bounded diagnostic evidence bindings, frozen splits and ordinary SFT preparation. Existing mixed corpora require explicit version-2 evidence migration and review.

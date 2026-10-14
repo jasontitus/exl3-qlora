@@ -1,4 +1,4 @@
-# Preparing a reviewed exact-edit corpus
+# Preparing a reviewed corpus
 
 `exl3-mlx ktune prepare-reviewed` prepares a portable, explicitly selected corpus using the same local tokenizer and ordinary SFT project flow. It does not fetch repositories, execute supplied commands/scripts, load model tensors, or start training.
 
@@ -32,6 +32,30 @@ Dataset publication and optional project creation are separate phases. If projec
 
 Outputs include raw/prepared split pairs, complete per-row provenance, length audit, admission/overlap receipts and `ktune-import.json`. `ready_for_sft` means this preparation contract passed; it does not certify compilation, numerical parity, speedup, source authenticity or downstream model quality.
 
-This first stage accepts exact edits only. It explicitly rejects a mixed corpus containing reasoning/diagnostic rows, including the current experimental 229-row corpus with 43 diagnostics; it never drops them. A subsequent generic admission contract must bind diagnostic evidence and source lineage, distinguish observations from inferred rationale, reproduce full target masks, and share the same frozen-split and review protections. That integration is pending.
+Version `exl3-reviewed-agent-corpus-v1` remains exact-edit only and explicitly rejects mixed corpora. Version `exl3-reviewed-agent-corpus-v2` adds diagnostics under the contract below. Existing experimental corpora are not automatically approved or migrated; the current 229-row corpus needs explicit migration/review of its 43 diagnostic evidence bindings before this importer can accept it. No row is silently dropped.
 
 Executable, self-contained examples of the complete manifest and approval schema are in `apple/tests/test_reviewed_corpus.py`; they use a tiny strictly local tokenizer and arbitrary train/valid/test sizes.
+
+## Version 2: mixed diagnostic and exact-edit corpora
+
+Use the same CLI/API and set manifest `format` to `exl3-reviewed-agent-corpus-v2`. Exact-edit entries retain the v1 contract. A diagnostic entry has `kind: diagnostic` and four input references: `source`, `raw`, `prepared`, `evidence`. Its approval receipt uses `format: diagnostic-review-v1`, with the same exact per-case four-payload binding. An exact-edit approval cannot approve a diagnostic implicitly.
+
+Diagnostic raw data is a user and assistant text pair, optionally preceded by one explicit system message, without tools. A system message requires `system_mode: task_instruction_only` (reviewer assertion that it contains generic instructions, not source facts) or `supplied_observations` with bound `system_spans` and a supplied-observation prompt mode. System text is preserved verbatim; it is never stripped to make a row fit. The source retains the complete before/after source images and shared commit/lineage protections. No tool replay is claimed for a diagnostic.
+
+Evidence uses `format: diagnostic-evidence-v1`, `task_type` (`diagnose_bottleneck`, `explain_tradeoff`, `reject_unsafe_change`, or `choose_measurement`), `prompt_mode` (`before_only` or `supplied_observations`), `references`, `prompt_spans`, and `claims`.
+
+Every reference has a unique `id`, `kind`, a captured `file` path/SHA binding, half-open UTF-8 byte `start`/`end`, and the selected range's `sha256`. Ranges cannot cut a UTF-8 character. Supported kinds:
+
+- `before_source` / `after_source`: also require `source_path`; the complete evidence file must equal that exact source image before any range is selected.
+- `author_report`: requires `origin` with a primary-source HTTP(S) `url` and explicit author/document `identity`. A bound report is an author assertion, not a local reproduction.
+- `local_cpu` / `local_gpu`: additionally bind an `execution` JSON file with `executed: true`, nonempty `argv`, input/output file bindings, nonempty environment metadata, matching `kind` and compatible `backend`. CPU assertions require `cpu`; GPU assertions require `metal`, `cuda`, `rocm`, or `other_gpu`. The evidence file must be one of the bound outputs. These are imported execution assertions: the importer does not rerun or authenticate them.
+
+Prompt spans and claims use the same byte-range/hash fields, plus a nonempty list of reference IDs in `refs`. Every reference must be used. `before_only` prompt spans can reference only `before_source`; supplied observations must be labelled `supplied_observations`. This validates declared relationships; semantic review must check whether the prose actually respects that information boundary.
+
+Each claim also has `class` (`source_observation`, `inferred`, `author_reported`, `local_cpu`, `local_gpu`) and explicit nonempty `limits`. Classes must agree with referenced evidence kinds; inferred claims remain labelled inference. Claims must cover every nonwhitespace assistant target byte without overlaps. Missing, unknown or unbound references fail; the importer does not invent grounding for gaps.
+
+A manifest `multi_views` array explicitly lists every same-source overlap group by entry ID, for example `[["edit-1", "diagnostic-1"]]`. Duplicate raw/prepared views are rejected. Distinct views of the same change must be in one split, pass all protection checks, and be explicitly selected; declared groups must match actual commit/patch/source overlap. The output reports these exposures. No automatic caps, extra copies or inferred selection are applied.
+
+Version 2 preserves captured input files as flat content-addressed `.bin` artifacts with a `captured-inputs.json` index. The ordinary project provenance binding copies these too, so evidence survives moving away from the original bundle. Frozen split bytes/order and exact local token IDs/masks remain mandatory.
+
+These gates establish **binding consistency**, not semantic truth, complete factual support, absence of prompt leakage, primary-source authenticity, numerical correctness, or performance improvement. Those remain explicit independent review and execution requirements. The tests include deliberately labelled imported assertions to verify this distinction; acceptance must not be described as hardware qualification.

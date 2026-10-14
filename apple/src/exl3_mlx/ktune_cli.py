@@ -25,7 +25,7 @@ def build_parser():
     compiler.add_argument("--output", required=True)
     compiler.add_argument("--standard", choices=("metal3.1", "metal4.0"), default="metal3.1")
     reviewed = sub.add_parser(
-        "prepare-reviewed", help="Validate exact reviewed agent edits and prepare data; no training"
+        "prepare-reviewed", help="Validate reviewed edits/diagnostics and prepare data; no training"
     )
     reviewed.add_argument("--source", required=True, help="Portable reviewed corpus manifest")
     reviewed.add_argument("--model", required=True, help="Local tokenizer/model metadata")

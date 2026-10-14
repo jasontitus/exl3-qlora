@@ -1,0 +1,42 @@
+{
+  "status": "approved_for_mixed_evidence_consistency_import",
+  "time": "2026-10-14T02:39:45.225908+00:00",
+  "held_receipt_sha256": "2118f54a95e20ea27eccb42241273f42400c96e8a3267cc29866a0e5e1b00f6e",
+  "files": {
+    "apple/README.md": "bc1fbd107e1d537e72a91adc06d08055971120c6d39b6704f41ca73c166751e6",
+    "apple/docs/REVIEWED_CORPORA.md": "d52b39df21b916348bc72f71cb26fe4a7c64d884f30c65a3e3e6271f1d5b2ce3",
+    "apple/src/exl3_mlx/ktune_cli.py": "dfa838e5bb185a1b0b11db206899d4674285454aed93bd1fda406bfd7ed38d2d",
+    "apple/src/exl3_mlx/reviewed_corpus.py": "9217d91396d2760060001d2244afa43d9a393c7c4d6a59ea63a4a2e91753554d",
+    "apple/src/exl3_mlx/reviewed_diagnostics.py": "20f1b5da2f8ada47bcabb23218c92a2b33a83b1384ef317c8e6710353746c5a3",
+    "apple/tests/test_reviewed_diagnostics.py": "f5fa898a98cbeb1b40c3d7c5de6922a8524686b55e979d4c98163ce87e5a9a49"
+  },
+  "independent_regression": {
+    "passed": 382,
+    "seconds": 11.64,
+    "suites": [
+      "test_reviewed_diagnostics",
+      "test_reviewed_corpus",
+      "test_agent_edits",
+      "test_sft_project",
+      "test_project_token_audit",
+      "test_sft_evaluation_provenance",
+      "test_evaluation_audit",
+      "test_studio",
+      "test_ktune_cli",
+      "test_sft_data"
+    ]
+  },
+  "resolved_findings": [
+    "Explicit claim caveats and primary author identity",
+    "CPU/GPU assertion backend consistency",
+    "Prepared-token duplicate detection independent of raw metadata",
+    "Deterministic exposure-group ordering",
+    "Optional preserved system message with declared information boundary"
+  ],
+  "limits": [
+    "Consistency checks do not authenticate reviewers, source claims or execution",
+    "Semantic grounding and prompt leakage still require independent content review",
+    "Current 43 diagnostic examples require separate migration approval",
+    "No GPU, active dataset or pinned-runtime changes"
+  ]
+}

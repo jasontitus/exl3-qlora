@@ -17,6 +17,7 @@ from .context import MAX_CONTEXT_TOKENS
 from .evaluation_audit import _json
 
 FORMAT = "exl3-reviewed-agent-corpus-v1"
+MIXED_FORMAT = "exl3-reviewed-agent-corpus-v2"
 ROLES = {"source", "raw", "prepared", "replay"}
 SPLITS = ("train", "valid", "test")
 MAX_FILE = 64 << 20
@@ -142,10 +143,8 @@ def patch_id(before, after):
     return value[0]
 
 
-def source_edit(source, raw, prior):
+def source_images(source):
     mapping(source, "source", {"files", "repository", "head", "commits"})
-    mapping(raw, "raw", {"messages", "tools"})
-    mapping(prior, "replay", {"files", "patch_sha256", "exact_scoped_replay"})
     require(isinstance(source.get("files"), dict) and source["files"], "Missing source files")
     for name, pair in source["files"].items():
         require(isinstance(name, str), "Source path must be text")
@@ -166,7 +165,13 @@ def source_edit(source, raw, prior):
                 == value["blob"],
                 "Captured source blob mismatch: " + name,
             )
-    before, after = full_commit_images(source)
+    return full_commit_images(source)
+
+
+def source_edit(source, raw, prior):
+    before, after = source_images(source)
+    mapping(raw, "raw", {"messages", "tools"})
+    mapping(prior, "replay", {"files", "patch_sha256", "exact_scoped_replay"})
     from .tool_data import normalize_tool_row
 
     normalized = normalize_tool_row(raw)
@@ -194,6 +199,11 @@ def source_edit(source, raw, prior):
         and current["files"] == prior.get("files"),
         "Replay receipt mismatch",
     )
+    stable, payload = source_identity(before, after)
+    return current, stable, payload
+
+
+def source_identity(before, after):
     payload = sha(
         canonical(
             {
@@ -206,7 +216,7 @@ def source_edit(source, raw, prior):
         stable = patch_id(before, after)
     except subprocess.SubprocessError as error:
         raise ValueError("Normalized patch identity failed") from error
-    return current, stable, payload
+    return stable, payload
 
 
 def prepare_reviewed_corpus(source, model, output, *, project=None):
@@ -223,7 +233,7 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
     manifest = _json(captured)
     require(
         isinstance(manifest, dict)
-        and manifest.get("format") == FORMAT
+        and manifest.get("format") in {FORMAT, MIXED_FORMAT}
         and "example_only" not in manifest,
         "Unsupported/example-only manifest",
     )
@@ -251,8 +261,13 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
         all(isinstance(i, str) and i.strip() for i in ids) and len(set(ids)) == len(ids),
         "Duplicate/invalid IDs",
     )
+    mixed = manifest["format"] == MIXED_FORMAT
     require(
-        all(e.get("kind") == "exact_edit" and e.get("split") in SPLITS for e in entries),
+        all(
+            e.get("kind") in ({"exact_edit", "diagnostic"} if mixed else {"exact_edit"})
+            and e.get("split") in SPLITS
+            for e in entries
+        ),
         "Stage one accepts exact_edit only; diagnostic/mixed corpora are unsupported",
     )
     destination = Path(output).expanduser().absolute()
@@ -321,16 +336,41 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
     )
     rows, provenance, lengths, seen, groups = {s: [] for s in SPLITS}, [], [], set(), []
     reviews = {}
+    overlap_declarations = manifest.get("multi_views", []) if mixed else []
+    require(
+        isinstance(overlap_declarations, list)
+        and all(
+            isinstance(g, list)
+            and len(g) > 1
+            and all(isinstance(i, str) and i in ids for i in g)
+            and len(set(g)) == len(g)
+            for g in overlap_declarations
+        ),
+        "Invalid explicit multi_views",
+    )
+    require(
+        len({tuple(sorted(g)) for g in overlap_declarations}) == len(overlap_declarations),
+        "Duplicate multi_views declarations",
+    )
+    seen_views, seen_prepared_views, view_keys = set(), set(), {}
     for entry in entries:
         bindings = entry["inputs"]
         require(
-            isinstance(bindings, dict) and set(bindings) == ROLES, "Require four reviewed payloads"
+            isinstance(bindings, dict)
+            and set(bindings)
+            == (
+                ROLES
+                if entry["kind"] == "exact_edit"
+                else {"source", "raw", "prepared", "evidence"}
+            ),
+            "Require four reviewed payloads",
         )
         values = {k: _json(bundle.read(v)) for k, v in bindings.items()}
         review_bytes = bundle.read(entry["review"])
         review = mapping(_json(review_bytes), "review", {"format", "status", "reviewer", "cases"})
         require(
-            review.get("format") == "exact-edit-review-v1"
+            review.get("format")
+            == ("exact-edit-review-v1" if entry["kind"] == "exact_edit" else "diagnostic-review-v1")
             and review.get("status") == "approved"
             and isinstance(review.get("reviewer"), str)
             and review["reviewer"].strip(),
@@ -353,7 +393,14 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
         )
         reviews.setdefault(entry["review"]["path"], [review, set()])[1].add(entry["id"])
         source_record, raw, prepared = values["source"], values["raw"], values["prepared"]
-        current, stable, payload = source_edit(source_record, raw, values["replay"])
+        if entry["kind"] == "exact_edit":
+            current, stable, payload = source_edit(source_record, raw, values["replay"])
+        else:
+            from .reviewed_diagnostics import admit_diagnostic
+
+            current, stable, payload = admit_diagnostic(
+                source_record, raw, values["evidence"], bundle
+            )
         from .upstream_data import _repository_identity
 
         repository = _repository_identity(source_record["repository"])
@@ -373,7 +420,14 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
             "Invalid lineage IDs",
         )
         keys = {"patch:" + stable, "payload:" + payload, "repo-commit:" + repository + ":" + commit}
-        require(not seen.intersection(keys), "Duplicate commit/patch/payload; select explicitly")
+        require(
+            mixed or not seen.intersection(keys),
+            "Duplicate commit/patch/payload; select explicitly",
+        )
+        view_keys[entry["id"]] = keys
+        view = sha(canonical({"raw": raw, "prepared": prepared}))
+        require(view not in seen_views, "Duplicate training view")
+        seen_views.add(view)
         seen.update(keys)
         connected = set(lineage) | {"commit:" + c for c in commits} | {"patch:" + stable}
         groups.append((entry["split"], connected, entry["id"]))
@@ -385,10 +439,19 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
             "Reviewed full token IDs/mask differ from normal product preparation",
         )
         require(len(actual["input_ids"]) <= limit, "Complete item exceeds capacity")
+        prepared_view = sha(
+            canonical({"input_ids": actual["input_ids"], "loss_start": actual["loss_start"]})
+        )
+        require(
+            not mixed or prepared_view not in seen_prepared_views,
+            "Duplicate prepared training view",
+        )
+        seen_prepared_views.add(prepared_view)
         rows[entry["split"]].append((raw, actual, entry["id"]))
         provenance.append(
             {
                 "id": entry["id"],
+                "kind": entry["kind"],
                 "split": entry["split"],
                 "repository": repository,
                 "commits": commits,
@@ -396,7 +459,7 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
                 "source": source_record,
                 "review": review,
                 "review_binding": entry["review"],
-                "replay": current,
+                ("replay" if entry["kind"] == "exact_edit" else "diagnostic_admission"): current,
                 "inputs": bindings,
                 "reviewed_payloads": values,
                 "protected": source_record.get("protected", False),
@@ -414,6 +477,33 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
     for review, used in reviews.values():
         require(
             {c["id"] for c in review["cases"]} == used, "Review contains unselected/extra cases"
+        )
+    # Explicit exact-source overlap groups; alias connections still protect splits below.
+    exposures = []
+    if mixed:
+        pending = set(ids)
+        while pending:
+            first = min(pending)
+            pending.remove(first)
+            members = {first}
+            connected_keys = set().union(*(view_keys[i] for i in members))
+            while True:
+                adjacent = {i for i in pending if view_keys[i] & connected_keys}
+                if not adjacent:
+                    break
+                members |= adjacent
+                pending -= adjacent
+                connected_keys |= set().union(*(view_keys[i] for i in adjacent))
+            if len(members) > 1:
+                require(
+                    any(set(g) == members for g in overlap_declarations),
+                    "Same-source views require explicit multi_views",
+                )
+                exposures.append(sorted(members))
+        exposures.sort()
+        require(
+            {tuple(sorted(g)) for g in overlap_declarations} == {tuple(g) for g in exposures},
+            "Unmatched multi_views declaration",
         )
     # Transitive finite alias/commit closure; never infer repository equivalence.
     components = [set(k) for _, k, _ in groups] + [set(g) for g in aliases]
@@ -490,10 +580,20 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
                 {
                     "scope": "Exact patch/payload/repository-commit and explicitly declared finite lineage only; not exhaustive semantic clone detection",
                     "cross_split_overlap": False,
+                    "explicit_same_source_views": exposures,
                 }
             )
             + b"\n"
         )
+        if mixed:
+            # Flat content-addressed copies survive project provenance publication.
+            captured_index = {}
+            for name, payload in bundle.files.items():
+                checksum = sha(payload)
+                filename = "captured-" + checksum + ".bin"
+                (stage / filename).write_bytes(payload)
+                captured_index[name] = {"file": filename, "sha256": checksum}
+            (stage / "captured-inputs.json").write_bytes(canonical(captured_index) + b"\n")
         bundle.check()
         require(
             source.read_bytes() == captured
@@ -502,8 +602,13 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
             "Preparation input drift",
         )
         report = {
-            "format": FORMAT,
+            "format": manifest["format"],
             "counts": {s: len(rows[s]) for s in SPLITS},
+            "counts_by_kind": {
+                kind: sum(e["kind"] == kind for e in entries)
+                for kind in ("exact_edit", "diagnostic")
+            },
+            "explicit_same_source_views": exposures,
             "selected_case_ids": ids,
             "max_length": max(v["total_tokens"] for v in lengths),
             "context_ceiling": limit,
@@ -512,10 +617,15 @@ def prepare_reviewed_corpus(source, model, output, *, project=None):
             "truncated": 0,
             "ready_for_sft": True,
             "quality_certified": False,
-            "verification": "captured source bytes, supplied review assertions and exact replay; no fresh Git tree/compile/numerical/performance certification",
+            "verification": "captured source bytes, supplied review assertions, exact edit replay or diagnostic evidence consistency; no semantic completeness/truth/leakage, fresh Git tree/compile/numerical/performance certification",
             "source_files_sha256": {n: sha(v) for n, v in bundle.files.items()},
             "source_manifest_sha256": sha(captured),
             "implementation_sha256": sha(Path(__file__).read_bytes()),
+            "diagnostic_implementation_sha256": sha(
+                Path(__file__).with_name("reviewed_diagnostics.py").read_bytes()
+            )
+            if mixed
+            else None,
             "artifacts_sha256": {x.name: sha(x.read_bytes()) for x in stage.iterdir()},
         }
         (stage / "ktune-import.json").write_bytes(canonical(report) + b"\n")
