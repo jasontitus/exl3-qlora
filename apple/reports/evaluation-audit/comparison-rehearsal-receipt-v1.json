@@ -1,0 +1,15 @@
+{
+  "schema": "token-comparison-author-rehearsal-v1",
+  "historical_aggregate_and_all16_row_metrics": "exact_match_existing_independently_audited_summary",
+  "rejected_corruptions": [
+    "changed_target",
+    "nan_nll",
+    "missing_row",
+    "wrong_aggregate",
+    "wrong_full_sequences",
+    "missing_prediction",
+    "truncated_context"
+  ],
+  "new_run_result": false,
+  "independent_review": "pending"
+}
