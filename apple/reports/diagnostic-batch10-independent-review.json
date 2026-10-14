@@ -1,0 +1,72 @@
+{
+  "status": "approved_for_semantic_evidence_scope_only",
+  "reviewer": "root independent of editor",
+  "reviewed_at": "2026-10-14T03:44:23.655426+00:00",
+  "index_sha256": "80b7b0adc4bacb5f82bb8cc797e0f4ec0d5834de9c4ae4b0eb2e7ba2b198f97a",
+  "cases": [
+    {
+      "id": "mlx-8295d5e54f62-review_correctness-hour-v3-corrected-v4-scoped-v10-review-v2",
+      "row": 182,
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-8295d5e54f62-review_correctness-hour-v3-corrected-v4-scoped-v10-review-v2/evidence.json",
+          "sha256": "6f836ef028ce8991287b6f9541dd30e6fd52f48324143e8a9e4f0d38a0893c8a"
+        },
+        "prepared": {
+          "path": "cases/mlx-8295d5e54f62-review_correctness-hour-v3-corrected-v4-scoped-v10-review-v2/prepared.json",
+          "sha256": "b48318cc2b18eb98c4e74f13c425dba6822a62e6a4f5817d8808520e386db3ea"
+        },
+        "raw": {
+          "path": "cases/mlx-8295d5e54f62-review_correctness-hour-v3-corrected-v4-scoped-v10-review-v2/raw.json",
+          "sha256": "ceab3eac640e77a2e21a4309d9f3c9026d3fd822c111c272485ef86156dad5a9"
+        },
+        "source": {
+          "path": "cases/mlx-8295d5e54f62-review_correctness-hour-v3-corrected-v4-scoped-v10/source.json",
+          "sha256": "e9146dc9879c9ff1c18b094b035640ade22bf37d82bc0cb49c8f03b6ed3b61f6"
+        }
+      },
+      "tokens": 217,
+      "loss_start": 66
+    },
+    {
+      "id": "reason-tensorfold-499a2d69-diagnose-hour-v4-scoped-v10-review-v2",
+      "row": 183,
+      "inputs": {
+        "evidence": {
+          "path": "cases/reason-tensorfold-499a2d69-diagnose-hour-v4-scoped-v10-review-v2/evidence.json",
+          "sha256": "ea3f25fec6a4224c582a8f5b6cd5371a0fd26e3a2634a24520543bad5352d0ae"
+        },
+        "prepared": {
+          "path": "cases/reason-tensorfold-499a2d69-diagnose-hour-v4-scoped-v10-review-v2/prepared.json",
+          "sha256": "4117291c4217277a73d0a3ade88176afe672a0464359dc14ec09c3999d000b61"
+        },
+        "raw": {
+          "path": "cases/reason-tensorfold-499a2d69-diagnose-hour-v4-scoped-v10-review-v2/raw.json",
+          "sha256": "3886bd8422c1982477a7871f77b558e5f36119cebd993527d9ae6a943425cb39"
+        },
+        "source": {
+          "path": "cases/reason-tensorfold-499a2d69-diagnose-hour-v4-scoped-v10/source.json",
+          "sha256": "f6226fc55c97ddf2d4947cee64d12bad8fabc5f762da97e45d6352548c63a84c"
+        }
+      },
+      "tokens": 187,
+      "loss_start": 81
+    }
+  ],
+  "checks": [
+    "Read complete prompts/answers, all scoped guards, before/after width changes and primary reproducer/race reports",
+    "Convolution per-group bounds and signed-short store difference distinguished; early operand promotion supported by source",
+    "TensorFold invalid-chunk alias follows head*NCH+chunk; early return before writes and tree-tail chunk guard inspected",
+    "Corrected column-versus-tail-chunk terminology; numerical/race reasoning marked inference and no reproduced GPU result implied",
+    "Independent full prepared token equality and all input/reference/claim hashes verified"
+  ],
+  "tokenizer_identity": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "limits": [
+    "No source scripts or GPU kernels executed",
+    "No numerical/performance certification, full corpus approval or active dataset changes"
+  ]
+}
