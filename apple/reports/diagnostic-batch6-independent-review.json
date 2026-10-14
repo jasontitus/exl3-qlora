@@ -1,0 +1,81 @@
+{
+  "status": "approved_for_semantic_evidence_scope_only",
+  "reviewer": "root independent of editor",
+  "reviewed_at": "2026-10-14T03:37:49.191623+00:00",
+  "index_sha256": "10755142f9c1900514778d136756871dfc6dd7d26a2a5517a45faafc557228e2",
+  "cases": [
+    {
+      "id": "mlx-serve-080a62e2f2d7-hour-v3-reasoning-corrected-v4-scoped-v6-gqa-bound-v2",
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-serve-080a62e2f2d7-hour-v3-reasoning-corrected-v4-scoped-v6-gqa-bound-v2/evidence.json",
+          "sha256": "1871cdbf07e40594ce1fa171b66c97327bda2a9391058c0679c9d89334e2be7c"
+        },
+        "prepared": {
+          "path": "cases/mlx-serve-080a62e2f2d7-hour-v3-reasoning-corrected-v4-scoped-v6-gqa-bound-v2/prepared.json",
+          "sha256": "e5c6db9f148ca41d0c0062df2e2ef9f64572521011bf4a22ba13a51a534dd10c"
+        },
+        "raw": {
+          "path": "cases/mlx-serve-080a62e2f2d7-hour-v3-reasoning-corrected-v4-scoped-v6-gqa-bound-v2/raw.json",
+          "sha256": "c42ec32e39d053f7b68e980c1fefc833c20858a2cc40bd554f8349e818d53549"
+        },
+        "source": {
+          "path": "cases/mlx-serve-080a62e2f2d7-hour-v3-reasoning-corrected-v4-scoped-v6/source.json",
+          "sha256": "aaf26192e35f95ec2d8cf3b396b5471bca72ffbc5a852de417e15227961d599b"
+        }
+      },
+      "tokens": 1598,
+      "supervised_tokens": 206
+    },
+    {
+      "id": "mlx-serve-3dc1dab54e7b-hour-v3-reasoning-corrected-v4-scoped-v6",
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-serve-3dc1dab54e7b-hour-v3-reasoning-corrected-v4-scoped-v6/evidence.json",
+          "sha256": "5c2ded68f88fe3af89c13542223ba249a162c5c677affa57b1f3f580f623a3c6"
+        },
+        "prepared": {
+          "path": "cases/mlx-serve-3dc1dab54e7b-hour-v3-reasoning-corrected-v4-scoped-v6/prepared.json",
+          "sha256": "f10396914be1c01e8660f61f4e0f7c5a253d57377963a26ffd2def687ed00acd"
+        },
+        "raw": {
+          "path": "cases/mlx-serve-3dc1dab54e7b-hour-v3-reasoning-corrected-v4-scoped-v6/raw.json",
+          "sha256": "f7a8d3d5132ece5a73629ea5da2c6426fb4dcc5161a4b77c831bd4e148b1529e"
+        },
+        "source": {
+          "path": "cases/mlx-serve-3dc1dab54e7b-hour-v3-reasoning-corrected-v4-scoped-v6/source.json",
+          "sha256": "65e53368a81f10fdfb75e8be590bef70902ae0878b8461d58cecdbbb3cdc5ee2"
+        }
+      },
+      "tokens": 1208,
+      "supervised_tokens": 127
+    }
+  ],
+  "checks": [
+    "Read full historical prompts and answers, narrowed SDPA actual dispatch source and chronological author reports",
+    "Clamped integer group formula and GQA domain now explicit; higher-GQA fallback recommendation labelled inferred",
+    "GDN all-output, malformed-shape, pipeline refusal and clean-evaluation guidance supported with execution limits",
+    "Independent complete token IDs/loss_start reproduction and all input/evidence/claim range hashes verified"
+  ],
+  "arithmetic_check": {
+    "scope": "Pure integer group bound and causal endpoint identity only, not MLX/Metal execution",
+    "gqa_range": [
+      1,
+      64
+    ],
+    "query_lengths": [
+      2,
+      15
+    ],
+    "row_endpoint_checks": 7616
+  },
+  "tokenizer_identity": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "limits": [
+    "No compiler, GPU, numerical or throughput qualification",
+    "No approval of other rows, final corpus splits or active corpus changes"
+  ]
+}

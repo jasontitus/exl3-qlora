@@ -1,0 +1,47 @@
+{
+  "status": "approved_for_semantic_evidence_scope_only",
+  "reviewer": "root independent of editor",
+  "reviewed_at": "2026-10-14T03:38:39.997310+00:00",
+  "index_sha256": "5ac3f034c984dcf0661239101a21d8904f5191ac9c223f7fca9e78622e7fb5d5",
+  "cases": [
+    {
+      "id": "mlx-lm-ee19be43625b-review_correctness-hour-v4-corrected-v4-scoped-v7",
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-lm-ee19be43625b-review_correctness-hour-v4-corrected-v4-scoped-v7/evidence.json",
+          "sha256": "6a33a14af3944d61a94fac5cef1ffd186b163220e8231c30fc42c588ee540d33"
+        },
+        "prepared": {
+          "path": "cases/mlx-lm-ee19be43625b-review_correctness-hour-v4-corrected-v4-scoped-v7/prepared.json",
+          "sha256": "f349162b4be127cb696950bf6248c34e36e14804c82e95d1510633b794af3351"
+        },
+        "raw": {
+          "path": "cases/mlx-lm-ee19be43625b-review_correctness-hour-v4-corrected-v4-scoped-v7/raw.json",
+          "sha256": "aeb2d89549267ea22987a80ed92b0a22a58a568d9d2469f95b333e7adef04f30"
+        },
+        "source": {
+          "path": "cases/mlx-lm-ee19be43625b-review_correctness-hour-v4-corrected-v4-scoped-v7/source.json",
+          "sha256": "e330fe9feac7eaea5f0f6d6769ab708614d186eba3a74824bbab52572e663812"
+        }
+      },
+      "tokens": 155,
+      "loss_start": 44
+    }
+  ],
+  "checks": [
+    "Read full revised prompt/answer and every narrowed before/after source reference plus primary report",
+    "Raw padded storage/offset retention distinguished from sliced valid accessor",
+    "Old/new metadata ordering and scalar handling support compatibility caution, not measured throughput",
+    "Unsupported alignment wording removed; proposed tests and speed requirement marked inference",
+    "Independent full prepared token equality and every input/source/reference/claim hash verified"
+  ],
+  "tokenizer_identity": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "limits": [
+    "No source execution, hardware numerical or speed qualification",
+    "Not final corpus split admission or approval to mutate running data"
+  ]
+}
