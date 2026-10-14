@@ -1,0 +1,85 @@
+{
+  "scope": "Actual installed-toolchain compilation through reusable product command. No device, numerical, speed or admission claim; Thin-N semantic hold remains.",
+  "independent_review_sha256": "222e0faf7772ffa3654adf72ff7e352fdb7a39e1e4b7d275b7e14d7b2a20fea0",
+  "independent_CPU_tests_passed": 91,
+  "root_CPU_tests_passed": 80,
+  "actual_compiled_units": 7,
+  "actual_source_file_instances": 98,
+  "toolchain": {
+    "sdk_version": "27.0",
+    "compiler_version": "Apple metal version 32023.921 (metalfe-32023.921.6)\nTarget: air64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.vYU8g3/Metal.xctoolchain/usr/metal/current/bin",
+    "compiler_sha256": "ac3dcce4f331e301def076a2280c973c978f72e6622f8576eb3f7c34d1486dd6"
+  },
+  "flags": [
+    "-std=metal4.0",
+    "-O3",
+    "-fno-fast-math"
+  ],
+  "actual_compile_receipt_sha256": "e8ef819e59386d9218a985267da770360ab255b1322aa566b34759648c6f63fe",
+  "root_validation_sha256": "8a3b273ccf6400b97fb1b360e7590090df1388ae0ce6a64bd8dc8e2a41480783",
+  "source_sha256": {
+    "apple/src/exl3_mlx/metal_compile_closure.py": "e69690950cf378e6987f1426f73405e3832fdaa8a69a52085f1c80d2abe96218",
+    "apple/src/exl3_mlx/metal_compile.py": "7ae7781e9c481d15ece73a8d26ee1024eed34a38ad032989e3355fc9edfca862"
+  },
+  "fixed_review_findings": [
+    "Reject backslash-whitespace-newline preprocessing bypass",
+    "Bound SDK file count and remaining bytes before read",
+    "Reject local MPP umbrella shadow"
+  ],
+  "units": [
+    {
+      "revision_label": "3c40e8f92d0cce0866fc2f436f9b5096cf3b0ea7",
+      "primary": "mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_thin_nax.metal",
+      "primary_sha256": "25b2bbb7ee55cb2025e10f829db3746f6036c5178de14b09d897af285a60ed9b",
+      "air_sha256": "9ad403a69cbea32727d3fdd6c2e91dd512cf52ffff85e5d5205e9cec171bf2f7",
+      "passed": true
+    },
+    {
+      "revision_label": "7181620352d49a0ca86765c34ce590187eddca33",
+      "primary": "mlx/backend/metal/kernels/scaled_dot_product_attention.metal",
+      "primary_sha256": "e918b207692947cb124edfa3292c062cb0814ac0938a35081705e74d46befb69",
+      "air_sha256": "81c19963b0a953bd95a2ef37bf6fcdf37439e054d163a6b5b1008755f174b638",
+      "passed": true
+    },
+    {
+      "revision_label": "351e59a04526b0713689878bf292064ff80b7467",
+      "primary": "mlx/backend/metal/kernels/scaled_dot_product_attention.metal",
+      "primary_sha256": "16cc1ff6c99ac606fffec8e35efb3a40101de37aab82db4f2186ae8ac201cc5c",
+      "air_sha256": "0c091e6f682bb0f785c64c37824a963fa821e86e38466d5e395374bf2981aa7e",
+      "passed": true
+    },
+    {
+      "revision_label": "7181620352d49a0ca86765c34ce590187eddca33",
+      "primary": "mlx/backend/metal/kernels/steel/attn/kernels/steel_attention.metal",
+      "primary_sha256": "b222e591ecc48512bc16c98a998b5a9f7149d0a3237c071f745b3a15f0d54ac8",
+      "air_sha256": "e6d78e72306fdb262ca690327e53d8dc0399f2b8fedeb1c0042ca41cd7ec2d04",
+      "passed": true
+    },
+    {
+      "revision_label": "351e59a04526b0713689878bf292064ff80b7467",
+      "primary": "mlx/backend/metal/kernels/steel/attn/kernels/steel_attention.metal",
+      "primary_sha256": "ade46f59394199b17ae4a04323d2840838d594d22173490df732f1c3b0b8f605",
+      "air_sha256": "13cbcd976358d06b5a9c8e683811cc0083bcf0b23595c82f06a499cab48ccdff",
+      "passed": true
+    },
+    {
+      "revision_label": "7181620352d49a0ca86765c34ce590187eddca33",
+      "primary": "mlx/backend/metal/kernels/steel/attn/kernels/steel_attention_nax.metal",
+      "primary_sha256": "5303582c806e9786ad52fed34c47b08f378a7681ca02909c5b793b92779e0b89",
+      "air_sha256": "e8580e588f3bfa6478a0b51f674b5fba18ddd542317235481afd005e23b9cfd4",
+      "passed": true
+    },
+    {
+      "revision_label": "351e59a04526b0713689878bf292064ff80b7467",
+      "primary": "mlx/backend/metal/kernels/steel/attn/kernels/steel_attention_nax.metal",
+      "primary_sha256": "426ad81e6c07208ed4410beb3ecfc4332d915a90e2fcd1c0bfdf34b677d749d4",
+      "air_sha256": "133b6d391ab249d60c7eca0570574a5cf86c3fbf3490ebd8703ac746b1d51f48",
+      "passed": true
+    }
+  ],
+  "GPU_executed": false,
+  "numerical_parity": "not_run",
+  "performance": "not_run",
+  "training_admission": "not_granted",
+  "preserved_failure": "Sandbox attempt rejected installed compiler access; identical reviewed command passed with toolchain access. No dependency/model changes or downloads."
+}

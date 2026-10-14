@@ -201,6 +201,13 @@ def compile_pair(before, after, output, *, standard="metal3.1"):
 
 
 def main(argv=None):
+    import sys
+
+    args_in = list(sys.argv[1:] if argv is None else argv)
+    if args_in and args_in[0] == "closure":
+        from .metal_compile_closure import main as closure_main
+
+        return closure_main(args_in[1:])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--before", required=True)
     parser.add_argument("--after", required=True)
