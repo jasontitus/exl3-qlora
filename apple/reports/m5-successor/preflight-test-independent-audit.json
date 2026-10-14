@@ -1,0 +1,17 @@
+{
+  "status": "completed_preflight_token_coverage_verified",
+  "receipt_sha256": "71de361e45ddfc55445f610fd114d4dc0a2b405e580e888a62f79dd04917b560",
+  "selected_data_sha256": "5c2c25b5db5d4e3e656b1be842bb05bda6d78c018a66aba25276aa7a62cb4411",
+  "serialized_tokens": 11645,
+  "supervised_tokens": 4821,
+  "all_target_ids_match": true,
+  "token_weighted_nll": 0.07822925206414094,
+  "peak_mlx_gib": 21.734625279903412,
+  "elapsed_seconds_including_loading": 2137.8561013748404,
+  "adapter": null,
+  "limits": [
+    "One longest heldout item capacity check, not a post-training quality result",
+    "Raw checkpoint loader includes zero initialized adapter parameters; no saved adapter applied",
+    "Full baseline on 16 heldout items now runs separately"
+  ]
+}
