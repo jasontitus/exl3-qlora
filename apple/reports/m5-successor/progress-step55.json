@@ -1,0 +1,335 @@
+{
+  "format": "m5-studio-progress-step55-v1",
+  "training": {
+    "format": "saved-training-exposure-continuity-v3",
+    "created_utc": "2026-10-14T09:16:55.478438+00:00",
+    "completed_updates": 55,
+    "distinct_seen_views": 55,
+    "max_complete_serialized_tokens_seen": 12067,
+    "target_presentations": 100842,
+    "last_saved_peak_mlx_gib": 71.11425703018904,
+    "kind_counts": {
+      "exact_edit": 40,
+      "diagnostic": 15
+    },
+    "inputs_sha256": {
+      "kernel-library/next-round-v5/two-host-split-v1/runtime-v5/src/exl3_mlx/training.py": "b43a2d9d3c23ebf80fe9d908349a517e1fbb61c9a3ec090fc4c90f04de1d677e",
+      "kernel-library/next-round-v5/two-host-split-v1/data/train.jsonl": "eace04e707b6627f6c600f9f2c286dbe15bdfa9f4de9062ddc9cb90c6ed5dcb3",
+      "kernel-library/next-round-v5/two-host-split-v1/internal-training-project/ktune-evidence/provenance.jsonl": "19086c5ec74c07491c0807ef56027fdff0c54353ec2008c4c7528d9f25bb3779",
+      "kernel-library/next-round-v5/reports/training-history-observed-after54.json": "b187f30b1f89abf75e9b3485b72a3718a3c6a993349922ce861dcb666ff58638",
+      "kernel-library/next-round-v5/reports/training-state-step55.json": "d2e67c21768b79c4a83d7a97559701bc82ff7bf5ba1ffab9de43fdad7bd9966f"
+    },
+    "scope": "Saved step/cursor55 and frozen contract; all history target counts match exact pure sampler from pinned source. First39 exposures match earlier audit. No claim of gradient correctness, per-example improvement or heldout quality."
+  },
+  "baseline_category_audit": {
+    "format": "studio-baseline-category-audit-v1",
+    "created_utc": "2026-10-14T09:18:20.300793+00:00",
+    "examples": 16,
+    "supervised_tokens": 47069,
+    "baseline_only": true,
+    "adapter_comparison_performed": false,
+    "metrics": {
+      "all": {
+        "tokens": 47069,
+        "nll": 0.11107638727956892,
+        "correct_tokens": 45705
+      },
+      "tool_boilerplate/serialization/metadata": {
+        "tokens": 944,
+        "nll": 0.7053848216484153,
+        "correct_tokens": 841
+      },
+      "family:tool_boilerplate": {
+        "tokens": 944,
+        "nll": 0.7053848216484153,
+        "correct_tokens": 841
+      },
+      "patch_metadata/header/metadata": {
+        "tokens": 2053,
+        "nll": 0.18892370621116367,
+        "correct_tokens": 1943
+      },
+      "family:patch_metadata": {
+        "tokens": 2053,
+        "nll": 0.18892370621116367,
+        "correct_tokens": 1943
+      },
+      "host_support_source/context/code_or_other": {
+        "tokens": 2653,
+        "nll": 0.001608595236564379,
+        "correct_tokens": 2652
+      },
+      "family:host_support_source": {
+        "tokens": 6648,
+        "nll": 0.12792578596823306,
+        "correct_tokens": 6426
+      },
+      "host_support_source/context/blank": {
+        "tokens": 38,
+        "nll": 0.016840901484101778,
+        "correct_tokens": 38
+      },
+      "host_support_source/removed/code_or_other": {
+        "tokens": 1080,
+        "nll": 0.014699252829579701,
+        "correct_tokens": 1076
+      },
+      "host_support_source/removed/blank": {
+        "tokens": 8,
+        "nll": 1.530106149162748,
+        "correct_tokens": 4
+      },
+      "metal/context/code_or_other": {
+        "tokens": 4171,
+        "nll": 0.009063278999325934,
+        "correct_tokens": 4155
+      },
+      "family:metal": {
+        "tokens": 36100,
+        "nll": 0.08329147462904939,
+        "correct_tokens": 35240
+      },
+      "metal/removed/code_or_other": {
+        "tokens": 11027,
+        "nll": 0.009176200952415298,
+        "correct_tokens": 10989
+      },
+      "metal/removed/blank": {
+        "tokens": 135,
+        "nll": 0.4834043472362585,
+        "correct_tokens": 112
+      },
+      "metal/added/blank": {
+        "tokens": 203,
+        "nll": 0.5452642372293295,
+        "correct_tokens": 164
+      },
+      "metal/added/code_or_other": {
+        "tokens": 18364,
+        "nll": 0.09846926365110982,
+        "correct_tokens": 17859
+      },
+      "metal/context/blank": {
+        "tokens": 114,
+        "nll": 0.11845819843875816,
+        "correct_tokens": 109
+      },
+      "metal/removed/comment_line": {
+        "tokens": 392,
+        "nll": 0.0019571966338433624,
+        "correct_tokens": 392
+      },
+      "metal/added/comment_line": {
+        "tokens": 1520,
+        "nll": 0.5715203035960295,
+        "correct_tokens": 1286
+      },
+      "eos/terminator/metadata": {
+        "tokens": 16,
+        "nll": 0.0,
+        "correct_tokens": 16
+      },
+      "family:eos": {
+        "tokens": 16,
+        "nll": 0.0,
+        "correct_tokens": 16
+      },
+      "other_device_source/context/code_or_other": {
+        "tokens": 82,
+        "nll": 0.0008107059095532169,
+        "correct_tokens": 82
+      },
+      "family:other_device_source": {
+        "tokens": 127,
+        "nll": 0.04246084079622162,
+        "correct_tokens": 124
+      },
+      "other_device_source/removed/code_or_other": {
+        "tokens": 10,
+        "nll": 0.10333142616238859,
+        "correct_tokens": 9
+      },
+      "other_device_source/added/code_or_other": {
+        "tokens": 26,
+        "nll": 0.16498618135332968,
+        "correct_tokens": 24
+      },
+      "other_device_source/context/comment_line": {
+        "tokens": 9,
+        "nll": 0.000343768858480568,
+        "correct_tokens": 9
+      },
+      "host_support_source/added/code_or_other": {
+        "tokens": 2390,
+        "nll": 0.20247943521312825,
+        "correct_tokens": 2257
+      },
+      "host_support_source/added/blank": {
+        "tokens": 32,
+        "nll": 0.4060028521607819,
+        "correct_tokens": 28
+      },
+      "tests_benchmarks/context/code_or_other": {
+        "tokens": 452,
+        "nll": 0.0022699293539967854,
+        "correct_tokens": 452
+      },
+      "family:tests_benchmarks": {
+        "tokens": 1173,
+        "nll": 0.2242634868889199,
+        "correct_tokens": 1111
+      },
+      "tests_benchmarks/removed/blank": {
+        "tokens": 1,
+        "nll": 7.149941444396973,
+        "correct_tokens": 0
+      },
+      "tests_benchmarks/removed/code_or_other": {
+        "tokens": 59,
+        "nll": 0.016259092846906704,
+        "correct_tokens": 58
+      },
+      "tests_benchmarks/added/code_or_other": {
+        "tokens": 625,
+        "nll": 0.3141910279782488,
+        "correct_tokens": 576
+      },
+      "tests_benchmarks/added/blank": {
+        "tokens": 4,
+        "nll": 2.111704684328288,
+        "correct_tokens": 1
+      },
+      "tests_benchmarks/context/blank": {
+        "tokens": 6,
+        "nll": 0.04487984044438539,
+        "correct_tokens": 6
+      },
+      "rationale/analysis/text": {
+        "tokens": 5,
+        "nll": 9.753170026838779,
+        "correct_tokens": 1
+      },
+      "family:rationale": {
+        "tokens": 5,
+        "nll": 9.753170026838779,
+        "correct_tokens": 1
+      },
+      "host_support_source/added/comment_line": {
+        "tokens": 310,
+        "nll": 1.0335609377072803,
+        "correct_tokens": 234
+      },
+      "host_support_source/context/comment_line": {
+        "tokens": 137,
+        "nll": 0.0007678345312826052,
+        "correct_tokens": 137
+      },
+      "mixed_boundary/mixed/mixed": {
+        "tokens": 3,
+        "nll": 0.006175370964532097,
+        "correct_tokens": 3
+      },
+      "family:mixed_boundary": {
+        "tokens": 3,
+        "nll": 0.006175370964532097,
+        "correct_tokens": 3
+      },
+      "metal/context/comment_line": {
+        "tokens": 174,
+        "nll": 0.003524296599606072,
+        "correct_tokens": 174
+      },
+      "tests_benchmarks/added/comment_line": {
+        "tokens": 26,
+        "nll": 1.8784747639979638,
+        "correct_tokens": 18
+      }
+    },
+    "inputs_sha256": {
+      "kernel-library/expansion-v4-hour/evaluation-audit/compare_tokens.py": "ba08335abefc77be4a26dae7b2d887df71ec6cab1392e5a9773e0544d77441c5",
+      "kernel-library/next-round-v5/two-host-split-v1/data/test.jsonl": "0720ead3d696e6e9215e99cbf18dd26e532def8c309add06bbbe21efe1841ad0",
+      "kernel-library/expansion-v4-hour/evaluation-audit/heldout-token-categories-v1.json": "0edf4d4fbb282bef4722df40afd8663abdfefdf5d160a7fd0d4665a2a6f5e9c0",
+      "kernel-library/next-round-v5/two-host-split-v1/studio-baseline-v2/baseline.json": "d3b4a48e2bb94d85416592cd74544c6ed12896f903c681d864b4eb9665aee0da"
+    },
+    "limitations": [
+      "Categories are lexical source/line roles, not AST classification or functional correctness.",
+      "Heldout rationale only5 targettokens and EOS16; this testset cannot substantiate broad reasoning improvement.",
+      "All16heldout are oneengine;9scoped/7disputed strata mustremain visible.",
+      "Very low pooled baseline NLL is teacher forcing; not generated patch correctness, numerical parity or speed.",
+      "Comparator was invoked with baseline inbotharguments solely to enforce complete token/category alignment; noadapter delta evidence."
+    ]
+  },
+  "quality_demonstrated": false,
+  "probe_status": "Separate32GiBcap/unchanged32GiBreserve recovery approved/launched; actualStudio89127live afterstartupguard andbackboneload; no probequalityscoresyet.",
+  "unchanged_training": "229examples/458updates/rank4alpha8/layer39/wq_a+wo_b; no currentdataset/runtime/hyperparameter changes.",
+  "independent_review": {
+    "status": "independent CPU reconstruction passed",
+    "GPU_executed": false,
+    "training": {
+      "completed_updates": 55,
+      "distinct_seen_views": 55,
+      "max_complete_serialized_tokens_seen": 12067,
+      "target_presentations": 100842,
+      "last_saved_peak_mlx_gib": 71.11425703018904,
+      "kind_counts": {
+        "exact_edit": 40,
+        "diagnostic": 15
+      }
+    },
+    "baseline_highlights": {
+      "all": {
+        "tokens": 47069,
+        "nll": 0.11107638727956892,
+        "correct_tokens": 45705
+      },
+      "metal/added/code_or_other": {
+        "tokens": 18364,
+        "nll": 0.09846926365110982,
+        "correct_tokens": 17859
+      },
+      "rationale/analysis/text": {
+        "tokens": 5,
+        "nll": 9.753170026838779,
+        "correct_tokens": 1
+      },
+      "eos/terminator/metadata": {
+        "tokens": 16,
+        "nll": 0.0,
+        "correct_tokens": 16
+      }
+    },
+    "negative_cases_rejected": [
+      "history target count",
+      "mask",
+      "prompt",
+      "prediction",
+      "nll",
+      "category_order",
+      "scope"
+    ],
+    "inputs_sha256": {
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/training-exposure-continuity-v3.json": "84d96677e75b075f452182e0a8fd1788450ab7e4ceda04f731aaf2aeea545bab",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/studio-baseline-category-audit-v1.json": "93ac198d7dd2ae505e92a6bbfb86455db621fdd8c52c36c644fcf28ca79965dd",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/runtime-v5/src/exl3_mlx/training.py": "b43a2d9d3c23ebf80fe9d908349a517e1fbb61c9a3ec090fc4c90f04de1d677e",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/data/train.jsonl": "eace04e707b6627f6c600f9f2c286dbe15bdfa9f4de9062ddc9cb90c6ed5dcb3",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/internal-training-project/ktune-evidence/provenance.jsonl": "19086c5ec74c07491c0807ef56027fdff0c54353ec2008c4c7528d9f25bb3779",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/training-history-observed-after54.json": "b187f30b1f89abf75e9b3485b72a3718a3c6a993349922ce861dcb666ff58638",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/training-state-step55.json": "d2e67c21768b79c4a83d7a97559701bc82ff7bf5ba1ffab9de43fdad7bd9966f",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/evaluation-audit/compare_tokens.py": "ba08335abefc77be4a26dae7b2d887df71ec6cab1392e5a9773e0544d77441c5",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/data/test.jsonl": "0720ead3d696e6e9215e99cbf18dd26e532def8c309add06bbbe21efe1841ad0",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/expansion-v4-hour/evaluation-audit/heldout-token-categories-v1.json": "0edf4d4fbb282bef4722df40afd8663abdfefdf5d160a7fd0d4665a2a6f5e9c0",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/studio-baseline-v2/baseline.json": "d3b4a48e2bb94d85416592cd74544c6ed12896f903c681d864b4eb9665aee0da",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/training-exposure-continuity-v2.json": "bee8aa50ead9579ef19841a4c5b45f939045c37c64ce86be2f49164c13476139",
+      "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/independent-exposure-baseline-v1/reconstruct.py": "5539feb30c5e9d65c7bf22908ef5a4daeea082379d4227cc3bb33b672c74225b"
+    },
+    "limitations": [
+      "Saved step/cursor and target-count consistency, not proof of gradient correctness or useful learning.",
+      "Distinct views and target presentations are not independent optimization count or gradient contribution weights.",
+      "Baseline-only teacher-forced values; no adapter delta, generated patch quality, numerical correctness or speed conclusion.",
+      "Lexical category labels are reused, not newly certified semantic/AST labels; rationale sample only five targets and EOS sixteen.",
+      "Seven disputed heldout references remain present in the full sixteen; no filtering or tuning performed.",
+      "Peak is historical MLX allocator peak, not current total system RAM or process RSS."
+    ]
+  },
+  "observed_main_checkpoint": 58
+}
