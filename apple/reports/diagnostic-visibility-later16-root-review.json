@@ -1,0 +1,412 @@
+{
+  "status": "approved_for_scoped_semantics_and_prompt_visibility",
+  "reviewer": "root independent of editor",
+  "reviewed_at": "2026-10-14T04:09:55.511330+00:00",
+  "index_sha256": "52acc775ca988a54ad70d6922763b5adbf11a006bf8828c964a1084f88395dcb",
+  "cases": [
+    {
+      "row": 191,
+      "id": "reason-tensorfold-6128a0c1-review_correctness-hour-v3-corrected-v4-readability-v2-visible-v1",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/191/evidence.json",
+          "sha256": "8858f0118fc43280f7afba80711b03b6d90fba1c4f59c805fe891616ecba3c29"
+        },
+        "prepared": {
+          "path": "visibility-cases/191/prepared.json",
+          "sha256": "9e3b997a9e58490e00756152d7179260eb905d149a5e923e78c3b06c881ffc75"
+        },
+        "raw": {
+          "path": "visibility-cases/191/raw.json",
+          "sha256": "5c026bc662156680b87439ed367755631b3efa07abe384c75cf3dc68562167d5"
+        },
+        "source": {
+          "path": "cases/reason-tensorfold-6128a0c1-review_correctness-hour-v3-corrected-v4-readability-v2/source.json",
+          "sha256": "d807d6dd0541ad79dc4f256f438e6c186c2821fcef0faaf4f76adbfa8004efd9"
+        }
+      },
+      "tokens": 254,
+      "loss_start": 143
+    },
+    {
+      "row": 192,
+      "id": "sushi-7f785f7efd5c-hour-v4-reasoning-corrected-v4",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/192/evidence.json",
+          "sha256": "a21f3266e09aa6d6746232663d21daefb21a2c9d0b13d2c810a222832836ccd4"
+        },
+        "prepared": {
+          "path": "visibility-cases/192/prepared.json",
+          "sha256": "f58d6c9eab6c9f62edd07cb75d2820d8c0c619071e34045572ae2b2834621ccf"
+        },
+        "raw": {
+          "path": "visibility-cases/192/raw.json",
+          "sha256": "fef5138d1e69baf4a11e7c7514fe0caa5220a9b746f5217dd9fdee7bcd1c0a64"
+        },
+        "source": {
+          "path": "cases/sushi-7f785f7efd5c-hour-v4-reasoning-corrected-v4/source.json",
+          "sha256": "027a49b031cda6695da01a4f281f753db6372f62fc3df266973b8fa5805f34b2"
+        }
+      },
+      "tokens": 550,
+      "loss_start": 419
+    },
+    {
+      "row": 195,
+      "id": "reason-tensorfold-70c27a5d-review_correctness-hour-v4-visible-v1",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/195/evidence.json",
+          "sha256": "5151526f394922270b266f6c0660abcfd9940815e06e5ca0f41568e46a76085e"
+        },
+        "prepared": {
+          "path": "visibility-cases/195/prepared.json",
+          "sha256": "430f2c81deb0bc90918e23363573cf01d70985ee0a3ce1c159c0efae450d7550"
+        },
+        "raw": {
+          "path": "visibility-cases/195/raw.json",
+          "sha256": "1bd4dfede37a781e836068bdc9320b7edc614db7f5a4dce657b1873a5bd4e361"
+        },
+        "source": {
+          "path": "cases/reason-tensorfold-70c27a5d-review_correctness-hour-v4/source.json",
+          "sha256": "0d3785e92da6b4c71b8a352508b2dd02df05f3e48106cbd0c75e02fb35507ce8"
+        }
+      },
+      "tokens": 178,
+      "loss_start": 78
+    },
+    {
+      "row": 225,
+      "id": "mlx-9ab977b56491-next-v5-diagnostic-corrected-v4-visible-v1",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/225/evidence.json",
+          "sha256": "0a8be0c49265cd5ade3f2ef27dc187857668142a5510e141790b5f6347a786f9"
+        },
+        "prepared": {
+          "path": "visibility-cases/225/prepared.json",
+          "sha256": "99140cea3ae184f4b48e617180d7c9476b04ce02780878a26a2e3c3e012345aa"
+        },
+        "raw": {
+          "path": "visibility-cases/225/raw.json",
+          "sha256": "e4c3167f2b2c1557bcdb944fffb0011b686b757ed76e1b5d0d5f2ae326aaa5cb"
+        },
+        "source": {
+          "path": "cases/mlx-9ab977b56491-next-v5-diagnostic-corrected-v4/source.json",
+          "sha256": "5e792049bd429321be6b7c463be3cfbd272812a75331c29dd1d174d712c51ecd"
+        }
+      },
+      "tokens": 317,
+      "loss_start": 155
+    },
+    {
+      "row": 226,
+      "id": "mlx-lm-80c217ff96de-next-v5-diagnostic-scoped-v5-visible-v1",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/226/evidence.json",
+          "sha256": "cb3e210a438096c28287ee830ec0814bd8c91203152bd6aabc3b5239c722e257"
+        },
+        "prepared": {
+          "path": "visibility-cases/226/prepared.json",
+          "sha256": "df02c5c58ddc7688f99e60db585863d41159d879c13c5d23106950f3ba68af40"
+        },
+        "raw": {
+          "path": "visibility-cases/226/raw.json",
+          "sha256": "8a8b3a564313b702b3addd43f5c423da5846438c22fee04408c7dc0ca4a46a22"
+        },
+        "source": {
+          "path": "cases/mlx-lm-80c217ff96de-next-v5-diagnostic/source.json",
+          "sha256": "f6b48de43b3dbffde70f28e0019c67b2d4c7b1c2d82c167f0dfc70eca37eef22"
+        }
+      },
+      "tokens": 305,
+      "loss_start": 112
+    },
+    {
+      "row": 187,
+      "id": "reason-tensorfold-5768a522-interpret_benchmark-hour-v3-scoped-v8-review-v2-review-v2",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/187/evidence.json",
+          "sha256": "d91d63b0546e2f6139c2390fe7c38acdd793bbc3e1a71839b517fa2a6663d4d6"
+        },
+        "prepared": {
+          "path": "visibility-cases/187/prepared.json",
+          "sha256": "74454e14aa0a147ec223e952d0e0a21113d250af12742ce1be79ac28e432d20a"
+        },
+        "raw": {
+          "path": "visibility-cases/187/raw.json",
+          "sha256": "a5d5387084ffa9cc4a3d688e4a14b3164f01727b21f5a6e994fac6fa4209b9d0"
+        },
+        "source": {
+          "path": "cases/reason-tensorfold-5768a522-interpret_benchmark-hour-v3-scoped-v8/source.json",
+          "sha256": "1fab666e1ee0e11e18617d4647f3b66c375c85647d28644fa451638887d9d0cc"
+        }
+      },
+      "tokens": 240,
+      "loss_start": 138
+    },
+    {
+      "row": 194,
+      "id": "mlx-90089440bcf3-interpret_benchmark-hour-v4-corrected-v4-scoped-v11-review-v2-visible-v1",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/194/evidence.json",
+          "sha256": "6521e3cec6759410ab038be9d8def30b356c9fdafe45e7b81dc5c7ff617a88bc"
+        },
+        "prepared": {
+          "path": "visibility-cases/194/prepared.json",
+          "sha256": "a31751e4c23767b0d534b9d8d2518b6b91edc04642b143a6f4e8ff66ed38510e"
+        },
+        "raw": {
+          "path": "visibility-cases/194/raw.json",
+          "sha256": "0b221ecb4d4d59dbc7c9bef2d721dfaad270e3b987091f17a8c4d6194a2245fd"
+        },
+        "source": {
+          "path": "cases/mlx-90089440bcf3-interpret_benchmark-hour-v4-corrected-v4-scoped-v11/source.json",
+          "sha256": "da373d150626279bb4e0e85456a20df41237f3450a7ee5d8aa08ac5b4744c151"
+        }
+      },
+      "tokens": 889,
+      "loss_start": 781
+    },
+    {
+      "row": 196,
+      "id": "sushi-8e991af832ac-hour-v4-reasoning-scoped-v11-review-v2",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/196/evidence.json",
+          "sha256": "e903f24851d677a7c2f61e134115fc3b6dfa259c5492789f17970e08380423fb"
+        },
+        "prepared": {
+          "path": "visibility-cases/196/prepared.json",
+          "sha256": "6fa36d6e83bf415578ca2d75f0603c979b79940921eaf13509284d31d834d4dc"
+        },
+        "raw": {
+          "path": "visibility-cases/196/raw.json",
+          "sha256": "214af0ad7c24746ea160e7f5db4534874e8392ef4454a108ec7d2f719e68bd69"
+        },
+        "source": {
+          "path": "cases/sushi-8e991af832ac-hour-v4-reasoning-scoped-v11/source.json",
+          "sha256": "c1cb4bcc44bbacd18c60964d41e370ffe6b8756b4ee53f160c549c9728587bc0"
+        }
+      },
+      "tokens": 896,
+      "loss_start": 711
+    },
+    {
+      "row": 193,
+      "id": "mlx-serve-fa76a4b50b3f-hour-v4-next-test-corrected-v4-scoped-v13-visible-context-v2",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/193/evidence.json",
+          "sha256": "046884d5b13cbec65078ead4f4ed9ccb39c7cd82c487b485ce7297302fc60a93"
+        },
+        "prepared": {
+          "path": "visibility-cases/193/prepared.json",
+          "sha256": "cb1a38f3229bc3686632fe3d729c3dd13d7938de56daa194100190bb746ee2a8"
+        },
+        "raw": {
+          "path": "visibility-cases/193/raw.json",
+          "sha256": "e41672d3e2e43b13476fbeb649bd6a424bf4c99c926afa3a42a98b1a5318fbd2"
+        },
+        "source": {
+          "path": "cases/mlx-serve-fa76a4b50b3f-hour-v4-next-test-corrected-v4-scoped-v13/source.json",
+          "sha256": "09d3554abeca87ecc80cbe99a25ed0d95e62a5c0d160335b5011da3aae2f3bea"
+        }
+      },
+      "tokens": 1502,
+      "loss_start": 1327
+    },
+    {
+      "row": 197,
+      "id": "mlx-serve-ff7f359bd024-hour-v4-next-test-corrected-v4-scoped-v13-visible-context-v2",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/197/evidence.json",
+          "sha256": "7634135dabdd3a10ae709b74b96ad8bb9e8362b6fa3a8d803004ec6552812c1d"
+        },
+        "prepared": {
+          "path": "visibility-cases/197/prepared.json",
+          "sha256": "fc35ecdbe216916f3ba43dfd4e4ee69b7a49f3c32b13f7b84b13eb88d569043e"
+        },
+        "raw": {
+          "path": "visibility-cases/197/raw.json",
+          "sha256": "c96b5d11a15be766a06ab012a3c8f33edd101eded920c7c1f335137548d068e4"
+        },
+        "source": {
+          "path": "cases/mlx-serve-ff7f359bd024-hour-v4-next-test-corrected-v4-scoped-v13/source.json",
+          "sha256": "add2aa00bbd0e1ffbf3ed0eefe260041e9718c7bd848e466d252ffe04dff113d"
+        }
+      },
+      "tokens": 2032,
+      "loss_start": 1898
+    },
+    {
+      "row": 188,
+      "id": "sushi-6755ff2426b7-hour-v3-reasoning-scoped-v15",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/188/evidence.json",
+          "sha256": "215abb14cf8e11975b91ae96118524b5cf6fe26ac814f74134450b8727bc4dc0"
+        },
+        "prepared": {
+          "path": "visibility-cases/188/prepared.json",
+          "sha256": "16509c12b5331c985c534249f744ec70aa3d5884394175fd4c2279242dacbb2e"
+        },
+        "raw": {
+          "path": "visibility-cases/188/raw.json",
+          "sha256": "eb71025a55143f7ff77dadb90bb89ce562db32c984bef976fe06c6c659aca984"
+        },
+        "source": {
+          "path": "cases/sushi-6755ff2426b7-hour-v3-reasoning-scoped-v15/source.json",
+          "sha256": "028c949fdfd7c37d377b004d0549a31d3db8cb50f5fa3ecc571f112a176a978f"
+        }
+      },
+      "tokens": 798,
+      "loss_start": 653
+    },
+    {
+      "row": 189,
+      "id": "mlx-serve-9a5467375008-hour-v3-reasoning-scoped-v15",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/189/evidence.json",
+          "sha256": "ab87cc980af328abd7ef046efc3922afd3a2a04b8a74a2726344a2c170baeb16"
+        },
+        "prepared": {
+          "path": "visibility-cases/189/prepared.json",
+          "sha256": "2d7fb1fb08655001f16808382402df95d5e778a1e75112f8b1517bd453824592"
+        },
+        "raw": {
+          "path": "visibility-cases/189/raw.json",
+          "sha256": "1055d4d6d0a38bda71da46552d85dcdaae37242d11b26b0ca5397597191487ad"
+        },
+        "source": {
+          "path": "cases/mlx-serve-9a5467375008-hour-v3-reasoning-scoped-v15/source.json",
+          "sha256": "680a4699e211c9e08c087e6ad4aa10df62e848a97c1cc4672f1c491dc665e3bc"
+        }
+      },
+      "tokens": 1714,
+      "loss_start": 1563
+    },
+    {
+      "row": 228,
+      "id": "vllm-metal-dd5eabb524cb-next-v5-corrected-v4-scoped-v15-visible-v1",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/228/evidence.json",
+          "sha256": "251d69c11aaf97f26e588f635cf8fb0506dbf62a3f2d9d6e057d92e5f063513d"
+        },
+        "prepared": {
+          "path": "visibility-cases/228/prepared.json",
+          "sha256": "4b44a3d25ec963e38afef9e2d313f68f8044444ecef0e98750cf303a2102e2a2"
+        },
+        "raw": {
+          "path": "visibility-cases/228/raw.json",
+          "sha256": "61f8d49b428784404e686f89e5b48b1e3cc7697d4421c14b170d567fb0fbdcec"
+        },
+        "source": {
+          "path": "cases/vllm-metal-dd5eabb524cb-next-v5-corrected-v4-scoped-v15/source.json",
+          "sha256": "5427224586d606b313d2f890002f18c45608983d8dd4cb651548154efa685f24"
+        }
+      },
+      "tokens": 382,
+      "loss_start": 142
+    },
+    {
+      "row": 186,
+      "id": "mlx-83b976ea4384-interpret_benchmark-hour-v3-corrected-v4-scoped-v16-visible-v1",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/186/evidence.json",
+          "sha256": "9eddfdfe8b365751db2bb4927a1ebdce0b6b9bb92ae3edf0f95e49d37555e9a7"
+        },
+        "prepared": {
+          "path": "visibility-cases/186/prepared.json",
+          "sha256": "c93e61bc06e93aedb69a77065d1a2887e077e70203d1427c8d63a14787ccac44"
+        },
+        "raw": {
+          "path": "visibility-cases/186/raw.json",
+          "sha256": "614ee0cad3e3686a61cce6832145d38613ed3e299c00fd170452ae4aa379de79"
+        },
+        "source": {
+          "path": "cases/mlx-83b976ea4384-interpret_benchmark-hour-v3-corrected-v4-scoped-v16/source.json",
+          "sha256": "aa619bc913666544ab1e38e467336d6ade520cfd81e75b36bf654247974258f8"
+        }
+      },
+      "tokens": 583,
+      "loss_start": 419
+    },
+    {
+      "row": 190,
+      "id": "mlx-84ea22f389ed-interpret_benchmark-hour-v3-corrected-v4-scoped-v16-visible-v1",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/190/evidence.json",
+          "sha256": "8e7d054f232562d0893eae403bd85b7f3e58a8d4a2996d6c5a46d61350467bff"
+        },
+        "prepared": {
+          "path": "visibility-cases/190/prepared.json",
+          "sha256": "f3539ea2136ef155297d79c6f7b0d1d1dadc24ec96434e935887daa7ea533732"
+        },
+        "raw": {
+          "path": "visibility-cases/190/raw.json",
+          "sha256": "f1fe338b440e46508706f812a9b76c1907c94c3f942c7a710425d63e40dc2c07"
+        },
+        "source": {
+          "path": "cases/mlx-84ea22f389ed-interpret_benchmark-hour-v3-corrected-v4-scoped-v16/source.json",
+          "sha256": "0a213027dcdd73b62acd344488464cb63462b92650aca88f9cf757367fa3f661"
+        }
+      },
+      "tokens": 3455,
+      "loss_start": 3318
+    },
+    {
+      "row": 227,
+      "id": "splash-99aa99db046a-next-v5-scoped-v16-visible-v1",
+      "inputs": {
+        "evidence": {
+          "path": "visibility-cases/227/evidence.json",
+          "sha256": "dc381cc3f42d403230f44d0e6b1b5efa3f4b7d0e885e3b27b62cd44d10b3650a"
+        },
+        "prepared": {
+          "path": "visibility-cases/227/prepared.json",
+          "sha256": "24435b7d228ca6c14038da742d3a6abe3a8419735e56859f311f188e5c7d5722"
+        },
+        "raw": {
+          "path": "visibility-cases/227/raw.json",
+          "sha256": "729d7d0f51431b0e7dd44338fa590da5c439c46e07c22c0cde3953aa2d8ea553"
+        },
+        "source": {
+          "path": "cases/splash-99aa99db046a-next-v5-scoped-v16/source.json",
+          "sha256": "176d5d9c2364c27e6d6af67a93d9e02a1c66dc422a7b9e68b5401e0f5b126b21"
+        }
+      },
+      "tokens": 332,
+      "loss_start": 122
+    }
+  ],
+  "checks": [
+    "Read current targets and visible prompts for all16 rows; inspected scoped primary source/report evidence",
+    "Baseline225 convolution flip scalar arithmetic derivable from supplied input, with no claimed backend execution",
+    "Baseline226 grouped SSM shape mismatch derivable from caller/state geometry; no ungrouped benchmark used as grouped proof",
+    "Baseline193/197 propose ownership/error repairs without unseen achieved results",
+    "Design227/228 propose storage/admission validation without invented measurement or universal calibration",
+    "Report194 now supplies captured table/body;186 supplies sinks rejection and later revisions;190 supplies SIMD/register excerpts",
+    "192 allocator A/B,187 adaptive-depth tradeoffs,188 coordinates and189 dispatch routing maintain scoped author evidence",
+    "Fresh exact complete tokenizer reproduction and every input/reference/claim hash verified"
+  ],
+  "tokenizer_identity": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "limits": [
+    "Only the16 listed current candidates approved; remaining27 require independent review",
+    "Source correctness discussion is not local shader compilation, runtime numerical parity or reproduced speedup",
+    "No active corpus/runtime or heldout changes"
+  ]
+}
