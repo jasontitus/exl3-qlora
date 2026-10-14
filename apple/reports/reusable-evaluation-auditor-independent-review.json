@@ -1,0 +1,30 @@
+{
+  "status": "approved_receipt_consistency_auditor",
+  "source_sha256": "db4c7e5167848c3d6bed070642acd62216546e04206a9e2422eb9d4ded219274",
+  "independent_math": {
+    "rows": 37,
+    "tokens": 208,
+    "oracle": "Exact Fraction weighted means/deltas and explicit categorical correctness transitions",
+    "all_categories_checked": 9
+  },
+  "independent_publication_checks": {
+    "input_hash_capture": true,
+    "duplicate_and_nonfinite_rejections": 3,
+    "no_output_on_rejection": true
+  },
+  "limitations": [
+    "Receipt consistency only. No evidence of model/source/process/checkpoint authenticity or quality certification.",
+    "Category label semantics are supplied, not inferred or certified.",
+    "No MLX/model/GPU imported or executed."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/evaluation_audit.py": "db4c7e5167848c3d6bed070642acd62216546e04206a9e2422eb9d4ded219274",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/tests/test_evaluation_audit.py": "04ad0e2d5ca8e94a9c76235a297aa0cfe9a98726e3e5d96cf5c410ebf4430f8d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/pyproject.toml": "4e3c51239ac484a98b112a18d588c0429cda189b4e7fa4804f6357097b5edbf8"
+  },
+  "author_suite_independently_run": {
+    "passed": 69,
+    "command": "/Users/jasontitus/experiments/exl3-qlora/apple/.venv/bin/python -m pytest -q publish-exl3/apple/tests/test_evaluation_audit.py"
+  },
+  "repair": "Initial generic JSON parsing accepted duplicate keys; author added strict duplicate-key/nonfinite rejection for every JSON and JSONL input. Independent negative publication checks confirm repair."
+}

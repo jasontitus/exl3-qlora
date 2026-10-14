@@ -1,0 +1,15 @@
+{
+  "created_utc": "2026-10-14T01:12:35.148761+00:00",
+  "status": "historical_regression_pass",
+  "examples": 16,
+  "supervised_tokens": 47069,
+  "checks": [
+    "Every aggregate metric and per-row category metric exactly equals separately reviewed historical auditor result",
+    "Product69CPUtests pass",
+    "No GPU run, new adapter evaluation or quality claim"
+  ],
+  "inputs_sha256": {
+    "kernel-library/expansion-v4-hour/evaluation-audit/historical-rehearsal-v1.json": "1c4d7c217807bfeada0ff25f95fcfe11b2377525abf647a8bbef0bdd102b5f6e",
+    "kernel-library/next-round-v5/reports/reusable-auditor-historical-rehearsal-v1.json": "c73d00b98b8d7d09cc3ea92520b8138064f7bf598ae0d795a4f78bc0c07d095b"
+  }
+}

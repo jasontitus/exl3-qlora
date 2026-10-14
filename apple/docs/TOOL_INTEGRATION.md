@@ -13,7 +13,7 @@ new product changes must not alter an active run.
 | Standard data import, project preparation, training, resume and paired comparison | CLI, SFTTrainer and Studio | Improve end-to-end usability as orchestration is integrated |
 | Complete agent edits and source evidence | Upstream/ktune import and replay tooling | Bring the newer cross-source assembly and family checks behind a documented reusable command |
 | Packed-cache budget for gated corpus campaigns | Preparation script now accepts `--packed-cache-mib`; 26 CPU tests | A cache-size setting is not evidence of a speedup |
-| Detailed paired token audit | Being extracted from the reviewed experiment auditor into the package | Remove dataset-size assumptions; test malformed inputs and document provenance limits |
+| Detailed paired token audit | Package module and `exl3-mlx-audit` CLI; independently reviewed, 69 CPU tests | [Input contract and limits](EVALUATION_AUDIT.md); automatic category generation and workflow integration remain separate |
 | Mac Studio ingestion / M5 training | Experiment orchestration with reviewed lease and runner scripts | Generalize host/path configuration and integrate with project status/resume |
 | Safe phase-boundary replacement of a campaign | Independently reviewed experimental operator | Integrate only after concrete identity checks and operational evidence; not a general public stop/recovery API yet |
 | Exact-base generated-code evaluation | Experiment probes and separate compiler/correctness gates | General benchmark manifests and end-to-end generated patch evaluation |
