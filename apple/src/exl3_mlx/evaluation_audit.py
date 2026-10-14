@@ -93,6 +93,56 @@ def _summary(values):
     }
 
 
+def validate_category_selection(prepared, categories):
+    """Validate the complete category contract before expensive evaluations."""
+    prepared = _list(prepared, "prepared")
+    _require(bool(prepared), "Require a nonempty prepared dataset")
+    categories = _mapping(categories, "categories")
+    rows = _list(categories.get("rows"), "category rows")
+    vocab = _integer(categories.get("prediction_vocab_size"), "prediction vocabulary", 1)
+    size = _integer(categories.get("tokenizer_size"), "tokenizer size", 1)
+    _require(len(rows) == len(prepared), "Category example count mismatch")
+    observed = defaultdict(int)
+    for i, (p, c) in enumerate(zip(prepared, rows, strict=True)):
+        _mapping(p, "prepared row")
+        _mapping(c, "category row")
+        ids = _list(p.get("input_ids"), "input IDs")
+        start = _integer(p.get("loss_start"), "loss_start", 1)
+        _require(start < len(ids), "Empty supervised target")
+        _require(
+            all(type(v) is int and 0 <= v < min(vocab, size) for v in ids),
+            "Input token outside vocabulary",
+        )
+        _require(_integer(c.get("index"), "category index") == i, "Category row mismatch")
+        _require(
+            _integer(c.get("loss_start"), "category loss_start", 1) == start,
+            "Category mask mismatch",
+        )
+        digest = hashlib.sha256(json.dumps(ids, separators=(",", ":")).encode()).hexdigest()
+        _require(c.get("input_ids_sha256") == digest, "Category sequence mismatch")
+        labels = _list(c.get("categories"), "target categories")
+        _require(
+            _integer(c.get("supervised_tokens"), "category supervised tokens", 1)
+            == len(labels)
+            == len(ids) - start,
+            "Incomplete category labels",
+        )
+        for label in labels:
+            _require(
+                isinstance(label, str)
+                and len(label.split("/")) == 3
+                and all(part and part.strip() == part for part in label.split("/"))
+                and not label.startswith("family:"),
+                "Malformed category: expected family/role/type",
+            )
+            observed[label] += 1
+    counts = _mapping(categories.get("counts"), "category counts")
+    _require(
+        all(type(v) is int and v > 0 for v in counts.values()) and counts == dict(observed),
+        "Category counts mismatch",
+    )
+
+
 def compare_token_evaluations(prepared, categories, base, adapter):
     """Validate and compare an arbitrary nonempty set of complete evaluation rows.
 
@@ -108,17 +158,8 @@ def compare_token_evaluations(prepared, categories, base, adapter):
     categories = _mapping(categories, "categories")
     category_rows = _list(categories.get("rows"), "category rows")
     vocab = _integer(categories.get("prediction_vocab_size"), "prediction vocabulary", 1)
-    tokenizer_size = _integer(categories.get("tokenizer_size"), "tokenizer size", 1)
     _require(len(category_rows) == count, "Category example count mismatch")
-    for i, value in enumerate(prepared):
-        p = _mapping(value, f"prepared row {i}")
-        ids = _list(p.get("input_ids"), f"row {i} input IDs")
-        start = _integer(p.get("loss_start"), f"row {i} loss_start", 1)
-        _require(start < len(ids), f"row {i}: empty supervised target")
-        _require(
-            all(type(v) is int and 0 <= v < min(vocab, tokenizer_size) for v in ids),
-            f"row {i}: input token outside vocabulary",
-        )
+    validate_category_selection(prepared, categories)
     selection = hashlib.sha256(_canonical(prepared)).hexdigest()
     reports = []
     for name, value in (("base", base), ("adapter", adapter)):
@@ -140,24 +181,11 @@ def compare_token_evaluations(prepared, categories, base, adapter):
     base, adapter = reports
     groups = defaultdict(list)
     per_row = []
-    observed_category_counts = defaultdict(int)
     for i, (p, value, b, a) in enumerate(
         zip(prepared, category_rows, base["rows"], adapter["rows"], strict=True)
     ):
-        c = _mapping(value, f"category row {i}")
-        _require(_integer(c.get("index"), "category index") == i, "Category row mismatch")
-        _require(
-            _integer(c.get("loss_start"), "category loss_start", 1) == p["loss_start"],
-            "Category mask mismatch",
-        )
-        ids_hash = hashlib.sha256(
-            json.dumps(p["input_ids"], separators=(",", ":")).encode()
-        ).hexdigest()
-        _require(c.get("input_ids_sha256") == ids_hash, "Category sequence mismatch")
         targets = p["input_ids"][p["loss_start"] :]
-        labels = _list(c.get("categories"), "target categories")
-        supervised = _integer(c.get("supervised_tokens"), "category supervised tokens", 1)
-        _require(len(targets) == len(labels) == supervised, "Incomplete category labels")
+        labels = value["categories"]
         for name, r in (("base", b), ("adapter", a)):
             _mapping(r, f"{name} row {i}")
             target_ids = _list(r.get("target_ids"), "target IDs")
@@ -189,20 +217,12 @@ def compare_token_evaluations(prepared, categories, base, adapter):
                 )
         local = defaultdict(list)
         for j, (target, label) in enumerate(zip(targets, labels, strict=True)):
-            _require(
-                isinstance(label, str)
-                and len(label.split("/")) == 3
-                and all(part and part.strip() == part for part in label.split("/"))
-                and not label.startswith("family:"),
-                "Malformed category: expected family/role/type",
-            )
             value = (
                 b["token_nll"][j],
                 a["token_nll"][j],
                 b["predicted_ids"][j] == target,
                 a["predicted_ids"][j] == target,
             )
-            observed_category_counts[label] += 1
             for key in ("all", label, "family:" + label.split("/")[0]):
                 local[key].append(value)
                 groups[key].append(value)
@@ -217,12 +237,6 @@ def compare_token_evaluations(prepared, categories, base, adapter):
             )
         per_row.append({"index": i, "metrics": result})
     total = {key: _summary(values) for key, values in groups.items()}
-    declared_counts = _mapping(categories.get("counts"), "category counts")
-    _require(
-        all(type(v) is int and v > 0 for v in declared_counts.values())
-        and declared_counts == dict(observed_category_counts),
-        "Category counts mismatch",
-    )
     for r, prefix in ((base, "base"), (adapter, "adapter")):
         supervised = _integer(r.get("supervised_tokens"), "global supervised tokens", 1)
         _require(supervised == total["all"]["tokens"], "Global token count mismatch")

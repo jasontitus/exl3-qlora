@@ -56,7 +56,7 @@ def project(tmp_path, monkeypatch):
         {
             "model_type": "deepseek_v41",
             "quantization": {"mode": "mxfp8"},
-            "text_config": {"num_hidden_layers": 40, "index_topk": 512},
+            "text_config": {"num_hidden_layers": 40, "index_topk": 512, "vocab_size": 32},
         },
     )
     for name in (
@@ -72,6 +72,15 @@ def project(tmp_path, monkeypatch):
         path = model / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("{}\n")
+    data_module = importlib.import_module(sft.__package__ + ".data")
+
+    class LocalTokenizer:
+        eos_token_id = 1
+
+        def __len__(self):
+            return 32
+
+    monkeypatch.setattr(data_module, "load_tokenizer", lambda _: LocalTokenizer())
     root = tmp_path / "project"
     data = root / "data"
     data.mkdir(parents=True)
@@ -195,6 +204,17 @@ def _evaluation_result(trainer, command, **values):
         argv.append("--verbose")
     return {
         "loss": 1.0,
+        "rows": [
+            {
+                "target_ids": row["input_ids"][row["loss_start"] :],
+                "predicted_ids": row["input_ids"][row["loss_start"] :],
+                "token_nll": [values.get("loss", 1.0)]
+                * (len(row["input_ids"]) - row["loss_start"]),
+                "correct_tokens": len(row["input_ids"]) - row["loss_start"],
+                "loss": values.get("loss", 1.0),
+            }
+            for row in selected
+        ],
         "examples": len(selected),
         "supervised_tokens": sum(len(row["input_ids"]) - row["loss_start"] for row in selected),
         "checkpoint": trainer.model,
@@ -458,6 +478,9 @@ def test_export_is_private_inference_bundle_without_resume_receipt(project):
 @pytest.fixture
 def preview(project, monkeypatch):
     class Tokenizer:
+        def __len__(self):
+            return 32
+
         eos_token_id = 1
 
         @staticmethod

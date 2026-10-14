@@ -24,6 +24,7 @@ from pathlib import Path
 
 from .activation_config import normalize_adapter_config, validate_activation_mode
 from .context import ENGINE_SEMANTICS, MAX_CONTEXT_TOKENS
+from .evaluation_audit import _json, audit_files
 from .fit_probe import compare_final_fit_probe, validate_final_fit_examples
 from .resources import RESOURCE_FIELDS, resolve_resources
 
@@ -1001,7 +1002,7 @@ class SFTTrainer:
                 if condition == "adapter":
                     command += ["--adapter", adapter]
                 self._child(command, label=f"fit-{condition}", directory=directory)
-                results[condition] = json.loads(path.read_text())
+                results[condition] = _json(path.read_bytes())
                 self._manifest()
                 self._verify_evaluation_receipt(
                     results[condition],
@@ -1074,7 +1075,7 @@ class SFTTrainer:
         result["training_report_sha256"] = digest(report_path)
         return result
 
-    def evaluate(self):
+    def evaluate(self, *, categories=None):
         with project_lock(self.root) as lock_fd:
             self._lock_fd = lock_fd
             manifest = self._manifest()
@@ -1095,11 +1096,18 @@ class SFTTrainer:
             _, selected_rows, expected = self._evaluation_rows(manifest, split)
             directory = self.root / "comparisons" / str(time.time_ns())
             directory.mkdir(parents=True)
+            from .project_audit import snapshot_audit_inputs, verify_category_source
+
+            prepared_path, category_path, category_origin, category_source = snapshot_audit_inputs(
+                self.model, selected_rows, directory, categories
+            )
+            self._manifest()
             old_exposures = manifest.get("test_exposure_count", 0)
             if split == "test":
                 manifest["test_exposure_count"] = old_exposures + 1
                 write_json(self.root / "project.json", manifest)
             results = {}
+            receipt_hashes = {}
             for condition in ("base", "adapter"):
                 path = directory / f"{condition}.json"
                 command = [
@@ -1120,7 +1128,9 @@ class SFTTrainer:
                 if condition == "adapter":
                     command += ["--adapter", adapter]
                 self._child(command, label=condition, directory=directory)
-                results[condition] = json.loads(path.read_text())
+                receipt_bytes = path.read_bytes()
+                receipt_hashes[condition] = hashlib.sha256(receipt_bytes).hexdigest()
+                results[condition] = _json(receipt_bytes)
                 self._manifest()
                 self._verify_evaluation_receipt(
                     results[condition],
@@ -1129,7 +1139,25 @@ class SFTTrainer:
                     command,
                     adapter if condition == "adapter" else None,
                 )
-            delta = results["adapter"]["loss"] - results["base"]["loss"]
+            verify_category_source(category_source)
+            token_audit = audit_files(
+                prepared=prepared_path,
+                categories=category_path,
+                base=directory / "base.json",
+                adapter=directory / "adapter.json",
+                output=directory / "token-audit.json",
+            )
+            # Retain the existing project provenance gate, checked against the same
+            # receipt bytes the audit captured, not a later replacement receipt.
+            for condition in ("base", "adapter"):
+                receipt_path = directory / f"{condition}.json"
+                if (
+                    token_audit["inputs_sha256"][str(receipt_path.resolve())]
+                    != receipt_hashes[condition]
+                    or digest(receipt_path) != receipt_hashes[condition]
+                ):
+                    raise ValueError("Evaluation receipt changed during comparison")
+            delta = token_audit["aggregate"]["all"]["nll_delta"]
             result = {
                 "status": "likelihood_improved"
                 if delta < 0
@@ -1146,6 +1174,10 @@ class SFTTrainer:
                 "selected_examples_sha256": expected["selected_examples_sha256"],
                 "data_sha256": expected["input_identity"]["data_sha256"],
                 "loss_delta": delta,
+                "token_audit": token_audit,
+                "token_audit_path": str(directory / "token-audit.json"),
+                "token_audit_sha256": digest(directory / "token-audit.json"),
+                "category_origin": category_origin,
                 **results,
             }
             raw = self.root / "data" / f"raw-{split}.jsonl"
@@ -1153,6 +1185,12 @@ class SFTTrainer:
                 row = json.loads(raw.read_text().splitlines()[0])
                 if "prompt" in row or "messages" in row:
                     result["preview"] = self._paired_preview(row, adapter, directory)
+            verify_category_source(category_source)
+            for name, checksum in token_audit["inputs_sha256"].items():
+                if digest(name) != checksum:
+                    raise ValueError("Audit input changed before comparison publication")
+            if digest(result["token_audit_path"]) != result["token_audit_sha256"]:
+                raise ValueError("Token audit artifact changed before comparison publication")
             old_comparisons = manifest.get("comparison_count", 0)
             result["test_previously_observed"] = bool(old_exposures and split == "test")
             if result["test_previously_observed"]:
@@ -1247,11 +1285,28 @@ class SFTTrainer:
         import html
 
         body = html.escape(json.dumps(result, indent=2, ensure_ascii=False))
+        audit = result.get("token_audit")
+        summary = ""
+        if audit:
+            metrics = audit["aggregate"]["all"]
+            summary = (
+                "<p>"
+                + html.escape(
+                    f"Paired token audit: {audit['examples']} examples, {metrics['tokens']} supervised tokens. "
+                    f"Token-weighted NLL delta: {metrics['nll_delta']:.6f}. "
+                    f"Teacher-forced correct tokens: {metrics['base_correct']} → {metrics['adapter_correct']}; "
+                    f"corrected {metrics['corrected_tokens']}, regressed {metrics['regressed_tokens']}. "
+                    "These counts do not measure generated-code success or inference speed."
+                )
+                + "</p>"
+            )
         (self.root / "report.html").write_text(
             '<!doctype html><meta charset="utf-8"><title>Fine-tuning comparison</title>'
             "<style>body{font:16px system-ui;max-width:960px;margin:40px auto;padding:20px}pre{white-space:pre-wrap;background:#f4f5f7;padding:20px}</style>"
             "<h1>Fine-tuning comparison</h1><p>Completed training is separate from measured task quality. "
-            "The comparison below reports observed likelihood and a fixed generation preview.</p><pre>"
+            "The comparison below reports observed likelihood and a fixed generation preview.</p>"
+            + summary
+            + "<pre>"
             + body
             + "</pre>"
         )

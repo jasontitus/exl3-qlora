@@ -90,6 +90,11 @@ def build_parser():
     ):
         item = sub.add_parser(name, help=help_text)
         item.add_argument("project")
+        if name == "compare":
+            item.add_argument(
+                "--categories",
+                help="Exact selected-row token categories JSON; labels are not semantic certification",
+            )
     chat = sub.add_parser("chat", help="Generate from the project's selected adapter")
     chat.add_argument("project")
     chat.add_argument("--prompt", required=True)
@@ -179,7 +184,7 @@ def main(argv=None):
                     request_start_ns=args.request_start_ns or started,
                 )
             elif args.command == "compare":
-                result = trainer.evaluate()
+                result = trainer.evaluate(categories=args.categories)
             elif args.command == "chat":
                 result = trainer.generate(
                     args.prompt, max_new_tokens=args.max_new_tokens, base=args.base

@@ -118,7 +118,7 @@ def test_full_prompt_and_mask_are_bound_not_only_targets():
             data[0][0]["input_ids"][0] = 7
         else:
             data[0][0]["loss_start"] = 1
-        with pytest.raises(ValueError, match="full sequences"):
+        with pytest.raises(ValueError, match="full sequences|Category sequence mismatch|Category mask mismatch"):
             audit.compare_token_evaluations(*data)
 
 

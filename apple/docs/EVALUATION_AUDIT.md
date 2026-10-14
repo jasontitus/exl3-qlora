@@ -55,3 +55,34 @@ A successful result remains `metrics_consistent_pending_provenance_audit` with
 `quality_certified: false`. Verify the exact base, runtime, adapter/checkpoint,
 completed processes and dataset split separately. Then assess generated patches
 with compilation, numerical-correctness and performance tests on held-out tasks.
+
+## Normal project comparisons
+
+`exl3-mlx compare PROJECT` now automatically audits the paired token receipts
+before publishing `comparison.json` and `report.html`. This also applies to the
+comparison following standard training. The audit uses exactly the selected
+prepared rows (the saved `comparison_examples` limit), without a fixed example
+count. It saves the selected rows, category snapshot, and `token-audit.json` in
+the comparison attempt and records their hashes.
+
+Default categories describe observed token IDs: supervised tokens and the local
+tokenizer's declared EOS IDs. They do not infer code, reasoning, or correctness
+from text. Generation stop IDs are not automatically treated as EOS. The report
+contains token-weighted NLL, separately named macro example NLL, teacher-forced
+correct predictions, corrected tokens, and regressed tokens. The comparison
+status uses token-weighted NLL. These are not generated-patch success, numerical
+correctness, inference speed, or quality certification.
+
+For externally reviewed categories, use
+`exl3-mlx compare PROJECT --categories categories.json`, or
+`trainer.evaluate(categories="categories.json")`. The category schema is the
+same as the standalone auditor. Rows must match the exact selected sequences,
+order, masks and target counts; vocabulary dimensions must match the project's
+bound local model configuration and tokenizer. The source is captured once,
+preserved in the attempt and checked for changes before publication. Supplied
+category labels remain user assertions, not semantic certification.
+
+Existing project provenance checks still run. A malformed receipt, changed
+input, or category mismatch fails without replacing a previous comparison.
+Failed attempts remain available for diagnosis. The audit checks receipt
+consistency; it does not independently attest process or checkpoint provenance.

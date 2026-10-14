@@ -62,7 +62,7 @@ def test_wrong_new_child_receipt_is_not_published(project, monkeypatch, kind, mu
         _write(Path(_arg(command, "--report")), value)
 
     monkeypatch.setattr(project, "_child", child)
-    with pytest.raises(ValueError, match="Child"):
+    with pytest.raises(ValueError, match="Child|Nonfinite JSON"):
         operation(project, kind)()
     assert not (project.root / ("fit.json" if kind == "fit" else "comparison.json")).exists()
 

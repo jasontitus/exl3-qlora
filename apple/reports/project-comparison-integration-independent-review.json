@@ -1,0 +1,25 @@
+{
+  "status": "approved_after_independent_source_review_and_cpu_regression",
+  "reviewer": "root",
+  "created_utc": "2026-10-14T01:49:30.972784+00:00",
+  "source_sha256": {
+    "apple/src/exl3_mlx/evaluation_audit.py": "15c1d2a6c30b8f33ff35351b7adf167286567a47174c6cf667c19062cbd09e39",
+    "apple/src/exl3_mlx/project_audit.py": "8c60c4685142492a77663a8b28631c51800e2c16c96db9a22fff45d872c0fdcc",
+    "apple/src/exl3_mlx/sft.py": "b5f5589826baa2e086c28fd9105558aea755d6878b025613f3339aae5a9839b4",
+    "apple/src/exl3_mlx/sft_cli.py": "c8ead66a3b4f66665de6c224bcb570fe912867d2f32f2b664b762f180584f807"
+  },
+  "tests": {
+    "passed": 214,
+    "scope": "project, provenance, paired token audit, standalone auditor, Studio; PYTHONPATH=apple/src"
+  },
+  "review_findings_resolved": [
+    "Category mismatches rejected before any model child starts",
+    "Audit artifact rehashed after preview before publication",
+    "Provenance checked receipt bytes match audited bytes"
+  ],
+  "limits": [
+    "CPU fake model children; no hardware qualification",
+    "Token correctness is teacher-forced, not generated patch quality",
+    "Semantic categories remain external assertions"
+  ]
+}
