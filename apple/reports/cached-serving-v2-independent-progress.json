@@ -1,5 +1,5 @@
 {
-  "status": "independent_cpu_tests_passed_source_review_pending",
+  "status": "integration_changes_required",
   "time_utc": "2026-10-14T02:58:22.632439+00:00",
   "seal_sha256": "fe78087b6f533d54503e89645d68722e101c8d8f38a5f43d4fbe9da77d74438a",
   "bound_files": 556,
@@ -29,6 +29,17 @@
     "Graph diff applies query adapter before query normalization in RC, compiled and eager paths; compiled adapter regions have distinct identities.",
     "Output branches use the input to wo_b for the residual, including the BF16 Dense16 input before widening; no second application was found in inspected branch exits.",
     "Compiled scale2 is specific to the strictly constrained rank4/alpha8 adapter contract, not generic adapter support.",
-    "Model construction seals adapter handles and route identities, while module guard refuses draft execution for both exact-token conditions."
+    "Model construction seals adapter handles and route identities, while module guard refuses draft execution for both exact-token conditions.",
+    "Exact-token host uses persistent serial Generator within a request, preserves EOS in output evidence and rejects out-of-vocabulary generated IDs.",
+    "Serial warmup uses the owned model fence and the same path for baseline and adapter; draft weights remain accounted for."
+  ],
+  "blocking_findings": [
+    {
+      "issue": "Native construction adapter_fingerprint uses domain-separated SHA256 with payload digest bytes and exact config JSON; Python compares raw payload SHA256.",
+      "impact": "Real non-base adapter receipts fail validation even if generation succeeds. Existing synthetic Python fixtures conceal the mismatch.",
+      "native_source": "prototype/src/arch/deepseek_v41/lora.zig:191",
+      "python_source": "prototype/tools/adapter_generate.py:680",
+      "required_fix": "Preserve native ownership identity, independently compute matching expected fingerprint, and test actual native emitted construction receipt through Python."
+    }
   ]
 }
