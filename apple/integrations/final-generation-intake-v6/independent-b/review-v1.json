@@ -1,0 +1,46 @@
+{
+  "schema": "suffix-intake-independent-source-review-v1",
+  "utc": "2026-10-14T18:40:49.248142+00:00",
+  "reviewer": "ingest_engines_b",
+  "verdict": "approved_for_additive_local_evidence_scoped_product_commit",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/README.md": "0abbc96a04dfba6f26db87095d62f3550aeb6f5d6e6e5939b640fca0fae8eaef",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/capture_suffix_v6.py": "a9ef8c76a68b47bf24adb3a7f11fe36848fa34acf3ec6b11c1006cef6d898985",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/cpu-tests.log": "97950fa8c3c970d2611ff3f8f1cd2da8de5fd50d8a80a88a62f3f28602f9c5b3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/source-diff.patch": "353cb78d9a120581f07fd26fe45ecf2c6cb55181e5c7b13efc776a9443d98196",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/source-parent.json": "4f7e65c63031844b8e1e04cc8fba13e7b4fed0c620ba001640457d07afb2df7b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/test_capture_suffix_v6.py": "70d6dbc4f4083d6a6e5d04b112756fe32749f97dbc1347d6b75e04ee39b1095f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-v1/capture_suffix_v5.py": "8a1e3c2a5ee62c4afab8dc89406ab53aa7d8e86c094d879de15fc103bf4a7548",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/author-seal-v1.json": "de1fdafffbd28182570ba991f8b304e93e4c3b18e42fa88e33ff0ad349a3fc28",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/single-serving-fit-report80-v1/request.json": "d1347fa2e7ac8455524bf82a5c5baf946e18d02a0462ccca33f66374acae7c46",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/single-serving-fit-report80-v1/attempt/engine-result.json": "c72722a593cc5f7420c60e5cd42adc9e24f2adfea2aebd5c99194a903048ba73",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/generation-report-profile-repair-v1/exact_generation.zig": "8bdf737c67d40f3b1d68f402bfff10b5cc6e757055de5013d9b30b80dd03bf12",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/independent-b/check_bindings.py": "1fb22a93a8658d46e1caa3c99c36016febb2c2cbd1b9632bc0fde932e83adf2b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/independent-b/test_independent.py": "0825d54ffb82109a008e8509f803db15eb4167ae48c869d90900c9c27bbb4079",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/independent-b/pytest.log": "9ef06e64cbe711eeac10ae5503f0cbff2c7c5b1f952b10bcebcf61e90d3a7fd7"
+  },
+  "tests": {
+    "author": 85,
+    "independent": 20,
+    "total_passed": 105,
+    "actual_engine_invoked": false,
+    "GPU_invoked": false
+  },
+  "source_diff": "Exact preserved-parent unified diff verified; only engine pin and current execution profile fields/strict resource geometry changed. Prompt/policy/final458/EOS/tokenizer/qualification/observer/bounded capture logic unchanged.",
+  "actual_schema_check": "Successful baseline33+4 report/request has exactly the six normalized execution fields plus three request-only supervised paths; current binary digest matches. This actual record is schema evidence only, not final-generation admission.",
+  "negative_scope": [
+    "coherently resealed mixed obsolete/current schemas",
+    "integer/boolean/float/string/nonfinite resource values and physical geometry",
+    "step150/prior30/final458 mislabeled150 and zeroB150-parent rejection",
+    "baseline33+4 and short fixed prompt rejection",
+    "unqualified current binary rejection"
+  ],
+  "limitations": [
+    "Private fixed final458/774prompt/4096cap helper, not a generic all-checkpoint product API.",
+    "Externally supplied device qualification and evidence are consistency-checked, not independently authenticated or created here.",
+    "Current successful single absent-adapter regression does not establish adapter, cached/fresh, full capacity or final458 qualification.",
+    "No actual final458 generation intake, tokenizer/model/device execution or whole-serving arithmetic parity established by these synthetic cases.",
+    "Original capture-v1 and all actual runtime/run records unchanged."
+  ],
+  "findings": []
+}

@@ -37,3 +37,8 @@ The reviewed source changes are preserved in
 [the native serving patch bundle](../integrations/native-serving-patches-v1/README.md).
 Its [portability limits](../integrations/native-serving-patches-v1/PORTABILITY.md)
 explain the exact modified base and local evidence needed for replay.
+
+The private [final-generation intake checker](../integrations/final-generation-intake-v6/README.md)
+now accepts the fixed engine's six-field execution report. Its CPU tests reject
+intermediate adapters and short probes. It still requires actual final-checkpoint
+and device qualification evidence; committing the checker supplies neither.

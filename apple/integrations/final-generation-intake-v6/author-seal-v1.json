@@ -1,0 +1,19 @@
+{
+  "schema": "suffix-intake-report-repair-author-v1",
+  "status": "pending_independent_review_CPU_only",
+  "author": "root",
+  "pytest_cases_passed": 85,
+  "GPU_executed": false,
+  "actual_device_qualification_claimed": false,
+  "preserved_final_step": 458,
+  "preserved_prompt_tokens": 774,
+  "preserved_max_new_tokens": 4096,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/README.md": "0abbc96a04dfba6f26db87095d62f3550aeb6f5d6e6e5939b640fca0fae8eaef",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/capture_suffix_v6.py": "a9ef8c76a68b47bf24adb3a7f11fe36848fa34acf3ec6b11c1006cef6d898985",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/cpu-tests.log": "97950fa8c3c970d2611ff3f8f1cd2da8de5fd50d8a80a88a62f3f28602f9c5b3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/source-diff.patch": "353cb78d9a120581f07fd26fe45ecf2c6cb55181e5c7b13efc776a9443d98196",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/source-parent.json": "4f7e65c63031844b8e1e04cc8fba13e7b4fed0c620ba001640457d07afb2df7b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/capture-report-v2/test_capture_suffix_v6.py": "70d6dbc4f4083d6a6e5d04b112756fe32749f97dbc1347d6b75e04ee39b1095f"
+  }
+}

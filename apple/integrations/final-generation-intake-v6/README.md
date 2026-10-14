@@ -1,0 +1,5 @@
+# Staged final-generation suffix intake repair
+
+CPU-only successor of the preserved capture-v1 helper. Pins the report-fixed engine ebc54335731cf3227c04855082828d1c6ad390ca2eb8053a8f1e032e1d33fe2e and accepts the current six-field result execution profile plus the three supervised request paths. Obsolete memory_cap_gib and mixed schemas fail explicitly. Resource fields remain integer bounded, with process plus reserve and native ceiling constrained to physical memory.
+
+Final-458 adapter/control identity, fixed 774-token agent prompt, 4,096 generation cap, EOS/no-truncation, device qualification, source/receipt hashes and all other checks are unchanged. The completed 33+4 absent-adapter regression does not satisfy this final-generation qualification. Synthetic reports used by the tests are fixtures, not actual model or device evidence. No inference, GPU launch, active runtime change, adapter selection or qualification is performed here. Independent review is required before any real intake.
