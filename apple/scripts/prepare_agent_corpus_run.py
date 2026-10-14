@@ -232,7 +232,7 @@ def prepare(args):
         profile="development",
         memory_gib=args.memory_gib,
         reserve_gib=8,
-        packed_cache_mib=2048,
+        packed_cache_mib=getattr(args, "packed_cache_mib", 2048),
         decoded_cache_mib=0,
         prefix_cache_mib=1024,
         prefix_disk_cache=str(Path(args.prefix_disk_cache).expanduser().resolve()),
@@ -546,6 +546,7 @@ def main():
         create.add_argument("--" + name, required=True)
     create.add_argument("--max-length", type=int, required=True)
     create.add_argument("--memory-gib", type=float, default=90)
+    create.add_argument("--packed-cache-mib", type=int, default=2048)
     for action in ("command", "verify"):
         command = sub.add_parser(action)
         command.add_argument("--plan", required=True)

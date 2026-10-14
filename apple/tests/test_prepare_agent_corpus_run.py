@@ -386,3 +386,29 @@ def test_terminal_adapter_verify_requires_report_validation(tmp_path, monkeypatc
     monkeypatch.setattr(helper, "verify_evaluation", malformed)
     with pytest.raises(ValueError, match="bad terminal evidence"):
         helper.verify_phase(args)
+
+
+def test_explicit_cache_is_bound_to_all_direct_phases(tmp_path, monkeypatch):
+    args, _ = prepare_fixture(tmp_path, monkeypatch)
+    args.packed_cache_mib = 6144
+    helper.prepare(args)
+    plan = helper.read_json(args.plan)
+    assert plan['config']['packed_cache_mib'] == plan['resources']['packed_cache_mib'] == 6144
+    assert plan['config']['memory_gib'] == 86
+    assert plan['config']['reserve_gib'] == 8
+    for phase in ('preflight-train', 'preflight-test', 'baseline', 'adapter'):
+        command = plan['commands'][phase]
+        assert command.count('--packed-cache-mib') == 1
+        assert command[command.index('--packed-cache-mib') + 1] == '6144'
+    assert plan['config']['decoded_cache_mib'] == 0
+
+
+@pytest.mark.parametrize('quota', [-1, 1.5, True, 1000000])
+def test_invalid_cache_does_not_create_project(tmp_path, monkeypatch, quota):
+    args, events = prepare_fixture(tmp_path, monkeypatch)
+    args.packed_cache_mib = quota
+    with pytest.raises(ValueError):
+        helper.prepare(args)
+    assert not Path(args.plan).exists()
+    assert not Path(args.project).exists()
+    assert not events

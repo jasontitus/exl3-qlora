@@ -24,6 +24,9 @@ For learning Metal inference optimizations from Git
 history, see the [task assessment](reports/metal-training-assessment.md) and its
 previous context audit. See [kernel tuning](KERNEL_TUNING.md) for the ktune archive flow.
 
+See [tool integration status](docs/TOOL_INTEGRATION.md) for which experimental
+improvements are in the reusable package and which still need integration.
+
 ## Current kernel-tuning extension
 
 The [ktune flow](KERNEL_TUNING.md) imports complete archived edits, checks their
