@@ -1,3 +1,15 @@
+## Current evaluation handoff — 2026-10-14T21:43:00.401855+00:00
+
+M5 worker 47890 is live, with saved pointer step-000187 of 458. Recent logs advance through layer 38 of the next cold frozen-prefix forward. This observation verifies liveness and pointer progress, not checkpoint payload integrity. The fixed 229 training views, 16 held-out views, final-layer wq_a/wo_b rank-four adapters, runtime and final-update target remain unchanged. New source collection remains paused.
+
+The actual 18-phase short serving qualification stopped after four complete native phases: baseline cached generation, zero-B cached generation, checkpoint-150 cached generation and baseline fresh-prefix generation. All four owned leases were released, and independent process-closure evidence is preserved. Baseline and zero-B selected cached logit rows match bitwise. The trained adapter changes cached outputs, which establishes adapter application but not better output quality.
+
+The strict cache gate failed on an identical 34-token prefix even without an adapter: cached argmax 262 versus fresh argmax 4588, maximum absolute logit difference 13.21875 and mean 2.217273320669843 across 129,280 vocabulary values. This is a serving baseline inconsistency, not an observed training failure or memory failure. No tolerance was relaxed and no successful qualification was published. Root rehashed all 186 independent actual-audit inputs and 24 source-diagnosis inputs without mismatch.
+
+Next: isolate full prefill versus split prefill before memory handover versus normal cached decode after handover, with bounded per-layer last-token probes and an untraced control. CPU diagnostic implementation and adversarial review are underway; no new Studio GPU job is launched. The completed checkpoint-150 teacher-forced evaluation retains its narrow findings; generated kernel compilation, correctness and performance benefit remain unproven. Final-458 fresh full-heldout evaluation is still required.
+
+Adding late adapter layers is a separate prospective experiment. More late layers reuse most cold prefix work but introduce backward/recompute/weight-read costs and move the reusable frozen-prefix boundary earlier. Last-two/last-four-layer performance and quality are not measured; do not change the running experiment to infer them.
+
 # EXL3 Apple training and Metal optimization handoff
 
 ## Latest result — 2026-10-14 20:18 UTC

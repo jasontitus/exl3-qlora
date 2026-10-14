@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-14T20:24:47.402794+00:00",
+  "updated_utc": "2026-10-14T21:43:00.401855+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -11,7 +11,7 @@
   "train_examples": 229,
   "heldout_examples": 16,
   "planned_updates": 458,
-  "completed_main_updates": 172,
+  "completed_main_updates": 180,
   "prior_campaign": "198 stopped intentionally after completed preflight; artifacts preserved; ownedlease released",
   "no_duplicate_gpu_job": true,
   "evaluation_pid": null,
@@ -72,15 +72,15 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "observed_utc": "2026-10-14T19:49:17.113881+00:00",
-    "source": "Actual read-only SSH process/latest observation20261014T2018",
-    "saved_update": 172,
+    "observed_utc": "2026-10-14T20:55:33.887429+00:00",
+    "source": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/training-progress-observation-20261014T205533Z/stdout.json",
+    "saved_update": 180,
     "planned_updates": 458,
     "worker_pid": 47890,
     "worker_live": true,
     "independent_exposure_audit_through": 165,
     "scope": "Live process/latest pointer observation, not checkpoint168 bytes or matched learning audit",
-    "saved_metric_health_review_through": 169
+    "saved_metric_health_review_through": 180
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -235,10 +235,7 @@
     "GPU_executed": false,
     "runtime_changed": false
   },
-  "previous_pointer_archive": {
-    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/current-run-before-live69.json",
-    "sha256": "814fd3ee772f2ebcbcf5ed91480692d44776926a02fbf021f81e01c79a986b1d"
-  },
+  "previous_pointer_archive": "kernel-library/next-round-v5/m5-successor/current-run-before-cache-mismatch-20261014T214300Z.json",
   "generated_candidate_replay": {
     "status": "independently_approved_CPU_syntax_replay_only",
     "author_seal_sha256": "d6db3b45c38fc69d3bab5466fe9bf32a4371c5492f56187f325e825e523bfa0f",
@@ -612,17 +609,18 @@
     "training_admission": false
   },
   "latest_training_observation_current": {
-    "observed_utc": "2026-10-14T19:02:30Z",
-    "source": "actual read-only SSH ps/latest",
-    "saved_update": 160,
-    "completed_updates": 160,
+    "observed_utc": "2026-10-14T21:43:00.401855+00:00",
+    "source": "actual read-only SSH ps/latest and recent layer logs",
+    "saved_update": 187,
     "planned_updates": 458,
     "worker_pid": 47890,
     "worker_live": true,
-    "worker_elapsed": "14:25:08",
-    "worker_cpu_time": "612:08.73",
-    "worker_rss_kib": 18469728,
-    "independent_exposure_audit_through": 150
+    "worker_elapsed": "17:04:41",
+    "worker_cpu_time": "725:43.09",
+    "worker_rss_kib": 18159408,
+    "latest_log_layer": 38,
+    "latest_log_active_mlx_gib": 16.03,
+    "scope": "Live worker and saved pointer; not checkpoint-byte or optimizer-state verification"
   },
   "native_single_prefill_result": {
     "status": "terminal_failed_after_completed_33_token_prefill",
@@ -871,5 +869,37 @@
     "independent_provenance_review_pending": false,
     "independent_provenance_review_complete": true,
     "independent_provenance_review_sha256": "5b8a5bba62b70931663e99f340254701875d1f09e11ed2bf41fe178a1afb8da1"
+  },
+  "serving150_qualification_current": {
+    "status": "actual_partial_campaign_failed_strict_cached_fresh_baseline_parity",
+    "operation": "short-serving-operation150-report80-v3",
+    "completed_phases": 4,
+    "planned_phases": 18,
+    "GPU_executed": true,
+    "all_four_owned_leases_released": true,
+    "terminal_process_closure_independently_observed": true,
+    "training_unaffected": true,
+    "max_absolute_logit_error": 13.21875,
+    "mean_absolute_logit_error": 2.217273320669843,
+    "cached_argmax": 262,
+    "fresh_argmax": 4588,
+    "same_prefix": true,
+    "baseline_zeroB_bitwise_equal": true,
+    "adapter_changes_cached_generation": true,
+    "generated_quality_demonstrated": false,
+    "tolerance_relaxed": false,
+    "automatic_retry": false,
+    "independent_actual_review_sha256": "4cd8e40ca5241cf2fe1ba86d7d1c252cd97b15050d181896ec476d77f3204f8a",
+    "root_rehashed_review_inputs": 186,
+    "CPU_diagnosis_rehashed_inputs": 24,
+    "next_action": "Isolated CPU diagnostic comparing full prefill, split prefill before handover and decode after handover; independent review before GPU launch"
+  },
+  "latest_training_saved_metric_review": {
+    "through_update": 180,
+    "review_sha256": "9eec1c4b72acfe144ab2a76079ad2c1ce0069bffba5c30476d50b4811d7bf8b9",
+    "reported_peak_mlx_gib": 71.27977485954762,
+    "last20_mean_seconds": 348.68757697085385,
+    "last20_median_seconds": 285.8853540830314,
+    "scope": "Finite saved metrics and unchanged169prefix, not learning benefit/checkpoint/sampler audit"
   }
 }
