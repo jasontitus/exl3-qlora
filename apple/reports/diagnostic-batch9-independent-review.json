@@ -1,0 +1,47 @@
+{
+  "status": "approved_for_semantic_evidence_scope_only",
+  "reviewer": "root independent of editor",
+  "reviewed_at": "2026-10-14T03:42:29.097423+00:00",
+  "index_sha256": "f719e400a26544c78f9793c696f04058940a847ff02994c41583b9a506d26e48",
+  "cases": [
+    {
+      "id": "mlx-2d27ab05fb7d-review_correctness-hour-v4-corrected-v4-scoped-v9",
+      "inputs": {
+        "evidence": {
+          "path": "cases/mlx-2d27ab05fb7d-review_correctness-hour-v4-corrected-v4-scoped-v9/evidence.json",
+          "sha256": "e9e391c353d37f267b45ae530bc10c459283ebf368168799e7120df75044f852"
+        },
+        "prepared": {
+          "path": "cases/mlx-2d27ab05fb7d-review_correctness-hour-v4-corrected-v4-scoped-v9/prepared.json",
+          "sha256": "8e0687d0d31468ee3c855d5e0c62c109eab71d00b3f427c509b8d444bcf0c5a5"
+        },
+        "raw": {
+          "path": "cases/mlx-2d27ab05fb7d-review_correctness-hour-v4-corrected-v4-scoped-v9/raw.json",
+          "sha256": "2da6a3c9abe5e224a8d7e53f55b56e092f1a51957a29ba45c9b9922e6575861d"
+        },
+        "source": {
+          "path": "cases/mlx-2d27ab05fb7d-review_correctness-hour-v4-corrected-v4-scoped-v9/source.json",
+          "sha256": "43f7634812fac7607ace5f254d1add4281d25154349c9f4aa2039713751cf984"
+        }
+      },
+      "tokens": 129,
+      "loss_start": 47
+    }
+  ],
+  "checks": [
+    "Read all six before/after hunk pairs and captured57-byte description",
+    "New devc-d routes and tile instantiations support device-specific interpretation",
+    "Absence of timing limited to captured description; no exhaustive PR-history or speed claim",
+    "Validation recommendations remain inferred; other-device guard preservation is proposed requirement",
+    "Independent full prepared tokens and all input/reference/claim range hashes verified"
+  ],
+  "tokenizer_identity": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "chat_template.jinja": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+  },
+  "limits": [
+    "No kernel compile, execution, timing or claim that optimized tile choices are optimal",
+    "No approval of whole corpus or active-run data modification"
+  ]
+}
