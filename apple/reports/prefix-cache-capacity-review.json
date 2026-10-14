@@ -1,0 +1,100 @@
+{
+  "schema": "prefix-cache-capacity-independent-review-v1",
+  "status": "estimate_confirmed_scoped",
+  "passed": true,
+  "reviewer": "adversarial_code",
+  "created_utc": "2026-10-14T05:09:18.533839+00:00",
+  "decision": "The46.38758 GiB projection is conservative for the pinned229 unique complete training inputs and current six-leaf layout. It does not warrant a live quota/restart change. Continue monitoring actual stored_bytes and filesystem free space.",
+  "formula": {
+    "input_tokens": "T = len(prepared input_ids) - 1; supervised_hidden passes tokens[:, :-1] without truncation.",
+    "h_bytes": "40960*T = BF16*1*T*4*5120",
+    "pre_bytes": "16*T = F32*1*T*4",
+    "kv0_bytes": "1024*T = BF16*1*T*512",
+    "kv1_bytes": "256*T = BF16*1*T*128",
+    "kv2_bytes": "4*T*min(T,512); report uses conservative2048*T",
+    "kv3_bytes": "T*ceil(T/64) = U8 candidate mask over ceil(T/8) blocks, packed8 per byte",
+    "reported_upper_per_item": "44304*T + T*ceil(T/64)",
+    "metadata_allowance": "sum(32*T +131072); twice the per-entry non-tensor reservation terms16*T+65536. This is an allowance, not measured aggregate overhead."
+  },
+  "dataset": {
+    "items": 229,
+    "unique_shifted_input_keys": 229,
+    "total_shifted_tokens": 1119780,
+    "min_shifted_tokens": 137,
+    "max_shifted_tokens": 12172,
+    "shorter_than512": 25,
+    "fixed_updates": 458
+  },
+  "calculation": {
+    "reported_tensor_upper_bytes": 49742436670,
+    "refined_expected_layout_tensor_bytes": 49737089322,
+    "short_row_overestimate_bytes": 5347348,
+    "metadata_allowance_bytes": 65848448,
+    "reported_total_gib": 46.38758033327758,
+    "quota_gib": 64,
+    "estimated_margin_gib": 17.612419666722417
+  },
+  "observed_checks": [
+    {
+      "tokens": 616,
+      "tensor_bytes": 27297424,
+      "serialized_payload_overhead_bytes": 470,
+      "all_six_layouts_match": true
+    },
+    {
+      "tokens": 1225,
+      "tensor_bytes": 54296900,
+      "serialized_payload_overhead_bytes": 478,
+      "all_six_layouts_match": true
+    },
+    {
+      "tokens": 3896,
+      "tensor_bytes": 172846040,
+      "serialized_payload_overhead_bytes": 485,
+      "all_six_layouts_match": true
+    },
+    {
+      "tokens": 6624,
+      "tensor_bytes": 294158592,
+      "serialized_payload_overhead_bytes": 488,
+      "all_six_layouts_match": true
+    },
+    {
+      "tokens": 5026,
+      "tensor_bytes": 223068958,
+      "serialized_payload_overhead_bytes": 487,
+      "all_six_layouts_match": true
+    }
+  ],
+  "source_reasoning": [
+    "Cache is written after frozen block38 before trainable block39; persisted state is h, pre and all four shared attention leaves, not all39 layers.",
+    "Last KV source and candidate source are layer20, ratio1; the shared latent/index-key lengths areT and candidate width isceil(T/64). Subsequent index selection width ismin(512,T).",
+    "BF16 h/shared floating leaves and FP32 premix agree with allfive actual captured entries and dtype-preserving source construction; no new model evaluation was performed.",
+    "Cache identity includes exact complete input bytes, batch shape, training and checkpoint modes. Two fixed epochs over229 unique inputs reuse the same training-mode keys; adapter updates are strictly after the frozen boundary.",
+    "Disk quota counts file logical sizes, including binding/receipts and atomic staging. It raises on overflow and never evicts disk entries; RAM LRU eviction is a separate tier.",
+    "put reserves tensor bytes+16*T+65536 and checks serialized size within reservation; observed state.safetensors headers add470\u2013488bytes. Entry JSON and binding files are additional and covered only by the declared metadata allowance."
+  ],
+  "limits": [
+    "This is CPU arithmetic/source verification and captured metadata comparison, not independent remote full receipt/payload rehash or a full229-entry allocation measurement. Original remote entry hashes are recorded in the capture, but raw remote receipts were not reread by this reviewer.",
+    "No RAM/peak-memory, disk I/O latency, cache-hit speedup or training completion guarantee follows from the capacity estimate.",
+    "Additional modes, altered token sequences, changed boundary/config/dtype or other entries sharing the directory need separate accounting. Current train specification has empty validation, eval_steps459 beyond458 and final_fit_examples0.",
+    "Logical quota is not physical filesystem allocation or free disk; retain actual filesystem headroom and existing runtime guards.",
+    "The conservative metadata allowance is not a mathematical bound on arbitrary future receipt schemas or bindings. Current approximately17.61 GiB quota margin is large relative to inspected metadata."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/prefix-cache-capacity-assessment-v1.json": "2c3d6da4489e05af3e645c09258caddb5026eb70b0b2dea27e76bc272b3ab446",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/prefix-cache-observed-entry-metadata-v1.json": "63879f8ce2c3e624cad8f5d871881ee3e52f2d5ac2d045624cd82921159cfcd4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/data/train.jsonl": "eace04e707b6627f6c600f9f2c286dbe15bdfa9f4de9062ddc9cb90c6ed5dcb3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/data/valid.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/internal-training-project/project.json": "008a2393fe247147d996a14ca4ad2473f9b7cf8f01e442c7007a3137ae7a1ca5",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/config.json": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/runtime-v5/src/exl3_mlx/deepseek.py": "4890c6f9705899d28a0c663c1c8c747830e1c353081f98ed492025db3bb900f2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/runtime-v5/src/exl3_mlx/attention.py": "3020714a748ca41df3bcaa5b391fa5d8245c832cf7f6ab56615404e6577b6a8a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/runtime-v5/src/exl3_mlx/hyperconnections.py": "f180e11ccf978b82d1be32a70098a1b0da5688d0f676415677e02bf1f31c091f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/runtime-v5/src/exl3_mlx/prefix_cache.py": "d5bd906344fa51e4e54033ac261269ff4d3b11cffae2504f567975bd5229f9e3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/runtime-v5/src/exl3_mlx/prefix_disk.py": "7cfeabbc522d2270d96af195a6aaa53c770bfa88eccd8e2d043d54516dbec340",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/runtime-v5/src/exl3_mlx/training.py": "b43a2d9d3c23ebf80fe9d908349a517e1fbb61c9a3ec090fc4c90f04de1d677e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/runtime-v5/src/exl3_mlx/workflow.py": "51025ede97a12e257ad77287713d76081990efed236b324e2290a041f1f3f708",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/runtime-v5/src/exl3_mlx/sft.py": "3b5dd1b482140aea41415a12f6ff7aa335b21b3ff676ac6b09954a396762b60c"
+  }
+}
