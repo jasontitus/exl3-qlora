@@ -138,3 +138,11 @@ The corrected host link and static dependency inventory were independently
 verified in `apple/reports/cached-serving-v3-host-link-review.json`. The binary
 was not executed. Library layout, dynamic loading, Metal execution and adapter
 quality remain separate qualification steps.
+
+The separately held serving-v4 prototype adds bounded selected-vocabulary-row
+observation for numerical comparison. Independent CPU/source checks passed, and
+its full host build linked successfully. Static artifact evidence is retained in
+`apple/reports/cached-serving-v4-host-link-review.json`. The executable has not
+been run: dynamic loading, device readback and exact-base adapter/cache parity
+remain separate gates. The observer's synchronization also means its timing
+cannot be presented as normal serving throughput.
