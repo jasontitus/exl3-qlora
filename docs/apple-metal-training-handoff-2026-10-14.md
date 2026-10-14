@@ -1,3 +1,23 @@
+## Update: small fixture reproduces original failure; stages independently checked
+
+A fresh observation found the same M5 trainer alive at saved checkpoint **212 of 458**, advancing through layer 30 of the next item. The latest stable exposure audit remains update 206 (165 exact edits and 41 diagnostics); a live checkpoint observation does not replace that source/history audit.
+
+The model-free Studio fixture completed all three cases: one captured target query, 34 repeated target queries, and 34 heterogeneous queries whose final query is the exact captured target. It uses the original full-core QK/softmax/PV pipeline, not the split implementation. All three instrumented/original-route whole-array controls and 18 target-row intermediate comparisons were bitwise equal. All three leases released; root and independent process checks found the seven recorded IDs absent and the shared lock free. Maximum observed aggregate RSS was 1,000,226,816 bytes under the 4 GiB process budget; the 32 GiB reserve remained unchanged. The native MLX cap was 1 GiB with 64 MiB allocator cache. Sampled RSS is not a hard OS quota or unsampled peak proof.
+
+After the capture audit, CPU stage analysis and composed comparison were independently replayed. All three reports, 18 reference arrays (7,917,888 values), 320 Decimal QK scalars, 64 Decimal softmax heads, 64 Decimal full PV heads and 38 metric vectors passed their scoped checks. All three selected BF16 outputs are **bitwise equal to the original bad full-model projection input**. This reproduces the problem without model loading, original physical strides or the full-model score-wave caller.
+
+| S1 full-core stage interval | Observed residual against mathematical reference |
+| --- | ---: |
+| QK / forward rotation | RMS 57.28638; max 282.65372 |
+| Softmax exponents given actual device scores | max 0.00000006235 |
+| PV / inverse rotation / grouped store given actual device exponents and denominator | RMS 0.15764658; max 3.82456395 |
+
+The large errors are therefore isolated to the two indicated intervals; the exact instruction or layout fault remains unproven. This is not a repaired backend or a generated-quality result. References use ideal CPU sums/exp with explicit source FP32 boundaries; no post-hoc tolerance was introduced.
+
+Primary local source review found a relevant portability-contract gap: the custom route copies stock MLX's fixed NAX fragment layout but omits its hardware-generation gate. Apple's installed SDK documents cooperative layout as implementation-defined. The device in the accepted captures is M1 Ultra. The fixed map itself is a complete bijection, and source similarity/hardware gating alone does not prove the runtime mismatch. Next is a tiny coordinate/identity-product witness using the exact MPP descriptor and SDK coordinate accessor, with independent basis expectations. Production kernels remain unchanged pending that evidence and review.
+
+Evidence: capture review `0ff8e0091c3050e904193872d6c99db918b37d3b033bcbd1181e6d22b36b4a6e` (168 inputs rehashed by root); CPU actual review `24e2cd316b722e36244844a2b24576fd7333ae65acbbcaaa46657636a5658aed` (251 inputs rehashed by root). Native/controller and numerical-reference receipts are under `exact-generation-qualification-v1/full-attention-component-operation-v3` and `full-attention-stage-analysis-v3`.
+
 ## Update: attention operands captured and independently analyzed; M5 206
 
 M5 remains live. A stable approved history/source transfer through update 206 records **206 distinct complete views: 165 exact edits and 41 diagnostics**, with **385,851 supervised target presentations** and 1,000,008 serialized token presentations. The previous 194/188/165 history prefixes and frozen sampler source are unchanged. All recorded metrics are finite. Root verified the 17 receipt inputs, original history digest, unique source-row counts and token sums. These are recorded exposures, not a checkpoint-payload or quality certification.

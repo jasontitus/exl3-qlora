@@ -72,13 +72,14 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "saved_history_updates": 206,
+    "saved_checkpoint": 212,
     "worker_pid": 47890,
-    "worker_rss_kib": 18499488,
-    "worker_cpu": "790:29",
-    "worker_state": "Rs",
-    "source": "training-exposure-observation-20261014T231317Z/process-observation.json",
-    "observed_utc": "2026-10-14T23:13:27Z"
+    "elapsed": "19:03:47",
+    "worker_cpu": "809:26.65",
+    "worker_rss_kib": 18038784,
+    "forward_layer": 30,
+    "active_mlx_gib": 15.66,
+    "history_audit_checkpoint": 206
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -973,5 +974,28 @@
     "serving_parity_qualified": false,
     "generated_quality_verified": false,
     "next": "Small captured-operand full-path QK/softmax/PV fixture with independent stage references; no speculative repair."
+  },
+  "full_attention_component_current": {
+    "status": "actual_three_case_capture_and_CPU_analysis_independently_verified",
+    "cases": [
+      "target_s1",
+      "repeated_s34",
+      "heterogeneous_s34"
+    ],
+    "capture_review_sha256": "0ff8e0091c3050e904193872d6c99db918b37d3b033bcbd1181e6d22b36b4a6e",
+    "capture_review_root_rehashed_inputs": 168,
+    "CPU_review_sha256": "24e2cd316b722e36244844a2b24576fd7333ae65acbbcaaa46657636a5658aed",
+    "CPU_review_root_rehashed_inputs": 251,
+    "all_three_BF16_targets_bitwise_equal_original_bad_capture": true,
+    "all_owned_leases_released": true,
+    "root_session_92431_terminal_exit": 0,
+    "observed_max_aggregate_RSS_bytes": 1000226816,
+    "qk_interval_S1_rms_error": 57.28637969984101,
+    "softmax_given_actual_scores_S1_ex_max_error": 6.23501161811646e-08,
+    "PV_inverse_given_actual_ex_den_S1_rms_error": 0.15764658213653374,
+    "specific_instruction_cause_proven": false,
+    "production_repair_applied": false,
+    "serving_parity_qualified": false,
+    "next": "Review and execute tiny MPP cooperative-coordinate/identity witness on M1 Ultra; compare runtime layout to fixed NAX map before repair."
   }
 }
