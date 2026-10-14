@@ -1,0 +1,61 @@
+{
+  "schema": "frozen-prefix-prototype-independent-review-v1",
+  "reviewer": "ingest_engines_b",
+  "created_utc": "2026-10-14T01:59:21.935071+00:00",
+  "status": "approved_cpu_prototype_only_hardware_unqualified",
+  "implementation_sha256": "bf0123bd91117e42c73fa8fc53dcd5e9933cc8947a39c5f58b97dc400489a138",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/prefix-throughput/prototype/scheduler.py": "2026210d1b067662fd8abf389f5a5d63e9e14d2ffb215b050882f3396dcdd01a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/prefix-throughput/prototype/v5_backend.py": "de0fb2125151f11fa2e1afd16350d75f105a078edfcea89fda0ab692e10d675e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/prefix-throughput/prototype/README.md": "7252bf9fcaa7cf356bbaf8e2020bc3bc4b9574573399159a7f56c05df3306793",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/prefix-throughput/prototype/tests/test_scheduler.py": "e55d1d9a6a253e7a54544444e02c0697fae587d670b0697d51cb137503e63621",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/prefix-throughput/prototype/tests/test_v5_backend.py": "541b646948e9043ad15f0bebc1b572fb46cb9541134938efcbf203d30fe803f1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/prefix-throughput/prototype/cpu-tests.log": "52e0d7755ac450320e3bd09e5b977f61404b1da935177a41849e8edfe77270bb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/prefix-throughput/design.md": "90ab2bb57d1768064e73bf57c4b778eab4704acb00b23915dd70466aa6aaa953",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/prefix-throughput/independent-design-review-v1.json": "0a4da1376af370e6810d4ff4ffdf7b93b91febbc6ec1175c504ac97a815bc613",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/loss-fix/apple/artifacts/loss-fix/runtime-v5/snapshot.json": "56b38d2b0bed0f2ff3eb991324aec1439d079c6f9a57021ffde071e861f07bcc"
+  },
+  "review_evidence_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/review_prefix_prototype.py": "609058b2d8be15db5c7cb6e4f37c452afc2a69bfead8d9387b5e7ce2deb52227",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/prefix-author-tests-independent.log": "4c515b913254a1cafd6d893e85ca988d36c98fca6c841cdf04fa1639b23a68b1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/prefix-adversarial-tests-independent.log": "c6bae12b110b51bcdebb3db6a1ded79b17c68b70c176b1126f217df2ea896377"
+  },
+  "validation": {
+    "author_cpu_methods_independently_rerun": 25,
+    "independent_adversarial_cases": 7,
+    "independent_cases": [
+      "Exact overlap-inclusive byte admission and one-byte refusal before initialization",
+      "Increased resident/cache floor during initialization aborts before first block",
+      "Cross-item state key rejected; exclusive session released and reusable",
+      "Numerical mode mutation during block aborts",
+      "Two separate backend objects sharing one model cannot overlap sessions",
+      "Replacing archive/store/Engram provider objects rejected",
+      "Small but wrong hidden/head/hash dimensions rejected"
+    ],
+    "immutable_artifact_hashes_verified": 9,
+    "mlx_imported_by_independent_test": false
+  },
+  "source_findings": [
+    "Initialization preserves complete per-item hashes, sorted unique embedding reads and inverse ordering from pinned hidden_states.",
+    "Each frozen block preserves original checkpoint/training branch, Engram gather/eval, recompute frozen_inputs=False and block-output eval. Shared mirror still needs independent original-v5 hardware parity.",
+    "Synchronous model-wide cooperative exclusion addresses recompute temporary parameter mutation; private ownership remains mandatory.",
+    "Construction-local private service owners/address metadata/expert links and full v5 state dimensions were strengthened during review.",
+    "Identity binds modes, producer/runtime/config/platform/payload declarations and complete shifted int64 key bytes; no sample packing/truncation/cache publication exposed.",
+    "Resource admission includes two retained state bounds plus one overlapping output and caller-declared workspace/non-state reserve; logical native parameters and cache quotas establish only a minimum reserve."
+  ],
+  "independent_bound_arithmetic": {
+    "input_tokens": 12172,
+    "one_conservative_state_bytes": 1060509844,
+    "two_retained_plus_one_overlapping_bytes": 3181529532,
+    "includes": "six leaves, Engram hashes and token-key bytes",
+    "excludes": "block working memory, native parameters, caches, allocator/OS and other host residency"
+  },
+  "limitations": [
+    "No hardware launch authorized; no GPU, MLX import, actual model payload or cache publication was performed.",
+    "No measured numerical/gradient/optimizer/throughput parity; bitwise original-v5/item-major/group-two all-six-leaf and suffix parity gates remain.",
+    "binding_guard is an externally supplied trusted integration seam, not implemented payload/package/process attestation.",
+    "Budget is declared logical accounting, not a measured/enforced RSS or allocator cap; lazy graph lifetime, working scratch and system pressure need qualification.",
+    "Cooperating module-local lock does not constrain arbitrary calls elsewhere; model and provider arrays must be exclusively owned and immutable. In-place array mutation/private cache poisoning/monkeypatching are explicitly unsupported.",
+    "Failed operations may change private LRU/counters and exception tracebacks may retain arrays; no partial outputs published, but memory rollback not claimed."
+  ]
+}

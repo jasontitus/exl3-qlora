@@ -17,12 +17,22 @@ new product changes must not alter an active run.
 | Mac Studio ingestion / M5 training | Experiment orchestration with reviewed lease and runner scripts | Generalize host/path configuration and integrate with project status/resume |
 | Safe phase-boundary replacement of a campaign | Independently reviewed experimental operator | Integrate only after concrete identity checks and operational evidence; not a general public stop/recovery API yet |
 | Exact-base generated-code evaluation | Experiment probes and separate compiler/correctness gates | General benchmark manifests and end-to-end generated patch evaluation |
+| Layer-major frozen-prefix preparation | Isolated group-two prototype passed independent CPU review; no cache publication | Original-runtime boundary/gradient parity, measured resources and speed, then project integration |
+| Cached adapter inference | Isolated stock-route prototype passed independent 18-test CPU review including prior adapter loading | Optimized routes, CLI loading, device and full-model cached parity, then matched serving evaluation |
 
 The next product work should close these gaps rather than accumulate another
 host-specific script. In particular, a user should be able to prepare a versioned
 dataset, select a local or remote worker and resource budget, run preflight/train/
 evaluate, and inspect a report through one project workflow. Until integrated,
 the existing experiment coordinator must not be advertised as that workflow.
+
+The prototype review receipts are retained as
+`apple/reports/grouped-prefix-cpu-review.json` and
+`apple/reports/stock-cached-inference-cpu-review.json`. They bind experiment
+source identities and document their limits; retaining these receipts does not
+make either prototype a supported product feature. In particular, the candidate
+serving engine uses different base arithmetic from the trainer and requires its
+own matched unadapted serving baseline.
 
 ## Acceptance requirements for promotion
 
