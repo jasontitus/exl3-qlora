@@ -69,3 +69,39 @@ The live M5 preflight finished model payload hashing at1051.6seconds and reached
 Both captured versions of TensorFold5d7fbf3034e7 qmm6_nax.metal compiled with their exact Git header closures under Metal4.0/O3/no-fast-math. Independent review checked Git bytes, arguments and AIR hashes. Metal32023.921/SDK27.0/compiler hash were observed immediately afterward, not pinned at invocation. No GPU numerical/performance qualification follows.
 
 The reviewed B export now contains5 exact edits plus2 reasoning-only examples;4 exact edits fit12K. Export bytes, IDs, masks and independent approval bindings were rechecked. Deeper MLX review also quarantined a grouped-SSM whole-patch regression in80c217ff96de: source-derived geometry produces a256-wide update for128-wide state. The CPU source counterexample is not a claim about current upstream HEAD or an executedGPU test.
+
+## Expanded successor and completed longest-item preflight
+
+The original 198-item campaign completed its longest-training-item preflight:
+12,173 serialized tokens, 9,747 supervised tokens, one full update, saved adapter
+and optimizer state, and 67.322 GiB peak MLX allocation. Loss on that update was
+0.3779546; this single observation is not an improvement comparison. The phase
+verifier checked its completed artifacts. Initial checkpoint hashing took about
+17.5 minutes; the logged training interval after setup was 1,312 seconds.
+
+Before baseline or main training, the owned campaign was deliberately stopped
+through the independently reviewed identity-bound handoff. The newly started
+test preflight was interrupted. A separate release verified terminal process
+generations/groups and exact lease ownership. Independent post-action review
+confirmed the training preflight and all logs/checkpoints remained intact, no
+baseline/main-training/final-adapter phase ran, and the owned lease was released.
+This supersedes the earlier expectation that the 198-item campaign would continue.
+
+The successor contains 229 distinct training commits: 186 exact-edit examples and
+43 diagnostics, with the same 16 held-out items. It adds 27 edits and four distinct
+diagnostics. Independent review replayed all 27 new edits and retokenized all 245
+published rows. The review found four prompt-order sidecar mismatches in candidate
+v2; v3 corrects them explicitly, preserving every supervised answer and the older
+artifacts. Candidate v3 SHA-256 is
+`fba890f2a5fb4c362c32db8a2d0f72c0904a1553a890baf254832b56561b6735`.
+
+CPU preparation on M5 produced a separate 458-update plan, two exposures per
+training item, with a 6 GiB packed cache, unchanged 80 GiB cap and 8 GiB reserve.
+That cache can hold a final-layer expert bank for recomputation; it does not avoid
+cold-prefix reads and no speedup is established yet. The new campaign must pass
+its own preflights and fresh baseline. At this entry, preparation completed and
+concrete launch review remains pending; no successor GPU job has launched.
+
+Reusable tool improvements are tracked in `apple/docs/TOOL_INTEGRATION.md`.
+The gated preparation helper now exposes the cache budget with 26 passing CPU
+tests; more detailed evaluation checks are being extracted from experiment code.
