@@ -1,0 +1,74 @@
+{
+  "schema": "metal-training-progress-v1",
+  "recorded_utc": "2026-10-14T13:50:52.382338+00:00",
+  "status": "main_training_live_final_evaluation_incomplete",
+  "training": {
+    "completed_saved_updates": 101,
+    "distinct_view_ids": 101,
+    "kind_counts": {
+      "exact_edit": 80,
+      "diagnostic": 21
+    },
+    "target_presentations": 195554,
+    "max_complete_serialized_tokens_seen": 12078,
+    "last_saved_peak_mlx_gib": 71.27977485954762
+  },
+  "training_scope": [
+    "Approval applies to these actual immutable captures and counts, not the one-off author utility as a generic fail-closed validator. Three temp-only corruptions were accepted by that utility and rejected by independent strict validation.",
+    "Four checkpoint hashes and byte lengths are assertions observed remotely by the capture producer. No local checkpoint payload bytes were available/read here; this audit does not independently authenticate adapter/optimizer/random bytes or remote execution.",
+    "state_raw_sha256 and observed_history_raw_sha256 are retained producer observations of uncopied original serializations, not recomputed from parsed JSON.",
+    "Saved step/history continuity does not prove gradients, optimizer numerical correctness, semantic reference correctness, training benefit or generated kernel quality.",
+    "195554 counts all supervised token presentations including tool/code/rationale/EOS; it is not an independently counted number of Metal instructions or independent optimization families.",
+    "The reported71.27977485954762GiB is the saved MLX peak metric, not a fresh physical/RSS measurement or fit guarantee.",
+    "Fixed458 final selection, active229 corpus, heldout16 and running jobs remain unchanged."
+  ],
+  "campaign": {
+    "train_views": 229,
+    "heldout_items": 16,
+    "planned_updates": 458,
+    "layer": 39,
+    "targets": [
+      "wq_a",
+      "wo_b"
+    ],
+    "rank": 4,
+    "alpha": 8,
+    "trainable_parameters": 78848,
+    "data_unchanged": true
+  },
+  "fixed_harness": {
+    "numerical_dispatches": 896,
+    "timing_dispatches": 84000,
+    "actual_runs_independently_reviewed": true,
+    "model_generated_kernels": false
+  },
+  "short_serving": {
+    "startup_memory_gate_passed": true,
+    "completed_phases": 0,
+    "failure": "GenerationMetadata",
+    "failure_preserved": true,
+    "automatic_retry": false,
+    "owned_lease_recovery": "separate_review_pending"
+  },
+  "future_library": {
+    "views": 7,
+    "source_changes": 5,
+    "new_discoveries_in_manifest": 0,
+    "training_admission": false,
+    "catalog_independent_review": "pending"
+  },
+  "benefit": {
+    "final458_available": false,
+    "heldout_improvement_demonstrated": false,
+    "early50_pooled_nll_reduction_percent": 4.838123685,
+    "early50_correct_tokens_delta": 0,
+    "early50_all_metal_code_nll_worsened": true
+  },
+  "evidence_sha256": {
+    "kernel-library/next-round-v5/reports/training-capture-step101-v1.json": "67348f0bd6fd256ac076fdde2e73ddeff0c3aaab3a774304367b2045a524c1be",
+    "kernel-library/next-round-v5/reports/independent-exposure101-v1/review-v1.json": "134ac17600049e40269c31ab1c96e1999cf8cfa7e8f620a4a382c6d3337caf92",
+    "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation-v2/operation-failed.json": "ffb32452c46b3b28dc0d4c692b4aa2cb476671a3f6ffc0370aee203a1a401388",
+    "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-requests-v4/attempts/0033-absent/engine.log": "73aa8057d1e9076583feaa37e3aeb782b6b985fc12a17346ef893eb5f04831a2",
+    "kernel-library/next-round-v5/future-reviewed-context-library-20261014-v1/manifest.json": "a7584baa7ec76aa64d6d333a6c0eaa89c803237915c941fb9fe952ee2273bc29"
+  }
+}
