@@ -1,0 +1,23 @@
+{
+  "status": "cpu_contract_review_passed_hardware_unqualified",
+  "time_utc": "2026-10-14T03:01:33.972948+00:00",
+  "implementation_sha256": "2be30a1ffa86b425fa4254318bfc75ccdf2057afe5aa201884238d3a4b46a993",
+  "verified_input_pins": 18,
+  "independent_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "passed": 28,
+    "seconds": 5.655
+  },
+  "resolved_findings": [
+    "Final validation precedes successful receipt publication.",
+    "Required observations cannot be jointly omitted to produce a false equality pass.",
+    "All pinned source paths checked against canonical model root before source hashing; direct payload and symlink aliases refused without payload read."
+  ],
+  "qualification_limits": [
+    "NumPy state-machine, synthetic payload and mocked lifecycle tests only.",
+    "Actual MLX driver, boundary/gradient/optimizer numerical parity, full-model memory and timing remain unmeasured.",
+    "No GPU launch or cache publication approved by this receipt.",
+    "Any later launch needs concrete bound request, available exclusive lease and preserved current campaign."
+  ],
+  "active_runtime_changed": false
+}
