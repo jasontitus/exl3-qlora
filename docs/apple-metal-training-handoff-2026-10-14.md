@@ -1,5 +1,23 @@
 # EXL3 Apple training and Metal optimization handoff
 
+## Latest verified state — 2026-10-14 18:28 UTC
+
+M5 worker **47890** is live, with **156/458 updates saved** (fresh read-only SSH observation: elapsed 13:50:56, CPU 587:24.86, RSS 19,144,176 KiB). The frozen 229 training views, 16 held-out items, runtime-v5 and final-458 choice remain unchanged.
+
+The serving repair passed before evaluation launch. The isolated mlx-serve / mlx-stream build completed one absent-adapter request: 33-token prefill and four generated tokens, with finite observation rows and the required six-field execution report. Independent actual review: `exact-generation-qualification-v1/single-serving-fit-report80-v1/independent-actual-v1/review-v1.json`, SHA `d43472cb246e8aefb770c28bafff965411defeff06e4579aa0314cde8b9957af`. Its own lease was released. This qualifies that short baseline route, not trained-adapter application, general HTTP compatibility or useful Metal output. Earlier failed attempts are preserved.
+
+Checkpoint 150 was immutably captured, transferred and independently verified. The exposure audit covers **150 distinct training views: 121 exact edits and 29 diagnostics, 280,642 supervised target presentations**; maximum serialized item 12,123 tokens. Views are not necessarily independent optimization families. Actual exposure review: `intermediate-evaluation150-v1/exposure-audit-v1/independent-actual-v1/review-v1.json`, SHA `1867a49ab682389684c70a28f6be624cfb9560cdea3d09c9bd7963f11798e78a`.
+
+The real paired checkpoint-150 evaluation launched **18:18:43 UTC**, after the serving fix passed. Studio controller **68761**, runner **68766** and baseline worker **68775** were freshly verified live. It compares a matched rank-4 zero-B control with checkpoint 150 in separate processes on four fixed held-out items / **11,077 targets**. The baseline has completed the first item's 40-layer forward and is progressing through the next item. No paired result or learning-benefit claim yet. Concrete launch/review: `intermediate-evaluation150-v1/concrete-execution-v1/root-launch.json`; review SHA `79d3f8a569e965069ae9e94842982d81a100cbd52cb885916508977c9e2b537a`.
+
+Studio GPU is owned by this evaluation. No additional GPU tests or duplicate launches. Inspect actual process liveness and `future-execution/completion-zero_b.stderr.log` / trained-condition logs before diagnosing a stop. Process budget 32 GiB and system reserve 32 GiB remain unchanged. Final-458 fresh all-16 evaluation and generated-patch correctness/performance validation remain outstanding. Only five rationale targets exist in this held-out corpus; it cannot establish broad reasoning improvement.
+
+Reusable five-file serving patches are prepared in `kernel-library/next-round-v5/native-integration-patches-v1`, pending independent bundle review. They target an exact fingerprinted modified base; clean public-checkout compatibility is not established. Qwen remains CPU-qualified component work, without full-model or 16K hardware qualification.
+
+The snapshot and dated continuations below are historical observations; this latest section takes precedence for current state.
+
+## Historical snapshot and continuations
+
 Snapshot: **2026-10-14 13:39:46 UTC / 06:39:46 PDT**. This document supersedes the 12:02 snapshot, preserved in `HANDOFF-2026-10-14-at-1202UTC.md`. The original 11:18 snapshot is also preserved. The goal remains active; this handoff does not pause the live training run.
 
 ## Current outcome and limits

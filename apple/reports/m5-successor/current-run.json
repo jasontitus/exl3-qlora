@@ -1,7 +1,7 @@
 {
-  "updated_utc": "2026-10-14T17:13:17.456927+00:00",
+  "updated_utc": "2026-10-14T18:28:29Z",
   "host": "jason-m5-MacBook.local",
-  "status": "m5_live_saved141_watcher_live_isolated_lifecycle_CPUbuild_running",
+  "status": "m5_saved156_live_serving_baseline_fixed_checkpoint150_paired_eval_live",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
   "wrapper_pid": 47859,
   "runner_pid": null,
@@ -11,10 +11,10 @@
   "train_examples": 229,
   "heldout_examples": 16,
   "planned_updates": 458,
-  "completed_main_updates": 141,
+  "completed_main_updates": 156,
   "prior_campaign": "198 stopped intentionally after completed preflight; artifacts preserved; ownedlease released",
   "no_duplicate_gpu_job": true,
-  "evaluation_pid": null,
+  "evaluation_pid": 68775,
   "completed_train_preflight": true,
   "completed_test_preflight": true,
   "test_preflight": {
@@ -634,19 +634,15 @@
     "training_admission": false
   },
   "latest_training_observation_current": {
-    "observed_utc": "2026-10-14T17:06:53.231190+00:00",
-    "source": "actualSSHps/latest/log",
-    "saved_update": 141,
+    "observed_utc": "2026-10-14T18:28:00Z",
+    "source": "actual read-only SSH ps/latest",
+    "saved_update": 156,
     "worker_pid": 47890,
     "worker_live": true,
-    "worker_elapsed": "12:29:02",
-    "worker_cpu_time": "529:46.79",
-    "worker_rss_kib": 18699264,
-    "watcher_pid": 78277,
-    "watcher_live": true,
-    "latest_log_layer": 12,
-    "active_mlx_gib": 15.48,
-    "independent_exposure_audit_through": 101
+    "worker_elapsed": "13:50:56",
+    "worker_cpu_time": "587:24.86",
+    "worker_rss_kib": 19144176,
+    "independent_exposure_audit_through": 150
   },
   "native_single_prefill_result": {
     "status": "terminal_failed_after_completed_33_token_prefill",
@@ -689,7 +685,7 @@
   "lifecycle_build": {
     "namespace": "kernel-library/next-round-v5/cached-inference-host-build-lifecycle-v1",
     "root_session": 42142,
-    "status": "linked_pending_independent_artifact_review",
+    "status": "static_artifact_reviewed_no_device_execution",
     "review_sha256": "3adc968957eecb34385b74937245a2e570468643f3f27f24dc079482f1806543",
     "review_pins_root_rehashed": 2628,
     "plan_sha256": "e1b2c6e6f76de41e2b3173113a447f8b3f9b80681ef248ead956b7e1c5934492",
@@ -699,7 +695,9 @@
     "exit_code": 0,
     "elapsed_seconds": 356.5740654160036,
     "binary_sha256": "4c2523bad5c6439ac160cb61515f917b4ebf279c265f926c2bfb1b074770cafa",
-    "binary_bytes": 25444200
+    "binary_bytes": 25444200,
+    "actual_artifact_review_sha256": "bff9f6edac89c3ffa37d210b63f6f656e98315a8df7d4762f4326b22c0b6da68",
+    "root_verified_actual_artifact_pins": 3630
   },
   "checkpoint150_transfer_readiness": {
     "version": "transfer-v3",
@@ -708,5 +706,77 @@
     "root_default_CPU_check_passed": true,
     "actual_capture_pending": true,
     "actual_transfer_performed": false
+  },
+  "evaluation_order_user_steering": "Fix and verify serving reporting before launching150evaluation; preserve watcher capture and live training.",
+  "reporting_fix_build": {
+    "namespace": "kernel-library/next-round-v5/cached-inference-host-build-report-v1",
+    "session": 8626,
+    "build_pid": 57190,
+    "status": "linked_static_reviewed_no_GPU",
+    "review_sha256": "0a2916ecf235948ba4959eaf0d97065f6e8a8829ae9053e8bab9bf3cc349571d",
+    "root_verified_pins": 2691,
+    "native_engine_executed": false,
+    "session_terminal": true,
+    "exit_code": 0,
+    "binary_sha256": "ebc54335731cf3227c04855082828d1c6ad390ca2eb8053a8f1e032e1d33fe2e",
+    "actual_artifact_review_sha256": "2c3fefbc3ff1af83de0b5cba668c15b4add4e5addceb04acb38bfd0d4e9808bc",
+    "root_verified_actual_pins": 3692
+  },
+  "native_single80": {
+    "status": "terminal_failed_result_reporting_after_cached_generation",
+    "session": 68091,
+    "child_pid": 50991,
+    "initial_prefill_bitwise_matches_previous": true,
+    "observer_lengths": [
+      33,
+      34,
+      36
+    ],
+    "observer_all_finite": true,
+    "max_polled_rss_gib": 20.725250244140625,
+    "min_polled_available_gib": 59.254638671875,
+    "all_63_polled_guards_passed": true,
+    "owned_lease_released": true,
+    "release_result": "exact-generation-qualification-v1/single-serving-owned-recovery80-v1/release-result.json",
+    "source_failure": "Native execution_profile report emits obsolete fourfield shape; actual request/output contract requires sixfields.",
+    "completed_validated_generation_result": false
+  },
+  "native_reporting_regression_current": {
+    "status": "completed_independently_reviewed_baseline_only",
+    "prompt_tokens": 33,
+    "generated_tokens": 4,
+    "adapter_loaded": false,
+    "own_lease_released": true,
+    "review_sha256": "d43472cb246e8aefb770c28bafff965411defeff06e4579aa0314cde8b9957af",
+    "trained_adapter_serving_qualified": false
+  },
+  "checkpoint150_current": {
+    "capture_sha256": "b34a45e933e26580527bc3ef9e3eef4b3d3e20ae358dfd3f88509a9ab090430f",
+    "transfer_completed": true,
+    "binding_completed": true,
+    "audited_views": 150,
+    "exact_edits": 121,
+    "diagnostics": 29,
+    "target_presentations": 280642,
+    "max_serialized_tokens": 12123,
+    "exposure_review_sha256": "1867a49ab682389684c70a28f6be624cfb9560cdea3d09c9bd7963f11798e78a"
+  },
+  "checkpoint150_evaluation_current": {
+    "status": "actual_live_baseline_condition",
+    "launched_utc": "2026-10-14T18:18:43.904059+00:00",
+    "controller_pid": 68761,
+    "runner_pid": 68766,
+    "worker_pid": 68775,
+    "fixed_heldout_examples": 4,
+    "supervised_targets": 11077,
+    "phase_order": [
+      "zero_b",
+      "checkpoint150"
+    ],
+    "process_gib": 32,
+    "reserve_gib": 32,
+    "fix_before_eval_satisfied": true,
+    "paired_result_available": false,
+    "review_sha256": "79d3f8a569e965069ae9e94842982d81a100cbd52cb885916508977c9e2b537a"
   }
 }

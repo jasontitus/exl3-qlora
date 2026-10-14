@@ -11,13 +11,15 @@ software to read the private adapter and apply the learned attention-projection
 updates. It is not a replacement inference engine. Loading the base model in
 unmodified serving software does not establish support for this adapter format.
 
-As of 2026-10-14, the isolated absent-adapter diagnostic loaded the base and
-completed a 33-token prefill, then generation failed with
-`AdapterUnsupportedModuleRoute`. The exact-generation route rejects host-row
-embeddings, but the handover fenced its device embedding into host rows. The
-reviewed repair retains the device embedding and includes it in decode memory
-accounting. CPU checks are complete and the revised native build links successfully;
-static artifact review and device qualification remain pending. This failure is separate from training.
+As of 2026-10-14, the repaired isolated build passed one absent-adapter
+request: a 33-token prefill followed by four generated tokens. The repair
+retains the device embedding across the prefill/decode handover, includes it
+in decode memory accounting, and emits the six required execution-profile
+fields. Independent source, CPU, artifact and actual-run reviews are retained.
+Earlier route and report failures are preserved. This qualifies the short
+baseline diagnostic; trained-adapter application and general serving
+compatibility remain unqualified. Training and loss evaluation were separate
+from these serving failures.
 
 Before claiming serving compatibility, verify the absent-adapter route, a
 zero-B adapter against that same base, and the trained adapter on the exact
