@@ -1,3 +1,11 @@
+## Diagnostic build and training update — 2026-10-14T22:04:54.466132+00:00
+
+M5 worker 47890 remains live with pointer step-000192 of 458; recent logs advance through layer 32 of the next update. This is a liveness/pointer observation, not a fresh checkpoint payload or quality audit. The most recent independently checked saved metrics cover update 188.
+
+The isolated baseline cache diagnostic has compiled and linked. The exact binary is `e9f8f1e5470297054dcbd7f9c02f57f07af82e869dce72e1d9e6d76529c08e2a`; its six-file package is 252,606,056 bytes. Independent source, binary/dependency, package and narrow diagnostic-report lifecycle reviews passed within their static/CPU scope. The native diagnostic has not executed. Six fixed comparisons cover full prefill, split prefill before handover and split decode after handover, each traced and untraced; controller testing/concrete review and fresh live headroom/ownership checks remain pending. No production runtime or current training data/settings were changed. Source collection remains paused.
+
+The separately proposed last-one/two/four-layer benchmark is documented in `apple-multilayer-training-benchmark-plan.md`; it is a reviewed proposal, not measured multi-layer capability. The current final-layer 458-update campaign continues unchanged.
+
 ## Current evaluation handoff — 2026-10-14T21:43:00.401855+00:00
 
 M5 worker 47890 is live, with saved pointer step-000187 of 458. Recent logs advance through layer 38 of the next cold frozen-prefix forward. This observation verifies liveness and pointer progress, not checkpoint payload integrity. The fixed 229 training views, 16 held-out views, final-layer wq_a/wo_b rank-four adapters, runtime and final-update target remain unchanged. New source collection remains paused.
