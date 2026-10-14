@@ -245,7 +245,9 @@ verification report. The frozen vocabulary head projects only supervised rows in
 32-token chunks during training/evaluation. Text only, first-order eager reverse-mode gradients;
 no vision, MTP, higher derivatives or `mx.compile`. Generation recomputes the
 whole prefix and has no KV decode cache. Adapters use a private format loaded by
-this tool; external serving/PEFT mapping and fusion are not implemented.
+this tool. Unmodified external serving, PEFT compatibility and fusion are not
+qualified. An isolated `mlx-serve` / `mlx-stream` adapter integration is under
+development; see [serving integration](docs/SERVING_INTEGRATION.md) for its scope.
 
 ## EXL3 and architecture verification
 
