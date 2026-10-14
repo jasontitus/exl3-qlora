@@ -105,3 +105,12 @@ concrete launch review remains pending; no successor GPU job has launched.
 Reusable tool improvements are tracked in `apple/docs/TOOL_INTEGRATION.md`.
 The gated preparation helper now exposes the cache budget with 26 passing CPU
 tests; more detailed evaluation checks are being extracted from experiment code.
+
+## Expanded campaign launched
+
+At 2026-10-14 01:10:34 UTC, the independently reviewed 229-item successor
+launched on M5. Wrapper 56702, runner 56705 and one preflight child 56709 were
+confirmed live. The new 6 GiB-cache longest-item preflight is running; there are
+no main updates or successor quality results yet. Actual M5 prepared token IDs
+and masks matched all 245 reviewed rows, and the held-out bytes are unchanged.
+The plan SHA-256 is `1c51251d4bf4404c3f6e21de6b255d96da5e84b3cac4c264181e1ebff5799f33`.

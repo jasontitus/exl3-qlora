@@ -1,0 +1,29 @@
+{
+  "status": "approved_concrete_launch_contract_pending_prepared_project_review_and_remote_staging_check",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/training-lease-request-v1.json": "5dfd57437c1aa9c84a98214fbb52075e96eee58a9821ecfcef9f2f0cc943748a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/launch_training_v1.py": "26e8686c327467db775b5279aaf92628b439990b9005d2e82712564ee3803171",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/metal-mix229-tf32off-plan-v1.json": "1c51251d4bf4404c3f6e21de6b255d96da5e84b3cac4c264181e1ebff5799f33",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/prepare_agent_corpus_run_v2.py": "74a9b0826f6b13f3ad1ff9ac9f0bb3b9e12017c456481b0309ae575fba9594b1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/expanded-candidate-12288-v3/ktune-import.json": "fba890f2a5fb4c362c32db8a2d0f72c0904a1553a890baf254832b56561b6735",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/preparer-independent-review-v1.json": "661b76434b0670b0e38f563824fd61adf1fb93004031315d825aa6e35753c7bb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/m5-handoff-terminal-independent-review-v1.json": "310a6e310ccfef2c4f9e177c649a4507e9ac7954f7534c125db6a8191af0f748"
+  },
+  "checks": [
+    "Launcher AST identical to approved old launcher except request path/hash and new229 output filenames; exclusive output creation/no retry behavior preserved",
+    "Concrete request pins unchanged runner/wrapper/Python/runtime/base-payload receipts plus new reviewed helperv2/corpusv3/plan; TF32off and full completion contract preserved",
+    "All five phase commands identical modulo new paths/cache6144/steps458; mandatory fresh longest-train and longest-test precede baseline; fixed final adapter evaluation remains",
+    "Longest-row identities unchanged; helper option has separate CPU review;6GiB bank-fit hypothesis separately reviewed but fresh peak/parity still required"
+  ],
+  "required_before_execution": [
+    "Separate independent actual prepared229train/16test ID/mask equality approval and project binding.",
+    "Remote staged bytes must match this exact request/plan/launcher and bound helper/corpus; fresh output guards must pass.",
+    "Normal shared lease acquisition remains mandatory; no direct GPU launch or reused old prefix/preflight outputs."
+  ],
+  "limits": [
+    "Completed prior preflight67.322GiB supports a measured +4GiB cache trial; does not guarantee future peak or speed.80GiB process/8GiBreserve guards remain unchanged and newpreflight mandatory.",
+    "Fixed458 updates means2complete229row epochs with accumulation1;43diagnostics receive43/229 full-epoch updates, not gradient weight proportional to token share.",
+    "Full quality results, generation/compilation/correctness/timing are not established by this launch review."
+  ],
+  "executed": false
+}

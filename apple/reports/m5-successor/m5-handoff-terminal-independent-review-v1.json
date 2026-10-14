@@ -1,0 +1,28 @@
+{
+  "status": "independently_verified_completed_owned_handoff",
+  "observed_utc": "2026-10-14T01:06:37.582128+00:00",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/m5-handoff-terminal-capture-v1.json": "5d872e0eab5b0d122dd4089a128b1ff1b6659a18b4a3909256a501d436353f43",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/m5-handoff-live-identity-v1.json": "437cc6f5bc09b61d0d0716cee02caffc19889bc98e3d5b27905940b4758b0d91",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/m5-handoff-request-v1.json": "15f9fad1f1d21a648fc0075928ea22589594d8b64c86f46a7c054d919d9f8982",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/m5-handoff-preserved-artifact-hashes-v1.json": "80d6d522f595f9a2fbd96d632b03f54677d4b79c29f3f5e4ba8bce356c6a143b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/handoff/operator.py": "ff30e56a2691ab7e0abc9867abb7d9454a98b3eeeafd24479b8b91706293daa6"
+  },
+  "results": {
+    "runner_sigterm_target": 37889,
+    "preflight_train_and_verifier_exit": 0,
+    "preflight_test_interrupted_exit": -15,
+    "baseline_or_training_started": false,
+    "recorded_groups_checked": 264,
+    "remaining_owned_candidates": 0,
+    "old_lock_and_claim_absent": true,
+    "preflight_artifact_and_all_phase_log_hashes_match": true,
+    "original_failure_and_lease_state_preserved": true
+  },
+  "scope": "Independent read-only audit of parent-executed stop/release. No signals, mutations, GPU or new campaign launch by reviewer.",
+  "limits": [
+    "This verifies own known process generations/groups and preserved receipts, not absence of never-observed detached processes.",
+    "Process inventories are time-specific; any new campaign still requires normal shared lease acquisition and separate launch approval.",
+    "Disposable preflight preserved, not a completed full training/evaluation campaign."
+  ]
+}
