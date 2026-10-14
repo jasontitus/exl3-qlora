@@ -16,8 +16,8 @@ completed a 33-token prefill, then generation failed with
 `AdapterUnsupportedModuleRoute`. The exact-generation route rejects host-row
 embeddings, but the handover fenced its device embedding into host rows. The
 reviewed repair retains the device embedding and includes it in decode memory
-accounting. CPU checks are complete; a revised native build and device
-qualification remain pending. This failure is separate from training.
+accounting. CPU checks are complete and the revised native build links successfully;
+static artifact review and device qualification remain pending. This failure is separate from training.
 
 Before claiming serving compatibility, verify the absent-adapter route, a
 zero-B adapter against that same base, and the trained adapter on the exact

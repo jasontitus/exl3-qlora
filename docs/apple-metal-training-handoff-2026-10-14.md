@@ -207,3 +207,14 @@ The reduced-profile serving diagnostic actually loaded the model and completed33
 Reusable evaluation receipt snapshot safeguards were applied and committed a7c5c59d after45 actual CPU pytest cases passed. Fixed-route Qwen attention adjoint reference applied and committed d9159854 after43 actual unittest methods passed. These are tool improvements; neither changes runtime-v5 or establishes Qwen full-model/native-backward/16K support.
 
 Future context catalogv3 is independently reviewed:11views/7recorded source commit identities/0training admissions. Ordinary historical attention47d250 before/after translation units actually compiled offline; independent artifact review6a1c2a00ef719f74d28c018f11aa8269f81ed90b8ef92fa30f407096803c7e6d. NAX, numerical parity and performance remain unvalidated; compile evidence is not training admission.
+
+
+## Continuation — 2026-10-14 17:13 UTC
+
+Fresh M5 read-only observation saved141/458 with both worker47890 and watcher78277 live; logs advanced forwardlayer12. No150 capture verified yet. Transfer-v3 received independent approval7f3322e8048cf83b7e02274316e48ddd78e0683169b940bf7a0fb7395343eaf3 after22author+8independentCPU checks; root rehashed65pins and default CPU readiness passed. Preservedv1 stale-output-receipt reproduction and v2 SSH setup/cleanup finding; v3 closes both. ActualcaptureSHA/contract150, transfer/binding/concretepairedrequest review and fresh memory/ownership remain required.
+
+Retained-embedding CPU scalar result reviewed53de22b5bad81a4e9957f3730a8cd03ff9e976b13512cf198f5883f91f22cfe4; root88pins verified. Fixed16K prompt37,000,540,922B/decode28,995,969,800B; reducedcontext256prompt29,630,495,513B/decode28,864,537,576B. Prefill still sets maxima; revised decode includes embedding/wiring. Pure source/capturedmetadata arithmetic, no livefit proof.
+
+Isolated lifecycle build actually completed17:12:07UTC, session42142terminal0,356.574s. Binary4c2523bad5c6439ac160cb61515f917b4ebf279c265f926c2bfb1b074770cafa/25,444,200B,993materialized files279,934,556B; all pre/post source checks passed. Buildplanreview3adc968957eecb34385b74937245a2e570468643f3f27f24dc079482f1806543 with2628rootrehashedpins; exactfourlifecyclefiles/376unchanged. Actualartifactreviewqueued; package/request/devicequalification stillpending. Do not rerunbuild or execute artifact on this evidence alone. Nextnativeproposalonly single33absent regression, not18phaseprior30campaign; main150evaluation takes priority.
+
+Product serving documentation added in e3eb6731 explains existingmlx-serve/mlx-stream integration, privateadapterformat and separate trainer-loss/generated-edit gates. Unmodifiedserving/PEFT/generalHTTPcompatibility remains unqualified.
