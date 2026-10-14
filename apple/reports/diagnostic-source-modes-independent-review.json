@@ -1,0 +1,27 @@
+{
+  "status": "independently_reviewed_cpu_only",
+  "time_utc": "2026-10-14T02:54:29.760162+00:00",
+  "scope": "Diagnostic regular-text source mode inspection; exact edit renderer unchanged",
+  "files_sha256": {
+    "apple/src/exl3_mlx/reviewed_corpus.py": "211e41bbd42aa0ea61d544865d0fc2b924f7b7395f67f70e6461497981f7e19e",
+    "apple/src/exl3_mlx/reviewed_diagnostics.py": "d63b9cbc9df9f1229ddf5888814f038758615a8c376a50cbd7a1c6deec530cf4",
+    "apple/tests/test_reviewed_diagnostics.py": "4995044db8fd78f015ab7eb57aa1fe2870f47c2502f7f7a4222b85d1496beb5c",
+    "apple/docs/REVIEWED_CORPORA.md": "25bf65d84e47036446c5441e6f518ef12e4d05ae197d058be7fbc35c7181d093"
+  },
+  "verification": {
+    "command": "PYTHONPATH=apple/src python -m pytest -q apple/tests/test_reviewed_diagnostics.py apple/tests/test_reviewed_corpus.py apple/tests/test_agent_edits.py",
+    "result": "110 passed in 9.55s",
+    "diff_check": "passed",
+    "initial_invocation": "Without PYTHONPATH selected the older installed checkout and failed collection; corrected invocation explicitly selected this product tree."
+  },
+  "review": [
+    "Content and Git blob identities remain checked before diagnostic inspection.",
+    "Regular text modes and source transition metadata are independent of exact replay.",
+    "Same text with different modes cannot evade cross-split identity protection.",
+    "No executable source is run; semantic support and hardware validity remain separate."
+  ],
+  "limitations": [
+    "Pure mode-only, deletion, empty addition, binary and symlink source remain unsupported.",
+    "The 43 historical reasoning rows remain pending semantic review; this code review does not admit them."
+  ]
+}

@@ -2,7 +2,15 @@
 
 from urllib.parse import urlsplit
 
-from .reviewed_corpus import mapping, require, sha, source_identity, source_images
+from .agent_edits import _path
+from .reviewed_corpus import (
+    canonical,
+    mapping,
+    require,
+    sha,
+    source_identity,
+    validate_source_blobs,
+)
 
 KINDS = {"before_source", "after_source", "author_report", "local_cpu", "local_gpu"}
 CLASSES = {"source_observation", "inferred", "author_reported", "local_cpu", "local_gpu"}
@@ -25,8 +33,55 @@ def span(text, record, label):
     return start, end
 
 
+def diagnostic_source_images(source):
+    """Inspect text transitions without executing or pretending to replay their modes."""
+    validate_source_blobs(source)
+    before, after, transitions, modes = {}, {}, {}, []
+    for name, pair in source["files"].items():
+        _path(name)
+        for side in ("before", "after"):
+            blob = pair[side]
+            if blob is not None:
+                require(
+                    isinstance(blob["mode"], str) and blob["mode"] in {"100644", "100755"},
+                    "Diagnostic source requires regular text modes",
+                )
+                require("\0" not in blob["content"], "Binary diagnostic source unsupported")
+        transitions[name] = {
+            side: (
+                {"mode": pair[side]["mode"], "sha256": pair[side]["sha256"]}
+                if pair[side] is not None
+                else None
+            )
+            for side in ("before", "after")
+        }
+        if pair["role"] != "changed":
+            continue
+        require(pair["after"] is not None, "Deleted diagnostic files unsupported in this stage")
+        old = pair["before"]["content"].encode() if pair["before"] is not None else None
+        new = pair["after"]["content"].encode()
+        require(old is not None or new, "Empty-file diagnostic additions unsupported in this stage")
+        old_mode = pair["before"]["mode"] if pair["before"] is not None else None
+        new_mode = pair["after"]["mode"]
+        if old_mode != new_mode:
+            modes.append({"path": name, "before": old_mode, "after": new_mode})
+        if old != new:
+            before[name], after[name] = old, new
+    require(before, "Pure mode-only diagnostic source unsupported: no text-patch identity")
+    return (
+        before,
+        after,
+        {
+            "source_transition_sha256": sha(canonical(transitions)),
+            "source_transitions": transitions,
+            "mode_transitions": modes,
+            "text_patch_identity_excludes_modes": True,
+        },
+    )
+
+
 def admit_diagnostic(source, raw, evidence, capture):
-    before, after = source_images(source)
+    before, after, source_metadata = diagnostic_source_images(source)
     mapping(raw, "diagnostic raw", {"messages"})
     require(set(raw) == {"messages"}, "Diagnostic raw must contain only messages")
     messages = raw["messages"]
@@ -229,6 +284,7 @@ def admit_diagnostic(source, raw, evidence, capture):
     stable, payload = source_identity(before, after)
     return (
         {
+            **source_metadata,
             "evidence_consistency": True,
             "replay_performed": False,
             "semantic_truth_certified": False,

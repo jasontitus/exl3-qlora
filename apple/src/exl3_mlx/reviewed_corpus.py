@@ -143,7 +143,7 @@ def patch_id(before, after):
     return value[0]
 
 
-def source_images(source):
+def validate_source_blobs(source):
     mapping(source, "source", {"files", "repository", "head", "commits"})
     require(isinstance(source.get("files"), dict) and source["files"], "Missing source files")
     for name, pair in source["files"].items():
@@ -165,6 +165,10 @@ def source_images(source):
                 == value["blob"],
                 "Captured source blob mismatch: " + name,
             )
+
+
+def source_images(source):
+    validate_source_blobs(source)
     return full_commit_images(source)
 
 

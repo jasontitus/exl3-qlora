@@ -505,3 +505,57 @@ def test_explicit_system_message_preserves_exact_prepared_tokens(bundle, tmp_pat
     update(bundle, values)
     with pytest.raises(ValueError, match="system information boundary"):
         intake.prepare_reviewed_corpus(root / "corpus.json", model, tmp_path / "bad")
+
+
+def test_executable_addition_and_mode_transition_inspected_without_replay(bundle, tmp_path):
+    values = diagnostic(bundle)
+    root, model, _, _ = bundle
+    values["source"]["files"]["new-test.sh"] = {
+        "role": "changed",
+        "before": None,
+        "after": fixtures.blob("echo test\n", "100755"),
+    }
+    values["source"]["files"]["run.sh"]["after"]["mode"] = "100644"
+    update(bundle, values)
+    intake.prepare_reviewed_corpus(root / "corpus.json", model, tmp_path / "data")
+    admitted = intake.lines((tmp_path / "data/provenance.jsonl").read_bytes())[1][
+        "diagnostic_admission"
+    ]
+    assert admitted["replay_performed"] is False
+    assert {"path": "new-test.sh", "before": None, "after": "100755"} in admitted[
+        "mode_transitions"
+    ]
+    assert {"path": "run.sh", "before": "100755", "after": "100644"} in admitted["mode_transitions"]
+    assert admitted["source_transition_sha256"] == intake.sha(
+        intake.canonical(admitted["source_transitions"])
+    )
+    assert admitted["text_patch_identity_excludes_modes"] is True
+
+
+@pytest.mark.parametrize("damage", ["binary", "symlink", "deleted", "pure_mode"])
+def test_unsupported_diagnostic_source_transitions_fail_closed(bundle, tmp_path, damage):
+    values = diagnostic(bundle)
+    root, model, _, _ = bundle
+    pair = values["source"]["files"]["run.sh"]
+    if damage == "binary":
+        pair["after"] = fixtures.blob("binary\0data", "100755")
+    elif damage == "symlink":
+        pair["after"]["mode"] = "120000"
+    elif damage == "deleted":
+        pair["after"] = None
+    else:
+        for p in values["source"]["files"].values():
+            p["after"] = copy.deepcopy(p["before"])
+        pair["after"]["mode"] = "100644"
+    update(bundle, values)
+    with pytest.raises(ValueError, match="Binary|regular text modes|Deleted|Pure mode"):
+        intake.prepare_reviewed_corpus(root / "corpus.json", model, tmp_path / "data")
+
+
+def test_same_text_different_modes_cannot_cross_splits(bundle, tmp_path):
+    values = diagnostic(bundle, split="test")
+    root, model, _, _ = bundle
+    values["source"]["files"]["run.sh"]["after"]["mode"] = "100644"
+    update(bundle, values)
+    with pytest.raises(ValueError, match="crosses explicit splits"):
+        intake.prepare_reviewed_corpus(root / "corpus.json", model, tmp_path / "data")
