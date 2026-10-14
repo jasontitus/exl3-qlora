@@ -1,3 +1,22 @@
+## Update: attention operands captured and independently analyzed; M5 206
+
+M5 remains live. A stable approved history/source transfer through update 206 records **206 distinct complete views: 165 exact edits and 41 diagnostics**, with **385,851 supervised target presentations** and 1,000,008 serialized token presentations. The previous 194/188/165 history prefixes and frozen sampler source are unchanged. All recorded metrics are finite. Root verified the 17 receipt inputs, original history digest, unique source-row counts and token sums. These are recorded exposures, not a checkpoint-payload or quality certification.
+
+The four-process Studio baseline diagnostic completed and released all owned leases. Independent review reproduced all 29 comparisons; both capture/noncapture controls and all 18 prior-build controls were bitwise equal. It checked all 15 records per captured process and fresh process closure. Trigonometry, sink, indices, validity and position bytes agree between modes. All 370 review inputs were rehashed by root.
+
+The separately reviewed CPU analyzer then evaluated each path using that path's own actual expanded query and complete 34-row key/value window. Independent replay verified every report field, all sixteen F64 arrays, 245 Decimal metric vectors and twelve head/path Decimal attention checks. Root rehashed all 412 review inputs.
+
+| First-layer projection-input residual against own-input mathematical reference | Full prefill | Split prefill |
+| --- | ---: | ---: |
+| Maximum absolute error | 3.599609375 | 0.00048828125 |
+| RMS absolute error | 0.165771167 | 0.000002703 |
+
+The mathematical output difference due to captured query/window differences has RMS 0.000423087, versus 0.165785996 for the observed difference. The signed decomposition reproduces exactly. This is strong evidence that the large discrepancy lies within full-prefill computation or layout relative to these logical operands. It does **not** identify a particular kernel or certify device parity: physical strides are not captured, and the reference uses FP64 attention with explicit FP32/BF16 rotation boundaries rather than exact native reductions.
+
+Next: a small captured-input fixture for full-path query-key scores, sink softmax and value accumulation/inverse rotation, with independently checked intermediate references. This avoids another full-model construction just to locate a stage. No numerical repair has been applied, and no second training job was launched. Source collection stays paused.
+
+Evidence: actual capture review SHA `54c626b910c087fcc4c6f8c66ab499ae95897ef317e4a7370a69ce4b16e87e92`; actual CPU review SHA `d22cbbba79bcc315756762c7c49c1690745630cde648fa852df2063bd1de6bd6`; history receipt SHA `6c523c986409c2db97d5d2d43775f314c5d24a9c089b81398e51f87589418de8`. Artifacts reside under `kernel-library/next-round-v5/exact-generation-qualification-v1` and `m5-successor/training-exposure-observation-20261014T231317Z`.
+
 ## Update: completed projection diagnostic; M5 checkpoint 204
 
 The approved read-only M5 history/source transfer completed. The sealed history through update 194 records 194 distinct complete training views (155 exact edits and 39 diagnostic examples), with 366,584 supervised target presentations. A fresh process observation found the same worker alive at saved checkpoint 204 of 458, proceeding through the next forward pass. This is a live checkpoint observation, not a newly audited history count.

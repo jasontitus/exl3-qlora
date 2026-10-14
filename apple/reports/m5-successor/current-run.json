@@ -11,7 +11,7 @@
   "train_examples": 229,
   "heldout_examples": 16,
   "planned_updates": 458,
-  "completed_main_updates": 194,
+  "completed_main_updates": 206,
   "prior_campaign": "198 stopped intentionally after completed preflight; artifacts preserved; ownedlease released",
   "no_duplicate_gpu_job": true,
   "evaluation_pid": null,
@@ -72,13 +72,13 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "saved_checkpoint": 204,
+    "saved_history_updates": 206,
     "worker_pid": 47890,
-    "elapsed": "18:15:43",
-    "rss_kib": 18570592,
-    "forward_layer": 3,
-    "active_mlx_gib": 15.61,
-    "history_audit_checkpoint": 194
+    "worker_rss_kib": 18499488,
+    "worker_cpu": "790:29",
+    "worker_state": "Rs",
+    "source": "training-exposure-observation-20261014T231317Z/process-observation.json",
+    "observed_utc": "2026-10-14T23:13:27Z"
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -931,5 +931,47 @@
     "large_divergence_before_output_projection": true,
     "correct_path_established": false,
     "next": "bounded attention operand capture and independent CPU oracle"
+  },
+  "latest_history_audit": {
+    "saved_updates": 206,
+    "distinct_complete_views": 206,
+    "exact_edit_views": 165,
+    "diagnostic_views": 41,
+    "supervised_target_presentations": 385851,
+    "serialized_token_presentations": 1000008,
+    "max_complete_serialized_tokens": 12173,
+    "reported_peak_mlx_gib": 71.7513574241,
+    "raw_history_sha256": "0c95fabe6169c4e1d407a165dac2b818fd9b17e4c470884b8af5a5fb595e9ecc",
+    "review_sha256": "6c523c986409c2db97d5d2d43775f314c5d24a9c089b81398e51f87589418de8",
+    "root_verified_inputs": 17,
+    "root_independent_row_token_sums_verified": true,
+    "scope": "Saved recorded exposures; no optimizer/checkpoint-payload/quality proof."
+  },
+  "attention_operands_diagnostic_current": {
+    "status": "completed_actual_four_phase_independent_audit_and_CPU_reference_replay",
+    "phases": 4,
+    "actual_audit_sha256": "54c626b910c087fcc4c6f8c66ab499ae95897ef317e4a7370a69ce4b16e87e92",
+    "root_verified_actual_inputs": 370,
+    "comparisons": 29,
+    "trace_and_prior_build_controls_bitwise_equal": true,
+    "owned_leases_released": 4,
+    "recorded_process_ids_absent": 23,
+    "cpu_report_sha256": "5442e513bb3d8f03683dff0336db512afe83264e48109d487294717d012e867a",
+    "independent_cpu_review_sha256": "d22cbbba79bcc315756762c7c49c1690745630cde648fa852df2063bd1de6bd6",
+    "root_verified_cpu_review_inputs": 412,
+    "full_own_input_residual": {
+      "max_abs": 3.599609375,
+      "rms_abs": 0.1657711669676719
+    },
+    "split_own_input_residual": {
+      "max_abs": 0.00048828125,
+      "rms_abs": 2.702769355809289e-06
+    },
+    "reference_input_delta_rms": 0.0004230865413026025,
+    "actual_delta_rms": 0.1657859959908491,
+    "specific_kernel_cause_identified": false,
+    "serving_parity_qualified": false,
+    "generated_quality_verified": false,
+    "next": "Small captured-operand full-path QK/softmax/PV fixture with independent stage references; no speculative repair."
   }
 }
