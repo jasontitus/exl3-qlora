@@ -11,7 +11,7 @@ new product changes must not alter an active run.
 | --- | --- | --- |
 | Streamed frozen EXL3 weights, input gradients, chunked loss, bounded caches | Package implementation | Continue checkpoint-specific numerical and capacity qualification |
 | Standard data import, project preparation, training, resume and paired comparison | CLI, SFTTrainer and Studio | Improve end-to-end usability as orchestration is integrated |
-| Complete agent edits and source evidence | Upstream/ktune import and replay tooling | Bring the newer cross-source assembly and family checks behind a documented reusable command |
+| Complete agent edits and source evidence | `ktune prepare-reviewed` validates portable exact-edit corpora, replay, finite lineage protection and reviewed token identities; optional standard SFT project | Mixed diagnostic/reasoning admission remains pending; see [contract](REVIEWED_CORPORA.md) |
 | Packed-cache budget for gated corpus campaigns | Preparation script now accepts `--packed-cache-mib`; 40 CPU tests | A cache-size setting is not evidence of a speedup |
 | Detailed paired token audit | Package module, `exl3-mlx-audit`, and automatic standard project comparison; local tokenizer/EOS categories plus optional reviewed categories | [Input contract and limits](EVALUATION_AUDIT.md); semantic code/rationale categorization and generated-patch quality remain separate |
 | Mac Studio ingestion / M5 training | Experiment orchestration with reviewed lease and runner scripts | Generalize host/path configuration and integrate with project status/resume |

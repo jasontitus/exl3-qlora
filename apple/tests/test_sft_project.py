@@ -492,7 +492,9 @@ def preview(project, monkeypatch):
             pieces = {1: "" if skip_special_tokens else "<eos>", 6: "blue", 7: " ", 8: " ", 9: " "}
             return "".join(pieces[token] for token in ids)
 
+    tokenizer_identity = importlib.import_module(f"{_PACKAGE}.data").tokenizer_identity
     data_module = types.ModuleType(f"{_PACKAGE}.data")
+    data_module.tokenizer_identity = tokenizer_identity
     data_module.load_tokenizer = lambda _: Tokenizer()
     monkeypatch.setitem(sys.modules, data_module.__name__, data_module)
     directory = project.root / "comparison"

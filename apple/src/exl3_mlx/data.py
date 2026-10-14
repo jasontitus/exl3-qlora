@@ -21,7 +21,39 @@ def sha256(path):
 
 
 def tokenizer_identity(root):
-    return {name: sha256(Path(root) / name) for name in TOKENIZER_FILES}
+    root = Path(root)
+    names = ["tokenizer.json", "tokenizer_config.json"]
+    config = json.loads((root / "tokenizer_config.json").read_bytes())
+    if not isinstance(config, dict):
+        raise ValueError("Tokenizer configuration must be an object")
+    if (root / "chat_template.jinja").is_file():
+        if not (root / "chat_template.jinja").read_text().strip():
+            raise ValueError("Empty local chat template")
+        names.append("chat_template.jinja")
+    else:
+        template = config.get("chat_template")
+        valid = isinstance(template, str) and bool(template.strip())
+        if isinstance(template, dict):
+            valid = bool(template) and all(
+                isinstance(k, str) and k and isinstance(v, str) and v.strip()
+                for k, v in template.items()
+            )
+        elif isinstance(template, list):
+            valid = bool(template) and all(
+                isinstance(v, dict)
+                and isinstance(v.get("name"), str)
+                and v["name"]
+                and isinstance(v.get("template"), str)
+                and v["template"].strip()
+                for v in template
+            )
+            if valid:
+                valid = len({v["name"] for v in template}) == len(template)
+        if not valid:
+            raise ValueError(
+                "No valid explicit local chat template in file or tokenizer configuration"
+            )
+    return {name: sha256(root / name) for name in names}
 
 
 def load_tokenizer(root):

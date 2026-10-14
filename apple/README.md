@@ -316,3 +316,5 @@ pinned runtime snapshots; they are not installed CLI entry points or a self-cont
 published dataset. Large source captures, corpora, model weights and training outputs
 are intentionally kept outside Git. Historical receipts distinguish observed results
 from proposals and record the original evidence paths.
+
+Reviewed portable exact-edit bundles can use [prepare-reviewed](docs/REVIEWED_CORPORA.md) for strict replay, frozen splits and ordinary SFT preparation. Mixed diagnostic corpora remain explicitly unsupported in this first stage.

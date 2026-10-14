@@ -24,6 +24,15 @@ def build_parser():
     compiler.add_argument("--after", required=True)
     compiler.add_argument("--output", required=True)
     compiler.add_argument("--standard", choices=("metal3.1", "metal4.0"), default="metal3.1")
+    reviewed = sub.add_parser(
+        "prepare-reviewed", help="Validate exact reviewed agent edits and prepare data; no training"
+    )
+    reviewed.add_argument("--source", required=True, help="Portable reviewed corpus manifest")
+    reviewed.add_argument("--model", required=True, help="Local tokenizer/model metadata")
+    reviewed.add_argument("--output", required=True, help="Fresh dataset directory")
+    reviewed.add_argument(
+        "--project", help="Optionally prepare a new provenance-bound standard SFT project"
+    )
     upstream = sub.add_parser(
         "prepare-upstream", help="Import pinned upstream commits; no builds or benchmarks"
     )
@@ -163,6 +172,14 @@ def main(argv=None):
     parser = build_parser()
     args = parser.parse_args(sys.argv[1:] if argv is None else argv)
     try:
+        if args.command == "prepare-reviewed":
+            from .reviewed_corpus import prepare_reviewed_corpus
+
+            report = prepare_reviewed_corpus(
+                args.source, args.model, args.output, project=args.project
+            )
+            print(json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False))
+            return 0
         if args.command == "compile-metal":
             from .metal_compile import main as compile_main
 

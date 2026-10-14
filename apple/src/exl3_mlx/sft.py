@@ -205,7 +205,6 @@ def capabilities(model):
         "model.safetensors.index.json",
         "tokenizer.json",
         "tokenizer_config.json",
-        "chat_template.jinja",
         "engram/engram-manifest.json",
         "engram-token-map.u32.json",
         "engram/engram-residents.safetensors",
@@ -217,6 +216,9 @@ def capabilities(model):
             "MXFP8/EXL3 streaming repack and both Engram banks. "
             + (f"Missing: {', '.join(missing)}" if missing else "Architecture differs.")
         )
+    from .data import tokenizer_identity
+
+    template_identity = tokenizer_identity(root)
     return {
         "model": str(root),
         "backend": "streamed-exl3",
@@ -225,9 +227,12 @@ def capabilities(model):
         "adapter_format": "exl3-mlx-deepseek-short-text-v1",
         "external_adapter_compatibility": False,
         "base_metadata": {
-            name: digest(root / name)
-            for name in ("config.json", *required)
-            if not name.endswith(".safetensors")
+            **{
+                name: digest(root / name)
+                for name in ("config.json", *required)
+                if not name.endswith(".safetensors")
+            },
+            **template_identity,
         },
     }
 

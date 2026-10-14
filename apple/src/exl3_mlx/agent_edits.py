@@ -94,12 +94,14 @@ def full_commit_images(record):
         if pair["after"] is None:
             raise ValueError("Deleted files are unsupported by this edit renderer")
         old_mode = pair["before"]["mode"] if pair["before"] else "100644"
-        if pair["after"]["mode"] != old_mode:
+        if old_mode not in {"100644", "100755"} or pair["after"]["mode"] != old_mode:
             raise ValueError("File mode changes are unsupported by this text edit renderer")
         old = pair["before"]["content"].encode() if pair["before"] is not None else None
         new = pair["after"]["content"].encode()
-        if (old and not old.endswith(b"\n")) or not new.endswith(b"\n"):
-            raise ValueError("Full-commit edits require newline-terminated text files")
+        if b"\0" in (old or b"") or b"\0" in new:
+            raise ValueError("Binary source unsupported")
+        if old is None and not new:
+            raise ValueError("Empty-file additions are unsupported by this text edit renderer")
         if old == new:
             continue
         before[path], after[path] = old, new
@@ -109,18 +111,20 @@ def full_commit_images(record):
 
 
 def unified_patch(before, after):
-    return "".join(
-        "".join(
-            difflib.unified_diff(
-                (before[p] or b"").decode().splitlines(keepends=True),
-                after[p].decode().splitlines(keepends=True),
-                fromfile=("a/" + p if before[p] is not None else "/dev/null"),
-                tofile="b/" + p,
-                n=3,
+    output = []
+    for path in sorted(before):
+        _path(path)
+        for line in difflib.unified_diff(
+            (before[path] or b"").decode().splitlines(keepends=True),
+            after[path].decode().splitlines(keepends=True),
+            fromfile="a/" + path if before[path] is not None else "/dev/null",
+            tofile="b/" + path,
+            n=3,
+        ):
+            output.append(
+                line if line.endswith("\n") else line + "\n\\ No newline at end of file\n"
             )
-        )
-        for p in sorted(before)
-    )
+    return "".join(output)
 
 
 def replay(command, before, expected):

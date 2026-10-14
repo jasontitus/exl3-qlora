@@ -119,7 +119,7 @@ def test_full_commit_retains_unselected_host_change():
 def test_full_commit_empty_new_file_unsupported_fail_closed():
     from exl3_mlx.agent_edits import full_commit_images
 
-    with pytest.raises(ValueError, match="newline"):
+    with pytest.raises(ValueError, match="Empty-file additions"):
         full_commit_images(_full_record(None, ""))
 
 
@@ -176,3 +176,33 @@ def test_documentation_omissions_fail_closed(change):
         review["docs/measurements.md"]["reason"] = ""
     with pytest.raises(ValueError):
         agent_example(record, review)
+
+
+@pytest.mark.parametrize(
+    "old,new", [("old", "new"), ("old\n", "new"), ("old", "new\n"), ("old\n", "")]
+)
+def test_complete_bytes_without_terminal_newline_or_empty_result(old, new):
+    from exl3_mlx.agent_edits import full_commit_images
+
+    before, after = full_commit_images(_full_record(old, new))
+    assert replay(render_command(unified_patch(before, after)), before, after)[
+        "exact_scoped_replay"
+    ]
+
+
+def test_empty_file_addition_explicitly_refused():
+    from exl3_mlx.agent_edits import full_commit_images
+
+    with pytest.raises(ValueError, match="Empty-file additions"):
+        full_commit_images(_full_record(None, ""))
+
+
+def test_unchanged_executable_mode_remains_source_bound():
+    from exl3_mlx.agent_edits import full_commit_images
+
+    before, after = full_commit_images(_full_record("echo old\n", "echo new\n", "100755", "100755"))
+    assert replay(render_command(unified_patch(before, after)), before, after)[
+        "exact_scoped_replay"
+    ]
+    with pytest.raises(ValueError, match="mode changes"):
+        full_commit_images(_full_record("old\n", "new\n", "100644", "100755"))

@@ -1,0 +1,44 @@
+{
+  "status": "approved_for_exact_edit_product_integration",
+  "reviewed_at": "2026-10-14T02:25:37.170785+00:00",
+  "source_sha256": {
+    "apple/src/exl3_mlx/reviewed_corpus.py": "344a2c1a1f725d8712b977a028ef19117743ba0f6b8fd13d5ed17f1b2d3b86e7",
+    "apple/src/exl3_mlx/agent_edits.py": "a22102959a064209c85f2b34c0f206e52a2cc5e1c38ea21a72924112035a3625",
+    "apple/src/exl3_mlx/data.py": "cadefdb58dc87fdc48faf7dbbe7f3a927f695e9aefddd5a84ff37d365d5c9435",
+    "apple/src/exl3_mlx/ktune_cli.py": "fe853d5d824bad2e8ceda8d41e5c11c1dca8fad812bd7a94fe0345e4d7712aac",
+    "apple/src/exl3_mlx/sft.py": "bd820deb4de09a424aad706490fae712202f17fd280e8d1aea04b932e24a04c5",
+    "apple/tests/test_reviewed_corpus.py": "e917773158605ab3d90c044bb6c351f191c0a381a944936a0c9941c77b5ad9c6",
+    "apple/tests/test_agent_edits.py": "e60260ee0421b6ba5470e3d0c97b7b578269c691e3b55a6072223339f6a6cdac",
+    "apple/tests/test_sft_project.py": "fd6ed15379836c2847100edb8e0ddc9e8c7552450321487c85872472f8ad11bb"
+  },
+  "independent_tests": {
+    "count": 279,
+    "seconds": 6.36,
+    "suites": [
+      "test_reviewed_corpus",
+      "test_agent_edits",
+      "test_sft_project",
+      "test_project_token_audit",
+      "test_sft_evaluation_provenance",
+      "test_evaluation_audit",
+      "test_studio"
+    ]
+  },
+  "targeted_negative_cases": [
+    "null review",
+    "null source pair",
+    "duplicate named templates"
+  ],
+  "resolved_findings": [
+    "actionable nested schema errors",
+    "duplicate-template rejection",
+    "atomic dataset versus subsequent optional project publication documented",
+    "empty file additions explicitly rejected"
+  ],
+  "limits": [
+    "Exact edits only; mixed reasoning/diagnostic import pending",
+    "Captured source/review assertions are not authenticated historical Git membership",
+    "Replay does not certify compile, numeric or speed claims",
+    "No active runtime or dataset modified"
+  ]
+}
