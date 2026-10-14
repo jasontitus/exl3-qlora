@@ -1,0 +1,51 @@
+{
+  "schema": "native-integration-product-copy-portability-review-v1",
+  "status": "approved_byte_identical_additive_bundle_copy_with_explicit_local_replay_dependency",
+  "reviewer": "adversarial_code",
+  "proposed_product_location": "publish-exl3/apple/integrations/native-serving-patches-v1",
+  "original_bundle": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1",
+  "original_manifest_must_remain_sha256": "b67591d827097e91a497a0dfc2c30694577ea43996c48a2fe75bf39bd520624f",
+  "copy_exact_files_sha256": {
+    "README.md": "1574554d47395547305a569dcc8511a4f1bc31fa1326c0506295bf4e03f39b6c",
+    "check_sources.py": "73d5ab72d89605fb5ba4c3f927e89de5374f63994cbb8d9c4ae295733ce165a7",
+    "cpu-tests.log": "04a3ba0eb1deb1cc4046427a4a131abbb0286628007dd92f3e9baa0c6cdcb807",
+    "licenses/mlx-serve-host-LICENSE": "dfe22e0f100fe7f2c2808f1af6f488e7339cf8deb7504153602b4169ed7d90b4",
+    "licenses/mlx-stream-LICENSE": "97ee01e6f31cb9dfda5b3c2135973d5c4d0ce89742c09fb7ae453e2da3f20edf",
+    "manifest.json": "b67591d827097e91a497a0dfc2c30694577ea43996c48a2fe75bf39bd520624f",
+    "mlx-serve-host.patch": "d480516cd4e3cffd35dd04e658263845a248345e02218072d8d0e4f0127ca7fb",
+    "mlx-stream.patch": "2c531a3550476b346e81ea83bd5c3b6977eaab380defe3be31635f308a8a2165",
+    "test_patch_bundle.py": "d19b05c3a2cc4993a4e58eaa22a28a090a4ee21d1971e3cca265cbb075e907de"
+  },
+  "additional_documentation": {
+    "source": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/independent/PORTABILITY.md",
+    "destination_relative": "PORTABILITY.md",
+    "sha256": "0568fd08a8066836e864758b7b573c330ab6ada7e929079f8af171f26abe7530"
+  },
+  "checked_contract": {
+    "checker_consumes_historical_absolute_evidence_paths": false,
+    "checker_accepts_caller_root_only_if_target_bytes_match": true,
+    "checker_is_full_tree_or_binary_validator": false,
+    "replay_tests_require_historical_before_after_files": true,
+    "evidence_verification_requires_external_workspace_records": true,
+    "standalone_upstream_reconstruction": false
+  },
+  "conditions": [
+    "Copy the nine original sealed files byte-for-byte; retain manifest absolute provenance unchanged.",
+    "Add the separate PORTABILITY.md rather than changing the sealed README or manifest.",
+    "Verify destination hashes before commit; this prospective review does not attest a destination copy that has not yet been made.",
+    "No source application, binary build/installation or runtime activation is authorized by the additive copy review."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/README.md": "1574554d47395547305a569dcc8511a4f1bc31fa1326c0506295bf4e03f39b6c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/check_sources.py": "73d5ab72d89605fb5ba4c3f927e89de5374f63994cbb8d9c4ae295733ce165a7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/cpu-tests.log": "04a3ba0eb1deb1cc4046427a4a131abbb0286628007dd92f3e9baa0c6cdcb807",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/licenses/mlx-serve-host-LICENSE": "dfe22e0f100fe7f2c2808f1af6f488e7339cf8deb7504153602b4169ed7d90b4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/licenses/mlx-stream-LICENSE": "97ee01e6f31cb9dfda5b3c2135973d5c4d0ce89742c09fb7ae453e2da3f20edf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/manifest.json": "b67591d827097e91a497a0dfc2c30694577ea43996c48a2fe75bf39bd520624f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/mlx-serve-host.patch": "d480516cd4e3cffd35dd04e658263845a248345e02218072d8d0e4f0127ca7fb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/mlx-stream.patch": "2c531a3550476b346e81ea83bd5c3b6977eaab380defe3be31635f308a8a2165",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/test_patch_bundle.py": "d19b05c3a2cc4993a4e58eaa22a28a090a4ee21d1971e3cca265cbb075e907de",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/independent/review-v1.json": "87e4e45f4d5f3f37a7fc0b100a264fa2c076ab713d034e1403a6a1d504674769",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/native-integration-patches-v1/independent/PORTABILITY.md": "0568fd08a8066836e864758b7b573c330ab6ada7e929079f8af171f26abe7530"
+  }
+}

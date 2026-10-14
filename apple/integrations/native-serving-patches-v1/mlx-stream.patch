@@ -1,0 +1,78 @@
+--- a/src/arch/deepseek_v41/bill.zig
++++ b/src/arch/deepseek_v41/bill.zig
+@@ -95,6 +95,8 @@
+     /// The input embedding reads its host rows from construction (`embedding_host_rows`, default on): the
+     /// device table is freed after the install warm-up, so no phase holds it.
+     embedding_host_rows: bool = false,
++    /// Internal exact-generation contract retains the device table through decode.
++    generation_retain_device_embedding: bool = false,
+     /// What the prompt pass leaves alive through decode beyond the KV: the DSpark seed's retained state, as
+     /// the loop states it (`dsl.seedRetainedBytes`; today a view of the whole prompt's main taps and each draft
+     /// stage's window a view of its whole-prompt main KV, 1.11 GB at 16K; v6b measured +1.30 GB persistent
+@@ -133,7 +135,7 @@
+     /// The decode phase's process terms (the embedding off at the fence; the larger of the verify and draft waves:
+     /// a round drafts, then verifies, so the two never hold their transients at once).
+     pub fn decodeTerms(b: Bill) PhaseTerms {
+-        var t = withWireTables(.{ .slot_banks = b.slot_decode, .lookahead_staging = b.lookahead_staging, .residents = b.residents - b.embedding, .engram = b.engram, .waves = @max(b.decode_wave, b.draft_wave), .kv = b.kv_decode, .mlx_cache = b.decode_cache, .mlx_cache_overshoot = b.cache_overshoot_decode, .host_reserve = b.host_reserve, .wide_window = b.wide_window, .prompt_state = b.prompt_state + b.turn_boundary });
++        var t = withWireTables(.{ .slot_banks = b.slot_decode, .lookahead_staging = b.lookahead_staging, .residents = if (b.generation_retain_device_embedding) b.residents else b.residents - b.embedding, .engram = b.engram, .waves = @max(b.decode_wave, b.draft_wave), .kv = b.kv_decode, .mlx_cache = b.decode_cache, .mlx_cache_overshoot = b.cache_overshoot_decode, .host_reserve = b.host_reserve, .wide_window = b.wide_window, .prompt_state = b.prompt_state + b.turn_boundary });
+         t.decode_buffer_allowance = decode_buffer_allowance_bytes;
+         return t;
+     }
+@@ -479,6 +481,7 @@
+         .wide_window = 0,
+         .unbilled_overhead = 0,
+         .embedding_host_rows = config.embedding_host_rows orelse true,
++        .generation_retain_device_embedding = config.generation_retain_device_embedding,
+         .prompt_state = dsl.seedRetainedBytes(&c, prompt_tokens),
+         .engram_posted = if (engramPostedRoute(config, ov, &c)) engramPostedBytes(c.engram, bill.promptCallRows(prompt_tokens)) else 0,
+         .wire_arrays_prompt = persistent_arrays + 2 * wire_arrays_prompt_wave,
+--- a/src/arch/deepseek_v41/module.zig
++++ b/src/arch/deepseek_v41/module.zig
+@@ -620,6 +620,7 @@
+         var generation = try adapter_request.fromEnvironment(gpa, io, dir);
+         defer if (generation) |*request| request.deinit();
+         if (generation != null and ((config.embedding_host_rows orelse true) or draftAhead(ov))) return error.AdapterUnsupportedModuleRoute;
++        if (config.generation_retain_device_embedding != (generation != null)) return error.AdapterUnsupportedModuleRoute;
+         const map = config.engram_token_map_path orelse return error.Dsv41BankDir;
+         const layer_major = layerMajor(config) catch |e| {
+             log.err("prefill routes refused: {s}\n", .{@errorName(e)});
+@@ -1818,7 +1819,9 @@
+         const before = BoundaryMemory.now();
+         try self.observe(.start);
+         var freed_device: u64 = 0;
+-        if (!self.fenced) {
++        // Exact-generation requests keep the validated device embedding route in both phases.
++        // All transient/cache/grow/PhaseGate actions below remain unchanged.
++        if (!self.fenced and self.generation_request_sha == null) {
+             freed_device = self.model.embeddingBytes();
+             try dsp.embeddingFence(G, &self.g, self.model, &self.embed_rows, self.weights);
+             self.fenced = true;
+--- a/src/arch/deepseek_v41/plugin.zig
++++ b/src/arch/deepseek_v41/plugin.zig
+@@ -80,6 +80,7 @@
+     var bound = c.withFacts(facts);
+     if (generation) |request| {
+         bound.embedding_host_rows = false;
++        bound.generation_retain_device_embedding = true;
+         bound.max_context_tokens = request.max_context_tokens;
+     }
+     return (try bill_mod.loadRequirementBytes(arena.allocator(), io, bound, ceiling)) + (if (generation != null) @as(u64, 64 << 20) else 0);
+@@ -120,6 +121,7 @@
+     defer if (generation) |*request| request.deinit();
+     if (generation) |request| {
+         built.embedding_host_rows = false;
++        built.generation_retain_device_embedding = true;
+         built.max_context_tokens = request.max_context_tokens;
+     }
+     return Module.init(load.gpa, load.io, &built, load.weights, load.stream, .{ .ceiling = load.ceiling, .wired_margin = load.facts.wired_margin_bytes, .loader = load.loader });
+--- a/src/arch/deepseek_v41/settings.zig
++++ b/src/arch/deepseek_v41/settings.zig
+@@ -63,6 +63,8 @@
+     expert_wide_seed_aligned: ?bool = null,
+     /// The input embedding read from its host rows from construction (null = on).
+     embedding_host_rows: ?bool = null,
++    /// Internal exact-generation route: retain device embedding through decode. Not a user setting.
++    generation_retain_device_embedding: bool = false,
+     /// kv16-opt: the DENSE16 o-projection returns wo_b's bf16 product as the stream's bf16 (`Routes.prefill_oproj_bf16`),
+     /// no f32 widening the attention side narrows again (null = the tier's route: on; false: the old f32 widening).
+     kv16_oproj_bf16: ?bool = null,

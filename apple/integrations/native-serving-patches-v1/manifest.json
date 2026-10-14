@@ -1,0 +1,98 @@
+{
+  "schema": "local-engine-integration-patches-v1",
+  "status": "pending_independent_bundle_review_not_applied",
+  "lanes": {
+    "mlx-stream": {
+      "patch": "mlx-stream.patch",
+      "patch_sha256": "2c531a3550476b346e81ea83bd5c3b6977eaab380defe3be31635f308a8a2165",
+      "files": {
+        "src/arch/deepseek_v41/bill.zig": {
+          "before_sha256": "2f402432e8bd5de2e75841712a1a82a87973914a2a38e10c8e90e48f431a387d",
+          "after_sha256": "27ce6109e230a37edb1e5db1602e5c37a9d3c05b9dd45b9d87b77bceed9d4dcd",
+          "before_bytes": 171439,
+          "after_bytes": 171725,
+          "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-profile-v1/prototype/src/arch/deepseek_v41/bill.zig",
+          "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/deepseek_v41/bill.zig"
+        },
+        "src/arch/deepseek_v41/module.zig": {
+          "before_sha256": "e7ef935966a51b7e64d7d7187b691698b0d63fc8b930e8c0629a2d93db6fb133",
+          "after_sha256": "5fe6eed9a6ff769079a94610fc22609c868cac4ee20dfd21a5f7be623350152f",
+          "before_bytes": 225151,
+          "after_bytes": 225487,
+          "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-profile-v1/prototype/src/arch/deepseek_v41/module.zig",
+          "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/deepseek_v41/module.zig"
+        },
+        "src/arch/deepseek_v41/plugin.zig": {
+          "before_sha256": "84689fcf0c6c212e370af8ba7bca2a0417e09e79658a4cd779d41e81a59886f4",
+          "after_sha256": "7ec82f245fa5bfb5cda7a0f2c4df287e4cf40bf07320c28f362a24094fc10b41",
+          "before_bytes": 14600,
+          "after_bytes": 14714,
+          "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-profile-v1/prototype/src/arch/deepseek_v41/plugin.zig",
+          "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/deepseek_v41/plugin.zig"
+        },
+        "src/arch/deepseek_v41/settings.zig": {
+          "before_sha256": "09c9aec5e74d86d25f5e5fae1371564fbe6ba893ab6fa7cefd1f559d1fb649fc",
+          "after_sha256": "506b7c5eab5389e9b47c591b58a3fe0c0f6929159ececdbba5c8d91b63676b1c",
+          "before_bytes": 16377,
+          "after_bytes": 16532,
+          "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-profile-v1/prototype/src/arch/deepseek_v41/settings.zig",
+          "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/deepseek_v41/settings.zig"
+        }
+      },
+      "before_target_file_fingerprint": "c606a0e422739bcdb85f1ece62a59d71783d3e741603e55473cb7dee555788ad",
+      "after_target_file_fingerprint": "a16e1bfe9f2c43f76fae6e1dced31a25c044008dd80c7da644bf2738cbb4db96",
+      "fingerprint_scope": "Complete bytes of the targeted files only; not a stock upstream revision or complete dependency/build identity."
+    },
+    "mlx-serve-host": {
+      "patch": "mlx-serve-host.patch",
+      "patch_sha256": "d480516cd4e3cffd35dd04e658263845a248345e02218072d8d0e4f0127ca7fb",
+      "files": {
+        "src/exact_generation.zig": {
+          "before_sha256": "80d1e6633e570fec88bbce7e07e1ced0f5da4c6a4c97389a41c4f3b4168c5556",
+          "after_sha256": "8bdf737c67d40f3b1d68f402bfff10b5cc6e757055de5013d9b30b80dd03bf12",
+          "before_bytes": 10418,
+          "after_bytes": 10592,
+          "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-inference-v4/host-prototype/src/exact_generation.zig",
+          "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/generation-report-profile-repair-v1/exact_generation.zig"
+        }
+      },
+      "before_target_file_fingerprint": "8de249f8d3cdb66144fa161745b10e7a8b0f2b6682e11d39a7815e00aabf6154",
+      "after_target_file_fingerprint": "8c3ae566a332a09534b40af7191f67a18473e7974ca2af39e79eb3f9e6b30da1",
+      "fingerprint_scope": "Complete bytes of the targeted files only; not a stock upstream revision or complete dependency/build identity."
+    }
+  },
+  "origins": {
+    "mlx-stream": {
+      "repository": "https://github.com/davidtai/mlx-stream",
+      "captured_ancestor_head": "bd7b3d42b38d677d8c69e0e417920c6a581a8a3a",
+      "license_capture_git_object": "bd7b3d42b38d677d8c69e0e417920c6a581a8a3a:LICENSE",
+      "license_file": "licenses/mlx-stream-LICENSE",
+      "license_sha256": "97ee01e6f31cb9dfda5b3c2135973d5c4d0ce89742c09fb7ae453e2da3f20edf",
+      "license": "MIT",
+      "limitation": "Ancestor license captured locally from Git; actual patch base includes earlier local modifications and is identified by file hashes, not this upstream commit alone."
+    },
+    "mlx-serve-host": {
+      "repository": "https://github.com/davidtai/mlx-serve.git",
+      "captured_ancestor_head": "0293427d54396848fc063fcfa38a187fdd328ae1",
+      "license_capture_git_object": "0293427d54396848fc063fcfa38a187fdd328ae1:LICENSE",
+      "license_file": "licenses/mlx-serve-host-LICENSE",
+      "license_sha256": "dfe22e0f100fe7f2c2808f1af6f488e7339cf8deb7504153602b4169ed7d90b4",
+      "license": "MIT",
+      "limitation": "Ancestor license captured locally from Git; actual patch base includes earlier local modifications and is identified by file hashes, not this upstream commit alone."
+    }
+  },
+  "evidence_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/generation-embedding-lifecycle-repair-v1/independent/review-v1.json": "9d717c456272e8fd578d5aa0b251f9b2daf198102501f4d535a487fd500c9710",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/generation-embedding-lifecycle-repair-v1/independent/actual-result-review-v1.json": "53de22b5bad81a4e9957f3730a8cd03ff9e976b13512cf198f5883f91f22cfe4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/generation-report-profile-repair-v1/independent/CPU-result-review-v1.json": "a722323622c3daaeadb1a84d922b35b0009ef83813f109e75ac3a36205ac6bbe",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-inference-host-build-report-v1/independent/artifact-review-v1.json": "2c3fefbc3ff1af83de0b5cba668c15b4add4e5addceb04acb38bfd0d4e9808bc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/single-serving-fit-report80-v1/independent-actual-v1/review-v1.json": "d43472cb246e8aefb770c28bafff965411defeff06e4579aa0314cde8b9957af",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/single-serving-fit-report80-v1/result.json": "f69ff60160b2114d906be6e9ae1c77209e47481d14ce62f22c8202f52b7cc385",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-profile-v1/source-seal.json": "c19df1ffcc791a3fdc923395753452e764163d7e69725ad6583d7e1a6941e7f8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/source-seal.json": "cd6bf8b704754671d85379d8d946bd12ded4eca43da044478a0c55770f52b642",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-inference-host-build-report-v1/inputs.json": "5f77bf2a770a516959f496f6907c91ab7f3e877065be47afb1f512e3dd72c756",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-inference-v4/host-prototype/source-capture.json": "faf2d2f9ed016333c68cf18db954f735168d03fc11f94bbd6e915d22cbc2dc95",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-inference-v1/assessment.json": "501c01527e47675e866d831a284419636a4d848427a32672c1b157f90100c473"
+  },
+  "scope": "Five production files, two separate engine roots. Reproduce exact reviewed local source deltas only; no stock mlx-serve compatibility or public publication claim. No weights, binaries, unrelated host sources, runtime activation or GPU execution included."
+}

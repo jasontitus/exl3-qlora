@@ -1,0 +1,13 @@
+--- a/src/exact_generation.zig
++++ b/src/exact_generation.zig
+@@ -155,7 +155,9 @@
+         .execution_profile = if (req.object.get("execution")) |execution| .{
+             .deadline_seconds = try field(execution, "deadline_seconds"),
+             .environment = try field(execution, "environment"),
+-            .memory_cap_gib = try field(execution, "memory_cap_gib"),
++            .process_memory_gib = try field(execution, "process_memory_gib"),
++            .native_box_ceiling_gib = try field(execution, "native_box_ceiling_gib"),
++            .physical_memory_gib = try field(execution, "physical_memory_gib"),
+             .reserve_gib = try field(execution, "reserve_gib"),
+         } else null,
+         .tokenizer_sha256 = try field(pins, tokenizer_path),

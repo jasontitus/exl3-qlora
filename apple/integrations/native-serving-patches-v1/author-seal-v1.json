@@ -1,0 +1,36 @@
+{
+  "schema": "local-engine-integration-patches-author-v1",
+  "status": "held_pending_independent_bundle_review",
+  "files_sha256": {
+    "README.md": "1574554d47395547305a569dcc8511a4f1bc31fa1326c0506295bf4e03f39b6c",
+    "check_sources.py": "73d5ab72d89605fb5ba4c3f927e89de5374f63994cbb8d9c4ae295733ce165a7",
+    "cpu-tests.log": "04a3ba0eb1deb1cc4046427a4a131abbb0286628007dd92f3e9baa0c6cdcb807",
+    "licenses/mlx-serve-host-LICENSE": "dfe22e0f100fe7f2c2808f1af6f488e7339cf8deb7504153602b4169ed7d90b4",
+    "licenses/mlx-stream-LICENSE": "97ee01e6f31cb9dfda5b3c2135973d5c4d0ce89742c09fb7ae453e2da3f20edf",
+    "manifest.json": "b67591d827097e91a497a0dfc2c30694577ea43996c48a2fe75bf39bd520624f",
+    "mlx-serve-host.patch": "d480516cd4e3cffd35dd04e658263845a248345e02218072d8d0e4f0127ca7fb",
+    "mlx-stream.patch": "2c531a3550476b346e81ea83bd5c3b6977eaab380defe3be31635f308a8a2165",
+    "test_patch_bundle.py": "d19b05c3a2cc4993a4e58eaa22a28a090a4ee21d1971e3cca265cbb075e907de"
+  },
+  "evidence_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/generation-embedding-lifecycle-repair-v1/independent/review-v1.json": "9d717c456272e8fd578d5aa0b251f9b2daf198102501f4d535a487fd500c9710",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/generation-embedding-lifecycle-repair-v1/independent/actual-result-review-v1.json": "53de22b5bad81a4e9957f3730a8cd03ff9e976b13512cf198f5883f91f22cfe4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/generation-report-profile-repair-v1/independent/CPU-result-review-v1.json": "a722323622c3daaeadb1a84d922b35b0009ef83813f109e75ac3a36205ac6bbe",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-inference-host-build-report-v1/independent/artifact-review-v1.json": "2c3fefbc3ff1af83de0b5cba668c15b4add4e5addceb04acb38bfd0d4e9808bc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/single-serving-fit-report80-v1/independent-actual-v1/review-v1.json": "d43472cb246e8aefb770c28bafff965411defeff06e4579aa0314cde8b9957af",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/single-serving-fit-report80-v1/result.json": "f69ff60160b2114d906be6e9ae1c77209e47481d14ce62f22c8202f52b7cc385",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-profile-v1/source-seal.json": "c19df1ffcc791a3fdc923395753452e764163d7e69725ad6583d7e1a6941e7f8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/source-seal.json": "cd6bf8b704754671d85379d8d946bd12ded4eca43da044478a0c55770f52b642",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-inference-host-build-report-v1/inputs.json": "5f77bf2a770a516959f496f6907c91ab7f3e877065be47afb1f512e3dd72c756",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-inference-v4/host-prototype/source-capture.json": "faf2d2f9ed016333c68cf18db954f735168d03fc11f94bbd6e915d22cbc2dc95",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-inference-v1/assessment.json": "501c01527e47675e866d831a284419636a4d848427a32672c1b157f90100c473"
+  },
+  "production_files": 5,
+  "patches": 2,
+  "tests": 4,
+  "actual_complete_file_replays": 5,
+  "source_applied_to_live_tree": false,
+  "GPU_executed": false,
+  "committed_or_pushed": false,
+  "scope": "Portable two-patch source delta with exact modified local base identities, notices and read-only source verifier; not a self-contained engine or stock-upstream port."
+}

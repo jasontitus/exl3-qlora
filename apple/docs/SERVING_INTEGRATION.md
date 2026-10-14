@@ -32,3 +32,8 @@ Lower held-out loss is one learning measurement. Useful Metal edits require
 generated base/adapter comparisons followed by patch application, compilation,
 numerical correctness and representative latency measurements. Compilation or
 likelihood alone does not prove faster or more reliable kernels.
+
+The reviewed source changes are preserved in
+[the native serving patch bundle](../integrations/native-serving-patches-v1/README.md).
+Its [portability limits](../integrations/native-serving-patches-v1/PORTABILITY.md)
+explain the exact modified base and local evidence needed for replay.
