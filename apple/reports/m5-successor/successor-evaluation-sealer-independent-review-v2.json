@@ -1,0 +1,36 @@
+{
+  "schema": "successor-evaluation-sealer-independent-review-v2",
+  "reviewer": "ingest_engines_b",
+  "created_utc": "2026-10-14T01:35:48.292481+00:00",
+  "status": "approved_cpu_preparation_only_pending_real_campaign_completion",
+  "bindings": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/evaluations/prepare_successor_v2.py": "d05292c7ce0e4c7719dd6d25e1a91a878e0ea295348993014fb4e5e8a5978a4a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/evaluations/declaration-v2.json": "a124dc46df99826a93384e982fd161f4e956273b1bf799eb96d8beb34392043e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/m5-successor/evaluations/implementation-v2.json": "85db14e968d3e7a6255b4b1e25de97ee851b82fa78715816dd6853ee38e24e7c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/review_successor_sealer_v2.py": "8bfb1ec4df32ddd26763349a54ac8f004c4e7d4805c766a86cfbf35501a20cf3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/successor-sealer-cpu-independent-v2.json": "ae1cb788aaedf98da0716cb04b70f5a4ae318f2dc573f9361592a4fd71aff76c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/engines-b/successor-sealer-author-tests-independent-v2.log": "8ac3f1e43802a3edde10d44a7432f0b344f03ff13fc59e9e5bfadaa191dd11b1"
+  },
+  "fixed_blockers": [
+    "Actual runner produces 15 emit/model/verify process records, now checked exactly; v1 incorrectly required five.",
+    "Real controlled_environment is a context manager, now entered around helper children and sequential wrapper preparation; environment restored on success/failure."
+  ],
+  "validation": {
+    "author_suite": "31 passed, 107 subtests independently rerun",
+    "independent_corruptions": 11,
+    "pristine_composed_flow": "passed with actual runner validators, controlled_environment and two tiny real CPU children",
+    "immutable_implementation_input_hashes": 20
+  },
+  "review_scope": [
+    "Fixed final step and cursor 458, exact selected attempt path and command; no best-checkpoint selection.",
+    "Completed five-phase campaign and all 15 records: exact argv/cwd/environment, positive nonboolean PID, completed exit0, hash-bound stdout/stderr, emitted command and verifier receipt consistency.",
+    "Verified artifact hashes and immutable guards before/after preparation; prior distinct adapter and heldout byte hash preserved.",
+    "Fresh v2 namespaces; diagnostic then prior-NLL then expression CPU sealing; all conditions TF32 disabled; no model inference action in sealer."
+  ],
+  "limits": [
+    "Target-host guards and existing reviewed wrapper sealing bodies mocked in composed fixture; real target preparation remains necessary after campaign completes.",
+    "Approval permits staging and CPU preparation only after required completed campaign evidence. Generated requests require independent review and lease before GPU execution.",
+    "This is receipt/control-flow consistency, not proof of model quality, benchmark independence or heldout optimization performance.",
+    "No remote action, model reads, GPU, signals, leases or active runtime mutation performed by reviewer."
+  ]
+}

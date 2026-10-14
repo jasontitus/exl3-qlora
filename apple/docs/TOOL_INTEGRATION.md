@@ -68,3 +68,24 @@ This stronger contract applies to the advanced reviewed-corpus preparation
 helper. It does not require users of the ordinary SFT import flow to manufacture
 sidecars manually. Active experiments continue to use their pinned helper and
 separate, already-completed independent token-identity checks.
+
+## Evaluation orchestration regression requirements
+
+Independent review of the experimental successor evaluation sealer caught two
+integration failures that isolated unit tests missed: the campaign runner emits
+15 process records (emit/model/verify for each of five phases), and its controlled
+environment helper must be entered as a context manager. Both were repaired and
+tested in composed CPU flows before any evaluation launch.
+
+When this orchestration is promoted into the project workflow, preserve tests
+that exercise the actual runner record schema and actual environment lifecycle,
+including restoration on child failure. Require the completed campaign, exact
+final step/cursor, adapter identity and hashed logs before preparing comparisons.
+Do not select checkpoints using held-out scores or infer completion from a
+receipt filename. The independent review covers CPU preparation only; it is not
+hardware qualification or a finding that model quality improved.
+
+The review is retained in
+`apple/reports/m5-successor/successor-evaluation-sealer-independent-review-v2.json`.
+The sealer itself remains experimental; these are integration requirements, not
+a claim that remote orchestration is already available in the public CLI.
