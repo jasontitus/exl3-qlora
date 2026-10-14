@@ -813,6 +813,7 @@ def main(argv=None):
                             examples,
                             check=budget.check,
                             include_token_metrics=args.token_metrics,
+                            log=log,
                         )
                         | model.report()
                         if args.command == "evaluate"

@@ -82,6 +82,30 @@ def test_masked_loss_and_evaluation_are_token_weighted(base):
     assert combined["loss"] == sum(r["loss"] * r["supervised_tokens"] for r in results) / 4
 
 
+def test_evaluation_progress_preserves_scores_and_reports_only_finished_rows(base):
+    model = Toy(base)
+    rows = examples()
+    expected = evaluate(model, rows)
+    messages = []
+    assert evaluate(model, rows, log=messages.append) == expected
+    assert len(messages) == 2 * len(rows)
+    assert messages[0].startswith("Evaluation example 1/2 started")
+    assert messages[-1] == "Evaluation example 2/2 completed; cumulative supervised tokens 4"
+    checks = 0
+
+    def fail_after_scoring():
+        nonlocal checks
+        checks += 1
+        if checks == 2:
+            raise RuntimeError("memory check failed")
+
+    messages.clear()
+    with pytest.raises(RuntimeError, match="memory check failed"):
+        evaluate(model, rows, check=fail_after_scoring, log=messages.append)
+    assert len(messages) == 1 and "started" in messages[0]
+    assert model.training
+
+
 def test_accumulation_matches_single_token_weighted_objective(base):
     rows = examples()
     rows[1]["loss_start"] = 2  # Unequal token counts, so averaging microbatch means is wrong.

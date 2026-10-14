@@ -145,7 +145,13 @@ def optimizer_step(model, optimizer, examples, *, clip=1.0, check=lambda: None):
 
 
 def evaluate(
-    model, examples, *, check=lambda: None, include_token_metrics=False, preserve_mode=False
+    model,
+    examples,
+    *,
+    check=lambda: None,
+    include_token_metrics=False,
+    preserve_mode=False,
+    log=lambda message: None,
 ):
     """Score complete supervised targets without updating model parameters.
 
@@ -164,8 +170,12 @@ def evaluate(
     total, nll, digest = 0, 0.0, hashlib.sha256()
     row_metrics = []
     try:
-        for example in examples:
+        for index, example in enumerate(examples, 1):
             check()
+            log(
+                f"Evaluation example {index}/{len(examples)} started; "
+                f"serialized tokens {len(example['input_ids'])}"
+            )
             tokens, lengths = batch_for(example)
             details = {"token_nll": [], "target_ids": [], "predicted_ids": []}
             row_digest = hashlib.sha256() if include_token_metrics else None
@@ -188,9 +198,7 @@ def evaluate(
                     if include_token_metrics:
                         row_digest.update(logit_bytes)
                         gold = targets[start : start + 32]
-                        details["token_nll"].extend(
-                            nn.losses.cross_entropy(logits, gold).tolist()
-                        )
+                        details["token_nll"].extend(nn.losses.cross_entropy(logits, gold).tolist())
                         details["target_ids"].extend(gold.tolist())
                         details["predicted_ids"].extend(mx.argmax(logits, axis=-1).tolist())
                     del logits, value
@@ -224,6 +232,10 @@ def evaluate(
                 row_metrics.append(details)
             del tokens, lengths
             check()
+            log(
+                f"Evaluation example {index}/{len(examples)} completed; "
+                f"cumulative supervised tokens {total}"
+            )
     finally:
         model.train(was_training)
     if not total:
@@ -290,7 +302,9 @@ def load_checkpoint(model, optimizer, directory, contract):
         or optimizer.bias_correction is not False
         or optimizer._schedulers
     ):
-        raise ValueError("Resume supports only fixed-rate Adam with the workflow's default settings")
+        raise ValueError(
+            "Resume supports only fixed-rate Adam with the workflow's default settings"
+        )
     directory = Path(directory)
     state = json.loads((directory / "trainer_state.json").read_text())
     if state.get("format") != "exl3-mlx-training-state-v1" or state.get("contract") != contract:

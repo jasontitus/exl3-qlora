@@ -1,0 +1,20 @@
+{
+  "status": "independently_reviewed",
+  "time_utc": "2026-10-14T03:06:40.368127+00:00",
+  "files_sha256": {
+    "apple/src/exl3_mlx/training.py": "e1def2afd12bf53c790c3ab4b33670e0d5ceac202436594fdcf92d04d825d1c4",
+    "apple/src/exl3_mlx/workflow.py": "37a1ec81ce120c98a41cd244c33cff53b791465078751bfe46a2659b82edc94f",
+    "apple/tests/test_workflow.py": "578aa35a6327ab24b96b7510be35eb1dd0595d3c96760c14f79dc3c4d96f350b"
+  },
+  "reviewer": "adversarial_code",
+  "findings": "No semantic blocker. Existing len(examples) requirement unchanged; callback inside try/finally restores mode on failure; completion occurs after final memory check; score math and returned fields unchanged.",
+  "tests": {
+    "device": "explicit mlx.cpu",
+    "passed": 2,
+    "seconds": 2.07,
+    "selection": "test_workflow.py -k evaluation",
+    "initial_sandbox_import": "MLX import lacked device visibility; rerun with device visibility and explicitly CPU execution passed."
+  },
+  "ruff": "format and check passed",
+  "active_m5_runtime_modified": false
+}
