@@ -1,0 +1,16 @@
+{
+  "status": "linked_artifact_independently_verified_not_runtime_qualified",
+  "artifact_sha256": "97ff4734cc92b8c22d2c49e95edae40134040bf15cd0f40fa787b9280d4f7ddf",
+  "artifact_bytes": 25424264,
+  "checks": {
+    "file": "independently reproduced static output",
+    "dylibs": "independently reproduced static output",
+    "load_commands": "independently reproduced static output"
+  },
+  "limits": [
+    "Serving-v2 has three independently identified integration defects; this is not corrected v3",
+    "Binary never executed; no model loaded or GPU qualification",
+    "Cache location is not a deployable dependency layout; llama/MLX rpaths and absolute Homebrew webp dependency need explicit packaging and identity checks before execution"
+  ],
+  "execution_receipt_sha256": "015d4a9bfce632a1c73638656132a0fdc4bc68593628b0470730c0cf2dfa4876"
+}

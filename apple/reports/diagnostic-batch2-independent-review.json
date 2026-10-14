@@ -1,0 +1,64 @@
+{
+  "status": "approved_for_semantic_evidence_scope_only",
+  "reviewer": "root independent of dataset editor",
+  "reviewed_at": "2026-10-14T03:24:40.581626+00:00",
+  "index_sha256": "7d18aacb545c182b43d77c51e5d7f2cbf363b72078ca673fc20f5e7bfd13b2ec",
+  "cases": [
+    {
+      "id": "splash-7d7cadd19113-hour-v3-reasoning-corrected-v4-spacing",
+      "inputs": {
+        "evidence": {
+          "path": "cases/splash-7d7cadd19113-hour-v3-reasoning-corrected-v4-spacing/evidence.json",
+          "sha256": "6b214102e7ccfe059f2f13e7b70c0e4a1348fdde7c7eae62fb456edfbbac0078"
+        },
+        "prepared": {
+          "path": "cases/splash-7d7cadd19113-hour-v3-reasoning-corrected-v4-spacing/prepared.json",
+          "sha256": "c7aea39aa347e20f870b40e85fcd79f9abdf05ee6f8a72e941b00570dd601d4f"
+        },
+        "raw": {
+          "path": "cases/splash-7d7cadd19113-hour-v3-reasoning-corrected-v4-spacing/raw.json",
+          "sha256": "4b250a19710fe6e472c29bb3cdc7093c4410ad750af490b2014ee65bc3fb2224"
+        },
+        "source": {
+          "path": "cases/splash-7d7cadd19113-hour-v3-reasoning-corrected-v4-spacing/source.json",
+          "sha256": "1c4086603ed7318818b0eaca6780befd815d5b12a2912b07eb44a25bc6d759a8"
+        }
+      },
+      "disposition": "approve corrected answer and claim evidence mapping"
+    },
+    {
+      "id": "sushi-497d71d94eed-hour-v4-reasoning-corrected-v4",
+      "inputs": {
+        "evidence": {
+          "path": "cases/sushi-497d71d94eed-hour-v4-reasoning-corrected-v4/evidence.json",
+          "sha256": "790a2dadf728eeef589dd512f74b1d567d872278dfbf9195c1ebd70796fbd22f"
+        },
+        "prepared": {
+          "path": "cases/sushi-497d71d94eed-hour-v4-reasoning-corrected-v4/prepared.json",
+          "sha256": "97ed713bf64b0724d139658737a32dc5e6bf301807946968ce2da1ac5a76de3f"
+        },
+        "raw": {
+          "path": "cases/sushi-497d71d94eed-hour-v4-reasoning-corrected-v4/raw.json",
+          "sha256": "986e2cf3489f99b2982edc492fd7254a1e02b7424617be95786f09aa2e64d6a6"
+        },
+        "source": {
+          "path": "cases/sushi-497d71d94eed-hour-v4-reasoning-corrected-v4/source.json",
+          "sha256": "0b7c28db7413fbb5e31b9554899d1b9862589536ef88ca70daa8a94b543737d8"
+        }
+      },
+      "disposition": "approve corrected answer and claim evidence mapping"
+    }
+  ],
+  "checks": [
+    "Read complete prompts and answers, all non-quoted narrowed evidence regions and route guard code",
+    "Verified all eight input payload hashes, captured evidence file hashes, source ranges and target claim ranges",
+    "Verified later Splash report identity now matches correction commit; repaired spacing retained with new sample identity",
+    "Splash partial register restoration and author-reported speed distinguished from inference",
+    "Sushi rounding-floor caveat retained; primitive and end-to-end performance scopes distinguished; proposed validation marked inferred"
+  ],
+  "limits": [
+    "Semantic/evidence review only; tokenizer was not independently rerun in this pass",
+    "No local kernel compilation, numerical or performance reproduction",
+    "Not approval of remaining corpus, split admission, or modification of running dataset"
+  ]
+}
