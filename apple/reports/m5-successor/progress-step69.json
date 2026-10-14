@@ -1,0 +1,82 @@
+{
+  "schema": "apple-training-development-progress-step69-v1",
+  "recorded_utc": "2026-10-14T10:59:56.020711+00:00",
+  "scope": "Development evidence snapshot. Full receipts are separate workspace artifacts; this report alone is not a portable reproduction bundle or useful-quality certification.",
+  "main_campaign": {
+    "training_examples": 229,
+    "planned_updates": 458,
+    "actual_saved_exposure_audited_through": 69,
+    "exact_edit_views_seen": 53,
+    "diagnostic_views_seen": 16,
+    "target_presentations": 132003,
+    "max_complete_serialized_tokens": 12078,
+    "cumulative_peak_mlx_gib": 71.27977485954762,
+    "trainable_parameters": 78848,
+    "adapter_layers": [
+      39
+    ],
+    "rank": 4,
+    "alpha": 8,
+    "prior55_contract_unchanged": true,
+    "main_runtime_dataset_and_optimizer_settings_changed": false
+  },
+  "early_checkpoint50_comparison": {
+    "panel": "Four fixed train-pool items: two seen by checkpoint 50 and two future training items; not held out.",
+    "control_completed": true,
+    "targets": 9329,
+    "control_nll": 0.39318073398213094,
+    "control_correct_targets": 8432,
+    "trained_condition_last_observed": "Worker PID 24355 was live at elapsed 30:15; no completed paired score was available.",
+    "adapter_delta_available": false
+  },
+  "evaluation_tool_fix": {
+    "generated_controller_revision": 2,
+    "author_CPU_tests": 21,
+    "independent_scenarios": 12,
+    "change": "A complete numerical rejection preserves failed-candidate evidence and releases only after verified cleanup of its own terminal process. It permits the other candidate and forbids timing of the failed candidate. Infrastructure failures, safety failures and uncertain termination retain the lease.",
+    "scope": "Independent CPU source and lifecycle consistency review; no execution authorization or actual device results."
+  },
+  "future_library": {
+    "new_source_changes": 2,
+    "sources": [
+      "ashhart/TensorFold badfc9d6383732297580f646af9454d97929f0dc",
+      "jundot/omlx 7b9e49acee5f445925f67d19d2c65f7f59db00c3"
+    ],
+    "reviewed_source_reasoning_views": 2,
+    "positive_imitation_admissions": 0,
+    "TF_before_after_actual_compilation_passed": true,
+    "omlx_whole_edit_tokens": 64281,
+    "omlx_whole_edit_preserved_untruncated": true,
+    "active_campaign_data_changed": false,
+    "GPU_numerical_or_performance_validation": false
+  },
+  "serving_preparation": {
+    "isolated_runtime_files": 6,
+    "isolated_runtime_bytes": 252477016,
+    "static_dependency_edges_reviewed": 38,
+    "engine_or_GPU_executed": false,
+    "full_payload_verifier_plan": "365 files / 426,352,827,347 bytes, scheduled after the current Studio pair is terminal and its lease is released. Prior evidence remains unchanged. New full verification has not executed."
+  },
+  "auxiliary_audit_findings": {
+    "actual_metrics_confirmed": true,
+    "strict_integer_revision": "Separate v2 under independent review; original v1 and boolean-versus-integer reproductions preserved.",
+    "effect_on_actual_data": "None; recorded fields have integer types."
+  },
+  "quality_demonstrated": false,
+  "limits": [
+    "Saved sampler exposure and teacher-forced control metrics do not prove gradient correctness or useful learning.",
+    "View counts are not certified independent optimization families.",
+    "Full 16-item held-out evaluation with the final adapter and generated-kernel compilation, numerical checks and timing remain unfinished.",
+    "All source speedups remain author-reported unless separately locally reproduced."
+  ],
+  "workspace_receipts_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/training-exposure-continuity-v4.json": "ea430dca4602954ef2c938f26398b7e52801a19b3aad9b07525e8ac4a9c3f436",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/reports/independent-exposure69-zero-b-v1/review-v1.json": "318e58339264d9ce48e2c6bf2902de0a32b21e6c20ee78a06e5141c4ce188c71",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full-kernel-evaluation-v1/generated-controller-independent-v2/review-v2.json": "89317372a3831f643318aeaab51dda9fb7d58f6bbd71049c5dd67f4d09f8df11",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cross-source-batch3-independent-v1/review-v1.json": "cb7b8576f6d65e5a5c5ebf7a720d9556271782b1aae71f5a31e993292022c720",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cross-source-batch3-v1/future-reviewed-catalog-v1.json": "12b001a354a6fd79d95d45a661d093e4ddb1d76960688a47a64023c782fd1298",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cross-source-batch3-compile-v1/attempt-v2/receipt.json": "cc490dd4df27834ec9ff4ef88d3b7f419ced6b47917f22cba8c44cf83af6be7f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/runtime-package-v1/independent/review-v1.json": "3498037be7892064d27a13a0258047e5a2ff9621763e5d94b905d317f9665898",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/payload-full-verification-plan-v1/root-static-review-v1.json": "28b234d49e5da2f33b97a1213856ed9cc9b2ef9d7a868770b6002d5aef0cbbb3"
+  }
+}
