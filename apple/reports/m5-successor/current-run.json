@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T00:15:27.276837+00:00",
+  "updated_utc": "2026-10-15T00:33:23.476001+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -72,15 +72,14 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "saved_checkpoint": 221,
+    "saved_checkpoint": 222,
     "worker_pid": 47890,
-    "elapsed": "19:37:37",
-    "worker_cpu": "832:38.50",
-    "worker_rss_kib": 18080352,
-    "forward_layer": 8,
-    "active_mlx_gib": 15.52,
-    "history_audit_checkpoint": 206,
-    "evidence": "Direct root SSH process/latest pointer/log; exposure history audit remains206."
+    "elapsed": "19:51:20",
+    "worker_cpu": "842:39.91",
+    "worker_rss_kib": 18892800,
+    "forward_layer": 24,
+    "active_mlx_gib": 15.6,
+    "history_audit_checkpoint": 222
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -1061,17 +1060,40 @@
       "diagnostic": 42
     },
     "actual_supervised_target_presentations": 410086,
-    "actual_report_status": "root_reconstructed_pending_independent_actual_review",
-    "matched_actual_repeats": 0
+    "actual_report_status": "independently_verified_saved_exposures_only",
+    "matched_actual_repeats": 0,
+    "actual_capture_review_sha256": "5f83825d43b23eec64b96a16a874b8883a6847c1064bfb5a5c9cab35461b9720",
+    "actual_capture_review_pins_root_verified": 31
   },
   "portable_attention_repair_current": {
-    "status": "isolated_cpu_component_linked_pending_independent_artifact_and_concrete_review",
+    "status": "actual_three_case_capture_independently_accepted_pending_numerical_analysis",
     "plan_review_sha256": "ab7cec80c70d73aa73ccb5d9d02908de78b641ba00c1c21d34c24b6c5f2a0838",
     "root_rehashed_plan_review_inputs": 17,
     "component_artifact_sha256": "36898156d84e004ac2db0c68724e2a3518502ee510c43f8deb4e83438ee11f99",
-    "component_gpu_executed": false,
+    "component_gpu_executed": true,
     "production_changed": false,
     "m5_runtime_changed": false,
-    "limits": "No hardware-qualified numerical/longcontext/fullmodel/quality claim. Serving wiring/accounting inprogress."
+    "limits": "Three uncompressed reconstructed/captured fixtures only. Strict five-output analysis review pending; fullserving/expert/index/adapter and longcontext gates remain.",
+    "component_source_review_sha256": "80743e9fe42166901d03ae69a1007aabbe875b61a02e60f02e7bc9043b38ef79",
+    "component_source_review_pins_root_verified": 905,
+    "component_artifact_review_sha256": "5fb3ba63e5f3d14f788a2326c8060fdf9102a9f466240e8cb5d9bb22fa3bce98",
+    "component_artifact_review_pins_root_verified": 2923,
+    "component_package_review_sha256": "b93d9d570f7477e5219ddebbae37f76a9a12493780f2e16489ffaedf025313f4",
+    "component_package_review_pins_root_verified": 21,
+    "concrete_author_seal_sha256": "3bb229c0c1f1d74082af4086ae53cd85d00349e3b5e6536352dcdb0a74b63e64",
+    "concrete_author_pins_root_verified": 42,
+    "expert_prerequisite": "Additional fixedNAX expertprefill found; fullM1serving requires bounded existingGEMV fallback too.",
+    "root_execution_session": 14452,
+    "root_execution_exit_code": 0,
+    "concrete_review_sha256": "4b32892ac5c9768e680765c9851f91b440723040dd1f75140fb469a71b7de4bd",
+    "concrete_detail_review_sha256": "adf730bfb6c85c3007c78886d9a5f2eabb7769dbff9067e33941b3c04818ef71",
+    "concrete_root_rehashed_pins": 68,
+    "actual_capture_review_sha256": "b999c5997722949b43cc31b2e1aec6f9ebd0c77abfe067b3280f1b5446f0f6a5",
+    "actual_capture_root_rehashed_pins": 168,
+    "audit_publication_check_sha256": "124652a129e80e6204683a088a8400b716cca23615883efc6608d73f6f2afffd",
+    "all_three_owned_released": true,
+    "recorded_processes_absent_and_lock_free": true,
+    "max_observed_aggregate_rss_bytes": 982646784,
+    "numerical_qualified": false
   }
 }

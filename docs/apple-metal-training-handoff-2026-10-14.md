@@ -1,10 +1,16 @@
+## Update: portable attention device captures complete; numerical review next
+
+The reviewed portable component completed all three captured/reconstructed cases on the Studio, without model loading. Independent actual capture review passed (SHA `b999c5997722949b43cc31b2e1aec6f9ebd0c77abfe067b3280f1b5446f0f6a5`, 168 inputs rehashed by root). All three owned leases released; independent and root fresh process checks found recorded IDs absent and the shared lock free. Maximum observed aggregate RSS was 982,646,784 bytes, below the 4 GiB process check; the 32 GiB reserve remained intact. Sampled memory is not a hard OS quota.
+
+The five-output numerical analyzer is undergoing review before comparison against the independent mathematical references and preserved failed implementation. No unchanged-route control is synthesized. Capture completion is not numerical qualification or full-model parity. Whole-serving work must also gate fixed-layout NAX expert-prefill operations; short attention tests cannot qualify those wider routed workloads. The isolated implementation is adding the existing bounded expert path and corresponding accounting. Current training remains unchanged.
+
 ## Update: portable component links; fresh history records 222 views
 
 The portable attention component linked without executing the target. Its frozen artifact is `36898156d84e004ac2db0c68724e2a3518502ee510c43f8deb4e83438ee11f99` (6,589,224 bytes); source/artifact and concrete-run review precede any device run. Typed CPU trace checks cover widths 1/32/33/34 and per-tile materialization fences. Serving integration and temporary-memory accounting remain in progress. No production or M5 runtime changed, and no repaired-path/full-model numerical claim is made.
 
 A separate pure CPU history auditor now supports both epochs, separates distinct views from repeated presentations, and reports matched repeat timings without attributing a cache speedup. Independent review passed with 21 inputs rehashed by root; nine author and eight independent methods cover real history206 plus explicitly synthetic later-epoch cases. Review SHA: `13d6fbc86f920ab50a8e256f981c782aa0c404bc61bc0e3e72efd422c21b2fcc`.
 
-The newly approved read-only history/source capture records **222 distinct complete views: 180 exact edits and 42 diagnostics**, with **410,086 supervised target presentations** and no repeats. Root reconstructed this from the pinned sampler and unchanged history206 prefix; a separate actual-capture review is pending. This is exposure evidence, not checkpoint durability or quality evidence. Source collection remains paused.
+The newly approved read-only history/source capture records **222 distinct complete views: 180 exact edits and 42 diagnostics**, with **410,086 supervised target presentations** and no repeats. Root reconstructed this from the pinned sampler and unchanged history206 prefix; independent actual-capture review passed (31 inputs rehashed by root; SHA `5f83825d43b23eec64b96a16a874b8883a6847c1064bfb5a5c9cab35461b9720`). This is exposure evidence, not checkpoint durability or quality evidence. Source collection remains paused.
 
 ## Update: tiny device test observes fixed-layout mismatch; M5 221
 
