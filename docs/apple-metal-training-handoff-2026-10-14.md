@@ -446,3 +446,12 @@ Product serving documentation added in e3eb6731 explains existingmlx-serve/mlx-s
 Root session 47510 exited 0 after all four diagnostic processes. Trace/untraced logits match bitwise on both routes; fresh/cached logits still differ (maximum 0.125, same argmax 223). First observed layer-0 differences occur at qa/kva despite identical attention input. This is descriptive evidence, not a causal diagnosis or serving qualification. Independent actual receipt/control/lease review and CPU mathematical replay remain pending. A fresh root process snapshot found no four native PID/PPID/PGID identities and no shared GPU lock.
 
 M5 worker 47890 was directly observed live at saved update 362/458, elapsed 21:33:24. All 229 training examples remain unchanged. The last independently reviewed history remains 303; the newer saved pointer is not a full history audit. New source collection remains paused. Final checkpoint transfer/evaluation still require actual final completion and released ownership; no duplicate GPU job was launched.
+
+
+### 2026-10-15 03:21 UTC — training complete; final evaluation live
+
+All458updates completed on229items (two exposures each), final bundle transferred and independently audited. Matched training NLL fell3.27945%; first/repeat pass20.6384h/1.55166h. These are fit metrics only.
+
+Final full16/47069target evaluation now runs under root session50021: wrapper37368, pair37371, zero-B child37407 directly PS-confirmed live while hashing payload7/110. Process40GiB/reserve32GiB, frozen runtime-v5, singletonMLX_ENABLE_TF32=0. Original initial launch failed premodel because root omitted that variable; preserved receipt/logs. Independently reviewed exact-owned cleanup released its retained lease; no unrelated process stopped. Same request46eea8bb040ca53f2edc79e75e944531e63fde925e3a3cf53385513a3e2fcdfb, fresh wrapper-receipt-attempt2.json. Next: poll this exact session/child, do not launch a duplicate; audit full paired output after both conditions and clean owned release.
+
+Source collection remains paused. Native F32 projection candidate remains CPU-reviewed/staged, not built/hardware-qualified. Fixed-schedule generated evaluation contract is receiving a versioned parsed/raw-binding repair; no generated quality claim. Product68a0b5e7adds reusable generation-aware process validator with24passingCPUtests; sealed runtime and consumers unchanged.
