@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T05:09:39.755081+00:00",
+  "updated_utc": "2026-10-15T05:14:14.901893+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1718,5 +1718,23 @@
     "chunk_bytes": 1048576,
     "progress": "256 metadata files checked; large shard hashing underway",
     "receipt_directory": "kernel-library/next-round-v5/native-long-m5-model-hash-v1/actual-v1"
+  },
+  "m5_runtime_preparation": {
+    "transport_v1": "held_unexecuted_independent_review_found_captured_source_handoff_gap",
+    "transport_v2": "completed_exit0_pending_independent_actual_review",
+    "static_dependency_inspector_review_sha256": "99f09d722010614f72f2d795425c76ab1f9652f7e0d872567bfdf81e89185860",
+    "static_dependency_inspector_root_verified_pins": 15,
+    "static_dependency_inspector_root_reran_methods": 17,
+    "runtime_transferred": true,
+    "engine_executed": false,
+    "transport_review_sha256": "29f20f8a80b0b601fe37cdadab70586e076c196d4a7500516fa03ccd9742af8c",
+    "transport_root_verified_pins": 36,
+    "transport_root_reran_methods": 20,
+    "runtime_files": 6,
+    "runtime_bytes": 252502104,
+    "static_dependency_inspection": "completed_exit0_pending_independent_actual_review",
+    "static_inspection_objects": 8,
+    "static_dependency_edges": 38,
+    "remote_root": "/Volumes/Scratch/exl3-training/2026-10-15/native-long-f32-v1"
   }
 }
