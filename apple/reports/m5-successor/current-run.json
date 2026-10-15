@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T01:29:45.848548+00:00",
+  "updated_utc": "2026-10-15T01:32:51.941738+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -11,7 +11,7 @@
   "train_examples": 229,
   "heldout_examples": 16,
   "planned_updates": 458,
-  "completed_main_updates": 237,
+  "completed_main_updates": 255,
   "prior_campaign": "198 stopped intentionally after completed preflight; artifacts preserved; ownedlease released",
   "no_duplicate_gpu_job": true,
   "evaluation_pid": null,
@@ -79,9 +79,9 @@
     "worker_rss_kib": 19390128,
     "exact_prefix_cache_hit": true,
     "skipped_backbone_layers": 39,
-    "history_audit_checkpoint": 237,
+    "history_audit_checkpoint": 255,
     "new_history_transfer_updates": 255,
-    "new_transfer_audit_pending": true
+    "new_transfer_audit_pending": false
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -845,19 +845,18 @@
   },
   "new_source_collection_status": "paused_by_user",
   "latest_training_history_audit": {
-    "path": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261015T012112Z/root-report.json",
-    "saved_updates": 237,
+    "path": "kernel-library/next-round-v5/m5-successor/matched-training-loss255-v1/root-report.json",
+    "saved_updates": 255,
     "distinct_complete_views": 229,
     "exact_edits": 186,
     "diagnostics": 43,
-    "supervised_target_presentations": 436390,
-    "serialized_token_presentations": 1156290,
-    "repeats": 8,
+    "supervised_target_presentations": 473541,
+    "serialized_token_presentations": 1249060,
+    "repeats": 26,
     "complete_epochs": 1,
-    "median_first_over_repeat_elapsed_ratio": 12.967864213850449,
-    "timing_causality_established": false,
-    "review_sha256": "ad34d14761339a3c224127aa53e56d6b1755a73ad2b5e1fde6f96a5758d65bee",
-    "root_rehashed_review_inputs": 31,
+    "review_sha256": "9c8b979fd9bb32986e720f5282c964b81b968178bc5e6380e769a21652cad89d",
+    "root_verified_pins": 45,
+    "reviewer": "root_independent_of_author",
     "checkpoint_durability_verified": false
   },
   "checkpoint150_paired_result": {
@@ -934,19 +933,18 @@
     "next": "bounded attention operand capture and independent CPU oracle"
   },
   "latest_history_audit": {
-    "path": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261015T012112Z/root-report.json",
-    "saved_updates": 237,
+    "path": "kernel-library/next-round-v5/m5-successor/matched-training-loss255-v1/root-report.json",
+    "saved_updates": 255,
     "distinct_complete_views": 229,
     "exact_edits": 186,
     "diagnostics": 43,
-    "supervised_target_presentations": 436390,
-    "serialized_token_presentations": 1156290,
-    "repeats": 8,
+    "supervised_target_presentations": 473541,
+    "serialized_token_presentations": 1249060,
+    "repeats": 26,
     "complete_epochs": 1,
-    "median_first_over_repeat_elapsed_ratio": 12.967864213850449,
-    "timing_causality_established": false,
-    "review_sha256": "ad34d14761339a3c224127aa53e56d6b1755a73ad2b5e1fde6f96a5758d65bee",
-    "root_rehashed_review_inputs": 31,
+    "review_sha256": "9c8b979fd9bb32986e720f5282c964b81b968178bc5e6380e769a21652cad89d",
+    "root_verified_pins": 45,
+    "reviewer": "root_independent_of_author",
     "checkpoint_durability_verified": false
   },
   "attention_operands_diagnostic_current": {
@@ -1209,6 +1207,22 @@
       "review_sha256": "6d779077e2af4f8322e25465ca7b7403b45ec70600ae4f426890743f7f1a1d23",
       "root_rehashed_review_inputs": 32,
       "checkpoint_durability_verified": false
+    },
+    {
+      "path": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261015T012112Z/root-report.json",
+      "saved_updates": 237,
+      "distinct_complete_views": 229,
+      "exact_edits": 186,
+      "diagnostics": 43,
+      "supervised_target_presentations": 436390,
+      "serialized_token_presentations": 1156290,
+      "repeats": 8,
+      "complete_epochs": 1,
+      "median_first_over_repeat_elapsed_ratio": 12.967864213850449,
+      "timing_causality_established": false,
+      "review_sha256": "ad34d14761339a3c224127aa53e56d6b1755a73ad2b5e1fde6f96a5758d65bee",
+      "root_rehashed_review_inputs": 31,
+      "checkpoint_durability_verified": false
     }
   ],
   "studio_memory_observation_current": {
@@ -1225,5 +1239,22 @@
     "copy_review_sha256": "d1af6d0f21265508a227d17e62a9c0b7d44c6a0ebd6d5c481299546da343ef0d",
     "root_rehashed_copy_review_inputs": 835,
     "activated": false
+  },
+  "matched_training_fit_current": {
+    "matched_pairs": 26,
+    "lower_loss": 25,
+    "higher_loss": 1,
+    "tied": 0,
+    "supervised_tokens_per_presentation": 46469,
+    "first_weighted_loss": 0.30750995991689545,
+    "repeat_weighted_loss": 0.2988218032574802,
+    "relative_reduction_percent": 2.825325287598235,
+    "heldout_or_generated_quality_claim": false,
+    "same_parameters_compared": false
+  },
+  "bounded_hash_product_api": {
+    "commit": "eb83ba9e",
+    "tests_passed": 142,
+    "runtime_or_callers_changed": false
   }
 }
