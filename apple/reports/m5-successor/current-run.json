@@ -1,7 +1,7 @@
 {
-  "updated_utc": "2026-10-15T02:54:36.777340+00:00",
+  "updated_utc": "2026-10-15T03:06:23.935709+00:00",
   "host": "jason-m5-MacBook.local",
-  "status": "training_completed_final_transfer_identity_repair",
+  "status": "training_completed_final_bundle_transferred_independent_actual_audit_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
   "wrapper_pid": 47859,
   "runner_pid": null,
@@ -1382,8 +1382,8 @@
     "actual_SSH_transfer_performed": false,
     "actual_final458_evidence_present": false,
     "actual_transfer_attempted": true,
-    "actual_transfer_status": "v2_export_refused_reused_historical_PID_before_publication",
-    "actual_transfer_exit_code": 1,
+    "actual_transfer_status": "v3_transferred_checked_pending_actual_independent_review",
+    "actual_transfer_exit_code": 0,
     "preserved_failure": "kernel-library/next-round-v5/final458-transfer-v2/actual-transfer-v1",
     "concrete_diagnosis": {
       "historical_tracked_ids": 7743,
@@ -1393,7 +1393,15 @@
       "current_comm": "<defunct>",
       "unrelated_process_stopped": false
     },
-    "recovery": "Separate v3 generation-aware closure under author B / independent Q review; no blind retry or guard bypass"
+    "recovery": "Separate v3 generation-aware closure under author B / independent Q review; no blind retry or guard bypass",
+    "actual_transfer_session": 32150,
+    "actual_transfer_receipt": "kernel-library/next-round-v5/final458-transfer-v3/actual-transfer-v1/transfer-receipt.json",
+    "generation_aware_source_review_sha256": "c1142aa71ee822f2530c773963a7a2a54dfff494db3fc5d2bacfbc7b4c6770cc",
+    "root_rehashed_v3_review_pins": 449,
+    "root_verified_transferred_output_hashes": 20,
+    "selected40_manifest_sha256": "8a4548a3d24e0c60c3222285d374a59fa98d1ef2cc268abb2a58b95ef444c34e",
+    "actual_completion_review_pending": true,
+    "evaluation_authorized": false
   },
   "first_projection_microprobe_current": {
     "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/first-projection-microprobe-v1",
@@ -1436,5 +1444,16 @@
     "independent_math_review_sha256": "6f1c831b1e70d983f8e6b7cccde7879acdef06bdcb989e49040ada35163d46a3",
     "root_rehashed_math_review_pins": 114,
     "mathematical_scope": "All4cases F32->BF16 andRC matchidealroundedBF16; originalfull34 andsplitreproduced; internalstockdispatchcauseunobserved, nofullservingqualification"
+  },
+  "final458_root_history_primary": {
+    "report": "kernel-library/next-round-v5/m5-successor/final458-root-history-audit-v1/matched-loss.json",
+    "saved_updates": 458,
+    "distinct_items": 229,
+    "paired_training_loss_decrease_percent": 3.279454996276576,
+    "lower_pairs": 228,
+    "higher_pairs": 1,
+    "first_presentation_hours": 20.638441212569468,
+    "repeat_presentation_hours": 1.551664564108877,
+    "scope": "Root primary replay; independent completion audit pending; not heldout quality or isolated cache benchmark"
   }
 }
