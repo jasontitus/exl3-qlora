@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T05:44:45.495674+00:00",
+  "updated_utc": "2026-10-15T05:52:14.457764+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1800,7 +1800,7 @@
   },
   "m5_internal_serving_controls": {
     "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation458-f32-m5-internal-v1",
-    "status": "source_and_saved_input_reviews_accepted_pending_closed_copy_and_CPU_preparation",
+    "status": "deployed_CPU_prepared_default_validation_and_memory_admission_passed_composition_harness_repair_pending",
     "author_seal_sha256": "c182a2a57642b61ef497c04e27a71ecf0ffd25942f5b99b1063aec0f2ac76636",
     "root_verified_pins": 128,
     "root_author_tests": 12,
@@ -1820,6 +1820,22 @@
     "combined_root_verified_pins": 140,
     "source_consumer_companion_sha256": "1b474d7319f2754c816e2a5ea89a9b5f285d1213c4970396b9ef0a2e12c81153",
     "saved_input_companion_sha256": "5122a00888c4f9599099d8495edcf8c34e6843024f06b296d7c81f65b003b414",
-    "deployed": false
+    "deployed": true,
+    "verified_remote_files": 96,
+    "verified_remote_bytes": 5125573,
+    "both_Q_companions_verified": true,
+    "CPU_prepare_exit_code": 0,
+    "plan_sha256": "ca77cfe376725465caf48ae15af58ed9039ecb75ed3a95a0987bf25e289ba63a",
+    "plan_inputs": 129,
+    "captured_prepared_JSON_files": 14,
+    "captured_prepared_JSON_bytes": 374295,
+    "default_CPU_validation_exit_code": 0,
+    "composition_checker_exit_code": 1,
+    "composition_failure": "CPUtrap blocked readonly ioreg hostobserver; source/plan unchanged; external reviewedshim pending",
+    "CPU_admission_only_exit_code": 0,
+    "observed_outer_available_bytes": 110134542336,
+    "observed_native_available_bytes": 111147827200,
+    "observed_source_filled_upper_bytes": 53165768704,
+    "admission_is_not_reservation_or_fit_proof": true
   }
 }
