@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T06:48:26.995820+00:00",
+  "updated_utc": "2026-10-15T06:58:41.247130+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1922,7 +1922,7 @@
     "all_compared_argmax_equal": true
   },
   "matched_endpoint_kernel_experiment": {
-    "status": "prospective_protocol_independently_approved_preview_launcher_under_review",
+    "status": "sealed_preview_package_copied_and_verified_source_review_pending",
     "design_review_sha256": "18734c32938d0c4c93bffd7baf4d86dad20a31f51d19670b5825bfbae6b2c8bb",
     "conditions": [
       "zeroB-final458",
@@ -1949,6 +1949,13 @@
     "preview_tokens": 1,
     "preview_attempts_each": 1,
     "preview_observer_position": 774,
-    "actual_previews_completed": false
+    "actual_previews_completed": false,
+    "preview_namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/matched-endpoint774-preview-m5-internal-v1",
+    "preview_author_seal_sha256": "6a7801360a6ee4752fb7b7042249a446576aa01aa1e0b48360e8d578da06f3af",
+    "root_preview_author_pins_verified": 122,
+    "preview_deployed_files": 104,
+    "preview_deployed_bytes": 5151306,
+    "root_preview_CPU_tests": 10,
+    "preview_GPU_started": false
   }
 }
