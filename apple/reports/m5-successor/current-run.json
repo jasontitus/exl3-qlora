@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T21:02:28.594162+00:00",
+  "updated_utc": "2026-10-15T21:06:11.382180+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2988,7 +2988,7 @@
   },
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
-    "status": "preparing_data_and_reviewed_cost_probe",
+    "status": "cold_probe_running",
     "user_authorized": true,
     "starting_adapter": "original229-example458-update",
     "comparison_adapter": "same_original458",
@@ -3007,6 +3007,15 @@
     "cache_policy": "Reuse only exact eligible replay tokens/worker/arithmetic bindings; new3rows cold then reusable",
     "evaluation_parallel": "fresh strided90degree rotation; old458/pilot x profilepresent/omitted, devfirst sealedconfirmationlater",
     "ETA": "Provisional2\u20134hours firstcomparison, refineaftercoldcost; not measured runtime promise",
-    "no_GPU_launched_yet": true
+    "no_GPU_launched_yet": false,
+    "cold_session": 81747,
+    "cold_wrapper_pid": 6170,
+    "cold_worker_pid": 6173,
+    "cold_request_sha256": "c017ffbbb934626245bc4d4406fe907c5be0d09b0315721c0d774aa8612e4342",
+    "cold_review_sha256": "ed8e7feb87410991c8cc70dfb2de98e69403596339eadb44cf997a4cc40a7906",
+    "cold_review_pins_root_verified": 41,
+    "remote_root": "/Volumes/Scratch/exl3-training/2026-10-15/targeted-profile-pilot-v1",
+    "main_request_predeclared": true,
+    "main_launched": false
   }
 }
