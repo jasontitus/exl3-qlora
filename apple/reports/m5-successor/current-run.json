@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T15:43:58.168756+00:00",
+  "updated_utc": "2026-10-15T15:53:46.293078+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2143,7 +2143,7 @@
     "completed_report": "generated-kernel-outcome-v1.json"
   },
   "next_cached_screen": {
-    "status": "fresh_rank4_initial_snapshot_completed_owned_release_pending_independent_outcome_review",
+    "status": "running_model_identity_scan_before_first_update",
     "proposed_training_rows": 188,
     "proposed_development_rows": 41,
     "boundary": 39,
@@ -2227,7 +2227,7 @@
       "owned_lease_released": true,
       "independent_outcome_review": "pending"
     },
-    "training_started": false,
+    "training_started": true,
     "user_revised_experiment_matrix": {
       "learning_rate": 2.5e-05,
       "updates_per_arm": 188,
@@ -2276,6 +2276,31 @@
       "GPU_launched": false,
       "cause": "metadata hashing helper32MiB reader limit rejects legitimate46.5MB manifest",
       "fix": "bounded streaminghash correction in preparation, pinned training runtime unchanged"
-    }
+    },
+    "practical_run": {
+      "status": "running_model_identity_scan_before_first_update",
+      "worker_pid": 27766,
+      "wrapper_pid": 27763,
+      "host": "jason-m5-MacBook.local",
+      "run_root": "/Volumes/Scratch/exl3-training/2026-10-15/practical-lr25-r4-v1",
+      "request": "request-v2.json",
+      "request_sha256": "c66c0db32049ab0d7600d6ed483a35276e0d5344210381e5cab1612fa9a9c4f1",
+      "independent_review_sha256": "079f09250f31094781981038b8cbbf568b16f201861665d06d186146b7827483",
+      "examples": 188,
+      "planned_updates": 188,
+      "LR": 2.5e-05,
+      "rank": 4,
+      "alpha": 8,
+      "layers": [
+        39
+      ],
+      "full41_baseline_skipped": true,
+      "exec_session_id": 85011,
+      "completed_updates_observed": 0,
+      "no_duplicate_launch": true,
+      "observed_utc": "2026-10-15T15:53:46.293078+00:00"
+    },
+    "user_priority": "best useful adapter soonest; actual quality rather than controlled sweep",
+    "full41_zeroB_baseline_required": false
   }
 }

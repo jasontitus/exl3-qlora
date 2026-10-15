@@ -1,6 +1,22 @@
 # Cache-aware experiment strategy
 
+## Current priority: best useful adapter soonest
+
+The user's latest direction supersedes controlled-sweep prerequisites below. Use actual generated-kernel quality to choose the next experiment; a perfectly matched base is not required. Do not repeat the old5e-5 training run. Start the cache-compatible layer39 rank4/alpha8 LR2.5e-5 candidate (188 complete examples,188 updates), then try rank8/alpha16 at that boundary when useful. The38+39 depth candidate is optional after its memory/cold-cache cost pilot, not a mandatory third full run.
+
+Skip the full41 zero-B baseline, cross-configuration null matching and metadata-reader repair as first-training gates. Retain operational input/runtime identity, memory guards, finite updates, frozen base, checkpoint/reload checks and shared GPU ownership. The accepted fresh initialization is sufficient for the first standard worker; use direct workflow CLI and existing lease rather than adding another controller. Full41 likelihood scoring may help diagnose a result but does not block useful training or substitute for generated quality.
+
+Mac Studio evaluates the existing458 adapter against base on the first ready functional task while M5 trains. Reuse existing valid outputs when compatible; freeze new task inputs before sampling, retain failures, and run compilation/numerical checks before timing successful kernels. Compare future candidates on the same practical panel and keep the best adapter. Historical data/epoch differences limit causal explanations, but do not prevent choosing the most useful output. Source gathering remains paused and Qwen parked.
+
+The practical first run is tracked under `kernel-library/next-round-v5/practical-lr25-r4-v1`; its active request is `request-v2.json`. Earlier unexecuted request and failed initialization receipts remain preserved.
+
 User preference: when expected quality benefit is comparable, choose the experiment that can reuse a verified cache. An uncached trial needs an explicit reason to expect enough additional benefit to justify its measured cost. This prioritizes experiments; it must not substitute stale activations, reduce held-out coverage or turn lower training loss into a functional-quality claim.
+
+## First-run command details
+
+The [active request-v2](../../kernel-library/next-round-v5/practical-lr25-r4-v1/request-v2.json) and [launch companion](../../kernel-library/next-round-v5/practical-lr25-r4-v1/launch-companion-v2.json) use the accepted initial factors via `--resume-adapter`, fresh Adam/cursor/output, chunk2048, training80/8 and the existing boundary39 cache. Finite loss/gradient/updated-factor checks, normal memory guards, every-update saves and `--verify-reload` remain. No `--valid-data`, final-fit probe or hidden full41 evaluation is requested. The one-item reload probe uses evaluation mode and may add its distinct-mode cache entry; it does not establish full development-evaluation coverage.
+
+The request binds188 complete rows and requires completion at188 with successful reload. The earlier unexecuted request draft is preserved: its partial nested completion criterion would have rejected the worker's fuller report. Runtime and dataset bytes remain unchanged. This document records preparation; actual execution/completion and failure receipts are reported separately. Later rank8/depth work is optional, with no promise of fit, cache hits or end-to-end duration.
 
 The completed layer39 run measured20.6384hours for its first229 presentations and1.55166hours for the repeat229. These are observed epoch totals, not a guaranteed cross-run speed or isolated cache effect. Cold identity/model construction costs are additional to the training timer. A read-only M5 inventory on2026-10-15found matching boundary39 training metadata for all229items,49,737,199,860payloadbytes(46.32GiB). All229keys were replayed against the actual frozen key function. A later fresh M5 process qualified three selected complete rows with3 actual disk hits,0 misses,0 writes and743,277,191bytes read; native payload validation ran on those three entries. The remaining226 entries retain metadata-only evidence. Three updates took89.004seconds after roughly147seconds of model-identity hashing; peak MLX allocation was69.6165GiB. A second fresh process restored optimizer step3/cursor3 and completed three more updates with the same3 hits/0 misses/0 writes; its89.155second training timer and69.661GiB peak are measured. Its measured wrapper wall time was239.483272seconds, including150.328081seconds outside the training timer; that residual combines startup, hashing and other wrapper work rather than measuring those categories separately. Independent outcome review accepted the six-update/24,826-target cache/resume evidence. This does not qualify inference reload parity, an uninterrupted optimizer trajectory, all229 tensor entries, or quality. Initial inspector datetime/int32 reconstruction failures are preserved; the authoritative metadata report is cache-aware-m5-inventory-v1/remote-inventory-v3.json.
 
@@ -8,8 +24,8 @@ The completed layer39 run measured20.6384hours for its first229 presentations an
 
 1. Completed: checkpoint458 evaluation against the full16 baseline. Added-Metal NLL improved 5.08%, without a code top-1 accuracy gain or generated-quality claim. Historical rank8/alpha16 provenance remains explicit; four actual rank4 zero-B cases exactly reproduce 11,077 targets and full supervised-logit hashes.
 2. Completed on three complete items: fresh-process boundary39 cache reuse and native optimizer resume. All six updates hit disk cache with no misses or writes. The remaining 226 entries have current metadata/key evidence, rather than fresh-process tensor validation.
-3. Run the user-corrected three-arm screen below: all at LR2.5e-5, boundary39 rank4, boundary39 rank8, then boundary38 rank4 after its cost/fit pilot. Do not repeat a5e-5 baseline training run. Each arm starts independently; changing suffix configuration must not change frozen-prefix behavior. New texts require new entries; sampling the same exact items does not.
-4. Measure boundary38 cold/warm work before committing its full188 updates. The extra differentiable layer tests a different intervention from increasing rank; neither has a demonstrated benefit yet.
+3. Start only the practical lower-LR rank4 run above. Consider rank8 after reviewing its generated outputs; the older all-three design below is retained as a source/cost comparison, not a mandatory schedule.
+4. Consider boundary38 only after benefit/cost review. Measure cold/warm work before committing its full188 updates; the extra differentiable layer has no demonstrated benefit yet.
 5. Build additional boundary families36/38 only after that comparison. Never use a boundary39 hidden state as input before38 or36.
 
 ## Existing mechanism versus required product work
@@ -44,7 +60,9 @@ Measure the full41 standard-mode evaluation and its separate cache before promis
 
 All188 proposed training rows have matching cache metadata, but only three have fresh-process payload qualification. Actual loaded-worker hits must validate remaining payloads; report cold computation, misses or corruption rather than preserving an unsupported all-hit claim. Rank changes, earlier boundaries and a persistent worker remain later experiments. Keep the existing pinned worker, complete examples, mode separation, resource guards and protected16 unchanged.
 
-## Prospective three-arm screen: lower LR, capacity and depth
+## Superseded matched three-arm design: lower LR, capacity and depth
+
+The following design and its stronger full41/null prerequisites are preserved for provenance. The current sequential-search instruction above supersedes them as launch requirements. Its boundary, parameter-count and cost analysis still informs optional capacity/depth work. The exact pre-amendment document is [archived here](../../kernel-library/next-round-v5/cache-three-arm-matrix-v1/matrix-as-sealed.md).
 
 The user's latest correction freezes **all three fresh arms at LR2.5e-5**, with no repeated5e-5 baseline training. The completed458-update model is the practical historical quality reference. The reviewed188-train/41-dev rows, exact IDs/masks/EOS and seed8 order remain fixed; no dataset or runtime is changed by this plan. The fresh layer39 rank4/alpha8 step-zero snapshot has completed and been independently audited. **The three training trials have not started.** The earlier two-LR and5e-5 three-arm proposals are superseded, not extra arms or score-dependent fallback options.
 
