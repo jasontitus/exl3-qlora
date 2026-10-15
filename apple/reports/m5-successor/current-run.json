@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T20:02:23.439567+00:00",
+  "updated_utc": "2026-10-15T20:03:47.684361+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2821,7 +2821,7 @@
     },
     "distinct_task_next": {
       "task": "strided_transpose",
-      "status": "base_capture_complete_old458_generation_running",
+      "status": "both_generations_complete_candidate_gates_in_preparation",
       "finding": "v1 CPU validator accepted malformed schema/bool geometry/duplicate role/missing ID or source. Preserve v1; strict pre-device validation v2 requested.",
       "GPU_launched": true,
       "fix_seal_sha256": "227d5d5b8dcf44427d8d82158078e157149fb66a4f5869f947cba2a2e7be223a",
@@ -2889,12 +2889,14 @@
         "report": "publish-exl3/apple/reports/kernel-eval-panel-v1/strided-transpose-v1/control-timing.json"
       },
       "generation_old458": {
-        "status": "running",
+        "status": "completed_exit0_released_pending_capture_audit",
         "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-transpose-fullfiles-old458-v1",
         "review_sha256": "2897123bdf5eacd3d801bcd7db10f1270f3db5e636f51110241fbef82b3fdd07",
         "review_pins_root_verified": 112,
         "GPU_launched": true,
-        "session": 55225
+        "session": 55225,
+        "exit_code": 0,
+        "lease_released": true
       }
     }
   },
