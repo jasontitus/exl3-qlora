@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T02:00:28.760289+00:00",
+  "updated_utc": "2026-10-15T02:07:10.341396+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1257,8 +1257,8 @@
   },
   "portable_first_divergence_current": {
     "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/portable-first-divergence-witness-v1",
-    "status": "CPU_link_terminal0_pending_independent_artifact_package_review",
-    "root_execution_session": 89162,
+    "status": "root_owned_four_phase_diagnostic_running",
+    "root_execution_session": 47510,
     "compiler_pid": 94022,
     "root_verified_source_author_plan_unique_pins": 454,
     "independent_source_build_review_sha256": "2ea4ab77e0808714528dbed13902d31dd7f446691604fb65158656379792f793",
@@ -1278,7 +1278,22 @@
     "root_rehashed_package_review_inputs": 21,
     "package_files": 6,
     "package_bytes": 252642456,
-    "controller_review_status": "prepublication lifecycle gaps under repair; no GPU launch"
+    "controller_review_status": "prepublication lifecycle gaps under repair; no GPU launch",
+    "first_native_pid": 3405,
+    "native_liveness_confirmed": true,
+    "controller_author_sha256": "e5cb05f305f211a958ca5273b09581be295ce93a249dde509d4973d237d3eff1",
+    "root_rehashed_controller_author_local": 123,
+    "root_rehashed_controller_plan_inputs": 233,
+    "controller_review_sha256": "dd4a9791a935193c692ae0d32971aed8b8e2cc102bbf1f38d8cfefe06486226e",
+    "root_rehashed_controller_review_inputs": 241,
+    "actual_approval_consumer_sha256": "c423f18ed835b1db1521c62f825d22572676477e567346650da291cc6693723c",
+    "root_rehashed_actual_consumer_inputs": 323,
+    "last_observed_cases_started": [
+      "full-untraced",
+      "full-traced",
+      "split_decode-untraced"
+    ],
+    "diagnostic_complete": false
   },
   "final_full16_evaluator_preparation": {
     "original_lane": "final458-evaluation-v1",
@@ -1312,10 +1327,12 @@
     "first_weighted_loss": 0.32823920850588906,
     "repeat_weighted_loss": 0.3171849645152874,
     "relative_reduction_percent": 3.36774026507054,
-    "peer_review_pending": true,
-    "independently_peer_reviewed_history_through": 255,
+    "peer_review_pending": false,
+    "independently_peer_reviewed_history_through": 303,
     "different_panel_from_26_pair_report": true,
-    "heldout_or_generated_quality_claim": false
+    "heldout_or_generated_quality_claim": false,
+    "independent_quality_review_sha256": "bf4a9856d4077b2cfe239bba9d2d1597d653e67a908a15fc7422277d03c7eb6e",
+    "root_rehashed_peer_review_inputs": 54
   },
   "first_divergence_CPU_reference": {
     "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/first-divergence-projection-reference-v1",
@@ -1325,5 +1342,12 @@
     "scope": "descriptive own-input CPU reference after capture provenance and trace controls",
     "actual_operands_read": false,
     "numerical_pass_threshold": null
+  },
+  "final458_transport": {
+    "path": "kernel-library/next-round-v5/final458-transfer-v2",
+    "independent_review_sha256": "d340d0eac9df04eed39d9f7894db4b539bfe6e1f2526c5089468a366ffc78dab",
+    "root_rehashed_review_inputs": 435,
+    "actual_SSH_transfer_performed": false,
+    "actual_final458_evidence_present": false
   }
 }

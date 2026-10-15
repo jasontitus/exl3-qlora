@@ -1,3 +1,11 @@
+## Update: reviewed four-phase diagnostic now running; saved303 independently confirmed
+
+Root session47510 owns the diagnostic. Independent controller review (`dd4a9791a935193c692ae0d32971aed8b8e2cc102bbf1f38d8cfefe06486226e`,241 inputs) and actual approval consumer (`c423f18ed835b1db1521c62f825d22572676477e567346650da291cc6693723c`,323 inputs) pass; root rehashed both and123 local/233 plan inputs. Fresh admission passed and native3405 was confirmed live. The full untraced/traced phases progressed to split_decode-untraced at last poll; no full diagnostic or numerical claim yet. Root alone owns polling/closure; no duplicate launch.
+
+Independent Decimal70 replay confirmed actual saved303 reports (`bf4a9856d4077b2cfe239bba9d2d1597d653e67a908a15fc7422277d03c7eb6e`, all54 inputs rehashed):74 pairs,73 lower/one higher pre-update loss,128,603 targets per presentation,3.367740265% lower weighted loss. This remains training-fit evidence. Last direct training process observation was live310/458.
+
+Exact final458 bounded transportv2 also passed independent review (`d340d0eac9df04eed39d9f7894db4b539bfe6e1f2526c5089468a366ffc78dab`,435 inputs rehashed), including repaired checked exporter-byte handoff. No actual SSH checkpoint transfer has occurred. The actual completed458 bundle/history, terminal/release proof and fresh disk/memory checks remain required.
+
 ## Update: diagnostic linked; corrected final evaluator source accepted
 
 Root CPU build89162 completed exit0 in358.824 seconds. Its artifact is `373abb1ac8acfc7b9b432d70e84a01fc7c07db8146b305c30a472e40e473c3ba` (25,607,720 bytes);994 source files match before/after and static inspection succeeds. No artifact/model/GPU execution occurred. B is independently reviewing the artifact/package; A is preparing the strict four-process controller and Q the own-input CPU reference.
