@@ -15,3 +15,24 @@ This establishes optimization headroom for the task. It is curator control perfo
 ## Generated candidates
 
 Base and old458 each produced a valid complete-file response, compiled without repair and passed all twelve exact numerical cases, including output padding. Independent audits replayed 7,458,382 words per condition across its baseline/candidate outputs and verified owned release. Both use a scalar transpose mapping and 16×16 dispatch. Their numerical success is established; their speed comparison remains pending. See [candidate numerical receipts](candidate-numerics.json).
+
+## Generated-kernel paired timing
+
+Both timing runs are independently accepted: 840 batches / 84,000 dispatches each, all twelve cases, unchanged 5/30/100 policy. Each candidate ran in a separate window paired against the same supplied baseline; these are not direct interleaved base-versus-adapter measurements. Ratios below are medians of paired baseline/candidate times; below 1 means a slowdown.
+
+| Case | Rows×cols | Base | Old458 |
+|---|---|---:|---:|
+| case-00 | 1×1 | 0.997× | 0.996× |
+| case-01 | 1×33 | 1.142× | 1.100× |
+| case-02 | 31×1 | 0.911× | 1.132× |
+| case-03 | 17×33 | 1.087× | 1.113× |
+| case-04 | 33×17 | 0.946× | 1.171× |
+| case-05 | 63×65 | 0.949× | 1.443× |
+| case-06 | 64×64 | 1.056× | 1.190× |
+| case-07 | 127×129 | 1.112× | 1.069× |
+| case-08 | 257×31 | 1.166× | 1.147× |
+| case-09 | 512×1024 | 2.496× | 2.455× |
+| case-10 | 1024×1536 | 2.934× | 2.919× |
+| case-11 | 1536×1024 | 3.187× | 3.253× |
+
+Both kernels deliver similar large-shape improvements. This test does not establish a meaningful large-shape adapter advantage; preserve all small-shape outcomes rather than selecting only wins. Old458 remains provisional based on its stronger RMS result. An unused confirmation task remains before broad claims. See [all paired summaries](candidate-timing-comparison.json).

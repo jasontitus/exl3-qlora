@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T20:40:33.931937+00:00",
+  "updated_utc": "2026-10-15T20:43:46.299953+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2853,8 +2853,8 @@
     },
     "distinct_task_next": {
       "task": "strided_transpose",
-      "status": "both_candidate_numerics_independently_accepted_timing_preparing",
-      "finding": "v1 CPU validator accepted malformed schema/bool geometry/duplicate role/missing ID or source. Preserve v1; strict pre-device validation v2 requested.",
+      "status": "complete_both_candidate_timings_independently_accepted",
+      "finding": "Both generated scalar XY kernels correct and similarly faster on large shapes; no clear large-shape adapter advantage. Small regressions retained.",
       "GPU_launched": true,
       "fix_seal_sha256": "227d5d5b8dcf44427d8d82158078e157149fb66a4f5869f947cba2a2e7be223a",
       "CPU_tests_passed": 11,
@@ -2960,7 +2960,30 @@
           "actual_review_sha256": "62eab7da3ab0c5c48050dc99eb0d2658326209a09c9df377b23d11f63c322e4e",
           "actual_pins_root_verified": 279
         }
-      }
+      },
+      "candidate_timing": {
+        "base": {
+          "status": "independently_accepted",
+          "session": 13503,
+          "review_sha256": "152fdc7d40dd1b0bbe4a8628621287079aa610af1d82777123a9b85e3135fdce",
+          "verified_pins": 334,
+          "exit_code": 0,
+          "owned_release": true,
+          "actual_review_sha256": "c23e31bc7e244e46676424dc0245217abc8fe6f5461f867fbe267e9ed293661c",
+          "actual_verified_pins": 1188
+        },
+        "old458": {
+          "status": "independently_accepted",
+          "review_sha256": "4f72709ad53c3a321961030579534dbbc24937fb795285d89688e469bd2e91ef",
+          "verified_pins": 313,
+          "session": 82775,
+          "exit_code": 0,
+          "owned_release": true,
+          "actual_review_sha256": "be1cc6d149164b4b55d4e56646d5b4440c27366f634e1d50abc6e89bf7843d6c",
+          "actual_verified_pins": 1167
+        }
+      },
+      "comparison": "publish-exl3/apple/reports/kernel-eval-panel-v1/strided-transpose-v1/candidate-timing-comparison.json"
     }
   },
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00"
