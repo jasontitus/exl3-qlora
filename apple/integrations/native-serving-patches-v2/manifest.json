@@ -1,0 +1,90 @@
+{
+  "schema": "local-engine-portable-patches-v2",
+  "status": "pending_independent_bundle_review_not_applied",
+  "prerequisite": "Existing native-serving-patches-v1 applied to exact target hashes. Host report patch unchanged; no new host patch.",
+  "patch": "mlx-stream-portable.patch",
+  "patch_sha256": "1b0e084958f6e2cde839fbcee7e947ee9fbd02176ed85340703d53b9e566353f",
+  "files": {
+    "src/arch/deepseek_v41/bill.zig": {
+      "before_sha256": "27ce6109e230a37edb1e5db1602e5c37a9d3c05b9dd45b9d87b77bceed9d4dcd",
+      "before_bytes": 171725,
+      "after_sha256": "10e548a4f4a3d7e7899ce47b35f84cafd4f1fd6799c0046e5ccfa0dee038ca07",
+      "after_bytes": 171752,
+      "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/deepseek_v41/bill.zig",
+      "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-prototype-v4/src/arch/deepseek_v41/bill.zig"
+    },
+    "src/arch/deepseek_v41/deepseek_v41.zig": {
+      "before_sha256": "cfce8687c83f56e02c48a97053729a71be3462aa2b9ee00c53c118c0a4513758",
+      "before_bytes": 120330,
+      "after_sha256": "dcc93378dbd906db175ca25e1b2f164bcffeea8cd8dc8d4aff0778b9c27b477c",
+      "after_bytes": 121123,
+      "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/deepseek_v41/deepseek_v41.zig",
+      "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-prototype-v4/src/arch/deepseek_v41/deepseek_v41.zig"
+    },
+    "src/arch/deepseek_v41/graph.zig": {
+      "before_sha256": "daca22251efee029d021f34096dd4f8707ab1ca238aaf84aa0feeaec63d9462b",
+      "before_bytes": 275104,
+      "after_sha256": "a0ff2b783ca80dff3840dad70ec896edbab5aedbf9a47d1cc4c30c3c109011c2",
+      "after_bytes": 281039,
+      "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/deepseek_v41/graph.zig",
+      "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-prototype-v4/src/arch/deepseek_v41/graph.zig"
+    },
+    "src/arch/deepseek_v41/kernel_routes.zig": {
+      "before_sha256": "d0ae21bbd3cffb5492d2c5bf6eb66bd19ecff2d1a1b94716cc9d8d1772ef9f00",
+      "before_bytes": 94406,
+      "after_sha256": "8c16d15e9bb33c5f087c48b9f443e399c8f7da47ad2586f7af449e25b54af1a8",
+      "after_bytes": 94807,
+      "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/deepseek_v41/kernel_routes.zig",
+      "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-prototype-v4/src/arch/deepseek_v41/kernel_routes.zig"
+    },
+    "src/arch/deepseek_v41/module.zig": {
+      "before_sha256": "5fe6eed9a6ff769079a94610fc22609c868cac4ee20dfd21a5f7be623350152f",
+      "before_bytes": 225487,
+      "after_sha256": "a48dbabf0f01894a1e9fc5a167c8dcaa6034fb1367d5d04795275bc8873415c0",
+      "after_bytes": 225934,
+      "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/deepseek_v41/module.zig",
+      "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-prototype-v4/src/arch/deepseek_v41/module.zig"
+    },
+    "src/arch/deepseek_v41/portable_workspace.zig": {
+      "before_sha256": null,
+      "before_bytes": null,
+      "after_sha256": "474b95b1bbc6e1429eb004e21e522a4dc061730635e6ff290d0a3d6ca8dd8790",
+      "after_bytes": 2436,
+      "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/deepseek_v41/portable_workspace.zig",
+      "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-prototype-v4/src/arch/deepseek_v41/portable_workspace.zig"
+    },
+    "src/arch/nax_capability.zig": {
+      "before_sha256": null,
+      "before_bytes": null,
+      "after_sha256": "2495a340b038e0af9cefcf302f0ab265c83b15f128c9850300782fe5c958046d",
+      "after_bytes": 2969,
+      "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/arch/nax_capability.zig",
+      "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-prototype-v4/src/arch/nax_capability.zig"
+    },
+    "src/exl3/quant.zig": {
+      "before_sha256": "a4401fce6ddaedaef875296e77606eaced02a14ae39af4b8c0f8bb8c1bc9ea4d",
+      "before_bytes": 192304,
+      "after_sha256": "57c3fe67cfa4734757c28c820b25fee6a357f0034e43ceac74515379517634fb",
+      "after_bytes": 197499,
+      "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/exl3/quant.zig",
+      "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-prototype-v4/src/exl3/quant.zig"
+    },
+    "src/portable_tests.zig": {
+      "before_sha256": null,
+      "before_bytes": null,
+      "after_sha256": "39af59a4c5d848d65e703dad414e20ff12eeeb07344e7e207bd133ce733ef842",
+      "after_bytes": 2774,
+      "source_before": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-native-lifecycle-v1/prototype/src/portable_tests.zig",
+      "source_after": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-prototype-v4/src/portable_tests.zig"
+    }
+  },
+  "before_target_file_fingerprint": "ca381f68fef6ec2247701a02efa73e1610a6c1874bb26d9c4fe3226f83dd3743",
+  "after_target_file_fingerprint": "c60581dd92b9f26d9ccac0c54de81d71444fe903cf3398f7c1aeae584f921e25",
+  "fingerprint_scope": "Only exact modified/added target files; null before requires absence. Not stock upstream or whole dependency compatibility.",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-source-v4.json": "92559e3199ca0d6cd2f622446ed4664f2ce0faaf7343bf90c0cedf96b2149990",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-independent-quality-v1/review-v1.json": "973606135c92bcb1dec4405ce5649f132dbad9874cdc75df52c9b662ba989fd6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/independent-scalar-v2/review-v1.json": "af3ec20880cfb5ed9cb5bf672f78384ef9cb7830ac28bc1989205971d516f808",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-build-v4/independent/artifact-review-v1.json": "89c6b0022d5945afdca53c3db0b6accc59351b606569b9a3b80e47c7f1c94d69"
+  }
+}

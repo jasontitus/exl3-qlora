@@ -1,0 +1,14 @@
+{
+  "scope": "Local-only complete nine-file patch replay; no compiled source execution",
+  "tests_passed": [
+    "full_patch_replay",
+    "changed_base_refuses",
+    "new_file_collision_refuses",
+    "parent_alias_refuses",
+    "fifo_refuses_without_blocking"
+  ],
+  "before_target_file_fingerprint": "ca381f68fef6ec2247701a02efa73e1610a6c1874bb26d9c4fe3226f83dd3743",
+  "after_target_file_fingerprint": "c60581dd92b9f26d9ccac0c54de81d71444fe903cf3398f7c1aeae584f921e25",
+  "GPU_executed": false,
+  "product_modified": false
+}

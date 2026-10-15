@@ -1,3 +1,11 @@
+## Update: reusable portable patch delivered; M5 saved228; full serving still awaiting admission
+
+The reviewed portable repair is now an additive product bundle at `apple/integrations/native-serving-patches-v2`. Independent review confirmed the exact 13-file copy, replayed its five CPU tests and before/after source checks, and verified licenses and prerequisites. Root rehashed all835 copy-review inputs (`d1af6d0f21265508a227d17e62a9c0b7d44c6a0ebd6d5c481299546da343ef0d`). This delivers reusable tool code; it does not activate the patch or establish full-model hardware qualification.
+
+Serving v4 linked successfully (`4fed1f1667bcc6e6a12223fea3b83c10e94061b4e0e2a23bb8d79388fef33c20`); root verified all6417 artifact-review pins and21 runtime-package pins. CPU accounting is39.912 GiB with stock-index query tiling on every applicable branch. The separately reviewed42 GiB process/nativebox82 profile retains the32 GiB reserve. Its CPU admission-only check passed, but the subsequent fresh execute preclaim refused: outer73.686 GiB was below74 GiB and native81.191 GiB below81.853 GiB. **No lease was acquired and no full-model process started.** Both observations are preserved. The next repair targets our own repeated runtime-file verification allocations; memory guards and unrelated workloads remain unchanged.
+
+Fresh read-only M5 process observation confirms PID47890 alive, saved228/458, forwarding the next item through layer30/40. The approved two-file transfer captured history228 and the pinned sampler; exact exposure audit is pending. This is not a new held-out quality result. Source collection remains paused.
+
 ## Update: portable attention numerical replay passed; full-serving workspace reduction underway
 
 The three actual portable attention captures were independently replayed against the reviewed mathematical references. All reports, 33 F64 arrays (13,123,776 values), grouped addressing and selected Decimal QK/softmax/PV/end-to-end checks agreed. Root rehashed all 287 review inputs (SHA `559fb37dffabccb7a1992649288c69dc574cc9e2b83761afa9eac1d206604c88`).

@@ -1,0 +1,8 @@
+{
+  "schema": "portable-patch-bundle-portability-companion-v1",
+  "scope": "Additive documentation only; original bundle bytes unchanged",
+  "files_sha256": {
+    "PORTABILITY.md": "63e6a4632dcf655c63ab7b73049310df19723e3d5a537e29404daf78bd58c64e",
+    "author-seal-v1.json": "89581a2acb39c80de81acb7256442ea337d86609bc5796c4dbabbd5baadaaae5"
+  }
+}

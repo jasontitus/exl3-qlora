@@ -1,0 +1,560 @@
+--- a/src/arch/deepseek_v41/bill.zig
++++ b/src/arch/deepseek_v41/bill.zig
+@@ -499,7 +499,9 @@
+ pub fn prefillBillAt(config: *const settings.Config, ov: module.RouteOverrides, c: *const v41.Config, group_streams: u64) !v41.PrefillBill {
+     const shape: v41.PrefillBill.JoinlessShape = .{ .wave_experts = exl3.PrefillShape.tier.wave, .wave_rows = exl3.PrefillShape.tier.row_budget, .group_experts = xp.max_route_ids, .base_calls = v41.PrefillBill.wide_base_calls, .inflight = exl3.PrefillShape.tier.inflight };
+     const expert_bf16 = config.dsv41ExpertBf16();
+-    return v41.PrefillBill.of(c, try module.ringGeometry(config, ov)).withIndexLaunch(try module.prefillIndexRoute(config, ov)).withJoinless(if (joinlessRoute(ov)) shape else null).withGroupStreams(group_streams).withInputRelease(module.prefillInputRelease(ov)).withPrefillSub(module.prefillSub(ov, config.dsv41LayerMajor())).withDerivedGroup(derivedGroupRoute(config, ov), if (expert_bf16) 2 else 4);
++    var result = v41.PrefillBill.of(c, try module.ringGeometry(config, ov)).withIndexLaunch(false).withJoinless(if (joinlessRoute(ov)) shape else null).withGroupStreams(group_streams).withInputRelease(module.prefillInputRelease(ov)).withPrefillSub(module.prefillSub(ov, config.dsv41LayerMajor())).withDerivedGroup(derivedGroupRoute(config, ov), if (expert_bf16) 2 else 4);
++    result.portable_envelope = true;
++    return result;
+ }
+ 
+ /// The routes `PrefillBill.groupTerms` is derived from, as the Module installs them (`Module.init`: the tier's route, an
+--- a/src/arch/deepseek_v41/deepseek_v41.zig
++++ b/src/arch/deepseek_v41/deepseek_v41.zig
+@@ -62,6 +62,8 @@
+     /// The served prefill indexer route (idxscore + INDEX_TOPK): an index source's score chain is one
+     /// [rows, positions] f32 score (and the select's mask), not the per-head [rows, heads, positions].
+     index_launch: bool = false,
++    /// Conservative all-device preflight, distinct from installed numerical backend.
++    portable_envelope: bool = false,
+     /// The served JOINLESS route (`withJoinless`): the routed group's joined input is the minimal copy's bound
+     /// (`joinedBytes`) at the wide lane's shape, not every routed row.
+     joinless: ?JoinlessShape = null,
+@@ -411,8 +413,14 @@
+         const chain = if (tier == .served and b.index_launch)
+             @max(chain_copies * attn, b.indexChainBytes(rows, positions))
+         else
+-            chain_copies * @max(attn, rows * b.index_heads * positions * 4);
+-        return wave_fixed_bytes + rows * wave_row_bytes + chain + positions * kept_pos_bytes;
++            chain_copies * @max(attn, (if (b.portable_envelope) @min(rows,32) else rows) * b.index_heads * positions * 4);
++        const portable = if (b.portable_envelope) blk: {
++            const pw = @import("portable_workspace.zig");
++            const a = pw.attention(rows,b.n_heads,b.head_dim,b.selected_keys) catch return std.math.maxInt(u64);
++            const ix = pw.index(rows,b.index_heads,positions) catch return std.math.maxInt(u64);
++            break :blk std.math.add(u64,a,ix) catch return std.math.maxInt(u64);
++        } else 0;
++        return std.math.add(u64, wave_fixed_bytes + rows * wave_row_bytes + chain + positions * kept_pos_bytes, portable) catch std.math.maxInt(u64);
+     }
+ 
+     /// K16 (layer-major prefill: every layer over all of the prompt's chunks before the next) at `seq`
+@@ -486,7 +494,8 @@
+         const g_rows = @min(seq, cap);
+         // The group's routed outputs, their joined input (`joinedBytes`), the combine and the HC post.
+         const routed = g_rows * b.top_k * d * 4;
+-        const group = routed + b.joinedBytes(g_rows) + g_rows * (2 * d * 4 + b.groupStreams() * b.hc * d * 4);
++        const portable_expert = if (b.portable_envelope) 48 * (d * 64 + b.moe_inter * 128) + g_rows * b.top_k * d * 8 else 0;
++        const group = routed + b.joinedBytes(g_rows) + g_rows * (2 * d * 4 + b.groupStreams() * b.hc * d * 4) + portable_expert;
+         // The group's final evaluation (`evalAll(hs[i..j])`: the merge, every chunk's combine and HC post, the new
+         // streams at once; run 3ba: 9.182 GB with the early release on), at its worst over the evaluation order: the
+         // routed outputs and the merge's copies (`joinedBytes`), the shared outputs and the combines (2 d f32 a row),
+--- a/src/arch/deepseek_v41/graph.zig
++++ b/src/arch/deepseek_v41/graph.zig
+@@ -147,6 +147,8 @@
+     /// roped in the QK load and o handed on inverse-roped in the o-LoRA group layout (no gathered
+     /// KVg, no eager core); one route per (query dtype, window-store dtype, compressed) kind.
+     prefill_attn: bool = false,
++    /// Installed capability decision; logical full attention/projection remains enabled.
++    portable_prefill: bool = false,
+     /// The prefill indexer (ATTNHALF idxscore + INDEX_TOPK select): at rows above
+     /// `attn_compile_max_rows` an index source's reach-masked scores in one launch and its top
+     /// `index_topk` as ascending indices and the mask in one more (no eager einsum / relu / sum,
+@@ -528,7 +530,7 @@
+                     if (eps != @as(f32, 1e-20)) return error.FusedProjEps;
+                     for (layers) |*w| k.fused.appendAssumeCapacity(kr.FusedProj(G).init(g, reg, w.q_norm, w.kv_norm, eps, null) catch |e| return if (e == error.RouteInput) error.FusedProjGeometry else e);
+                 }
+-                if (rt.prefill_attn) {
++                if (rt.prefill_attn and !rt.portable_prefill) {
+                     // The kernel lane admits only the geometry its texts were derived for (each field
+                     // compared by name, RouteInput): the model's, from its config.
+                     const geo = prefillGeometry(c);
+@@ -544,7 +546,7 @@
+                         }
+                     }
+                 }
+-                if (rt.prefill_index) {
++                if (rt.prefill_index and !rt.portable_prefill) {
+                     const geo = prefillGeometry(c);
+                     k.idx_score = try kr.IdxScore(G).init(reg, &geo, null);
+                     k.index_topk = try kr.IndexTopk(G).init(g, reg, &geo, null);
+@@ -1153,6 +1155,20 @@
+             score = try g.sum(score, 2, false);
+             return g.where(try reachMask(g, compress_lens, n_comp), score, try sf(g, -std.math.inf(f64), score));
+         }
++        /// Portable stock index: bound head-score workspace to32 rows; retain only reduced scores.
++        pub fn portableIndexScoreTiled(g: *G, q: T, index_k: T, wts: T, lens: T, n_comp: c_int) !T {
++            const rows=g.shapeOf(q).dim(1);
++            if(rows<1 or rows>16384 or g.shapeOf(q).dim(0)!=1 or n_comp<1) return error.PortableIndexCapacity;
++            var outputs:[512]T=undefined; var count:usize=0; var lo:c_int=0;
++            while(lo<rows):(lo+=32) {
++                const hi=@min(rows,lo+32); const mark=g.mark();
++                var score=try indexScoreStock(g,try rowSlice(g,q,1,lo,hi),index_k,try rowSlice(g,wts,1,lo,hi),try rowSlice(g,lens,0,lo,hi),n_comp);
++                try closeScores(g,mark,&.{&score});
++                try g.evalAll(&.{score}); outputs[count]=score;count+=1;
++            }
++            return if(count==1) outputs[0] else g.concat(outputs[0..count],1);
++        }
++
+         /// The prefill indexer's launches (one prompt row block, b = 1).
+         const PrefillIndex = struct { score: *const kr.IdxScore(G), topk: *const kr.IndexTopk(G) };
+ 
+@@ -1191,7 +1207,7 @@
+                 const r = try ix.topk.select(g, try g.reshape(score, &.{ s_, n_comp }), compress_lens);
+                 return .{ .mask = try g.reshape(r[1], &.{ 1, s_, n_comp }), .cand = cand, .idx = try g.expandDims(r[0], 0) };
+             }
+-            var score = try indexScoreStock(g, q, index_k, wts, compress_lens, n_comp);
++            var score = try portableIndexScoreTiled(g,q,index_k,wts,compress_lens,n_comp);
+             const reach = try reachMask(g, compress_lens, n_comp);
+             var cand: ?T = null;
+             if (set_candidates) {
+@@ -1451,6 +1467,74 @@
+             }
+             if (sm) |k| if (b == 1 and s <= rc_max_rows) return attnCoreFused(g, k, q, kvg, valid, w.attn_sink);
+             return attnCore(g, c, q, kvg, valid, w.attn_sink, true);
++        }
++
++        /// Portable prompt core. Same selected-key and denominator-only sink semantics,
++        /// with stock MLX operations instead of fixed-map cooperative fragments.
++        /// q is UNROPED BF16; the returned grouped FP32 value is inverse-roped.
++        /// Exposes intermediates for a model-free fixture; no evaluation or device creation.
++        pub const PortablePrefillOutputs = struct { scores: T, valid: T, exponents: T, denominator: T, grouped: T };
++        pub fn portablePrefill(g: *G, c: *const v41.Config, q: T, window: T, idx: T, valid_in: T, compressed_kv: ?[2]T, sink_w: T, cs: CosSin) !PortablePrefillOutputs {
++            const qs = g.shapeOf(q);
++            if (qs.n != 4 or qs.dim(0) != 1 or qs.dim(2) != c.n_heads or qs.dim(3) != c.head_dim or c.o_groups == 0 or c.n_heads % c.o_groups != 0)
++                return error.PortablePrefillGeometry;
++            const s = qs.dim(1);
++            const ix = g.shapeOf(idx);
++            if (ix.n != 2 or ix.dim(0) != s or ix.dim(1) != c.window) return error.PortablePrefillSelection;
++            const idx3 = try g.reshape(idx, &.{ 1, s, @intCast(c.window) });
++            var valid = try g.reshape(valid_in, &.{ 1, s, @intCast(c.window) });
++            var kv = try gatherRows(g, window, idx3, valid);
++            if (compressed_kv) |cmp| {
++                const cv = try g.greaterEqual(cmp[1], try g.scalar(0, .int32));
++                const ck = try gatherRows(g, cmp[0], cmp[1], cv);
++                kv = try g.concat(&.{ kv, ck }, 2);
++                valid = try g.concat(&.{ valid, cv }, 2);
++            }
++            const q_rotated = try ropeLast(g, q, cs, false);
++            const kf = try g.astype(kv, .float32);
++            const scores = try g.einsum("bshd,bskd->bshk", &.{ try g.astype(q_rotated, .float32), kf });
++            const scale = std.math.pow(f64, @floatFromInt(c.head_dim), -0.5);
++            const scaled = try g.mul(scores, try sf(g, scale, scores));
++            const masked = try g.where(try g.expandDims(valid, 2), scaled, try sf(g, -std.math.inf(f64), scores));
++            const sink = try g.reshape(try g.astype(sink_w, .float32), &.{ 1, 1, @intCast(c.n_heads), 1 });
++            const maximum = try g.maximum(try g.max(masked, -1, true), sink);
++            const ex = try g.exp(try g.sub(masked, maximum));
++            const denom = try g.add(try g.sum(ex, -1, true), try g.exp(try g.sub(sink, maximum)));
++            const values = try g.div(try g.einsum("bshk,bskd->bshd", &.{ ex, kf }), denom);
++            const inverse = try ropeLast(g, values, cs, true);
++            const grouped = try g.transposeAxes(try g.reshape(inverse, &.{ s, @intCast(c.o_groups), -1 }), &.{ 1, 0, 2 });
++            return .{ .scores = scores, .valid = valid, .exponents = ex, .denominator = denom, .grouped = grouped };
++        }
++
++        fn rowSlice(g: *G, x: T, axis: usize, lo: c_int, hi: c_int) !T {
++            const sh = g.shapeOf(x);
++            var starts: [ops.max_dims]c_int = @splat(0);
++            var stops: [ops.max_dims]c_int = sh.d;
++            const steps: [ops.max_dims]c_int = @splat(1);
++            starts[axis] = lo; stops[axis] = hi;
++            return g.slice(x, starts[0..sh.n], stops[0..sh.n], steps[0..sh.n]);
++        }
++
++        /// Bound gathered KV and score intermediates to 32 query rows. Every query
++        /// retains its original selection/history; no prefix or context truncation.
++        /// Evaluate each grouped tile before releasing its score-wave handles.
++        pub fn portablePrefillGroupedTiled(g: *G, c: *const v41.Config, q: T, window: T, idx: T, valid: T, cmp: ?[2]T, sink: T, cs: CosSin) !T {
++            const rows = g.shapeOf(q).dim(1);
++            if (rows < 1 or rows > 16384) return error.PortablePrefillCapacity;
++            var outputs: [512]T = undefined;
++            var count: usize = 0;
++            var lo: c_int = 0;
++            while (lo < rows) : (lo += 32) {
++                const hi = @min(rows, lo + 32);
++                const mark = g.mark();
++                const cmp_tile: ?[2]T = if (cmp) |v| .{v[0], try rowSlice(g,v[1],1,lo,hi)} else null;
++                const result = try portablePrefill(g,c,try rowSlice(g,q,1,lo,hi),window,try rowSlice(g,idx,0,lo,hi),try rowSlice(g,valid,0,lo,hi),cmp_tile,sink,.{.cos=try rowSlice(g,cs.cos,0,lo,hi),.sin=try rowSlice(g,cs.sin,0,lo,hi)});
++                var grouped = result.grouped;
++                try closeScores(g,mark,&.{&grouped});
++                try g.evalAll(&.{grouped});
++                outputs[count] = grouped; count += 1;
++            }
++            return if (count == 1) outputs[0] else g.concat(outputs[0..count],1);
+         }
+ 
+         /// `_attn_core_impl` (and the eager core of `_sparse_attend_selected`):
+@@ -1997,7 +2081,8 @@
+             const rc: ?*const RcProjs(G) = if (b * s <= rc_max_rows) lk.proj else null;
+             const compiled = rc == null and b * s <= rt.attn_rows;
+             // The prefill attention core at prompt widths (above the compiled regions' rows; K30 keys).
+-            const pa: ?*const kr.PrefillAttn(G) = if (rc == null and !compiled and b * s > attn_compile_max_rows and rt.selected_keys) lk.prefill_attn else null;
++            const full_prompt = rc == null and !compiled and b * s > attn_compile_max_rows and rt.selected_keys and rt.prefill_attn;
++            const pa: ?*const kr.PrefillAttn(G) = if (full_prompt and !rt.portable_prefill) lk.prefill_attn else null;
+             // The prefill indexer at the same widths (one prompt row block).
+             const pi: ?PrefillIndex = if (b == 1 and s > attn_compile_max_rows and lk.idx_score != null) .{ .score = lk.idx_score.?, .topk = lk.index_topk.? } else null;
+             const cs = if (b * s > rc_max_rows) try ropeTables(g, shared, li, inv_freq, positions) else try cosSin(g, inv_freq, positions);
+@@ -2031,7 +2116,7 @@
+                 qr = try rmsnorm(g, qa, w.q_norm, c.rms_norm_eps);
+                 const qb = try g.reshape(try qlinear(g, qr, w.wq_b), &.{ b, s, H, hd });
+                 // The prefill core ropes q in its QK load: hand it the un-roped query.
+-                q = if (pa != null) qb else try ropeLast(g, qb, cs, false);
++                q = if (full_prompt) qb else try ropeLast(g, qb, cs, false);
+                 kv_new = try ropeLast(g, try rmsnorm(g, try qlinear(g, x, w.wkv), w.kv_norm, c.rms_norm_eps), cs, false);
+             }
+             try p.put("attn.qr", qr);
+@@ -2048,7 +2133,7 @@
+                     ckv = comp.kv;
+                     cidx = shared.selected_idx;
+                 };
+-                if (pa) |core| {
++                if (full_prompt) {
+                     // o f32 [8, S, 4096]: inverse-roped, in the o-LoRA group layout.
+                     const sel = try windowSelection(g, c, shared, positions, g.shapeOf(window).dim(1), drop);
+                     const cmp: ?[2]T = if (ckv) |kv| .{ kv, cidx.? } else null;
+@@ -2056,7 +2141,7 @@
+                     const sink = w.sink4.?;
+                     // The core's QK scores live inside the score wave, as the eager chain's do.
+                     const scores: ?ops.Mark = if (b * s > score_wave_min_rows) g.mark() else null;
+-                    var og = try core.attend(g, q, window, sel.idx, sel.valid, cmp, sink, .{ cs.cos, cs.sin });
++                    var og = if (rt.portable_prefill) try portablePrefillGroupedTiled(g, c, q, window, sel.idx, sel.valid, cmp, sink, cs) else try pa.?.attend(g, q, window, sel.idx, sel.valid, cmp, sink, .{ cs.cos, cs.sin });
+                     if (scores) |m| try closeScores(g, m, &.{&og});
+                     try p.put("attn.o_grouped", og);
+                     const out = if (rt.prefill_oproj) try outProjDense16(g, c, og, w, b, s, if (rt.prefill_oproj_bf16) .bfloat16 else .float32) else try outProjGrouped(g, c, og, try woaDense(g, c, w), w.wo_b, b, s, w.lora_wo_b);
+--- a/src/arch/deepseek_v41/kernel_routes.zig
++++ b/src/arch/deepseek_v41/kernel_routes.zig
+@@ -111,6 +111,13 @@
+     try set.selfCheck(a, &kernels, .compile, report, diag);
+ }
+ 
++/// Portable device acceptance omits every fixed-map prompt attention/index kernel.
++pub fn acceptPortable(a:Allocator,set:*const ks.Set,report:*selfcheck.Report,diag:*xk.Diag) !void {
++    var safe:[kernels.len]Kernel=undefined;var n:usize=0;
++    for(kernels) |k| { if(std.mem.startsWith(u8,@tagName(k),"q3_ph_")) continue;safe[n]=k;n+=1; }
++    try set.selfCheck(a,safe[0..n],.compile,report,diag);
++}
++
+ // ── RCTAIL (DSV41_DECODE_RCTAIL = router, hcpremix, sinkhorn) ──
+ 
+ /// router: the MoE gate on q3rc_gate_part (split-K logits) + q3rc_router_tail (sqrt(softplus),
+--- a/src/arch/deepseek_v41/module.zig
++++ b/src/arch/deepseek_v41/module.zig
+@@ -681,7 +681,7 @@
+         }
+         errdefer self.dropKernels();
+         // The fused down GEMM, when overridden: its self-checks on the set, then every layer's DIG-X waves launch it.
+-        if (ov.prefill_fused_down orelse false) {
++        if ((ov.prefill_fused_down orelse false) and !self.exl3.portable_prefill) {
+             var kd: xk.Diag = .{};
+             self.exl3.routeFusedDown(self.set, &kd) catch |e| return refused(refuse(&diag, e, "exl3 fused down: {s}", .{kd.message()}), &diag);
+         }
+@@ -759,6 +759,8 @@
+             tier.routes.prefill_attn = v;
+         }
+         tier.routes.prefill_index = try prefillIndexRoute(config, ov);
++        tier.routes.portable_prefill = self.exl3.portable_prefill;
++        if (tier.routes.portable_prefill) tier.routes.prefill_index = false;
+         // The HC norms, the combine and the o-projection: a setting overrides the tier's route.
+         if (ov.prefill_hc) |v| tier.routes.prefill_hc = v;
+         if (ov.prefill_combine) |v| tier.routes.prefill_combine = v;
+@@ -832,7 +834,7 @@
+             self.model.engram.?.posted = true;
+         }
+         self.installed = switch (self.arm) {
+-            inline else => |t| .{ .prefill_unjoined = self.model.tier.routes.prefill_joinless and comptime (@hasDecl(@TypeOf(t.arm.hook).Math, "has_parts") and @TypeOf(t.arm.hook).Math.has_parts), .layer_major = self.model.tier.layer_major, .wide = t.arm.hook.wide_route, .stream_windows = t.arm.stream.wide_depth, .prefill_attn = self.model.tier.routes.prefill_attn, .prefill_index = self.model.tier.routes.prefill_index, .prefill_hc = self.model.tier.routes.prefill_hc, .prefill_combine = self.model.tier.routes.prefill_combine, .prefill_oproj = self.model.tier.routes.prefill_oproj, .prefill_host_shared = self.model.tier.routes.prefill_host_shared, .prefill_joinless = self.model.tier.routes.prefill_joinless, .prefill_hc_post = self.model.tier.routes.prefill_hc_post, .engram_posted = if (self.model.engram) |en| en.posted else false, .prefill_fused_down = self.exl3.fused_down, .transient_release = t.arm.stream.release_installed, .grow_fill = t.arm.stream.grow_fill, .lookahead_budget = if (t.arm.stream.selector) |sel| sel.budget else 0, .hoist_first = t.arm.hook.hoistFirst(), .devroute = t.arm.hook.devRoute() },
++            inline else => |t| .{ .prefill_unjoined = self.model.tier.routes.prefill_joinless and comptime (@hasDecl(@TypeOf(t.arm.hook).Math, "has_parts") and @TypeOf(t.arm.hook).Math.has_parts), .layer_major = self.model.tier.layer_major, .wide = t.arm.hook.wide_route, .stream_windows = t.arm.stream.wide_depth, .prefill_attn = self.model.tier.routes.prefill_attn, .portable_prefill = self.model.tier.routes.portable_prefill, .prefill_index = self.model.tier.routes.prefill_index, .prefill_hc = self.model.tier.routes.prefill_hc, .prefill_combine = self.model.tier.routes.prefill_combine, .prefill_oproj = self.model.tier.routes.prefill_oproj, .prefill_host_shared = self.model.tier.routes.prefill_host_shared, .prefill_joinless = self.model.tier.routes.prefill_joinless, .prefill_hc_post = self.model.tier.routes.prefill_hc_post, .engram_posted = if (self.model.engram) |en| en.posted else false, .prefill_fused_down = self.exl3.fused_down, .transient_release = t.arm.stream.release_installed, .grow_fill = t.arm.stream.grow_fill, .lookahead_budget = if (t.arm.stream.selector) |sel| sel.budget else 0, .hoist_first = t.arm.hook.hoistFirst(), .devroute = t.arm.hook.devRoute() },
+         };
+         // DEVROUTE: exact by construction (the same banked texts per routed pair, the slots the host's plan names; the join
+         // takes the miss parts' rows for their pairs).
+@@ -1164,16 +1166,16 @@
+         errdefer self.set.deinit();
+         self.set.install(G, &self.g);
+         errdefer kernel_set.Set.uninstall(G, &self.g);
+-        self.exl3 = xq.accept(G, gpa, &self.g, .{ .kernels = self.set.ref() }, .{
++        self.exl3 = xq.acceptWithCapability(G, gpa, &self.g, .{ .kernels = self.set.ref() }, .{
+             .hidden = c.hidden_size,
+             .inter = c.moe_intermediate_size,
+             .top_k = c.n_experts_per_tok,
+             .n_layers = c.n_layers,
+             .act = .{ .swiglu_clamped = c.swiglu_limit },
+             .input = .bfloat16,
+-        }, &kd) catch |e| return refuse(diag, e, "exl3 quant: {s}", .{kd.message()});
++        }, &kd, !@import("../nax_capability.zig").deviceHasNax(s)) catch |e| return refuse(diag, e, "exl3 quant: {s}", .{kd.message()});
+         errdefer self.exl3.deinit(&self.g);
+-        trunk_routes.accept(gpa, self.set, &self.trunk_report, &kd) catch |e| {
++        (if (self.exl3.portable_prefill) trunk_routes.acceptPortable(gpa, self.set, &self.trunk_report, &kd) else trunk_routes.accept(gpa, self.set, &self.trunk_report, &kd)) catch |e| {
+             self.trunk_report.deinit(gpa);
+             return refuse(diag, e, "trunk routes: {s}", .{kd.message()});
+         };
+@@ -2003,6 +2005,7 @@
+     decode_fill_granule: arm_mod.DecodeFillGranule = .row,
+     /// The prefill attention core (installed and past its construction self-check).
+     prefill_attn: bool = false,
++    portable_prefill: bool = false,
+     /// The prefill indexer (installed).
+     prefill_index: bool = false,
+     /// The prefill HC norms, the SMALLK combine, the DENSE16 o-projection (installed).
+--- /dev/null
++++ b/src/arch/deepseek_v41/portable_workspace.zig
+@@ -0,0 +1,41 @@
++//! Conservative additional stock-attention array envelope, charged on all devices
++//! before a stream exists. Not a physical-footprint or empirical fit claim.
++const std = @import("std");
++pub const tile_rows: u64 = 32;
++pub const max_rows: u64 = 16384;
++fn add(a:u64,b:u64) !u64 { return std.math.add(u64,a,b); }
++fn mul(a:u64,b:u64) !u64 { return std.math.mul(u64,a,b); }
++pub fn attention(rows:u64, heads:u64, dim:u64, keys:u64) !u64 {
++    if(rows==0 or rows>max_rows or heads==0 or dim==0 or keys==0) return error.PortableWorkspaceGeometry;
++    // All gathered BF16 sources/concat + F32 casts; eight score-sized F32
++    // nodes; forward/inverse rotary, Q/PV/div views/copies; per-head reductions.
++    const kv=try mul(try mul(keys,dim),16);
++    const scores=try mul(try mul(heads,keys),32);
++    const vectors=try mul(try mul(heads,dim),64);
++    const reductions=try mul(heads,32);
++    const per_row=try add(try add(kv,scores),try add(vectors,reductions));
++    const workspace=try mul(@min(rows,tile_rows),per_row);
++    // All evaluated grouped F32 tiles plus the final concat's F32 destination.
++    const outputs=try mul(try mul(try mul(rows,heads),dim),8);
++    return add(workspace,outputs);
++}
++pub fn index(rows:u64,heads:u64,positions:u64) !u64 {
++    if(rows==0 or rows>max_rows or heads==0) return error.PortableWorkspaceGeometry;
++    // One evaluated32-row head-score tile plus retained reduced scores/concat.
++    // Additional pessimistic stock per-head QK/ReLU/weighted chain plus reduced
++    // scores/masks/top-k staging. Existing wave terms remain charged as well.
++    return add(try mul(try mul(try mul(@min(rows,tile_rows),heads),positions),16),try mul(try mul(rows,positions),32));
++}
++test "portable workspace geometry and overflow fail closed" {
++    const t=std.testing;
++    try t.expectError(error.PortableWorkspaceGeometry,attention(0,64,512,640));
++    try t.expectError(error.PortableWorkspaceGeometry,attention(16385,64,512,640));
++    try t.expectError(error.Overflow,attention(34,std.math.maxInt(u64),512,640));
++    try t.expectError(error.Overflow,index(34,64,std.math.maxInt(u64)));
++}
++test "workspace tile plateau retains linear output storage" {
++    const t=std.testing;
++    try t.expectEqual(@as(u64,2*64*512*8),try attention(34,64,512,640)-try attention(32,64,512,640));
++    try t.expect(try attention(16384,64,512,640)>try attention(34,64,512,640));
++    try t.expect(try index(34,64,4096)>try index(34,64,34));
++}
+--- /dev/null
++++ b/src/arch/nax_capability.zig
+@@ -0,0 +1,61 @@
++//! Construction-time NAX eligibility. Unknown/malformed identities fail closed.
++const std = @import("std");
++const mlx = @import("sdk").mlx;
++const Stream = mlx.mlx_stream;
++pub fn naxFrom(arch: []const u8, version: []const u8) bool {
++    const prefix = "applegpu_g";
++    if (arch.len <= prefix.len or arch.len > 32 or !std.ascii.startsWithIgnoreCase(arch, prefix)) return false;
++    const suffix = arch[prefix.len..];
++    var digits: usize = 0;
++    while (digits < suffix.len and std.ascii.isDigit(suffix[digits])) digits += 1;
++    if (digits == 0 or suffix.len > digits + 1) return false;
++    var phone = false;
++    if (digits < suffix.len) {
++        const kind = std.ascii.toLower(suffix[digits]);
++        if (kind != 'p' and kind != 'g' and kind != 'd' and kind != 's') return false;
++        phone = kind == 'p';
++    }
++    const gen = std.fmt.parseInt(u32, suffix[0..digits], 10) catch return false;
++    if (gen < @as(u32, if (phone) 18 else 17)) return false;
++    var it = std.mem.splitScalar(u8, version, '.');
++    var parts: [3]u32 = .{0,0,0};
++    var count: usize = 0;
++    while (it.next()) |part| {
++        if (count == 3 or part.len == 0) return false;
++        for (part) |ch| if (!std.ascii.isDigit(ch)) return false;
++        parts[count] = std.fmt.parseInt(u32, part, 10) catch return false;
++        count += 1;
++    }
++    if (count < 2) return false;
++    return parts[0] > 26 or (parts[0] == 26 and parts[1] >= 2);
++}
++extern "c" fn sysctlbyname(name: [*:0]const u8, oldp: ?*anyopaque, oldlenp: ?*usize, newp: ?*const anyopaque, newlen: usize) c_int;
++
++/// The stream's device has NAX units (read once, at construction).
++pub fn deviceHasNax(s: Stream) bool {
++    var dev = mlx.mlx_device{ .ctx = null };
++    if (mlx.mlx_stream_get_device(&dev, s) != 0) return false;
++    defer _ = mlx.mlx_device_free(dev);
++    var kind: mlx.mlx_device_type = .cpu;
++    if (mlx.mlx_device_get_type(&kind, dev) != 0 or kind != .gpu) return false;
++    var info = mlx.mlx_device_info_new();
++    defer _ = mlx.mlx_device_info_free(info);
++    if (mlx.mlx_device_info_get(&info, dev) != 0) return false;
++    var cstr: [*:0]const u8 = undefined;
++    if (mlx.mlx_device_info_get_string(&cstr, info, "architecture") != 0) return false;
++    var ver: [64]u8 = undefined;
++    var len: usize = ver.len;
++    if (sysctlbyname("kern.osproductversion", &ver, &len, null, 0) != 0) return false;
++    var n = @min(len, ver.len);
++    while (n > 0 and ver[n - 1] == 0) n -= 1;
++    return naxFrom(std.mem.span(cstr), ver[0..n]);
++}
++
++
++test "strict capability identities" {
++    const t = std.testing;
++    try t.expect(naxFrom("applegpu_g17g", "26.2"));
++    try t.expect(naxFrom("applegpu_g18p", "27.0.1"));
++    for ([_][]const u8{"27.bad", "27.2.junk", "27.2.0.extra", "27", "", "26.1", "26.2."}) |v| try t.expect(!naxFrom("applegpu_g17g", v));
++    for ([_][]const u8{"applegpu_g13g", "applegpu_g17p", "applegpu_g17garbage", "applegpu_g17x", "cpu", "applegpu_g"}) |v| try t.expect(!naxFrom(v, "27.2"));
++}
+--- a/src/exl3/quant.zig
++++ b/src/exl3/quant.zig
+@@ -213,6 +213,7 @@
+         fused_down: bool = false,
+         /// kv16-opt: the waves' expert outputs in bf16 (`routeExpertBf16`)
+         expert_bf16: bool = false,
++        portable_prefill: bool = false,
+         /// the decode GEMVs' routed forms (`routeForms`); all false: the stock mul1h texts
+         forms: Forms = .{},
+         /// the banked route (`routeBanked`): every bank's rows of a wave in one launch per stage; null: not installed
+@@ -261,13 +262,51 @@
+         /// Layer `layer`'s DIG-X waves over the call's routed rows (`DigXPrefill.call`): a KEPT
+         /// f32 [rows, 5120] in routed-row order (release it).
+         pub fn prefill(self: *Self, g: *G, layer: u32, x: G.T, rows: quant.PrefillRows, bank: quant.BankArrays(A)) !G.T {
+-            return self.waves[layer].call(g, x, rows, bank);
++            if (!self.portable_prefill) return self.waves[layer].call(g, x, rows, bank);
++            var parts: std.ArrayList(G.T) = .empty; defer parts.deinit(self.a);
++            var positions: std.ArrayList(u32) = .empty; defer positions.deinit(self.a);
++            defer for (parts.items) |part| g.release(part);
++            try self.portableParts(g,x,rows,bank,self.a,&parts,&positions);
++            const mark = g.mark();
++            const joined = try g.concat(parts.items,0);
++            const kept = g.keep(joined); errdefer g.release(kept);
++            try g.evalAll(&.{joined}); g.resetTo(mark);
++            return kept;
+         }
+ 
+         /// `prefill` unjoined: the waves' KEPT outputs (wave order) and each wave-ordered row's
+         /// assignment row (`DigXPrefill.callParts`).
+         pub fn prefillParts(self: *Self, g: *G, layer: u32, x: G.T, rows: quant.PrefillRows, bank: quant.BankArrays(A), alloc: Allocator, outs: *std.ArrayList(G.T), pos: *std.ArrayList(u32)) !void {
++            if (self.portable_prefill) return self.portableParts(g,x,rows,bank,alloc,outs,pos);
+             return self.waves[layer].callParts(g, x, rows, bank, alloc, outs, pos);
++        }
++
++        /// Portable wide route reuses exact existing decode GEMV stages in bounded
++        /// assignment-row batches; no DIG-X/NAX dispatch, slot reorder or route weight.
++        fn portableParts(self: *Self,g:*G,x:G.T,rows:quant.PrefillRows,bank:quant.BankArrays(A),alloc:Allocator,outs:*std.ArrayList(G.T),pos:*std.ArrayList(u32)) !void {
++            const n=rows.slot.len;
++            if(n==0 or n>std.math.maxInt(u32)) return error.PortableExpertRows;
++            if(rows.act_row) |ar| { if(ar.len!=n) return error.PortableExpertRows; } else if(rowsOf(G,g,x,0)!=n) return error.PortableExpertRows;
++            const cap=rowsOf(G,g,bank.gate.code,0);
++            for(rows.slot) |slot| if(slot>=cap) return error.PortableExpertSlot;
++            var lo:usize=0;
++            while(lo<n) : (lo+=max_decode_rows) {
++                const hi=@min(n,lo+max_decode_rows);const count=hi-lo;
++                var act:[48]u32=undefined;
++                for(act[0..count],lo..) |*v,j| { v.*=if(rows.act_row) |ar| ar[j] else @intCast(j); if(v.*>=rowsOf(G,g,x,0)) return error.PortableExpertActivationRow; }
++                try outs.ensureUnusedCapacity(alloc,1);try pos.ensureUnusedCapacity(alloc,count);
++                const mark=g.mark();
++                const ids=try g.hostArray(std.mem.sliceAsBytes(rows.slot[lo..hi]),&.{@intCast(count)},.uint32);
++                const aix=try g.hostArray(std.mem.sliceAsBytes(act[0..count]),&.{@intCast(count)},.uint32);
++                const xb=try g.astype(try g.take(x,aix,0),.bfloat16);
++                const gu=try self.gateUp(g,xb,ids,bank.gate,bank.up);
++                const projected=try self.down(g,gu,ids,bank.down);
++                const output=if(self.expert_bf16) try g.astype(projected,.bfloat16) else projected;
++                const kept=g.keep(output);errdefer g.release(kept);
++                g.resetTo(mark);try g.evalAll(&.{kept});
++                outs.appendAssumeCapacity(kept);
++                for(lo..hi) |j| pos.appendAssumeCapacity(@intCast(j));
++            }
+         }
+ 
+         /// The prefill boundary: every layer's waves still in flight evaluated, oldest first.
+@@ -370,6 +409,9 @@
+ };
+ 
+ pub fn accept(comptime G: type, a: Allocator, g: *G, ctx: quant.Context, spec: quant.Spec, diag: *Diag) !*Accepted(G) {
++    return acceptWithCapability(G,a,g,ctx,spec,diag,false);
++}
++pub fn acceptWithCapability(comptime G: type, a: Allocator, g: *G, ctx: quant.Context, spec: quant.Spec, diag: *Diag, portable: bool) !*Accepted(G) {
+     const ref = ctx.kernels orelse return quant.refuse(diag, error.NoKernelSet, "exl3 quant: accepted without the load context's kernel set", .{});
+     const set = ks.Set.of(ref) orelse return quant.refuse(diag, error.NoKernelSet, "exl3 quant: accepted with a kernel set over another registry (manifest {s})", .{ref.manifest_sha256});
+     try checkSpec(spec, diag);
+@@ -379,7 +421,12 @@
+         acc.report.deinit(a);
+         a.destroy(acc);
+     }
+-    try set.selfCheck(a, &checked_at_accept, .compile, &acc.report, diag);
++    if (portable) {
++        var safe: [checked_at_accept.len]Kernel=undefined;var n:usize=0;
++        for(checked_at_accept) |k| { if(std.mem.indexOf(u8,@tagName(k),"prefill_dig_gemm")!=null) continue; safe[n]=k;n+=1; }
++        try set.selfCheck(a,safe[0..n],.compile,&acc.report,diag);
++    } else try set.selfCheck(a, &checked_at_accept, .compile, &acc.report, diag);
++    acc.portable_prefill=portable;
+     acc.gemv = try Gemv(G).init(g, &set.reg);
+     errdefer acc.gemv.deinit(g);
+     acc.prep = try RinPrep(G).init(g, &set.reg);
+@@ -3534,3 +3581,27 @@
+     // The pre-ship gate (the served construction runs compiles only): every numeric probe of the manifest passes here.
+     try testing.expectEqual(@as(usize, 0), failed);
+ }
++
++test "portable expert batches use existing GEMV chain and preserve assignment order" {
++    const a=testing.allocator;var diag:Diag=.{};var t:Trace=.{.a=a};defer t.deinit();
++    const set=try ks.Set.init(a,.{.device=.{.stub=.{}}},&diag);defer set.deinit();set.install(Trace,&t);
++    const acc=try acceptWithCapability(Trace,a,&t,.{.kernels=set.ref()},v41_spec,&diag,true);defer acc.deinit(&t);
++    const bank=try namedBank(&t,64);const x=try t.ext("portable.input",&.{100,5120},.bfloat16);
++    var ids:[100]u32=undefined;var act:[100]u32=undefined;
++    for(&ids,&act,0..) |*slot,*row,i| {slot.*=@intCast(i%16);row.*=@intCast(99-i);}
++    var outs:std.ArrayList(Trace.T)=.empty;defer outs.deinit(a);defer for(outs.items) |o| t.release(o);
++    var pos:std.ArrayList(u32)=.empty;defer pos.deinit(a);
++    try acc.prefillParts(&t,0,x,.{.slot=&ids,.act_row=&act},bank,a,&outs,&pos);
++    try testing.expectEqual(@as(usize,3),outs.items.len);try testing.expectEqual(@as(usize,100),pos.items.len);
++    for(pos.items,0..) |v,i| try testing.expectEqual(@as(u32,@intCast(i)),v);
++    for(t.launches.items) |launch| try testing.expect(std.mem.indexOf(u8,@tagName(launch.k),"prefill_dig_gemm")==null);
++    var evaluated:usize=0;var taken:usize=0;
++    for(t.log.items) |event| switch(event) {
++        .eval => evaluated+=1,
++        .take => |pair| { const bytes=t.nodes.items[pair[1]].bytes; const n=bytes.len/4;for(0..n) |j| try testing.expectEqual(@as(u32,@intCast(99-taken-j)),std.mem.readInt(u32,bytes[j*4..][0..4],.little));taken+=n; },
++        else=>{},
++    };
++    try testing.expectEqual(@as(usize,3),evaluated);try testing.expectEqual(@as(usize,100),taken);
++    try testing.expectError(error.PortableExpertSlot,acc.prefillParts(&t,0,x,.{.slot=&.{64},.act_row=&.{0}},bank,a,&outs,&pos));
++    try testing.expectError(error.PortableExpertActivationRow,acc.prefillParts(&t,0,x,.{.slot=&.{0},.act_row=&.{100}},bank,a,&outs,&pos));
++}
+--- /dev/null
++++ b/src/portable_tests.zig
+@@ -0,0 +1,39 @@
++const std=@import("std");
++const ops=@import("arch/deepseek_v41/ops.zig");
++const graph=@import("arch/deepseek_v41/graph.zig");
++const C=@import("arch/deepseek_v41/deepseek_v41.zig").Config;
++test "portable selected core and tile fence shapes no native launches" {
++ for([_]i32{1,32,33,34}) |n| {
++  var g=ops.TraceOps.init(std.testing.allocator);defer g.deinit();
++  var c:C=std.mem.zeroes(C);c.n_heads=4;c.head_dim=8;c.o_groups=2;c.window=8;
++  const q=try g.input(&.{1,n,4,8},.bfloat16);
++  const w=try g.input(&.{1,34,8},.bfloat16);
++  const idx=try g.input(&.{n,8},.int32);const valid=try g.input(&.{n,8},.bool_);
++  const co=try g.input(&.{n,2},.float32);const si=try g.input(&.{n,2},.float32);const sink=try g.input(&.{4},.float32);
++  const out=try graph.Trunk(ops.TraceOps).portablePrefillGroupedTiled(&g,&c,q,w,idx,valid,null,sink,.{.cos=co,.sin=si});
++  try std.testing.expectEqualSlices(i32,&.{2,n,16},g.shapeOf(out).slice());
++  try std.testing.expectEqual(ops.Dtype.float32,g.dtypeOf(out));
++  try std.testing.expectEqual(@as(usize,@intCast(@divTrunc(n+31,32))),g.evals.items.len);
++  try std.testing.expectEqual(@as(usize,@intCast(@divTrunc(n+31,32))),g.freed.items.len);
++  try std.testing.expectEqual(@as(u32,0),g.prepared_launches);
++ }
++}
++test "portable compressed gather keeps selected shape" {
++ var g=ops.TraceOps.init(std.testing.allocator);defer g.deinit();var c:C=std.mem.zeroes(C);c.n_heads=4;c.head_dim=8;c.o_groups=2;c.window=8;
++ const r=try graph.Trunk(ops.TraceOps).portablePrefill(&g,&c,try g.input(&.{1,34,4,8},.bfloat16),try g.input(&.{1,34,8},.bfloat16),try g.input(&.{34,8},.int32),try g.input(&.{34,8},.bool_),.{try g.input(&.{1,12,8},.bfloat16),try g.input(&.{1,34,3},.int32)},try g.input(&.{4},.float32),.{.cos=try g.input(&.{34,2},.float32),.sin=try g.input(&.{34,2},.float32)});
++ try std.testing.expectEqualSlices(i32,&.{1,34,4,11},g.shapeOf(r.scores).slice());
++ try std.testing.expectEqualSlices(i32,&.{1,34,11},g.shapeOf(r.valid).slice());
++}
++test { _=@import("exl3/quant.zig"); }
++
++test "portable index score tiles retain reduced scores and materialize each tile" {
++ for([_]i32{1,32,33,34}) |n| {
++  var g=ops.TraceOps.init(std.testing.allocator);defer g.deinit();
++  const out=try graph.Trunk(ops.TraceOps).portableIndexScoreTiled(&g,try g.input(&.{1,n,4,8},.bfloat16),try g.input(&.{1,11,8},.float32),try g.input(&.{1,n,4},.float32),try g.input(&.{n},.int32),11);
++  try std.testing.expectEqualSlices(i32,&.{1,n,11},g.shapeOf(out).slice());
++  try std.testing.expectEqual(ops.Dtype.float32,g.dtypeOf(out));
++  try std.testing.expectEqual(@as(usize,@intCast(@divTrunc(n+31,32))),g.evals.items.len);
++  try std.testing.expectEqual(@as(usize,@intCast(@divTrunc(n+31,32))),g.freed.items.len);
++  try std.testing.expectEqual(@as(u32,0),g.prepared_launches);
++ }
++}

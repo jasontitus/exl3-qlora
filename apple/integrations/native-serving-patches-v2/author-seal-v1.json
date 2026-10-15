@@ -1,0 +1,21 @@
+{
+  "scope": "Additive reusable portable patch bundle; pending independent review and product application",
+  "files_sha256": {
+    "check_sources.py": "4e4a246e4d2b603fb3b14c888c4ac1d7e4810025afeed89e925b02b199e4fb58",
+    "mlx-stream-portable.patch": "1b0e084958f6e2cde839fbcee7e947ee9fbd02176ed85340703d53b9e566353f",
+    "reader-provenance.json": "77c72c2f12d9027c492d01b8f0248ea76a1f230f4132bb04f74fc724b76eb93e",
+    "README.md": "045dc34f4943180514278c1277a5c1f8b8d8a629b6050cbde05f91123d6faa01",
+    "CPU-test-receipt-v1.json": "3bf249db6859a4d5df516f8ce3555ddbb270f2377f7deaf3242169e12db80959",
+    "manifest.json": "c51b03d0790cdac7febed4ac95992a205ffba7832cf0a9530eb7ee033c9a8efb",
+    "test_patch_bundle.py": "23ecd364bcedd3dea726f159a6ff9c5e1db42a8de081d2284cfdb2d4531b3dec",
+    "licenses/mlx-serve-host-LICENSE": "dfe22e0f100fe7f2c2808f1af6f488e7339cf8deb7504153602b4169ed7d90b4",
+    "licenses/mlx-stream-LICENSE": "97ee01e6f31cb9dfda5b3c2135973d5c4d0ce89742c09fb7ae453e2da3f20edf"
+  },
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-source-v4.json": "92559e3199ca0d6cd2f622446ed4664f2ce0faaf7343bf90c0cedf96b2149990",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-independent-quality-v1/review-v1.json": "973606135c92bcb1dec4405ce5649f132dbad9874cdc75df52c9b662ba989fd6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/independent-scalar-v2/review-v1.json": "af3ec20880cfb5ed9cb5bf672f78384ef9cb7830ac28bc1989205971d516f808",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/portable-full-attention-repair-v1/serving-build-v4/independent/artifact-review-v1.json": "89c6b0022d5945afdca53c3db0b6accc59351b606569b9a3b80e47c7f1c94d69"
+  },
+  "source_files": 9
+}
