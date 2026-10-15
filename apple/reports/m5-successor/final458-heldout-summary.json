@@ -1,5 +1,5 @@
 {
-  "status": "completed_teacher_forced_full16_pending_independent_outcome_audit",
+  "status": "independently_accepted_fixed_target_likelihood_benefit_no_generated_quality_claim",
   "examples": 16,
   "supervised_tokens": 47069,
   "baseline_loss": 0.11107638648166089,
@@ -70,5 +70,8 @@
     "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/studio-baseline-v2/baseline.json": "d3b4a48e2bb94d85416592cd74544c6ed12896f903c681d864b4eb9665aee0da",
     "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-reuse36-v1/future-execution/historical-baseline-token-audit.json": "e790b3c6c318f2fb4f085c5a87e38da8937d7b0878643eeae9377126561a2cd1",
     "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-reuse36-v1/root-terminal-release-v1.json": "11533207a1cc11f26cf69afd78a1e3a30bc7a5314b315e416f764b099e84192d"
-  }
+  },
+  "independent_outcome_review_sha256": "3b7add8f870992d90f735fe2ab2041f9154f246853d1eff0d6df79799c89b2e3",
+  "independent_outcome_pins_verified": 219,
+  "all16_total_and_added_metal_row_NLL_lower": true
 }

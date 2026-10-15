@@ -1,7 +1,7 @@
 {
-  "updated_utc": "2026-10-15T04:41:16.720419+00:00",
+  "updated_utc": "2026-10-15T04:42:02.438834+00:00",
   "host": "jason-m5-MacBook.local",
-  "status": "training_completed_final458_full16_evaluation_completed_pending_independent_outcome_audit",
+  "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
   "wrapper_pid": 47859,
   "runner_pid": null,
@@ -1591,7 +1591,7 @@
     ]
   },
   "evaluation_outcome": {
-    "status": "completed_teacher_forced_full16_pending_independent_outcome_audit",
+    "status": "independently_accepted_fixed_target_likelihood_benefit_no_generated_quality_claim",
     "examples": 16,
     "supervised_tokens": 47069,
     "baseline_loss": 0.11107638648166089,
@@ -1662,8 +1662,12 @@
       "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/studio-baseline-v2/baseline.json": "d3b4a48e2bb94d85416592cd74544c6ed12896f903c681d864b4eb9665aee0da",
       "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-reuse36-v1/future-execution/historical-baseline-token-audit.json": "e790b3c6c318f2fb4f085c5a87e38da8937d7b0878643eeae9377126561a2cd1",
       "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-reuse36-v1/root-terminal-release-v1.json": "11533207a1cc11f26cf69afd78a1e3a30bc7a5314b315e416f764b099e84192d"
-    }
+    },
+    "independent_outcome_review_sha256": "3b7add8f870992d90f735fe2ab2041f9154f246853d1eff0d6df79799c89b2e3",
+    "independent_outcome_pins_verified": 219,
+    "all16_total_and_added_metal_row_NLL_lower": true
   },
   "Studio_GPU_lease_released": true,
-  "generated_smoke_status": "original_process42_CPU_admission_refused_no_GPU_separate_stricter_process40_preparation_under_review"
+  "generated_smoke_status": "original_process42_CPU_admission_refused_no_GPU_separate_stricter_process40_preparation_under_review",
+  "next_trial_development_split": "proposal_unactivated_under_review_broad_engine_history_grouping_makes_core_sources_absent"
 }
