@@ -1,0 +1,117 @@
+{
+  "schema": "metal-finetune-generated-outcome-v1",
+  "status": "completed_independently_reviewed_no_functional_gain_demonstrated",
+  "updated_utc": "2026-10-15T08:19:30.576102+00:00",
+  "training": {
+    "distinct_examples": 229,
+    "exact_edits": 186,
+    "diagnostics": 43,
+    "epochs": 2,
+    "updates": 458,
+    "layer": 39,
+    "projections": [
+      "wq_a",
+      "wo_b"
+    ],
+    "rank": 4,
+    "alpha": 8,
+    "trainable_parameters": 78848
+  },
+  "teacher_forced_evaluation": {
+    "examples": 16,
+    "supervised_targets": 47069,
+    "overall_NLL_relative_reduction_percent": 11.718195900666124,
+    "added_Metal_NLL_relative_reduction_percent": 5.077929860412736,
+    "added_code_correct_before": 17859,
+    "added_code_correct_after": 17856,
+    "rationale_targets": 5,
+    "EOS_correct_before": 16,
+    "EOS_correct_after": 16,
+    "limitations": [
+      "All16 items are llama.cpp edits, not a cross-engine task sample.",
+      "Historical rank8 zero-B baseline reused; four rank4 zero-B cases exactly reproduce11077 targets/full logits.",
+      "Formatting supplies82.62percent of NLL-sum gain; no general reasoning inference."
+    ],
+    "overall_NLL_before": 0.11107638727956892,
+    "overall_NLL_after": 0.09806023861876645,
+    "added_Metal_NLL_before": 0.09846926365110982,
+    "added_Metal_NLL_after": 0.09346906350884157
+  },
+  "generated_task": {
+    "independent_tasks": 1,
+    "task": "complete contiguous float32 row-sum kernel and dispatch edit for Apple M1 Ultra",
+    "prompt_tokens": 774,
+    "context_tokens": 8192,
+    "output_cap_including_EOS": 4096,
+    "sampling": "greedy",
+    "attempts_per_condition": 1,
+    "repair_or_retry": false,
+    "conditions": [
+      {
+        "condition": "zeroB-final458",
+        "output_tokens_including_EOS": 4096,
+        "stop_reason": "max_tokens",
+        "native_elapsed_seconds": 472.315746,
+        "elapsed_scope": "native construction, prefill and generation combined; not decode-only throughput",
+        "failure_stage": "output_cap_without_EOS_or_complete_patch",
+        "task_success": false
+      },
+      {
+        "condition": "final458",
+        "output_tokens_including_EOS": 742,
+        "stop_reason": "eos",
+        "native_elapsed_seconds": 112.346206,
+        "elapsed_scope": "native construction, prefill and generation combined; not decode-only throughput",
+        "failure_stage": "exact_patch_replay_hunk_count_mismatch",
+        "task_success": false
+      }
+    ],
+    "control_capture_accepted": false,
+    "trained_capture_accepted": true,
+    "trained_exact_replay_accepted": false,
+    "trained_exact_replay_rejection": "Hunk count mismatch",
+    "kernel_hunk_declared_old_new": [
+      17,
+      35
+    ],
+    "kernel_hunk_actual_old_new": [
+      18,
+      40
+    ],
+    "compiled_candidates": 0,
+    "numerically_qualified_candidates": 0,
+    "timed_candidates": 0,
+    "numerical_cases_required_for_eligible_candidate": 224,
+    "timing_workloads_required_for_eligible_candidate": 12,
+    "unrun_gate_reason": "Neither condition supplied an eligible complete exact-replay candidate. These are task failures, not measured numerical failures.",
+    "finding": "Budget completion improved on this one task. Generated-kernel quality, correctness, speed and general reasoning gains were not demonstrated."
+  },
+  "invariants": {
+    "original_control_and_queue_refusal_preserved": true,
+    "trained_slot_initially_GPU_unrun_then_separately_reviewed_transport_only_continuation": true,
+    "transport_delta": [
+      "output_dir",
+      "execution.lease_request",
+      "execution.lease_state"
+    ],
+    "all_owned_GPU_leases_released": true,
+    "foreign_workloads_stopped": false,
+    "model_deletions": false,
+    "source_collection_paused": true,
+    "Qwen_paused": true,
+    "trainer_forward_parity": false,
+    "historical_strict_cached_fresh_parity": "failed_preserved",
+    "portable_serving_adapter_qualification": false
+  },
+  "evidence": {
+    "control_actual_review_sha256": "bc6d21a11de78f4838159cf37f89bae288eca12f8da9d5c3fbdce30650c316a1",
+    "trained_actual_review_sha256": "edd292f3efb0af0270a89c6f72c67731f33e25c56f3a79f7afbce0fc0fed0af9",
+    "final_outcome_review_sha256": "cf677f7d59baff83ba641343c7d51401b0bef9cc3d89d724c32119e4effaa16a",
+    "root_final_outcome_review_pins_verified": 125,
+    "control_result_sha256": "58e7e2a7d9f28715732c1aa9984ded2d225acb8e8c4cb9b59e9846f479a974f5",
+    "trained_result_sha256": "1fea379c708fa746e824570a2a3f7527da51ab9b122259a68dc0a268483bd5e0",
+    "exact_replay_receipt_sha256": "a42c1ee1849fe44003541f09328fbb1ad8d9c36786673b12f485de3224fc1c07",
+    "teacher_forced_product_replay_sha256": "e790b3c6c318f2fb4f085c5a87e38da8937d7b0878643eeae9377126561a2cd1"
+  },
+  "next_experiments": "Proposed only: fresh188train/41development cache-compatible LR/duration comparisons, with full matched development baseline and measured evaluation cost. Protected16 unchanged; no new sweep launched."
+}

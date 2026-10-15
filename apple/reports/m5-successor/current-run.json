@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T08:00:52.661763+00:00",
+  "updated_utc": "2026-10-15T08:20:29.933671+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1922,7 +1922,7 @@
     "all_compared_argmax_equal": true
   },
   "matched_endpoint_kernel_experiment": {
-    "status": "control_cap_failure_preserved_trained_slot_continuation_live",
+    "status": "completed_independently_audited_both_task_failures_no_generated_kernel_gain_demonstrated",
     "design_review_sha256": "18734c32938d0c4c93bffd7baf4d86dad20a31f51d19670b5825bfbae6b2c8bb",
     "conditions": [
       "zeroB-final458",
@@ -1938,7 +1938,7 @@
     "cached_fresh_parity": false,
     "numerical_cases": 224,
     "timing_workloads": 12,
-    "actual_generated_outputs": false,
+    "actual_generated_outputs": true,
     "protocol_sha256": "ff11d46ad3ca9096551b8492dd90c556fd5450268444d8becc3184a3402b978d",
     "protocol_review_sha256": "c927440789462fee5ce7d11f7dc56bf0ef8fa0c877cbe4c5a83e99b5d13c0767",
     "root_protocol_review_pins_verified": 14,
@@ -2037,7 +2037,7 @@
     "partial_actual_environment_reset_verified": true,
     "trained_slot_continuation_status": "separate_minimal_transport_only_source_under_review_not_launched",
     "trained_slot_continuation": {
-      "status": "trained_generation_live",
+      "status": "terminal_independently_audited_EOS_exact_patch_replay_pending",
       "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/matched-endpoint-trained-continuation-v1",
       "author_seal_sha256": "57055c15619007c9ed2be567196a7a3c49a452a16c89c99fc1b8b1583e302de7",
       "source_review_sha256": "6067e29b112ff20a97a04a4f427db1ffb3b970c498c1d8279553e702e2de0688",
@@ -2067,7 +2067,67 @@
       "concrete_review_pins": 8,
       "root_concrete_detail_pins_verified": 8,
       "launch_outer_available_bytes": 114402607104,
-      "launch_native_available_bytes": 108808044544
+      "launch_native_available_bytes": 108808044544,
+      "execution_exit_code": 0,
+      "completed_utc": "2026-10-15T08:02:05.686724+00:00",
+      "output_tokens": 742,
+      "non_eos_tokens": 741,
+      "stop_reason": "eos",
+      "resource_summary": {
+        "observations": 114,
+        "all_passed": true,
+        "peak_aggregate_rss_bytes": 42996383744,
+        "minimum_available_bytes": 63276007424
+      },
+      "generated_kernel_quality_verified": false,
+      "actual_independent_review_sha256": "edd292f3efb0af0270a89c6f72c67731f33e25c56f3a79f7afbce0fc0fed0af9",
+      "root_actual_review_pins_verified": 240,
+      "all_owned_released": true,
+      "owned_recorded_IDs_terminal": 7,
+      "own_host_companion_sha256": "8ae2406f4272c38f5171db16a65114e1e3a2ffcfa87395d82b4f0513da5ac142"
+    },
+    "preliminary_source_inspection": {
+      "review_sha256": "4d25fbf65972ff54b8dfc411f2d19f31aa62eaa11377d570714acfb105309e56",
+      "root_pins_verified": 19,
+      "native_grammar_passed": true,
+      "exact_hunks_passed": false,
+      "kernel_hunk_declared_old_new": [
+        17,
+        35
+      ],
+      "kernel_hunk_actual_old_new": [
+        18,
+        40
+      ],
+      "source_policy_preprocessor_directives_supported": false,
+      "compiler_executed": false,
+      "numerical_result_inferred": false
+    },
+    "actual_capture_replay": {
+      "status": "completed_independently_audited",
+      "inventory_review_sha256": "f47343c48a9eece2a71596ea637cc2cb13720dfb83eb7b97a57f338da91b99e3",
+      "root_inventory_review_pins_verified": 59,
+      "control_capture_accepted": false,
+      "control_capture_rejection": "Unverified/unfinished generation",
+      "trained_capture_accepted": true,
+      "trained_exact_replay_accepted": false,
+      "trained_exact_replay_rejection": "Hunk count mismatch",
+      "compiler_executed": false,
+      "numerical_cases_run": 0,
+      "timing_workloads_run": 0,
+      "generated_kernel_quality_improvement_demonstrated": false,
+      "receipts_sha256": {
+        "zeroB-final458/receipt.json": "7ce7d3891919da962d0a3e68d1ed2b4727996515f4b29163917b27e227f4c100",
+        "final458/receipt.json": "500ab1e412a11a702c6ff8dcc5ae12799c3b3d93fa8e33b3a867559b6d58b49e",
+        "final458-exact-replay/receipt.json": "a42c1ee1849fe44003541f09328fbb1ad8d9c36786673b12f485de3224fc1c07"
+      },
+      "final_independent_review_sha256": "cf677f7d59baff83ba641343c7d51401b0bef9cc3d89d724c32119e4effaa16a",
+      "root_final_review_pins_verified": 125
+    },
+    "generated_kernel_quality_verified": false,
+    "functional_task_successes": {
+      "zeroB-final458": 0,
+      "final458": 0
     }
   }
 }
