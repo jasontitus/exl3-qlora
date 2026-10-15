@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T03:38:53.732882+00:00",
+  "updated_utc": "2026-10-15T04:11:06.827429+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_completed_final458_full16_evaluation_running_reused_baseline_process36",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1533,5 +1533,22 @@
     "cross_run_cache_hit_demonstrated": false,
     "actual_key_function_all229_replayed": true,
     "earlier_reconstruction_failures_preserved": true
+  },
+  "cache_seeding_amendment": {
+    "status": "completed_cache_seeding_amendment",
+    "published": 13,
+    "existing": 3,
+    "quota_bytes": 5390530134,
+    "timing_scope": "mixed_cold_and_prewarmed_after_amendment_not_original_cold_timing",
+    "receipt": "kernel-library/next-round-v5/final458-cache-seeding-v1/actual-seeding-receipt-v1.json",
+    "receipt_sha256": "00c68ff13e4c6d81a4ef457926a539fdfc03d2e68a218112c7c157e7e117d7b0",
+    "no_restart": true
+  },
+  "GPU_forward_observed": true,
+  "cache_cross_run_M5": {
+    "status": "controls_staged_complete_rows_materialized_actual_phase1_request_pending_review",
+    "available_GiB_at_preparation": 105.24142456054688,
+    "request_sha256": "6b10dc76f3fd089f20af0a6e2d161ac689650c0b1aab5a6c8497980d0d962beb",
+    "GPU_launched": false
   }
 }

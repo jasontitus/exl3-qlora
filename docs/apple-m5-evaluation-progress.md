@@ -147,3 +147,10 @@ Peak MLX allocation was 71.324 GiB under the unchanged 80 GiB process budget.
 This is a capacity observation for that item, not a model-quality result or a
 whole-system peak measurement. Larger-cache timing limits are recorded in
 `apple/docs/TOOL_INTEGRATION.md`.
+
+
+## Exact evaluation cache reuse amendment
+
+The running final458 full16 evaluation received 13 missing verified baseline prefix entries without restart; three entries already existed and matched. Root executed the independently reviewed seeder successfully after all63 review pins and18 CPU tests passed. All source payloads were checksummed, complete binding objects matched, and publication used the existing worker cache lock and exclusive directory publication. Cache inventory is5,390,530,134bytes under8GiB. Evaluation timing is now mixed cold/prewarmed; inputs, arithmetic, adapter and held-out coverage are unchanged. An already in-flight cold item continues normally. Final metrics remain pending.
+
+The M5 cross-run qualification controls are installed and three complete original training rows were materialized locally, without exporting token data. Actual CPU preparation observed105.24GiB available, a free shared lease and229 cache entries. Its concrete phase1 request is awaiting independent review; no qualification GPU job has launched.
