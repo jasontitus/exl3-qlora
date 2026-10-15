@@ -2432,12 +2432,12 @@
       "wrapper_pid": 62319,
       "exec_session_id": 45838,
       "started_utc": "2026-10-15T17:31:29.741415+00:00",
-      "completed_updates_observed": 69,
+      "completed_updates_observed": 77,
       "review_sha256": "38129fbeb19ce503d27f8d323614fabed1a9b91e7d79073ab6e3a0b2567b5cb0",
       "preflight_available_bytes": 111776595968,
       "remote_root": "/Volumes/Scratch/exl3-training/2026-10-15/practical-code-suffix152-lr25-r4-v1",
       "peak_mlx_gib_observed": 70.19404112547636,
-      "observed_utc": "2026-10-15T18:07:20.154593+00:00"
+      "observed_utc": "2026-10-15T18:12:29.921230+00:00"
     },
     "kernel_evaluation_framework": {
       "status": "implemented_reviewed_and_tested",
@@ -2455,6 +2455,25 @@
       "CPU_tests_passed": 190,
       "actual_report_review_sha256": "817d4c3270aa38a9678d923d88e3309d5ce369951dac1c97dfeaff8dc5e1aa63",
       "execution_review_sha256": "547f3eb5dbde9dd12cf1dee3e92886faffaacaafc46f2e74e7d09f45d3a1a914"
+    },
+    "outcome_driven_plan": {
+      "goal": "More correct measurably faster generated Metal kernels than base under the same allowance",
+      "path": "publish-exl3/docs/apple-cache-aware-experiment-plan.md",
+      "priority": [
+        "finish152_and_reload",
+        "Studio_same_protocol_RMS_base_and_adapters",
+        "add_distinct_small_family",
+        "curate_existing_library_correctness_pilot",
+        "conditional_rank8_after_evaluable_quality_signal",
+        "depth_only_if_cheaper_paths_justify_it"
+      ],
+      "automatic_rank_or_depth_run": false,
+      "no_optimization_benefit_demonstrated": true,
+      "source_collection": "paused",
+      "qwen": "parked",
+      "review_status": "accepted",
+      "review_sha256": "8430cfe7cf8623b962d3848d3064750ffb748523f334faa506c5c9f537d31274",
+      "review_pins_root_verified": 17
     }
   }
 }

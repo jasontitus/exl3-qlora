@@ -1,6 +1,6 @@
 # Comparing adapters by generated Metal kernels
 
-The purpose is to choose the next useful adapter and training direction from executed code. Teacher-forced loss remains a diagnostic; it is not the leaderboard score.
+The purpose is to choose the next useful adapter and training direction from executed code. Success means more correct, measurably faster kernels than the base model produces under the same practical allowance. Teacher-forced loss remains a diagnostic. The [active outcome-driven plan](apple-cache-aware-experiment-plan.md) supersedes the old fixed learning-rate/rank/depth sequence.
 
 Use the [execution guide](apple-kernel-execution.md) for the runnable example and captured-response/backend flow, and the [suite schema](kernel-eval-suite-schema.md) to compare adapters. The CLI currently imports captured generations; live generation still uses the existing reviewed serving controller. The [actual comparison](../apple/reports/kernel-eval-panel-v1/actual-v3/comparison.md) preserves all three affine outcomes and the pending second task.
 
@@ -8,7 +8,7 @@ Use the [execution guide](apple-kernel-execution.md) for the runnable example an
 
 The existing affine/ReLU/row-sum harness has run curator controls and a generated candidate on the Mac Studio. Its fixed 224 numerical cases caught 12 out-of-tolerance values in nine cases in the old 458-update adapter's mechanically extracted kernel. Both the old adapter and base failed strict patch replay. The step-104 lower-rate adapter also failed strict replay and its extracted code was refused for vector alignment. These failures remain evidence; extraction is never counted as raw edit success.
 
-The final-188 lower-rate adapter completed 475 output tokens with EOS, but its exact replay failed hunk counts (declared 5/31, observed 5/20). The separate 152-example code-focused trial was live at 53/152 updates at the last check. Rank-8 serving has built and passed static review but is not yet GPU-qualified.
+The final-188 lower-rate adapter completed 475 output tokens with EOS, but its exact replay failed hunk counts (declared 5/31, observed 5/20). The separate 152-example code-focused trial was live at 77/152 updates at the last check. Rank-8 serving has built and passed static review but is not yet GPU-qualified.
 
 The first two task families are fused affine/ReLU reduction and row RMS statistic. RMS statistic returns one value per row; it is not full elementwise RMSNorm. Its controls passed after a per-case autorelease-pool fix: all 896 dispatch outcomes matched the original run, with 0.498 GiB peak aggregate RSS under the unchanged 2 GiB guard. The earlier resource failure remains preserved. No adapter has completed that task in the current comparison. Two related reduction tasks are a useful smoke panel, not broad evidence of kernel-optimization skill.
 
@@ -31,7 +31,7 @@ A refused launch, missing result or timeout in infrastructure is not a numerical
 
 ## What the comparison should show
 
-The primary measure is complete usable edits: valid replay, successful compilation and all required numerical cases passed. Report raw counts as well as rates and missing coverage. Speed is secondary: show paired speedup and workload-level regressions only for accepted kernels. Do not average speed over incorrect kernels or hide difficult tasks by dropping missing outcomes.
+The goal measure is usable faster kernels: valid edits, successful compilation, all required numerical cases passed, and repeatable speedup over the supplied implementation on the declared target workload. Compare the number of those outcomes across base and adapters under the same budget. Report counts, missing coverage and workload regressions. Correctness is a prerequisite; do not average speed over incorrect kernels or hide difficult tasks by dropping missing outcomes. The current product report ranks strict numerical usability and labels latency ratios descriptive; until qualified timing exists it cannot declare an optimization winner.
 
 For the practical first pass use one deterministic attempt per task/adapter. Expand to several fixed-seed attempts only when results justify the extra generation cost; keep the same allowance across candidates. Compare the base, old458, final188 and code-focused152 candidates on the same ready panel. Intermediate104 remains diagnostic history, not a required additional run.
 
