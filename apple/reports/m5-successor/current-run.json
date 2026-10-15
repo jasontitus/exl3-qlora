@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T01:32:51.941738+00:00",
+  "updated_utc": "2026-10-15T01:44:04.606924+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -72,16 +72,13 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "saved_checkpoint": 250,
+    "saved_checkpoint": 277,
     "worker_pid": 47890,
-    "elapsed": "20:49:30",
-    "worker_cpu": "884:21.97",
-    "worker_rss_kib": 19390128,
-    "exact_prefix_cache_hit": true,
-    "skipped_backbone_layers": 39,
-    "history_audit_checkpoint": 255,
-    "new_history_transfer_updates": 255,
-    "new_transfer_audit_pending": false
+    "elapsed": "21:00:31",
+    "worker_cpu": "891:54.74",
+    "worker_rss_kib": 18487408,
+    "backward_layer": 40,
+    "history_audit_checkpoint": 255
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -1256,5 +1253,35 @@
     "commit": "eb83ba9e",
     "tests_passed": 142,
     "runtime_or_callers_changed": false
+  },
+  "portable_first_divergence_current": {
+    "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/portable-first-divergence-witness-v1",
+    "status": "root_owned_CPU_link_running_no_artifact_execution",
+    "root_execution_session": 89162,
+    "compiler_pid": 94022,
+    "root_verified_source_author_plan_unique_pins": 454,
+    "independent_source_build_review_sha256": "2ea4ab77e0808714528dbed13902d31dd7f446691604fb65158656379792f793",
+    "root_rehashed_independent_inputs": 1467,
+    "resident_parameter_bytes_per_traced_route": 57515268,
+    "prospective_processes": 4,
+    "GPU_executed": false,
+    "held_source_unchanged": true
+  },
+  "final_full16_evaluator_preparation": {
+    "original_lane": "final458-evaluation-v1",
+    "original_author_review_pins_root_verified": 298,
+    "independent_findings_sha256": "ad79172da45d80d115a0ffe8688a6e2258bdf29d57bc31447fefcbf4fcff4417",
+    "root_rehashed_findings_inputs": 307,
+    "repairs": [
+      "reject bool/float exit_code",
+      "bound legacy checker file reopens"
+    ],
+    "revised_lanes": [
+      "final458-evaluation-v2",
+      "final458-evaluation-process40-v2"
+    ],
+    "revised_review_pending": true,
+    "actual_final458_evidence_present": false,
+    "GPU_executed": false
   }
 }
