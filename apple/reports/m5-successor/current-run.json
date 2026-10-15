@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T20:11:05.708192+00:00",
+  "updated_utc": "2026-10-15T20:16:47.778926+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2620,15 +2620,33 @@
         "remaining": "mixing/weighting, additional useful source pairs and bounded cold-prefix pilot before launch"
       },
       "row94_m5": {
-        "status": "CPU_build_completed_no_GPU_execution",
+        "status": "eight_GPU_captures_completed_pending_independent_audit",
         "path": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row94-m5-deployment-v1",
         "remote_path": "/Volumes/Scratch/exl3-training/kernel-profiles/row94-interior-v1",
         "CPU_commands_passed": 11,
         "validate_only_cases": 8,
         "deployment_review_sha256": "a4a3a74e65a353ae04f31162d7e10b79ea2d08bf2bcaf29f340f9f11193b5373",
         "deployment_pins_root_verified": 62,
-        "GPU_launched": false,
-        "training_activated": false
+        "GPU_launched": true,
+        "training_activated": false,
+        "exit_code": 0,
+        "owned_release": true,
+        "session": 21421,
+        "operation": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row94-m5-operation-v1",
+        "concrete_review_sha256": "dd3a0a28dba4a29d2d55ea960e6ffd59ff16155024509b26c916dfaa92c24478",
+        "raw_before_failure_counts": [
+          170,
+          44,
+          248,
+          4
+        ],
+        "raw_after_failure_counts": [
+          0,
+          0,
+          0,
+          4
+        ],
+        "all_pair_qualified": false
       }
     },
     "RMS_fullfiles_evaluation": {
@@ -2832,7 +2850,7 @@
     },
     "distinct_task_next": {
       "task": "strided_transpose",
-      "status": "both_generations_complete_candidate_gates_in_preparation",
+      "status": "both_candidate_numerics_independently_accepted_timing_preparing",
       "finding": "v1 CPU validator accepted malformed schema/bool geometry/duplicate role/missing ID or source. Preserve v1; strict pre-device validation v2 requested.",
       "GPU_launched": true,
       "fix_seal_sha256": "227d5d5b8dcf44427d8d82158078e157149fb66a4f5869f947cba2a2e7be223a",
@@ -2880,7 +2898,20 @@
         "capture_pins_root_verified": 123,
         "output_ids": 356,
         "natural_EOS": true,
-        "full_file_format_pass": true
+        "full_file_format_pass": true,
+        "numerical": {
+          "status": "independently_accepted",
+          "operation": "base-operation-v2",
+          "source_request_review_sha256": "69e960ed62e9f4cf3c77f8119a132f5cee86808626d18b150925d52efa8089cf",
+          "review_pins_root_verified": 255,
+          "exit_code": 0,
+          "owned_release": true,
+          "raw_candidate_exact_cases": 12,
+          "raw_baseline_exact_cases": 12,
+          "timing_performed": false,
+          "actual_review_sha256": "7da412162fafa1df7d577bf985d18f6c611a4f09d1d227cb3eb2bc4d6d0c886f",
+          "actual_pins_root_verified": 293
+        }
       },
       "timing_controls": {
         "status": "independently_accepted",
@@ -2912,7 +2943,20 @@
         "capture_pins_root_verified": 140,
         "output_ids": 371,
         "natural_EOS": true,
-        "full_file_format_pass": true
+        "full_file_format_pass": true,
+        "numerical": {
+          "status": "independently_accepted",
+          "operation": "old458-operation-v1",
+          "source_request_review_sha256": "6a0433845ffba5e14b440bdd6749ead62b2ae2dc6c0d40e614603825b8709162",
+          "review_pins_root_verified": 241,
+          "exit_code": 0,
+          "owned_release": true,
+          "raw_candidate_exact_cases": 12,
+          "raw_baseline_exact_cases": 12,
+          "timing_performed": false,
+          "actual_review_sha256": "62eab7da3ab0c5c48050dc99eb0d2658326209a09c9df377b23d11f63c322e4e",
+          "actual_pins_root_verified": 279
+        }
       }
     }
   },

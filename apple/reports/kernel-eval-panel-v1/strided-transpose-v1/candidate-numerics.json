@@ -1,0 +1,24 @@
+{
+  "schema": "transpose-candidate-numerical-summary-v1",
+  "conditions": [
+    {
+      "condition": "base",
+      "review_sha256": "7da412162fafa1df7d577bf985d18f6c611a4f09d1d227cb3eb2bc4d6d0c886f",
+      "pins_verified": 293,
+      "baseline_exact_cases": 12,
+      "candidate_exact_cases": 12,
+      "independently_compared_words": 7458382,
+      "timing_performed": false
+    },
+    {
+      "condition": "old458",
+      "review_sha256": "62eab7da3ab0c5c48050dc99eb0d2658326209a09c9df377b23d11f63c322e4e",
+      "pins_verified": 279,
+      "baseline_exact_cases": 12,
+      "candidate_exact_cases": 12,
+      "independently_compared_words": 7458382,
+      "timing_performed": false
+    }
+  ],
+  "no_speed_claim": true
+}

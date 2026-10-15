@@ -11,3 +11,7 @@ The malformed-metadata failure in host-v1 remains preserved. Host-v2 rejects wro
 Independent audit accepted 840 batches / 84,000 dispatches on M1 Ultra, using five warmups and 30 alternating paired rounds with 100 dispatches per batch for each of twelve cases. All batches retained exact outputs, padding and input checks. The supplied optimized control achieved paired median speedups of 2.348×, 2.877× and 2.967× on the three larger shapes; smaller cases ranged from 1.056× to 1.114×. See [all twelve outcomes](control-timing.json). Peak observed aggregate RSS was 238,174,208 bytes, and owned release was verified.
 
 This establishes optimization headroom for the task. It is curator control performance, not an adapter result; generated implementations remain separately gated. Review SHA: `37ce89a3df30bc639d7bf0cca70aa647e500848035c17905b6bb6e99f7a6c1f4`.
+
+## Generated candidates
+
+Base and old458 each produced a valid complete-file response, compiled without repair and passed all twelve exact numerical cases, including output padding. Independent audits replayed 7,458,382 words per condition across its baseline/candidate outputs and verified owned release. Both use a scalar transpose mapping and 16×16 dispatch. Their numerical success is established; their speed comparison remains pending. See [candidate numerical receipts](candidate-numerics.json).
