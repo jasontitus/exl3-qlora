@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T15:53:46.293078+00:00",
+  "updated_utc": "2026-10-15T15:57:39.122033+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2143,7 +2143,7 @@
     "completed_report": "generated-kernel-outcome-v1.json"
   },
   "next_cached_screen": {
-    "status": "running_model_identity_scan_before_first_update",
+    "status": "training_3_updates_complete_four_cache_hits_observed",
     "proposed_training_rows": 188,
     "proposed_development_rows": 41,
     "boundary": 39,
@@ -2278,7 +2278,7 @@
       "fix": "bounded streaminghash correction in preparation, pinned training runtime unchanged"
     },
     "practical_run": {
-      "status": "running_model_identity_scan_before_first_update",
+      "status": "training_3_updates_complete_four_cache_hits_observed",
       "worker_pid": 27766,
       "wrapper_pid": 27763,
       "host": "jason-m5-MacBook.local",
@@ -2296,9 +2296,20 @@
       ],
       "full41_baseline_skipped": true,
       "exec_session_id": 85011,
-      "completed_updates_observed": 0,
+      "completed_updates_observed": 3,
       "no_duplicate_launch": true,
-      "observed_utc": "2026-10-15T15:53:46.293078+00:00"
+      "observed_utc": "2026-10-15T15:53:46.293078+00:00",
+      "startup_payload_hash_seconds": 148.3,
+      "first_cache_hit_observed": true,
+      "frozen_layers_skipped": 39,
+      "first_forward_finished_elapsed_seconds": 166.0,
+      "first_backward_started_elapsed_seconds": 166.6,
+      "progress_log": "wrapper.json.stderr.log",
+      "first_three_update_seconds": 81.9520020831842,
+      "peak_mlx_gib_observed": 58.16616519168019,
+      "gradient_norm_last_observed": 0.004665601998567581,
+      "last_loss_observed": 0.5484475493431091,
+      "cache_hits_observed": 4
     },
     "user_priority": "best useful adapter soonest; actual quality rather than controlled sweep",
     "full41_zeroB_baseline_required": false
