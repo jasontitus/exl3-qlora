@@ -3019,7 +3019,7 @@
     "main_launched": true,
     "parallel_evaluation": {
       "task": "profile-guided-rotation-v1",
-      "status": "old458_profile_present_generation_running",
+      "status": "all_four_generations_complete_final_audits_and_timing",
       "controls_session": 42604,
       "controls_exit_code": 0,
       "owned_release": true,
@@ -3087,7 +3087,23 @@
         2.596,
         3.205,
         3.0
-      ]
+      ],
+      "old458_present_exit_code": 0,
+      "old458_present_finished_utc": "2026-10-15T22:14:35.218212+00:00",
+      "pilot_omitted_session": 35711,
+      "pilot_omitted_review_sha256": "6884ed2404681b37b84942a62fc5f505b236d1c2543d2f36e142b7bc6e5ce1a6",
+      "pilot_omitted_review_pins_root_verified": 760,
+      "old458_present_capture_review_sha256": "7913b8a072e2a9b76093f310ebcead3b4d593647ea3e7f1032960380f6db1c9c",
+      "old458_present_capture_pins_root_verified": 787,
+      "old458_present_output_ids": 398,
+      "old458_present_source_summary": "scalar xy16x16 optimization; identifies large-workload dominance; exact artifact numerics pending",
+      "pilot_omitted_exit_code": 0,
+      "pilot_omitted_finished_utc": "2026-10-15T22:18:13.652447+00:00",
+      "old458_present_numeric_session": 8502,
+      "old458_present_numeric_exit_code": 0,
+      "old458_present_raw_exact_cases": 12,
+      "old458_present_numeric_review_sha256": "315778b198dc4486788ec42607cd3a9661bbe5c81d67363adc3dc56a1500db00",
+      "old458_present_numeric_review_pins_root_verified": 315
     },
     "cold_first_update": {
       "step": 1,
