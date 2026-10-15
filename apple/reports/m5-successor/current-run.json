@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T00:43:43.303442+00:00",
+  "updated_utc": "2026-10-15T00:49:38.228458+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -72,13 +72,13 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "saved_checkpoint": 225,
+    "saved_checkpoint": 226,
     "worker_pid": 47890,
-    "elapsed": "20:05:41",
-    "worker_cpu": "852:56.06",
-    "worker_rss_kib": 17843024,
-    "forward_layer": 13,
-    "active_mlx_gib": 15.43,
+    "elapsed": "20:11:05",
+    "worker_cpu": "856:46.56",
+    "worker_rss_kib": 19507824,
+    "forward_layer": 1,
+    "active_mlx_gib": 15.64,
     "history_audit_checkpoint": 222
   },
   "final_transfer_guard": {
@@ -1105,7 +1105,10 @@
     "tiled_index_scalar_scheduler_bytes": 42855428945,
     "tiled_index_scalar_status": "Source-only CPU arithmetic, pending binding to correctedall-stock-routesv4; no empiricalfit.",
     "proposed_process_memory_gib": 42,
-    "reserve_gib_unchanged": 32
+    "reserve_gib_unchanged": 32,
+    "serving_v4_source_review_sha256": "973606135c92bcb1dec4405ce5649f132dbad9874cdc75df52c9b662ba989fd6",
+    "serving_v4_source_root_rehashed_inputs": 1660,
+    "serving_v4_status": "Batch-oneCPUsource reviewpassed; isolatednativeCPUlinknextafterownv3terminal. NoGPU."
   },
   "historical_history_audits": [
     {
