@@ -111,7 +111,8 @@
     "control_result_sha256": "58e7e2a7d9f28715732c1aa9984ded2d225acb8e8c4cb9b59e9846f479a974f5",
     "trained_result_sha256": "1fea379c708fa746e824570a2a3f7527da51ab9b122259a68dc0a268483bd5e0",
     "exact_replay_receipt_sha256": "a42c1ee1849fe44003541f09328fbb1ad8d9c36786673b12f485de3224fc1c07",
-    "teacher_forced_product_replay_sha256": "e790b3c6c318f2fb4f085c5a87e38da8937d7b0878643eeae9377126561a2cd1"
+    "teacher_forced_product_replay_sha256": "e790b3c6c318f2fb4f085c5a87e38da8937d7b0878643eeae9377126561a2cd1",
+    "completion_evidence_map_sha256": "b72dc2c48ae4ac17b6bb83d13086908aa7d45bbe13377e5315e4db657e286c94"
   },
   "next_experiments": "Proposed only: fresh188train/41development cache-compatible LR/duration comparisons, with full matched development baseline and measured evaluation cost. Protected16 unchanged; no new sweep launched."
 }
