@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T06:42:10.420854+00:00",
+  "updated_utc": "2026-10-15T06:48:26.995820+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1922,7 +1922,7 @@
     "all_compared_argmax_equal": true
   },
   "matched_endpoint_kernel_experiment": {
-    "status": "separate_prospective_design_independently_supported_implementation_under_review",
+    "status": "prospective_protocol_independently_approved_preview_launcher_under_review",
     "design_review_sha256": "18734c32938d0c4c93bffd7baf4d86dad20a31f51d19670b5825bfbae6b2c8bb",
     "conditions": [
       "zeroB-final458",
@@ -1938,6 +1938,17 @@
     "cached_fresh_parity": false,
     "numerical_cases": 224,
     "timing_workloads": 12,
-    "actual_generated_outputs": false
+    "actual_generated_outputs": false,
+    "protocol_sha256": "ff11d46ad3ca9096551b8492dd90c556fd5450268444d8becc3184a3402b978d",
+    "protocol_review_sha256": "c927440789462fee5ce7d11f7dc56bf0ef8fa0c877cbe4c5a83e99b5d13c0767",
+    "root_protocol_review_pins_verified": 14,
+    "preview_conditions": [
+      "absent",
+      "zeroB-final458"
+    ],
+    "preview_tokens": 1,
+    "preview_attempts_each": 1,
+    "preview_observer_position": 774,
+    "actual_previews_completed": false
   }
 }
