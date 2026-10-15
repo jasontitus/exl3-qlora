@@ -19,6 +19,7 @@ from .evaluation_audit import _canonical, _json
 DEFAULT_MAX_FILE_BYTES = 64 * 1024 * 1024
 DEFAULT_MAX_TOTAL_BYTES = 128 * 1024 * 1024
 MAX_FILES = 32
+DEFAULT_MAX_HASH_BYTES = 512 * 1024 * 1024
 
 
 def _require(ok, message):
@@ -72,6 +73,53 @@ def _read(path, max_bytes):
         _require(current == before, "Receipt pathname changed during read")
         _canonical_path(path)
         return data, before
+    finally:
+        os.close(fd)
+
+
+def hash_file(path: str | Path, *, max_bytes: int = DEFAULT_MAX_HASH_BYTES) -> str:
+    """Hash all bytes without retaining them, checking descriptor/path identity.
+
+    The caller must restrict allowed paths and choose a finite byte limit. This
+    does not parse or validate file contents, establish provenance, or prevent
+    changes after return. No hashes are cached; every call reads the whole file.
+    """
+    _require(type(max_bytes) is int and max_bytes > 0, "Invalid hash byte limit")
+    path = _canonical_path(path)
+    initial = path.lstat()
+    before = FileIdentity.from_stat(initial)
+    _require(before.size <= max_bytes, "File exceeds hash byte limit")
+    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    fd = os.open(path, flags)
+    try:
+        opened = os.fstat(fd)
+        _require(
+            FileIdentity.from_stat(opened) == before and opened.st_mode == initial.st_mode,
+            "File changed before hash read",
+        )
+        digest = hashlib.sha256()
+        count = 0
+        while True:
+            part = os.read(fd, min(1024 * 1024, max_bytes + 1 - count))
+            if not part:
+                break
+            count += len(part)
+            _require(count <= max_bytes and count <= before.size, "File grew during hash read")
+            digest.update(part)
+        after = os.fstat(fd)
+        _require(
+            count == before.size
+            and FileIdentity.from_stat(after) == before
+            and after.st_mode == initial.st_mode,
+            "File changed during hash read",
+        )
+        current = path.lstat()
+        _require(
+            FileIdentity.from_stat(current) == before and current.st_mode == initial.st_mode,
+            "File pathname changed during hash read",
+        )
+        _canonical_path(path)
+        return digest.hexdigest()
     finally:
         os.close(fd)
 
