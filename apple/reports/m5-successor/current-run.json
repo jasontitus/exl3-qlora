@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T07:11:03.484439+00:00",
+  "updated_utc": "2026-10-15T07:28:18.570577+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1922,7 +1922,7 @@
     "all_compared_argmax_equal": true
   },
   "matched_endpoint_kernel_experiment": {
-    "status": "actual774_previews_completed_exact_raw_null_control_independent_actual_review_pending",
+    "status": "paired_generation_live_base_control_first",
     "design_review_sha256": "18734c32938d0c4c93bffd7baf4d86dad20a31f51d19670b5825bfbae6b2c8bb",
     "conditions": [
       "zeroB-final458",
@@ -1985,6 +1985,34 @@
     "preview_finite_verified": true,
     "preview_all_owned_released": true,
     "preview_no_retry": true,
-    "root_preview_raw_replay_verified": true
+    "root_preview_raw_replay_verified": true,
+    "preview_independent_actual_review_sha256": "e0bf6b2b3e1f6b013951befa5b0e5b949db0fb4779df666c9e354d918d6fea72",
+    "root_preview_actual_review_pins_verified": 351,
+    "preview_memory_observations": 64,
+    "preview_peak_aggregate_rss_bytes": 30823546880,
+    "preview_min_available_bytes": 74964582400,
+    "preview_recorded_process_ids_terminal": 7,
+    "root_endpoint_admission_CPU_tests": 18,
+    "endpoint_plan_sha256": "b59219602759a57d670cd1685cfe4d0c018b96b1a676719b92c57d01555bcaa9",
+    "endpoint_plan_pins": 161,
+    "endpoint_prepared_files": 13,
+    "endpoint_admission_sha256": "f5ba229e87341f11b05d44c352a8c8e399a7c6d7289de1c2e4e5b8d431724d54",
+    "endpoint_prepare_exit_code": 0,
+    "endpoint_default_validation_exit_code": 0,
+    "endpoint_admission_only_exit_code": 0,
+    "endpoint_composition_checker_exit_code": 0,
+    "endpoint_GPU_started": true,
+    "capture_chain_independent_review_sha256": "e4dfdf0453d82975c0b4db52701aacc2e1f6f4dc210cab6086fcae834101e3c7",
+    "capture_chain_root_pins_verified": 677,
+    "endpoint_execution_session_id": 91313,
+    "endpoint_controller_pid": 69023,
+    "endpoint_first_frontend_pid": 69052,
+    "endpoint_first_native_pid": 69065,
+    "endpoint_started_utc": "2026-10-15T07:27:57.286033+00:00",
+    "endpoint_concrete_review_sha256": "4c5a570d2389531fb6fa4f0f4b4677c27f6306c1b7bf3f19d2218d3e40c3a903",
+    "endpoint_concrete_pins": 162,
+    "root_endpoint_detail_pins_verified": 40,
+    "endpoint_launch_outer_available_bytes": 114631819264,
+    "endpoint_launch_native_available_bytes": 109158612992
   }
 }
