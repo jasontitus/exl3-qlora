@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T05:31:58.311124+00:00",
+  "updated_utc": "2026-10-15T05:44:45.495674+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1707,7 +1707,7 @@
   },
   "long_generation_next_host_proposal": "M5_native105.42GiB_outer103.0GiB_proposed_process60_native82_reserve32_pending_own_host_qualification",
   "m5_fresh_model_verification": {
-    "status": "completed_exit0_root_verified_pending_independent_actual_review",
+    "status": "completed_independently_audited",
     "session_id": 63372,
     "review_sha256": "5f1d25cc1e59ab3bd1db9f85ce10f391806bdd2e12f66abd7c02de31f33ef014",
     "root_verified_pins": 13,
@@ -1721,7 +1721,10 @@
     "elapsed_seconds": 1271.872885,
     "verified_files": 365,
     "verified_bytes": 426352827347,
-    "receipt_sha256": "37228939cffbf92f008d8f18c5fdbe62c5abf6121cd0f9565fb7ccb1e5229c15"
+    "receipt_sha256": "37228939cffbf92f008d8f18c5fdbe62c5abf6121cd0f9565fb7ccb1e5229c15",
+    "independent_actual_review_sha256": "6f64dade4751b24361a764b7c7ed54b6d5e1b1e44ea275430e51367af06f5e6e",
+    "independent_actual_root_verified_pins": 21,
+    "independent_actual_root_tests": 5
   },
   "m5_runtime_preparation": {
     "transport_v1": "held_unexecuted_independent_review_found_captured_source_handoff_gap",
@@ -1764,7 +1767,14 @@
     "fresh_initialization_required": true,
     "endpoint458_generalization_eligible": false,
     "activated": false,
-    "datasets_changed": false
+    "datasets_changed": false,
+    "independent_review_sha256": "4ba49c52d2c886b7423aed28264b6102ce6eb15c1251192471b28c966ef18635",
+    "independent_root_verified_pins": 507,
+    "product_CPU_module_applied": true,
+    "product_commit": "ec01e542",
+    "root_product_tests": 10,
+    "root_product_CLI_replay": "exact41/188 matched; noactivation",
+    "exclusion_bias": "16train-onlyrows include13diagnostics and10TensorFoldrows; overlapping categories"
   },
   "m5_internal_model_saved_equality": {
     "verified_saved_useful_files": 120,
@@ -1787,5 +1797,29 @@
     "actual_outcome_root_tests": 5,
     "fresh_internal_payload_hash_performed": false,
     "engine_or_GPU_qualification": false
+  },
+  "m5_internal_serving_controls": {
+    "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation458-f32-m5-internal-v1",
+    "status": "source_and_saved_input_reviews_accepted_pending_closed_copy_and_CPU_preparation",
+    "author_seal_sha256": "c182a2a57642b61ef497c04e27a71ecf0ffd25942f5b99b1063aec0f2ac76636",
+    "root_verified_pins": 128,
+    "root_author_tests": 12,
+    "common_lifecycle_review_sha256": "2ef1f89762a7e3ab7a0e6fda638951c2358df9d8a18605adae88a3c37a11899e",
+    "common_lifecycle_root_verified_pins": 132,
+    "deployment_files": 96,
+    "deployment_bytes": 5125573,
+    "profile": {
+      "process_gib": 60,
+      "native_gib": 82,
+      "reserve_gib": 32,
+      "wired_gib": 8,
+      "context": 8192
+    },
+    "GPU_started": false,
+    "combined_review_sha256": "743ee830eb27ac82f7ea9052d4c0799ef03ac1bdc0d6484f81024823603259b2",
+    "combined_root_verified_pins": 140,
+    "source_consumer_companion_sha256": "1b474d7319f2754c816e2a5ea89a9b5f285d1213c4970396b9ef0a2e12c81153",
+    "saved_input_companion_sha256": "5122a00888c4f9599099d8495edcf8c34e6843024f06b296d7c81f65b003b414",
+    "deployed": false
   }
 }
