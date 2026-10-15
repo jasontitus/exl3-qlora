@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T05:30:30.061610+00:00",
+  "updated_utc": "2026-10-15T05:31:58.311124+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1707,7 +1707,7 @@
   },
   "long_generation_next_host_proposal": "M5_native105.42GiB_outer103.0GiB_proposed_process60_native82_reserve32_pending_own_host_qualification",
   "m5_fresh_model_verification": {
-    "status": "running_readonly_CPU_no_GPU",
+    "status": "completed_exit0_root_verified_pending_independent_actual_review",
     "session_id": 63372,
     "review_sha256": "5f1d25cc1e59ab3bd1db9f85ce10f391806bdd2e12f66abd7c02de31f33ef014",
     "root_verified_pins": 13,
@@ -1716,8 +1716,12 @@
     "expected_bytes": 426352827347,
     "mandatory_Darwin_F_NOCACHE": true,
     "chunk_bytes": 1048576,
-    "progress": "256 metadata files checked; large shard hashing underway",
-    "receipt_directory": "kernel-library/next-round-v5/native-long-m5-model-hash-v1/actual-v1"
+    "progress": "all365fullSHAandidentitiesverified;noGPU",
+    "receipt_directory": "kernel-library/next-round-v5/native-long-m5-model-hash-v1/actual-v1",
+    "elapsed_seconds": 1271.872885,
+    "verified_files": 365,
+    "verified_bytes": 426352827347,
+    "receipt_sha256": "37228939cffbf92f008d8f18c5fdbe62c5abf6121cd0f9565fb7ccb1e5229c15"
   },
   "m5_runtime_preparation": {
     "transport_v1": "held_unexecuted_independent_review_found_captured_source_handoff_gap",
@@ -1766,7 +1770,7 @@
     "verified_saved_useful_files": 120,
     "verified_saved_bytes": 426352806119,
     "equal_to_Scratch_model_payloads": true,
-    "current_internal_identity_qualified": false,
+    "current_internal_identity_qualified": true,
     "native_loader_readset_qualified": false,
     "prospective_rebind_only": true,
     "saved_source_independent_review_sha256": "6a2579c050d3a899c34fc18d3b626ed5034774a1d0e94f7038243933943961a7",
@@ -1774,9 +1778,14 @@
     "metadata_continuity_source_review_sha256": "7b735c73155751c4142d117d43fee5b9e7deee0a09c82b2c64e5bf2d98193271",
     "metadata_continuity_root_verified_pins": 21,
     "metadata_continuity_root_tests": 15,
-    "actual_metadata_check": "completed_exit0_pending_independent_outcome_review",
+    "actual_metadata_check": "completed_independently_audited",
     "actual_useful_strong_identities_unchanged": 120,
     "actual_inventory_unchanged": 369,
-    "actual_payload_bytes_read": 0
+    "actual_payload_bytes_read": 0,
+    "actual_outcome_review_sha256": "93d14c252e49ff416dd97697638a7d348ea85324f26b97ccfc7209939d019285",
+    "actual_outcome_root_verified_pins": 40,
+    "actual_outcome_root_tests": 5,
+    "fresh_internal_payload_hash_performed": false,
+    "engine_or_GPU_qualification": false
   }
 }
