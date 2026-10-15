@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T05:00:43.533529+00:00",
+  "updated_utc": "2026-10-15T05:09:39.755081+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1705,5 +1705,18 @@
     "independent_actual_pins_root_verified": 318,
     "observed_output_tokens_changed": false
   },
-  "long_generation_next_host_proposal": "M5_native105.42GiB_outer103.0GiB_proposed_process60_native82_reserve32_pending_own_host_qualification"
+  "long_generation_next_host_proposal": "M5_native105.42GiB_outer103.0GiB_proposed_process60_native82_reserve32_pending_own_host_qualification",
+  "m5_fresh_model_verification": {
+    "status": "running_readonly_CPU_no_GPU",
+    "session_id": 63372,
+    "review_sha256": "5f1d25cc1e59ab3bd1db9f85ce10f391806bdd2e12f66abd7c02de31f33ef014",
+    "root_verified_pins": 13,
+    "root_CPU_tests": 15,
+    "files": 365,
+    "expected_bytes": 426352827347,
+    "mandatory_Darwin_F_NOCACHE": true,
+    "chunk_bytes": 1048576,
+    "progress": "256 metadata files checked; large shard hashing underway",
+    "receipt_directory": "kernel-library/next-round-v5/native-long-m5-model-hash-v1/actual-v1"
+  }
 }
