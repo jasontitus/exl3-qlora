@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T20:03:47.684361+00:00",
+  "updated_utc": "2026-10-15T20:11:05.708192+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2618,6 +2618,17 @@
         ],
         "training_activated": false,
         "remaining": "mixing/weighting, additional useful source pairs and bounded cold-prefix pilot before launch"
+      },
+      "row94_m5": {
+        "status": "CPU_build_completed_no_GPU_execution",
+        "path": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row94-m5-deployment-v1",
+        "remote_path": "/Volumes/Scratch/exl3-training/kernel-profiles/row94-interior-v1",
+        "CPU_commands_passed": 11,
+        "validate_only_cases": 8,
+        "deployment_review_sha256": "a4a3a74e65a353ae04f31162d7e10b79ea2d08bf2bcaf29f340f9f11193b5373",
+        "deployment_pins_root_verified": 62,
+        "GPU_launched": false,
+        "training_activated": false
       }
     },
     "RMS_fullfiles_evaluation": {
@@ -2889,14 +2900,19 @@
         "report": "publish-exl3/apple/reports/kernel-eval-panel-v1/strided-transpose-v1/control-timing.json"
       },
       "generation_old458": {
-        "status": "completed_exit0_released_pending_capture_audit",
+        "status": "capture_and_source_independently_accepted_numerical_request_prepared",
         "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-transpose-fullfiles-old458-v1",
         "review_sha256": "2897123bdf5eacd3d801bcd7db10f1270f3db5e636f51110241fbef82b3fdd07",
         "review_pins_root_verified": 112,
         "GPU_launched": true,
         "session": 55225,
         "exit_code": 0,
-        "lease_released": true
+        "lease_released": true,
+        "capture_review_sha256": "6ec92381760bcd45ef6f46dc3a5c9893edcd26a4b080d6db8896f4f58d0f5e4b",
+        "capture_pins_root_verified": 140,
+        "output_ids": 371,
+        "natural_EOS": true,
+        "full_file_format_pass": true
       }
     }
   },

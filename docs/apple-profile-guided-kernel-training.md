@@ -80,3 +80,7 @@ Apple’s [GPU performance timeline](https://developer.apple.com/documentation/x
 ## First measured draft review
 
 The preserved row48 draft-v2 passed independent CPU content/source/token review (8cb1cb79, 50 bound inputs). It contains a baseline-only proposal and a post-test keep-baseline decision, grouped under one train-only source lineage. Exact last-assistant tokenization is 2,608/3,143 tokens with 1,220/1,082 supervised targets; four author and four independent mutation tests passed. This is content acceptance, not a launched or adequately diverse training set. Decide lineage weighting/mixing and measure cold-prefix cost before using new tokens in training.
+
+## Second lineage preparation on M5
+
+The row94 interior grid-sampling precision pair passed independent source/reference review and an actual M5 CPU build: Swift plus both Metal sources compiled, followed by eight validate-only checks. The closed fixture preserves all four F16/F32 input/grid combinations and restricts addresses to verified interior samples. It has no GPU numerical receipt yet and is not a speed example or activated training data. A bounded eight-dispatch correctness request is being prepared separately; preserve both before and after failures if any.
