@@ -1,7 +1,7 @@
 {
-  "updated_utc": "2026-10-15T08:20:29.933671+00:00",
+  "updated_utc": "2026-10-15T08:28:51.025006+00:00",
   "host": "jason-m5-MacBook.local",
-  "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
+  "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
   "wrapper_pid": 47859,
   "runner_pid": null,
@@ -2129,5 +2129,17 @@
       "zeroB-final458": 0,
       "final458": 0
     }
+  },
+  "heartbeat_reconciliation": {
+    "observed_remote_utc": "2026-10-15T08:27:51.019862+00:00",
+    "remote_training_transfer_or_evaluation_process_found": false,
+    "local_processes_retained": [
+      "EXL3 studio UI PID40456",
+      "SFT studio UI PID59690"
+    ],
+    "new_training_or_transfer_launched": false,
+    "source_collection_paused": true,
+    "Qwen_parked": true,
+    "completed_report": "generated-kernel-outcome-v1.json"
   }
 }
