@@ -1,7 +1,7 @@
 {
-  "updated_utc": "2026-10-15T02:47:41.374810+00:00",
+  "updated_utc": "2026-10-15T02:54:36.777340+00:00",
   "host": "jason-m5-MacBook.local",
-  "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
+  "status": "training_completed_final_transfer_identity_repair",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
   "wrapper_pid": 47859,
   "runner_pid": null,
@@ -11,7 +11,7 @@
   "train_examples": 229,
   "heldout_examples": 16,
   "planned_updates": 458,
-  "completed_main_updates": 378,
+  "completed_main_updates": 458,
   "prior_campaign": "198 stopped intentionally after completed preflight; artifacts preserved; ownedlease released",
   "no_duplicate_gpu_job": true,
   "evaluation_pid": null,
@@ -608,13 +608,22 @@
     "training_admission": false
   },
   "latest_training_observation_current": {
-    "saved_step": 449,
+    "saved_step": 458,
     "planned_updates": 458,
     "pid": 47890,
-    "live": true,
-    "elapsed": "22:09:46",
-    "rss_kib": 18767760,
-    "history_independently_reviewed_through": 303
+    "live": false,
+    "training_status": "completed_pending_quality_audit",
+    "wrapper_status": "completed",
+    "wrapper_exit_code": 0,
+    "lease_released": true,
+    "cleanup_verified": true,
+    "root_fresh_ps_main_ids_absent": [
+      47859,
+      47862,
+      47866,
+      47890
+    ],
+    "history_independently_reviewed_through": 378
   },
   "native_single_prefill_result": {
     "status": "terminal_failed_after_completed_33_token_prefill",
@@ -1371,7 +1380,20 @@
     "independent_review_sha256": "d340d0eac9df04eed39d9f7894db4b539bfe6e1f2526c5089468a366ffc78dab",
     "root_rehashed_review_inputs": 435,
     "actual_SSH_transfer_performed": false,
-    "actual_final458_evidence_present": false
+    "actual_final458_evidence_present": false,
+    "actual_transfer_attempted": true,
+    "actual_transfer_status": "v2_export_refused_reused_historical_PID_before_publication",
+    "actual_transfer_exit_code": 1,
+    "preserved_failure": "kernel-library/next-round-v5/final458-transfer-v2/actual-transfer-v1",
+    "concrete_diagnosis": {
+      "historical_tracked_ids": 7743,
+      "reused_pid": 32069,
+      "recorded_birth": "Wed Oct 14 00:34:34 2026",
+      "current_birth": "Wed Oct 14 19:53:01 2026",
+      "current_comm": "<defunct>",
+      "unrelated_process_stopped": false
+    },
+    "recovery": "Separate v3 generation-aware closure under author B / independent Q review; no blind retry or guard bypass"
   },
   "first_projection_microprobe_current": {
     "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/first-projection-microprobe-v1",
