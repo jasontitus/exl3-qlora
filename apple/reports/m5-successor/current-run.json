@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T17:04:41.635709+00:00",
+  "updated_utc": "2026-10-15T17:25:13.995184+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2322,9 +2322,9 @@
       "fix": "deferred by user priority; full41 baseline is not a first-training gate"
     },
     "practical_run": {
-      "status": "running",
-      "worker_pid": 27766,
-      "wrapper_pid": 27763,
+      "status": "completed_exact_reload_owned_lease_released",
+      "worker_pid": null,
+      "wrapper_pid": null,
       "host": "jason-m5-MacBook.local",
       "run_root": "/Volumes/Scratch/exl3-training/2026-10-15/practical-lr25-r4-v1",
       "request": "request-v2.json",
@@ -2340,7 +2340,7 @@
       ],
       "full41_baseline_skipped": true,
       "exec_session_id": 85011,
-      "completed_updates_observed": 180,
+      "completed_updates_observed": 188,
       "no_duplicate_launch": true,
       "observed_utc": "2026-10-15T17:04:41.635709+00:00",
       "startup_payload_hash_seconds": 148.3,
@@ -2354,7 +2354,12 @@
       "gradient_norm_last_observed": 0.09182215481996536,
       "last_loss_observed": 0.354972243309021,
       "cache_hits_observed": 181,
-      "update_elapsed_seconds_observed": 4094.2205655830912
+      "update_elapsed_seconds_observed": 4295.398480875185,
+      "finished_utc": "2026-10-15T17:19:00.757269+00:00",
+      "reload_exact": true,
+      "lease_released": true,
+      "exit_code": 0,
+      "final_adapter_sha256": "d99eb8deb8e5f53d4b8261f2f5176c16859d9e10e3e14c611496584b62cbfc07"
     },
     "user_priority": "best useful adapter soonest; actual quality rather than controlled sweep",
     "full41_zeroB_baseline_required": false,

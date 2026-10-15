@@ -229,3 +229,9 @@ The mechanically normalized old-adapter candidate compiled, but actual Metal exe
 The live M5 run reached 180/188 updates with validated frozen-prefix cache hits and a 70.08 GiB MLX allocation peak. Final reload verification remains pending. The separate step-104 quality generation completed with EOS, but failed literal patch replay. Mechanical extraction preserved its kernel and exposed unaligned float4 loads for odd-width rows; source admission was refused, so no compilation or numerical result is claimed. This sample does not demonstrate useful quality improvement. The original failures and completed base output remain preserved.
 
 A separate 152-example suffix-loss dataset preserves complete input token sequences and the development set. It omits diagnostic-only rows and the edit with no added lexical code. It is awaiting independent review and has not been trained. Rank-8 serving remains an isolated, unqualified extension pending review and build.
+
+### 2026-10-15 17:24 UTC: practical lower-rate training completed
+
+The fresh188-example,188-update layer39/rank4/alpha8 trial at LR2.5e-5 completed successfully at17:19UTC. The worker recorded188 sequential finite updates, exact adapter prediction reload, exit0 and owned lease release. Total wrapper wall time was85min44s; optimizer-update elapsed time was4295.40s. Peak MLX allocation was70.08GiB. Final adapter SHA256 is d99eb8deb8e5f53d4b8261f2f5176c16859d9e10e3e14c611496584b62cbfc07. Final output quality remains pending; training completion is not evidence of better kernels.
+
+The152-example suffix-loss dataset passed independent review with unchanged complete token IDs and dev41. Rank8 source and linked artifact passed static independent review, but GPU qualification remains outstanding. The next proposed rank4 code-focused trial reuses the established serving path and boundary39 cache; it is separate from the completed188 run.
