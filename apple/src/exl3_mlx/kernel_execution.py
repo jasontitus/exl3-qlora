@@ -378,7 +378,7 @@ def import_replay(request_path, checksum, output, *, run=False):
     The capture's generation stage is supplied evidence, not attested here.
     All later replay stage decisions come from the actual bounded parser.
     """
-    from . import evaluation_audit, evaluation_receipts, kernel_full_files, kernel_replay
+    from . import evaluation_audit, evaluation_receipts, kernel_full_files, kernel_replay, kernel_strided_response, kernel_strided_copy
 
     request_path, output = Path(request_path).absolute(), Path(output).absolute()
     reader = Reader(request_path.parent)
@@ -400,7 +400,7 @@ def import_replay(request_path, checksum, output, *, run=False):
     require(set(replay) in (fields, fields | {"protocol"}), "Invalid replay bundle")
     require(
         replay.get("protocol", "safe-common-git-apply-exact-v1")
-        in ("safe-common-git-apply-exact-v1", "kernel-full-files-v1"),
+        in ("safe-common-git-apply-exact-v1", "kernel-full-files-v1", "kernel-strided-copy-full-files-v1"),
         "Unknown replay protocol",
     )
     for ref in [replay["generation"], *replay["baseline"].values()]:
@@ -437,7 +437,7 @@ def import_replay(request_path, checksum, output, *, run=False):
         "executable": file_ref(Path(sys.executable).resolve()),
         "code": [
             file_ref(Path(module.__file__).resolve())
-            for module in (kernel_replay, kernel_full_files, evaluation_audit, evaluation_receipts)
+            for module in (kernel_replay, kernel_full_files, kernel_strided_response, kernel_strided_copy, evaluation_audit, evaluation_receipts)
         ],
         "argv": [
             "-m",

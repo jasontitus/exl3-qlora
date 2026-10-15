@@ -11,7 +11,7 @@ import json
 import re
 from pathlib import Path, PurePosixPath
 
-from . import kernel_full_files
+from . import kernel_full_files, kernel_strided_response
 from .evaluation_audit import _json
 from .evaluation_receipts import _read
 
@@ -168,7 +168,7 @@ def run(spec_path, expected_sha256, output):
     require(set(spec) in (fields, fields | {"protocol"}), "Unexpected replay specification")
     protocol = spec.get("protocol", "safe-common-git-apply-exact-v1")
     require(
-        protocol in ("safe-common-git-apply-exact-v1", "kernel-full-files-v1"),
+        protocol in ("safe-common-git-apply-exact-v1", "kernel-full-files-v1", "kernel-strided-copy-full-files-v1"),
         "Unknown replay protocol",
     )
     pins = {}
@@ -201,10 +201,11 @@ def run(spec_path, expected_sha256, output):
         "GPU_executed": False,
     }
     try:
-        if protocol == "kernel-full-files-v1":
+        if protocol in ("kernel-full-files-v1", "kernel-strided-copy-full-files-v1"):
             # Generation is exact assistant content from a separately verified
             # capture. No EOS stripping, JSON extraction, or code repair here.
-            after = kernel_full_files.parse(generation)
+            parser = kernel_strided_response if protocol == "kernel-strided-copy-full-files-v1" else kernel_full_files
+            after = parser.parse(generation)
             report["stages"]["raw_format"] = {"status": "passed"}
             report["rationale"] = kernel_full_files.decode(generation)["rationale"]
             require(set(after) == set(baseline), "Complete-file inventory differs from task")
