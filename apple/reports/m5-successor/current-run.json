@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T02:35:04.679202+00:00",
+  "updated_utc": "2026-10-15T02:43:39.982475+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -608,12 +608,12 @@
     "training_admission": false
   },
   "latest_training_observation_current": {
-    "saved_step": 412,
+    "saved_step": 437,
     "planned_updates": 458,
     "pid": 47890,
     "live": true,
-    "elapsed": "21:55:57",
-    "rss_kib": 18693120,
+    "elapsed": "22:05:27",
+    "rss_kib": 18212816,
     "history_independently_reviewed_through": 303
   },
   "native_single_prefill_result": {
@@ -1375,13 +1375,13 @@
   },
   "first_projection_microprobe_current": {
     "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/first-projection-microprobe-v1",
-    "status": "CPU_link_completed_independent_artifact_review_pending",
+    "status": "GPU_four_case_capture_completed_actual_provenance_accepted_math_pending",
     "root_session": 31963,
     "root_exit_code": 0,
     "independent_source_build_review_sha256": "10858f02e07ac3e3605885c563358204b4e1079e79267fdbfc3e877ea6323a97",
     "root_rehashed_review_pins": 3921,
     "scope": "Model-free stock BF16 vs stock F32->BF16 vs unchanged RC on captured/reconstructed qa/kva cases",
-    "GPU_executed": false,
+    "GPU_executed": true,
     "artifact_review_pending": true,
     "controller_review_pending": true,
     "failure": "component_main.zig:47:17 whitespace around binary or; no GPU/model payload execution",
@@ -1395,6 +1395,21 @@
     "artifact_sha256": "6b702a30629cc0acc80b22cb1c05dcf4dd8e2c00c0ba261bc725f03f70c722ef",
     "artifact_bytes": 12198024,
     "elapsed_seconds": 68.96006033301819,
-    "materialized_files": 994
+    "materialized_files": 994,
+    "GPU_session": 31986,
+    "GPU_exit_code": 0,
+    "independent_artifact_review_sha256": "0a1b0192a6c77d0c7d2f84de119cb0383782a94d24a462ed6f671c7abe83319d",
+    "root_rehashed_artifact_review_pins": 4922,
+    "independent_package_review_sha256": "e7dd2e6c0364d6ac53f7841026a53b49283e085c6482f9ca860a5ec9d18e2974",
+    "root_rehashed_package_review_pins": 21,
+    "controller_review_sha256": "404d89df3216cbe266fc91b8dceb6feea4ac03f26e9aff8160760b8e8360d6b8",
+    "root_rehashed_controller_review_pins": 18,
+    "root_rehashed_controller_detail_pins": 83,
+    "root_rehashed_approval_consumer_pins": 59,
+    "actual_review_sha256": "d05f750c88e663c60ce6e56f00e8bccd917858c31673fcf83b8dea54719f59ff",
+    "root_rehashed_actual_review_pins": 211,
+    "owned_processes_and_leases_closed": true,
+    "primary_raw_observation": "All four cases stock F32->BF16 equals RC exactly. StockBF16 reproduces34-row differences; independent own-input mathematical review pending.",
+    "serving_parity_qualified": false
   }
 }
