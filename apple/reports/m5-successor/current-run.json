@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T01:51:18.512552+00:00",
+  "updated_utc": "2026-10-15T02:00:28.760289+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -72,13 +72,14 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "saved_checkpoint": 277,
+    "saved_checkpoint": 310,
     "worker_pid": 47890,
-    "elapsed": "21:00:31",
-    "worker_cpu": "891:54.74",
-    "worker_rss_kib": 18487408,
+    "elapsed": "21:14:47",
+    "worker_cpu": "901:48.32",
+    "worker_rss_kib": 18764576,
     "backward_layer": 40,
-    "history_audit_checkpoint": 255
+    "history_audit_checkpoint": 255,
+    "latest_root_replay_checkpoint": 303
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -1270,7 +1271,14 @@
     "artifact_sha256": "373abb1ac8acfc7b9b432d70e84a01fc7c07db8146b305c30a472e40e473c3ba",
     "artifact_bytes": 25607720,
     "build_elapsed_seconds": 358.8238798750099,
-    "artifact_executed": false
+    "artifact_executed": false,
+    "independent_artifact_review_sha256": "91736160b970d896db7875b64c17fb9fe01d6d44ddcc330c568d30ca14fff99d",
+    "root_rehashed_artifact_review_inputs": 4062,
+    "independent_package_review_sha256": "9a79aa8adf6ecc445c9ded2fd396a24a7b1cf9eeb0b37606dbc665f3ec9d5f8f",
+    "root_rehashed_package_review_inputs": 21,
+    "package_files": 6,
+    "package_bytes": 252642456,
+    "controller_review_status": "prepublication lifecycle gaps under repair; no GPU launch"
   },
   "final_full16_evaluator_preparation": {
     "original_lane": "final458-evaluation-v1",
@@ -1308,5 +1316,14 @@
     "independently_peer_reviewed_history_through": 255,
     "different_panel_from_26_pair_report": true,
     "heldout_or_generated_quality_claim": false
+  },
+  "first_divergence_CPU_reference": {
+    "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/first-divergence-projection-reference-v1",
+    "root_review_sha256": "c60959e955cb4300a48ec84373ee09e2268c85c2f92c8f4ab07a77d79266188c",
+    "author_pins_verified": 26,
+    "root_rerun_CPU_tests": 14,
+    "scope": "descriptive own-input CPU reference after capture provenance and trace controls",
+    "actual_operands_read": false,
+    "numerical_pass_threshold": null
   }
 }
