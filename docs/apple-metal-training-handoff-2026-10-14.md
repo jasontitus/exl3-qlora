@@ -1,3 +1,19 @@
+## Update: portable attention numerical replay passed; full-serving workspace reduction underway
+
+The three actual portable attention captures were independently replayed against the reviewed mathematical references. All reports, 33 F64 arrays (13,123,776 values), grouped addressing and selected Decimal QK/softmax/PV/end-to-end checks agreed. Root rehashed all 287 review inputs (SHA `559fb37dffabccb7a1992649288c69dc574cc9e2b83761afa9eac1d206604c88`).
+
+| Case | Portable maximum own-input reference error | Preserved old maximum error |
+| --- | ---: | ---: |
+| Target S1 | 0.000000805 | 3.59664 |
+| Repeated S34 | 0.000000805 | 3.59664 |
+| Heterogeneous S34 | 0.000000954 | 3.59664 |
+
+Masks match exactly and invalid exponents are zero. These are descriptive numerical results for three uncompressed fixtures, with no fabricated unchanged-route control or retroactively chosen acceptance threshold. They do not establish full-serving, compressed-index, expert, adapter, long-context or generated-quality behavior. The original failed bitwise serving gate remains preserved.
+
+The full-serving candidate also replaces unsupported expert-prefill operations with the existing bounded path. A CPU build caught a runtime function-selection type error; the failed source/build remain preserved and corrected v2 linked successfully (artifact `3fd62b23a6ffb05242cc61ffebe0522b8fee3c08799d660da4ba3fc5b7341f1e`), without invocation. New pure CPU accounting puts the fixed16K scheduler envelope at about 51.89 GiB, exceeding the old 40 GiB process cap. A proposed 64 GiB process profile retains nativebox80/reserve32, but fresh outer availability was only 71.659 GiB versus its 96 GiB startup requirement. It was not launched. Tiling stock index scoring reduces the candidate calculated scheduler envelope to39.912 GiB. Review caught a conditional route that could use untiled stock scores under that smaller estimate; corrected v4 applies tiling to every stock-index route. Final source/accounting review and native linking remain pending. A separate42 GiB process proposal adds about2.088 GiB above that calculation, requires fresh outer availability>=74 GiB, and preserves nativebox80/reserve32. No full-model job has launched; there is no reserve reduction or prompt truncation.
+
+Read-only physical-memory ownership identified sfideas PID11591 (about13 GiB) and WatchAI PID8585 (about2.1 GiB); both remain running. Our compiler was about4.5 GiB. Current M5 training remains alive at saved225/458; independently audited history222 records180 exact edits+42 diagnostics and410086 target presentations. Source collection remains paused.
+
 ## Update: portable attention device captures complete; numerical review next
 
 The reviewed portable component completed all three captured/reconstructed cases on the Studio, without model loading. Independent actual capture review passed (SHA `b999c5997722949b43cc31b2e1aec6f9ebd0c77abfe067b3280f1b5446f0f6a5`, 168 inputs rehashed by root). All three owned leases released; independent and root fresh process checks found recorded IDs absent and the shared lock free. Maximum observed aggregate RSS was 982,646,784 bytes, below the 4 GiB process check; the 32 GiB reserve remained intact. Sampled memory is not a hard OS quota.
