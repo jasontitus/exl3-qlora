@@ -2989,7 +2989,7 @@
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
     "id": "time-weighted-pilot-v2",
-    "status": "authorized_data_and_concrete_recipe_preparation",
+    "status": "cold2_launched",
     "user_authorized": true,
     "starting_adapter": "original458_weights_fresh_optimizer",
     "comparison_adapter": "original458_matching_completed_generation_outputs",
@@ -3009,9 +3009,27 @@
     "cold_probe": "two_rewritten_complete_items_disposable_endpoint",
     "runtime": "unchanged_runtime-v5",
     "resources": "reviewed_MLX80GiB_process_8GiB_reserve",
-    "no_GPU_launched_yet": true,
+    "no_GPU_launched_yet": false,
     "ETA": "Provisional2-3hours_first_comparison_refine_after_token_lengths_and_cold_cost",
-    "confirmation_opened": false
+    "confirmation_opened": false,
+    "data_review_sha256": "2ec9992df133aad8d2f3c6d367190cca3e1ddbdd20b1152c35edf8b7bd5e0c21",
+    "data_review_pins_verified": 34,
+    "remote_request_pins_verified": 119,
+    "prelaunch_available_gib": 99.63739013671875,
+    "proposed_training_phase_minutes": [
+      15,
+      25
+    ],
+    "product_commit": "a50b9496",
+    "cold_session": 56259,
+    "cold_launched_utc": "2026-10-15T22:48:54.007176+00:00",
+    "cold_request_sha256": "59d977ab6142b1a8cdd2ae0ca18afa9fd3757647d5253f9ba1b442d1453f9c49",
+    "cold_review_sha256": "8d60da151f2ab1ff3cd367216d16b7b079cd674d83d392c4a7c96172106e4804",
+    "cold_review_pins_root_verified": 65,
+    "cold_wrapper_pid": 24609,
+    "cold_worker_pid": 24612,
+    "cold_status": "alive_model_and_prefix_identity_verification",
+    "remote_root": "/Volumes/Scratch/exl3-training/2026-10-15/time-weighted-pilot-v2"
   },
   "completed_targeted_profile_pilot_v1": {
     "status": "completed_reviewed_report_no_pilot_extension",
