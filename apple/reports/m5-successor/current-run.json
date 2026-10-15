@@ -2988,7 +2988,7 @@
   },
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
-    "status": "cold_probe_running",
+    "status": "cold_probe_completed_pending_actual_audit",
     "user_authorized": true,
     "starting_adapter": "original229-example458-update",
     "comparison_adapter": "same_original458",
@@ -3019,7 +3019,7 @@
     "main_launched": false,
     "parallel_evaluation": {
       "task": "profile-guided-rotation-v1",
-      "status": "development_controls_independently_accepted_profile_request_under_review",
+      "status": "old458_profile_omitted_generation_running",
       "controls_session": 42604,
       "controls_exit_code": 0,
       "owned_release": true,
@@ -3030,7 +3030,19 @@
       "raw_baseline_positive_exact": true,
       "confirmation_opened": false,
       "actual_review_sha256": "1c0a9b59707c98e6fbde62a91da74d14d16c2cccc4f5e44c4c1c3760b4db7132",
-      "actual_review_pins_root_verified": 212
+      "actual_review_pins_root_verified": 212,
+      "profile_session": 73013,
+      "profile_request_sha256": "6ba176fb15dc1001345331bb1fd3ddea79b93bbc768c06686e75b7c9842a96a6",
+      "profile_review_sha256": "e353b892e2e77f3849fc4c761a14f9e52f1c7674ad4a6855d5bc5bd642ddda89",
+      "profile_review_pins_root_verified": 243,
+      "profile_exit_code": 0,
+      "profile_batches": 420,
+      "profile_dispatches": 42000,
+      "profile_actual_review_sha256": "d460b5863551dc0a44911052c4d79dfffd8b8b06a0630fcd66bd2147d487b039",
+      "profile_actual_pins_root_verified": 677,
+      "old458_omitted_session": 38207,
+      "old458_omitted_review_sha256": "e87f509296e18e15a0ed498dad4b46ab6d95371778734ebd8ae47fa1072503a3",
+      "old458_omitted_review_pins_root_verified": 761
     },
     "cold_first_update": {
       "step": 1,
@@ -3040,6 +3052,16 @@
       "elapsed_seconds": 305.8914784581866,
       "peak_mlx_gib": 40.49468636512756,
       "interpretation": "cost-probe receipt; not a generated-quality result"
-    }
+    },
+    "cold_exit_code": 0,
+    "cold_updates_completed": 3,
+    "cold_training_seconds": 596.2730162912048,
+    "cold_peak_mlx_gib": 40.49468636512756,
+    "cold_wrapper_seconds_approx": 746.5,
+    "cold_disk_hits": 0,
+    "cold_disk_misses": 3,
+    "cold_disk_writes": 3,
+    "cold_capture": "kernel-library/next-round-v5/targeted-profile-pilot-v1/cold-capture-v1/receipt.json",
+    "cold_factors_finite": true
   }
 }
