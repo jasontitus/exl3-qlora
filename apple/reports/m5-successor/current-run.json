@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T15:12:02.804505+00:00",
+  "updated_utc": "2026-10-15T15:43:58.168756+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2227,6 +2227,55 @@
       "owned_lease_released": true,
       "independent_outcome_review": "pending"
     },
-    "training_started": false
+    "training_started": false,
+    "user_revised_experiment_matrix": {
+      "learning_rate": 2.5e-05,
+      "updates_per_arm": 188,
+      "seed": 8,
+      "arms": [
+        {
+          "layers": [
+            39
+          ],
+          "rank": 4,
+          "alpha": 8,
+          "question": "lower_learning_rate_configuration"
+        },
+        {
+          "layers": [
+            39
+          ],
+          "rank": 8,
+          "alpha": 16,
+          "question": "capacity"
+        },
+        {
+          "layers": [
+            38,
+            39
+          ],
+          "rank": 4,
+          "alpha": 8,
+          "question": "depth_requires_cold_cache_and_resource_pilot"
+        }
+      ],
+      "repeat_old_5e_5_training": false,
+      "existing458_reference": "broader generated-quality panel, not unseen dev41 or isolated LR comparison",
+      "training_started": false
+    },
+    "parallel_studio_evaluation": {
+      "status": "functional_task_and_resource_preparation",
+      "tasks": [
+        "new fused affine-ReLU row reduction",
+        "new row RMS reduction"
+      ],
+      "source_collection": "paused",
+      "Qwen": "parked"
+    },
+    "preflight_preparation_issue": {
+      "GPU_launched": false,
+      "cause": "metadata hashing helper32MiB reader limit rejects legitimate46.5MB manifest",
+      "fix": "bounded streaminghash correction in preparation, pinned training runtime unchanged"
+    }
   }
 }
