@@ -157,3 +157,8 @@ The M5 cross-run qualification controls are installed and three complete origina
 
 
 The independently reviewed actual M5 phase1 request launched through the unchanged shared lease wrapper (root session73103; wrapper40325, worker40328). Fresh prelaunch headroom was105.26GiB and the229-entry metadata inventory was unchanged. The actual worker loaded all40 layers and began full model-payload hashing. Cache hits and phase completion are not yet demonstrated; phase2 remains gated on phase1 outcome. Studio evaluation session44309 remains live. The actual Studio cache-seeding outcome independently passed its68-pin review, including six tampered-evidence negatives.
+
+
+## Fresh-process cache qualification: first phase measured
+
+M5 phase1 completed three complete-item updates with3 disk hits,0 misses,0 writes,743,277,191 activation bytes read, and unchanged metadata for all229 prior cache entries. Model-identity hashing took about147seconds; the training timer then measured89.004seconds for the three updates (9747,2570,96 supervised targets). Peak MLX allocation was69.6165GiB. The wrapper exited0 and released/verified cleanup. Step3 saved adapter, optimizer, RNG and trainer state; bounded CPU checks found78,848 adapter and157,697 optimizer floating values finite, with contiguous tensor payloads. Resume phase remains pending independent outcome/concrete-request review. This qualifies a first-phase cross-run cache hit, not prediction reload parity, uninterrupted trajectory equality, or generated-kernel quality.
