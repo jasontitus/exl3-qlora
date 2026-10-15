@@ -2,6 +2,8 @@
 
 ## Current status — 2026-10-15 UTC
 
+At 06:28 UTC the independently reviewed corrected M5 six-phase operation started. Fresh launch admission passed, and root confirmed controller 56933, frontend 56970 and native inference process 56985 live in the first baseline phase. The exact 130-pin execution consumer and 510-pin concrete audit are recorded. This is a running control test, not a generated-quality outcome.
+
 The corrected v3 package completed actual M5 CPU preparation, default request validation and memory admission at 06:24 UTC. All 14 prepared JSON artifacts (374,295 bytes) and the 129-pin plan are captured for independent concrete review before GPU execution. Both prior failed lanes remain preserved; neither changed the trained model.
 
 The corrected v2 source passed the real frontend import regression, but actual CPU preparation then refused a stale embedded binding-contract checksum after namespace rebasing. No GPU lease or model load occurred. The failed v2 lane is preserved. The next correction must include full preparation coverage and agreement between embedded checksums and actual path-bound files; isolated source tests were insufficient.
