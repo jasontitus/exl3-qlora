@@ -2989,7 +2989,7 @@
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
     "id": "time-weighted-pilot-v2",
-    "status": "step24_timing_complete_step48_continuation_launched",
+    "status": "step48_completed_pending_capture_and_evaluation",
     "user_authorized": true,
     "starting_adapter": "original458_weights_fresh_optimizer",
     "comparison_adapter": "original458_matching_completed_generation_outputs",
@@ -3089,7 +3089,7 @@
     "profile_omitted_review_sha256": "c651f223c108e7d305acd3180ca00d61302882a61f11ee6e1e9a79d8581aab2c",
     "profile_omitted_review_pins_root_verified": 831,
     "second_epoch_preparation": {
-      "status": "launched",
+      "status": "completed_remote_exact_reload_pending_capture_audit",
       "target_total_updates": 48,
       "additional_updates": 24,
       "initialization": "resume_step24_with_optimizer_state",
@@ -3104,7 +3104,11 @@
       "review_pins_root_verified": 21,
       "remote_pins_verified": 121,
       "prelaunch_available_bytes": 107940413440,
-      "launch_recorded_utc": "2026-10-15T23:38:42.269709+00:00"
+      "launch_recorded_utc": "2026-10-15T23:38:42.269709+00:00",
+      "reported_final_step": 48,
+      "reported_reload_exact": true,
+      "reported_peak_mlx_gib": 41.01428324356675,
+      "reported_last_update_seconds": 316.5327617081348
     },
     "profile_omitted_exit_code": 0,
     "profile_omitted_output_ids": 476,
@@ -3118,7 +3122,11 @@
     "profile_present_numeric_actual_pins_root_verified": 356,
     "profile_omitted_historical_reuse_review_sha256": "755ba06bc09e6a95ff57d351f5ce6ab9d141d8c99ad2d81a8ddb86a472cc29af",
     "profile_present_timing_session": 10077,
-    "profile_present_timing_exit_code": 0
+    "profile_present_timing_exit_code": 0,
+    "step24_comparison_review_sha256": "4ddbaa405de3f78cdf8002078d5a28bbb7534a453fb3270c6d2e9a4370e99d1c",
+    "step24_comparison_pins_root_verified": 21,
+    "step24_selection": "retain_original458_no_demonstrated_replacement_benefit",
+    "step24_product_report": "publish-exl3/apple/reports/time-weighted-pilot-v2/README.md"
   },
   "completed_targeted_profile_pilot_v1": {
     "status": "completed_reviewed_report_no_pilot_extension",

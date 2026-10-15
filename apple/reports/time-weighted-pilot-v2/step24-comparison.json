@@ -1,0 +1,529 @@
+{
+  "cells": [
+    {
+      "comparison_cell": "old458/profile_omitted",
+      "equal_case_invocation_ratio_of_sums": 2.343052902221554,
+      "measured_pairs": 360,
+      "measurement_condition": "old458/profile_omitted",
+      "measurement_scope": "original_reference_window",
+      "per_case": [
+        {
+          "baseline_median_us": 4.4691667426377535,
+          "candidate_median_us": 3.990000113844871,
+          "case": "case-00",
+          "paired_ratio_median": 1.1221945152192223,
+          "ratio_of_sums": 1.1243955839313993,
+          "sum_baseline_seconds": 0.00013225749833509326,
+          "sum_candidate_seconds": 0.00011762541602365673
+        },
+        {
+          "baseline_median_us": 4.740624572150409,
+          "candidate_median_us": 4.239166155457497,
+          "case": "case-01",
+          "paired_ratio_median": 1.1183781496699128,
+          "ratio_of_sums": 1.1039088890929176,
+          "sum_baseline_seconds": 0.0001376758306287229,
+          "sum_candidate_seconds": 0.000124716660939157
+        },
+        {
+          "baseline_median_us": 4.564374685287476,
+          "candidate_median_us": 4.0870829252526155,
+          "case": "case-02",
+          "paired_ratio_median": 1.1169705145196596,
+          "ratio_of_sums": 1.110520672212984,
+          "sum_baseline_seconds": 0.00013713541789911688,
+          "sum_candidate_seconds": 0.00012348749674856663
+        },
+        {
+          "baseline_median_us": 5.057916860096157,
+          "candidate_median_us": 4.431875422596932,
+          "case": "case-03",
+          "paired_ratio_median": 1.1396465548025505,
+          "ratio_of_sums": 1.1272089352427883,
+          "sum_baseline_seconds": 0.0001480170909781009,
+          "sum_candidate_seconds": 0.00013131291489116849
+        },
+        {
+          "baseline_median_us": 4.971666494384408,
+          "candidate_median_us": 4.451250424608588,
+          "case": "case-04",
+          "paired_ratio_median": 1.1180457247442024,
+          "ratio_of_sums": 1.1111794837736237,
+          "sum_baseline_seconds": 0.0001481845846865326,
+          "sum_candidate_seconds": 0.00013335791998542846
+        },
+        {
+          "baseline_median_us": 5.314374575391412,
+          "candidate_median_us": 4.671874921768905,
+          "case": "case-05",
+          "paired_ratio_median": 1.1368942273532248,
+          "ratio_of_sums": 1.1393052238997774,
+          "sum_baseline_seconds": 0.00015925208455882966,
+          "sum_candidate_seconds": 0.00013978000031784177
+        },
+        {
+          "baseline_median_us": 5.317291943356395,
+          "candidate_median_us": 4.658958641812204,
+          "case": "case-06",
+          "paired_ratio_median": 1.140934701001892,
+          "ratio_of_sums": 1.1498300218622834,
+          "sum_baseline_seconds": 0.00015980625175870955,
+          "sum_candidate_seconds": 0.00013898250064812602
+        },
+        {
+          "baseline_median_us": 8.068333845585585,
+          "candidate_median_us": 5.746458191424608,
+          "case": "case-07",
+          "paired_ratio_median": 1.4049077856103218,
+          "ratio_of_sums": 1.398737997587375,
+          "sum_baseline_seconds": 0.00024115000036545098,
+          "sum_candidate_seconds": 0.00017240541172213852
+        },
+        {
+          "baseline_median_us": 5.597916315309703,
+          "candidate_median_us": 4.959999932907522,
+          "case": "case-08",
+          "paired_ratio_median": 1.1287926310001692,
+          "ratio_of_sums": 1.1447405571376559,
+          "sum_baseline_seconds": 0.0001685224985703826,
+          "sum_candidate_seconds": 0.00014721457846462728
+        },
+        {
+          "baseline_median_us": 54.37312531284987,
+          "candidate_median_us": 20.93687537126243,
+          "case": "case-09",
+          "paired_ratio_median": 2.5964784127032607,
+          "ratio_of_sums": 2.6078265095800965,
+          "sum_baseline_seconds": 0.0016306445864029229,
+          "sum_candidate_seconds": 0.0006252887530717999
+        },
+        {
+          "baseline_median_us": 83.87812471482903,
+          "candidate_median_us": 23.810416460037228,
+          "case": "case-10",
+          "paired_ratio_median": 3.204948674837837,
+          "ratio_of_sums": 3.2555011162459704,
+          "sum_baseline_seconds": 0.0025032049987930806,
+          "sum_candidate_seconds": 0.0007689154171384871
+        },
+        {
+          "baseline_median_us": 90.16312484163791,
+          "candidate_median_us": 28.007916407659646,
+          "case": "case-11",
+          "paired_ratio_median": 3.0003367087618895,
+          "ratio_of_sums": 3.0414749364613125,
+          "sum_baseline_seconds": 0.0025265608297195285,
+          "sum_candidate_seconds": 0.000830702498788014
+        }
+      ],
+      "review_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/actual-audit-q-v1/review-v1.json",
+      "review_sha256": "d3c3e217fac65f310727fb592fff7d4162bc584245b7ba10868d1af289d6f531",
+      "sum_baseline_seconds_per_dispatch_samples": 0.00809241167269647,
+      "sum_candidate_seconds_per_dispatch_samples": 0.0034537895687390117
+    },
+    {
+      "comparison_cell": "old458/profile_present",
+      "equal_case_invocation_ratio_of_sums": 2.2973711343648886,
+      "measured_pairs": 360,
+      "measurement_condition": "old458/profile_present",
+      "measurement_scope": "original_reference_window",
+      "per_case": [
+        {
+          "baseline_median_us": 4.6550005208700895,
+          "candidate_median_us": 4.424374783411622,
+          "case": "case-00",
+          "paired_ratio_median": 1.052150905746776,
+          "ratio_of_sums": 1.0520995427093096,
+          "sum_baseline_seconds": 0.00013959124800749122,
+          "sum_candidate_seconds": 0.0001326787460129708
+        },
+        {
+          "baseline_median_us": 4.6375003876164556,
+          "candidate_median_us": 4.245625459589064,
+          "case": "case-01",
+          "paired_ratio_median": 1.0550673914536004,
+          "ratio_of_sums": 1.0568539057475932,
+          "sum_baseline_seconds": 0.0001328179135452956,
+          "sum_candidate_seconds": 0.00012567291734740137
+        },
+        {
+          "baseline_median_us": 4.907083930447698,
+          "candidate_median_us": 4.666459280997515,
+          "case": "case-02",
+          "paired_ratio_median": 1.0517742672489503,
+          "ratio_of_sums": 1.057494761774043,
+          "sum_baseline_seconds": 0.00014775625430047513,
+          "sum_candidate_seconds": 0.00013972291839309037
+        },
+        {
+          "baseline_median_us": 5.207082722336054,
+          "candidate_median_us": 4.817500011995435,
+          "case": "case-03",
+          "paired_ratio_median": 1.080890474087778,
+          "ratio_of_sums": 1.0776817536790453,
+          "sum_baseline_seconds": 0.00015533750061877072,
+          "sum_candidate_seconds": 0.00014414042001590133
+        },
+        {
+          "baseline_median_us": 5.144999595358968,
+          "candidate_median_us": 4.8450008034706125,
+          "case": "case-04",
+          "paired_ratio_median": 1.0630241337292519,
+          "ratio_of_sums": 1.0644683861051127,
+          "sum_baseline_seconds": 0.00015467125340364873,
+          "sum_candidate_seconds": 0.00014530375483445823
+        },
+        {
+          "baseline_median_us": 5.507500027306378,
+          "candidate_median_us": 5.06770855281502,
+          "case": "case-05",
+          "paired_ratio_median": 1.0872093928624569,
+          "ratio_of_sums": 1.0966003363586792,
+          "sum_baseline_seconds": 0.0001656624989118427,
+          "sum_candidate_seconds": 0.00015106916660442948
+        },
+        {
+          "baseline_median_us": 5.5008335039019585,
+          "candidate_median_us": 5.065833684056997,
+          "case": "case-06",
+          "paired_ratio_median": 1.0860338857690421,
+          "ratio_of_sums": 1.0793606028483171,
+          "sum_baseline_seconds": 0.0001640245853923261,
+          "sum_candidate_seconds": 0.0001519645843654871
+        },
+        {
+          "baseline_median_us": 8.18750006146729,
+          "candidate_median_us": 6.022083107382059,
+          "case": "case-07",
+          "paired_ratio_median": 1.3594934527965818,
+          "ratio_of_sums": 1.3557361428727694,
+          "sum_baseline_seconds": 0.00024626833735965194,
+          "sum_candidate_seconds": 0.00018164916429668664
+        },
+        {
+          "baseline_median_us": 5.6795834098011255,
+          "candidate_median_us": 5.2787503227591515,
+          "case": "case-08",
+          "paired_ratio_median": 1.0759578082238426,
+          "ratio_of_sums": 1.0583320895794095,
+          "sum_baseline_seconds": 0.0001680137519724667,
+          "sum_candidate_seconds": 0.00015875333803705872
+        },
+        {
+          "baseline_median_us": 51.94625002332032,
+          "candidate_median_us": 18.787500448524952,
+          "case": "case-09",
+          "paired_ratio_median": 2.5964019522923305,
+          "ratio_of_sums": 2.656112152184522,
+          "sum_baseline_seconds": 0.0014286729227751494,
+          "sum_candidate_seconds": 0.0005378812493290752
+        },
+        {
+          "baseline_median_us": 83.64020846784115,
+          "candidate_median_us": 23.572291247546673,
+          "case": "case-10",
+          "paired_ratio_median": 3.1485489901985124,
+          "ratio_of_sums": 3.298944010088793,
+          "sum_baseline_seconds": 0.0024769337533507496,
+          "sum_candidate_seconds": 0.0007508262479677797
+        },
+        {
+          "baseline_median_us": 80.30854107346386,
+          "candidate_median_us": 24.12458241451532,
+          "case": "case-11",
+          "paired_ratio_median": 3.216086716037661,
+          "ratio_of_sums": 3.124410858535141,
+          "sum_baseline_seconds": 0.0024124695803038774,
+          "sum_candidate_seconds": 0.0007721358328126371
+        }
+      ],
+      "review_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/actual-audit-q-v1/review-v1.json",
+      "review_sha256": "fb321f834d19be9165796f41dd581689fa7599574896564305e1637a3e57143b",
+      "sum_baseline_seconds_per_dispatch_samples": 0.007792219599941746,
+      "sum_candidate_seconds_per_dispatch_samples": 0.003391798340016976
+    },
+    {
+      "comparison_cell": "time_weighted_v2/profile_present",
+      "equal_case_invocation_ratio_of_sums": 2.3533432947966006,
+      "measured_pairs": 360,
+      "measurement_condition": "time_weighted_v2/profile_present",
+      "measurement_scope": "current_measured_window",
+      "per_case": [
+        {
+          "baseline_median_us": 4.685208550654351,
+          "candidate_median_us": 4.026875249110162,
+          "case": "case-00",
+          "paired_ratio_median": 1.1646840098120368,
+          "ratio_of_sums": 1.175461263271476,
+          "sum_baseline_seconds": 0.0001399866642896086,
+          "sum_candidate_seconds": 0.00011909083579666912
+        },
+        {
+          "baseline_median_us": 4.812916740775108,
+          "candidate_median_us": 4.157083458267152,
+          "case": "case-01",
+          "paired_ratio_median": 1.1627623175669983,
+          "ratio_of_sums": 1.1486462699398943,
+          "sum_baseline_seconds": 0.00014753499533981084,
+          "sum_candidate_seconds": 0.00012844249722547828
+        },
+        {
+          "baseline_median_us": 4.650207702070475,
+          "candidate_median_us": 4.241666756570339,
+          "case": "case-02",
+          "paired_ratio_median": 1.1323559194090058,
+          "ratio_of_sums": 1.0666582822107098,
+          "sum_baseline_seconds": 0.0001350491656921804,
+          "sum_candidate_seconds": 0.0001266095880419016
+        },
+        {
+          "baseline_median_us": 5.245624925009906,
+          "candidate_median_us": 4.4908333802595735,
+          "case": "case-03",
+          "paired_ratio_median": 1.1674323094412142,
+          "ratio_of_sums": 1.1630335060781294,
+          "sum_baseline_seconds": 0.00015121083240956067,
+          "sum_candidate_seconds": 0.0001300141669344157
+        },
+        {
+          "baseline_median_us": 5.2189582493156195,
+          "candidate_median_us": 4.521249793469906,
+          "case": "case-04",
+          "paired_ratio_median": 1.1534245594343688,
+          "ratio_of_sums": 1.1590011259498727,
+          "sum_baseline_seconds": 0.00015511250239796937,
+          "sum_candidate_seconds": 0.0001338329177815467
+        },
+        {
+          "baseline_median_us": 5.554375238716602,
+          "candidate_median_us": 4.917082842439413,
+          "case": "case-05",
+          "paired_ratio_median": 1.1113000648712312,
+          "ratio_of_sums": 1.1003612673701306,
+          "sum_baseline_seconds": 0.00015585333225317299,
+          "sum_candidate_seconds": 0.0001416383299510926
+        },
+        {
+          "baseline_median_us": 5.55937469471246,
+          "candidate_median_us": 4.7637493116781116,
+          "case": "case-06",
+          "paired_ratio_median": 1.1544080890416075,
+          "ratio_of_sums": 1.1276407712192964,
+          "sum_baseline_seconds": 0.00016199875390157103,
+          "sum_candidate_seconds": 0.00014366166782565416
+        },
+        {
+          "baseline_median_us": 8.184999460354447,
+          "candidate_median_us": 5.714583094231785,
+          "case": "case-07",
+          "paired_ratio_median": 1.432370358643606,
+          "ratio_of_sums": 1.4485708149139933,
+          "sum_baseline_seconds": 0.00024560457793995735,
+          "sum_candidate_seconds": 0.0001695495832245797
+        },
+        {
+          "baseline_median_us": 5.786041729152203,
+          "candidate_median_us": 4.976041382178664,
+          "case": "case-08",
+          "paired_ratio_median": 1.1486274810090316,
+          "ratio_of_sums": 1.1749459219054939,
+          "sum_baseline_seconds": 0.00017414166824892164,
+          "sum_candidate_seconds": 0.00014821249642409383
+        },
+        {
+          "baseline_median_us": 53.83895768318325,
+          "candidate_median_us": 18.348125740885735,
+          "case": "case-09",
+          "paired_ratio_median": 2.629003535694081,
+          "ratio_of_sums": 2.732376680820624,
+          "sum_baseline_seconds": 0.0014614116656593977,
+          "sum_candidate_seconds": 0.0005348499992396682
+        },
+        {
+          "baseline_median_us": 87.66979211941361,
+          "candidate_median_us": 23.515416542068124,
+          "case": "case-10",
+          "paired_ratio_median": 3.2250807864628355,
+          "ratio_of_sums": 3.395844397811446,
+          "sum_baseline_seconds": 0.0026041895837988706,
+          "sum_candidate_seconds": 0.0007668754155747593
+        },
+        {
+          "baseline_median_us": 75.18020807765426,
+          "candidate_median_us": 25.071249692700807,
+          "case": "case-11",
+          "paired_ratio_median": 2.956744887830382,
+          "ratio_of_sums": 2.912414921980353,
+          "sum_baseline_seconds": 0.002354297920828685,
+          "sum_candidate_seconds": 0.0008083662472199649
+        }
+      ],
+      "review_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/candidate-timing-v1/profile-present-operation-v1/actual-audit-q-v1/review-v1.json",
+      "review_sha256": "1f483acaf3f11f7e5eb6f450ee56df31aa026f884071c8a0bea38fb1057f3b86",
+      "sum_baseline_seconds_per_dispatch_samples": 0.007886391662759708,
+      "sum_candidate_seconds_per_dispatch_samples": 0.0033511437452398243
+    },
+    {
+      "comparison_cell": "time_weighted_v2/profile_omitted",
+      "equal_case_invocation_ratio_of_sums": 2.3153829996660433,
+      "measured_pairs": 360,
+      "measurement_condition": "pilot/profile_omitted",
+      "measurement_scope": "historical_identical_artifact_association_no_new_sample",
+      "per_case": [
+        {
+          "baseline_median_us": 4.699166747741401,
+          "candidate_median_us": 4.03875019401312,
+          "case": "case-00",
+          "paired_ratio_median": 1.1636419814078063,
+          "ratio_of_sums": 1.164198579607341,
+          "sum_baseline_seconds": 0.0001385600003413856,
+          "sum_candidate_seconds": 0.0001190174964722246
+        },
+        {
+          "baseline_median_us": 4.754583351314068,
+          "candidate_median_us": 4.1397917084395885,
+          "case": "case-01",
+          "paired_ratio_median": 1.1490255223843397,
+          "ratio_of_sums": 1.2327671116554106,
+          "sum_baseline_seconds": 0.0001532283308915794,
+          "sum_candidate_seconds": 0.0001242962514515966
+        },
+        {
+          "baseline_median_us": 4.939583595842123,
+          "candidate_median_us": 4.260624991729856,
+          "case": "case-02",
+          "paired_ratio_median": 1.1596188257736961,
+          "ratio_of_sums": 1.1916336905651488,
+          "sum_baseline_seconds": 0.0001456841710023582,
+          "sum_candidate_seconds": 0.00012225583428516985
+        },
+        {
+          "baseline_median_us": 5.26999996509403,
+          "candidate_median_us": 4.50249994173646,
+          "case": "case-03",
+          "paired_ratio_median": 1.170830835528693,
+          "ratio_of_sums": 1.0978641543732184,
+          "sum_baseline_seconds": 0.00015099291573278606,
+          "sum_candidate_seconds": 0.00013753333245404066
+        },
+        {
+          "baseline_median_us": 5.207916838116944,
+          "candidate_median_us": 4.502499941736459,
+          "case": "case-04",
+          "paired_ratio_median": 1.15341471838999,
+          "ratio_of_sums": 1.1125277710627033,
+          "sum_baseline_seconds": 0.00015237458399496972,
+          "sum_candidate_seconds": 0.000136962499236688
+        },
+        {
+          "baseline_median_us": 5.597083363682032,
+          "candidate_median_us": 4.793124971911311,
+          "case": "case-05",
+          "paired_ratio_median": 1.166427784897217,
+          "ratio_of_sums": 1.1233882700366618,
+          "sum_baseline_seconds": 0.0001627466653008014,
+          "sum_candidate_seconds": 0.00014487125212326647
+        },
+        {
+          "baseline_median_us": 5.582083249464631,
+          "candidate_median_us": 4.768541548401117,
+          "case": "case-06",
+          "paired_ratio_median": 1.170227807685627,
+          "ratio_of_sums": 1.1773087910048123,
+          "sum_baseline_seconds": 0.00016765416832640768,
+          "sum_candidate_seconds": 0.00014240458374843002
+        },
+        {
+          "baseline_median_us": 8.204166661016643,
+          "candidate_median_us": 5.7258340530097485,
+          "case": "case-07",
+          "paired_ratio_median": 1.4324021283873025,
+          "ratio_of_sums": 1.4220590822804382,
+          "sum_baseline_seconds": 0.00024462082888931035,
+          "sum_candidate_seconds": 0.000172018752200529
+        },
+        {
+          "baseline_median_us": 5.692916456609964,
+          "candidate_median_us": 4.946875269524754,
+          "case": "case-08",
+          "paired_ratio_median": 1.1506693547287008,
+          "ratio_of_sums": 1.1596819729143026,
+          "sum_baseline_seconds": 0.000172731252387166,
+          "sum_candidate_seconds": 0.00014894708758220076
+        },
+        {
+          "baseline_median_us": 53.73541731387377,
+          "candidate_median_us": 20.698750158771873,
+          "case": "case-09",
+          "paired_ratio_median": 2.5877323387686912,
+          "ratio_of_sums": 2.6210041905477204,
+          "sum_baseline_seconds": 0.0014582350058481098,
+          "sum_candidate_seconds": 0.0005563650035765022
+        },
+        {
+          "baseline_median_us": 88.20104121696204,
+          "candidate_median_us": 27.66145800705999,
+          "case": "case-10",
+          "paired_ratio_median": 3.1001331022239462,
+          "ratio_of_sums": 3.11782751504815,
+          "sum_baseline_seconds": 0.0025946612493135033,
+          "sum_candidate_seconds": 0.0008322016650345177
+        },
+        {
+          "baseline_median_us": 85.03916673362255,
+          "candidate_median_us": 28.091874555684626,
+          "case": "case-11",
+          "paired_ratio_median": 3.0115624966897903,
+          "ratio_of_sums": 2.9705913491603364,
+          "sum_baseline_seconds": 0.0025565416680183263,
+          "sum_candidate_seconds": 0.0008606170851271599
+        }
+      ],
+      "review_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/pilot-omitted-operation-v1/actual-audit-q-v1/review-v1.json",
+      "review_sha256": "bac1e7b4708298cd272be7bb5c98a3de2619a22825ce42e221b9c0475462f285",
+      "sum_baseline_seconds_per_dispatch_samples": 0.008098030840046705,
+      "sum_candidate_seconds_per_dispatch_samples": 0.0034974908432923255
+    }
+  ],
+  "confirmation_opened": false,
+  "findings": [],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/actual-audit-q-v1/recomputed.json": "a6e99681f1940516caae80d5a3ed16df98e7a46b4516b93b91be357ca005a868",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/actual-audit-q-v1/review-v1.json": "d3c3e217fac65f310727fb592fff7d4162bc584245b7ba10868d1af289d6f531",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/actual-v1/native/receipt.json": "5b5b530b38370dd18b27cf30db7a392743ec159b352146f06fb5efa37bc92cd2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/actual-audit-q-v1/recomputed.json": "88425ad85c31c87d62b3a1527f8f59bfb8acf4156af7cd333fb71d040bc3d12a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/actual-audit-q-v1/review-v1.json": "fb321f834d19be9165796f41dd581689fa7599574896564305e1637a3e57143b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/actual-v1/native/receipt.json": "f87c3f3c411ec26b8569f5edb64d10afb3f284bcda99478f65165b2be14553a4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/pilot-omitted-operation-v1/actual-audit-q-v1/recomputed.json": "21483d508173cfcd8596e089d691e0b001768d0e049c9c0cfde188049a7f04e2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/pilot-omitted-operation-v1/actual-audit-q-v1/review-v1.json": "bac1e7b4708298cd272be7bb5c98a3de2619a22825ce42e221b9c0475462f285",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/pilot-omitted-operation-v1/actual-v1/native/receipt.json": "c22977a39fc060666f1f8aee82e32b28732e409512d3c15fadbad3441f769065",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/candidate-timing-v1/profile-present-operation-v1/actual-audit-q-v1/recomputed.json": "6bca1c6aeaf984faa87d82abdda9aceb48262233a8ba8cb99d9295260f319056",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/candidate-timing-v1/profile-present-operation-v1/actual-audit-q-v1/review-v1.json": "1f483acaf3f11f7e5eb6f450ee56df31aa026f884071c8a0bea38fb1057f3b86",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/candidate-timing-v1/profile-present-operation-v1/actual-v1/native/receipt.json": "74cc5c94f72dd2dadcd1892f0adfe504d45c4b82df775b7e265009523c63c8a8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/candidate-v1/omitted-reuse-q-v1/review-v1.json": "755ba06bc09e6a95ff57d351f5ce6ab9d141d8c99ad2d81a8ddb86a472cc29af",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/candidate-v1/profile-omitted-source-review-v1.json": "d29fc4a396e69454561c00696d5c0e25dfd56833fd504108811f396afae69e2e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/candidate-v1/profile-present-source-review-v1.json": "7f8af9fa66bae6c11f5ab99a75e26551aad438dd5282efd384a1d82f9e289bc4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/evaluation-prep-v2/profile_omitted/actual-audit-q-v1/capture.json": "5f5aedf3a0f90a508d7eb388ae757413db401699770f29b1c70086b83cd610c8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/evaluation-prep-v2/profile_omitted/actual-audit-q-v1/response.json": "9fd3b2ccc680419c074ec8ca5c3b587d41bd3eb1693c381467c4a9e326433f92",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/evaluation-prep-v2/profile_present/actual-audit-q-v1/capture.json": "a6ada22439cb805cfa13b1a845903173582e5b362157b6343b6d73bf238506e7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/evaluation-prep-v2/profile_present/actual-audit-q-v1/response.json": "e9854f87eec6d983abc8db0fe7cb45955319e2060c5ff7bc0e1a98be3acb3943",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/evaluation-registration.json": "a32dc51d30fcbb25073ab3dfe0cc34314a203dabed1be16568d46755acd3ec92",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/main-audit-q-v1/review-v1.json": "93ef22f752c2875aeeb136df52eff7a78c51db1195c941de3a03313afc5f95fe"
+  },
+  "interpretation": [
+    "All generated source is scalar xy16x16; both step24 outputs reproduce an existing rotation mapping. Current present passed12 exact numerical cases and all840 timing batches.",
+    "Omitted output is byte-identical to prior pilot/omitted kernel and dispatch. Its historical performance is associated through exact identity; no new numerical/timing run or independent sample is invented.",
+    "Relative-to-curator ratios are favorable, but original458 already emits the same mechanism. Separate measurement windows and this single reused development task do not demonstrate a useful adapter advantage or causal training effect.",
+    "The profile-present rationale identifies scalar division/modulo removal and alignment constraints. Launch/memory bottleneck claims are not established by counters, and same256 group size does not prove identical padded thread count across shapes. No post-outcome rationale score is added."
+  ],
+  "metric": "Sum of360 measured baseline per-dispatch durations divided by sum of matching candidate durations; equal invocation weight across12 cases. Not mean of speedup ratios or observed production traffic.",
+  "new_GPU_actions": false,
+  "omitted_historical_reuse": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/candidate-v1/omitted-reuse-q-v1/review-v1.json",
+    "sha256": "755ba06bc09e6a95ff57d351f5ce6ab9d141d8c99ad2d81a8ddb86a472cc29af"
+  },
+  "reviewer": "quality_research",
+  "schema": "time-weighted-v2-step24-scoped-comparison-review-v1",
+  "selection": "Retain original458 on the completed step24 evidence; no demonstrated replacement benefit. The user-authorized exact step24-to48 continuation is a separate pending-strength experiment and does not change this conclusion retrospectively.",
+  "status": "accepted_complete_step24_development_comparison_no_new_winner"
+}
