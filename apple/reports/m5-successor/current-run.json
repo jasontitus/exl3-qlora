@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T16:28:27.042842+00:00",
+  "updated_utc": "2026-10-15T16:50:42.438357+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2143,7 +2143,7 @@
     "completed_report": "generated-kernel-outcome-v1.json"
   },
   "next_cached_screen": {
-    "status": "training_75_updates_complete_Studio_both_outputs_EOS_replay_pending",
+    "status": "M5_training146of188_Studio_step104_quality_sample_running",
     "proposed_training_rows": 188,
     "proposed_development_rows": 41,
     "boundary": 39,
@@ -2264,7 +2264,7 @@
       "training_started": true
     },
     "parallel_studio_evaluation": {
-      "status": "both_samples_completed_EOS_exact_replay_pending",
+      "status": "strict_both_failed_trained_diagnostic215of224_base_alignment_rejected",
       "task": "affine_relu_sum",
       "controls": {
         "baseline_passed": 224,
@@ -2306,7 +2306,15 @@
         "trained hunk count mismatch",
         "base wrapper differs from literal protocol"
       ],
-      "mechanical_only_diagnostic": "separate reviewed extraction/count normalization planned, no shell/code edits"
+      "mechanical_only_diagnostic": "separate reviewed extraction/count normalization planned, no shell/code edits",
+      "trained_numeric": {
+        "passed_cases": 215,
+        "failed_cases": 9,
+        "outside_tolerance_values": 12,
+        "scope": "mechanically_normalized_code_unchanged_diagnostic",
+        "independent_review_sha256": "6b9c11a73f62ac6f9dd520db8a09edab51cd01c4cb137214087aa7580371291b"
+      },
+      "base_source_alignment_accepted": false
     },
     "preflight_preparation_issue": {
       "GPU_launched": false,
@@ -2332,7 +2340,7 @@
       ],
       "full41_baseline_skipped": true,
       "exec_session_id": 85011,
-      "completed_updates_observed": 75,
+      "completed_updates_observed": 146,
       "no_duplicate_launch": true,
       "observed_utc": "2026-10-15T15:53:46.293078+00:00",
       "startup_payload_hash_seconds": 148.3,
@@ -2343,10 +2351,10 @@
       "progress_log": "wrapper.json.stderr.log",
       "first_three_update_seconds": 81.9520020831842,
       "peak_mlx_gib_observed": 70.0758602693677,
-      "gradient_norm_last_observed": 0.07094652950763702,
-      "last_loss_observed": 0.30581361055374146,
-      "cache_hits_observed": 76,
-      "update_elapsed_seconds_observed": 1724.9371971250512
+      "gradient_norm_last_observed": 0.09182215481996536,
+      "last_loss_observed": 0.354972243309021,
+      "cache_hits_observed": 147,
+      "update_elapsed_seconds_observed": 3196.738237666199
     },
     "user_priority": "best useful adapter soonest; actual quality rather than controlled sweep",
     "full41_zeroB_baseline_required": false,
@@ -2355,6 +2363,22 @@
       "native_800b_support": false,
       "reason": "Native loader hard-requires rank4 alpha8 layer39 attention only",
       "action": "Inspect minimal serving extension before training rank8; preserve existingengine/results"
+    },
+    "early_quality_snapshot": {
+      "step": 104,
+      "path": "kernel-library/next-round-v5/practical-lr25-r4-v1/quality-snapshots/step-000104",
+      "adapter_sha256": "fab231aca662ba64f072c93f82b643203e5e91b991b6fd889e71ca9436d72c75",
+      "transfer_verified": true,
+      "status": "single_sample_running",
+      "operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine-lr25-step104-v1",
+      "controller_pid": 60790,
+      "frontend_pid": 60832,
+      "native_pid": 60843,
+      "exec_session_id": 14727,
+      "outer_sha256": "b3bc1d5fc952cbb39464cdadcd323cb694a3a47a43a181c8c48de11c8ee1fc8c",
+      "review_sha256": "8465e03e1927faafa079144dbad0b8ea2576edace0f5f10d6abf3c728852841e",
+      "fresh_preclaim_passed": true,
+      "base_rerun": false
     }
   }
 }
