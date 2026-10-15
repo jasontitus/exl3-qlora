@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T01:22:51.737201+00:00",
+  "updated_utc": "2026-10-15T01:26:23.615495+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1109,7 +1109,7 @@
     "all_masks_exact_invalid_exponents_zero": true,
     "acceptance_threshold": null,
     "full_serving_qualified": false,
-    "memory_status": "Fresh streamv2admission passed; first native PID82952 confirmedlive/model loading. Rootsession86232running, no completion/parity claim.",
+    "memory_status": "Fourphasesexecuted underunchanged42/82/32; terminal numericalstrictcachefailure, notmemoryrefusal. Allownedreleased/5PIDsabsent/sharedlockfree.",
     "serving_v2_cpu_link": "terminal0; artifact3fd62b23a6ffb05242cc61ffebe0522b8fee3c08799d660da4ba3fc5b7341f1e; notexecuted",
     "tiled_index_scalar_scheduler_bytes": 42855428945,
     "tiled_index_scalar_status": "Corrected v4 all-stock routes independently bound to CPU accounting; empirical fit pending.",
@@ -1129,10 +1129,21 @@
       "independent_new_peak_rss_bytes": 174276608,
       "root_admission_only": "passed",
       "root_execution_session": 86232,
-      "root_execution_status": "running_last_poll",
+      "root_execution_status": "terminal_exit1_strict_cache_parity_failure",
       "first_native_pid": 82952,
       "native_liveness_confirmed": true,
-      "strict_parity_gate_unchanged": true
+      "strict_parity_gate_unchanged": true,
+      "root_execution_exit_code": 1,
+      "completed_phases": 4,
+      "zeroB33_bitwise_equal_all_three_positions": true,
+      "cached_fresh_max_absolute_error": 0.125,
+      "cached_fresh_mean_absolute_error": 0.02225271263298127,
+      "cached_fresh_argmax_equal": true,
+      "cached_fresh_different_values": 95220,
+      "owned_lease_receipts_released": 4,
+      "recorded_processes_absent": 5,
+      "shared_lock_absent": true,
+      "full_serving_qualified": false
     }
   },
   "historical_history_audits": [

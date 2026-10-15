@@ -1,3 +1,9 @@
+## Update: repaired serving passed zero-B control, failed strict cached/fresh gate
+
+The reviewed streaming-validation operation ran four owned phases and then stopped with exit1 at the unchanged strict comparison. For the33-token prompt, absent and zero-B runs matched all129,280 logits bitwise at positions33,34,36. The first cached/fresh comparison at34 differed in95,220 values: maximum absolute error0.125, mean0.0222527, same argmax. The former failure had maximum13.21875 with differing argmax; reduced discrepancy is not a pass. No tolerance was widened, and14 remaining phases did not execute. All three cached variants generated the same short counting output; this is not kernel-quality evidence.
+
+The first phase sampled maximum aggregate RSS19.705 GiB and minimum reclaimable availability45.043 GiB, with all samples passing. Root session86232 is terminal. Four owned lease receipts record release; fresh ps found all five recorded IDs absent and the shared lock absent. Evidence is preserved under `short-serving-operation150-portable42-box82-stream-v2`, including `root-terminal-observation-v1.json`. Independent actual review and source-driven residual diagnosis follow before another device operation. M5 training is unchanged.
+
 ## Update: first epoch complete; repaired full-serving regression started
 
 Captured history237 independently reconstructs all229 complete views (186 exact edits,43 diagnostics), plus eight repeated presentations. Supervised presentations total436,390 tokens. Root rehashed31 review inputs (`ad34d14761339a3c224127aa53e56d6b1755a73ad2b5e1fde6f96a5758d65bee`). The first/repeat elapsed-time ratio has median12.9679 for eight pairs; this is descriptive, not isolated cache causality or an end-of-run ETA.
