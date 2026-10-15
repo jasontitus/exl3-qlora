@@ -1,4 +1,18 @@
-# M5 evaluation preparation — 2026-10-13
+# M5 training and evaluation progress
+
+## Current status — 2026-10-15 UTC
+
+The active run uses **229 complete training examples: 186 exact edits and 43 diagnostics**, with 458 planned updates (two exposures per item). Only layer 39 attention projections `wq_a` and `wo_b` have rank-4 LoRA adapters: 78,848 trainable parameters. The latest direct process observation found M5 worker 47890 live at saved update **392/458**. The full model participates in forward computation; this is not training all layers. New source collection remains paused.
+
+Independent history review covers 378 saved updates and all 229 distinct examples. Of 149 repeated examples, 148 have lower pre-update loss and one has higher loss. Token-weighted loss across these matched presentations decreased from 0.3395719511 to 0.3279653023 (**3.418%**). This is training-fit evidence on a growing panel, not a held-out result or a fixed-panel trend across reports. The review is recorded in `apple/reports/m5-successor/current-run.json` with its exact source and capture identities.
+
+The earlier update-150 evaluation used four fixed held-out items. Its aggregate NLL improved 7.90%, but added-code NLL improved only 4.34%, with equal total correct added-code predictions; most aggregate improvement came from boilerplate. It did not demonstrate better generated kernels or reasoning. Final evaluation will use all 16 frozen held-out items, comparing the final adapter with a matched zero-B control in fresh processes. The held-out set has only five rationale tokens, so it cannot establish broad reasoning improvement.
+
+Generated-output evaluation is still pending an inference investigation. The completed four-process diagnostic preserves identical weights and input prefixes; tracing does not change results. Cached and fresh routes retain a small numerical difference. CPU own-input replay narrows the main first-layer discrepancy to the fresh route's first two quantized projections; staged normalization and KV normalization/RoPE match the captured results. Independent mathematical replay and a small model-free GPU test are in progress. These observations do not qualify the serving engine or prove a root cause. Training continues unchanged on M5 while Studio investigates.
+
+Preserved historical milestones follow. Their statements about pending launches, source collection and the earlier 198-item campaign apply to their recorded stage, not the current run.
+
+## Historical preparation — 2026-10-13
 
 The sealed next run contains 198 training items (159 exact edits and 39 diagnostic items), with 16 protected held-out items and 396 planned updates. The M5 campaign launched on October 13 at 17:25 PDT after full checkpoint verification and independent concrete launch review. Its longest-item preflight is currently initializing; main training updates have not yet been observed. See the latest campaign section below; earlier sections retain historical review milestones.
 
