@@ -6,8 +6,8 @@ The completed layer39 run measured20.6384hours for its first229 presentations an
 
 ## Immediate order
 
-1. Finish checkpoint458 evaluation against the already completed full16 baseline. Historical rank8/alpha16 provenance stays explicit; four actual rank4 zero-B cases exactly reproduce11077targets and full supervised-logit hashes.
-2. Qualify reuse of the existing M5 boundary39 cache across a fresh independent experiment. Check immutable model/implementation/platform/arithmetic binding, exact full token keys and train/recompute mode. Record cache coverage and actual disk/RAM hits before claiming fast cross-run training.
+1. Completed: checkpoint458 evaluation against the full16 baseline. Added-Metal NLL improved 5.08%, without a code top-1 accuracy gain or generated-quality claim. Historical rank8/alpha16 provenance remains explicit; four actual rank4 zero-B cases exactly reproduce 11,077 targets and full supervised-logit hashes.
+2. Completed on three complete items: fresh-process boundary39 cache reuse and native optimizer resume. All six updates hit disk cache with no misses or writes. The remaining 226 entries have current metadata/key evidence, rather than fresh-process tensor validation.
 3. Prefer boundary39 trials varying learning rate, rank/alpha, epoch count or sampler order. Each trial resets adapters, optimizer, RNG and sampler independently. Changing suffix configuration must not change frozen-prefix behavior. New texts require new entries; sampling the same exact items does not.
 4. Prepare boundary38 cold/warm pilot only as a measured capacity/cost extension. The earlier proposal for layers38–39 remains preparation, not a launched campaign. Broader scope needs a clear expected-benefit argument relative to the available cached trials.
 5. Build additional boundary families36/38 only after that comparison. Never use a boundary39 hidden state as input before38 or36.
@@ -31,3 +31,7 @@ For each proposed trial record expected benefit and its evidence, earliest train
 Do not repeatedly select hyperparameters against the protected16testitems and continue calling them an untouched final test. Before a broad sweep, declare a separate development validation split from current training material grouped by change lineage (including exact/diagnostic siblings), reset each trial independently, and retain the protected16for a fixed final comparison. These are future trial splits; no completed229/16campaign data is changed. Frozen-prefix caches contain no earlier learned adapter contribution, so compatible entries for a newly reserved development item can still be reused without optimizing that item. Standard train/eval cache mode separation remains mandatory unless a separate explicitly qualified validation-in-training-arithmetic protocol is introduced.
 
 Source collection remains paused. Existing final baselines, held-out data, unrelated workloads and memory reserves remain preserved.
+
+## Development split tooling
+
+The reviewed [CPU development-split planner](../apple/docs/development-split.md) is now in the product checkout. It creates a metadata-only proposal while preserving known change families and reporting unresolved exclusions. The current proposal has 41 development and 188 future-training rows, with all 11 training repositories in both partitions. It is not activated. Because checkpoint458 saw all 229 items, use this split only for fresh trials. Run proposal tooling outside the pinned worker environment; installing new package files into that worker would change its current implementation binding.
