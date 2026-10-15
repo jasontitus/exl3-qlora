@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T18:51:38.713002+00:00",
+  "updated_utc": "2026-10-15T19:37:17.712735+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2491,12 +2491,16 @@
         "depth_only_if_cheaper_paths_justify_it"
       ],
       "automatic_rank_or_depth_run": false,
-      "no_optimization_benefit_demonstrated": true,
+      "no_optimization_benefit_demonstrated": false,
       "source_collection": "paused",
       "qwen": "parked",
       "review_status": "accepted",
       "review_sha256": "8430cfe7cf8623b962d3848d3064750ffb748523f334faa506c5c9f537d31274",
-      "review_pins_root_verified": 17
+      "review_pins_root_verified": 17,
+      "benefit_scope": "Old458 produces a correct faster RMS kernel than base on this task; broader transfer and profile-conditioned reasoning unproven.",
+      "provisional_adapter": "old458",
+      "next_action": "Distinct strided-transpose task after strict CPU metadata validation fix; measured profile bundle in parallel; no automatic training extension",
+      "comparison": "publish-exl3/apple/reports/kernel-eval-panel-v1/rms-fullfiles-v1/comparison.md"
     },
     "profile_guided_track": {
       "status": "design_and_source_feasibility_review_accepted",
@@ -2520,7 +2524,7 @@
       },
       "M5_profile_work": {
         "user_authorized": true,
-        "status": "M5_compiled_and_nine_CPU_fixtures_validated_GPU_execution_preparing",
+        "status": "small_fixture_numerics_and_duration_evidence_independently_audited",
         "observed_utc": "2026-10-15T18:51:13.802147+00:00",
         "chip": "Apple M5 Max",
         "GPU_cores": 40,
@@ -2536,13 +2540,70 @@
         "CPU_build_receipt": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row48-m5-deployment-v1/root-M5-build-receipt.json",
         "Metal_sources_compiled": 6,
         "CPU_fixture_cases_passed": 9,
-        "GPU_executed": false,
+        "GPU_executed": true,
         "host_sha256": "b64f535b13b0b7f91c7279408167ccd47f8b14019b5838544649327285f2338e",
-        "next": "Complete reviewed owned M5 numerical/profile controller; actual GPU correctness and timings still pending"
+        "next": "Representative-size fixture staged separately; compile/execute after reviewed fresh bindings. Preserve small-case regressions.",
+        "preflight_failure_receipt": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row48-m5-operation-v1/root-preflight-failure.json",
+        "session_id": null,
+        "operation_root": "/Volumes/Scratch/exl3-training/kernel-profiles/row48-q6k-v1/operation-v2",
+        "request_sha256": "65b3d72d6810f43056297050ddfd3cf5ca205d18d243eeb2041a0dc216fd7a67",
+        "v2_review_sha256": "9c463e2b449964d448453b8428ff487a101ccc98979e8c943f846fdcd32b7d2d",
+        "root_review_pins": 109,
+        "CPU_preflight_passed": true,
+        "exit_code": 0,
+        "owned_lease_released": true,
+        "all_nine_both_numerical_passed": true,
+        "capture": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row48-m5-operation-v2/root-capture-v1",
+        "started_utc": "2026-10-15T19:13:12.918062+00:00",
+        "finished_utc": "2026-10-15T19:13:14.627700+00:00",
+        "unique_source_changes": 1,
+        "fixture_variants": 9,
+        "training_ready": false,
+        "actual_review_sha256": "c64d0d67f348367a9290dbe058e23d88494b593e89f7c768b420a9f4802a62c2",
+        "actual_review_pins_root_verified": 166,
+        "initial_outputs_verified": 416,
+        "before_after_initial_outputs_bitwise_equal": true,
+        "all_small_variants_slower_after": true,
+        "paired_before_over_after_median_range": [
+          0.78964,
+          0.95805
+        ],
+        "source_implied_dispatches": 450,
+        "saved_timing_durations": 360
+      },
+      "M5_representative_profile_work": {
+        "status": "independently_accepted_numeric_and_timing",
+        "capture": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row48-representative-m5-operation-v1/root-capture-v1",
+        "session_id": null,
+        "variants": 6,
+        "unique_source_changes": 1,
+        "owned_release_verified": true,
+        "training_ready": false,
+        "actual_review_sha256": "4b984d05d56927b8d5227e2bac70352e2e9db7e52371d78debc02b68b34c5663",
+        "actual_review_pins_root_verified": 217,
+        "initial_outputs_verified": 73728,
+        "paired_speedup_range": [
+          1.0769344678150452,
+          1.8425853446319604
+        ],
+        "report": "publish-exl3/apple/reports/profile-guided-kernels/row48-m5-v1/README.md"
+      },
+      "measured_training_draft": {
+        "path": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row48-measured-training-draft-v1",
+        "records": 2,
+        "source_lineages": 1,
+        "tokens": [
+          2987,
+          3143
+        ],
+        "status": "review_found_prospective_target_leakage_revision_required",
+        "finding": "Positive prompt includes candidate after timings; suitable only for labeled post-test selection. Baseline-only proposal revision requested; tiny feedback may retain observed candidate results.",
+        "training_ready": false,
+        "new_training_launched": false
       }
     },
     "RMS_fullfiles_evaluation": {
-      "status": "base_capture_accepted_source_and_numeric_pending",
+      "status": "generation_numerics_and_timing_independently_accepted",
       "operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rms-fullfiles-v1",
       "condition": "basezeroB458",
       "prompt_tokens": 702,
@@ -2582,10 +2643,25 @@
         "actual_review_sha256": "f2bf683f10782393b50c305e189d130623a05cafae5d62e94737a6af97c18475",
         "actual_review_pins_root_verified": 761,
         "timing_prerequisite_passed": true
+      },
+      "timing": {
+        "status": "independently_accepted",
+        "session_id": null,
+        "request_sha256": "e192df3f2e728fe945ebaf849361eee40cf039d5e38b31b630887a258d3dfbde",
+        "review_sha256": "37699530683c9a0b8743874c1ff9dd437d6f5f8697833134e27a04546aef1e87",
+        "root_verified_pins": 768,
+        "same_policy_as_old458": true,
+        "actual_review_sha256": "07f217d15c7de5bc2a12cffa5df0b0a5a9c253eb634c37081e2114dddf530b07",
+        "actual_review_pins_root_verified": 780,
+        "paired_median_speedup_range": [
+          1.0163,
+          1.1929
+        ],
+        "comparison_scope": "Each candidate compared to same scalar curator in separate execution windows; old458 better observed task optimization, not direct paired old458/base test"
       }
     },
     "RMS_old458_evaluation": {
-      "status": "capture_and_format_accepted_source_numerics_pending",
+      "status": "generation_numerics_and_timing_independently_accepted",
       "operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rms-fullfiles-old458-v1",
       "controller_pid": null,
       "frontend_pid": null,
@@ -2627,7 +2703,7 @@
         "lease_released": true,
         "path": "kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-old458-v1/timing-fullfiles-run-v1",
         "native_sha256": "572ad650a4c650588ff7ecc49f30349a7b1dd2221e78e291f427deadbd88b9f8",
-        "claim": "Unchanged generated kernel beats supplied scalar implementation on this one task; base-model/newer-adapter comparison pending",
+        "claim": "Correct faster kernel on one RMS task; stronger observed optimization than base/final188 in separate windows; code152 timing pending.",
         "actual_review_sha256": "89dd7c7997e9229cc476b27aa8fdd350c84b26fc9c081f5cf531b2b15d6aec32",
         "actual_review_pins_root_verified": 777,
         "min_paired_median_speedup": 5.06197120361333,
@@ -2637,7 +2713,7 @@
       }
     },
     "RMS_final188_evaluation": {
-      "status": "capture_and_format_accepted_source_numerics_pending",
+      "status": "generation_numerics_and_timing_independently_accepted",
       "operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rms-fullfiles-final188-v1",
       "CPU_tests_passed": 6,
       "new_GPU_job_launched": true,
@@ -2652,13 +2728,34 @@
       "output_tokens": 472,
       "format_accepted": true,
       "owned_release_verified": true,
-      "generated_quality_demonstrated": false
+      "generated_quality_demonstrated": false,
+      "numerical": {
+        "status": "independently_accepted_all224_pass",
+        "candidate_passed": 224,
+        "baseline_passed": 224,
+        "actual_review_sha256": "dec65fe9d62f348f160b42b561972c1adb5473c0965f0b8dc4e5f4b5c04284c6",
+        "root_verified_pins": 775,
+        "source_repaired": false,
+        "timing_run": false
+      },
+      "timing": {
+        "status": "independently_accepted",
+        "actual_review_sha256": "ff1e3fa21d914e0b0fc4e161dac67fcce20a3569413e8844f1cb10d5a3acd095",
+        "actual_review_pins_root_verified": 855,
+        "paired_median_speedup_range": [
+          1.09134,
+          1.19413
+        ],
+        "batches": 840,
+        "dispatches": 84000,
+        "owned_release_verified": true
+      }
     },
     "RMS_code152_evaluation": {
-      "status": "generation_complete_capture_independently_accepted",
+      "status": "generation_numerics_and_timing_independently_accepted",
       "operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rms-fullfiles-code152-v1",
       "request_sha256": "4845c9a680ea50df9a980d04279552c2953cdae40307536441386949ef2302b7",
-      "GPU_launched": false,
+      "GPU_launched": true,
       "CPU_tests_passed": 6,
       "session_id": null,
       "started_utc": "2026-10-15T18:57:40.512887+00:00",
@@ -2672,8 +2769,44 @@
       "dispatch_threads_per_row": 1,
       "actual_review_sha256": "8dba6e5fb0cdab81609d0ba506d30ab0d72a1fcdb62f44d5ea755392fb28a99e",
       "actual_review_pins_root_verified": 106,
-      "numerical_status": "not_run"
+      "numerical_status": "all224_pass_audited",
+      "numerical": {
+        "status": "independently_accepted_all224_pass",
+        "request_sha256": "0097b0d639cd03222265412caaec660616f5c383dc4ceffc0837fe867d76d7f0",
+        "review_sha256": "2fdd29c8f15367515ec086a5164d237d12b336fae20facb279a00b14d64367fb",
+        "root_verified_pins": 761,
+        "candidate_passed": 224,
+        "baseline_passed": 224,
+        "actual_review_sha256": "f056fd94e46623357337d6d5b343b7f3ed6f168c039fc23dd72e3f822855c83f",
+        "actual_review_pins_root_verified": 775,
+        "source_repaired": false,
+        "timing_run": false
+      },
+      "timing": {
+        "status": "independently_accepted",
+        "session_id": null,
+        "request_sha256": "9f116b2cc47c4558e5837e8499d5be2d6fa9e0bd3b1ed43f1f4a3a9bd8bbeaa9",
+        "root_concrete_review_sha256": "faca1482964c14e662550ad04603370ec0226b9506f90ea88c9c5df94f68cb32",
+        "root_verified_pins": 981,
+        "policy": "unchanged_5_30_100_12",
+        "controller_pid": 37339,
+        "child_pid": 37478,
+        "native_sha256": "4c633e7d6dc59e812cdd64d251e3ff88f569a76c79deccbb836bff47ee955eeb",
+        "actual_review_sha256": "8d17ca171293b705b386d0d6c8423777a95e8266ed2548f7596608084953344c",
+        "actual_review_pins_root_verified": 993,
+        "paired_median_speedup_range": [
+          1.1153309361815513,
+          1.2862181573954923
+        ],
+        "owned_release_verified": true
+      }
+    },
+    "distinct_task_next": {
+      "task": "strided_transpose",
+      "status": "CPU_oracle_and_product_helper_review_in_progress_host_v2_fix_required",
+      "finding": "v1 CPU validator accepted malformed schema/bool geometry/duplicate role/missing ID or source. Preserve v1; strict pre-device validation v2 requested.",
+      "GPU_launched": false
     }
   },
-  "last_updated_utc": "2026-10-15T18:59:33.357411+00:00"
+  "last_updated_utc": "2026-10-15T19:37:17.712735+00:00"
 }

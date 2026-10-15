@@ -1,0 +1,27 @@
+{
+  "schema": "measured-kernel-profile-summary-v1",
+  "source_lineages": 1,
+  "workload_variants": 15,
+  "device": "Apple M5 Max",
+  "policy": {
+    "warmups": 4,
+    "paired_rounds": 20
+  },
+  "reviews": [
+    {
+      "path": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row48-m5-operation-v2/actual-audit-q-v1/review-v1.json",
+      "sha256": "c64d0d67f348367a9290dbe058e23d88494b593e89f7c768b420a9f4802a62c2",
+      "pins": 166
+    },
+    {
+      "path": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row48-representative-m5-operation-v1/actual-audit-q-v1/review-v1.json",
+      "sha256": "4b984d05d56927b8d5227e2bac70352e2e9db7e52371d78debc02b68b34c5663",
+      "pins": 217
+    }
+  ],
+  "initial_outputs_verified": 74144,
+  "both_arms_bitwise_equal": true,
+  "counter_measurements": false,
+  "training_ready": false,
+  "scope": "Exploratory exact-source workload sweep; no engine throughput or shape-only causal claim."
+}

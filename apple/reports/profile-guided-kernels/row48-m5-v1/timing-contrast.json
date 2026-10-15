@@ -1,0 +1,146 @@
+{
+  "larger": [
+    {
+      "batch": 1,
+      "case": "r512-c4096-b1",
+      "cols": 4096,
+      "median_after_seconds": 2.8374837711453438e-05,
+      "median_before_seconds": 3.0499882996082306e-05,
+      "paired_median": 1.0769344678150452,
+      "rows": 512
+    },
+    {
+      "batch": 3,
+      "case": "r512-c4096-b3",
+      "cols": 4096,
+      "median_after_seconds": 3.78958648070693e-05,
+      "median_before_seconds": 6.125005893409252e-05,
+      "paired_median": 1.617245474818123,
+      "rows": 512
+    },
+    {
+      "batch": 4,
+      "case": "r512-c4096-b4",
+      "cols": 4096,
+      "median_after_seconds": 4.4187530875205994e-05,
+      "median_before_seconds": 7.687509059906006e-05,
+      "paired_median": 1.7377586134321135,
+      "rows": 512
+    },
+    {
+      "batch": 1,
+      "case": "r4096-c4096-b1",
+      "cols": 4096,
+      "median_after_seconds": 0.00010889593977481127,
+      "median_before_seconds": 0.00012097915168851614,
+      "paired_median": 1.1070677238391449,
+      "rows": 4096
+    },
+    {
+      "batch": 3,
+      "case": "r4096-c4096-b3",
+      "cols": 4096,
+      "median_after_seconds": 0.00018166657537221909,
+      "median_before_seconds": 0.00022106245160102844,
+      "paired_median": 1.3422369292258254,
+      "rows": 4096
+    },
+    {
+      "batch": 4,
+      "case": "r4096-c4096-b4",
+      "cols": 4096,
+      "median_after_seconds": 0.00019679171964526176,
+      "median_before_seconds": 0.0003415207611396909,
+      "paired_median": 1.8425853446319604,
+      "rows": 4096
+    }
+  ],
+  "limitations": [
+    "All15 workload variants retained from one source lineage. Larger cases were chosen after observing tiny slowdowns; this is exploratory workload-conditioned evidence, not an independent confirmation.",
+    "Sizes, random inputs and block-scale distributions differ between fixtures, so contrast does not isolate shape alone. SameM5Max/held kernels/NB1,3,4/4warmup20measuredpaired schedule. No overall favorable-subset score or training-ready assertion."
+  ],
+  "schema": "row48-tiny-versus-representative-descriptive-v1",
+  "tiny": [
+    {
+      "batch": 1,
+      "case": "zero-b1",
+      "cols": 256,
+      "median_after_seconds": 1.5625031664967537e-05,
+      "median_before_seconds": 1.3291602954268456e-05,
+      "paired_median": 0.8537027007122717,
+      "rows": 3
+    },
+    {
+      "batch": 3,
+      "case": "zero-b3",
+      "cols": 256,
+      "median_after_seconds": 1.552083995193243e-05,
+      "median_before_seconds": 1.3125012628734112e-05,
+      "paired_median": 0.8447046534542588,
+      "rows": 3
+    },
+    {
+      "batch": 4,
+      "case": "zero-b4",
+      "cols": 256,
+      "median_after_seconds": 1.637497916817665e-05,
+      "median_before_seconds": 1.3249926269054413e-05,
+      "paired_median": 0.8091629639726824,
+      "rows": 3
+    },
+    {
+      "batch": 1,
+      "case": "extrema-b1",
+      "cols": 512,
+      "median_after_seconds": 1.4625024050474167e-05,
+      "median_before_seconds": 1.3166572898626328e-05,
+      "paired_median": 0.8992930036847886,
+      "rows": 7
+    },
+    {
+      "batch": 3,
+      "case": "extrema-b3",
+      "cols": 512,
+      "median_after_seconds": 1.6000005416572094e-05,
+      "median_before_seconds": 1.5479163266718388e-05,
+      "paired_median": 0.843115071418427,
+      "rows": 7
+    },
+    {
+      "batch": 4,
+      "case": "extrema-b4",
+      "cols": 512,
+      "median_after_seconds": 1.654168590903282e-05,
+      "median_before_seconds": 1.3166689313948154e-05,
+      "paired_median": 0.7908839436090336,
+      "rows": 7
+    },
+    {
+      "batch": 1,
+      "case": "random-b1",
+      "cols": 4352,
+      "median_after_seconds": 1.7249956727027893e-05,
+      "median_before_seconds": 1.625006552785635e-05,
+      "paired_median": 0.958050039081935,
+      "rows": 16
+    },
+    {
+      "batch": 3,
+      "case": "random-b3",
+      "cols": 4352,
+      "median_after_seconds": 1.9083265215158463e-05,
+      "median_before_seconds": 1.6249949112534523e-05,
+      "paired_median": 0.8500553648798324,
+      "rows": 16
+    },
+    {
+      "batch": 4,
+      "case": "random-b4",
+      "cols": 4352,
+      "median_after_seconds": 2.122926525771618e-05,
+      "median_before_seconds": 1.6916776075959206e-05,
+      "paired_median": 0.7896428945444671,
+      "rows": 16
+    }
+  ]
+}

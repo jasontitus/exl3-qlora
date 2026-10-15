@@ -1,0 +1,117 @@
+{
+  "all12_observed_old458_medians_lower": true,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-fullfiles-v1/base-build-v1/build/job.json": "4ee9a14c407b46e06fe808d9f830f770c8cc80f66ae308baf83d69facd71f44c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-fullfiles-v1/old458-build-v1/build/job.json": "117a43c20d0691bcba451e1a60a8518fd4501365bf1b44e8af06cdc9630fbd5b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-base-v1/actual-audit-q-v1/review-v1.json": "07f217d15c7de5bc2a12cffa5df0b0a5a9c253eb634c37081e2114dddf530b07",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-old458-v1/actual-audit-q-v1/review-v1.json": "89dd7c7997e9229cc476b27aa8fdd350c84b26fc9c081f5cf531b2b15d6aec32",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-fullfiles-v1/base-build-v1/build/job.json": "4e194db1f6d4c52d4b5416a9223123fa29ad4c94f89c5e2b40ad813c3cbfcc0d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-fullfiles-v1/old458-build-v1/build/job.json": "489b57f36ec2cd9118bcceed9f0f091dd02c7cb8b534f338e07ac5be356d3452"
+  },
+  "limitations": [
+    "Both exact generated kernels pass224cases. Curator/candidate measurements are paired within each run; generated zeroB/old458 kernels were measured in separate runs and are not directly paired.",
+    "All12workloads retained; temporal curator drift and per-run distributions remain visible. Ratio-of-ratios is descriptive normalization, not a confidence interval or elimination of clock/thermal/order effects.",
+    "One deterministic RMS task under a matched serving prompt/base/runtime; observed optimized SIMD32 old458 output outperforms the generated scalar zeroB output here. This is task-specific output evidence, not broad reasoning ability or proof of overall adapter superiority."
+  ],
+  "same_task_workloads_policy_device_registry_curator_and_tolerance": true,
+  "schema": "rms-separate-run-descriptive-comparison-v1",
+  "status": "accepted_descriptive_comparison_not_directly_paired_speedup",
+  "workloads": [
+    {
+      "curator_base_run_over_old458_run_median_ratio": 1.0068173682148376,
+      "old458_candidate_median_seconds": 4.188854189123958e-05,
+      "ratio_of_paired_curator_normalized_medians": 10.443637587724364,
+      "unpaired_zeroB_over_old458_median_ratio": 10.49914698282267,
+      "workload": "case-09-uniform-seed0",
+      "zeroB_candidate_median_seconds": 0.000439793958212249
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 1.0004878255913017,
+      "old458_candidate_median_seconds": 4.226354183629155e-05,
+      "ratio_of_paired_curator_normalized_medians": 10.384616379776611,
+      "unpaired_zeroB_over_old458_median_ratio": 10.35432426018148,
+      "workload": "case-09-uniform-seed17",
+      "zeroB_candidate_median_seconds": 0.0004376104165567085
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 0.9737536027865571,
+      "old458_candidate_median_seconds": 4.17337502585724e-05,
+      "ratio_of_paired_curator_normalized_medians": 10.656336141927623,
+      "unpaired_zeroB_over_old458_median_ratio": 10.504367908984733,
+      "workload": "case-09-uniform-seed2026",
+      "zeroB_candidate_median_seconds": 0.0004383866669377312
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 1.0210408113538594,
+      "old458_candidate_median_seconds": 6.502083269879222e-06,
+      "ratio_of_paired_curator_normalized_medians": 4.545298576415472,
+      "unpaired_zeroB_over_old458_median_ratio": 4.651714328838097,
+      "workload": "case-10-uniform-seed0",
+      "zeroB_candidate_median_seconds": 3.024583391379565e-05
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 0.9950129223331186,
+      "old458_candidate_median_seconds": 6.568749668076635e-06,
+      "ratio_of_paired_curator_normalized_medians": 4.463154682188767,
+      "unpaired_zeroB_over_old458_median_ratio": 4.54322887692062,
+      "workload": "case-10-uniform-seed17",
+      "zeroB_candidate_median_seconds": 2.9843333177268505e-05
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 0.9987786365580738,
+      "old458_candidate_median_seconds": 6.474166293628514e-06,
+      "ratio_of_paired_curator_normalized_medians": 4.605769478129521,
+      "unpaired_zeroB_over_old458_median_ratio": 4.607221394622969,
+      "workload": "case-10-uniform-seed2026",
+      "zeroB_candidate_median_seconds": 2.982791746035218e-05
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 0.9134290830592405,
+      "old458_candidate_median_seconds": 2.0186458714306353e-05,
+      "ratio_of_paired_curator_normalized_medians": 8.91856082971268,
+      "unpaired_zeroB_over_old458_median_ratio": 7.4885699487590465,
+      "workload": "case-11-uniform-seed0",
+      "zeroB_candidate_median_seconds": 0.00015116770809981973
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 0.9161219139302758,
+      "old458_candidate_median_seconds": 2.1218541078269482e-05,
+      "ratio_of_paired_curator_normalized_medians": 8.858550334539395,
+      "unpaired_zeroB_over_old458_median_ratio": 7.83453957482333,
+      "workload": "case-11-uniform-seed17",
+      "zeroB_candidate_median_seconds": 0.00016623749979771674
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 0.9804885146557387,
+      "old458_candidate_median_seconds": 2.0968333119526504e-05,
+      "ratio_of_paired_curator_normalized_medians": 9.481103297545278,
+      "unpaired_zeroB_over_old458_median_ratio": 8.614279549232023,
+      "workload": "case-11-uniform-seed2026",
+      "zeroB_candidate_median_seconds": 0.00018062708317302168
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 0.9909599984966773,
+      "old458_candidate_median_seconds": 4.614041652530432e-05,
+      "ratio_of_paired_curator_normalized_medians": 10.661457818904486,
+      "unpaired_zeroB_over_old458_median_ratio": 10.599524134590844,
+      "workload": "case-12-uniform-seed0",
+      "zeroB_candidate_median_seconds": 0.0004890664585400373
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 1.0661446152613028,
+      "old458_candidate_median_seconds": 4.688416724093258e-05,
+      "ratio_of_paired_curator_normalized_medians": 9.78574887300385,
+      "unpaired_zeroB_over_old458_median_ratio": 11.779807364665622,
+      "workload": "case-12-uniform-seed17",
+      "zeroB_candidate_median_seconds": 0.0005522864585509523
+    },
+    {
+      "curator_base_run_over_old458_run_median_ratio": 1.1277229112421503,
+      "old458_candidate_median_seconds": 4.687208391260356e-05,
+      "ratio_of_paired_curator_normalized_medians": 10.722192600633646,
+      "unpaired_zeroB_over_old458_median_ratio": 12.375458759234498,
+      "workload": "case-12-uniform-seed2026",
+      "zeroB_candidate_median_seconds": 0.0005800635414198041
+    }
+  ]
+}
