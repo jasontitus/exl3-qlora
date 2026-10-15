@@ -1,0 +1,161 @@
+{
+  "baseline_dispatch": {
+    "layout": "linear",
+    "threads": [
+      256,
+      1
+    ]
+  },
+  "device": "Apple M1 Ultra",
+  "dispatches_per_batch": 100,
+  "measured_batches": 30,
+  "measurement": "Actual baseline-only GPU command-buffer timestamps divided by100 dispatches; warm shared-buffer measurement, not cold end-to-end latency.",
+  "unavailable": "No occupancy, bandwidth or cache counters were measured. No bottleneck classification is supplied.",
+  "warmup_batches": 5,
+  "workloads": [
+    {
+      "baseline_median_microseconds_per_dispatch": 3.8741662865504627,
+      "case": "case-00",
+      "params": [
+        1,
+        1,
+        5,
+        3,
+        2,
+        6
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 4.361458122730255,
+      "case": "case-01",
+      "params": [
+        1,
+        47,
+        53,
+        5,
+        3,
+        2
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 4.178750095888972,
+      "case": "case-02",
+      "params": [
+        47,
+        1,
+        7,
+        53,
+        2,
+        3
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 4.851250560022891,
+      "case": "case-03",
+      "params": [
+        15,
+        47,
+        53,
+        23,
+        5,
+        7
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 3.8174999644979835,
+      "case": "case-04",
+      "params": [
+        47,
+        15,
+        23,
+        53,
+        7,
+        5
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 5.1425001583993435,
+      "case": "case-05",
+      "params": [
+        79,
+        81,
+        89,
+        87,
+        1,
+        5
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 4.89312456920743,
+      "case": "case-06",
+      "params": [
+        80,
+        80,
+        83,
+        85,
+        4,
+        2
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 5.613750545307994,
+      "case": "case-07",
+      "params": [
+        191,
+        193,
+        199,
+        197,
+        3,
+        7
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 5.539999692700803,
+      "case": "case-08",
+      "params": [
+        383,
+        47,
+        53,
+        389,
+        5,
+        1
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 53.88187535572797,
+      "case": "case-09",
+      "params": [
+        384,
+        2048,
+        2053,
+        391,
+        3,
+        5
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 82.76812499389052,
+      "case": "case-10",
+      "params": [
+        768,
+        2048,
+        2057,
+        773,
+        7,
+        3
+      ]
+    },
+    {
+      "baseline_median_microseconds_per_dispatch": 83.70562514755875,
+      "case": "case-11",
+      "params": [
+        1536,
+        1024,
+        1033,
+        1541,
+        1,
+        7
+      ]
+    }
+  ]
+}

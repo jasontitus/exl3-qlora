@@ -1,0 +1,8 @@
+{
+  "format": "kernel-strided-copy-full-files-v1",
+  "rationale": "The baseline is a single scalar 32-bit copy with one division and one modulo per element. The workload includes many small and medium cases plus large cases; preserving exact bit-copy and unchanged padding rules out vectorized stores across output rows. A safe improvement is to use an xy layout so each thread computes its row and column directly from thread_position_in_grid, eliminating integer division/modulo while keeping the same scalar 32-bit copy and identical bounds/padding behavior. The 256-thread product remains within the limit, and the grid is exactly cols by rows.",
+  "files": {
+    "kernel.metal": "#include <metal_stdlib>\nusing namespace metal;\n\n// Clockwise 90-degree rotation. p: rows, cols, input stride, output stride,\n// input offset, output offset; all strides/offsets count F32 elements.\n// Output shape is cols x rows. No aliasing. Preserve every input bit.\nkernel void strided_rotate90(device const float* x [[buffer(0)]],\n                             device float* y [[buffer(1)]],\n                             constant uint* p [[buffer(2)]],\n                             uint2 tid [[thread_position_in_grid]]) {\n    uint rows = p[0];\n    uint cols = p[1];\n    uint col = tid.x;\n    uint row = tid.y;\n\n    if (row >= rows || col >= cols) return;\n\n    y[p[5] + col * p[3] + (rows - 1 - row)] =\n        x[p[4] + row * p[2] + col];\n}\n",
+    "dispatch.json": "{\n  \"layout\": \"xy\",\n  \"schema\": \"strided-copy-dispatch-v1\",\n  \"threads\": [\n    16,\n    16\n  ]\n}\n"
+  }
+}

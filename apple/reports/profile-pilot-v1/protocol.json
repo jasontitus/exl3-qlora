@@ -1,0 +1,112 @@
+{
+  "GPU_launch_authorized": false,
+  "adapter_binding": "The sole targeted pilot endpoint is the predeclared main step24, with no checkpoint selection using these evaluation outputs. Its exact accepted factor hashes must be bound before its own first generation. Original458 factors and each slot base/runtime/tokenizer are bound before that slot; original458 controls, profiling and generation do not wait for pilot completion.",
+  "adapters": [
+    "original458",
+    "targeted_pilot"
+  ],
+  "attempts_per_adapter_condition_variant": 1,
+  "conditions": [
+    "profile_omitted",
+    "profile_present"
+  ],
+  "correctness": {
+    "cases_per_variant": 12,
+    "criterion": "Exact every output uint32 including padding and signed-zero/subnormal preservation; source/ABI review, immutable inputs and canaries; both controls pass and expected negatives fail.",
+    "incomplete_invalid_unsafe_or_incorrect": "Retain failed slot; no retry or timing eligibility.",
+    "infrastructure_refusal": "Retain unresolved slot, not model quality failure."
+  },
+  "decision_scoring": {
+    "profile_use": "Separately label not_provided, accurate_reference, no_reference or unsupported_reference against only the actual supplied profile. No textual length reward.",
+    "score_0": "No verifiable mechanism or a contradicted central source/geometry claim.",
+    "score_1": "Specific correct source/workload mechanism, but generated implementation does not realize it or the explanation lacks a checkable link.",
+    "score_2": "Specific correct source/workload mechanism and generated implementation/dispatch realizes that decision; valid deliberate no-change also allowed when justified.",
+    "separate_from_correctness_and_speed": true,
+    "unsupported_claims": "List concrete claims contradicted by source/profile; absence of counters cannot justify counter claims."
+  },
+  "family": "index_permutation_same_family_as_prior_transpose_not_independent_algorithm_family",
+  "first_phase": "development_four_attempts",
+  "generation": {
+    "cap_without_eos": "retained_model_output_failure",
+    "context_tokens": 8192,
+    "engine_sha256": "800b8a3f253d4b65052b5f5e5195e5e41df7e632c70ca61751b52676eef96d2f",
+    "eos_token_ids": [
+      1
+    ],
+    "fresh_private_environment_each_attempt": true,
+    "max_new_tokens": 4096,
+    "native_box_gib": 104,
+    "process_gib": 50,
+    "reserve_gib": 32,
+    "sampling": "greedy",
+    "temperature": 0,
+    "top_p": 1,
+    "wired_gib": 8
+  },
+  "generation_order_per_variant": [
+    "original458/profile_omitted",
+    "targeted_pilot/profile_present",
+    "original458/profile_present",
+    "targeted_pilot/profile_omitted"
+  ],
+  "max_total_generation_attempts": 8,
+  "profile": {
+    "final_prompt_ids_pending_actual_profiles": true,
+    "hardware_claim_rule": "No fabricated counter or claimed bandwidth/computation bottleneck. Source/workload inference must be labelled inference.",
+    "not_collected": [
+      "GPU occupancy",
+      "bandwidth counters",
+      "cache hit counters",
+      "bottleneck classification"
+    ],
+    "omitted": "Replace only PROFILE block with literal: No measured profile is supplied. All task source, geometry, correctness requirements and output contract remain byte-identical.",
+    "present": "Only device, exact geometry, baseline dispatch, policy and per-case median latency in microseconds derived from all30 actual baseline batches. Excludes optimized controls/candidate timing and any winner labels.",
+    "schedule": {
+      "all_cases": 12,
+      "dispatches_per_batch": 100,
+      "measured_batches_per_case": 30,
+      "warmup_batches_per_case": 5
+    },
+    "source": "Actual baseline-only native GPU timestamp batches, collected and audited before any model outputs for that variant."
+  },
+  "response": {
+    "dispatch_schema": "strided-copy-dispatch-v1",
+    "entrypoint": "strided_rotate90",
+    "exact_eos_decode": true,
+    "files": [
+      "kernel.metal",
+      "dispatch.json"
+    ],
+    "format": "kernel-strided-copy-full-files-v1",
+    "no_extraction_or_repair": true,
+    "no_shell": true,
+    "rationale": "Concise optimization decision using available source/workload/profile facts; no verbosity score."
+  },
+  "retry_or_repair": false,
+  "schema": "profile-guided-rotation-evaluation-v1",
+  "selection": {
+    "confirmation_failure_retained": true,
+    "confirmation_opening": "Record development decision and exact pilot checkpoint first, then run frozen four confirmation slots without tuning or resampling.",
+    "force_winner": false,
+    "primary": "Usable correct kernels and measured latency on complete fixed workload mix; rationale score descriptive only."
+  },
+  "split": {
+    "confirmation": "confirmation/host-contract.json",
+    "confirmation_rule": "Frozen now. No model generation or feedback until the development decision is recorded; no tuning after confirmation. It is unused workload confirmation, not a claim of unseen algorithm-family generalization.",
+    "development": "development/host-contract.json",
+    "matching": "Twelve corresponding active element counts identical; aspect ratios swapped and padding/offsets/input seeds different."
+  },
+  "status": "prospective_CPU_preparation_no_launch",
+  "task": "strided_clockwise_90_degree_F32_bitcopy",
+  "timing": {
+    "all_cases": 12,
+    "cross_adapter_scope": "Separate-run comparisons descriptive, no causal generalization claim; repeat qualification not inferred.",
+    "dispatches_per_batch": 100,
+    "measured_pairs": 30,
+    "numerical_gate_required": true,
+    "ordering": "alternating baseline/candidate AB/BA",
+    "summary": "All per-case paired ratios and distributions, plus ratio of total measured baseline GPU durations to total measured candidate GPU durations for this fixed equal-case invocation mix. No favorable subset.",
+    "warmup_pairs": 5
+  },
+  "training_separation": "Synthetic task authored independently; no task source, prompts, profiles or outputs enter pilot training. Exact/normalized source and rotation markers screened against frozen229 plus new measured training draft records. This cannot prove absence from base pretraining or semantic overlap."
+}

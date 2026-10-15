@@ -1,0 +1,8 @@
+{
+  "layout": "xy",
+  "schema": "strided-copy-dispatch-v1",
+  "threads": [
+    16,
+    16
+  ]
+}

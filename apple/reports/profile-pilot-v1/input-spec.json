@@ -1,0 +1,99 @@
+{
+  "schema": "rotation-comparison-input-v1",
+  "cells": [
+    {
+      "condition": "old458/profile_omitted",
+      "state": "captured",
+      "capture": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-old458-v1/actual-audit-q-v1/capture.json",
+        "sha256": "3ff23cfd2e9648ce5c0e860bec7833715adf26edfacccd17f7cabfdd5b5b4c42"
+      },
+      "source_review": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/old458-profile-omitted-source-review-v1.json",
+        "sha256": "8f563b0b7a2bbde08f11bb157f5c349df0659f9a6eeaab80dd6f4fd71583bb4b"
+      },
+      "timing": {
+        "review": {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/actual-audit-q-v1/review-v1.json",
+          "sha256": "d3c3e217fac65f310727fb592fff7d4162bc584245b7ba10868d1af289d6f531"
+        },
+        "job": {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-build-v1/job.json",
+          "sha256": "57359e1b8b0306cc468b97d08e56353bb042df8fa0716cfc43af32f2d4fa458f"
+        },
+        "native": {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/actual-v1/native/receipt.json",
+          "sha256": "5b5b530b38370dd18b27cf30db7a392743ec159b352146f06fb5efa37bc92cd2"
+        }
+      }
+    },
+    {
+      "condition": "pilot/profile_present",
+      "state": "captured",
+      "capture": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-pilot-v1/actual-audit-q-v1/capture.json",
+        "sha256": "0089395d9bc89c9ea9ff055a71555f294693d53e1da6e1e2c13314426df11767"
+      },
+      "source_review": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/pilot-profile-present-source-review-v1.json",
+        "sha256": "d26f678933fbcf9a5c5b22080e9de7e5114efe25a97d8fc1f7bac68699293829"
+      },
+      "rationale_diagnostic": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-pilot-v1/actual-audit-q-v1/rationale-diagnostic-v1.json",
+        "sha256": "5ccb9328502a2f0f148b883c7900e95388c87e753b8d227c660589acc80e70a7"
+      }
+    },
+    {
+      "condition": "old458/profile_present",
+      "state": "captured",
+      "capture": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-old458-v1/actual-audit-q-v1/capture.json",
+        "sha256": "f600c7339771614eb359cd9759734d99e2e554f26034a4cc8df6d06e68a28db0"
+      },
+      "source_review": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/old458-profile-present-source-review-v1.json",
+        "sha256": "cbe24c70ecadc7e91b27c0b605d5ea3db1bd8f71ca187a01c423133a7de192dc"
+      },
+      "timing": {
+        "review": {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/actual-audit-q-v1/review-v1.json",
+          "sha256": "fb321f834d19be9165796f41dd581689fa7599574896564305e1637a3e57143b"
+        },
+        "job": {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-build-v1/job.json",
+          "sha256": "32db32854c16ffb2a5949ff745101bb37ebcc736d46c1018ef6fdefe668483ec"
+        },
+        "native": {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/actual-v1/native/receipt.json",
+          "sha256": "f87c3f3c411ec26b8569f5edb64d10afb3f284bcda99478f65165b2be14553a4"
+        }
+      }
+    },
+    {
+      "condition": "pilot/profile_omitted",
+      "state": "captured",
+      "capture": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-pilot-v1/actual-audit-q-v1/capture.json",
+        "sha256": "a5c8d708b5a0d3dbf64a265f4b07abcd33ba24a34f5a25222e1ee73195109c4c"
+      },
+      "source_review": {
+        "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/pilot-profile-omitted-source-review-v1.json",
+        "sha256": "56f39f2c8eb56eb0ed721cd301aae72f581fd8055c209be7d06e21fdb2cdf03e"
+      },
+      "timing": {
+        "review": {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/pilot-omitted-operation-v1/actual-audit-q-v1/review-v1.json",
+          "sha256": "bac1e7b4708298cd272be7bb5c98a3de2619a22825ce42e221b9c0475462f285"
+        },
+        "job": {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/pilot-omitted-build-v1/job.json",
+          "sha256": "1b50a7a01534999ec1c8561c022993a427aeaf5f1aa47895ddce40c259484a2f"
+        },
+        "native": {
+          "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/pilot-omitted-operation-v1/actual-v1/native/receipt.json",
+          "sha256": "c22977a39fc060666f1f8aee82e32b28732e409512d3c15fadbad3441f769065"
+        }
+      }
+    }
+  ]
+}

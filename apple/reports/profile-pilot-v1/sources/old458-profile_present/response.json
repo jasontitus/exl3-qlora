@@ -1,0 +1,8 @@
+{
+  "format": "kernel-strided-copy-full-files-v1",
+  "rationale": "The measured workload is dominated by large cases 09-11 where each thread performs one scalar load and one scalar store with a division/modulo for row/col. Switching to an xy layout with grid=[cols,rows] removes the integer division and modulo entirely, and using a 16x16 threadgroup keeps the same 256-thread product while improving locality of the output writes along the contiguous output row dimension. The copy remains a single 32-bit load and store, preserving every bit pattern and leaving all output padding untouched.",
+  "files": {
+    "kernel.metal": "#include <metal_stdlib>\nusing namespace metal;\n// Clockwise 90-degree rotation. p: rows, cols, input stride, output stride,\n// input offset, output offset; all strides/offsets count F32 elements.\n// Output shape is cols x rows. No aliasing. Preserve every input bit.\nkernel void strided_rotate90(device const float* x [[buffer(0)]],\n device float* y [[buffer(1)]], constant uint* p [[buffer(2)]],\n uint2 tid [[thread_position_in_grid]]) {\n uint rows=p[0], cols=p[1];\n uint col=tid.x, row=tid.y;\n if(col >= cols || row >= rows) return;\n y[p[5]+col*p[3]+(rows-1-row)] = x[p[4]+row*p[2]+col];\n}\n",
+    "dispatch.json": "{\n  \"layout\": \"xy\",\n  \"schema\": \"strided-copy-dispatch-v1\",\n  \"threads\": [\n    16,\n    16\n  ]\n}\n"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "format": "kernel-strided-copy-full-files-v1",
+  "rationale": "Keep the exact bit-preserving scalar copy and the baseline linear 256-thread dispatch. The measured workload is dominated by small and medium grids where launch overhead and strided access dominate; no supplied counters establish a memory or occupancy bottleneck, and vectorization is unsafe because offsets and strides are only 4-byte aligned and may be odd. Retaining the baseline avoids correctness risk and preserves all output padding.",
+  "files": {
+    "kernel.metal": "#include <metal_stdlib>\nusing namespace metal;\n// Clockwise 90-degree rotation. p: rows, cols, input stride, output stride,\n// input offset, output offset; all strides/offsets count F32 elements.\n// Output shape is cols x rows. No aliasing. Preserve every input bit.\nkernel void strided_rotate90(device const float* x [[buffer(0)]],\n device float* y [[buffer(1)]], constant uint* p [[buffer(2)]],\n uint tid [[thread_position_in_grid]]) {\n uint rows=p[0], cols=p[1];\n if(tid >= rows*cols) return;\n uint row=tid/cols, col=tid%cols;\n y[p[5]+col*p[3]+(rows-1-row)] = x[p[4]+row*p[2]+col];\n}\n",
+    "dispatch.json": "{\n  \"layout\": \"linear\",\n  \"schema\": \"strided-copy-dispatch-v1\",\n  \"threads\": [\n    256,\n    1\n  ]\n}\n"
+  }
+}

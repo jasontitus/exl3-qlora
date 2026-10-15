@@ -1,0 +1,193 @@
+{
+  "binary_fixtures_copied": false,
+  "confirmation_opened": false,
+  "copied_originals": {
+    "baseline-profile.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/development-prompts-v1/actual-profile-view.json",
+      "sha256": "929c3fea5eee62701c85db24613da020d31491dc8d3c63e705424f09136f1f8b"
+    },
+    "comparison.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/comparison-v1/report-four-slots-final-v1.json",
+      "sha256": "975e0619c47c48582ff8a6ca704539262059716ae44d38617977b401bd827085"
+    },
+    "input-spec.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/comparison-v1/inputs-four-slots-final-v1.json",
+      "sha256": "c294febb8cc84b38adc121a722d41d70c139a1fed402bdb6001c4cd3cea828f1"
+    },
+    "protocol.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/protocol.json",
+      "sha256": "54ce142f064ef331c53d8ce46381998240580fbdfb1e3d796063a3205f559fcc"
+    },
+    "selection-recommendation.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/comparison-v1/independent-q/selection-recommendation-v1.json",
+      "sha256": "a034143130cc41ef1c09ac22336a90a8afa29b89a1a1ca3933f0fdfd91a9bf1f"
+    },
+    "sources/baseline/dispatch.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/development/dispatch.json",
+      "sha256": "0d9b823783eed432219c2e4d346388a27506a7fb40796b343becf8c9825fe133"
+    },
+    "sources/baseline/kernel.metal": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/development/baseline.metal",
+      "sha256": "d7b852b283524a07cde5ca4f173769a5dc2298cc29095c85283f79d857a63002"
+    },
+    "sources/old458-profile_omitted/dispatch.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-old458-v1/actual-audit-q-v1/files/dispatch.json",
+      "sha256": "2a70858869bc054fd21a5f7c3664a57c366e6bf7fac11ca67d764d460f9b42f8"
+    },
+    "sources/old458-profile_omitted/kernel.metal": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-old458-v1/actual-audit-q-v1/files/kernel.metal",
+      "sha256": "0579239a5d4c1b898f72ef218025a7169b782cae63ada6be12b75a9aee6f88ed"
+    },
+    "sources/old458-profile_omitted/response.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-old458-v1/actual-audit-q-v1/response.json",
+      "sha256": "0dd69783d32213e79982e946c5bc6afdcc5c6972066fa8029cab7f1c2a0cb004"
+    },
+    "sources/old458-profile_present/dispatch.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-old458-v1/actual-audit-q-v1/files/dispatch.json",
+      "sha256": "2a70858869bc054fd21a5f7c3664a57c366e6bf7fac11ca67d764d460f9b42f8"
+    },
+    "sources/old458-profile_present/kernel.metal": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-old458-v1/actual-audit-q-v1/files/kernel.metal",
+      "sha256": "4d7f3008551cdcbdf89b8862900c6e7a5c193cba296ac182fe9d617daace0e97"
+    },
+    "sources/old458-profile_present/response.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-old458-v1/actual-audit-q-v1/response.json",
+      "sha256": "4a6b341f60b424f9e684955934b337d187153cab61ade6ea599286017a7fbb2f"
+    },
+    "sources/pilot-profile_omitted/dispatch.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-pilot-v1/actual-audit-q-v1/files/dispatch.json",
+      "sha256": "3c867f9effb088278eee917110d49ae547ba667e8b78f566303006e97e46c84e"
+    },
+    "sources/pilot-profile_omitted/kernel.metal": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-pilot-v1/actual-audit-q-v1/files/kernel.metal",
+      "sha256": "f5b96c1689c872c98a86714cb2c6cd393bc21efb2c47bbf3bdc85cbb00082f6f"
+    },
+    "sources/pilot-profile_omitted/response.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-pilot-v1/actual-audit-q-v1/response.json",
+      "sha256": "0ca3177d2dd39e908f089f719e9415e622bda6793b4f9763a2509a05c147e2d2"
+    },
+    "sources/pilot-profile_present/dispatch.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-pilot-v1/actual-audit-q-v1/files/dispatch.json",
+      "sha256": "0d9b823783eed432219c2e4d346388a27506a7fb40796b343becf8c9825fe133"
+    },
+    "sources/pilot-profile_present/kernel.metal": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-pilot-v1/actual-audit-q-v1/files/kernel.metal",
+      "sha256": "d7b852b283524a07cde5ca4f173769a5dc2298cc29095c85283f79d857a63002"
+    },
+    "sources/pilot-profile_present/response.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-pilot-v1/actual-audit-q-v1/response.json",
+      "sha256": "2849c6748d294858c53a1d250155174d4cea6c4ff363f8c6153dd0c30b64b0b6"
+    },
+    "workloads.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/development/host-contract.json",
+      "sha256": "deb31f90ae59d50d7c1637939cf3e1483e1ca4629726ea391e2f3196b4506941"
+    }
+  },
+  "created_utc": "2026-10-15T22:30:41.306727+00:00",
+  "decision": "retain_original458_stop_this_pilot_branch",
+  "decision_is_practical_not_causal": true,
+  "generator": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/comparison-v1/build_report.py",
+    "sha256": "76bb80fd3191bb5c0f4d98f608428a8abbc60070cdee14cfb6293d7d253e95cb"
+  },
+  "independent_reviews": {
+    "baseline_profile": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/development-profile-v1/actual-audit-q-v1/review-v1.json",
+      "sha256": "d460b5863551dc0a44911052c4d79dfffd8b8b06a0630fcd66bd2147d487b039"
+    },
+    "comparison_builder": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/comparison-v1/independent-q/review-v1.json",
+      "sha256": "d18b7b88b193b710da6fa5da40c6b6dabc0ec7f3bb9980e158e0097afffd7735"
+    },
+    "development_controls": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/development-controls-v1/actual-audit-q-v1/review-v1.json",
+      "sha256": "1c0a9b59707c98e6fbde62a91da74d14d16c2cccc4f5e44c4c1c3760b4db7132"
+    },
+    "old458/profile_omitted/capture": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-old458-v1/actual-audit-q-v1/review-v1.json",
+      "sha256": "12ec44d8095e80b5f99e58ed4a8c712d7f5ad20ceac5a1d030289ffbd3e207bd"
+    },
+    "old458/profile_omitted/source": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/old458-profile-omitted-source-review-v1.json",
+      "sha256": "8f563b0b7a2bbde08f11bb157f5c349df0659f9a6eeaab80dd6f4fd71583bb4b"
+    },
+    "old458/profile_omitted/timing": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/actual-audit-q-v1/review-v1.json",
+      "sha256": "d3c3e217fac65f310727fb592fff7d4162bc584245b7ba10868d1af289d6f531"
+    },
+    "old458/profile_present/capture": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-old458-v1/actual-audit-q-v1/review-v1.json",
+      "sha256": "7913b8a072e2a9b76093f310ebcead3b4d593647ea3e7f1032960380f6db1c9c"
+    },
+    "old458/profile_present/source": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/old458-profile-present-source-review-v1.json",
+      "sha256": "cbe24c70ecadc7e91b27c0b605d5ea3db1bd8f71ca187a01c423133a7de192dc"
+    },
+    "old458/profile_present/timing": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/actual-audit-q-v1/review-v1.json",
+      "sha256": "fb321f834d19be9165796f41dd581689fa7599574896564305e1637a3e57143b"
+    },
+    "pilot/profile_omitted/capture": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-pilot-v1/actual-audit-q-v1/review-v1.json",
+      "sha256": "0d5c9dd42cf216d500ed3f6acfd5c75377f91c4b495ce4df0cbf327abc032adf"
+    },
+    "pilot/profile_omitted/source": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/pilot-profile-omitted-source-review-v1.json",
+      "sha256": "56f39f2c8eb56eb0ed721cd301aae72f581fd8055c209be7d06e21fdb2cdf03e"
+    },
+    "pilot/profile_omitted/timing": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/pilot-omitted-operation-v1/actual-audit-q-v1/review-v1.json",
+      "sha256": "bac1e7b4708298cd272be7bb5c98a3de2619a22825ce42e221b9c0475462f285"
+    },
+    "pilot/profile_present/capture": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-pilot-v1/actual-audit-q-v1/review-v1.json",
+      "sha256": "71d1373bfff77b35da06b4d7eeda3829e759d1b1d1dee7305da4ab5c25a485c7"
+    },
+    "pilot/profile_present/source": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/pilot-profile-present-source-review-v1.json",
+      "sha256": "d26f678933fbcf9a5c5b22080e9de7e5114efe25a97d8fc1f7bac68699293829"
+    },
+    "pilot_factors": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/targeted-profile-pilot-v1/main-audit-q-v1/factor-review-v1.json",
+      "sha256": "d9aee5e60446b596a2ed99cf2387dcc85b0e57182a8f1e34a7950ece78e4ef8f"
+    },
+    "pilot_training": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/targeted-profile-pilot-v1/main-audit-q-v1/review-v1.json",
+      "sha256": "fdb7629b9cddfb2ec4ba64792c4326ae02f8683cebdb1035a89494f218a4e1ea"
+    },
+    "selection_recommendation": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/comparison-v1/independent-q/selection-recommendation-v1.json",
+      "sha256": "a034143130cc41ef1c09ac22336a90a8afa29b89a1a1ca3933f0fdfd91a9bf1f"
+    }
+  },
+  "new_training_or_generation_authorized": false,
+  "published_files_sha256": {
+    "README.md": "5e564000767e964bb01ee3b30458d160f24330a9c52695bbc2733379d99dfee0",
+    "baseline-profile.json": "929c3fea5eee62701c85db24613da020d31491dc8d3c63e705424f09136f1f8b",
+    "comparison.json": "975e0619c47c48582ff8a6ca704539262059716ae44d38617977b401bd827085",
+    "input-spec.json": "c294febb8cc84b38adc121a722d41d70c139a1fed402bdb6001c4cd3cea828f1",
+    "protocol.json": "54ce142f064ef331c53d8ce46381998240580fbdfb1e3d796063a3205f559fcc",
+    "selection-recommendation.json": "a034143130cc41ef1c09ac22336a90a8afa29b89a1a1ca3933f0fdfd91a9bf1f",
+    "sources/baseline/dispatch.json": "0d9b823783eed432219c2e4d346388a27506a7fb40796b343becf8c9825fe133",
+    "sources/baseline/kernel.metal": "d7b852b283524a07cde5ca4f173769a5dc2298cc29095c85283f79d857a63002",
+    "sources/old458-profile_omitted/dispatch.json": "2a70858869bc054fd21a5f7c3664a57c366e6bf7fac11ca67d764d460f9b42f8",
+    "sources/old458-profile_omitted/kernel.metal": "0579239a5d4c1b898f72ef218025a7169b782cae63ada6be12b75a9aee6f88ed",
+    "sources/old458-profile_omitted/response.json": "0dd69783d32213e79982e946c5bc6afdcc5c6972066fa8029cab7f1c2a0cb004",
+    "sources/old458-profile_present/dispatch.json": "2a70858869bc054fd21a5f7c3664a57c366e6bf7fac11ca67d764d460f9b42f8",
+    "sources/old458-profile_present/kernel.metal": "4d7f3008551cdcbdf89b8862900c6e7a5c193cba296ac182fe9d617daace0e97",
+    "sources/old458-profile_present/response.json": "4a6b341f60b424f9e684955934b337d187153cab61ade6ea599286017a7fbb2f",
+    "sources/pilot-profile_omitted/dispatch.json": "3c867f9effb088278eee917110d49ae547ba667e8b78f566303006e97e46c84e",
+    "sources/pilot-profile_omitted/kernel.metal": "f5b96c1689c872c98a86714cb2c6cd393bc21efb2c47bbf3bdc85cbb00082f6f",
+    "sources/pilot-profile_omitted/response.json": "0ca3177d2dd39e908f089f719e9415e622bda6793b4f9763a2509a05c147e2d2",
+    "sources/pilot-profile_present/dispatch.json": "0d9b823783eed432219c2e4d346388a27506a7fb40796b343becf8c9825fe133",
+    "sources/pilot-profile_present/kernel.metal": "d7b852b283524a07cde5ca4f173769a5dc2298cc29095c85283f79d857a63002",
+    "sources/pilot-profile_present/response.json": "2849c6748d294858c53a1d250155174d4cea6c4ff363f8c6153dd0c30b64b0b6",
+    "workloads.json": "deb31f90ae59d50d7c1637939cf3e1483e1ca4629726ea391e2f3196b4506941"
+  },
+  "rationale_scores_assigned": false,
+  "report_source": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/comparison-v1/report-four-slots-final-v1.json",
+    "sha256": "975e0619c47c48582ff8a6ca704539262059716ae44d38617977b401bd827085"
+  },
+  "schema": "profile-pilot-report-publication-v1"
+}

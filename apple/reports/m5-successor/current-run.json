@@ -2988,7 +2988,7 @@
   },
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
-    "status": "main24_independently_accepted_evaluation_in_progress",
+    "status": "completed_reviewed_report_no_pilot_extension",
     "user_authorized": true,
     "starting_adapter": "original229-example458-update",
     "comparison_adapter": "same_original458",
@@ -3019,7 +3019,7 @@
     "main_launched": true,
     "parallel_evaluation": {
       "task": "profile-guided-rotation-v1",
-      "status": "all_four_generations_complete_final_audits_and_timing",
+      "status": "completed_all_four_cells_independently_reviewed",
       "controls_session": 42604,
       "controls_exit_code": 0,
       "owned_release": true,
@@ -3129,6 +3129,23 @@
         2.5964,
         3.1485,
         3.2161
+      ],
+      "pilot_omitted_numeric_session": 40639,
+      "pilot_omitted_numeric_exit_code": 0,
+      "pilot_omitted_raw_exact_cases": 12,
+      "pilot_omitted_numeric_review_sha256": "2338b3a147f727282581f6cbc994806b277a3de6962f347fec66c093e4afde66",
+      "pilot_omitted_numeric_review_pins_root_verified": 314,
+      "pilot_omitted_numeric_actual_review_sha256": "881eda750dc8130e937e9db523974cb4c88aa0b043e7f8876f37577ae9c315d2",
+      "pilot_omitted_numeric_actual_pins_root_verified": 352,
+      "pilot_omitted_exact_cases": 12,
+      "pilot_omitted_timing_session": 37897,
+      "pilot_omitted_timing_exit_code": 0,
+      "pilot_omitted_timing_actual_review_sha256": "bac1e7b4708298cd272be7bb5c98a3de2619a22825ce42e221b9c0475462f285",
+      "pilot_omitted_timing_actual_pins_root_verified": 1239,
+      "pilot_omitted_large_case_ratios": [
+        2.58773,
+        3.10013,
+        3.01156
       ]
     },
     "cold_first_update": {
@@ -3179,6 +3196,11 @@
     "main_factor_review_sha256": "d9aee5e60446b596a2ed99cf2387dcc85b0e57182a8f1e34a7950ece78e4ef8f",
     "main_factor_review_pins_root_verified": 5,
     "main_supervised_targets": 30351,
-    "main_training_cache_hits": 24
+    "main_training_cache_hits": 24,
+    "decision": "retain_original458_do_not_extend_pilot",
+    "quality_claim": "No demonstrated improvement from pilot on rotation development task; profile-present pilot retained baseline",
+    "report": "publish-exl3/apple/reports/profile-pilot-v1/README.md",
+    "final_report_review_sha256": "970025e75b72dbb0bdd9725a528ea44cdd792920088ce08003b616899b25e0ad",
+    "final_report_review_pins_root_verified": 88
   }
 }

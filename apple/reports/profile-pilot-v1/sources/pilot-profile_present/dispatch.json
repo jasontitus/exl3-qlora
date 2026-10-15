@@ -1,0 +1,8 @@
+{
+  "layout": "linear",
+  "schema": "strided-copy-dispatch-v1",
+  "threads": [
+    256,
+    1
+  ]
+}

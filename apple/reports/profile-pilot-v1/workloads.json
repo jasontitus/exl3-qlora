@@ -1,0 +1,381 @@
+{
+  "cases": [
+    {
+      "id": "case-00",
+      "output_bytes": 68,
+      "params": [
+        1,
+        1,
+        5,
+        3,
+        2,
+        6
+      ],
+      "params_file": "00-params.bin",
+      "reference": "00-reference.bin",
+      "timing": true,
+      "x": "00-x.bin"
+    },
+    {
+      "id": "case-01",
+      "output_bytes": 980,
+      "params": [
+        1,
+        47,
+        53,
+        5,
+        3,
+        2
+      ],
+      "params_file": "01-params.bin",
+      "reference": "01-reference.bin",
+      "timing": true,
+      "x": "01-x.bin"
+    },
+    {
+      "id": "case-02",
+      "output_bytes": 256,
+      "params": [
+        47,
+        1,
+        7,
+        53,
+        2,
+        3
+      ],
+      "params_file": "02-params.bin",
+      "reference": "02-reference.bin",
+      "timing": true,
+      "x": "02-x.bin"
+    },
+    {
+      "id": "case-03",
+      "output_bytes": 4384,
+      "params": [
+        15,
+        47,
+        53,
+        23,
+        5,
+        7
+      ],
+      "params_file": "03-params.bin",
+      "reference": "03-reference.bin",
+      "timing": true,
+      "x": "03-x.bin"
+    },
+    {
+      "id": "case-04",
+      "output_bytes": 3232,
+      "params": [
+        47,
+        15,
+        23,
+        53,
+        7,
+        5
+      ],
+      "params_file": "04-params.bin",
+      "reference": "04-reference.bin",
+      "timing": true,
+      "x": "04-x.bin"
+    },
+    {
+      "id": "case-05",
+      "output_bytes": 28240,
+      "params": [
+        79,
+        81,
+        89,
+        87,
+        1,
+        5
+      ],
+      "params_file": "05-params.bin",
+      "reference": "05-reference.bin",
+      "timing": true,
+      "x": "05-x.bin"
+    },
+    {
+      "id": "case-06",
+      "output_bytes": 27240,
+      "params": [
+        80,
+        80,
+        83,
+        85,
+        4,
+        2
+      ],
+      "params_file": "06-params.bin",
+      "reference": "06-reference.bin",
+      "timing": true,
+      "x": "06-x.bin"
+    },
+    {
+      "id": "case-07",
+      "output_bytes": 152144,
+      "params": [
+        191,
+        193,
+        199,
+        197,
+        3,
+        7
+      ],
+      "params_file": "07-params.bin",
+      "reference": "07-reference.bin",
+      "timing": true,
+      "x": "07-x.bin"
+    },
+    {
+      "id": "case-08",
+      "output_bytes": 73168,
+      "params": [
+        383,
+        47,
+        53,
+        389,
+        5,
+        1
+      ],
+      "params_file": "08-params.bin",
+      "reference": "08-reference.bin",
+      "timing": true,
+      "x": "08-x.bin"
+    },
+    {
+      "id": "case-09",
+      "output_bytes": 3203124,
+      "params": [
+        384,
+        2048,
+        2053,
+        391,
+        3,
+        5
+      ],
+      "params_file": "09-params.bin",
+      "reference": "09-reference.bin",
+      "timing": true,
+      "x": "09-x.bin"
+    },
+    {
+      "id": "case-10",
+      "output_bytes": 6332460,
+      "params": [
+        768,
+        2048,
+        2057,
+        773,
+        7,
+        3
+      ],
+      "params_file": "10-params.bin",
+      "reference": "10-reference.bin",
+      "timing": true,
+      "x": "10-x.bin"
+    },
+    {
+      "id": "case-11",
+      "output_bytes": 6311996,
+      "params": [
+        1536,
+        1024,
+        1033,
+        1541,
+        1,
+        7
+      ],
+      "params_file": "11-params.bin",
+      "reference": "11-reference.bin",
+      "timing": true,
+      "x": "11-x.bin"
+    }
+  ],
+  "comparison": "all output uint32 bits exact including padding and guard slots",
+  "controls": [
+    {
+      "name": "baseline",
+      "source": "baseline.metal"
+    },
+    {
+      "name": "positive",
+      "source": "positive.metal"
+    },
+    {
+      "name": "negative-packed",
+      "source": "negative-packed.metal"
+    },
+    {
+      "name": "negative-tail",
+      "source": "negative-tail.metal"
+    }
+  ],
+  "device_executed": false,
+  "files": {
+    "00-params.bin": {
+      "bytes": 24,
+      "sha256": "94f370f05ca13894e2b5b8a06407f352e1afa70132c638b88712935a5d3fac9b"
+    },
+    "00-reference.bin": {
+      "bytes": 68,
+      "sha256": "d29d303ae3c7dc0ad526bce850f2b0b519436cd1b583f6cee1077fae4f1abd4d"
+    },
+    "00-x.bin": {
+      "bytes": 60,
+      "sha256": "09cd2bb8735fbbed539062b959faf7879a5ad60ddfc0df8391314830b4593adc"
+    },
+    "01-params.bin": {
+      "bytes": 24,
+      "sha256": "0ef662025f1bf2c1b70a9add57fe32ba79b71b7cec6f4b61cf370298d8a81345"
+    },
+    "01-reference.bin": {
+      "bytes": 980,
+      "sha256": "351893cf512fde7a79cd3a2306082c0d4ab6bdf84dc2d8532eea217c26cfa3fa"
+    },
+    "01-x.bin": {
+      "bytes": 256,
+      "sha256": "dc347cc03fb8ac042c6f4e1fe172560573a0dde06069d79c21ea8d15d3a1ce0e"
+    },
+    "02-params.bin": {
+      "bytes": 24,
+      "sha256": "548f689ef1a8f866001f12a26606b8fa775f47d94d6d25ed828a4a8857da522c"
+    },
+    "02-reference.bin": {
+      "bytes": 256,
+      "sha256": "60eaaa625d9398d574ffd5fb80f9ffff52ddf3f3746027f08074ceb8c17fc4ce"
+    },
+    "02-x.bin": {
+      "bytes": 1356,
+      "sha256": "4f27bd1acdb5b41f68f9dd8a4baed02e67ce6de4b850392b249c6366cdee004b"
+    },
+    "03-params.bin": {
+      "bytes": 24,
+      "sha256": "63bae6ba96b47234afaa1e351614a55d46fa38ca0e5984e3271724f862d4e2c0"
+    },
+    "03-reference.bin": {
+      "bytes": 4384,
+      "sha256": "17faa071d567bb0765e6d09009efd58f5d93802575cc14eb93a9ac2ebd5e3089"
+    },
+    "03-x.bin": {
+      "bytes": 3232,
+      "sha256": "214270417f7623df9458f402469fae39abf0c2384ab854607b04f1133566a435"
+    },
+    "04-params.bin": {
+      "bytes": 24,
+      "sha256": "9ef785ad2f56049f42f84063f7af03137267f621d3fb079afd45c05435ddf845"
+    },
+    "04-reference.bin": {
+      "bytes": 3232,
+      "sha256": "7550468f1d40783442de11796aed549b3b5d1f0c5b05177a332b07caaafd2f82"
+    },
+    "04-x.bin": {
+      "bytes": 4384,
+      "sha256": "4569cd6001bd2fd663f5c9471cd791580891205e0d8163e03a72c32b6b569d83"
+    },
+    "05-params.bin": {
+      "bytes": 24,
+      "sha256": "5ba6bd52e23fdc54880a7ed2ff3cd215e244fdc32238fd4bba4f7b13536609c0"
+    },
+    "05-reference.bin": {
+      "bytes": 28240,
+      "sha256": "921a1c2cf98b3df37ab825790c759351a486b113d9e594c03e34f37cacdb819e"
+    },
+    "05-x.bin": {
+      "bytes": 28160,
+      "sha256": "35ce6e22ecbafb54085a7bde15a36bdd76c888d6ebd7eae7d23c11912eb444e5"
+    },
+    "06-params.bin": {
+      "bytes": 24,
+      "sha256": "7f66530f55793a85959016dd193f6a65188d60cffa0d88e61d1e3f3f6c5e611c"
+    },
+    "06-reference.bin": {
+      "bytes": 27240,
+      "sha256": "8620f942516c174d9bebddc549b373b1fbfe15d7e3df50a7642d61b28fecc625"
+    },
+    "06-x.bin": {
+      "bytes": 26608,
+      "sha256": "292c1620d75161b68db9a32cef02440da1472c1f3b388512838cb4cb417d4ae9"
+    },
+    "07-params.bin": {
+      "bytes": 24,
+      "sha256": "6bf7eef20e62fd8aa9d3a03baf43b7e52150837fcef9907e85c6e3f4637dfaef"
+    },
+    "07-reference.bin": {
+      "bytes": 152144,
+      "sha256": "38185b2f8df3ae85e09c93bb98dd2d497e9dc93c0f0d11b66f81e6eb415ae8fe"
+    },
+    "07-x.bin": {
+      "bytes": 152080,
+      "sha256": "36aeebc614986f70658e779bd274030cffc4409fcc3c870ddaf677edaaca3258"
+    },
+    "08-params.bin": {
+      "bytes": 24,
+      "sha256": "967badf62203a391f21cce36dd8dfd497a7cd02066a5aa3b718ec3e2bd9b3ae5"
+    },
+    "08-reference.bin": {
+      "bytes": 73168,
+      "sha256": "07edbf97be06d795ade4b36b2161bc3f659c47a75e5f6a9f893f8833702107d0"
+    },
+    "08-x.bin": {
+      "bytes": 81248,
+      "sha256": "2efb0e2a89928999cd960f99e3d8266eae80ad06814924049f609cbe0f785964"
+    },
+    "09-params.bin": {
+      "bytes": 24,
+      "sha256": "5b265a31676a81d3be961f6a78941a3f7e1dcaf5fabfa052226117b203a27a8a"
+    },
+    "09-reference.bin": {
+      "bytes": 3203124,
+      "sha256": "e8e0bbc36f9e1df6712747481c65ee73acbdc58bfcfe40e361d404cb4b6c9eff"
+    },
+    "09-x.bin": {
+      "bytes": 3153452,
+      "sha256": "88a37625cedd2260dd03b1fe23ed37ac339f15b7a03649d30a40c8d2ba03da20"
+    },
+    "10-params.bin": {
+      "bytes": 24,
+      "sha256": "bd8205d807511c2d8605f9fd7d8bb145202cb0c4379c71af95c825a8be16212a"
+    },
+    "10-reference.bin": {
+      "bytes": 6332460,
+      "sha256": "cf9871dc61a0a96399c112c36c5687a1575ccfa4303330a38eaffdd2bb4fec85"
+    },
+    "10-x.bin": {
+      "bytes": 6319164,
+      "sha256": "7e58f53ed9a37e0a46142eabae1bd13049476c88dbc21f7336f8ebc06af50db3"
+    },
+    "11-params.bin": {
+      "bytes": 24,
+      "sha256": "16b985636b895cc35f4696b4470f3b81e8ae260c7e1c6b40ede81a2b49c1e4b5"
+    },
+    "11-reference.bin": {
+      "bytes": 6311996,
+      "sha256": "de25a2f975897bb0cc93e5ac16f5405d6be70d8e198cea11d7be0f87dd08dd15"
+    },
+    "11-x.bin": {
+      "bytes": 6346788,
+      "sha256": "4121be91e75d21fe8305077c1b5bc68c9574f3e6ab9ab2104a901468d6e22803"
+    },
+    "baseline.metal": {
+      "bytes": 587,
+      "sha256": "d7b852b283524a07cde5ca4f173769a5dc2298cc29095c85283f79d857a63002"
+    },
+    "negative-packed.metal": {
+      "bytes": 587,
+      "sha256": "996d6d4bdb960d080c95d3aecb4e79fd213999ee551e3574318a6486c6a3c62a"
+    },
+    "negative-tail.metal": {
+      "bytes": 597,
+      "sha256": "41677b1cb1b8e97f9141e352ec931d37251175d1b2f7a5d20cd909dbebd62644"
+    },
+    "positive.metal": {
+      "bytes": 329,
+      "sha256": "912434d229c66a8ae1ed0727245981c6c9c9b64bd65196b3023c7146ed7dc160"
+    }
+  },
+  "max_allocation_bytes": 67108864,
+  "schema": "strided-copy-host-contract-v1",
+  "sentinel_u32": 2143363909
+}

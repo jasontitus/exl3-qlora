@@ -1,0 +1,8 @@
+{
+  "format": "kernel-strided-copy-full-files-v1",
+  "rationale": "The baseline is already a single scalar 32-bit load/store with no arithmetic on the copied value, so bit preservation is exact. The workload includes many small and irregular shapes; a 2D layout maps one thread to one output element and avoids the integer division/modulo in the baseline. The kernel uses uint2 thread_position_in_grid and predicates both dimensions, preserving all output padding and avoiding out-of-bounds accesses. Threads=[16,16] gives 256 threads per group and is valid for both small and large cases.",
+  "files": {
+    "kernel.metal": "#include <metal_stdlib>\nusing namespace metal;\n\n// Clockwise 90-degree rotation. p: rows, cols, input stride, output stride,\n// input offset, output offset; all strides/offsets count F32 elements.\n// Output shape is cols x rows. No aliasing. Preserve every input bit.\nkernel void strided_rotate90(device const float* x [[buffer(0)]],\n                             device float* y [[buffer(1)]],\n                             constant uint* p [[buffer(2)]],\n                             uint2 tid [[thread_position_in_grid]]) {\n    uint rows = p[0];\n    uint cols = p[1];\n    uint col = tid.x;\n    uint row = tid.y;\n    if (row >= rows || col >= cols) return;\n    y[p[5] + col * p[3] + (rows - 1 - row)] =\n        x[p[4] + row * p[2] + col];\n}\n",
+    "dispatch.json": "{\n  \"schema\": \"strided-copy-dispatch-v1\",\n  \"layout\": \"xy\",\n  \"threads\": [\n    16,\n    16\n  ]\n}\n"
+  }
+}
