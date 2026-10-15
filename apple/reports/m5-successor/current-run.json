@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T08:28:51.025006+00:00",
+  "updated_utc": "2026-10-15T14:39:32.282430+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2141,5 +2141,30 @@
     "source_collection_paused": true,
     "Qwen_parked": true,
     "completed_report": "generated-kernel-outcome-v1.json"
+  },
+  "next_cached_screen": {
+    "status": "CPU_preparation_and_adversarial_review_active_no_GPU_launch",
+    "proposed_training_rows": 188,
+    "proposed_development_rows": 41,
+    "boundary": 39,
+    "rank": 4,
+    "alpha": 8,
+    "learning_rates": [
+      5e-05,
+      2.5e-05
+    ],
+    "updates_per_LR_trial": 188,
+    "fresh_initialization_required": true,
+    "resume_final458": false,
+    "protected16_unchanged": true,
+    "development_baseline": "fresh_matched_rank4_zeroB_full41_required",
+    "source_collection_paused": true,
+    "Qwen_parked": true,
+    "training_followup": "ACTIVE",
+    "latest_remote_observation_utc": "2026-10-15T14:38:19.238415+00:00",
+    "latest_remote_training_jobs": 0,
+    "latest_remote_GPU_lock_target": null,
+    "old_warm_update_projection_hours_per_trial": 1.248251,
+    "evaluation_duration_measured": false
   }
 }
