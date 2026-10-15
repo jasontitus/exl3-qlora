@@ -2,7 +2,7 @@
 
 ## Current status — 2026-10-15 UTC
 
-Latest M5 evaluation attempt: deployment, all three prepared requests, fresh hardware identity and CPU memory admission passed independent review. The first frontend then exited before native model loading because its dynamically loaded validation module could not import `own_host`. The controller is terminal, failure receipts are preserved, and its own GPU lease is retained pending reviewed cleanup. A minimal import fix and real-entrypoint regression test are in progress; the original sealed lane will remain unchanged. No generated-kernel quality result is available yet.
+Latest M5 evaluation attempt: deployment, all three prepared requests, fresh hardware identity and CPU memory admission passed independent review. The first frontend then exited before native model loading because its dynamically loaded validation module could not import `own_host`. The controller is terminal, failure receipts are preserved, and its own GPU lease was released through the independently reviewed existing wrapper at 06:06 UTC. No process was signalled or foreign lock removed. A minimal import fix and real-entrypoint regression test are in progress; the original sealed lane will remain unchanged. No generated-kernel quality result is available yet.
 
 Training finished all **458 updates on 229 distinct complete examples**: 186 exact edits and 43 diagnostics, presented twice. Rank-4 adapters cover two attention projections in the final layer (`wq_a` and `wo_b`, layer 39), totaling 78,848 trainable parameters. The final checkpoint, optimizer and history were audited. New source collection remains paused.
 
