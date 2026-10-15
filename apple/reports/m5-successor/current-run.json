@@ -2988,7 +2988,7 @@
   },
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
-    "status": "main24_completed_pending_independent_capture_audit",
+    "status": "main24_independently_accepted_evaluation_in_progress",
     "user_authorized": true,
     "starting_adapter": "original229-example458-update",
     "comparison_adapter": "same_original458",
@@ -3019,7 +3019,7 @@
     "main_launched": true,
     "parallel_evaluation": {
       "task": "profile-guided-rotation-v1",
-      "status": "old458_omitted_generation_completed_pending_capture_audit",
+      "status": "old458_omitted_numerics_completed_pending_audit_pilot_request_preparing",
       "controls_session": 42604,
       "controls_exit_code": 0,
       "owned_release": true,
@@ -3044,7 +3044,17 @@
       "old458_omitted_review_sha256": "e87f509296e18e15a0ed498dad4b46ab6d95371778734ebd8ae47fa1072503a3",
       "old458_omitted_review_pins_root_verified": 761,
       "old458_omitted_exit_code": 0,
-      "old458_omitted_finished_utc": "2026-10-15T21:24:17.670875+00:00"
+      "old458_omitted_finished_utc": "2026-10-15T21:24:17.670875+00:00",
+      "old458_omitted_capture_review_sha256": "12ec44d8095e80b5f99e58ed4a8c712d7f5ad20ceac5a1d030289ffbd3e207bd",
+      "old458_omitted_capture_pins_root_verified": 788,
+      "old458_omitted_output_ids": 436,
+      "old458_omitted_natural_eos": true,
+      "old458_omitted_fullfile_format_pass": true,
+      "old458_omitted_numeric_session": 58076,
+      "old458_omitted_numeric_exit_code": 0,
+      "old458_omitted_numeric_review_sha256": "9779753e487188e25047d39157e2aa74199178a963624f23b74661299862f25b",
+      "old458_omitted_numeric_review_pins_root_verified": 310,
+      "old458_omitted_raw_exact_cases": 12
     },
     "cold_first_update": {
       "step": 1,
@@ -3084,6 +3094,16 @@
     "main_disk_hits": 20,
     "main_disk_misses": 1,
     "main_disk_writes": 1,
-    "main_aggregate_cache_hits": 25
+    "main_aggregate_cache_hits": 25,
+    "main_capture": "kernel-library/next-round-v5/targeted-profile-pilot-v1/main-capture-v1/receipt.json",
+    "main_factors_finite": true,
+    "main_adapter_sha256": "a4fa33cd158d65c8615a76b7580da01106815717812168456d71de6b7f6736f8",
+    "evaluation_adapter_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/targeted-profile-pilot-v1/main-capture-v1/files/main/step-000024",
+    "main_actual_review_sha256": "fdb7629b9cddfb2ec4ba64792c4326ae02f8683cebdb1035a89494f218a4e1ea",
+    "main_actual_review_pins_root_verified": 80,
+    "main_factor_review_sha256": "d9aee5e60446b596a2ed99cf2387dcc85b0e57182a8f1e34a7950ece78e4ef8f",
+    "main_factor_review_pins_root_verified": 5,
+    "main_supervised_targets": 30351,
+    "main_training_cache_hits": 24
   }
 }
