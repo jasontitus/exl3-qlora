@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T05:24:21.223420+00:00",
+  "updated_utc": "2026-10-15T05:30:30.061610+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1768,6 +1768,15 @@
     "equal_to_Scratch_model_payloads": true,
     "current_internal_identity_qualified": false,
     "native_loader_readset_qualified": false,
-    "prospective_rebind_only": true
+    "prospective_rebind_only": true,
+    "saved_source_independent_review_sha256": "6a2579c050d3a899c34fc18d3b626ed5034774a1d0e94f7038243933943961a7",
+    "saved_source_root_verified_pins": 15,
+    "metadata_continuity_source_review_sha256": "7b735c73155751c4142d117d43fee5b9e7deee0a09c82b2c64e5bf2d98193271",
+    "metadata_continuity_root_verified_pins": 21,
+    "metadata_continuity_root_tests": 15,
+    "actual_metadata_check": "completed_exit0_pending_independent_outcome_review",
+    "actual_useful_strong_identities_unchanged": 120,
+    "actual_inventory_unchanged": 369,
+    "actual_payload_bytes_read": 0
   }
 }
