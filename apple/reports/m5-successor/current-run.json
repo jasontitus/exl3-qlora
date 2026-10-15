@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T06:28:36.835276+00:00",
+  "updated_utc": "2026-10-15T06:31:36.828136+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1870,7 +1870,7 @@
     "successor_requires_full_prepare_regression": true
   },
   "m5_internal_serving_controls_v3": {
-    "status": "running_first_baseline_native_process_confirmed_live",
+    "status": "completed_exit0_six_phases_zeroB_bitwise_pass_strict_cache_parity_failed_actual_audit_pending",
     "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation458-f32-m5-internal-v3",
     "author_seal_sha256": "a6fe91f4d0fea8409153af64f85719520b4d18f46de72071b8deafd91f045286",
     "source_review_sha256": "3869a84fda8e43059f5ab1c0ba8edde364822e999c7dca521c645c56b2383ba1",
@@ -1895,6 +1895,19 @@
     "concrete_consumer_sha256": "d5cb33e07ac2a403290bba82a777212d21ab80c230a3b47693c679f2912c0643",
     "root_concrete_pins_verified": 510,
     "launch_outer_available_bytes": 108701286400,
-    "launch_native_available_bytes": 110588690432
+    "launch_native_available_bytes": 110588690432,
+    "execution_exit_code": 0,
+    "native_children": 6,
+    "zero_b_cached_and_fresh_bitwise_passed": true,
+    "strict_cache_parity_passed": false,
+    "max_cache_fresh_logit_differences": {
+      "absent": 0.296875,
+      "zeroB458": 0.296875,
+      "checkpoint458": 0.375
+    },
+    "fixed_schedule_generation_admitted": false,
+    "all_six_owned_leases_released": true,
+    "global_lock_absent_at_terminal_observation": true,
+    "generated_kernel_quality_verified": false
   }
 }

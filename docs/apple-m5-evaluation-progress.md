@@ -2,6 +2,8 @@
 
 ## Current status — 2026-10-15 UTC
 
+The M5 six-phase operation completed exit 0 with all six owned leases released. Matched zero-B controls are bitwise identical to baseline in cached and fresh modes. Strict cached/fresh parity failed: maximum logit differences are 0.296875 (baseline and zero-B) and 0.375 (trained adapter). The original strict generation gate remains unadmitted; the accepted alternative generation protocol and actual receipts are under independent review. No generated-kernel quality result is implied.
+
 At 06:28 UTC the independently reviewed corrected M5 six-phase operation started. Fresh launch admission passed, and root confirmed controller 56933, frontend 56970 and native inference process 56985 live in the first baseline phase. The exact 130-pin execution consumer and 510-pin concrete audit are recorded. This is a running control test, not a generated-quality outcome.
 
 The corrected v3 package completed actual M5 CPU preparation, default request validation and memory admission at 06:24 UTC. All 14 prepared JSON artifacts (374,295 bytes) and the 129-pin plan are captured for independent concrete review before GPU execution. Both prior failed lanes remain preserved; neither changed the trained model.
