@@ -40,6 +40,8 @@ Rank8 remains an available experiment, not a promised cure. Its route qualificat
 
 ## Correctness and optimization training pilot
 
+The pilot must also teach **profile → hypothesis → change → measured feedback**, not only correctness repairs. The [profile-guided training and evaluation design](apple-profile-guided-kernel-training.md) specifies evidence-bearing chat/tool examples, matched workload variants, no-change decisions, one-decision and feedback evaluations, and profile-use checks. Start with two to four feasible measured optimization pairs alongside correctness cases. This is an explicit extension of the goal; current edit training has not demonstrated it.
+
 Prepare, without launching while the current run is active, an inventory of approximately 16–32 suitable independent changes from the existing collected library. Start with what the sources and runnable tests support; never pad a quota with unverified examples. Focus on alignment/odd tails, accumulator precision and reductions, legal dispatch choices, and workload-specific fusion or memory access. This is curation of existing material; new source collection remains paused.
 
 Each selected example should provide the baseline and task, explicit constraints and representative workload, a concise source-grounded explanation of the bottleneck and change, complete edited code/dispatch, and actual validation evidence where available. Label author-reported measurements and inferred explanations. Do not invent profiling evidence or reward a plausible-sounding rationale without working code. Preserve necessary host/build context rather than pretending every kernel compiles alone.

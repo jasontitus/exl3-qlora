@@ -2474,6 +2474,18 @@
       "review_status": "accepted",
       "review_sha256": "8430cfe7cf8623b962d3848d3064750ffb748523f334faa506c5c9f537d31274",
       "review_pins_root_verified": 17
+    },
+    "profile_guided_track": {
+      "status": "design_and_source_feasibility_review_accepted",
+      "design": "publish-exl3/docs/apple-profile-guided-kernel-training.md",
+      "goal": "Use measured profiles to choose changes that produce correct faster kernels",
+      "initial_training_route": "existing prompt/completion with structured profile context and one final assistant decision plus implementation",
+      "native_tool_observations_supported": false,
+      "running152_unchanged": true,
+      "new_profile_qualified_training_examples_in_shortlist": 0,
+      "next": "select2to4 feasible existing optimization pairs, collect bounded measured evidence separately from evaluation, then cold-prefix-cost pilot",
+      "current_RMS_evaluation_remains_priority": true,
+      "review_sha256": "90939bac97a9390d0c83a4657c0c128fe528b3660a1c975ea500181a33a62bd0"
     }
   }
 }
