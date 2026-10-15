@@ -3019,7 +3019,7 @@
     "main_launched": true,
     "parallel_evaluation": {
       "task": "profile-guided-rotation-v1",
-      "status": "old458_omitted_numerics_completed_pending_audit_pilot_request_preparing",
+      "status": "pilot_profile_present_generation_running",
       "controls_session": 42604,
       "controls_exit_code": 0,
       "owned_release": true,
@@ -3054,7 +3054,13 @@
       "old458_omitted_numeric_exit_code": 0,
       "old458_omitted_numeric_review_sha256": "9779753e487188e25047d39157e2aa74199178a963624f23b74661299862f25b",
       "old458_omitted_numeric_review_pins_root_verified": 310,
-      "old458_omitted_raw_exact_cases": 12
+      "old458_omitted_raw_exact_cases": 12,
+      "pilot_present_session": 12116,
+      "pilot_present_review_sha256": "0335b3aecc9a3bdf0b387b1133a96813db1b3e75b731f65671c9bf54f88f23b8",
+      "pilot_present_review_pins_root_verified": 758,
+      "old458_omitted_numeric_actual_review_sha256": "62c3fc5c3b881d27e67206fa3c7b69451daadb626bd9f479528e612aefc81266",
+      "old458_omitted_numeric_actual_pins_root_verified": 348,
+      "old458_omitted_exact_cases": 12
     },
     "cold_first_update": {
       "step": 1,
