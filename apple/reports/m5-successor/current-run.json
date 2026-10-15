@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T07:47:57.565091+00:00",
+  "updated_utc": "2026-10-15T08:00:52.661763+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1922,7 +1922,7 @@
     "all_compared_argmax_equal": true
   },
   "matched_endpoint_kernel_experiment": {
-    "status": "control_completed_cap_without_EOS_trained_slot_GPU_unrun_queue_refusal",
+    "status": "control_cap_failure_preserved_trained_slot_continuation_live",
     "design_review_sha256": "18734c32938d0c4c93bffd7baf4d86dad20a31f51d19670b5825bfbae6b2c8bb",
     "conditions": [
       "zeroB-final458",
@@ -2035,6 +2035,39 @@
     "partial_actual_minimum_available_bytes": 63467307008,
     "partial_actual_owned_IDs_terminal": 21,
     "partial_actual_environment_reset_verified": true,
-    "trained_slot_continuation_status": "separate_minimal_transport_only_source_under_review_not_launched"
+    "trained_slot_continuation_status": "separate_minimal_transport_only_source_under_review_not_launched",
+    "trained_slot_continuation": {
+      "status": "trained_generation_live",
+      "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/matched-endpoint-trained-continuation-v1",
+      "author_seal_sha256": "57055c15619007c9ed2be567196a7a3c49a452a16c89c99fc1b8b1583e302de7",
+      "source_review_sha256": "6067e29b112ff20a97a04a4f427db1ffb3b970c498c1d8279553e702e2de0688",
+      "root_source_review_pins_verified": 53,
+      "files": 5,
+      "bytes": 190501,
+      "root_CPU_tests": 8,
+      "prepare_exit_code": 0,
+      "default_exit_code": 0,
+      "request_sha256": "3ccb6acc6ab271940e0783d2486f53777c23b0ab7d6cb8e7336f76ccb199ac69",
+      "outer_sha256": "e9a8698ec7ae7077d4635f1b6d20fed2c0ade486f8446243e28d3f301fdac5c5",
+      "prepared_sha256": "b40612cc30be8d0f3b92e721b6c6bda1bfc244208026602fdcee91fab4bb6e74",
+      "model_started": true,
+      "control_retry": false,
+      "request_delta": [
+        "output_dir",
+        "execution.lease_request",
+        "execution.lease_state"
+      ],
+      "old_evidence_unchanged": true,
+      "execution_session_id": 57166,
+      "controller_pid": 77980,
+      "frontend_pid": 77994,
+      "native_pid": 78013,
+      "started_utc": "2026-10-15T08:00:11.208601+00:00",
+      "concrete_review_sha256": "782ceebda836d05839afc07f31119c53238b8ab72815d235cedcb3d9dbf886a1",
+      "concrete_review_pins": 8,
+      "root_concrete_detail_pins_verified": 8,
+      "launch_outer_available_bytes": 114402607104,
+      "launch_native_available_bytes": 108808044544
+    }
   }
 }
