@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T04:55:10.362029+00:00",
+  "updated_utc": "2026-10-15T05:00:43.533529+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1668,7 +1668,7 @@
     "all16_total_and_added_metal_row_NLL_lower": true
   },
   "Studio_GPU_lease_released": true,
-  "generated_smoke_status": "six_phase_completed_zeroB_controls_pass_strict_cache_fresh_failed_outcome_audit_pending",
+  "generated_smoke_status": "independently_audited_six_phases_zeroB_pass_strict_cache_fresh_failed",
   "next_trial_development_split": "proposal_unactivated_under_review_broad_engine_history_grouping_makes_core_sources_absent",
   "generated_smoke": {
     "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation458-f32-smoke-process40-v1",
@@ -1700,7 +1700,10 @@
       "checkpoint458": 1.25
     },
     "shared_lease_released": true,
-    "result_scope": "short_serving_only_no_long_capacity_or_generated_kernel_quality"
+    "result_scope": "short_serving_only_no_long_capacity_or_generated_kernel_quality",
+    "independent_actual_review_sha256": "ecdf01f9d32289a322dd38129d059ab2e23d6ae63a99894784ce0129c4a811dc",
+    "independent_actual_pins_root_verified": 318,
+    "observed_output_tokens_changed": false
   },
   "long_generation_next_host_proposal": "M5_native105.42GiB_outer103.0GiB_proposed_process60_native82_reserve32_pending_own_host_qualification"
 }
