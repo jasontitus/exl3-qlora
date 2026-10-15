@@ -116,6 +116,22 @@ def test_default_does_not_spawn_or_create_output(tmp_path):
     assert result["executed"] is False and not (tmp_path / "run").exists()
 
 
+def test_real_cpu_backend_preserves_twelve_workload_measurements(tmp_path):
+    ref, plan, backend, _ = fixture(tmp_path, stage="timing")
+    values = [dict(workload_sha256=f"{i + 1:064x}", device="synthetic CPU fixture",
+                   cache_state="warm", unit="ms", status="passed", samples=[1., 2., 3.])
+              for i in range(12)]
+    script = tmp_path / "trusted_backend.py"
+    script.write_text(SCRIPT.replace("(out/'result.json').write_text", "result['measurements']=" + repr(values) + "\n(out/'result.json').write_text"))
+    backend['code'] = [pin(script)]
+    backend['result']['stages']['timing'][0]['measurements_path'] = ['measurements']
+    ref = refresh(tmp_path, plan, backend)
+    result = run(tmp_path, ref, run=True)
+    timing = result['tracks']['strict']['timing']
+    assert timing['status'] == 'passed' and timing['measurements'] == values
+    assert result['execution']['runs'] and (tmp_path / 'run/00-timing/execution.json').exists()
+
+
 def test_real_trusted_subprocess_to_suite_and_no_overwrite(tmp_path):
     ref, _, _, _ = fixture(tmp_path)
     result = run(tmp_path, ref, run=True)

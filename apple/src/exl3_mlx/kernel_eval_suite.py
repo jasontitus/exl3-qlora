@@ -95,6 +95,45 @@ def identities(rows, fields):
     return out
 
 
+TIMING_IDENTITY = ('workload_sha256', 'device', 'cache_state', 'unit')
+MAX_TIMING_RECORDS = 65536  # Combined coverage and per-workload comparisons.
+
+
+def timing_measurements(stage):
+    """Normalize legacy one-workload timings and bounded, explicit workload sets.
+
+    A failed/unrun workload stays in the set without invented latency samples.
+    Receipt authors remain responsible for declaring the complete workload set.
+    """
+    value = stage.get('measurements')
+    legacy = isinstance(value, dict)
+    if legacy:
+        require(set(value) == {*TIMING_IDENTITY, 'samples'}, 'Invalid legacy timing fields')
+    rows = [dict(value, status='passed')] if legacy else value
+    require(isinstance(rows, list) and 0 < len(rows) <= 64, 'Invalid timing workload count')
+    seen = set()
+    for row in rows:
+        require(isinstance(row, dict), 'Invalid timing workload')
+        required = {*TIMING_IDENTITY, 'status'}
+        require(row.get('status') in STATUSES, 'Invalid timing workload status')
+        if row['status'] == 'passed':
+            required.add('samples')
+        require(required <= set(row) <= required | ({'reason'} if not legacy else set()), 'Invalid timing workload fields')
+        sha(row['workload_sha256'])
+        require(all(isinstance(row[k], str) and row[k] for k in ('device', 'cache_state')), 'Missing timing context')
+        require(row['unit'] == 'ms', 'Invalid timing unit')
+        require('reason' not in row or isinstance(row['reason'], str), 'Invalid timing reason')
+        identity = tuple(row[k] for k in TIMING_IDENTITY)
+        require(identity not in seen, 'Duplicate timing workload/context')
+        seen.add(identity)
+        if row['status'] == 'passed':
+            samples = row['samples']
+            require(isinstance(samples, list) and samples, 'Invalid timing samples')
+            require(all(type(x) in (int, float) and math.isfinite(x) and x > 0 for x in samples), 'Invalid timing value')
+    require(stage['status'] != 'passed' or all(r['status'] == 'passed' for r in rows), 'Passed timing contains unfinished/failed workload')
+    return rows
+
+
 def validate_result(row, tasks, adapters, expected_budget, reader):
     require(isinstance(row, dict) and row.get('format') == 'kernel-eval-result-v1', 'Invalid result')
     task, adapter = tasks.get(row.get('task_id')), adapters.get(row.get('adapter_id'))
@@ -124,13 +163,11 @@ def validate_result(row, tasks, adapters, expected_budget, reader):
                     require(tracks.get('strict', {}).get('generation', {}).get('status') == 'passed', 'Normalization needs completed generation')
                     continue
                 require(stages.get(prior, {}).get('status') == 'passed', 'Missing passed prerequisite: ' + prior)
-            if stage == 'timing' and result['status'] == 'passed':
-                m = result.get('measurements')
-                require(isinstance(m, dict) and set(m) == {'workload_sha256', 'device', 'cache_state', 'unit', 'samples'}, 'Invalid timing')
-                sha(m['workload_sha256'])
-                require(all(isinstance(m[k], str) and m[k] for k in ('device', 'cache_state')), 'Missing timing context')
-                require(m['unit'] == 'ms' and isinstance(m['samples'], list) and m['samples'], 'Invalid timing samples')
-                require(all(type(x) in (int, float) and math.isfinite(x) and x > 0 for x in m['samples']), 'Invalid timing value')
+            if stage == 'timing' and (result['status'] == 'passed' or 'measurements' in result):
+                measurements = timing_measurements(result)
+                require(evidence, 'Timing measurements require evidence')
+                if any(m['status'] == 'passed' for m in measurements):
+                    require(stages.get('numerical', {}).get('status') == 'passed', 'Timing samples require passed numerical validation')
     return row
 
 
@@ -160,22 +197,38 @@ def build_report(manifest, reader):
                     for stage in STAGES:
                         counts[track][stage][row.get('tracks', {}).get(track, {}).get(stage, {}).get('status', 'pending')] += 1
         summaries.append({'adapter_id': adapter, 'registered_slots': len(tasks) * b['attempts'], 'stages': counts})
-    comparisons = []
+    comparisons, timing_coverage = [], []
     for left, right in itertools.combinations(rows, 2):
         if left['task_id'] != right['task_id'] or left['adapter_id'] == right['adapter_id'] or left['attempt'] != right['attempt']:
             continue
         for track in ('strict', 'normalized'):
             a = left['tracks'].get(track, {}).get('timing', {})
             c = right['tracks'].get(track, {}).get('timing', {})
+            if 'measurements' not in a or 'measurements' not in c:
+                continue
+            xs = {tuple(m[k] for k in TIMING_IDENTITY): m for m in timing_measurements(a)}
+            ys = {tuple(m[k] for k in TIMING_IDENTITY): m for m in timing_measurements(c)}
+            common = sorted(xs.keys() & ys.keys())
+            ready = a.get('status') == 'passed' and c.get('status') == 'passed'
+            added = 1 + (len(common) if ready else 0)
+            require(len(comparisons) + len(timing_coverage) + added <= MAX_TIMING_RECORDS,
+                    'Timing comparison/coverage record budget exceeded; split the suite explicitly')
+            timing_coverage.append({'task_id': left['task_id'], 'attempt': left['attempt'], 'track': track,
+                                    'left': left['adapter_id'], 'right': right['adapter_id'],
+                                    'left_workloads': len(xs), 'right_workloads': len(ys),
+                                    'matched_workloads': len(common), 'compared_workloads': len(common) if ready else 0,
+                                    'same_declared_workloads': xs.keys() == ys.keys(),
+                                    'left_statuses': dict(Counter(m['status'] for m in xs.values())),
+                                    'right_statuses': dict(Counter(m['status'] for m in ys.values()))})
             if a.get('status') != 'passed' or c.get('status') != 'passed':
                 continue
-            x, y = a['measurements'], c['measurements']
-            if any(x[k] != y[k] for k in ('workload_sha256', 'device', 'cache_state', 'unit')):
-                continue
-            comparisons.append({'task_id': left['task_id'], 'attempt': left['attempt'], 'track': track,
-                                'left': left['adapter_id'], 'right': right['adapter_id'],
-                                'timing_qualified': False, 'comparison_kind': 'unpaired_descriptive_median_ratio',
-                                'left_over_right_median_latency': statistics.median(x['samples']) / statistics.median(y['samples'])})
+            for identity in common:
+                x, y = xs[identity], ys[identity]
+                comparisons.append({'task_id': left['task_id'], 'attempt': left['attempt'], 'track': track,
+                                    'left': left['adapter_id'], 'right': right['adapter_id'],
+                                    **{k: x[k] for k in TIMING_IDENTITY},
+                                    'timing_qualified': False, 'comparison_kind': 'unpaired_descriptive_median_ratio',
+                                    'left_over_right_median_latency': statistics.median(x['samples']) / statistics.median(y['samples'])})
     # A common slot is resolved for every adapter: a terminal rejection, or
     # passed numerical validation. Unrun infrastructure cannot improve rank.
     def resolved(stages):
@@ -214,7 +267,7 @@ def build_report(manifest, reader):
     reader.recheck()
     return {'format': 'kernel-eval-comparison-v1', 'suite_id': manifest.get('id'), 'summaries': summaries,
             'tasks': list(tasks.values()), 'adapters': list(adapters.values()), 'budget': b,
-            'latency_comparisons': comparisons, 'results': rows, 'winner': None,
+            'latency_comparisons': comparisons, 'timing_comparison_coverage': timing_coverage, 'results': rows, 'winner': None,
             'ranking': ranking, 'recommendation': recommendation,
             'inputs_sha256': {str(path): hashlib.sha256(value[0]).hexdigest() for path, value in reader.files.items()},
             'limitations': ['Receipt assertions are not independently certified by this report.',

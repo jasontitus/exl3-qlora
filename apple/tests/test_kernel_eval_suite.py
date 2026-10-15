@@ -1,9 +1,11 @@
 import copy
 import hashlib
 import json
-from pathlib import Path
+import statistics
 import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
 from exl3_mlx import kernel_eval_suite as k
 
@@ -123,6 +125,133 @@ class SuiteTests(unittest.TestCase):
         for bad in (True, float('nan'), 0, -1):
             r = self.row(); r['tracks']['strict']['timing']['measurements']['samples'] = [bad]
             with self.assertRaises(ValueError): self.run_rows(r)
+
+    def workload_rows(self, row, count=12):
+        old = row['tracks']['strict']['timing']['measurements']
+        values = [dict(copy.deepcopy(old), workload_sha256=f'{i + 1:064x}', status='passed') for i in range(count)]
+        row['tracks']['strict']['timing']['measurements'] = values
+        return values
+
+    def test_twelve_workloads_keep_slowdowns_and_identity(self):
+        left, right = self.row(), self.row('trained')
+        xs, ys = self.workload_rows(left), self.workload_rows(right)
+        for i, (x, y) in enumerate(zip(xs, ys)):
+            x['samples'] = [1., 2., 3.]
+            y['samples'] = [float(i + 1)] * 3
+        report = self.run_rows(left, right)
+        ratios = report['latency_comparisons']
+        self.assertEqual(len(ratios), 12)
+        self.assertEqual([x['workload_sha256'] for x in ratios], [x['workload_sha256'] for x in xs])
+        self.assertEqual([x['left_over_right_median_latency'] for x in ratios], [2. / (i + 1) for i in range(12)])
+        self.assertTrue(all(not x['timing_qualified'] for x in ratios))
+        self.assertEqual(report['timing_comparison_coverage'][0]['compared_workloads'], 12)
+        self.assertIsNone(report['winner'])
+
+    def test_multi_workload_failure_preserved_without_survivor_comparison(self):
+        left, right = self.row(), self.row('trained')
+        self.workload_rows(left)
+        values = self.workload_rows(right)
+        values[-1] = {k: v for k, v in values[-1].items() if k != 'samples'}
+        values[-1].update(status='failed', reason='Synthetic failed workload')
+        right['tracks']['strict']['timing']['status'] = 'failed'
+        report = self.run_rows(left, right)
+        self.assertEqual(report['latency_comparisons'], [])
+        self.assertEqual(report['timing_comparison_coverage'][0]['right_statuses'], {'passed': 11, 'failed': 1})
+        self.assertEqual(report['results'][1]['tracks']['strict']['timing']['measurements'][-1], values[-1])
+        right['tracks']['strict']['timing']['status'] = 'passed'
+        with self.assertRaisesRegex(ValueError, 'unfinished/failed'):
+            self.run_rows(right)
+
+    def test_multi_workload_missing_and_context_mismatch_visible(self):
+        left, right = self.row(), self.row('trained')
+        self.workload_rows(left)
+        values = self.workload_rows(right, 11)
+        values[-1]['cache_state'] = 'cold'
+        report = self.run_rows(left, right)
+        self.assertEqual(len(report['latency_comparisons']), 10)
+        coverage = report['timing_comparison_coverage'][0]
+        self.assertEqual((coverage['left_workloads'], coverage['right_workloads'], coverage['matched_workloads']), (12, 11, 10))
+        self.assertFalse(coverage['same_declared_workloads'])
+
+    def test_legacy_timing_matches_single_explicit_workload(self):
+        right = self.row('trained')
+        self.workload_rows(right, 1)[0]['workload_sha256'] = self.h
+        self.assertEqual(len(self.run_rows(self.row(), right)['latency_comparisons']), 1)
+        left = self.row()
+        left['tracks']['strict']['timing']['measurements']['status'] = 'passed'
+        with self.assertRaisesRegex(ValueError, 'legacy'):
+            self.run_rows(left)
+
+    def test_multi_workload_bounds_duplicates_and_invalid_samples(self):
+        for value in ([], [None], [dict(status=True)]):
+            row = self.row()
+            row['tracks']['strict']['timing']['measurements'] = value
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                self.run_rows(row)
+        row = self.row()
+        values = self.workload_rows(row, 65)
+        with self.assertRaisesRegex(ValueError, 'count'):
+            self.run_rows(row)
+        del values[64:]
+        values[1] = copy.deepcopy(values[0])
+        with self.assertRaisesRegex(ValueError, 'Duplicate'):
+            self.run_rows(row)
+        for sample in (True, 0, -1, float('nan')):
+            row = self.row()
+            self.workload_rows(row, 1)[0]['samples'] = [sample]
+            with self.subTest(sample=sample), self.assertRaises(ValueError):
+                self.run_rows(row)
+
+    def test_partial_timing_cannot_bypass_numerical_or_invent_failed_samples(self):
+        row = self.row()
+        values = self.workload_rows(row)
+        row['tracks']['strict']['timing']['status'] = 'pending'
+        row['tracks']['strict']['numerical']['status'] = 'failed'
+        with self.assertRaisesRegex(ValueError, 'passed numerical'):
+            self.run_rows(row)
+        row['tracks']['strict']['numerical']['status'] = 'passed'
+        values[-1]['status'] = 'refused'
+        with self.assertRaisesRegex(ValueError, 'fields'):
+            self.run_rows(row)
+        values[-1].pop('samples')
+        self.assertEqual(self.run_rows(row)['results'][0]['tracks']['strict']['timing']['measurements'][-1]['status'], 'refused')
+
+    def test_saved_actual_transpose_twelve_workloads(self):
+        path = Path(__file__).parent / 'fixtures/kernel_timing_transpose_base.json'
+        fixture = json.loads(path.read_text())
+        row = self.row()
+        row['tracks']['strict']['timing']['measurements'] = fixture['measurements']
+        row['tracks']['strict']['timing']['evidence'] = [{'path': str(path.resolve()), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}]
+        values = self.run_rows(row)['results'][0]['tracks']['strict']['timing']['measurements']
+        self.assertEqual(len(values), 12)
+        self.assertEqual([len(v['samples']) for v in values], [30] * 12)
+        for value, expected in zip(values, fixture['expected_medians_ms']):
+            self.assertAlmostEqual(statistics.median(value['samples']), expected, places=12)
+        self.assertEqual(fixture['provenance'][0]['sha256'], 'c23e31bc7e244e46676424dc0245217abc8fe6f5461f867fbe267e9ed293661c')
+
+    def test_timing_record_budget_fails_closed_without_truncation(self):
+        left, right = self.row(), self.row('trained')
+        self.workload_rows(left, 3)
+        self.workload_rows(right, 3)
+        with patch.object(k, 'MAX_TIMING_RECORDS', 4):
+            report = self.run_rows(left, right)
+            self.assertEqual(len(report['latency_comparisons']), 3)
+            self.assertEqual(len(report['timing_comparison_coverage']), 1)
+        with patch.object(k, 'MAX_TIMING_RECORDS', 3):
+            with self.assertRaisesRegex(ValueError, 'record budget exceeded'):
+                self.run_rows(left, right)
+            suite = self.root / 'over-budget-suite.json'
+            suite.write_text(json.dumps(self.s))
+            output = self.root / 'must-not-publish.json'
+            with self.assertRaisesRegex(ValueError, 'record budget exceeded'):
+                k.main(['--suite', str(suite), '--output', str(output)])
+            self.assertFalse(output.exists())
+        # Coverage-only records count too; no passing sample can bypass this cap.
+        left['tracks']['strict']['timing']['status'] = 'pending'
+        with patch.object(k, 'MAX_TIMING_RECORDS', 0):
+            with self.assertRaisesRegex(ValueError, 'record budget exceeded'):
+                self.run_rows(left, right)
+        self.assertEqual(k.MAX_TIMING_RECORDS, 65536)
 
 
 if __name__ == '__main__': unittest.main()

@@ -185,6 +185,70 @@ timing mapping requires `measurements_path` pointing to actual
 tool labels its median ratios descriptive; qualified paired inference belongs to
 the timing backend's original audit. The bridge does not manufacture timing data.
 
+The same `measurements_path` also accepts the multi-workload list in
+[the suite schema](kernel-eval-suite-schema.md). Keep all shapes and their explicit
+statuses in that list; do not flatten different shapes into one sample vector.
+This requires no change to controller argv or the execution bridge. Numerical
+acceptance and complete workload/audit validation remain with the trusted backend.
+
+### Existing transpose controller: data bindings, no controller fork
+
+The reviewed transpose implementation already uses a shared `run.py --run-dir
+RUN --job JOB` and a shared lease wrapper. A backend manifest invokes the **wrapper**
+with its pinned request; it must not call `run.py --execute` outside that ownership
+path. The relevant mapping is:
+
+```json
+{
+  "kind": "owned_device_controller",
+  "argv": ["/qualified/shared_gpu_lease_studio.py", "run",
+           "--request", "{input}", "--sha256", "{input_sha256}",
+           "--receipt", "/fresh/operation/wrapper.json"],
+  "timeout_seconds": null,
+  "result": {
+    "path": "/fresh/operation/wrapper.json",
+    "bindings": [
+      {"path": ["schema"], "equals": "shared-gpu-lease-command-receipt-v1"},
+      {"path": ["request_sha256"], "equals": "{input_sha256}"}
+    ],
+    "stages": {"timing": [{
+      "when": [
+        {"path": ["status"], "equals": "completed"},
+        {"path": ["exit_code"], "equals": 0},
+        {"path": ["lease", "released"], "equals": true},
+        {"path": ["lease", "cleanup_verified"], "equals": true}
+      ],
+      "exit_codes": [0], "status": "pending", "outcome_class": "unspecified",
+      "reason": "Captured and released; independent timing audit remains required."
+    }]}
+  }
+}
+```
+
+This excerpt needs the normal format/executable/code/cwd/env fields. It deliberately
+maps a completed capture to **pending**, not to a speed result. A missing or
+unexpected wrapper outcome remains infrastructure refusal. Subsequent accepted
+audit data can populate the 12 workload entries through a trusted CPU backend or
+a pinned imported result. Independent review and conversion of that harness's
+native records remain explicit; there is no automatic source-safety reviewer or
+arbitrary task compiler hidden in this CLI.
+
+An exact local, **default-only** example is saved at
+[`kernel-multiworkload-integration-v1`](../../kernel-library/next-round-v5/kernel-multiworkload-integration-v1/README.md).
+It pins the real completed base transpose request and validated source, with a
+passed numerical initial result. Its default validation ran under a subprocess
+trap and created no execution output. The historical wrapper result already
+exists: do not execute this example or repurpose its output paths. Future runs
+need fresh prepared requests and ordinary concrete admission; they can reuse the
+same backend manifest structure without editing Python.
+
+The test fixture `apple/tests/fixtures/kernel_timing_transpose_base.json` retains
+all 12 × 30 candidate samples from the accepted base transpose audit, with exact
+source hashes and seconds-to-milliseconds conversion. It tests the representation,
+not a new GPU run or cross-adapter performance claim. Its workload identities are
+specific to that saved manifest; a real cross-adapter importer must bind a shared
+source-free workload definition to avoid equating different work by label alone.
+
 Every executed step retains argv, input/backend hashes, stdout/stderr, exit code,
 timeout and semantic result evidence. CPU timeouts stop only the newly created
 CPU process group; device timeouts and recovery remain exclusively controller

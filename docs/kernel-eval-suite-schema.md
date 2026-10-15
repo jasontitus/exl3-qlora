@@ -64,6 +64,44 @@ protocol, budget, workload, device and cache state are paired. Ratios are unpair
 right, with timing_qualified=false. Matching labels alone do not prove warmup or
 interleaved measurement. Warm/cold results are not compared.
 
+For multiple workloads in one generated-kernel attempt, `measurements` may instead
+be a list of 1–64 objects. Each contains the same workload/context fields plus an
+explicit `status`. A passed workload requires positive finite `samples`; a
+failed, refused, pending or not-run workload has no `samples`, and may give a
+`reason`. The original single-object form remains supported unchanged.
+
+```json
+"timing": {
+  "status": "failed",
+  "evidence": [{"path": "timing-audit.json", "sha256": "..."}],
+  "measurements": [
+    {"workload_sha256": "...", "device": "Apple M1 Ultra", "cache_state": "warm",
+     "unit": "ms", "status": "passed", "samples": [0.03, 0.04, 0.035]},
+    {"workload_sha256": "...", "device": "Apple M1 Ultra", "cache_state": "warm",
+     "unit": "ms", "status": "failed", "reason": "Retained failed workload"}
+  ]
+}
+```
+
+Use different workload digests for different shapes; bind each digest to its
+saved geometry, inputs and measurement policy. Repeated workload/device/cache/unit
+identities are rejected. Do not substitute zero latency for an unrun workload.
+The timing stage cannot pass while any declared workload is unfinished or failed,
+and any retained samples still require passed numerical validation.
+
+When both timing stages pass, the report emits one descriptive ratio for each
+matching workload/context, including slowdowns. `timing_comparison_coverage`
+records both declared workload counts, status counts, the matched/compared counts
+and whether the declared sets match. An incomplete or failed timing stage emits
+no latency comparisons; its successful and unsuccessful workloads remain in the
+result. The reporter does not pick the fastest shape or average across shapes.
+Receipt authors must still bind the complete predeclared workload inventory:
+this schema validates what is present, not an external task's missing inventory.
+The combined comparison and coverage output is capped at 65,536 records. Exceeding
+that bound rejects the report before publication; it never truncates workloads or
+selects a subset. Split a larger suite explicitly and retain that split in the
+evaluation plan.
+
 The report retains all results and stage counts over the entire registered
 panel. Pending/refused/not-run are neither pass nor failure. It recommends leaders or ties only by strict usable numerical counts on common
 resolved task/attempt slots; reports incomplete coverage and measured failures
