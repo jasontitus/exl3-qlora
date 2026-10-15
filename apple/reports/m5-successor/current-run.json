@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T04:42:02.438834+00:00",
+  "updated_utc": "2026-10-15T04:46:32.992543+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1668,6 +1668,20 @@
     "all16_total_and_added_metal_row_NLL_lower": true
   },
   "Studio_GPU_lease_released": true,
-  "generated_smoke_status": "original_process42_CPU_admission_refused_no_GPU_separate_stricter_process40_preparation_under_review",
-  "next_trial_development_split": "proposal_unactivated_under_review_broad_engine_history_grouping_makes_core_sources_absent"
+  "generated_smoke_status": "reviewed_process40_six_phase_native_smoke_running",
+  "next_trial_development_split": "proposal_unactivated_under_review_broad_engine_history_grouping_makes_core_sources_absent",
+  "generated_smoke": {
+    "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation458-f32-smoke-process40-v1",
+    "session_id": 13668,
+    "controller_pid": 94258,
+    "first_frontend_pid": 94313,
+    "process_gib": 40,
+    "native_box_gib": 82,
+    "reserve_gib": 32,
+    "independent_review_sha256": "03daeffbf6436d3f241c7592cfd655d27ddcaba1158b06cbab159129d5d931a8",
+    "root_verified_pins": 115,
+    "root_CPU_tests": 73,
+    "GPU_started": true,
+    "quality_qualified": false
+  }
 }
