@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T02:07:10.341396+00:00",
+  "updated_utc": "2026-10-15T02:11:54.180402+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -608,18 +608,13 @@
     "training_admission": false
   },
   "latest_training_observation_current": {
-    "observed_utc": "2026-10-14T22:27:34.484241+00:00",
-    "source": "actual read-only SSH ps/latest/log",
-    "saved_update": 197,
-    "worker_pid": 47890,
-    "worker_live": true,
-    "worker_elapsed": "17:48:01",
-    "worker_cpu_time": "755:55.63",
-    "worker_rss_kib": 18002096,
-    "latest_log_layer": 40,
-    "latest_log_phase": "recomputing backward",
-    "active_mlx_gib": 15.17,
-    "scope": "Live pointer/process/log; saved source/count audit remains through194"
+    "saved_step": 362,
+    "planned_updates": 458,
+    "pid": 47890,
+    "live": true,
+    "elapsed": "21:33:24",
+    "rss_kib": 17648192,
+    "history_independently_reviewed_through": 303
   },
   "native_single_prefill_result": {
     "status": "terminal_failed_after_completed_33_token_prefill",
@@ -1257,7 +1252,7 @@
   },
   "portable_first_divergence_current": {
     "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/portable-first-divergence-witness-v1",
-    "status": "root_owned_four_phase_diagnostic_running",
+    "status": "completed_diagnostic_only_independent_actual_audit_pending",
     "root_execution_session": 47510,
     "compiler_pid": 94022,
     "root_verified_source_author_plan_unique_pins": 454,
@@ -1267,7 +1262,7 @@
     "prospective_processes": 4,
     "GPU_executed": true,
     "held_source_unchanged": true,
-    "root_execution_exit_code": null,
+    "root_execution_exit_code": 0,
     "artifact_sha256": "373abb1ac8acfc7b9b432d70e84a01fc7c07db8146b305c30a472e40e473c3ba",
     "artifact_bytes": 25607720,
     "build_elapsed_seconds": 358.8238798750099,
@@ -1278,9 +1273,9 @@
     "root_rehashed_package_review_inputs": 21,
     "package_files": 6,
     "package_bytes": 252642456,
-    "controller_review_status": "prepublication lifecycle gaps under repair; no GPU launch",
+    "controller_review_status": "independent source and approval consumer accepted before execution",
     "first_native_pid": 3405,
-    "native_liveness_confirmed": true,
+    "native_liveness_confirmed": false,
     "controller_author_sha256": "e5cb05f305f211a958ca5273b09581be295ce93a249dde509d4973d237d3eff1",
     "root_rehashed_controller_author_local": 123,
     "root_rehashed_controller_plan_inputs": 233,
@@ -1291,13 +1286,18 @@
     "last_observed_cases_started": [
       "full-untraced",
       "full-traced",
-      "split_decode-untraced"
+      "split_decode-untraced",
+      "split_decode-traced"
     ],
-    "diagnostic_complete": false,
+    "diagnostic_complete": true,
     "cpu_build_execution_session": 89162,
     "cpu_build_execution_exit_code": 0,
     "CPU_build_GPU_executed": false,
-    "GPU_evidence_scope": "Execution established by accepted first two child phases; whole diagnostic and numerical controls pending"
+    "GPU_evidence_scope": "All four completed child receipts; independent actual audit pending",
+    "trace_nonperturbation_passed": true,
+    "serving_parity_qualified": false,
+    "generated_quality_verified": false,
+    "actual_result": "kernel-library/next-round-v5/exact-generation-qualification-v1/portable-first-divergence-operation-v1/operation-result.json"
   },
   "final_full16_evaluator_preparation": {
     "original_lane": "final458-evaluation-v1",
