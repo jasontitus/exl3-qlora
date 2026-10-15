@@ -1,3 +1,11 @@
+## Update: M5 218; tiny layout test held for validator repair
+
+Direct process and log observation found M5 worker 47890 alive at saved update **218 of 458**, advancing through layer 30. The stable source/history audit remains 206; later checkpoint pointers are observations, not independently audited exposure counts.
+
+Root verified all 27 inputs of the model-free MPP witness controller and its default CPU-only validation. Independent review then identified a result-validation gap: a fabricated skipped status could suppress a required matrix comparison unless it agrees with recorded capacities, masks and SIMD-group uniformity. Reviewers are preserving the original version and repairing that validator before device execution. No witness GPU run or production repair has occurred. Coordinate mappings can falsify the fixed-layout assumption directly; relaxed-precision numerical residuals alone will not be treated as proof of the production fault.
+
+Source collection remains paused. M5 training, its dataset, frozen runtime and memory reserves remain unchanged.
+
 ## Update: small fixture reproduces original failure; stages independently checked
 
 A fresh observation found the same M5 trainer alive at saved checkpoint **212 of 458**, advancing through layer 30 of the next item. The latest stable exposure audit remains update 206 (165 exact edits and 41 diagnostics); a live checkpoint observation does not replace that source/history audit.

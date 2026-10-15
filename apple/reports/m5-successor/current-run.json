@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-14T22:27:34.484241+00:00",
+  "updated_utc": "2026-10-15T00:07:31Z",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -72,14 +72,15 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "saved_checkpoint": 212,
+    "saved_checkpoint": 218,
     "worker_pid": 47890,
-    "elapsed": "19:03:47",
-    "worker_cpu": "809:26.65",
-    "worker_rss_kib": 18038784,
+    "elapsed": "19:28:57",
+    "worker_cpu": "826:51.53",
+    "worker_rss_kib": 18957200,
     "forward_layer": 30,
-    "active_mlx_gib": 15.66,
-    "history_audit_checkpoint": 206
+    "active_mlx_gib": 15.51,
+    "history_audit_checkpoint": 206,
+    "evidence": "Direct SSH ps/latest.txt/training.log observation in root tool output; no saved state payload audit beyond historical206."
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -997,5 +998,13 @@
     "production_repair_applied": false,
     "serving_parity_qualified": false,
     "next": "Review and execute tiny MPP cooperative-coordinate/identity witness on M1 Ultra; compare runtime layout to fixed NAX map before repair."
+  },
+  "mpp_layout_diagnostic_current": {
+    "status": "source_and_concrete_review_in_progress_not_executed",
+    "author_seal": "8c659581ee5acd59f9375e4069dadf6847e8fe2630ffe9b8786bbaf1388004b0",
+    "root_rehashed_input_files": 27,
+    "root_default_validation": "cpu_validated; native_executed=false",
+    "review_finding": "Analyzer must bind skipped status to recorded capacities/masks and SIMD-group uniformity before execution. Independent reviewers coordinating versioned repair.",
+    "scope": "Small model-free M1 Ultra layout/identity/basis witness; production cause and repair unproven."
   }
 }
