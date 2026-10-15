@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T05:16:56.757546+00:00",
+  "updated_utc": "2026-10-15T05:24:21.223420+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1669,7 +1669,7 @@
   },
   "Studio_GPU_lease_released": true,
   "generated_smoke_status": "independently_audited_six_phases_zeroB_pass_strict_cache_fresh_failed",
-  "next_trial_development_split": "proposal_unactivated_under_review_broad_engine_history_grouping_makes_core_sources_absent",
+  "next_trial_development_split": "v2_proposal_unactivated_independent_review_pending_41dev_188fresh_train_all11repos",
   "generated_smoke": {
     "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation458-f32-smoke-process40-v1",
     "session_id": 13668,
@@ -1744,5 +1744,30 @@
       "metallib": 1
     },
     "serving_qualified": false
+  },
+  "next_trial_split_proposal_v2": {
+    "author_seal_sha256": "98229cc14b6d821860d506a9c846610a1512f50b5415d9fa3482e0968eedccb0",
+    "root_verified_local_pins": 13,
+    "root_verified_input_pins": 485,
+    "root_CPU_tests": 10,
+    "development_rows": 41,
+    "future_train_rows": 188,
+    "development_exact_edits": 33,
+    "development_diagnostics": 8,
+    "repositories_in_each_partition": 11,
+    "known_components": 171,
+    "excluded_development_components": 15,
+    "fresh_initialization_required": true,
+    "endpoint458_generalization_eligible": false,
+    "activated": false,
+    "datasets_changed": false
+  },
+  "m5_internal_model_saved_equality": {
+    "verified_saved_useful_files": 120,
+    "verified_saved_bytes": 426352806119,
+    "equal_to_Scratch_model_payloads": true,
+    "current_internal_identity_qualified": false,
+    "native_loader_readset_qualified": false,
+    "prospective_rebind_only": true
   }
 }
