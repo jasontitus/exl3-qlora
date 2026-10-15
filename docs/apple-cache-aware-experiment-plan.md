@@ -12,6 +12,12 @@ The practical first run is tracked under `kernel-library/next-round-v5/practical
 
 User preference: when expected quality benefit is comparable, choose the experiment that can reuse a verified cache. An uncached trial needs an explicit reason to expect enough additional benefit to justify its measured cost. This prioritizes experiments; it must not substitute stale activations, reduce held-out coverage or turn lower training loss into a functional-quality claim.
 
+## Serving constraint and cheap follow-ups
+
+The existing800b native evaluator currently accepts only rank4/alpha8, layer39 attention `wq_a`/`wo_b`, and four fixed-shape factors. The trainer accepts rank8 and routed-expert adapters, but native evaluation does not yet support them. Do not launch rank8 assuming it is already deployable. A separately versioned extension to the same serving engine is being prepared for rank8/alpha16; the existing generic LoRA matrix operations need no new Metal kernel, but metadata verification and resident-byte accounting require changes and tests. Preserve the current engine and outcomes. Routed-expert serving is deferred.
+
+Another prospective cheap experiment is code-focused supervision on existing complete exact-edit tokens, changing only the supervised suffix and explicitly omitting diagnostic-only rows. It requires a source check that cache identity is independent of loss_start and an honest new dataset manifest; it does not mutate the running188-example experiment. No follow-up is launched solely because it appears here.
+
 ## First-run command details
 
 The [active request-v2](../../kernel-library/next-round-v5/practical-lr25-r4-v1/request-v2.json) and [launch companion](../../kernel-library/next-round-v5/practical-lr25-r4-v1/launch-companion-v2.json) use the accepted initial factors via `--resume-adapter`, fresh Adam/cursor/output, chunk2048, training80/8 and the existing boundary39 cache. Finite loss/gradient/updated-factor checks, normal memory guards, every-update saves and `--verify-reload` remain. No `--valid-data`, final-fit probe or hidden full41 evaluation is requested. The one-item reload probe uses evaluation mode and may add its distinct-mode cache entry; it does not establish full development-evaluation coverage.

@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T16:12:11.413854+00:00",
+  "updated_utc": "2026-10-15T16:28:27.042842+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2143,7 +2143,7 @@
     "completed_report": "generated-kernel-outcome-v1.json"
   },
   "next_cached_screen": {
-    "status": "M5_training_and_Studio_existing_adapter_quality_generation_running",
+    "status": "training_75_updates_complete_Studio_both_outputs_EOS_replay_pending",
     "proposed_training_rows": 188,
     "proposed_development_rows": 41,
     "boundary": 39,
@@ -2211,7 +2211,7 @@
       "model_imported": false,
       "memory_failure": false,
       "original_receipts_preserved": true,
-      "recovery": "Independent review of exact owned cleanup and additive corrected source in progress; no retry yet.",
+      "recovery": "completed_owned_release_and_separate_v2_fix_verified",
       "owned_lease_released": true,
       "signals_sent": false,
       "actual_release_path": "kernel-library/next-round-v5/cached-screen188-baseline-v1/actual-owned-release-v1"
@@ -2225,7 +2225,7 @@
       "observed_process_bytes": 10638901248,
       "wrapper_exit_code": 0,
       "owned_lease_released": true,
-      "independent_outcome_review": "pending"
+      "independent_outcome_review": "verified_091cebe2d62ca53a9a54640ab655e664d223b86ae4559570f4cdeba5c22c6a06"
     },
     "training_started": true,
     "user_revised_experiment_matrix": {
@@ -2261,10 +2261,10 @@
       ],
       "repeat_old_5e_5_training": false,
       "existing458_reference": "broader generated-quality panel, not unseen dev41 or isolated LR comparison",
-      "training_started": false
+      "training_started": true
     },
     "parallel_studio_evaluation": {
-      "status": "running_trained_first_generation",
+      "status": "both_samples_completed_EOS_exact_replay_pending",
       "task": "affine_relu_sum",
       "controls": {
         "baseline_passed": 224,
@@ -2294,20 +2294,27 @@
       "process_memory_gib": 60,
       "native_box_gib": 96,
       "reserve_gib": 32,
-      "controller_pid": 41655,
-      "frontend_pid": 41671,
-      "native_pid": 41682,
+      "controller_pid": null,
+      "frontend_pid": null,
+      "native_pid": null,
       "exec_session_id": 44600,
       "independent_review_sha256": "556979979a62231024010feefa2917bde5ce696d2bfbb596a79611f514f60f46",
-      "fresh_admission_passed": true
+      "fresh_admission_passed": true,
+      "trained_output_tokens_including_EOS": 458,
+      "zeroB_output_tokens_including_EOS": 751,
+      "strict_patch_findings_preliminary": [
+        "trained hunk count mismatch",
+        "base wrapper differs from literal protocol"
+      ],
+      "mechanical_only_diagnostic": "separate reviewed extraction/count normalization planned, no shell/code edits"
     },
     "preflight_preparation_issue": {
       "GPU_launched": false,
       "cause": "metadata hashing helper32MiB reader limit rejects legitimate46.5MB manifest",
-      "fix": "bounded streaminghash correction in preparation, pinned training runtime unchanged"
+      "fix": "deferred by user priority; full41 baseline is not a first-training gate"
     },
     "practical_run": {
-      "status": "training_3_updates_complete_four_cache_hits_observed",
+      "status": "running",
       "worker_pid": 27766,
       "wrapper_pid": 27763,
       "host": "jason-m5-MacBook.local",
@@ -2325,7 +2332,7 @@
       ],
       "full41_baseline_skipped": true,
       "exec_session_id": 85011,
-      "completed_updates_observed": 36,
+      "completed_updates_observed": 75,
       "no_duplicate_launch": true,
       "observed_utc": "2026-10-15T15:53:46.293078+00:00",
       "startup_payload_hash_seconds": 148.3,
@@ -2335,13 +2342,19 @@
       "first_backward_started_elapsed_seconds": 166.6,
       "progress_log": "wrapper.json.stderr.log",
       "first_three_update_seconds": 81.9520020831842,
-      "peak_mlx_gib_observed": 69.19651721138507,
-      "gradient_norm_last_observed": 0.034405626356601715,
-      "last_loss_observed": 0.2802068889141083,
-      "cache_hits_observed": 32,
-      "update_elapsed_seconds_observed": 883.9356328751892
+      "peak_mlx_gib_observed": 70.0758602693677,
+      "gradient_norm_last_observed": 0.07094652950763702,
+      "last_loss_observed": 0.30581361055374146,
+      "cache_hits_observed": 76,
+      "update_elapsed_seconds_observed": 1724.9371971250512
     },
     "user_priority": "best useful adapter soonest; actual quality rather than controlled sweep",
-    "full41_zeroB_baseline_required": false
+    "full41_zeroB_baseline_required": false,
+    "next_capacity_constraint": {
+      "trainer_support": true,
+      "native_800b_support": false,
+      "reason": "Native loader hard-requires rank4 alpha8 layer39 attention only",
+      "action": "Inspect minimal serving extension before training rank8; preserve existingengine/results"
+    }
   }
 }

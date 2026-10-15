@@ -1,0 +1,34 @@
+{
+  "status": "strict_format_replay_complete_mechanical_code_diagnostic_pending",
+  "task": "new curator-authored affine_relu_sum",
+  "trained": {
+    "adapter": "historical final458",
+    "output_tokens_including_EOS": 458,
+    "stop": "EOS",
+    "raw_edit_valid": false,
+    "strict_failure": "Hunk count mismatch",
+    "compiler": "not_run",
+    "numeric": "not_run"
+  },
+  "base": {
+    "adapter": "matched zero-B",
+    "output_tokens_including_EOS": 751,
+    "stop": "EOS",
+    "raw_edit_valid": false,
+    "strict_failure": "Expected literal KERNEL_PATCH heredoc",
+    "compiler": "not_run",
+    "numeric": "not_run"
+  },
+  "controls": {
+    "baseline_passes": 224,
+    "golden_passes": 224,
+    "negative_controls_rejected": true,
+    "GPU_dispatches": 896
+  },
+  "quality_improvement_demonstrated": false,
+  "diagnostic_policy": "Separate safe heredoc extraction, hunk-count repair and verified no-op-section omission only; never run generated shell or edit kernel/dispatch code. Retain original failures; normalized outcomes are not raw model success.",
+  "capture_review_sha256": "c200b4cd4eb76c6a87197337fe58ee0ef00c41437fac29ff95390f582fb08d42",
+  "strict_result_sha256": "8b52effe7b76b2c71b4e40c7f3443e7ba9e89f1677a722972aa06aab8ed63809",
+  "normalizer_review_sha256": "a2d4d24ce31e559e68b84e149f61ab78283fd7efa94d26383a2283e722fdbe86",
+  "observed_utc": "2026-10-15T16:32:03.015953+00:00"
+}
