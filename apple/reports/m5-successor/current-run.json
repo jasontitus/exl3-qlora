@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T16:50:42.438357+00:00",
+  "updated_utc": "2026-10-15T17:04:41.635709+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2340,9 +2340,9 @@
       ],
       "full41_baseline_skipped": true,
       "exec_session_id": 85011,
-      "completed_updates_observed": 146,
+      "completed_updates_observed": 180,
       "no_duplicate_launch": true,
-      "observed_utc": "2026-10-15T15:53:46.293078+00:00",
+      "observed_utc": "2026-10-15T17:04:41.635709+00:00",
       "startup_payload_hash_seconds": 148.3,
       "first_cache_hit_observed": true,
       "frozen_layers_skipped": 39,
@@ -2353,8 +2353,8 @@
       "peak_mlx_gib_observed": 70.0758602693677,
       "gradient_norm_last_observed": 0.09182215481996536,
       "last_loss_observed": 0.354972243309021,
-      "cache_hits_observed": 147,
-      "update_elapsed_seconds_observed": 3196.738237666199
+      "cache_hits_observed": 181,
+      "update_elapsed_seconds_observed": 4094.2205655830912
     },
     "user_priority": "best useful adapter soonest; actual quality rather than controlled sweep",
     "full41_zeroB_baseline_required": false,
@@ -2369,16 +2369,19 @@
       "path": "kernel-library/next-round-v5/practical-lr25-r4-v1/quality-snapshots/step-000104",
       "adapter_sha256": "fab231aca662ba64f072c93f82b643203e5e91b991b6fd889e71ca9436d72c75",
       "transfer_verified": true,
-      "status": "single_sample_running",
+      "status": "completed_strict_format_failure_normalized_alignment_refusal",
       "operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine-lr25-step104-v1",
-      "controller_pid": 60790,
-      "frontend_pid": 60832,
-      "native_pid": 60843,
+      "controller_pid": null,
+      "frontend_pid": null,
+      "native_pid": null,
       "exec_session_id": 14727,
       "outer_sha256": "b3bc1d5fc952cbb39464cdadcd323cb694a3a47a43a181c8c48de11c8ee1fc8c",
       "review_sha256": "8465e03e1927faafa079144dbad0b8ea2576edace0f5f10d6abf3c728852841e",
       "fresh_preclaim_passed": true,
-      "base_rerun": false
+      "base_rerun": false,
+      "raw_model_success": false,
+      "GPU_numerical_test_run": false,
+      "closure_review_sha256": "4ed02799391faf7250ec7e9f061a3a0d625910879917f7eb31533317fc88e5c6"
     }
   }
 }
