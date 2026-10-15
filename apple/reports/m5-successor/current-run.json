@@ -1265,13 +1265,13 @@
     "root_rehashed_independent_inputs": 1467,
     "resident_parameter_bytes_per_traced_route": 57515268,
     "prospective_processes": 4,
-    "GPU_executed": false,
+    "GPU_executed": true,
     "held_source_unchanged": true,
-    "root_execution_exit_code": 0,
+    "root_execution_exit_code": null,
     "artifact_sha256": "373abb1ac8acfc7b9b432d70e84a01fc7c07db8146b305c30a472e40e473c3ba",
     "artifact_bytes": 25607720,
     "build_elapsed_seconds": 358.8238798750099,
-    "artifact_executed": false,
+    "artifact_executed": true,
     "independent_artifact_review_sha256": "91736160b970d896db7875b64c17fb9fe01d6d44ddcc330c568d30ca14fff99d",
     "root_rehashed_artifact_review_inputs": 4062,
     "independent_package_review_sha256": "9a79aa8adf6ecc445c9ded2fd396a24a7b1cf9eeb0b37606dbc665f3ec9d5f8f",
@@ -1293,7 +1293,11 @@
       "full-traced",
       "split_decode-untraced"
     ],
-    "diagnostic_complete": false
+    "diagnostic_complete": false,
+    "cpu_build_execution_session": 89162,
+    "cpu_build_execution_exit_code": 0,
+    "CPU_build_GPU_executed": false,
+    "GPU_evidence_scope": "Execution established by accepted first two child phases; whole diagnostic and numerical controls pending"
   },
   "final_full16_evaluator_preparation": {
     "original_lane": "final458-evaluation-v1",
