@@ -1,0 +1,19 @@
+{
+  "schema": "transpose-controls-product-summary-v1",
+  "review_path": "kernel-library/next-round-v5/studio-functional-panel-v1/strided-transpose-controls-operation-v1/actual-audit-q-v1/review-v1.json",
+  "review_sha256": "14532ffe08eb0546ea8d7b4cac1f3956254ac38fd242db67f77d5f6c745fb96c",
+  "review_pins_verified": 147,
+  "exported_words_independently_checked": 14916764,
+  "cases_per_control": 12,
+  "baseline_pass": 12,
+  "positive_pass": 12,
+  "negative_packed_fail": 9,
+  "negative_tail_fail": 8,
+  "GPU_dispatches": 48,
+  "peak_RSS_bytes": 209551360,
+  "exit_code": 0,
+  "owned_release": true,
+  "timing_performed": false,
+  "model_generation_performed": false,
+  "limitation": "Raw output/padding independently replayed; post-input and redzone safety enforced/reported by reviewed native host."
+}

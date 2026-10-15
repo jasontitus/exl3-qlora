@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T19:37:17.712735+00:00",
+  "updated_utc": "2026-10-15T19:50:16.975958+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2600,6 +2600,24 @@
         "finding": "Positive prompt includes candidate after timings; suitable only for labeled post-test selection. Baseline-only proposal revision requested; tiny feedback may retain observed candidate results.",
         "training_ready": false,
         "new_training_launched": false
+      },
+      "measured_training_draft_v2": {
+        "path": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row48-measured-training-draft-v2",
+        "status": "independent_CPU_content_source_token_review_accepted",
+        "review_sha256": "8cb1cb79fe80483755d1cf4030cc020efa6356506e6889d386e277130c79cb51",
+        "root_verified_pins": 50,
+        "records": 2,
+        "source_lineages": 1,
+        "tokens": [
+          2608,
+          3143
+        ],
+        "targets": [
+          1220,
+          1082
+        ],
+        "training_activated": false,
+        "remaining": "mixing/weighting, additional useful source pairs and bounded cold-prefix pilot before launch"
       }
     },
     "RMS_fullfiles_evaluation": {
@@ -2803,10 +2821,40 @@
     },
     "distinct_task_next": {
       "task": "strided_transpose",
-      "status": "CPU_oracle_and_product_helper_review_in_progress_host_v2_fix_required",
+      "status": "controls48_independently_accepted_generation_and_timing_preparing",
       "finding": "v1 CPU validator accepted malformed schema/bool geometry/duplicate role/missing ID or source. Preserve v1; strict pre-device validation v2 requested.",
-      "GPU_launched": false
+      "GPU_launched": false,
+      "fix_seal_sha256": "227d5d5b8dcf44427d8d82158078e157149fb66a4f5869f947cba2a2e7be223a",
+      "CPU_tests_passed": 11,
+      "host_review_sha256": "19d59f3141e6e3fd1471326bdd526d1feb0a77b6bc13749f71ff7905b65efba2",
+      "host_review_pins_root_verified": 127,
+      "product_helper_review_sha256": "c6170a7ec2e9abc94c4016323393b8504fd936141ecb6e469b6ac2fed1448360",
+      "product_helper_review_pins_root_verified": 48,
+      "product_commit": "f2b48726",
+      "independent_native_CPU_invocations": 19,
+      "protocol_commit": "452326e8",
+      "protocol_review_sha256": "83932f4e2dd945bf9dbb8a967b70f3a644ee30bd514bb66e0ee296ccf8d05e51",
+      "protocol_review_pins_root_verified": 33,
+      "prompt_tokens": 789,
+      "controls_operation": "kernel-library/next-round-v5/studio-functional-panel-v1/strided-transpose-controls-operation-v1",
+      "controls_request_sha256": "8cfdad7239a201e4f5da6974a76c1171bf81dd01c3725b6eafb3b8c31b86157a",
+      "controls_concrete_review_sha256": "22dac0b09e19de6b3f9e6c056c338483e8e2e132e425d0575b4b9ea1269db426",
+      "controls_GPU_launched": true,
+      "controls_exit_code": 0,
+      "controls_lease_released": true,
+      "controls_raw_outcomes": {
+        "baseline_pass": 12,
+        "positive_pass": 12,
+        "negative_packed_fail": 9,
+        "negative_tail_fail": 8
+      },
+      "controls_peak_RSS_bytes": 209551360,
+      "model_generation_launched": false,
+      "timing_launched": false,
+      "controls_actual_review_sha256": "14532ffe08eb0546ea8d7b4cac1f3956254ac38fd242db67f77d5f6c745fb96c",
+      "controls_actual_pins_root_verified": 147,
+      "controls_report": "publish-exl3/apple/reports/kernel-eval-panel-v1/strided-transpose-v1/README.md"
     }
   },
-  "last_updated_utc": "2026-10-15T19:37:17.712735+00:00"
+  "last_updated_utc": "2026-10-15T19:50:16.975958+00:00"
 }
