@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T20:16:47.778926+00:00",
+  "updated_utc": "2026-10-15T20:40:33.931937+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2620,7 +2620,7 @@
         "remaining": "mixing/weighting, additional useful source pairs and bounded cold-prefix pilot before launch"
       },
       "row94_m5": {
-        "status": "eight_GPU_captures_completed_pending_independent_audit",
+        "status": "independently_audited_partial_correctness",
         "path": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row94-m5-deployment-v1",
         "remote_path": "/Volumes/Scratch/exl3-training/kernel-profiles/row94-interior-v1",
         "CPU_commands_passed": 11,
@@ -2646,7 +2646,10 @@
           0,
           4
         ],
-        "all_pair_qualified": false
+        "all_pair_qualified": false,
+        "actual_review_sha256": "7b2249cfcf95f33a9ad3d6d9ca5cf3257bc537f163eb17b3aef86f1a7bda2b03",
+        "actual_pins_root_verified": 120,
+        "report": "publish-exl3/apple/reports/profile-guided-kernels/row94-m5-v1/README.md"
       }
     },
     "RMS_fullfiles_evaluation": {

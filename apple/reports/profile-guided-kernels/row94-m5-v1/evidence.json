@@ -1,0 +1,95 @@
+{
+  "GPU_executed_by_reviewer": false,
+  "all_dtype_cases_qualified": false,
+  "completed_dispatches": 8,
+  "condition_results": [
+    {
+      "case": "before--half_half",
+      "failure_count": 170,
+      "maximum_absolute_error": 0.023182951845228672,
+      "passed": false
+    },
+    {
+      "case": "before--half_float",
+      "failure_count": 44,
+      "maximum_absolute_error": 0.008072772422528018,
+      "passed": false
+    },
+    {
+      "case": "before--float_half",
+      "failure_count": 248,
+      "maximum_absolute_error": 0.01839733275961919,
+      "passed": false
+    },
+    {
+      "case": "before--float_float",
+      "failure_count": 4,
+      "maximum_absolute_error": 2.826167694092163e-06,
+      "passed": false
+    },
+    {
+      "case": "after--half_half",
+      "failure_count": 0,
+      "maximum_absolute_error": 0.003677262458950281,
+      "passed": true
+    },
+    {
+      "case": "after--half_float",
+      "failure_count": 0,
+      "maximum_absolute_error": 0.0038175336294337114,
+      "passed": true
+    },
+    {
+      "case": "after--float_half",
+      "failure_count": 0,
+      "maximum_absolute_error": 7.959368417687074e-07,
+      "passed": true
+    },
+    {
+      "case": "after--float_float",
+      "failure_count": 4,
+      "maximum_absolute_error": 2.826167694092163e-06,
+      "passed": false
+    }
+  ],
+  "exact_rational_reference_values": 1024,
+  "findings": [
+    "All four before conditions fail the frozen tolerances. Three after conditions pass; float_float still fails indices24,34,191,197.",
+    "The entire float_float output byte array is identical before and after; these four failures are shared, not a regression introduced by this source change. Their numerical cause remains unresolved."
+  ],
+  "frozen_tolerances_unchanged": true,
+  "full_process_table_rows": 735,
+  "limitations": [
+    "One fixed interior-only fixture and one source lineage, four dtype combinations; not whole-grid/API/border qualification.",
+    "Exact rational oracle describes represented input mathematics; no tolerance adjustment or fitted simulated device reduction.",
+    "Host performs source/input continuity and active interior bounds checks, but no canary/input-device-immutability claims beyond the implemented host are added.",
+    "Remote host artifact and source use are bound through saved actual build, request and wrapper receipts; reviewer did not read remote paths or invoke the artifact.",
+    "Ownership evidence is the saved global/local released state and full saved process closure, not a current remote claim inspection.",
+    "No paired timing, hardware counters, throughput, adapter gain or training-readiness claim."
+  ],
+  "memory_observations": 10,
+  "minimum_observed_available_bytes": 107765809152,
+  "native_device": "Apple M5 Max",
+  "output_values_replayed": 2048,
+  "owned_ids_closed": [
+    317,
+    320,
+    327,
+    338,
+    359,
+    373,
+    401,
+    442,
+    453,
+    467
+  ],
+  "owned_release_verified": true,
+  "peak_observed_aggregate_rss_bytes": 115359744,
+  "reviewer": "quality_research",
+  "schema": "row94-interior-actual-independent-review-v1",
+  "status": "accepted_saved_capture_with_partial_numerical_failures_preserved",
+  "timing_qualified": false,
+  "training_ready": false,
+  "review_sha256": "7b2249cfcf95f33a9ad3d6d9ca5cf3257bc537f163eb17b3aef86f1a7bda2b03",
+  "root_verified_pin_count": 120
+}
