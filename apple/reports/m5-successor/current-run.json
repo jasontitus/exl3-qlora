@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T21:06:11.382180+00:00",
+  "updated_utc": "2026-10-15T21:12:30.431374+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -3016,6 +3016,30 @@
     "cold_review_pins_root_verified": 41,
     "remote_root": "/Volumes/Scratch/exl3-training/2026-10-15/targeted-profile-pilot-v1",
     "main_request_predeclared": true,
-    "main_launched": false
+    "main_launched": false,
+    "parallel_evaluation": {
+      "task": "profile-guided-rotation-v1",
+      "status": "development_controls_independently_accepted_profile_request_under_review",
+      "controls_session": 42604,
+      "controls_exit_code": 0,
+      "owned_release": true,
+      "request_sha256": "89fb5d853d6592ec8d959b780dd482b6159971c5a02a170049e5eee045854ab4",
+      "source_review_sha256": "bf5fe9fb3840a6ebf57b6384dbca5d1f7d1a9b251673608261c728a292181465",
+      "source_review_pins_root_verified": 150,
+      "dispatches": 48,
+      "raw_baseline_positive_exact": true,
+      "confirmation_opened": false,
+      "actual_review_sha256": "1c0a9b59707c98e6fbde62a91da74d14d16c2cccc4f5e44c4c1c3760b4db7132",
+      "actual_review_pins_root_verified": 212
+    },
+    "cold_first_update": {
+      "step": 1,
+      "supervised_tokens": 2712,
+      "loss": 0.11049827188253403,
+      "gradient_norm": 0.0890328660607338,
+      "elapsed_seconds": 305.8914784581866,
+      "peak_mlx_gib": 40.49468636512756,
+      "interpretation": "cost-probe receipt; not a generated-quality result"
+    }
   }
 }
