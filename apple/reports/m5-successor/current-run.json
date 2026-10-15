@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T05:14:14.901893+00:00",
+  "updated_utc": "2026-10-15T05:16:56.757546+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1721,7 +1721,7 @@
   },
   "m5_runtime_preparation": {
     "transport_v1": "held_unexecuted_independent_review_found_captured_source_handoff_gap",
-    "transport_v2": "completed_exit0_pending_independent_actual_review",
+    "transport_v2": "completed_independently_audited",
     "static_dependency_inspector_review_sha256": "99f09d722010614f72f2d795425c76ab1f9652f7e0d872567bfdf81e89185860",
     "static_dependency_inspector_root_verified_pins": 15,
     "static_dependency_inspector_root_reran_methods": 17,
@@ -1732,9 +1732,17 @@
     "transport_root_reran_methods": 20,
     "runtime_files": 6,
     "runtime_bytes": 252502104,
-    "static_dependency_inspection": "completed_exit0_pending_independent_actual_review",
+    "static_dependency_inspection": "completed_independently_audited",
     "static_inspection_objects": 8,
     "static_dependency_edges": 38,
-    "remote_root": "/Volumes/Scratch/exl3-training/2026-10-15/native-long-f32-v1"
+    "remote_root": "/Volumes/Scratch/exl3-training/2026-10-15/native-long-f32-v1",
+    "actual_outcome_review_sha256": "cd8faaf35ed118fbdaccdeb59e9e281325b845e2197ee7b3d20d6d507c993075",
+    "actual_outcome_root_verified_pins": 62,
+    "actual_outcome_root_tests": 6,
+    "inspected_file_kinds": {
+      "MachO": 7,
+      "metallib": 1
+    },
+    "serving_qualified": false
   }
 }
