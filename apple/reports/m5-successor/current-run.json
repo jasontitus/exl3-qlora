@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T00:49:38.228458+00:00",
+  "updated_utc": "2026-10-15T01:15:31.116123+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -72,14 +72,16 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "saved_checkpoint": 226,
+    "saved_checkpoint": 228,
     "worker_pid": 47890,
-    "elapsed": "20:11:05",
-    "worker_cpu": "856:46.56",
-    "worker_rss_kib": 19507824,
-    "forward_layer": 1,
-    "active_mlx_gib": 15.64,
-    "history_audit_checkpoint": 222
+    "elapsed": "20:37:24",
+    "worker_cpu": "875:51.58",
+    "worker_rss_kib": 19235392,
+    "forward_layer": 30,
+    "active_mlx_gib": 16.01,
+    "history_audit_checkpoint": 222,
+    "new_history_transfer_updates": 228,
+    "new_transfer_audit_pending": true
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -1065,7 +1067,7 @@
     "component_gpu_executed": true,
     "production_changed": false,
     "m5_runtime_changed": false,
-    "limits": "Three uncompressed reconstructed/captured fixtures only. Strict five-output analysis review pending; fullserving/expert/index/adapter and longcontext gates remain.",
+    "limits": "Three uncompressed fixtures numerically replayed; full serving, compressed/index, expert, adapter and long-context gates remain.",
     "component_source_review_sha256": "80743e9fe42166901d03ae69a1007aabbe875b61a02e60f02e7bc9043b38ef79",
     "component_source_review_pins_root_verified": 905,
     "component_artifact_review_sha256": "5fb3ba63e5f3d14f788a2326c8060fdf9102a9f466240e8cb5d9bb22fa3bce98",
@@ -1100,15 +1102,18 @@
     "all_masks_exact_invalid_exponents_zero": true,
     "acceptance_threshold": null,
     "full_serving_qualified": false,
-    "memory_status": "64/32 proposal failedread-onlypreflight (outer71.659<96). Tiledindexcandidate cuts scheduler51.89->39.912GiB; v4closesconditionalrouteunderestimate. Separate42/80/32/128 proposal needsouter74 andfreshsource/resourceapproval; nofullGPUlaunch.",
+    "memory_status": "42/native82/reserve32 admission-only passed; fresh execute preclaim failed outer73.686<74 and native81.191<81.853. No lease/native/GPU start. Own validation allocation reduction underway.",
     "serving_v2_cpu_link": "terminal0; artifact3fd62b23a6ffb05242cc61ffebe0522b8fee3c08799d660da4ba3fc5b7341f1e; notexecuted",
     "tiled_index_scalar_scheduler_bytes": 42855428945,
-    "tiled_index_scalar_status": "Source-only CPU arithmetic, pending binding to correctedall-stock-routesv4; no empiricalfit.",
+    "tiled_index_scalar_status": "Corrected v4 all-stock routes independently bound to CPU accounting; empirical fit pending.",
     "proposed_process_memory_gib": 42,
     "reserve_gib_unchanged": 32,
     "serving_v4_source_review_sha256": "973606135c92bcb1dec4405ce5649f132dbad9874cdc75df52c9b662ba989fd6",
     "serving_v4_source_root_rehashed_inputs": 1660,
-    "serving_v4_status": "Batch-oneCPUsource reviewpassed; isolatednativeCPUlinknextafterownv3terminal. NoGPU."
+    "serving_v4_status": "CPU link terminal0, artifact independently reviewed; no full-model execution.",
+    "serving_v4_artifact_sha256": "4fed1f1667bcc6e6a12223fea3b83c10e94061b4e0e2a23bb8d79388fef33c20",
+    "native_box_gib": 82,
+    "full_model_gpu_started": false
   },
   "historical_history_audits": [
     {
@@ -1152,5 +1157,12 @@
     "WatchAI_pid": 8585,
     "unrelated_processes_preserved": true,
     "process64_plus_reserve32_gate_passed": false
+  },
+  "portable_product_bundle": {
+    "local_commit": "822b90d1",
+    "path": "apple/integrations/native-serving-patches-v2",
+    "copy_review_sha256": "d1af6d0f21265508a227d17e62a9c0b7d44c6a0ebd6d5c481299546da343ef0d",
+    "root_rehashed_copy_review_inputs": 835,
+    "activated": false
   }
 }
