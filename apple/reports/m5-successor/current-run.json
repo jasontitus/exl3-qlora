@@ -1327,14 +1327,16 @@
       "final458-evaluation-process40-v2"
     ],
     "revised_review_pending": false,
-    "actual_final458_evidence_present": false,
+    "actual_final458_evidence_present": true,
     "GPU_executed": false,
     "review64_sha256": "414fa397e4d78bd16f0fdbecee95de9918eda1adb33375bf29b9e1d6ee883476",
     "review40_sha256": "cfe50fe0fba58b585ce7d2aa62d6547e02bc10e84cfb0d90e6250db65b881ee2",
     "root_rehashed_each_review_inputs": 340,
     "actual_fit_and_final_evidence_still_required": true,
     "selected_memory_lane": "final458-evaluation-process40-v2",
-    "selection_evidence": "kernel-library/next-round-v5/m5-successor/final458-explicit-memory-lane-selection-v1.json"
+    "selection_evidence": "kernel-library/next-round-v5/m5-successor/final458-explicit-memory-lane-selection-v1.json",
+    "actual_completion_review_pending": true,
+    "hardware_fit_still_required": true
   },
   "latest_root_history_replay": {
     "path": "training-exposure-observation-20261015T014829Z/root-replay-v1.json",
@@ -1376,11 +1378,11 @@
     "root_rehashed_actual_terminal_pins": 531
   },
   "final458_transport": {
-    "path": "kernel-library/next-round-v5/final458-transfer-v2",
-    "independent_review_sha256": "d340d0eac9df04eed39d9f7894db4b539bfe6e1f2526c5089468a366ffc78dab",
-    "root_rehashed_review_inputs": 435,
-    "actual_SSH_transfer_performed": false,
-    "actual_final458_evidence_present": false,
+    "path": "kernel-library/next-round-v5/final458-transfer-v3",
+    "independent_review_sha256": "c1142aa71ee822f2530c773963a7a2a54dfff494db3fc5d2bacfbc7b4c6770cc",
+    "root_rehashed_review_inputs": 449,
+    "actual_SSH_transfer_performed": true,
+    "actual_final458_evidence_present": true,
     "actual_transfer_attempted": true,
     "actual_transfer_status": "v3_transferred_checked_pending_actual_independent_review",
     "actual_transfer_exit_code": 0,
@@ -1401,7 +1403,12 @@
     "root_verified_transferred_output_hashes": 20,
     "selected40_manifest_sha256": "8a4548a3d24e0c60c3222285d374a59fa98d1ef2cc268abb2a58b95ef444c34e",
     "actual_completion_review_pending": true,
-    "evaluation_authorized": false
+    "evaluation_authorized": false,
+    "historical_v2_review": {
+      "path": "kernel-library/next-round-v5/final458-transfer-v2",
+      "sha256": "d340d0eac9df04eed39d9f7894db4b539bfe6e1f2526c5089468a366ffc78dab",
+      "root_rehashed_inputs": 435
+    }
   },
   "first_projection_microprobe_current": {
     "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/first-projection-microprobe-v1",
