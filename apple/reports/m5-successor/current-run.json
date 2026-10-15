@@ -1,7 +1,7 @@
 {
-  "updated_utc": "2026-10-15T03:06:23.935709+00:00",
+  "updated_utc": "2026-10-15T03:16:09.314530+00:00",
   "host": "jason-m5-MacBook.local",
-  "status": "training_completed_final_bundle_transferred_independent_actual_audit_pending",
+  "status": "training_completed_final_bundle_audited_final_eval_environment_recovery_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
   "wrapper_pid": 47859,
   "runner_pid": null,
@@ -1335,8 +1335,15 @@
     "actual_fit_and_final_evidence_still_required": true,
     "selected_memory_lane": "final458-evaluation-process40-v2",
     "selection_evidence": "kernel-library/next-round-v5/m5-successor/final458-explicit-memory-lane-selection-v1.json",
-    "actual_completion_review_pending": true,
-    "hardware_fit_still_required": true
+    "actual_completion_review_pending": false,
+    "hardware_fit_still_required": true,
+    "actual_completion_review_sha256": "7365662226e05f6be82576af973b527a446aeb3c44373cf59543c80caac4e9e1",
+    "actual_completion_review_pins_root_verified": 491,
+    "concrete_review_sha256": "604cc91e7190a522dc1f250d8342656a721492db7b62ea0149c4c6a60df4d2f5",
+    "concrete_review_pins_root_verified": 500,
+    "initial_launch_status": "failed_before_model_execution_wrong_numerical_environment",
+    "initial_launch_receipt": "kernel-library/next-round-v5/final458-evaluation-process40-v2/concrete-execution-v1/wrapper-receipt.json",
+    "owned_lease_retained_pending_terminal_review": true
   },
   "latest_root_history_replay": {
     "path": "training-exposure-observation-20261015T014829Z/root-replay-v1.json",
