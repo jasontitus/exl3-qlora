@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T06:06:57.050687+00:00",
+  "updated_utc": "2026-10-15T06:13:58.135867+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1851,5 +1851,22 @@
     "owned_lease_released": true,
     "recovery_result": "kernel-library/next-round-v5/native-m5-import-failure-recovery-v1/actual-v1/stdout.json",
     "recovery_review_sha256": "9ef56b52def8917309fad83e11be92dfe1a41cc87162f27df5a3d15b127e8c14"
+  },
+  "m5_internal_serving_controls_v2": {
+    "status": "CPU_prepare_failed_stale_embedded_binding_contract_hash_no_GPU",
+    "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation458-f32-m5-internal-v2",
+    "author_seal_sha256": "400f37dcf1de767df942154ece9a86b77b867e9271e646ca279d76677a124992",
+    "source_files": 96,
+    "source_bytes": 5125674,
+    "frontend_entrypoint_tests": 5,
+    "source_tests": 12,
+    "remote_copy_verified": true,
+    "GPU_started": false,
+    "previous_failed_attempt_preserved": true,
+    "prepare_exit_code": 1,
+    "failure": "operation.BINDING_CONTRACT_SHA256 retained prior namespace hash",
+    "lease_acquired": false,
+    "failure_log": "root-deployment-v1/prepare.stderr.log",
+    "successor_requires_full_prepare_regression": true
   }
 }
