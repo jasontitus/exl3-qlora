@@ -2,6 +2,8 @@
 
 ## Current status — 2026-10-15 UTC
 
+The corrected v3 package completed actual M5 CPU preparation, default request validation and memory admission at 06:24 UTC. All 14 prepared JSON artifacts (374,295 bytes) and the 129-pin plan are captured for independent concrete review before GPU execution. Both prior failed lanes remain preserved; neither changed the trained model.
+
 The corrected v2 source passed the real frontend import regression, but actual CPU preparation then refused a stale embedded binding-contract checksum after namespace rebasing. No GPU lease or model load occurred. The failed v2 lane is preserved. The next correction must include full preparation coverage and agreement between embedded checksums and actual path-bound files; isolated source tests were insufficient.
 
 Latest M5 evaluation attempt: deployment, all three prepared requests, fresh hardware identity and CPU memory admission passed independent review. The first frontend then exited before native model loading because its dynamically loaded validation module could not import `own_host`. The controller is terminal, failure receipts are preserved, and its own GPU lease was released through the independently reviewed existing wrapper at 06:06 UTC. No process was signalled or foreign lock removed. A minimal import fix and real-entrypoint regression test are in progress; the original sealed lane will remain unchanged. No generated-kernel quality result is available yet.

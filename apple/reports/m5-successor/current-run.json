@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T06:13:58.135867+00:00",
+  "updated_utc": "2026-10-15T06:25:26.264137+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1868,5 +1868,24 @@
     "lease_acquired": false,
     "failure_log": "root-deployment-v1/prepare.stderr.log",
     "successor_requires_full_prepare_regression": true
+  },
+  "m5_internal_serving_controls_v3": {
+    "status": "actual_CPU_preparation_default_validation_and_memory_admission_passed_concrete_review_pending",
+    "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation458-f32-m5-internal-v3",
+    "author_seal_sha256": "a6fe91f4d0fea8409153af64f85719520b4d18f46de72071b8deafd91f045286",
+    "source_review_sha256": "3869a84fda8e43059f5ab1c0ba8edde364822e999c7dca521c645c56b2383ba1",
+    "source_files": 96,
+    "source_bytes": 5125674,
+    "plan_sha256": "afb9ecd2bbc9f7a9c449c181f54606890ac4695cb350a0d5d4c925b29d87b39a",
+    "plan_pins": 129,
+    "captured_prepared_files": 14,
+    "captured_prepared_bytes": 374295,
+    "prepare_exit_code": 0,
+    "default_validation_exit_code": 0,
+    "admission_only_exit_code": 0,
+    "outer_available_bytes": 108773605376,
+    "native_available_bytes": 110654586880,
+    "GPU_started": false,
+    "lease_acquired": false
   }
 }
