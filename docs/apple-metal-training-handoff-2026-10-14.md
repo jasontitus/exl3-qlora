@@ -1,3 +1,11 @@
+## Update: portable component links; fresh history records 222 views
+
+The portable attention component linked without executing the target. Its frozen artifact is `36898156d84e004ac2db0c68724e2a3518502ee510c43f8deb4e83438ee11f99` (6,589,224 bytes); source/artifact and concrete-run review precede any device run. Typed CPU trace checks cover widths 1/32/33/34 and per-tile materialization fences. Serving integration and temporary-memory accounting remain in progress. No production or M5 runtime changed, and no repaired-path/full-model numerical claim is made.
+
+A separate pure CPU history auditor now supports both epochs, separates distinct views from repeated presentations, and reports matched repeat timings without attributing a cache speedup. Independent review passed with 21 inputs rehashed by root; nine author and eight independent methods cover real history206 plus explicitly synthetic later-epoch cases. Review SHA: `13d6fbc86f920ab50a8e256f981c782aa0c404bc61bc0e3e72efd422c21b2fcc`.
+
+The newly approved read-only history/source capture records **222 distinct complete views: 180 exact edits and 42 diagnostics**, with **410,086 supervised target presentations** and no repeats. Root reconstructed this from the pinned sampler and unchanged history206 prefix; a separate actual-capture review is pending. This is exposure evidence, not checkpoint durability or quality evidence. Source collection remains paused.
+
 ## Update: tiny device test observes fixed-layout mismatch; M5 221
 
 The reviewed model-free MPP witness completed on the M1 Ultra. All four NN/NT identity/basis cases executed both paths. The coordinate-accessor path matched the expected matrices exactly; the legacy fixed-layout path had maximum errors 0.21875, 0.84375, 0.908203125 and 0.96484375. Recorded A/B/C slot mappings disagree with the fixed map at 192/448/448 slots for NN and 192/508/448 for NT, with complete coordinate coverage and no duplicates. This is evidence of an actual layout mismatch for this float tile; production BF16 multi-tile attention still needs a repaired-path comparison.

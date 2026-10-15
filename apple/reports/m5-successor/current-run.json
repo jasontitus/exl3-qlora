@@ -1046,5 +1046,32 @@
     "legacy_prediction": "All2048 legacy values exactly predicted by observed SDK coordinate maps interpreting fixed-slot writes; witness-local mechanism, not whole-attention repair qualification.",
     "max_observed_aggregate_rss_bytes": 719273984,
     "max_fixed_metal_allocation_bytes": 819200
+  },
+  "epoch_exposure_auditor": {
+    "status": "independently_reviewed_cpu_history_accounting_v2",
+    "directory": "m5-successor/epoch-exposure-audit-v1",
+    "review_sha256": "13d6fbc86f920ab50a8e256f981c782aa0c404bc61bc0e3e72efd422c21b2fcc",
+    "root_rehashed_review_inputs": 21,
+    "tests": "9 author +8 independent;458-update cases explicitlysynthetic",
+    "actual_history_capture": "m5-successor/training-exposure-observation-20261015T002225Z",
+    "actual_history_count": 222,
+    "actual_distinct_views": 222,
+    "actual_view_kinds": {
+      "exact_edit": 180,
+      "diagnostic": 42
+    },
+    "actual_supervised_target_presentations": 410086,
+    "actual_report_status": "root_reconstructed_pending_independent_actual_review",
+    "matched_actual_repeats": 0
+  },
+  "portable_attention_repair_current": {
+    "status": "isolated_cpu_component_linked_pending_independent_artifact_and_concrete_review",
+    "plan_review_sha256": "ab7cec80c70d73aa73ccb5d9d02908de78b641ba00c1c21d34c24b6c5f2a0838",
+    "root_rehashed_plan_review_inputs": 17,
+    "component_artifact_sha256": "36898156d84e004ac2db0c68724e2a3518502ee510c43f8deb4e83438ee11f99",
+    "component_gpu_executed": false,
+    "production_changed": false,
+    "m5_runtime_changed": false,
+    "limits": "No hardware-qualified numerical/longcontext/fullmodel/quality claim. Serving wiring/accounting inprogress."
   }
 }
