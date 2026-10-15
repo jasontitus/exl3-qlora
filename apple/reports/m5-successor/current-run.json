@@ -2988,7 +2988,7 @@
   },
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
-    "status": "cold_probe_completed_pending_actual_audit",
+    "status": "main24_running",
     "user_authorized": true,
     "starting_adapter": "original229-example458-update",
     "comparison_adapter": "same_original458",
@@ -3016,7 +3016,7 @@
     "cold_review_pins_root_verified": 41,
     "remote_root": "/Volumes/Scratch/exl3-training/2026-10-15/targeted-profile-pilot-v1",
     "main_request_predeclared": true,
-    "main_launched": false,
+    "main_launched": true,
     "parallel_evaluation": {
       "task": "profile-guided-rotation-v1",
       "status": "old458_profile_omitted_generation_running",
@@ -3062,6 +3062,15 @@
     "cold_disk_misses": 3,
     "cold_disk_writes": 3,
     "cold_capture": "kernel-library/next-round-v5/targeted-profile-pilot-v1/cold-capture-v1/receipt.json",
-    "cold_factors_finite": true
+    "cold_factors_finite": true,
+    "main_session": 25313,
+    "main_wrapper_pid": 11616,
+    "main_started_utc": "2026-10-15T21:23:47.334296+00:00",
+    "main_review_sha256": "1ef238fdcad0146b2d3630808c4eb79273abbdebb99b0f29026ac4318d1b2536",
+    "main_review_pins_root_verified": 50,
+    "cold_actual_review_sha256": "083a1b2846e4248bba5b1260bb4b3c7554a0190d5ec9cae0aed01882a89fd4b2",
+    "cold_actual_review_pins_root_verified": 47,
+    "main_fresh_available_bytes": 108364496896,
+    "main_required_available_bytes": 94489280512
   }
 }
