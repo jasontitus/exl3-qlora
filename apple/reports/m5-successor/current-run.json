@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T02:18:29.444673+00:00",
+  "updated_utc": "2026-10-15T02:24:19.229189+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1350,7 +1350,15 @@
     "root_rerun_CPU_tests": 14,
     "scope": "descriptive own-input CPU reference after capture provenance and trace controls",
     "actual_operands_read": false,
-    "numerical_pass_threshold": null
+    "numerical_pass_threshold": null,
+    "actual_analysis_status": "descriptive_CPU_reference_completed_peer_replay_pending",
+    "actual_session": 37123,
+    "actual_exit_code": 0,
+    "actual_report": "kernel-library/next-round-v5/exact-generation-qualification-v1/first-divergence-projection-analysis-v2/actual-operation-v1/report.json",
+    "actual_report_sha256": "42a6ccf5a9e50707f38a11a23fd22b9d477138e00bc05467e06d8e4de4696f5c",
+    "loader_review_sha256": "00d377f8d23d6dad30eb21436cb67941199b190bd5a8b77b4508b2398f4f7e14",
+    "root_rehashed_loader_review_pins": 63,
+    "summary": "Both qnorm and KVnorm+RoPE staged own-input residuals zero. Full qa/kva differ585/289 from rounded ideal; split0/0. Own-input qB differs1 full and3 split. No serving tolerance or causal verdict."
   },
   "final458_transport": {
     "path": "kernel-library/next-round-v5/final458-transfer-v2",
