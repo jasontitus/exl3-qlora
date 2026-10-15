@@ -2988,7 +2988,7 @@
   },
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
-    "status": "main24_running",
+    "status": "main24_completed_pending_independent_capture_audit",
     "user_authorized": true,
     "starting_adapter": "original229-example458-update",
     "comparison_adapter": "same_original458",
@@ -3019,7 +3019,7 @@
     "main_launched": true,
     "parallel_evaluation": {
       "task": "profile-guided-rotation-v1",
-      "status": "old458_profile_omitted_generation_running",
+      "status": "old458_omitted_generation_completed_pending_capture_audit",
       "controls_session": 42604,
       "controls_exit_code": 0,
       "owned_release": true,
@@ -3042,7 +3042,9 @@
       "profile_actual_pins_root_verified": 677,
       "old458_omitted_session": 38207,
       "old458_omitted_review_sha256": "e87f509296e18e15a0ed498dad4b46ab6d95371778734ebd8ae47fa1072503a3",
-      "old458_omitted_review_pins_root_verified": 761
+      "old458_omitted_review_pins_root_verified": 761,
+      "old458_omitted_exit_code": 0,
+      "old458_omitted_finished_utc": "2026-10-15T21:24:17.670875+00:00"
     },
     "cold_first_update": {
       "step": 1,
@@ -3071,6 +3073,17 @@
     "cold_actual_review_sha256": "083a1b2846e4248bba5b1260bb4b3c7554a0190d5ec9cae0aed01882a89fd4b2",
     "cold_actual_review_pins_root_verified": 47,
     "main_fresh_available_bytes": 108364496896,
-    "main_required_available_bytes": 94489280512
+    "main_required_available_bytes": 94489280512,
+    "main_exit_code": 0,
+    "main_finished_utc": "2026-10-15T21:37:07.303842+00:00",
+    "main_completed_updates": 24,
+    "main_adapter_prediction_reload_exact": true,
+    "main_peak_mlx_gib": 41.029197964817286,
+    "main_updates_seconds": 325.7428767499514,
+    "main_wrapper_seconds": 800.06787,
+    "main_disk_hits": 20,
+    "main_disk_misses": 1,
+    "main_disk_writes": 1,
+    "main_aggregate_cache_hits": 25
   }
 }

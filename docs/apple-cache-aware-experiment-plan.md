@@ -77,3 +77,9 @@ The user authorized this exploratory pilot on October15 after the completed tran
 Run a separate three-item cold-prefix cost probe first, preserve its receipts and discard its updated factors. Restart the main pilot from original458 factors. Cache only frozen-prefix values under exact identities; do not reuse newly formatted rows as if unchanged. Keep the original adapter untouched.
 
 In parallel prepare a new strided90-degree rotation development task with actual baseline-only profiles and equal one-attempt old458/pilot × profile-present/omitted comparisons. Use existing bounded compiler/numerical/timing machinery and retain failures. A separate confirmation workload remains sealed until development results are assessed. Provisional first comparative result is2–4hours from preparation start, subject to measured cold cost, memory and concrete review; refine after the cost probe.
+
+### Targeted pilot execution, October 15
+
+The fixed 24-update pilot completed at 21:37 UTC. Its worker receipt reports exact saved-adapter prediction reload, 41.03 GiB peak MLX allocation, 325.74 seconds through the final update and 800.07 seconds end-to-end. All training items reused eligible frozen prefixes; the separate evaluation-mode reload incurred one disk miss/write. Aggregate prefix hits were 25, with 20 disk hits. Completion/factor/exposure audit and generated-code comparison remain separate gates; these timing and reload observations do not establish quality improvement. Preserve the step24 endpoint as the sole pilot candidate, with no automatic extension.
+
+The original458/profile-omitted rotation generation also completed. Continue the registered four-condition development comparison, validating exact generated code before timing; keep confirmation sealed until the development decision.
