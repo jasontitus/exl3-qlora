@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T17:25:13.995184+00:00",
+  "updated_utc": "2026-10-15T17:27:39.792183+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2387,6 +2387,16 @@
       "raw_model_success": false,
       "GPU_numerical_test_run": false,
       "closure_review_sha256": "4ed02799391faf7250ec7e9f061a3a0d625910879917f7eb31533317fc88e5c6"
+    },
+    "final188_quality": {
+      "status": "CPU_preclaim_refused_no_GPU_launch_resource_tuning_in_progress",
+      "adapter_step": 188,
+      "review_sha256": "043a493210bbcb480cb446dd32f2d40b0fa2577125b751783d3ae9555e1ba003",
+      "operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine-lr25-step188-v1",
+      "available_bytes": 89426051072,
+      "required_available_bytes": 98784247808,
+      "base_rerun": false,
+      "reserve_gib": 32
     }
   }
 }
