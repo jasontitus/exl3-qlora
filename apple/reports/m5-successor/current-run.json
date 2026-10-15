@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T04:46:32.992543+00:00",
+  "updated_utc": "2026-10-15T04:55:10.362029+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1668,7 +1668,7 @@
     "all16_total_and_added_metal_row_NLL_lower": true
   },
   "Studio_GPU_lease_released": true,
-  "generated_smoke_status": "reviewed_process40_six_phase_native_smoke_running",
+  "generated_smoke_status": "six_phase_completed_zeroB_controls_pass_strict_cache_fresh_failed_outcome_audit_pending",
   "next_trial_development_split": "proposal_unactivated_under_review_broad_engine_history_grouping_makes_core_sources_absent",
   "generated_smoke": {
     "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation458-f32-smoke-process40-v1",
@@ -1682,6 +1682,25 @@
     "root_verified_pins": 115,
     "root_CPU_tests": 73,
     "GPU_started": true,
-    "quality_qualified": false
-  }
+    "quality_qualified": false,
+    "completed_cached_conditions": [
+      "absent",
+      "zeroB458"
+    ],
+    "cached_zeroB_bitwise_equal_all3positions": true,
+    "current_condition": "checkpoint458",
+    "base_observed_peak_RSS_GiB": 19.152786254882812,
+    "base_observed_min_system_available_GiB": 44.5643310546875,
+    "completed_native_children": 6,
+    "zeroB_cached_and_fresh_bitwise_passed": true,
+    "strict_cache_parity_passed": false,
+    "max_cache_fresh_logit_differences": {
+      "absent": 1.59375,
+      "zeroB458": 1.59375,
+      "checkpoint458": 1.25
+    },
+    "shared_lease_released": true,
+    "result_scope": "short_serving_only_no_long_capacity_or_generated_kernel_quality"
+  },
+  "long_generation_next_host_proposal": "M5_native105.42GiB_outer103.0GiB_proposed_process60_native82_reserve32_pending_own_host_qualification"
 }
