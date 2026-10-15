@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T04:27:23.662316+00:00",
+  "updated_utc": "2026-10-15T04:33:03.456710+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_completed_final458_full16_evaluation_running_reused_baseline_process36",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1546,7 +1546,7 @@
   },
   "GPU_forward_observed": true,
   "cache_cross_run_M5": {
-    "status": "phase2_resume_launched_pending_actual_loader_and_cache_outcome",
+    "status": "both_phases_completed_six_cached_updates_pending_independent_outcome_audit",
     "available_GiB_at_preparation": 105.24142456054688,
     "request_sha256": "6b10dc76f3fd089f20af0a6e2d161ac689650c0b1aab5a6c8497980d0d962beb",
     "GPU_launched": true,
@@ -1570,6 +1570,17 @@
     "phase2_launched": true,
     "phase2_session_id": 6995,
     "phase2_request_sha256": "5d7fc79122f26f8a00a7431a2454e8e99aa0ec3ab141a553d8ea5cb92aec04d5",
-    "phase2_fresh_available_GiB": 103.86616516113281
+    "phase2_fresh_available_GiB": 103.86616516113281,
+    "phase2_completed_step": 6,
+    "phase2_training_elapsed_seconds": 89.1551907910034,
+    "phase2_peak_MLX_GiB": 69.66096966248006,
+    "total_disk_hits": 6,
+    "total_disk_misses": 0,
+    "total_disk_writes": 0,
+    "phase2_wrapper_released": true,
+    "M5_shared_lease_free": true,
+    "actual_optimizer_resume_observed": true,
+    "optimizer_final_step_scalar": 6,
+    "quality_qualified": false
   }
 }
