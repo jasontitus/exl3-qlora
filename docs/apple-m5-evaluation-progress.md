@@ -173,3 +173,10 @@ The fresh phase2 process logged restoration of optimizer step3/cursor3 and compl
 
 
 Independent final cache/resume outcome review accepted the actual six-update evidence (SHA d241e3946f7da10e06e10db27b82d4226978d2aa375c3a047bd1cd9d0127432c;145 pins root-verified). Its three CPU methods/10 tampered-evidence negatives passed. Final ownership closure includes wrapper42895, worker42898 and transient descendant43554; all were absent by PID/PPID/PGID in two fresh root observations. The earlier principal-only observation remains preserved. Review explicitly excludes quality, inference reload parity and uninterrupted-trajectory equivalence.
+
+
+## Full16 final458 evaluation completed
+
+Root session44309 exited0; all16 examples/47,069 supervised targets completed. Historical baseline NLL0.11107638648 versus final458 NLL0.09806023820 is an11.7182% relative reduction. Added Metal code (18,364tokens) improved NLL5.0779%, but correct next-token predictions fell17,859→17,856. Boilerplate and patch headers account for82.6163% of the overall NLL-sum gain. EOS remains16/16 correct; five rationale tokens cannot establish reasoning benefit. The nine source-scoped and seven unresolved-reference rows remain separately reported. Historical rank8 zero-B reuse/four exact rank4 overlaps remains explicit; no full16 endpoint-A zero-B rerun was claimed. This is a fixed-target result, not generated-kernel correctness/performance. Independent outcome audit is underway.
+
+Elapsed evaluation time was3521.475seconds with21.541GiB MLX peak, mixed cold/prewarmed; disk counters show12hits/4misses/3writes. The exact owned lease/global released state and absence of old tracked descendant generations were checked after terminal0; shared lease is free. A subsequent CPU serving preclaim refused the original42/32GiB process/reserve requirement at73.31GiB available versus74. Native headroom passed. A separately reviewed stricter40GiB process limit with unchanged32GiB reserve is being prepared; no native GPU smoke has launched.

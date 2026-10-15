@@ -1,0 +1,74 @@
+{
+  "status": "completed_teacher_forced_full16_pending_independent_outcome_audit",
+  "examples": 16,
+  "supervised_tokens": 47069,
+  "baseline_loss": 0.11107638648166089,
+  "adapter_loss": 0.09806023820197435,
+  "relative_loss_reduction_percent": 11.718195641731247,
+  "added_metal_code": {
+    "tokens": 18364,
+    "base_nll_sum": 1808.2895576889807,
+    "adapter_nll_sum": 1716.4658822763665,
+    "base_nll": 0.09846926365110982,
+    "adapter_nll": 0.09346906350884157,
+    "nll_delta": -0.0050002001422682525,
+    "base_correct": 17859,
+    "adapter_correct": 17856,
+    "corrected_tokens": 36,
+    "regressed_tokens": 39
+  },
+  "rationale": {
+    "tokens": 5,
+    "base_nll_sum": 48.7658501341939,
+    "adapter_nll_sum": 29.907546639442444,
+    "base_nll": 9.753170026838779,
+    "adapter_nll": 5.981509327888489,
+    "nll_delta": -3.7716606989502908,
+    "base_correct": 1,
+    "adapter_correct": 1,
+    "corrected_tokens": 0,
+    "regressed_tokens": 0
+  },
+  "eos": {
+    "tokens": 16,
+    "base_nll_sum": 0.0,
+    "adapter_nll_sum": 6.914132420376973e-06,
+    "base_nll": 0.0,
+    "adapter_nll": 4.321332762735608e-07,
+    "nll_delta": 4.321332762735608e-07,
+    "base_correct": 16,
+    "adapter_correct": 16,
+    "corrected_tokens": 0,
+    "regressed_tokens": 0
+  },
+  "formatting_share_of_total_nll_reduction_percent": 82.61626979505743,
+  "elapsed_seconds": 3521.4746797078988,
+  "peak_mlx_gib": 21.540952887386084,
+  "disk_cache": {
+    "hits": 12,
+    "misses": 4,
+    "writes": 3,
+    "read_bytes": 5388558514,
+    "written_bytes": 649923044,
+    "directory": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-reuse36-v1/future-execution/checkpoint458/prefix-cache",
+    "quota_bytes": 8589934592,
+    "stored_bytes": 5390530134,
+    "binding_sha256": "48cfbe81c8f8bacdee2b6b889f88ed91fde6d6145555e43d8145356b4a092a2c",
+    "scope": "full payload hashes; exact complete-token and separate mode keys"
+  },
+  "lease_release_verified": true,
+  "generated_kernel_quality_verified": false,
+  "limits": [
+    "Historical rank8 zero-B baseline reused; four rank4 overlap cases exact, full16 endpoint-zeroB equivalence not measured.",
+    "Fixed target teacher forcing; added-code top1 correct17859 to17856.",
+    "Only five rationale tokens; no reasoning improvement established.",
+    "Nine source-scoped rows and seven unresolved-reference rows are retained as separately reported strata.",
+    "Timing is mixed cold/prewarmed after reviewed additive cache seeding."
+  ],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-reuse36-v1/future-execution/checkpoint458/evaluation.json": "fab3444f1822b2c7735715511f1aa5818290692146b96b223f772a6b48c3cfdb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/studio-baseline-v2/baseline.json": "d3b4a48e2bb94d85416592cd74544c6ed12896f903c681d864b4eb9665aee0da",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-reuse36-v1/future-execution/historical-baseline-token-audit.json": "e790b3c6c318f2fb4f085c5a87e38da8937d7b0878643eeae9377126561a2cd1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-reuse36-v1/root-terminal-release-v1.json": "11533207a1cc11f26cf69afd78a1e3a30bc7a5314b315e416f764b099e84192d"
+  }
+}
