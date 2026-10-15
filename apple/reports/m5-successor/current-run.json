@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T04:33:03.456710+00:00",
+  "updated_utc": "2026-10-15T04:35:48.397194+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_completed_final458_full16_evaluation_running_reused_baseline_process36",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1546,7 +1546,7 @@
   },
   "GPU_forward_observed": true,
   "cache_cross_run_M5": {
-    "status": "both_phases_completed_six_cached_updates_pending_independent_outcome_audit",
+    "status": "six_update_cross_run_cache_and_native_resume_outcome_independently_accepted",
     "available_GiB_at_preparation": 105.24142456054688,
     "request_sha256": "6b10dc76f3fd089f20af0a6e2d161ac689650c0b1aab5a6c8497980d0d962beb",
     "GPU_launched": true,
@@ -1581,6 +1581,13 @@
     "M5_shared_lease_free": true,
     "actual_optimizer_resume_observed": true,
     "optimizer_final_step_scalar": 6,
-    "quality_qualified": false
+    "quality_qualified": false,
+    "independent_outcome_review_sha256": "d241e3946f7da10e06e10db27b82d4226978d2aa375c3a047bd1cd9d0127432c",
+    "independent_outcome_pins_verified": 145,
+    "full_observed_owned_process_closure_absent": [
+      42895,
+      42898,
+      43554
+    ]
   }
 }
