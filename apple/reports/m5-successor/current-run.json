@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T07:28:18.570577+00:00",
+  "updated_utc": "2026-10-15T07:47:57.565091+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1922,7 +1922,7 @@
     "all_compared_argmax_equal": true
   },
   "matched_endpoint_kernel_experiment": {
-    "status": "paired_generation_live_base_control_first",
+    "status": "control_completed_cap_without_EOS_trained_slot_GPU_unrun_queue_refusal",
     "design_review_sha256": "18734c32938d0c4c93bffd7baf4d86dad20a31f51d19670b5825bfbae6b2c8bb",
     "conditions": [
       "zeroB-final458",
@@ -2013,6 +2013,28 @@
     "endpoint_concrete_pins": 162,
     "root_endpoint_detail_pins_verified": 40,
     "endpoint_launch_outer_available_bytes": 114631819264,
-    "endpoint_launch_native_available_bytes": 109158612992
+    "endpoint_launch_native_available_bytes": 109158612992,
+    "endpoint_execution_exit_code": 1,
+    "endpoint_completed_native_children": 1,
+    "control_output_tokens": 4096,
+    "control_stop_reason": "max_tokens",
+    "control_task_outcome": "cap_without_eos",
+    "control_completed_utc": "2026-10-15T07:35:52.186397+00:00",
+    "trained_slot_native_started": false,
+    "trained_slot_infrastructure_failure": "GPU waiter exists; no queue jumping",
+    "original_failed_operation_preserved": true,
+    "automatic_retry": false,
+    "first_owned_lease_released": true,
+    "root_terminal_observations": 2,
+    "latest_observed_queue_ticket71": "done",
+    "latest_global_lock_present": false,
+    "partial_actual_independent_review_sha256": "bc6d21a11de78f4838159cf37f89bae288eca12f8da9d5c3fbdce30650c316a1",
+    "root_partial_actual_review_pins_verified": 206,
+    "partial_actual_memory_observations": 468,
+    "partial_actual_peak_RSS_bytes": 43017404416,
+    "partial_actual_minimum_available_bytes": 63467307008,
+    "partial_actual_owned_IDs_terminal": 21,
+    "partial_actual_environment_reset_verified": true,
+    "trained_slot_continuation_status": "separate_minimal_transport_only_source_under_review_not_launched"
   }
 }
