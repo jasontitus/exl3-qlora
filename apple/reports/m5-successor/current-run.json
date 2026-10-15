@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T20:43:46.299953+00:00",
+  "updated_utc": "2026-10-15T21:02:28.594162+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2986,5 +2986,27 @@
       "comparison": "publish-exl3/apple/reports/kernel-eval-panel-v1/strided-transpose-v1/candidate-timing-comparison.json"
     }
   },
-  "last_updated_utc": "2026-10-15T19:52:14.089527+00:00"
+  "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
+  "active_authorized_pilot": {
+    "status": "preparing_data_and_reviewed_cost_probe",
+    "user_authorized": true,
+    "starting_adapter": "original229-example458-update",
+    "comparison_adapter": "same_original458",
+    "main_updates_proposed": 24,
+    "new_record_presentations": 9,
+    "new_unique_records": 3,
+    "new_lineages": 2,
+    "unchanged_replay_presentations": 15,
+    "cost_probe_updates": 3,
+    "cost_probe_weights_discarded": true,
+    "fresh_main_optimizer": true,
+    "frozen_boundary": 39,
+    "rank": 4,
+    "alpha": 8,
+    "runtime": "unchanged_runtime-v5",
+    "cache_policy": "Reuse only exact eligible replay tokens/worker/arithmetic bindings; new3rows cold then reusable",
+    "evaluation_parallel": "fresh strided90degree rotation; old458/pilot x profilepresent/omitted, devfirst sealedconfirmationlater",
+    "ETA": "Provisional2\u20134hours firstcomparison, refineaftercoldcost; not measured runtime promise",
+    "no_GPU_launched_yet": true
+  }
 }
