@@ -1,3 +1,7 @@
+## Update: independent exposure audit reaches228 distinct views
+
+The approved history/sampler transfer independently reproduces228 distinct complete training views:185 exact edits and43 diagnostics, with423,772 supervised target presentations and1,109,338 serialized tokens. Root verified all32 review inputs (`6d779077e2af4f8322e25465ca7b7403b45ec70600ae4f426890743f7f1a1d23`). Captured history preserves prior206/222 and the frozen seed8 order. There are no repeated examples yet. The remaining first-epoch item is `tensorfold-c738f3e1b3c4-expansion-v2`,10,671 serialized/3,300 supervised tokens. This audit proves captured exposure accounting, not durable optimizer state or quality improvement.
+
 ## Update: reusable portable patch delivered; M5 saved228; full serving still awaiting admission
 
 The reviewed portable repair is now an additive product bundle at `apple/integrations/native-serving-patches-v2`. Independent review confirmed the exact 13-file copy, replayed its five CPU tests and before/after source checks, and verified licenses and prerequisites. Root rehashed all835 copy-review inputs (`d1af6d0f21265508a227d17e62a9c0b7d44c6a0ebd6d5c481299546da343ef0d`). This delivers reusable tool code; it does not activate the patch or establish full-model hardware qualification.

@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T01:15:31.116123+00:00",
+  "updated_utc": "2026-10-15T01:16:19.798364+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -11,7 +11,7 @@
   "train_examples": 229,
   "heldout_examples": 16,
   "planned_updates": 458,
-  "completed_main_updates": 222,
+  "completed_main_updates": 228,
   "prior_campaign": "198 stopped intentionally after completed preflight; artifacts preserved; ownedlease released",
   "no_duplicate_gpu_job": true,
   "evaluation_pid": null,
@@ -79,9 +79,9 @@
     "worker_rss_kib": 19235392,
     "forward_layer": 30,
     "active_mlx_gib": 16.01,
-    "history_audit_checkpoint": 222,
+    "history_audit_checkpoint": 228,
     "new_history_transfer_updates": 228,
-    "new_transfer_audit_pending": true
+    "new_transfer_audit_pending": false
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -845,17 +845,18 @@
   },
   "new_source_collection_status": "paused_by_user",
   "latest_training_history_audit": {
-    "saved_updates": 222,
-    "distinct_complete_views": 222,
-    "exact_edit_views": 180,
-    "diagnostic_views": 42,
-    "supervised_target_presentations": 410086,
-    "serialized_token_presentations": 1071491,
-    "raw_history_sha256": "cddd9c48f9d5a3a19246eef256413f0a3a4d00deb282af1e4e2d085d2f2794a2",
-    "review_sha256": "5f83825d43b23eec64b96a16a874b8883a6847c1064bfb5a5c9cab35461b9720",
-    "root_verified_inputs": 31,
-    "scope": "Recorded exposure/source/mask/count continuity only; no optimizer/checkpoint durability or quality attestation.",
-    "through_update": 222
+    "path": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261015T011403Z/root-report.json",
+    "saved_updates": 228,
+    "distinct_complete_views": 228,
+    "exact_edits": 185,
+    "diagnostics": 43,
+    "supervised_target_presentations": 423772,
+    "serialized_token_presentations": 1109338,
+    "repeats": 0,
+    "complete_epochs": 0,
+    "review_sha256": "6d779077e2af4f8322e25465ca7b7403b45ec70600ae4f426890743f7f1a1d23",
+    "root_rehashed_review_inputs": 32,
+    "checkpoint_durability_verified": false
   },
   "checkpoint150_paired_result": {
     "examples": 4,
@@ -931,16 +932,18 @@
     "next": "bounded attention operand capture and independent CPU oracle"
   },
   "latest_history_audit": {
-    "saved_updates": 222,
-    "distinct_complete_views": 222,
-    "exact_edit_views": 180,
-    "diagnostic_views": 42,
-    "supervised_target_presentations": 410086,
-    "serialized_token_presentations": 1071491,
-    "raw_history_sha256": "cddd9c48f9d5a3a19246eef256413f0a3a4d00deb282af1e4e2d085d2f2794a2",
-    "review_sha256": "5f83825d43b23eec64b96a16a874b8883a6847c1064bfb5a5c9cab35461b9720",
-    "root_verified_inputs": 31,
-    "scope": "Recorded exposure/source/mask/count continuity only; no optimizer/checkpoint durability or quality attestation."
+    "path": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261015T011403Z/root-report.json",
+    "saved_updates": 228,
+    "distinct_complete_views": 228,
+    "exact_edits": 185,
+    "diagnostics": 43,
+    "supervised_target_presentations": 423772,
+    "serialized_token_presentations": 1109338,
+    "repeats": 0,
+    "complete_epochs": 0,
+    "review_sha256": "6d779077e2af4f8322e25465ca7b7403b45ec70600ae4f426890743f7f1a1d23",
+    "root_rehashed_review_inputs": 32,
+    "checkpoint_durability_verified": false
   },
   "attention_operands_diagnostic_current": {
     "status": "completed_actual_four_phase_independent_audit_and_CPU_reference_replay",
@@ -1148,6 +1151,18 @@
       "root_rehashed_inputs": 15,
       "first165_and188_unchanged": true,
       "scope": "Saved source/cursor/mask/count continuity and original transferred history bytes; not optimizer/checkpoint integrity or learning benefit. Timing spans different complete items."
+    },
+    {
+      "saved_updates": 222,
+      "distinct_complete_views": 222,
+      "exact_edit_views": 180,
+      "diagnostic_views": 42,
+      "supervised_target_presentations": 410086,
+      "serialized_token_presentations": 1071491,
+      "raw_history_sha256": "cddd9c48f9d5a3a19246eef256413f0a3a4d00deb282af1e4e2d085d2f2794a2",
+      "review_sha256": "5f83825d43b23eec64b96a16a874b8883a6847c1064bfb5a5c9cab35461b9720",
+      "root_verified_inputs": 31,
+      "scope": "Recorded exposure/source/mask/count continuity only; no optimizer/checkpoint durability or quality attestation."
     }
   ],
   "studio_memory_observation_current": {
