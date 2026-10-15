@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T17:27:39.792183+00:00",
+  "updated_utc": "2026-10-15T17:31:59.119381+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2359,7 +2359,8 @@
       "reload_exact": true,
       "lease_released": true,
       "exit_code": 0,
-      "final_adapter_sha256": "d99eb8deb8e5f53d4b8261f2f5176c16859d9e10e3e14c611496584b62cbfc07"
+      "final_adapter_sha256": "d99eb8deb8e5f53d4b8261f2f5176c16859d9e10e3e14c611496584b62cbfc07",
+      "independent_completion_review_sha256": "b0067b11134a4c5c48a56f0a71c9ddcb2244d34bf9034d1b6a3c040da33527d9"
     },
     "user_priority": "best useful adapter soonest; actual quality rather than controlled sweep",
     "full41_zeroB_baseline_required": false,
@@ -2397,6 +2398,26 @@
       "required_available_bytes": 98784247808,
       "base_rerun": false,
       "reserve_gib": 32
+    },
+    "code_suffix_next": {
+      "status": "running_startup_payload_validation",
+      "examples": 152,
+      "updates": 152,
+      "rank": 4,
+      "alpha": 8,
+      "learning_rate": 2.5e-05,
+      "boundary": 39,
+      "new_training_launched": true,
+      "request_sha256": "96f7097cbd924da461a393c7db89e551e117a313ecb6090b9d35acfa4be54afd",
+      "dataset_review_sha256": "1de81a81b6bd8e9c8dd6135f1f4ac816eff79037039c5140318fec58fd312dd1",
+      "worker_pid": 62322,
+      "wrapper_pid": 62319,
+      "exec_session_id": 45838,
+      "started_utc": "2026-10-15T17:31:29.741415+00:00",
+      "completed_updates_observed": 0,
+      "review_sha256": "38129fbeb19ce503d27f8d323614fabed1a9b91e7d79073ab6e3a0b2567b5cb0",
+      "preflight_available_bytes": 111776595968,
+      "remote_root": "/Volumes/Scratch/exl3-training/2026-10-15/practical-code-suffix152-lr25-r4-v1"
     }
   }
 }
