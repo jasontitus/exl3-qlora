@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T02:29:28.485142+00:00",
+  "updated_utc": "2026-10-15T02:31:07.642088+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -608,12 +608,12 @@
     "training_admission": false
   },
   "latest_training_observation_current": {
-    "saved_step": 400,
+    "saved_step": 405,
     "planned_updates": 458,
     "pid": 47890,
     "live": true,
-    "elapsed": "21:50:07",
-    "rss_kib": 18186304,
+    "elapsed": "21:52:33",
+    "rss_kib": 17743248,
     "history_independently_reviewed_through": 303
   },
   "native_single_prefill_result": {
@@ -1375,14 +1375,17 @@
   },
   "first_projection_microprobe_current": {
     "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/first-projection-microprobe-v1",
-    "status": "reviewed_CPU_link_running",
+    "status": "CPU_link_failed_syntax_sibling_repair_in_progress",
     "root_session": 94125,
-    "root_exit_code": null,
+    "root_exit_code": 1,
     "independent_source_build_review_sha256": "10858f02e07ac3e3605885c563358204b4e1079e79267fdbfc3e877ea6323a97",
     "root_rehashed_review_pins": 3489,
     "scope": "Model-free stock BF16 vs stock F32->BF16 vs unchanged RC on captured/reconstructed qa/kva cases",
     "GPU_executed": false,
     "artifact_review_pending": true,
-    "controller_review_pending": true
+    "controller_review_pending": true,
+    "failure": "component_main.zig:47:17 whitespace around binary or; no GPU/model payload execution",
+    "failed_build_preserved": true,
+    "inputs_verified_before_after": true
   }
 }
