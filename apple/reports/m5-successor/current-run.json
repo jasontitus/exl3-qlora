@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T01:26:23.615495+00:00",
+  "updated_utc": "2026-10-15T01:29:45.848548+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -72,16 +72,16 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "saved_checkpoint": 228,
+    "saved_checkpoint": 250,
     "worker_pid": 47890,
-    "elapsed": "20:37:24",
-    "worker_cpu": "875:51.58",
-    "worker_rss_kib": 19235392,
-    "forward_layer": 30,
-    "active_mlx_gib": 16.01,
-    "history_audit_checkpoint": 228,
-    "new_history_transfer_updates": 228,
-    "new_transfer_audit_pending": false
+    "elapsed": "20:49:30",
+    "worker_cpu": "884:21.97",
+    "worker_rss_kib": 19390128,
+    "exact_prefix_cache_hit": true,
+    "skipped_backbone_layers": 39,
+    "history_audit_checkpoint": 237,
+    "new_history_transfer_updates": 255,
+    "new_transfer_audit_pending": true
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -1143,7 +1143,11 @@
       "owned_lease_receipts_released": 4,
       "recorded_processes_absent": 5,
       "shared_lock_absent": true,
-      "full_serving_qualified": false
+      "full_serving_qualified": false,
+      "actual_review_sha256": "f7bb9dcc0ae1125c28073ef90a78d4a150ac784f996b1533fe05507ddfdf65e1",
+      "root_rehashed_actual_review_inputs": 182,
+      "independent_absent_recorded_identities": 21,
+      "old_new_failure_maxima_are_matched_prefix_comparison": false
     }
   },
   "historical_history_audits": [
