@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T01:16:19.798364+00:00",
+  "updated_utc": "2026-10-15T01:22:51.737201+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -11,7 +11,7 @@
   "train_examples": 229,
   "heldout_examples": 16,
   "planned_updates": 458,
-  "completed_main_updates": 228,
+  "completed_main_updates": 237,
   "prior_campaign": "198 stopped intentionally after completed preflight; artifacts preserved; ownedlease released",
   "no_duplicate_gpu_job": true,
   "evaluation_pid": null,
@@ -845,17 +845,19 @@
   },
   "new_source_collection_status": "paused_by_user",
   "latest_training_history_audit": {
-    "path": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261015T011403Z/root-report.json",
-    "saved_updates": 228,
-    "distinct_complete_views": 228,
-    "exact_edits": 185,
+    "path": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261015T012112Z/root-report.json",
+    "saved_updates": 237,
+    "distinct_complete_views": 229,
+    "exact_edits": 186,
     "diagnostics": 43,
-    "supervised_target_presentations": 423772,
-    "serialized_token_presentations": 1109338,
-    "repeats": 0,
-    "complete_epochs": 0,
-    "review_sha256": "6d779077e2af4f8322e25465ca7b7403b45ec70600ae4f426890743f7f1a1d23",
-    "root_rehashed_review_inputs": 32,
+    "supervised_target_presentations": 436390,
+    "serialized_token_presentations": 1156290,
+    "repeats": 8,
+    "complete_epochs": 1,
+    "median_first_over_repeat_elapsed_ratio": 12.967864213850449,
+    "timing_causality_established": false,
+    "review_sha256": "ad34d14761339a3c224127aa53e56d6b1755a73ad2b5e1fde6f96a5758d65bee",
+    "root_rehashed_review_inputs": 31,
     "checkpoint_durability_verified": false
   },
   "checkpoint150_paired_result": {
@@ -932,17 +934,19 @@
     "next": "bounded attention operand capture and independent CPU oracle"
   },
   "latest_history_audit": {
-    "path": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261015T011403Z/root-report.json",
-    "saved_updates": 228,
-    "distinct_complete_views": 228,
-    "exact_edits": 185,
+    "path": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261015T012112Z/root-report.json",
+    "saved_updates": 237,
+    "distinct_complete_views": 229,
+    "exact_edits": 186,
     "diagnostics": 43,
-    "supervised_target_presentations": 423772,
-    "serialized_token_presentations": 1109338,
-    "repeats": 0,
-    "complete_epochs": 0,
-    "review_sha256": "6d779077e2af4f8322e25465ca7b7403b45ec70600ae4f426890743f7f1a1d23",
-    "root_rehashed_review_inputs": 32,
+    "supervised_target_presentations": 436390,
+    "serialized_token_presentations": 1156290,
+    "repeats": 8,
+    "complete_epochs": 1,
+    "median_first_over_repeat_elapsed_ratio": 12.967864213850449,
+    "timing_causality_established": false,
+    "review_sha256": "ad34d14761339a3c224127aa53e56d6b1755a73ad2b5e1fde6f96a5758d65bee",
+    "root_rehashed_review_inputs": 31,
     "checkpoint_durability_verified": false
   },
   "attention_operands_diagnostic_current": {
@@ -1105,7 +1109,7 @@
     "all_masks_exact_invalid_exponents_zero": true,
     "acceptance_threshold": null,
     "full_serving_qualified": false,
-    "memory_status": "42/native82/reserve32 admission-only passed; fresh execute preclaim failed outer73.686<74 and native81.191<81.853. No lease/native/GPU start. Own validation allocation reduction underway.",
+    "memory_status": "Fresh streamv2admission passed; first native PID82952 confirmedlive/model loading. Rootsession86232running, no completion/parity claim.",
     "serving_v2_cpu_link": "terminal0; artifact3fd62b23a6ffb05242cc61ffebe0522b8fee3c08799d660da4ba3fc5b7341f1e; notexecuted",
     "tiled_index_scalar_scheduler_bytes": 42855428945,
     "tiled_index_scalar_status": "Corrected v4 all-stock routes independently bound to CPU accounting; empirical fit pending.",
@@ -1116,7 +1120,20 @@
     "serving_v4_status": "CPU link terminal0, artifact independently reviewed; no full-model execution.",
     "serving_v4_artifact_sha256": "4fed1f1667bcc6e6a12223fea3b83c10e94061b4e0e2a23bb8d79388fef33c20",
     "native_box_gib": 82,
-    "full_model_gpu_started": false
+    "full_model_gpu_started": true,
+    "streaming_validator": {
+      "operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation150-portable42-box82-stream-v2",
+      "review_sha256": "6b5b15c6612f51503a1193bdda06f5a205f9559425bf8ce3f4ce80b2389afc6e",
+      "root_rehashed_review_inputs": 127,
+      "independent_old_peak_rss_bytes": 439336960,
+      "independent_new_peak_rss_bytes": 174276608,
+      "root_admission_only": "passed",
+      "root_execution_session": 86232,
+      "root_execution_status": "running_last_poll",
+      "first_native_pid": 82952,
+      "native_liveness_confirmed": true,
+      "strict_parity_gate_unchanged": true
+    }
   },
   "historical_history_audits": [
     {
@@ -1163,6 +1180,20 @@
       "review_sha256": "5f83825d43b23eec64b96a16a874b8883a6847c1064bfb5a5c9cab35461b9720",
       "root_verified_inputs": 31,
       "scope": "Recorded exposure/source/mask/count continuity only; no optimizer/checkpoint durability or quality attestation."
+    },
+    {
+      "path": "kernel-library/next-round-v5/m5-successor/training-exposure-observation-20261015T011403Z/root-report.json",
+      "saved_updates": 228,
+      "distinct_complete_views": 228,
+      "exact_edits": 185,
+      "diagnostics": 43,
+      "supervised_target_presentations": 423772,
+      "serialized_token_presentations": 1109338,
+      "repeats": 0,
+      "complete_epochs": 0,
+      "review_sha256": "6d779077e2af4f8322e25465ca7b7403b45ec70600ae4f426890743f7f1a1d23",
+      "root_rehashed_review_inputs": 32,
+      "checkpoint_durability_verified": false
     }
   ],
   "studio_memory_observation_current": {
