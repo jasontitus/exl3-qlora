@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T02:26:25.471579+00:00",
+  "updated_utc": "2026-10-15T02:29:28.485142+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -608,12 +608,12 @@
     "training_admission": false
   },
   "latest_training_observation_current": {
-    "saved_step": 394,
+    "saved_step": 400,
     "planned_updates": 458,
     "pid": 47890,
     "live": true,
-    "elapsed": "21:48:15",
-    "rss_kib": 18418112,
+    "elapsed": "21:50:07",
+    "rss_kib": 18186304,
     "history_independently_reviewed_through": 303
   },
   "native_single_prefill_result": {
@@ -1323,7 +1323,9 @@
     "review64_sha256": "414fa397e4d78bd16f0fdbecee95de9918eda1adb33375bf29b9e1d6ee883476",
     "review40_sha256": "cfe50fe0fba58b585ce7d2aa62d6547e02bc10e84cfb0d90e6250db65b881ee2",
     "root_rehashed_each_review_inputs": 340,
-    "actual_fit_and_final_evidence_still_required": true
+    "actual_fit_and_final_evidence_still_required": true,
+    "selected_memory_lane": "final458-evaluation-process40-v2",
+    "selection_evidence": "kernel-library/next-round-v5/m5-successor/final458-explicit-memory-lane-selection-v1.json"
   },
   "latest_root_history_replay": {
     "path": "training-exposure-observation-20261015T014829Z/root-replay-v1.json",
@@ -1370,5 +1372,17 @@
     "root_rehashed_review_inputs": 435,
     "actual_SSH_transfer_performed": false,
     "actual_final458_evidence_present": false
+  },
+  "first_projection_microprobe_current": {
+    "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/first-projection-microprobe-v1",
+    "status": "reviewed_CPU_link_running",
+    "root_session": 94125,
+    "root_exit_code": null,
+    "independent_source_build_review_sha256": "10858f02e07ac3e3605885c563358204b4e1079e79267fdbfc3e877ea6323a97",
+    "root_rehashed_review_pins": 3489,
+    "scope": "Model-free stock BF16 vs stock F32->BF16 vs unchanged RC on captured/reconstructed qa/kva cases",
+    "GPU_executed": false,
+    "artifact_review_pending": true,
+    "controller_review_pending": true
   }
 }
