@@ -2143,7 +2143,7 @@
     "completed_report": "generated-kernel-outcome-v1.json"
   },
   "next_cached_screen": {
-    "status": "initial_attempt_failed_pre_model_owner_timestamp_parser_fix_in_progress",
+    "status": "fresh_rank4_initial_snapshot_completed_owned_release_pending_independent_outcome_review",
     "proposed_training_rows": 188,
     "proposed_development_rows": 41,
     "boundary": 39,
@@ -2177,8 +2177,8 @@
     "development_exact_edits_replayed": 33,
     "development_diagnostic_rows": 8,
     "development_missing_parent_sources": 0,
-    "initialization_namespace": "kernel-library/next-round-v5/cached-screen188-baseline-v1",
-    "model_started": false,
+    "initialization_namespace": "kernel-library/next-round-v5/cached-screen188-baseline-v2",
+    "model_started": true,
     "initial_source_deployment": {
       "status": "closed_source_deployed_CPU_default_passed_no_device_launch",
       "observed_utc": "2026-10-15T15:17:47.979949+00:00",
@@ -2211,7 +2211,22 @@
       "model_imported": false,
       "memory_failure": false,
       "original_receipts_preserved": true,
-      "recovery": "Independent review of exact owned cleanup and additive corrected source in progress; no retry yet."
-    }
+      "recovery": "Independent review of exact owned cleanup and additive corrected source in progress; no retry yet.",
+      "owned_lease_released": true,
+      "signals_sent": false,
+      "actual_release_path": "kernel-library/next-round-v5/cached-screen188-baseline-v1/actual-owned-release-v1"
+    },
+    "initial_snapshot": {
+      "elapsed_seconds": 4.013217166997492,
+      "trainable_parameters": 78848,
+      "gradient_updates": 0,
+      "positive_zero_B": true,
+      "peak_mlx_bytes": 8731993700,
+      "observed_process_bytes": 10638901248,
+      "wrapper_exit_code": 0,
+      "owned_lease_released": true,
+      "independent_outcome_review": "pending"
+    },
+    "training_started": false
   }
 }
