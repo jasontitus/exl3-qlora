@@ -26,10 +26,26 @@ previous context audit. See [kernel tuning](KERNEL_TUNING.md) for the ktune arch
 
 See [tool integration status](docs/TOOL_INTEGRATION.md) for which experimental
 improvements are in the reusable package and which still need integration.
+For cache-aware experiments, the read-only [cache inspector](docs/cache-inspection.md)
+reports which complete project rows have matching cache metadata without loading
+a model:
+
+```sh
+uv run python -m exl3_mlx.cache_inspect /absolute/path/to/project
+```
+
+Coverage is not worker compatibility or a verified hit; keep an existing frozen
+worker unchanged and let its normal binding/checksum checks validate actual reuse.
+The latest larger campaign completed **458 updates on 229 examples**; final
+held-out evaluation is running. Its first/repeat training passes took20.64/1.55hours,
+which demonstrates a throughput opportunity, not better generated kernels. See
+[current progress](../docs/apple-m5-evaluation-progress.md) and the
+[cache-first experiment plan](../docs/apple-cache-aware-experiment-plan.md).
+
 For detailed teacher-forced comparisons, the [CPU evaluation auditor](docs/EVALUATION_AUDIT.md)
 checks matching tokens, loss masks and reported metrics with `exl3-mlx-audit`.
 
-## Current kernel-tuning extension
+## Kernel-tuning features and historical qualification
 
 The [ktune flow](KERNEL_TUNING.md) imports complete archived edits, checks their
 source/evidence identities, prepares standard SFT projects, and audits fitting

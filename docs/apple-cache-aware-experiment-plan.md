@@ -2,7 +2,7 @@
 
 User preference: when expected quality benefit is comparable, choose the experiment that can reuse a verified cache. An uncached trial needs an explicit reason to expect enough additional benefit to justify its measured cost. This prioritizes experiments; it must not substitute stale activations, reduce held-out coverage or turn lower training loss into a functional-quality claim.
 
-The completed layer39 run measured20.6384hours for its first229 presentations and1.55166hours for the repeat229. These are observed epoch totals, not a guaranteed cross-run speed or isolated cache effect. Cold identity/model construction costs are additional to the training timer.
+The completed layer39 run measured20.6384hours for its first229 presentations and1.55166hours for the repeat229. These are observed epoch totals, not a guaranteed cross-run speed or isolated cache effect. Cold identity/model construction costs are additional to the training timer. A read-only M5 inventory on2026-10-15found matching boundary39 training metadata for all229items,49,737,199,860payloadbytes(46.32GiB). All229keys were replayed against the actual frozen key function; tensor checksums and a fresh cross-run cache hit remain unqualified. Initial inspector datetime/int32 reconstruction failures are preserved; the authoritative metadata report is cache-aware-m5-inventory-v1/remote-inventory-v3.json.
 
 ## Immediate order
 
@@ -16,12 +16,18 @@ The completed layer39 run measured20.6384hours for its first229 presentations an
 
 The trainer already has immutable checksummed disk entries and a bounded RAM tier. Keys include complete token IDs, training mode and recompute mode. Disk bindings include full model hashes, implementation, platform/device, quant/activation configuration, chunk size, boundary and state layout. Suffix LoRA rank is not itself a prefix-key field. Compatibility must be established by actual binding/row checks, not directory names. Training/evaluation caches are intentionally distinct; the current platform binding prevents assuming M5 and Studio entries are interchangeable.
 
+The first useful cross-run speedup does not require a resident worker: fresh workers can reuse the existing verified disk tier while paying model construction and identity scans. Qualify that path first. A resident worker is a later optimization for startup overhead, not a prerequisite that should delay cached trials.
+
 Still needed: a cache coverage/compatibility preflight; explicit cache-family inventory; independently qualified fresh-run reuse; a resident multi-trial worker that preserves frozen objects while resetting all learned/optimizer/random/sampler state; trial receipts reporting cold work, warm work, hits/misses/bytes and end-to-end cost. A future multi-boundary producer could capture36/38/39 during one base forward pass, but is not implemented or measured.
+
+Current implementation_identity hashes every package .py/.metal/.html file. Keep experimental workers on the exact pinned runtime-v5 and place new orchestration outside that immutable package; merely installing a helper into a worker package can invalidate its binding. The offline inspector may have a different version, but must distinguish its identity from the requested worker identity. Do not silently broaden compatibility.
 
 A persistent worker must revalidate frozen identity and prevent cross-trial learned-state leakage. Frozen-prefix changes invalidate descendants; suffix changes should not unnecessarily invalidate independently qualified prefix entries. Narrower implementation identities are a future reviewed change, not permission to bypass the current full binding or hash scans. Cache quotas must fit the entire intended working set or report misses/refills explicitly. Do not change sealed runtime-v5 to add these features.
 
 ## Decision and quality records
 
 For each proposed trial record expected benefit and its evidence, earliest trainable boundary, exact corpus identity, compatible cached rows/bytes, missing rows, measured cold/warm cost, resource requirements, and quality endpoint. Within a comparable-benefit group, prioritize verified complete-cache coverage, then partial coverage, then cold work. Do not assign false numerical quality probabilities. Optimize useful generated-kernel improvement per wall-clock budget, retaining correctness and compiler/runtime evaluation.
+
+Do not repeatedly select hyperparameters against the protected16testitems and continue calling them an untouched final test. Before a broad sweep, declare a separate development validation split from current training material grouped by change lineage (including exact/diagnostic siblings), reset each trial independently, and retain the protected16for a fixed final comparison. These are future trial splits; no completed229/16campaign data is changed. Frozen-prefix caches contain no earlier learned adapter contribution, so compatible entries for a newly reserved development item can still be reused without optimizing that item. Standard train/eval cache mode separation remains mandatory unless a separate explicitly qualified validation-in-training-arithmetic protocol is introduced.
 
 Source collection remains paused. Existing final baselines, held-out data, unrelated workloads and memory reserves remain preserved.
