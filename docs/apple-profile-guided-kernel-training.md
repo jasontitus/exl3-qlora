@@ -84,3 +84,11 @@ The preserved row48 draft-v2 passed independent CPU content/source/token review 
 ## Second lineage preparation on M5
 
 The row94 interior grid-sampling precision pair passed independent source/reference review and an actual M5 CPU build: Swift plus both Metal sources compiled, followed by eight validate-only checks. The closed fixture preserves all four F16/F32 input/grid combinations and restricts addresses to verified interior samples. Its eight GPU dispatches are now independently audited: failures changed from 170/44/248/4 to 0/0/0/4 across half/half, half/float, float/half and float/float. The four FP32 discrepancies are identical before and after and remain unresolved under unchanged tolerances. This is partial correctness evidence, not an all-dtype qualification or speed example. Any training draft must restrict its successful claim to the three half-involving cases and preserve the FP32 limitation; no training is activated.
+
+## Explicit workload-cost arithmetic
+
+`python -m exl3_mlx.workload_cost input.json` is a CPU-only data-preparation helper. It computes each case's contribution as its explicit invocation weight multiplied by the arithmetic mean of its measured per-invocation durations. The overall baseline/candidate ratio divides summed costs; it does not average per-case speedups or use timing-sample counts as traffic weights.
+
+Input uses one duration unit (`s`, `ms`, `us`, or `ns`), a `mix_basis` of `designed` or `observed`, and a `cases` array. Each case contains a unique `id`, an explicit nonnegative `invocations` weight, and a nonempty `baseline` array of positive finite durations. Optional `candidate` arrays must cover all cases or none. Normalize batch durations to one invocation before supplying them. Zero-weight cases remain visible. Missing weights, mixed per-case unit declarations, partial candidate coverage, duplicate identifiers and nonfinite values are rejected.
+
+A designed benchmark mix is not observed production traffic. The helper verifies arithmetic and schema, not measurement provenance, kernel correctness, statistical significance, or the truth of an `observed` label. Baseline-only inputs produce cost shares without inventing candidate results. Keep before/after feedback distinct from prospective proposal examples, and retain original measurement receipts externally.

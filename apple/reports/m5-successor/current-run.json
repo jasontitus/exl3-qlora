@@ -2988,6 +2988,32 @@
   },
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
+    "id": "time-weighted-pilot-v2",
+    "status": "authorized_data_and_concrete_recipe_preparation",
+    "user_authorized": true,
+    "starting_adapter": "original458_weights_fresh_optimizer",
+    "comparison_adapter": "original458_matching_completed_generation_outputs",
+    "prior_failed_pilot_not_initializer": true,
+    "source_collection": "paused",
+    "qwen": "parked",
+    "proposed_updates": 24,
+    "proposed_exposures": {
+      "time_weighted_positive": 5,
+      "measured_retention": 3,
+      "unchanged_precision": 1,
+      "unchanged_replay": 15
+    },
+    "new_speed_lineages": 0,
+    "focused_speed_lineages": 1,
+    "focused_precision_lineages": 1,
+    "cold_probe": "two_rewritten_complete_items_disposable_endpoint",
+    "runtime": "unchanged_runtime-v5",
+    "resources": "reviewed_MLX80GiB_process_8GiB_reserve",
+    "no_GPU_launched_yet": true,
+    "ETA": "Provisional2-3hours_first_comparison_refine_after_token_lengths_and_cold_cost",
+    "confirmation_opened": false
+  },
+  "completed_targeted_profile_pilot_v1": {
     "status": "completed_reviewed_report_no_pilot_extension",
     "user_authorized": true,
     "starting_adapter": "original229-example458-update",

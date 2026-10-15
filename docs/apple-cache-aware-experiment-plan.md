@@ -91,3 +91,13 @@ Retain original458; do not extend the 24-update targeted pilot. All four registe
 The final timing audit is complete; preserve the report and do not interpret small differences between separate timing windows as a causal training benefit. Keep the confirmation workload sealed because no improved candidate was selected. The completed pilot and all original outputs remain preserved.
 
 The next proposed data repair should use independent training lineages to teach decisions based on measured elapsed cost, explicit workload weights, and evidence-limited bottleneck hypotheses. Balance useful validated changes with justified no-change examples. Do not train on this evaluation's prompts, generated outputs, profiles or oracle. Do not launch another full run automatically: first prepare and review the concrete data repair and its cold-cache cost. Source collection remains paused and Qwen remains parked.
+
+### Authorized time-weighted repair pilot
+
+The user authorized a second targeted pilot after the adverse rotation result. Start from original458 with fresh Adam; preserve the failed pilot. The frozen proposal has24updates: five positive cost-aware proposal exposures, three explicit measured-retention exposures, one unchanged restricted precision example and the same15 replay examples. This uses two existing focused source lineages, only one speed-qualified; it adds no mined sources. Training examples contain no rotation evaluation material.
+
+Use explicit designed invocation weights and arithmetic mean measured durations to compute total cost and each workload’s contribution. Compare ratios of weighted total costs rather than averaging speedups. Label designed mixes, hypothetical savings and post-test feedback explicitly; do not invent deployment traffic or hardware counters.
+
+Only two rewritten complete sequences need a disposable cold-prefix probe. Discard its endpoint, then initialize the reviewed24-update main from original458. Unchanged rows and the historical row90 evaluation prefix remain cache-eligible only under actual worker checks. Keep runtime-v5, rank4/alpha8, layer39, LR2.5e-5 and reviewed80GiB/8GiB resources. Estimated cold plus main training is15–25minutes; first completed comparison is provisionally2–3hours including preparation and evaluation. Refine from actual execution.
+
+Evaluate the sole final endpoint profile-present then profile-omitted using the frozen rotation protocol and existing original458 results. This is repeated development evaluation, not an unseen test. Preserve failures, require numerical correctness before timing, and keep confirmation sealed until a development decision. No automatic extension. Source collection remains paused and Qwen parked.
