@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T01:44:04.606924+00:00",
+  "updated_utc": "2026-10-15T01:51:18.512552+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -11,7 +11,7 @@
   "train_examples": 229,
   "heldout_examples": 16,
   "planned_updates": 458,
-  "completed_main_updates": 255,
+  "completed_main_updates": 303,
   "prior_campaign": "198 stopped intentionally after completed preflight; artifacts preserved; ownedlease released",
   "no_duplicate_gpu_job": true,
   "evaluation_pid": null,
@@ -1256,7 +1256,7 @@
   },
   "portable_first_divergence_current": {
     "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/portable-first-divergence-witness-v1",
-    "status": "root_owned_CPU_link_running_no_artifact_execution",
+    "status": "CPU_link_terminal0_pending_independent_artifact_package_review",
     "root_execution_session": 89162,
     "compiler_pid": 94022,
     "root_verified_source_author_plan_unique_pins": 454,
@@ -1265,7 +1265,12 @@
     "resident_parameter_bytes_per_traced_route": 57515268,
     "prospective_processes": 4,
     "GPU_executed": false,
-    "held_source_unchanged": true
+    "held_source_unchanged": true,
+    "root_execution_exit_code": 0,
+    "artifact_sha256": "373abb1ac8acfc7b9b432d70e84a01fc7c07db8146b305c30a472e40e473c3ba",
+    "artifact_bytes": 25607720,
+    "build_elapsed_seconds": 358.8238798750099,
+    "artifact_executed": false
   },
   "final_full16_evaluator_preparation": {
     "original_lane": "final458-evaluation-v1",
@@ -1280,8 +1285,28 @@
       "final458-evaluation-v2",
       "final458-evaluation-process40-v2"
     ],
-    "revised_review_pending": true,
+    "revised_review_pending": false,
     "actual_final458_evidence_present": false,
-    "GPU_executed": false
+    "GPU_executed": false,
+    "review64_sha256": "414fa397e4d78bd16f0fdbecee95de9918eda1adb33375bf29b9e1d6ee883476",
+    "review40_sha256": "cfe50fe0fba58b585ce7d2aa62d6547e02bc10e84cfb0d90e6250db65b881ee2",
+    "root_rehashed_each_review_inputs": 340,
+    "actual_fit_and_final_evidence_still_required": true
+  },
+  "latest_root_history_replay": {
+    "path": "training-exposure-observation-20261015T014829Z/root-replay-v1.json",
+    "saved_updates": 303,
+    "unique_views": 229,
+    "matched_pairs": 74,
+    "lower_loss": 73,
+    "higher_loss": 1,
+    "supervised_tokens_per_presentation": 128603,
+    "first_weighted_loss": 0.32823920850588906,
+    "repeat_weighted_loss": 0.3171849645152874,
+    "relative_reduction_percent": 3.36774026507054,
+    "peer_review_pending": true,
+    "independently_peer_reviewed_history_through": 255,
+    "different_panel_from_26_pair_report": true,
+    "heldout_or_generated_quality_claim": false
   }
 }

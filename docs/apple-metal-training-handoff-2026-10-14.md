@@ -1,3 +1,11 @@
+## Update: diagnostic linked; corrected final evaluator source accepted
+
+Root CPU build89162 completed exit0 in358.824 seconds. Its artifact is `373abb1ac8acfc7b9b432d70e84a01fc7c07db8146b305c30a472e40e473c3ba` (25,607,720 bytes);994 source files match before/after and static inspection succeeds. No artifact/model/GPU execution occurred. B is independently reviewing the artifact/package; A is preparing the strict four-process controller and Q the own-input CPU reference.
+
+Both corrected final full16 evaluator lanes passed independent source review:64/32 (`414fa397e4d78bd16f0fdbecee95de9918eda1adb33375bf29b9e1d6ee883476`) and separate40/32 (`cfe50fe0fba58b585ce7d2aa62d6547e02bc10e84cfb0d90e6250db65b881ee2`). Root rehashed340 inputs for each. Integer-type and unbounded-reopen findings are closed. Actual final458 bundle/history/terminal-release evidence, fresh plans/requests and measured fit are still required. No automatic fallback or reserve reduction was introduced.
+
+A new approved two-file capture contains303 history rows. Root replayed the reviewed epoch audit and loss helper, preserved the255 prefix, and crosschecked loss with an independent seeded pairing and math.fsum. Among74 repeat pairs,73 losses decreased and one increased:128,603 supervised tokens per presentation give0.3282392085→0.3171849645 (3.3677% lower). Peer review of this new observation is pending. This is a different matched panel from the earlier26-pair report, not a fixed-panel trend or held-out/generated-quality claim.
+
 ## Update: independent diagnostic source review passed; root CPU link running
 
 The separate first-divergence witness retains the exact33-token prefix plus553, four proposed full/cached trace/control processes, ten layer0 last-token taps, and57,515,268 bounded resident-parameter bytes per traced route. Root independently reviewed the complete delta and454 unique source/plan pins, then started CPU-only build session89162/compiler94022. Independent source/build review also passed (`2ea4ab77e0808714528dbed13902d31dd7f446691604fb65158656379792f793`, all1467 inputs rehashed by root). This compiles and statically inspects only: no artifact, model or GPU execution. Artifact, concrete-plan, trace controls and own-input numerical references remain required.
