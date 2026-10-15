@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T15:57:39.122033+00:00",
+  "updated_utc": "2026-10-15T16:12:11.413854+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -2143,7 +2143,7 @@
     "completed_report": "generated-kernel-outcome-v1.json"
   },
   "next_cached_screen": {
-    "status": "training_3_updates_complete_four_cache_hits_observed",
+    "status": "M5_training_and_Studio_existing_adapter_quality_generation_running",
     "proposed_training_rows": 188,
     "proposed_development_rows": 41,
     "boundary": 39,
@@ -2264,13 +2264,42 @@
       "training_started": false
     },
     "parallel_studio_evaluation": {
-      "status": "functional_task_and_resource_preparation",
-      "tasks": [
-        "new fused affine-ReLU row reduction",
-        "new row RMS reduction"
-      ],
-      "source_collection": "paused",
-      "Qwen": "parked"
+      "status": "running_trained_first_generation",
+      "task": "affine_relu_sum",
+      "controls": {
+        "baseline_passed": 224,
+        "golden_passed": 224,
+        "negative_zero_rejected": true,
+        "negative_wrongrow_rejected": true,
+        "dispatches": 896,
+        "exit_code": 0,
+        "owned_released": true,
+        "signals_sent": false,
+        "path": "kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/controller-v1/numerical-controls-run-v1",
+        "actual_review_sha256": "abe48b844d9a3bf561abec99f47c80b62e319b6c379d3ad3d01afde75fc8bc13"
+      },
+      "generation_operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-v1",
+      "generated_model_quality_demonstrated": false,
+      "preclaim_refusal": {
+        "native_available_bytes": 91594768384,
+        "required_bytes": 91969669827,
+        "GPU_started": false,
+        "lease_claimed": false,
+        "process_gib": 60,
+        "reserve_gib": 32,
+        "proposed_native_box_gib": 96,
+        "reason": "Profile90 source admission short by374901443B; versioned96 allowance source-reviewed, exactbinding pending."
+      },
+      "operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1",
+      "process_memory_gib": 60,
+      "native_box_gib": 96,
+      "reserve_gib": 32,
+      "controller_pid": 41655,
+      "frontend_pid": 41671,
+      "native_pid": 41682,
+      "exec_session_id": 44600,
+      "independent_review_sha256": "556979979a62231024010feefa2917bde5ce696d2bfbb596a79611f514f60f46",
+      "fresh_admission_passed": true
     },
     "preflight_preparation_issue": {
       "GPU_launched": false,
@@ -2296,7 +2325,7 @@
       ],
       "full41_baseline_skipped": true,
       "exec_session_id": 85011,
-      "completed_updates_observed": 3,
+      "completed_updates_observed": 36,
       "no_duplicate_launch": true,
       "observed_utc": "2026-10-15T15:53:46.293078+00:00",
       "startup_payload_hash_seconds": 148.3,
@@ -2306,10 +2335,11 @@
       "first_backward_started_elapsed_seconds": 166.6,
       "progress_log": "wrapper.json.stderr.log",
       "first_three_update_seconds": 81.9520020831842,
-      "peak_mlx_gib_observed": 58.16616519168019,
-      "gradient_norm_last_observed": 0.004665601998567581,
-      "last_loss_observed": 0.5484475493431091,
-      "cache_hits_observed": 4
+      "peak_mlx_gib_observed": 69.19651721138507,
+      "gradient_norm_last_observed": 0.034405626356601715,
+      "last_loss_observed": 0.2802068889141083,
+      "cache_hits_observed": 32,
+      "update_elapsed_seconds_observed": 883.9356328751892
     },
     "user_priority": "best useful adapter soonest; actual quality rather than controlled sweep",
     "full41_zeroB_baseline_required": false
