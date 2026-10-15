@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T02:11:54.180402+00:00",
+  "updated_utc": "2026-10-15T02:15:26.947261+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -608,12 +608,12 @@
     "training_admission": false
   },
   "latest_training_observation_current": {
-    "saved_step": 362,
+    "saved_step": 369,
     "planned_updates": 458,
     "pid": 47890,
     "live": true,
-    "elapsed": "21:33:24",
-    "rss_kib": 17648192,
+    "elapsed": "21:35:48",
+    "rss_kib": 17684512,
     "history_independently_reviewed_through": 303
   },
   "native_single_prefill_result": {
@@ -1252,7 +1252,7 @@
   },
   "portable_first_divergence_current": {
     "path": "kernel-library/next-round-v5/exact-generation-qualification-v1/portable-first-divergence-witness-v1",
-    "status": "completed_diagnostic_only_independent_actual_audit_pending",
+    "status": "completed_diagnostic_actual_review_accepted_CPU_math_in_progress",
     "root_execution_session": 47510,
     "compiler_pid": 94022,
     "root_verified_source_author_plan_unique_pins": 454,
@@ -1297,7 +1297,11 @@
     "trace_nonperturbation_passed": true,
     "serving_parity_qualified": false,
     "generated_quality_verified": false,
-    "actual_result": "kernel-library/next-round-v5/exact-generation-qualification-v1/portable-first-divergence-operation-v1/operation-result.json"
+    "actual_result": "kernel-library/next-round-v5/exact-generation-qualification-v1/portable-first-divergence-operation-v1/operation-result.json",
+    "independent_actual_review_sha256": "f5bca3dcee12c7feb3501cb9775f0463961470345fb8e0d47ec2b5911207d195",
+    "root_rehashed_actual_review_inputs": 408,
+    "owned_lease_release_independently_verified": true,
+    "CPU_exploratory_first_projection": "Own-input cached qa/kva match ideal nearest BF16 exactly; fresh differs. All three predeclared decode/boundary variants agree. Not a causal verdict or serving qualification. Exploratory truncation hypothesis does not explain fresh route."
   },
   "final_full16_evaluator_preparation": {
     "original_lane": "final458-evaluation-v1",
