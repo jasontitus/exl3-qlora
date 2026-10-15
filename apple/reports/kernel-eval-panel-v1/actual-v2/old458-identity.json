@@ -1,0 +1,10 @@
+{
+  "adapter_files_sha256": {
+    "adapter.safetensors": "b66d43f6b8f455999b89a194f8c9dfa698aae58f004850fad3e26f4d6642ab18",
+    "adapter_config.json": "9e3954175862c2c91d4be52f37fda2b391961a421345f0ee668eece88ca65be6"
+  },
+  "generation_request": {
+    "path": "evidence/e94e49421185ad52-0729-checkpoint458.json",
+    "sha256": "e94e49421185ad5257bb39d9eaa22e694238c25b72352987b3e86a7cc4ca61c5"
+  }
+}

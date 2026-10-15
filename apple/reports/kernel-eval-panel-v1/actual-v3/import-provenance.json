@@ -1,0 +1,120 @@
+{
+  "limits": [
+    "Retrospective evidence reuse, not a newly preregistered matched campaign.",
+    "Resource profiles differ for final188; adapter-only causal attribution is not established.",
+    "RMS has no generation results. No performance ranking or successful candidate is inferred.",
+    "Historical receipt internal locators remain archival; this bundle is not their entire provenance closure."
+  ],
+  "observations": {
+    "basezeroB": {
+      "adapter": {
+        "path": "basezeroB-identity.json",
+        "sha256": "d13e05a091e02e16a342c906f7749a5ced8fd7123afcb4e7924ed4a78acb3627"
+      },
+      "capture_review": {
+        "path": "evidence/c200b4cd4eb76c6a-review-v1.json",
+        "sha256": "c200b4cd4eb76c6a87197337fe58ee0ef00c41437fac29ff95390f582fb08d42"
+      },
+      "raw": {
+        "path": "evidence/18b13c6f46227f95-generation.raw",
+        "sha256": "18b13c6f46227f95d9dd820eed06e3942e1247ea2818017baf839b49f2253171"
+      },
+      "request": {
+        "path": "evidence/b34fe5df59d127b9-0729-zeroB458.json",
+        "sha256": "b34fe5df59d127b9d51d63f2475c8bff8ced0da2fd879f9f0546f99c0e7817e2"
+      },
+      "resource_profile": {
+        "native_box_ceiling_gib": 96,
+        "physical_memory_gib": 128,
+        "process_memory_gib": 60,
+        "reserve_gib": 32
+      }
+    },
+    "final188": {
+      "adapter": {
+        "path": "final188-identity.json",
+        "sha256": "4d6c1f3884f7f39895ca98f880507d30ac25ccdac2eb031655475530bd04dd80"
+      },
+      "capture_review": {
+        "path": "evidence/614db1f43b609d65-review-v1.json",
+        "sha256": "614db1f43b609d65f3717521026eeb8dc6dae3f954b76ab34cc61656dbae08bb"
+      },
+      "raw": {
+        "path": "evidence/446498e176a1d670-generation.raw",
+        "sha256": "446498e176a1d6701106152d9f81de2604a211ccecbc03dcf50569a02b3ff2a0"
+      },
+      "request": {
+        "path": "evidence/eddc8862b56c3f7c-request.json",
+        "sha256": "eddc8862b56c3f7cb749f48ea5b70be1d0e0a95e4879cf1abb8723f79500581c"
+      },
+      "resource_profile": {
+        "native_box_ceiling_gib": 104,
+        "physical_memory_gib": 128,
+        "process_memory_gib": 50,
+        "reserve_gib": 32
+      }
+    },
+    "old458": {
+      "adapter": {
+        "path": "old458-identity.json",
+        "sha256": "7b0ed3df65d088f08f30045f7638c4859b4ba33a6e2df69c4175edebcc99f0a6"
+      },
+      "capture_review": {
+        "path": "evidence/c200b4cd4eb76c6a-review-v1.json",
+        "sha256": "c200b4cd4eb76c6a87197337fe58ee0ef00c41437fac29ff95390f582fb08d42"
+      },
+      "raw": {
+        "path": "evidence/0cf7a3939350245c-generation.raw",
+        "sha256": "0cf7a3939350245c5968ac35bf40c017e265c80bb1a780dbc751810c3fa4383d"
+      },
+      "request": {
+        "path": "evidence/e94e49421185ad52-0729-checkpoint458.json",
+        "sha256": "e94e49421185ad5257bb39d9eaa22e694238c25b72352987b3e86a7cc4ca61c5"
+      },
+      "resource_profile": {
+        "native_box_ceiling_gib": 96,
+        "physical_memory_gib": 128,
+        "process_memory_gib": 60,
+        "reserve_gib": 32
+      }
+    }
+  },
+  "replay_map": {
+    "path": "evidence/bbe8b6731c9cc127-replays.json",
+    "sha256": "bbe8b6731c9cc127af6d4998cbbaaa5d2e77b59c61924ed568a2a0d9aca61604"
+  },
+  "shared_identity_checked_across_all_requests": true,
+  "source_files_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/payload-full-verification-plan-v1/expected-manifest-v1.json": "452946429d094880a947cc2eee185688d7c8cb3bc8a0e307963fe1e4b7a2a3a4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine-lr25-step188-profile50-box104-v1/actual-capture-audit-v1/generation.raw": "446498e176a1d6701106152d9f81de2604a211ccecbc03dcf50569a02b3ff2a0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine-lr25-step188-profile50-box104-v1/actual-capture-audit-v1/review-v1.json": "614db1f43b609d65f3717521026eeb8dc6dae3f954b76ab34cc61656dbae08bb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine-lr25-step188-profile50-box104-v1/request.json": "eddc8862b56c3f7cb749f48ea5b70be1d0e0a95e4879cf1abb8723f79500581c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/independent-actual-q-v1/checkpoint458/capture.json": "5e68d41c3197f4a9b3e974f2cfbb076267d1010a2455124bf95e6199d1d17446",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/independent-actual-q-v1/checkpoint458/generation.raw": "0cf7a3939350245c5968ac35bf40c017e265c80bb1a780dbc751810c3fa4383d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/independent-actual-q-v1/review-v1.json": "c200b4cd4eb76c6a87197337fe58ee0ef00c41437fac29ff95390f582fb08d42",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/independent-actual-q-v1/zeroB458/capture.json": "68027a247db2400cffa299ce13c33ce45abba335842b4a5b6ca22b64cc895d00",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/independent-actual-q-v1/zeroB458/generation.raw": "18b13c6f46227f95d9dd820eed06e3942e1247ea2818017baf839b49f2253171",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/requests/0729-checkpoint458.json": "e94e49421185ad5257bb39d9eaa22e694238c25b72352987b3e86a7cc4ca61c5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/requests/0729-zeroB458.json": "b34fe5df59d127b9d51d63f2475c8bff8ced0da2fd879f9f0546f99c0e7817e2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/build-receipt.json": "eaf5fc7b9d941e74e34c962443d892b46b43756aeae408047c1821b4d1a3b5fb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-controller-diagnostic-v1/actual-audit-q-v1/review-v1.json": "6b9c11a73f62ac6f9dd520db8a09edab51cd01c4cb137214087aa7580371291b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/design-v2.json": "d5290974d3d284fa6526c73f2296b55abc6e85c896681c65c8810a57a22f37c0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/normalized-actual-v1/checkpoint458/receipt.json": "a067fd1c65d9a8a769a470370188f31450cc6430620c29bab0386f322f17413e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/normalized-actual-v1/checkpoint458/source-review-v2.json": "0ba87504079a7479f3d6e190d0701214ba4f2b7256d7e0844fd11d9c3fb68de3",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/normalized-actual-v1/zeroB458/alignment-review-v1.json": "8c1a2ffa7e040f5508cb3516c7a0d6e35b5b5b0a0812f58689c2acc68feab51a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/normalized-actual-v1/zeroB458/receipt.json": "23f6fa3155c4fbda7b0c3a5b62b02c088dc7c45350a0351636e4a80f3c4c977b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/prompt-prepared.json": "0534a67c9563c330641b2f0d42e250a5f1e8e2ddc23d0ef4aa09b4e384743891",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/prompt.txt": "87697bda869d23522d9e05cbe41fb9ae52b1d8d0a02d576d14106de47e6bce90",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/task/dispatch.json": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/task/kernel.metal": "412de4af4d0994e4273fb862b03cabcbd76f965a35bea0fdc53bcaa6cd69dd0f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/design-v2.json": "bc81c61db44145f5d2b6e71b25965511ebcc030d67f903485f63631dd21e1fea",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/prompt-prepared.json": "b30025430afddd1a23046fb94507f03ea002d37f72bae6e5185d53138641c6c1",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/prompt.txt": "49c5370095f199b981312ca2b949ed00527bff6d26d5fce64ec9351578b89c27",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/task/dispatch.json": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/task/kernel.metal": "d93128a72f46d569b92a6ff02a856938c894ceb9be89c550af117f2d10c58b13",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/kernel-eval-panel-v1/common-replay/basezeroB/replay.json": "a511f2ee4af79c7034e071ee425307dc6e5597307a5d32ab926a598d20725e42",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/kernel-eval-panel-v1/common-replay/final188/replay.json": "26d1e22f48d2712355d00d4c7314f3699b013b629eaedfb767d48c16a3980154",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/kernel-eval-panel-v1/common-replay/old458/replay.json": "0c8e448086abb52e54c5e3b6ec0eb1481f6fac528c8df067ac3a55338545168b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/kernel-eval-panel-v1/common-replay/replays.json": "bbe8b6731c9cc127af6d4998cbbaaa5d2e77b59c61924ed568a2a0d9aca61604"
+  }
+}

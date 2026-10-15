@@ -1,0 +1,57 @@
+{
+  "format": "kernel-control-qualification-summary-v1",
+  "task": "row_rms_statistic",
+  "scope": "Curator controls only; no generated adapter candidate or timing qualification",
+  "source_review_path": "kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/controller-pool-v2/actual-audit-q-v1/review-v1.json",
+  "source_review_sha256": "88fd8d08f7300e9805edbddd53028ca4b4d822d228856a8076e53055e29bf942",
+  "source_pins_root_verified": 729,
+  "native_dispatches": 896,
+  "native_totals_recomputed": {
+    "baseline": {
+      "canary_mutations": 0,
+      "failed_cases": 0,
+      "input_mutations": 0,
+      "nonfinite": 0,
+      "outside_tolerance": 0,
+      "passed_cases": 224
+    },
+    "golden": {
+      "canary_mutations": 0,
+      "failed_cases": 0,
+      "input_mutations": 0,
+      "nonfinite": 0,
+      "outside_tolerance": 0,
+      "passed_cases": 224
+    },
+    "negative-wrongrow": {
+      "canary_mutations": 0,
+      "failed_cases": 88,
+      "input_mutations": 0,
+      "nonfinite": 0,
+      "outside_tolerance": 5803,
+      "passed_cases": 136
+    },
+    "negative-zero": {
+      "canary_mutations": 0,
+      "failed_cases": 224,
+      "input_mutations": 0,
+      "nonfinite": 0,
+      "outside_tolerance": 14664,
+      "passed_cases": 0
+    }
+  },
+  "resource": {
+    "all_passed": true,
+    "minimum_available_bytes": 91906916352,
+    "observations": 10,
+    "peak_aggregate_RSS_bytes": 534364160,
+    "peak_fraction_reduction": 0.7536203419022942,
+    "prior_peak_aggregate_RSS_bytes": 2168864768,
+    "process_budget_bytes": 2147483648,
+    "reserve_bytes": 34359738368,
+    "sampling_scope": "Periodic aggregate RSS, not allocator attribution or absolute instantaneous peak"
+  },
+  "all896_case_records_and_output_hashes_identical_to_prior_run": true,
+  "original_resource_failure_preserved": true,
+  "owned_lease_released": true
+}

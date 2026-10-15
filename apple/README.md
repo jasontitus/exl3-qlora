@@ -8,6 +8,10 @@ DeepSeek V4.1 adapter workflow.
 `uv run exl3-mlx studio` for the local browser interface. The project CLI and
 `SFTTrainer` Python API share CSV/JSON/chat import, safe resume and paired
 comparisons. The [advanced recipe](RECIPE.md) covers engine controls.
+To compare adapters by generated code, use the [kernel evaluation framework](../docs/apple-generated-kernel-evaluation.md).
+It separates exact edit replay, compilation, numerical correctness and timing,
+and preserves failed attempts and incomplete coverage. The [current comparison](reports/kernel-eval-panel-v1/actual-v3/comparison.md)
+does not yet establish a useful generated-kernel winner.
 Use `--profile development` for the explicit 80 GiB process budget and 8 GiB
 packed expert cache, or select Development in Studio. Decoded caching stays off
 after a slower measured MoE-layer experiment. It requires 112 GiB reclaimable

@@ -1,0 +1,24 @@
+{
+  "baseline": {
+    "dispatch.json": {
+      "path": "evidence/d3dbe6d31c3d9657-dispatch.json",
+      "sha256": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9"
+    },
+    "kernel.metal": {
+      "path": "evidence/d93128a72f46d569-kernel.metal",
+      "sha256": "d93128a72f46d569b92a6ff02a856938c894ceb9be89c550af117f2d10c58b13"
+    }
+  },
+  "design": {
+    "path": "evidence/bc81c61db44145f5-design-v2.json",
+    "sha256": "bc81c61db44145f5d2b6e71b25965511ebcc030d67f903485f63631dd21e1fea"
+  },
+  "prompt": {
+    "path": "evidence/49c5370095f199b9-prompt.txt",
+    "sha256": "49c5370095f199b981312ca2b949ed00527bff6d26d5fce64ec9351578b89c27"
+  },
+  "serialized_prompt": {
+    "path": "evidence/b30025430afddd1a-prompt-prepared.json",
+    "sha256": "b30025430afddd1a23046fb94507f03ea002d37f72bae6e5185d53138641c6c1"
+  }
+}

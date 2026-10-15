@@ -1,0 +1,50 @@
+{
+  "adapters": [
+    {
+      "id": "basezeroB",
+      "sha256": "d13e05a091e02e16a342c906f7749a5ced8fd7123afcb4e7924ed4a78acb3627"
+    },
+    {
+      "id": "old458",
+      "sha256": "7b0ed3df65d088f08f30045f7638c4859b4ba33a6e2df69c4175edebcc99f0a6"
+    },
+    {
+      "id": "final188",
+      "sha256": "4d6c1f3884f7f39895ca98f880507d30ac25ccdac2eb031655475530bd04dd80"
+    }
+  ],
+  "budget": {
+    "attempts": 1,
+    "max_output_tokens": 4096
+  },
+  "format": "kernel-eval-suite-v1",
+  "id": "actual-affine-rms-panel-v1",
+  "results": [
+    {
+      "path": "basezeroB-affine-result.json",
+      "sha256": "25bb4c2f8660e96d7fa1de49874c5b8570bd809bd2ed41ee4aa6c5b187b47298"
+    },
+    {
+      "path": "old458-affine-result.json",
+      "sha256": "e1ac237a47d9aae03944b40ab269fb82d1d0a444ba8bdb3c6a772d5e6026c0c7"
+    },
+    {
+      "path": "final188-affine-result.json",
+      "sha256": "6c20bd1366ef4f38fadbbab7b5d819a3e0b92d5e75470e805a028d0fb6985381"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "affine",
+      "prompt_sha256": "0534a67c9563c330641b2f0d42e250a5f1e8e2ddc23d0ef4aa09b4e384743891",
+      "protocol_sha256": "28f45e7715c7d9f646ab72236e2eeab7dc362566d4abeef9955ca6b8338fead5",
+      "sha256": "96bd7167d16b580a2ab214552836d882b76e4b68a92debc865335796e3f0f078"
+    },
+    {
+      "id": "rms",
+      "prompt_sha256": "b30025430afddd1a23046fb94507f03ea002d37f72bae6e5185d53138641c6c1",
+      "protocol_sha256": "e00c3f719ebbfa813ce898e6c0b1775b55f89f1d9cfea8655a18964ce3051acc",
+      "sha256": "f0ef37a225b4aed79b5fc2b839422b867b949c6deb505cb2014483144f0f6c00"
+    }
+  ]
+}

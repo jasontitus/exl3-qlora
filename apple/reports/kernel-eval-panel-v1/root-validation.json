@@ -1,0 +1,37 @@
+{
+  "format": "kernel-framework-root-validation-v1",
+  "observed_utc": "2026-10-15T18:07:03.231146+00:00",
+  "CPU_pytest": {
+    "passed": 190,
+    "paths": [
+      "apple/tests/test_kernel_eval_suite.py",
+      "apple/tests/test_kernel_execution.py",
+      "apple/tests/test_kernel_replay.py",
+      "apple/tests/test_ktune_patch.py",
+      "apple/tests/test_ktune_eval.py",
+      "apple/tests/test_evaluation_audit.py",
+      "apple/reports/kernel-eval-panel-v1/test_import_evidence.py"
+    ],
+    "seconds": 6.37
+  },
+  "initial_broader_collection": "test_evaluation_receipts imports MLX workflow and failed collection in sandbox without Metal; excluded from CPU run, not claimed passed",
+  "actual_suite_reproduced": "actual-v3/suite.json",
+  "actual_recommendation": "insufficient_evidence",
+  "example_valid_and_malformed_replay_executed": true,
+  "source_sha256": {
+    "apple/src/exl3_mlx/kernel_eval_suite.py": "09f22521ba684f204da9293da20eff258d656dfebe91ea54df8124908dc0a73f",
+    "apple/src/exl3_mlx/kernel_execution.py": "9600656ec6300e861555d9acc1a34a938569106a91033f7c39795d9e93bda057",
+    "apple/src/exl3_mlx/kernel_replay.py": "9b31fd171bf764c2a200866a32e2fdb4fd2819c9f9561153d7a7a1b5539bb2f1",
+    "apple/tests/test_kernel_eval_suite.py": "a478e467cf21898426e401f06b8c3f7111c8c850c7623b52a0174293fa8d11c4",
+    "apple/tests/test_kernel_execution.py": "7684e4413a1a58ffebfc9f2bb44d0284c7e31f652875debbfba195e606b52cdc",
+    "apple/tests/test_kernel_replay.py": "d85cbcb726d1fdfb3083b38483da512262adc43d51f1fbee8eef3ee9b06b8dca"
+  },
+  "new_generated_candidates": 0,
+  "timing_qualification": false,
+  "independent_reviews": {
+    "execution_sha256": "547f3eb5dbde9dd12cf1dee3e92886faffaacaafc46f2e74e7d09f45d3a1a914",
+    "execution_pins_root_verified": 36,
+    "actual_import_sha256": "817d4c3270aa38a9678d923d88e3309d5ce369951dac1c97dfeaff8dc5e1aa63",
+    "actual_import_pins_root_verified": 93
+  }
+}

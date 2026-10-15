@@ -1,0 +1,109 @@
+{
+  "adapter_id": "basezeroB",
+  "adapter_sha256": "d13e05a091e02e16a342c906f7749a5ced8fd7123afcb4e7924ed4a78acb3627",
+  "attempt": 1,
+  "budget": {
+    "attempts": 1,
+    "max_output_tokens": 4096
+  },
+  "format": "kernel-eval-result-v1",
+  "prompt_sha256": "0534a67c9563c330641b2f0d42e250a5f1e8e2ddc23d0ef4aa09b4e384743891",
+  "protocol_sha256": "28f45e7715c7d9f646ab72236e2eeab7dc362566d4abeef9955ca6b8338fead5",
+  "task_id": "affine",
+  "task_sha256": "96bd7167d16b580a2ab214552836d882b76e4b68a92debc865335796e3f0f078",
+  "tracks": {
+    "normalized": {
+      "compile": {
+        "reason": "Source safety refused",
+        "status": "not_run"
+      },
+      "numerical": {
+        "reason": "Source safety refused",
+        "status": "not_run"
+      },
+      "replay": {
+        "evidence": [
+          {
+            "path": "evidence/23f6fa3155c4fbda-receipt.json",
+            "sha256": "23f6fa3155c4fbda7b0c3a5b62b02c088dc7c45350a0351636e4a80f3c4c977b"
+          }
+        ],
+        "status": "passed"
+      },
+      "source": {
+        "evidence": [
+          {
+            "path": "evidence/8c1a2ffa7e040f55-alignment-review-v1.json",
+            "sha256": "8c1a2ffa7e040f5508cb3516c7a0d6e35b5b5b0a0812f58689c2acc68feab51a"
+          }
+        ],
+        "outcome_class": "model_output",
+        "reason": "Misaligned float4 access in 80 fixed cases; no numerical run",
+        "status": "refused"
+      },
+      "timing": {
+        "reason": "Source safety refused",
+        "status": "not_run"
+      }
+    },
+    "strict": {
+      "compile": {
+        "reason": "Exact replay did not pass",
+        "status": "not_run"
+      },
+      "generation": {
+        "evidence": [
+          {
+            "path": "evidence/c200b4cd4eb76c6a-review-v1.json",
+            "sha256": "c200b4cd4eb76c6a87197337fe58ee0ef00c41437fac29ff95390f582fb08d42"
+          },
+          {
+            "path": "evidence/18b13c6f46227f95-generation.raw",
+            "sha256": "18b13c6f46227f95d9dd820eed06e3942e1247ea2818017baf839b49f2253171"
+          },
+          {
+            "path": "evidence/b34fe5df59d127b9-0729-zeroB458.json",
+            "sha256": "b34fe5df59d127b9d51d63f2475c8bff8ced0da2fd879f9f0546f99c0e7817e2"
+          },
+          {
+            "path": "affine-protocol.json",
+            "sha256": "28f45e7715c7d9f646ab72236e2eeab7dc362566d4abeef9955ca6b8338fead5"
+          }
+        ],
+        "status": "passed"
+      },
+      "numerical": {
+        "reason": "Exact replay did not pass",
+        "status": "not_run"
+      },
+      "raw_format": {
+        "evidence": [
+          {
+            "path": "evidence/a511f2ee4af79c70-replay.json",
+            "sha256": "a511f2ee4af79c7034e071ee425307dc6e5597307a5d32ab926a598d20725e42"
+          }
+        ],
+        "outcome_class": "model_output",
+        "reason": "Expected one literal quoted git-apply heredoc",
+        "status": "failed"
+      },
+      "replay": {
+        "evidence": [
+          {
+            "path": "evidence/a511f2ee4af79c70-replay.json",
+            "sha256": "a511f2ee4af79c7034e071ee425307dc6e5597307a5d32ab926a598d20725e42"
+          }
+        ],
+        "status": "not_run"
+      },
+      "source": {
+        "reason": "Exact replay did not pass",
+        "status": "not_run"
+      },
+      "timing": {
+        "reason": "Exact replay did not pass",
+        "status": "not_run"
+      }
+    }
+  }
+}

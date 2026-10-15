@@ -21,6 +21,8 @@ dependencies = [
 exl3-mlx = "exl3_mlx.cli:main"
 exl3-mlx-train = "exl3_mlx.train:main"
 exl3-mlx-audit = "exl3_mlx.evaluation_audit:main"
+exl3-mlx-kernel-eval = "exl3_mlx.kernel_eval_suite:main"
+exl3-mlx-kernel-run = "exl3_mlx.kernel_execution:main"
 
 [dependency-groups]
 dev = ["pytest>=8", "ruff>=0.9"]

@@ -1,0 +1,97 @@
+{
+  "format": "mlx-stream-adapter-generation-request-v1",
+  "mode": "adapter",
+  "model_root": "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw",
+  "output_dir": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/attempts/0729-checkpoint458",
+  "engine": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/runtime-package-full-prompt-f32-v1/runtime/host/bin/mlx-serve",
+  "engine_contract": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/bindings/engine-contract.json",
+  "runtime_manifest": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/bindings/runtime.json",
+  "payload_manifest": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/payload-full-verification-plan-v1/expected-manifest-v1.json",
+  "payload_receipt": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/payload-full-verification-plan-v1/full-verification-attempt-v1/full-payload.json",
+  "payload_continuity": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/payload-full-verification-plan-v1/full-verification-attempt-v1/identity-continuity.json",
+  "prompt_ids_file": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/prompts/prompt-0729.json",
+  "policy": {
+    "sampling": "greedy",
+    "temperature": 0,
+    "top_p": 1,
+    "repetition_penalty": 1,
+    "presence_penalty": 0,
+    "frequency_penalty": 0,
+    "suppressed_token_ids": [],
+    "logit_processors": [],
+    "prompt_format": "exact_token_ids",
+    "truncation": "reject",
+    "draft": false,
+    "cross_request_prefix_cache": false
+  },
+  "serving_profile": {
+    "name": "served_transfer_v1",
+    "warmup": "serial_owned_v1",
+    "draft_policy": "disabled_weights_retained",
+    "user_settings_policy": "ignored_fixed_defaults_v1",
+    "embedding_host_rows": false,
+    "cross_request_prefix_cache": false
+  },
+  "arithmetic_profile": "mlx_stream_served_transfer_v1",
+  "tf32": false,
+  "eos_token_ids": [
+    1
+  ],
+  "max_new_tokens": 4096,
+  "max_context_tokens": 8192,
+  "logits_observer": {
+    "format": "selected_raw_logits_v1",
+    "positions": [
+      729
+    ]
+  },
+  "execution": {
+    "lease_request": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/outer-requests/0729-checkpoint458.json",
+    "lease_state": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/lease-results/0729-checkpoint458.json.lease.json",
+    "wrapper": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/shared_gpu_lease_studio.py",
+    "deadline_seconds": 1800,
+    "process_memory_gib": 60,
+    "native_box_ceiling_gib": 96,
+    "reserve_gib": 32,
+    "physical_memory_gib": 128,
+    "environment": {
+      "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+      "HOME": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/environment/home",
+      "TMPDIR": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/environment/tmp"
+    }
+  },
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/payload-full-verification-plan-v1/expected-manifest-v1.json": "452946429d094880a947cc2eee185688d7c8cb3bc8a0e307963fe1e4b7a2a3a4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/payload-full-verification-plan-v1/full-verification-attempt-v1/full-payload.json": "755be41ced65db972e5cbcc90b5238cf6ab851834bdae0ed0a6620fb48292bfb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/payload-full-verification-plan-v1/full-verification-attempt-v1/identity-continuity.json": "26fc6c61abbff052e4c72747451ceb2d6eaa74f4626fac4e01ef55e829b968be",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/runtime-package-full-prompt-f32-v1/runtime/host/bin/mlx-serve": "800b8a3f253d4b65052b5f5e5195e5e41df7e632c70ca61751b52676eef96d2f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/runtime-package-full-prompt-f32-v1/runtime/lib/llama/lib/libllama.dylib": "10f39f1688515e851c79e111a18a2a852923c4edb20f950061f6d7356ef8987b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/runtime-package-full-prompt-f32-v1/runtime/lib/mlx/lib/libjaccl.dylib": "1f1c34f3d2fe4de94a1100835b4ef67011149607c6261e8b2619164454c15111",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/runtime-package-full-prompt-f32-v1/runtime/lib/mlx/lib/libmlx.dylib": "8960b9b910a9d9a177f65b44353849fa9ee84b245cbed976ebbd2517ed7395b8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/runtime-package-full-prompt-f32-v1/runtime/lib/mlx/lib/libmlxc.dylib": "7c7e5675122b095781c2730074f0cc1ef79a52f9ec34fa69b5676c4d978e3dfd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/runtime-package-full-prompt-f32-v1/runtime/lib/mlx/lib/mlx.metallib": "921b9681d5bccff008f0bbba8e863229bf3d3285c47446919d6b307ee0fc2036",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/bindings/engine-contract.json": "a451bbf399236cbea12822ebe14187934d531c6121431a6f97d1de56e0884103",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/bindings/runtime.json": "92e68b0824f90c37148322425edbbdc187331a75666ad6d45c9c480f924aff28",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/frontend/adapter_generate.py": "6b2cc7a732dea6f074dd41cc37644b0f1c37c01a7665e9c9cc9b9b4979c81d3c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/frontend/execution_guard.py": "16ca1d275f8a95bfbadb0c2811584553fbf80a95385c3a04dc5fb05b0342c44f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/frontend/logits_audit.py": "9996e7cb30d2f1144db10cdff62faa7f5775356cfbd369bed3c5e75c977fee16",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/frontend/memory_guard.py": "87611be1525c1e8bd326d0d5557026210b31d701cf25bd200248cca61beb0cc5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/frontend/qualification_gate.py": "32f741459d7d9db3feca217f8e256b04bda0e8fa841dcaedec9cff3e9833d6a5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/frontend/runtime_contract.py": "e23f0d52e8161453524ca270dfff7da4d53025e886c44fc64080f9e2d51e2a32",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/frontend/verify_payload.py": "db6b33ca88a3826dd4396b638c01381166b48a853ddd8ab972c62fe1dfdab34f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/prompts/prompt-0729.json": "9bef99f623f0c870b45b8a92f0194eead0eb8646602b888c5273b64d8ce7467f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/shared_gpu_lease_studio.py": "1f8757af0641d923e85281889fc94f4ee8866253ab25a8d477bb6496ea9f25f6",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-process40-v2/future-adapters/checkpoint458/adapter.safetensors": "b66d43f6b8f455999b89a194f8c9dfa698aae58f004850fad3e26f4d6642ab18",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-process40-v2/future-adapters/checkpoint458/adapter_config.json": "9e3954175862c2c91d4be52f37fda2b391961a421345f0ee668eece88ca65be6",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/config.json": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/engram-token-map.u32.json": "b3509de9fb07fc769429481e2a3868452c23818df4296be9627fd5568de46b73",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/engram/engram-manifest.json": "b6467b20fa72b0432dcbf966c2a054aa205004a1e687e44bfbdd1257ce8a52f3",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/expert-manifest-v2.json": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/model.safetensors.index.json": "c0ead8ce7960b2c715366373da35626f3ccaef1837094bf9215cded0bfefdabb",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "/Users/jasontitus/models/DeepSeek-V4.1-Flash-streaming-repack-exl3-3.0bpw/tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+    "/opt/homebrew/Cellar/webp/1.6.0/lib/libsharpyuv.0.1.2.dylib": "755e13860aa122e98f1be1bb7d5fcf47b496ae27d5787fe783af3909721d2321",
+    "/opt/homebrew/Cellar/webp/1.6.0/lib/libwebp.7.2.0.dylib": "f42f3e0687cf1f7fd5a42c608152e0d4187540ac2e6675cb8af297e7befc4258"
+  },
+  "adapter_dir": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/final458-evaluation-process40-v2/future-adapters/checkpoint458"
+}

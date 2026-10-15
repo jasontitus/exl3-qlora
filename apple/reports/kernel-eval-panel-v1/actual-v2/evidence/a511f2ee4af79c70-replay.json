@@ -1,0 +1,19 @@
+{
+  "format": "kernel-eval-replay-v1",
+  "protocol": "safe-common-git-apply-exact-v1",
+  "input_sha256": "221ee0229b7b8a66d7a64c0e55db6071fb77d1f06f443fb39d2c9fe610b49f0c",
+  "generation_sha256": "18b13c6f46227f95d9dd820eed06e3942e1247ea2818017baf839b49f2253171",
+  "stages": {
+    "raw_format": {
+      "status": "failed",
+      "outcome_class": "model_output",
+      "reason": "Expected one literal quoted git-apply heredoc"
+    },
+    "replay": {
+      "status": "not_run"
+    }
+  },
+  "shell_executed": false,
+  "compiler_executed": false,
+  "GPU_executed": false
+}

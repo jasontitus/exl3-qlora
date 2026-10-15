@@ -1,0 +1,27 @@
+{
+  "capture_receipt_sha256": "5e68d41c3197f4a9b3e974f2cfbb076267d1010a2455124bf95e6199d1d17446",
+  "checks": {
+    "ABI": true,
+    "bounds": true,
+    "complete_kernel": true,
+    "dispatch": true,
+    "progress": true,
+    "rationale_measurement_scope": true
+  },
+  "condition": "checkpoint458",
+  "files_sha256": {
+    "dispatch.json": "ea4b6396e09162eb429ecdc8331dccdf95faefa06ebd9c8af20fe4ade2c58220",
+    "kernel.metal": "08e88465be8c30caee05892b79a5310f7833c10dbfab96703642a77d1151d5f1"
+  },
+  "format": "generated-kernel-source-ABI-review-v1",
+  "limitations": [
+    "normalized_diagnostic_only_not_raw_model_success",
+    "Normalized-format diagnostic only; original strict hunk-count failure remains. This receipt binds the explicitly labeled normalized receipt, never a fabricated strict success.",
+    "Actual scalar loop is bounded and has one writer per row; dispatch32 does not implement the rationale's claimed within-row tree.",
+    "No numerical pass or performance claim: fixed224 cases/tolerance and later timing gates remain mandatory.",
+    "Detailed source review SHA ad9752c77fc4614379161c03365322318d8b636ce5566282e1557528b78d342e"
+  ],
+  "replay_receipt_sha256": "a067fd1c65d9a8a769a470370188f31450cc6430620c29bab0386f322f17413e",
+  "reviewer": "quality_research",
+  "status": "approved_source_ABI_progress_for_CPU_compilation"
+}

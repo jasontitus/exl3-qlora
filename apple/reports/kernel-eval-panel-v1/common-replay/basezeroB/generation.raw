@@ -1,0 +1,54 @@
+I'll optimize the kernel by using vectorized float4 loads and a tree-style reduction, keeping the same ABI and the allowed `threads_per_row` values.
+
+<｜DSML｜ calls>
+<｜DSML｜ invoke name="exec_command">
+<｜DSML｜ parameter name="cmd" string="true">cd "$(git rev-parse --show-toplevel 2>/dev/null || echo .)" && git apply --whitespace=nowarn <<'KERNEL_PATCH'
+diff --git a/kernel.metal b/kernel.metal
+--- a/kernel.metal
++++ b/kernel.metal
+@@ -1,6 +1,31 @@
+ #include <metal_stdlib>
+ using namespace metal;
+-kernel void row_sum(device const float* input [[buffer(0)]], device float* output [[buffer(1)]], constant uint& rows [[buffer(2)]], constant uint& cols [[buffer(3)]], uint gid [[thread_position_in_grid]]) {
+-const uint row=gid; if(row>=rows)return; float total=0.0f, correction=0.0f; for(uint col=0;col<cols;++col) { float adjusted=max(0.5f * input[row * cols + col] + 0.25f, 0.0f)-correction; float updated=total+adjusted; correction=(updated-total)-adjusted; total=updated; }; output[row]=total;
+-}
++
++// Row-wise sum of max(0.5*x + 0.25, 0) over finite float32 inputs.
++// One thread per row (threads_per_row == 1). Uses float4 vectorized loads
++// with a scalar tail, and a 4-lane partial-sum tree to shorten the
++// dependency chain versus a single serial accumulator.
++kernel void row_sum(device const float* input [[buffer(0)]],
++                    device float* output [[buffer(1)]],
++                    constant uint& rows [[buffer(2)]],
++                    constant uint& cols [[buffer(3)]],
++                    uint gid [[thread_position_in_grid]]) {
++    const uint row = gid;
++    if (row >= rows) return;
++
++    const device float* row_ptr = input + (size_t)row * (size_t)cols;
++
++    float4 acc = float4(0.0f);
++    uint col = 0;
++    const uint vec_cols = cols & ~3u;
++    for (; col < vec_cols; col += 4) {
++        float4 v = *(const device float4*)(row_ptr + col);
++        acc += max(0.5f * v + 0.25f, float4(0.0f));
++    }
++
++    float total = (acc.x + acc.y) + (acc.z + acc.w);
++    for (; col < cols; ++col) {
++        total += max(0.5f * row_ptr[col] + 0.25f, 0.0f);
++    }
++
++    output[row] = total;
++}
+diff --git a/dispatch.json b/dispatch.json
+--- a/dispatch.json
++++ b/dispatch.json
+@@ -1 +1 @@
+-{"threads_per_row": 1}
++{"threads_per_row": 1}
+KERNEL_PATCH
+git --no-pager diff --stat</｜DSML｜ parameter>
+</｜DSML｜ invoke>
+</｜DSML｜ calls><｜end▁of▁sentence｜>

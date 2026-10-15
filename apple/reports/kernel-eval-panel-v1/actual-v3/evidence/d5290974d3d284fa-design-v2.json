@@ -1,0 +1,137 @@
+{
+  "format": "full-kernel-evaluation-design-v1",
+  "task": "affine_relu_sum",
+  "semantics": "sum(max(0.5*x+0.25,0)) per row, with float32 transform operations",
+  "cases": [
+    {
+      "rows": 1,
+      "cols": 1
+    },
+    {
+      "rows": 1,
+      "cols": 31
+    },
+    {
+      "rows": 1,
+      "cols": 33
+    },
+    {
+      "rows": 1,
+      "cols": 128
+    },
+    {
+      "rows": 1,
+      "cols": 1024
+    },
+    {
+      "rows": 1,
+      "cols": 4096
+    },
+    {
+      "rows": 3,
+      "cols": 33
+    },
+    {
+      "rows": 32,
+      "cols": 128
+    },
+    {
+      "rows": 32,
+      "cols": 1024
+    },
+    {
+      "rows": 32,
+      "cols": 4096
+    },
+    {
+      "rows": 256,
+      "cols": 128
+    },
+    {
+      "rows": 256,
+      "cols": 1024
+    },
+    {
+      "rows": 256,
+      "cols": 4096
+    },
+    {
+      "rows": 63,
+      "cols": 32
+    },
+    {
+      "rows": 63,
+      "cols": 63
+    },
+    {
+      "rows": 63,
+      "cols": 64
+    },
+    {
+      "rows": 63,
+      "cols": 65
+    },
+    {
+      "rows": 63,
+      "cols": 4095
+    },
+    {
+      "rows": 64,
+      "cols": 32
+    },
+    {
+      "rows": 64,
+      "cols": 63
+    },
+    {
+      "rows": 64,
+      "cols": 64
+    },
+    {
+      "rows": 64,
+      "cols": 65
+    },
+    {
+      "rows": 64,
+      "cols": 4095
+    },
+    {
+      "rows": 65,
+      "cols": 32
+    },
+    {
+      "rows": 65,
+      "cols": 63
+    },
+    {
+      "rows": 65,
+      "cols": 64
+    },
+    {
+      "rows": 65,
+      "cols": 65
+    },
+    {
+      "rows": 65,
+      "cols": 4095
+    }
+  ],
+  "uniform_seeds": [
+    0,
+    17,
+    2026
+  ],
+  "baseline_files_sha256": {
+    "kernel.metal": "412de4af4d0994e4273fb862b03cabcbd76f965a35bea0fdc53bcaa6cd69dd0f",
+    "dispatch.json": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9"
+  },
+  "prompt_sha256": "87697bda869d23522d9e05cbe41fb9ae52b1d8d0a02d576d14106de47e6bce90",
+  "training_use": false,
+  "new_curator_synthetic_task": true,
+  "historical_task_unchanged": true,
+  "numeric_cases": 224,
+  "timing_workloads": 12,
+  "generation": "one baseline and one final458 output, greedy natural EOS, fixed cap preregistered after exact serialization; no repair/retry",
+  "qualification": "pending independent source, compile, actual controls and generated candidate safety review",
+  "scale": "sum_absolute_transformed"
+}

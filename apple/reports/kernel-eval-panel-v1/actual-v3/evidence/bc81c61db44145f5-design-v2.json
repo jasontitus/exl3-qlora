@@ -1,0 +1,148 @@
+{
+  "format": "full-kernel-evaluation-design-v1",
+  "task": "row_rms",
+  "semantics": "sqrt(mean(float32(x*x))+1e-5) per row; output is scalar RMS, not RMS normalization",
+  "cases": [
+    {
+      "rows": 1,
+      "cols": 1
+    },
+    {
+      "rows": 1,
+      "cols": 31
+    },
+    {
+      "rows": 1,
+      "cols": 33
+    },
+    {
+      "rows": 1,
+      "cols": 128
+    },
+    {
+      "rows": 1,
+      "cols": 1024
+    },
+    {
+      "rows": 1,
+      "cols": 4096
+    },
+    {
+      "rows": 3,
+      "cols": 33
+    },
+    {
+      "rows": 32,
+      "cols": 128
+    },
+    {
+      "rows": 32,
+      "cols": 1024
+    },
+    {
+      "rows": 32,
+      "cols": 4096
+    },
+    {
+      "rows": 256,
+      "cols": 128
+    },
+    {
+      "rows": 256,
+      "cols": 1024
+    },
+    {
+      "rows": 256,
+      "cols": 4096
+    },
+    {
+      "rows": 63,
+      "cols": 32
+    },
+    {
+      "rows": 63,
+      "cols": 63
+    },
+    {
+      "rows": 63,
+      "cols": 64
+    },
+    {
+      "rows": 63,
+      "cols": 65
+    },
+    {
+      "rows": 63,
+      "cols": 4095
+    },
+    {
+      "rows": 64,
+      "cols": 32
+    },
+    {
+      "rows": 64,
+      "cols": 63
+    },
+    {
+      "rows": 64,
+      "cols": 64
+    },
+    {
+      "rows": 64,
+      "cols": 65
+    },
+    {
+      "rows": 64,
+      "cols": 4095
+    },
+    {
+      "rows": 65,
+      "cols": 32
+    },
+    {
+      "rows": 65,
+      "cols": 63
+    },
+    {
+      "rows": 65,
+      "cols": 64
+    },
+    {
+      "rows": 65,
+      "cols": 65
+    },
+    {
+      "rows": 65,
+      "cols": 4095
+    }
+  ],
+  "uniform_seeds": [
+    0,
+    17,
+    2026
+  ],
+  "baseline_files_sha256": {
+    "kernel.metal": "d93128a72f46d569b92a6ff02a856938c894ceb9be89c550af117f2d10c58b13",
+    "dispatch.json": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9"
+  },
+  "prompt_sha256": "49c5370095f199b981312ca2b949ed00527bff6d26d5fce64ec9351578b89c27",
+  "training_use": false,
+  "new_curator_synthetic_task": true,
+  "historical_task_unchanged": true,
+  "numeric_cases": 224,
+  "timing_workloads": 12,
+  "generation": "Task frozen before any output. Adapter/runtime/one-shot condition bindings require separate concrete request; no retry or hidden code repair.",
+  "qualification": "pending independent source, compile, actual controls and generated candidate safety review",
+  "scale": "reference_RMS",
+  "alignment_bytes": 4,
+  "vector_row_alignment_guaranteed": false,
+  "epsilon": 1e-05,
+  "epsilon_placement": "after_mean_before_sqrt",
+  "input_domain": {
+    "dtype": "float32",
+    "finite": true,
+    "minimum": -1,
+    "maximum": 1
+  },
+  "output": "one_scalar_RMS_per_row_not_RMSNorm"
+}

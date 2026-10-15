@@ -1,0 +1,19 @@
+{
+  "generation": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/independent-actual-q-v1/checkpoint458/generation.raw",
+    "sha256": "0cf7a3939350245c5968ac35bf40c017e265c80bb1a780dbc751810c3fa4383d"
+  },
+  "baseline": {
+    "kernel.metal": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/task/kernel.metal",
+      "sha256": "412de4af4d0994e4273fb862b03cabcbd76f965a35bea0fdc53bcaa6cd69dd0f"
+    },
+    "dispatch.json": {
+      "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/task/dispatch.json",
+      "sha256": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9"
+    }
+  },
+  "required_paths": [
+    "kernel.metal"
+  ]
+}

@@ -1,0 +1,752 @@
+{
+  "GPU_executed": false,
+  "finding": "The ordinary float4 pointer is dereferenced on rows whose byte offset is not a multiple of16. Its vector loop has no alignment peel and uses neither scalar loads nor a packed vector type. Even an aligned input buffer plus64-byte canary prefix does not align these later rows.",
+  "fixed_cases_with_misaligned_vector_rows": 80,
+  "format": "affine-normalized-zeroB-source-alignment-review-v1",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/inputs-v1/inputs.json": "e66a46c4ca51b49f00197ca82c6575c21bf9e155469cef5a3a00bd95081160c5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/normalized-actual-v1/independent-q/audit_zeroB_alignment.py": "2b569f2e0bfbb2dbda98466ebde05a3757ff78b239be0ce71d97f80c00ce7979",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/normalized-actual-v1/zeroB458/candidate/dispatch.json": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/normalized-actual-v1/zeroB458/candidate/kernel.metal": "b40833aa6c4a727881f60ee8b654ea925a322968dc88449b6a6754a627fb4ed4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/normalized-actual-v1/zeroB458/receipt.json": "23f6fa3155c4fbda7b0c3a5b62b02c088dc7c45350a0351636e4a80f3c4c977b"
+  },
+  "limitations": [
+    "This is a source/ABI rejection, not an observed numerical kernel failure or a claim that every device traps unaligned loads.",
+    "The trained scalar candidate is independently authorized; this finding does not block its224-case diagnostic."
+  ],
+  "numerical_failure_observed": false,
+  "primary_source": {
+    "float4_alignment_bytes": 16,
+    "float4_size_bytes": 16,
+    "scope": "Apple-authored specification retrieved through mirror; current Apple PDF was inaccessible to browser.",
+    "table": "2.3, printedpage22",
+    "title": "Apple Metal Shading Language Specification Version2.4,2021-06-07",
+    "url": "https://manuals.plus/m/d3f0a1b38bbcbebf5f0985b3772bf6bd8729ba070997730d20d941541853e4a1.pdf"
+  },
+  "raw_task_success": false,
+  "reviewer": "quality_research",
+  "source_repaired": false,
+  "status": "not_approved_for_device_execution_alignment_precondition_violated",
+  "witnesses": [
+    {
+      "case": "case-06-uniform-seed0",
+      "cols": 33,
+      "first_row": 1,
+      "first_vector_byte_offset": 196,
+      "misaligned_vector_row_count": 2,
+      "offset_mod16": 4,
+      "rows": 3
+    },
+    {
+      "case": "case-06-uniform-seed17",
+      "cols": 33,
+      "first_row": 1,
+      "first_vector_byte_offset": 196,
+      "misaligned_vector_row_count": 2,
+      "offset_mod16": 4,
+      "rows": 3
+    },
+    {
+      "case": "case-06-uniform-seed2026",
+      "cols": 33,
+      "first_row": 1,
+      "first_vector_byte_offset": 196,
+      "misaligned_vector_row_count": 2,
+      "offset_mod16": 4,
+      "rows": 3
+    },
+    {
+      "case": "case-06-alternating_sign-seed0",
+      "cols": 33,
+      "first_row": 1,
+      "first_vector_byte_offset": 196,
+      "misaligned_vector_row_count": 2,
+      "offset_mod16": 4,
+      "rows": 3
+    },
+    {
+      "case": "case-06-all_zeros-seed0",
+      "cols": 33,
+      "first_row": 1,
+      "first_vector_byte_offset": 196,
+      "misaligned_vector_row_count": 2,
+      "offset_mod16": 4,
+      "rows": 3
+    },
+    {
+      "case": "case-06-all_ones-seed0",
+      "cols": 33,
+      "first_row": 1,
+      "first_vector_byte_offset": 196,
+      "misaligned_vector_row_count": 2,
+      "offset_mod16": 4,
+      "rows": 3
+    },
+    {
+      "case": "case-06-single_nonzero_last-seed0",
+      "cols": 33,
+      "first_row": 1,
+      "first_vector_byte_offset": 196,
+      "misaligned_vector_row_count": 2,
+      "offset_mod16": 4,
+      "rows": 3
+    },
+    {
+      "case": "case-06-mixed_magnitude-seed0",
+      "cols": 33,
+      "first_row": 1,
+      "first_vector_byte_offset": 196,
+      "misaligned_vector_row_count": 2,
+      "offset_mod16": 4,
+      "rows": 3
+    },
+    {
+      "case": "case-14-uniform-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-14-uniform-seed17",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-14-uniform-seed2026",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-14-alternating_sign-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-14-all_zeros-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-14-all_ones-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-14-single_nonzero_last-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-14-mixed_magnitude-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-16-uniform-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 4,
+      "rows": 63
+    },
+    {
+      "case": "case-16-uniform-seed17",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 4,
+      "rows": 63
+    },
+    {
+      "case": "case-16-uniform-seed2026",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 4,
+      "rows": 63
+    },
+    {
+      "case": "case-16-alternating_sign-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 4,
+      "rows": 63
+    },
+    {
+      "case": "case-16-all_zeros-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 4,
+      "rows": 63
+    },
+    {
+      "case": "case-16-all_ones-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 4,
+      "rows": 63
+    },
+    {
+      "case": "case-16-single_nonzero_last-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 4,
+      "rows": 63
+    },
+    {
+      "case": "case-16-mixed_magnitude-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 4,
+      "rows": 63
+    },
+    {
+      "case": "case-17-uniform-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-17-uniform-seed17",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-17-uniform-seed2026",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-17-alternating_sign-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-17-all_zeros-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-17-all_ones-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-17-single_nonzero_last-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-17-mixed_magnitude-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 47,
+      "offset_mod16": 12,
+      "rows": 63
+    },
+    {
+      "case": "case-19-uniform-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-19-uniform-seed17",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-19-uniform-seed2026",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-19-alternating_sign-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-19-all_zeros-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-19-all_ones-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-19-single_nonzero_last-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-19-mixed_magnitude-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-21-uniform-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 64
+    },
+    {
+      "case": "case-21-uniform-seed17",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 64
+    },
+    {
+      "case": "case-21-uniform-seed2026",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 64
+    },
+    {
+      "case": "case-21-alternating_sign-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 64
+    },
+    {
+      "case": "case-21-all_zeros-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 64
+    },
+    {
+      "case": "case-21-all_ones-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 64
+    },
+    {
+      "case": "case-21-single_nonzero_last-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 64
+    },
+    {
+      "case": "case-21-mixed_magnitude-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 64
+    },
+    {
+      "case": "case-22-uniform-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-22-uniform-seed17",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-22-uniform-seed2026",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-22-alternating_sign-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-22-all_zeros-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-22-all_ones-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-22-single_nonzero_last-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-22-mixed_magnitude-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 64
+    },
+    {
+      "case": "case-24-uniform-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-24-uniform-seed17",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-24-uniform-seed2026",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-24-alternating_sign-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-24-all_zeros-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-24-all_ones-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-24-single_nonzero_last-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-24-mixed_magnitude-seed0",
+      "cols": 63,
+      "first_row": 1,
+      "first_vector_byte_offset": 316,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-26-uniform-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 65
+    },
+    {
+      "case": "case-26-uniform-seed17",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 65
+    },
+    {
+      "case": "case-26-uniform-seed2026",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 65
+    },
+    {
+      "case": "case-26-alternating_sign-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 65
+    },
+    {
+      "case": "case-26-all_zeros-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 65
+    },
+    {
+      "case": "case-26-all_ones-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 65
+    },
+    {
+      "case": "case-26-single_nonzero_last-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 65
+    },
+    {
+      "case": "case-26-mixed_magnitude-seed0",
+      "cols": 65,
+      "first_row": 1,
+      "first_vector_byte_offset": 324,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 4,
+      "rows": 65
+    },
+    {
+      "case": "case-27-uniform-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-27-uniform-seed17",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-27-uniform-seed2026",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-27-alternating_sign-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-27-all_zeros-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-27-all_ones-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-27-single_nonzero_last-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    },
+    {
+      "case": "case-27-mixed_magnitude-seed0",
+      "cols": 4095,
+      "first_row": 1,
+      "first_vector_byte_offset": 16444,
+      "misaligned_vector_row_count": 48,
+      "offset_mod16": 12,
+      "rows": 65
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Optimize this complete Metal kernel for Apple M1 Ultra. Semantics: sqrt(mean(float32(x*x))+1e-5) per row; output is scalar RMS, not RMS normalization. Inputs finite float32 in [-1,1], rows1..256, cols1..4096. Preserve name row_sum and buffer ABI0=input,1=output[rows],2=rows uint,3=cols uint. Use the declared exec_command tool with exactly one literal git apply --whitespace=nowarn - <<'KERNEL_PATCH' heredoc editing kernel.metal and optionally dispatch.json. Include a concise rationale before the tool call; no cd, command substitution, extra commands or trailing shell. The evaluator parses the patch and never executes generated shell. Only threads_per_row1or32 is allowed: host dispatches rows*threads_per_row, groups64for1 and32for32. No other files/includes beyond metal_stdlib, external assets, function constants or CPU programs. Alignment and tails: input and output provide float alignment (4 bytes); do not assume every row start is16-byte aligned. Rows with odd column counts are required. Any vector access must prove its own alignment and bounds, or use scalar component loads. Read only each row's cols elements and write exactly output[row]; handle tails and the dispatched surplus threads safely. Epsilon is1.0e-5, added after the mean and before sqrt. Output is one RMS statistic per row, not normalized input elements. Numerical acceptance: abs(error)<=2e-6*scale+2e-4, scale=the positive reference RMS. Reference squares each input with float32 rounding, sums in high precision, divides by cols, adds1e-5 and takes sqrt. Reordering reduction allowed. No measured speedup claim.
+
+File dispatch.json
+{"threads_per_row": 1}
+
+File kernel.metal
+#include <metal_stdlib>
+using namespace metal;
+kernel void row_sum(device const float* input [[buffer(0)]], device float* output [[buffer(1)]], constant uint& rows [[buffer(2)]], constant uint& cols [[buffer(3)]], uint gid [[thread_position_in_grid]]) {
+const uint row=gid; if(row>=rows)return; float total=0.0f, correction=0.0f; for(uint col=0;col<cols;++col) { float adjusted=(input[row * cols + col] * input[row * cols + col])-correction; float updated=total+adjusted; correction=(updated-total)-adjusted; total=updated; }; output[row]=sqrt(total / float(cols) + 1.0e-5f);
+}

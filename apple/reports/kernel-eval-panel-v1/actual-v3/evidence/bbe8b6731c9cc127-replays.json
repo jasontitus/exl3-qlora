@@ -1,0 +1,14 @@
+{
+  "basezeroB": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/kernel-eval-panel-v1/common-replay/basezeroB/replay.json",
+    "sha256": "a511f2ee4af79c7034e071ee425307dc6e5597307a5d32ab926a598d20725e42"
+  },
+  "old458": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/kernel-eval-panel-v1/common-replay/old458/replay.json",
+    "sha256": "0c8e448086abb52e54c5e3b6ec0eb1481f6fac528c8df067ac3a55338545168b"
+  },
+  "final188": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/kernel-eval-panel-v1/common-replay/final188/replay.json",
+    "sha256": "26d1e22f48d2712355d00d4c7314f3699b013b629eaedfb767d48c16a3980154"
+  }
+}

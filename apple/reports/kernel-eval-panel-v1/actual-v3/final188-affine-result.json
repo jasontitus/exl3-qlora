@@ -1,0 +1,75 @@
+{
+  "adapter_id": "final188",
+  "adapter_sha256": "4d6c1f3884f7f39895ca98f880507d30ac25ccdac2eb031655475530bd04dd80",
+  "attempt": 1,
+  "budget": {
+    "attempts": 1,
+    "max_output_tokens": 4096
+  },
+  "format": "kernel-eval-result-v1",
+  "prompt_sha256": "0534a67c9563c330641b2f0d42e250a5f1e8e2ddc23d0ef4aa09b4e384743891",
+  "protocol_sha256": "28f45e7715c7d9f646ab72236e2eeab7dc362566d4abeef9955ca6b8338fead5",
+  "task_id": "affine",
+  "task_sha256": "96bd7167d16b580a2ab214552836d882b76e4b68a92debc865335796e3f0f078",
+  "tracks": {
+    "strict": {
+      "compile": {
+        "reason": "Exact replay did not pass",
+        "status": "not_run"
+      },
+      "generation": {
+        "evidence": [
+          {
+            "path": "evidence/614db1f43b609d65-review-v1.json",
+            "sha256": "614db1f43b609d65f3717521026eeb8dc6dae3f954b76ab34cc61656dbae08bb"
+          },
+          {
+            "path": "evidence/446498e176a1d670-generation.raw",
+            "sha256": "446498e176a1d6701106152d9f81de2604a211ccecbc03dcf50569a02b3ff2a0"
+          },
+          {
+            "path": "evidence/eddc8862b56c3f7c-request.json",
+            "sha256": "eddc8862b56c3f7cb749f48ea5b70be1d0e0a95e4879cf1abb8723f79500581c"
+          },
+          {
+            "path": "affine-protocol.json",
+            "sha256": "28f45e7715c7d9f646ab72236e2eeab7dc362566d4abeef9955ca6b8338fead5"
+          }
+        ],
+        "status": "passed"
+      },
+      "numerical": {
+        "reason": "Exact replay did not pass",
+        "status": "not_run"
+      },
+      "raw_format": {
+        "evidence": [
+          {
+            "path": "evidence/26d1e22f48d27123-replay.json",
+            "sha256": "26d1e22f48d2712355d00d4c7314f3699b013b629eaedfb767d48c16a3980154"
+          }
+        ],
+        "status": "passed"
+      },
+      "replay": {
+        "evidence": [
+          {
+            "path": "evidence/26d1e22f48d27123-replay.json",
+            "sha256": "26d1e22f48d2712355d00d4c7314f3699b013b629eaedfb767d48c16a3980154"
+          }
+        ],
+        "outcome_class": "model_output",
+        "reason": "Hunk count mismatch: declared 5/31, observed 5/20",
+        "status": "failed"
+      },
+      "source": {
+        "reason": "Exact replay did not pass",
+        "status": "not_run"
+      },
+      "timing": {
+        "reason": "Exact replay did not pass",
+        "status": "not_run"
+      }
+    }
+  }
+}

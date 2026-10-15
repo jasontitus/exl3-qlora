@@ -1,0 +1,124 @@
+{
+  "GPU_executed": false,
+  "admission": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-spec.json",
+    "sha256": "5e9aac001b9ca8eaa0bef5bb9047a769b447721c330460117fb49c2b0d16f790"
+  },
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/xcrun",
+        "-sdk",
+        "macosx",
+        "metal",
+        "-std=metal3.1",
+        "-O3",
+        "-fno-fast-math",
+        "-fmodules-cache-path=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/module-cache",
+        "-c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/sources/baseline.metal",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/baseline.air"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-15T16:36:04.858614+00:00",
+      "started_utc": "2026-10-15T16:36:02.863817+00:00",
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/xcrun",
+        "-sdk",
+        "macosx",
+        "metal",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/baseline.air",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/baseline.metallib"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-15T16:36:05.200895+00:00",
+      "started_utc": "2026-10-15T16:36:04.858721+00:00",
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/xcrun",
+        "-sdk",
+        "macosx",
+        "metal",
+        "-std=metal3.1",
+        "-O3",
+        "-fno-fast-math",
+        "-fmodules-cache-path=/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/module-cache",
+        "-c",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/sources/checkpoint458.metal",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/checkpoint458.air"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-15T16:36:05.235883+00:00",
+      "started_utc": "2026-10-15T16:36:05.203845+00:00",
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/xcrun",
+        "-sdk",
+        "macosx",
+        "metal",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/checkpoint458.air",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/checkpoint458.metallib"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-15T16:36:05.262690+00:00",
+      "started_utc": "2026-10-15T16:36:05.235967+00:00",
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/xcrun",
+        "swiftc",
+        "-O",
+        "-module-cache-path",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/swift-cache",
+        "-framework",
+        "Metal",
+        "-framework",
+        "CryptoKit",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/sources/verify_generated.swift",
+        "-o",
+        "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/verify_generated"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-15T16:36:11.804390+00:00",
+      "started_utc": "2026-10-15T16:36:05.265672+00:00",
+      "stderr": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/sources/verify_generated.swift:229:86: warning: 'argumentInfo' was deprecated in macOS 13.0: renamed to 'MTLPipelineOption.bindingInfo' [#DeprecatedDeclaration]\n227 |         guard let function=library.makeFunction(name:\"row_sum\")else{throw fail(\"Missing row_sum\")}\n228 |         var reflection:MTLComputePipelineReflection?\n229 |         let pipeline=try device.makeComputePipelineState(function:function,options:[.argumentInfo,.bufferTypeInfo],reflection:&reflection)\n    |                                                                                      |- warning: 'argumentInfo' was deprecated in macOS 13.0: renamed to 'MTLPipelineOption.bindingInfo' [#DeprecatedDeclaration]\n    |                                                                                      `- note: use 'MTLPipelineOption.bindingInfo' instead\n230 |         try require(pipeline.threadExecutionWidth==32 && pipeline.maxTotalThreadsPerThreadgroup>=64,\"Unsupported SIMD/group contract\")\n231 |         guard let arguments=reflection?.arguments else{throw fail(\"Missing pipeline ABI reflection\")}\n\n/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/sources/verify_generated.swift:231:41: warning: 'arguments' was deprecated in macOS 13.0 [#DeprecatedDeclaration]\n229 |         let pipeline=try device.makeComputePipelineState(function:function,options:[.argumentInfo,.bufferTypeInfo],reflection:&reflection)\n230 |         try require(pipeline.threadExecutionWidth==32 && pipeline.maxTotalThreadsPerThreadgroup>=64,\"Unsupported SIMD/group contract\")\n231 |         guard let arguments=reflection?.arguments else{throw fail(\"Missing pipeline ABI reflection\")}\n    |                                         `- warning: 'arguments' was deprecated in macOS 13.0 [#DeprecatedDeclaration]\n232 |         for argument in arguments where argument.isActive {try require(argument.type == .buffer && (0...3).contains(argument.index),\"Unexpected active ABI argument\")\n233 |             if argument.index>=2 {try require(argument.bufferDataType == .uint && argument.bufferDataSize==4,\"Scalar ABI mismatch\")}}\n\n[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>\n",
+      "stdout": ""
+    }
+  ],
+  "condition": "checkpoint458",
+  "controls_gate": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/controls-gate.json",
+    "sha256": "9668cbe0957ef3c589164b61a7c88b3289866e99ea5133689fb2b86cbbbd7f53"
+  },
+  "format": "generated-kernel-CPU-build-v1",
+  "implementation_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/admission.py": "c35b39aa15858bab60b36a7eeed430ffbaeff4840467f56669dcf2753a3f2a75",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/build_candidates.py": "bddb596673a5959d3ac9bfe8db088438d20b7c31f41c3fdb6bd15c718125cfec",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/compiler_environment.py": "5d52077ca35aeb238624bbb1057322c4cd0094500a8db0f11a085375c6e61545",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/numerical_gate.py": "d14a12f77f808b0d1243809256936288ddcbb09053217ccd475f88bfcb811616",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/test_diagnostic.py": "09e984360a12fab65b213a8d26863d410fe07b85c4964020b69643b5bf65833a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/test_prepare.py": "1fca3ce6e986337eb6e6738fd64fd1394ee10a35679dfb0f4d08709d040c1d35"
+  },
+  "job": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/candidate-build-diagnostic-v1/checkpoint458-build-v1/build/job.json",
+    "sha256": "2fbc576af20f93325ca99ac5313e91b251a58f40d04d97ca0e7bf82807821f52"
+  },
+  "status": "compiled_and_linked_not_executed",
+  "synthetic_fixture": false
+}

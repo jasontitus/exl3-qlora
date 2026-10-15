@@ -1,0 +1,23 @@
+{
+  "GPU_executed_by_capture": false,
+  "actual_execution_review": {
+    "path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/independent-actual-q-v1/review-v1.json",
+    "sha256": "c200b4cd4eb76c6a87197337fe58ee0ef00c41437fac29ff95390f582fb08d42"
+  },
+  "condition": "zeroB458",
+  "exact_tokenizer_decode": true,
+  "format": "affine-native-capture-receipt-v1",
+  "generated_kernel_quality_verified": false,
+  "generated_shell_executed": false,
+  "generation_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/independent-actual-q-v1/zeroB458/generation.raw",
+  "generation_sha256": "18b13c6f46227f95d9dd820eed06e3942e1247ea2818017baf839b49f2253171",
+  "native_result_sha256": "b66950f67610958741a65602da1eb74132d32e25c3b1245a9e71901a558c5e88",
+  "no_retry_or_repair": true,
+  "non_eos_ids": 750,
+  "output_ids": 751,
+  "prompt_tokens": 729,
+  "request_sha256": "b34fe5df59d127b9d51d63f2475c8bff8ced0da2fd879f9f0546f99c0e7817e2",
+  "status": "accepted_exact_native_suffix_for_patch_replay",
+  "stop_reason": "eos",
+  "trainer_forward_parity": false
+}

@@ -1,0 +1,93 @@
+{
+  "arithmetic_profile": "mlx_stream_served_transfer_v1",
+  "attempts_per_adapter": 1,
+  "baseline": {
+    "dispatch.json": {
+      "path": "evidence/d3dbe6d31c3d9657-dispatch.json",
+      "sha256": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9"
+    },
+    "kernel.metal": {
+      "path": "evidence/412de4af4d0994e4-kernel.metal",
+      "sha256": "412de4af4d0994e4273fb862b03cabcbd76f965a35bea0fdc53bcaa6cd69dd0f"
+    }
+  },
+  "engine_sha256": "800b8a3f253d4b65052b5f5e5195e5e41df7e632c70ca61751b52676eef96d2f",
+  "eos_token_ids": [
+    1
+  ],
+  "grading": "Task design fixed numerical oracle/tolerance; source safety before compile; timing only after correctness",
+  "limits": [
+    "Retrospective evidence reuse, not a newly preregistered matched campaign.",
+    "Resource profiles differ for final188; adapter-only causal attribution is not established.",
+    "RMS has no generation results. No performance ranking or successful candidate is inferred.",
+    "Historical receipt internal locators remain archival; this bundle is not their entire provenance closure."
+  ],
+  "max_context_tokens": 8192,
+  "max_new_tokens": 4096,
+  "model_manifest": {
+    "path": "evidence/452946429d094880-expected-manifest-v1.json",
+    "sha256": "452946429d094880a947cc2eee185688d7c8cb3bc8a0e307963fe1e4b7a2a3a4"
+  },
+  "observed_profiles": {
+    "basezeroB": {
+      "native_box_ceiling_gib": 96,
+      "physical_memory_gib": 128,
+      "process_memory_gib": 60,
+      "reserve_gib": 32
+    },
+    "final188": {
+      "native_box_ceiling_gib": 104,
+      "physical_memory_gib": 128,
+      "process_memory_gib": 50,
+      "reserve_gib": 32
+    },
+    "old458": {
+      "native_box_ceiling_gib": 96,
+      "physical_memory_gib": 128,
+      "process_memory_gib": 60,
+      "reserve_gib": 32
+    }
+  },
+  "parser_protocol": "safe-common-git-apply-exact-v1",
+  "policy": {
+    "cross_request_prefix_cache": false,
+    "draft": false,
+    "frequency_penalty": 0,
+    "logit_processors": [],
+    "presence_penalty": 0,
+    "prompt_format": "exact_token_ids",
+    "repetition_penalty": 1,
+    "sampling": "greedy",
+    "suppressed_token_ids": [],
+    "temperature": 0,
+    "top_p": 1,
+    "truncation": "reject"
+  },
+  "raw_replay": "No offsets, recounting or code repair",
+  "runtime_files_sha256": {
+    "libjaccl.dylib": "1f1c34f3d2fe4de94a1100835b4ef67011149607c6261e8b2619164454c15111",
+    "libllama.dylib": "10f39f1688515e851c79e111a18a2a852923c4edb20f950061f6d7356ef8987b",
+    "libmlx.dylib": "8960b9b910a9d9a177f65b44353849fa9ee84b245cbed976ebbd2517ed7395b8",
+    "libmlxc.dylib": "7c7e5675122b095781c2730074f0cc1ef79a52f9ec34fa69b5676c4d978e3dfd",
+    "libsharpyuv.0.1.2.dylib": "755e13860aa122e98f1be1bb7d5fcf47b496ae27d5787fe783af3909721d2321",
+    "libwebp.7.2.0.dylib": "f42f3e0687cf1f7fd5a42c608152e0d4187540ac2e6675cb8af297e7befc4258",
+    "mlx.metallib": "921b9681d5bccff008f0bbba8e863229bf3d3285c47446919d6b307ee0fc2036"
+  },
+  "serving_profile": {
+    "cross_request_prefix_cache": false,
+    "draft_policy": "disabled_weights_retained",
+    "embedding_host_rows": false,
+    "name": "served_transfer_v1",
+    "user_settings_policy": "ignored_fixed_defaults_v1",
+    "warmup": "serial_owned_v1"
+  },
+  "task": {
+    "path": "affine-task.json",
+    "sha256": "96bd7167d16b580a2ab214552836d882b76e4b68a92debc865335796e3f0f078"
+  },
+  "tf32": false,
+  "tokenizer_sha256": {
+    "tokenizer.json": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547"
+  }
+}

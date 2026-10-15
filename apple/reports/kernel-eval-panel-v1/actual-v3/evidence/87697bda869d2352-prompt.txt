@@ -1,0 +1,11 @@
+Optimize this complete Metal kernel for Apple M1 Ultra. Semantics: sum(max(0.5*x+0.25,0)) per row, with float32 transform operations. Inputs finite float32 in [-1,1], rows1..256, cols1..4096. Preserve name row_sum and buffer ABI0=input,1=output[rows],2=rows uint,3=cols uint. Return one standard apply_patch edit to kernel.metal and optionally dispatch.json. Only threads_per_row1or32 is allowed: host dispatches rows*threads_per_row, groups64for1 and32for32. No other files/includes beyond metal_stdlib, external assets, function constants or CPU programs. Numerical acceptance: abs(error)<=2e-6*scale+2e-4, scale=sum(abs(transformed terms)) for affine, or reference RMS for RMS. Reordering reduction allowed. No measured speedup claim.
+
+File dispatch.json
+{"threads_per_row": 1}
+
+File kernel.metal
+#include <metal_stdlib>
+using namespace metal;
+kernel void row_sum(device const float* input [[buffer(0)]], device float* output [[buffer(1)]], constant uint& rows [[buffer(2)]], constant uint& cols [[buffer(3)]], uint gid [[thread_position_in_grid]]) {
+const uint row=gid; if(row>=rows)return; float total=0.0f, correction=0.0f; for(uint col=0;col<cols;++col) { float adjusted=max(0.5f * input[row * cols + col] + 0.25f, 0.0f)-correction; float updated=total+adjusted; correction=(updated-total)-adjusted; total=updated; }; output[row]=total;
+}

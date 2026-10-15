@@ -1,0 +1,20 @@
+{
+  "format": "kernel-eval-replay-v1",
+  "protocol": "safe-common-git-apply-exact-v1",
+  "input_sha256": "2161259ef283b6ebf372f995a3435049d82193183d859b7020657d00817181c5",
+  "generation_sha256": "446498e176a1d6701106152d9f81de2604a211ccecbc03dcf50569a02b3ff2a0",
+  "stages": {
+    "raw_format": {
+      "status": "passed"
+    },
+    "replay": {
+      "status": "failed",
+      "outcome_class": "model_output",
+      "reason": "Hunk count mismatch: declared 5/31, observed 5/20"
+    }
+  },
+  "shell_executed": false,
+  "compiler_executed": false,
+  "GPU_executed": false,
+  "rationale": "I'll optimize the kernel by using a single thread per row with vectorized float4 loads and a Kahan-free but numerically safe reduction, keeping the declared ABI and dispatch unchanged."
+}

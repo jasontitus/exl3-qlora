@@ -1,0 +1,1473 @@
+{
+  "schema": "checkpoint-expected-files-v1",
+  "files": {
+    ".DS_Store": {
+      "size": 6148,
+      "sha256": "13ef78c4c41b34aa9289c0cad16b09feabd7bfa013e6588cb02a9ad51fa0ab65"
+    },
+    ".cache/huggingface/.gitignore": {
+      "size": 1,
+      "sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+    },
+    ".cache/huggingface/download/.gitattributes.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/.gitattributes.metadata": {
+      "size": 100,
+      "sha256": "fa93df05e791a4cfa2bd7349be6ae3da87df4534ad640ff8893903926f926431"
+    },
+    ".cache/huggingface/download/LICENSE.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/LICENSE.metadata": {
+      "size": 100,
+      "sha256": "cac83647753512f67aa5b090c300aa10ce77d33ff6675b461168740f02ff36c5"
+    },
+    ".cache/huggingface/download/README.md.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/README.md.metadata": {
+      "size": 101,
+      "sha256": "eb03c49b951443f811353403377435de274c585913c55248355d18a4cbbb2c28"
+    },
+    ".cache/huggingface/download/chat_template.jinja.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/chat_template.jinja.metadata": {
+      "size": 100,
+      "sha256": "381111dba032d98a8ab16f97d1f049bf924a4ad5a3e6c4653536688fb0bd47f1"
+    },
+    ".cache/huggingface/download/config.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/config.json.metadata": {
+      "size": 100,
+      "sha256": "bbf7025e587a2a9a91196ec994fecba6d6487282d18999ce0824984b59c50cce"
+    },
+    ".cache/huggingface/download/encoding/README.md.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/README.md.metadata": {
+      "size": 100,
+      "sha256": "107629571004f88d4a4eaa44fe8954e3a8553101ea3024653ddcccf45ebdcff6"
+    },
+    ".cache/huggingface/download/encoding/encoding.py.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/encoding.py.metadata": {
+      "size": 100,
+      "sha256": "943455ec2a9095199a4a54fc58b187705d508b5894a1664155d69b0be1636820"
+    },
+    ".cache/huggingface/download/encoding/test_encoding.py.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/test_encoding.py.metadata": {
+      "size": 101,
+      "sha256": "d0648f660afebe58f7cfd694f28a4afc4f0ecc52a1fe5dca521a1c7b813cd15f"
+    },
+    ".cache/huggingface/download/encoding/tests/test_input_1.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/tests/test_input_1.json.metadata": {
+      "size": 100,
+      "sha256": "b6554d49689d6b07165b770494918e29131bb82daf053b417a33a3ce24481128"
+    },
+    ".cache/huggingface/download/encoding/tests/test_input_2.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/tests/test_input_2.json.metadata": {
+      "size": 100,
+      "sha256": "10ea978981d94db0a63a21e2e912e090dd163449b0af23905476315caa904381"
+    },
+    ".cache/huggingface/download/encoding/tests/test_input_3.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/tests/test_input_3.json.metadata": {
+      "size": 100,
+      "sha256": "e0fdc41e624d86c7e2d0914eac672c6e72eb94cc07b9107d90e19322c80feb02"
+    },
+    ".cache/huggingface/download/encoding/tests/test_input_4.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/tests/test_input_4.json.metadata": {
+      "size": 100,
+      "sha256": "337e1f088df997cad8f07f89f6f3b76ad96c174e50bcdc33dc196c7b35748ab8"
+    },
+    ".cache/huggingface/download/encoding/tests/test_input_5.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/tests/test_input_5.json.metadata": {
+      "size": 100,
+      "sha256": "dde0d3a356a0f03b61e46d60e80496239a8962f5d2235d4765dd1b859a84e88c"
+    },
+    ".cache/huggingface/download/encoding/tests/test_output_1.txt.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/tests/test_output_1.txt.metadata": {
+      "size": 100,
+      "sha256": "119c02fad98780eeea40642a9aac0ff8e2358b53d8f5bde50ef137e74fef46b7"
+    },
+    ".cache/huggingface/download/encoding/tests/test_output_2.txt.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/tests/test_output_2.txt.metadata": {
+      "size": 100,
+      "sha256": "6c2971d01c8127598985aa78441737dd5122f9b6dc758305d5fb800a7eba43cf"
+    },
+    ".cache/huggingface/download/encoding/tests/test_output_3.txt.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/tests/test_output_3.txt.metadata": {
+      "size": 100,
+      "sha256": "562bd1c716d1c432d3f3469689517fc27c5ecdd5665840852020cb64d136ece2"
+    },
+    ".cache/huggingface/download/encoding/tests/test_output_4.txt.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/tests/test_output_4.txt.metadata": {
+      "size": 100,
+      "sha256": "53abb642b7d16259e26b615c6ddbd35c8ae7ab50ad90479e430915d1a01299fb"
+    },
+    ".cache/huggingface/download/encoding/tests/test_output_5.txt.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/encoding/tests/test_output_5.txt.metadata": {
+      "size": 101,
+      "sha256": "d677a925459af6c8e8faa82ac7f9f619c8793fb8e2550fea965b9a34e17313b9"
+    },
+    ".cache/huggingface/download/engram/engram-L1.bin.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/engram/engram-L1.bin.metadata": {
+      "size": 124,
+      "sha256": "cdba074fc35582a103d81c03646865273b85e2bd0ee22892a23327dc997f66d1"
+    },
+    ".cache/huggingface/download/engram/engram-L14.bin.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/engram/engram-L14.bin.metadata": {
+      "size": 125,
+      "sha256": "caf1e906117a5234414983ced52dd7fad042dfd18576eefe6fca273e76e2acfa"
+    },
+    ".cache/huggingface/download/engram/engram-manifest.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/engram/engram-manifest.json.metadata": {
+      "size": 100,
+      "sha256": "1583201d15628c2e38675530b4f114907557440fcd8384485d3438f0f68a1a0a"
+    },
+    ".cache/huggingface/download/engram/engram-residents.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/engram/engram-residents.safetensors.metadata": {
+      "size": 124,
+      "sha256": "e1cbf75bcf164efa8ba44e7fefa16df9a489595ec5b6261769bbf79530733f56"
+    },
+    ".cache/huggingface/download/engram-token-map.u32.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/engram-token-map.u32.json.metadata": {
+      "size": 100,
+      "sha256": "832cab186c21c54307584809a85b4c42a0e2ecdb45edd66b31db85468055d9d4"
+    },
+    ".cache/huggingface/download/engram-token-map.u32.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/engram-token-map.u32.metadata": {
+      "size": 125,
+      "sha256": "c5e8d4cc83012f5ccc15d7b72e43085a296c8f93074a0c6a158c4b1bb1112dcb"
+    },
+    ".cache/huggingface/download/expert-manifest-v2.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/expert-manifest-v2.json.metadata": {
+      "size": 100,
+      "sha256": "ecaa6d6137edc373e4141adf37323eeabfac8e3425925a76be2bbb657aae20c0"
+    },
+    ".cache/huggingface/download/expert-manifest.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/expert-manifest.json.metadata": {
+      "size": 125,
+      "sha256": "98707276364c1bdbdc79ad3ee71c021a0421a18cbb95b79f04f8a173d75bc80c"
+    },
+    ".cache/huggingface/download/experts.bin.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/experts.bin.metadata": {
+      "size": 124,
+      "sha256": "960559dd986b95328b454131fa70cb5db203952a81c87321ddca50c5555dbcd7"
+    },
+    ".cache/huggingface/download/model-00001.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00001.safetensors.metadata": {
+      "size": 124,
+      "sha256": "e7ba730322ceb4eb35c93a99f1d44cba48f4d6ada00c5db40e55d26a9caf6ad0"
+    },
+    ".cache/huggingface/download/model-00002.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00002.safetensors.metadata": {
+      "size": 125,
+      "sha256": "e9dd55e569018b0ee70a4150659eb510621520053638dc7d0770153eb7fd6b74"
+    },
+    ".cache/huggingface/download/model-00003.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00003.safetensors.metadata": {
+      "size": 124,
+      "sha256": "d20ab18e653a263772b9b8d666d3375d1d474de6466c3e76610b30cee981cfef"
+    },
+    ".cache/huggingface/download/model-00004.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00004.safetensors.metadata": {
+      "size": 125,
+      "sha256": "421307fcb0486db42b565667ac41cd8a5f63ee2f5342811cccc7f3863131c241"
+    },
+    ".cache/huggingface/download/model-00005.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00005.safetensors.metadata": {
+      "size": 124,
+      "sha256": "f5d8a1ea5f2c03ffb1584c31728b06103a351bc3e9c66c1bc0d79115006807d2"
+    },
+    ".cache/huggingface/download/model-00006.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00006.safetensors.metadata": {
+      "size": 124,
+      "sha256": "6516af5a3ac40935e7ba4ffa8a9d5075014caef28cc1f4ebd86a01278aa500fd"
+    },
+    ".cache/huggingface/download/model-00007.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00007.safetensors.metadata": {
+      "size": 124,
+      "sha256": "7f6ca8864dab83532ea2c576a77597820c650a512c1c0736b7f745e07ffeddf6"
+    },
+    ".cache/huggingface/download/model-00008.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00008.safetensors.metadata": {
+      "size": 125,
+      "sha256": "7dec2b4de8d867bf261e16633f6d9daa39ac10e38055cafadca3c1b25d790e94"
+    },
+    ".cache/huggingface/download/model-00009.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00009.safetensors.metadata": {
+      "size": 124,
+      "sha256": "8d3f58f07eb0b9340e49bd0b761d47a8492b9d72cd8d36c6ca62273562f180d2"
+    },
+    ".cache/huggingface/download/model-00010.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00010.safetensors.metadata": {
+      "size": 123,
+      "sha256": "e5a429bb657397d882826c652c68129db40b6f93ebe0148dfb438796e0a15ee4"
+    },
+    ".cache/huggingface/download/model-00011.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00011.safetensors.metadata": {
+      "size": 125,
+      "sha256": "692e22ffe3069ca442f8b60b20ff57675eef90147d95c89cef254ac97f82be5c"
+    },
+    ".cache/huggingface/download/model-00012.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00012.safetensors.metadata": {
+      "size": 124,
+      "sha256": "6a866b19e904473fd466a8fa688f2d39031d71cbbef5ae2879bcdd18ffc8d899"
+    },
+    ".cache/huggingface/download/model-00013.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00013.safetensors.metadata": {
+      "size": 124,
+      "sha256": "c2805003b68031c3306d5d12a1a3e979e4e278c9a9d00a9e8c97ff1a1e847796"
+    },
+    ".cache/huggingface/download/model-00014.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00014.safetensors.metadata": {
+      "size": 125,
+      "sha256": "3b835e663a300686d7baa7b47c111fa50e077951bb2fa1a6db68f950207b60ee"
+    },
+    ".cache/huggingface/download/model-00015.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00015.safetensors.metadata": {
+      "size": 124,
+      "sha256": "99a5376a1888ce020272198194a1f86ecb445828d70d384c81ba34e2568fc70d"
+    },
+    ".cache/huggingface/download/model-00016.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00016.safetensors.metadata": {
+      "size": 125,
+      "sha256": "7c0f2cb7c1008b69c87c45444ebb145217b57e679ef30212ba128d61c23fa672"
+    },
+    ".cache/huggingface/download/model-00017.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00017.safetensors.metadata": {
+      "size": 124,
+      "sha256": "6af6164b244d26bc05e5cd29d05b35d28f028b379d9277f49a7cb11d29c0c2af"
+    },
+    ".cache/huggingface/download/model-00018.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00018.safetensors.metadata": {
+      "size": 124,
+      "sha256": "79201b1e4d67e3e1bff7b713e5ab18ef61e35d1364e2e969ad63c0467eb5f708"
+    },
+    ".cache/huggingface/download/model-00019.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00019.safetensors.metadata": {
+      "size": 122,
+      "sha256": "563dde2be983a1ffc687d5b864c76fa4c0e381adf776bb65cf4ad37d25dc4d1a"
+    },
+    ".cache/huggingface/download/model-00020.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00020.safetensors.metadata": {
+      "size": 124,
+      "sha256": "3759826206acd271a340b4fefe6e04cb90d5c3f41cf330a61864e4bce9b2fd16"
+    },
+    ".cache/huggingface/download/model-00021.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00021.safetensors.metadata": {
+      "size": 124,
+      "sha256": "571993b586303f5f624e4af0b97f349468564c7092431794d2a42951a51cdcbc"
+    },
+    ".cache/huggingface/download/model-00022.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00022.safetensors.metadata": {
+      "size": 124,
+      "sha256": "c1be2d418da30123c47ca51732bb05c260297bcfb75df89dbbde35fe0949dbe3"
+    },
+    ".cache/huggingface/download/model-00023.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00023.safetensors.metadata": {
+      "size": 125,
+      "sha256": "2e4db84f316d73e09cceed5d6ceb1ef98ba26d0dbf86366fa4d0a62c741498b2"
+    },
+    ".cache/huggingface/download/model-00024.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00024.safetensors.metadata": {
+      "size": 124,
+      "sha256": "4ccb468ac9f0d36904a75ac8ba92195db0f33491d1ccf5a900cc222793fb10b4"
+    },
+    ".cache/huggingface/download/model-00025.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00025.safetensors.metadata": {
+      "size": 125,
+      "sha256": "de527f19660278a0c71e9a6dd3862f43ea4329fd423a0cd4be71b513ed7ae8ac"
+    },
+    ".cache/huggingface/download/model-00026.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00026.safetensors.metadata": {
+      "size": 124,
+      "sha256": "d79c8557c8055945ebcf640276436430617fdf9d62c957438b787ea4e2de179f"
+    },
+    ".cache/huggingface/download/model-00027.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00027.safetensors.metadata": {
+      "size": 124,
+      "sha256": "2672c6b850bc155c26b9b0a20f34d81e6a3f7fd81b64be0c260680b4185dfbd9"
+    },
+    ".cache/huggingface/download/model-00028.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00028.safetensors.metadata": {
+      "size": 125,
+      "sha256": "376b3e7c66a19bb05199334e57db0f079480995d9e2cfe465bbfe31057442ddd"
+    },
+    ".cache/huggingface/download/model-00029.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00029.safetensors.metadata": {
+      "size": 124,
+      "sha256": "6a96187fe6eab7c14d8db665367807d2599de11b7b5f0301a765e755cac4e12d"
+    },
+    ".cache/huggingface/download/model-00030.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00030.safetensors.metadata": {
+      "size": 124,
+      "sha256": "2df8b5ccd2ce5b3ec72faa1c9566e3ca8441e8746b30b64992ccb0eb01bf0283"
+    },
+    ".cache/huggingface/download/model-00031.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00031.safetensors.metadata": {
+      "size": 124,
+      "sha256": "5943a5796fed3f4f8fe2d50a42d1504fc2154c32bbb8c5ae006a9f19f91566cb"
+    },
+    ".cache/huggingface/download/model-00032.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00032.safetensors.metadata": {
+      "size": 124,
+      "sha256": "6d461a71c1a3a62df11373a28ee7790f9960458ad680e384b97b0cc04382755a"
+    },
+    ".cache/huggingface/download/model-00033.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00033.safetensors.metadata": {
+      "size": 124,
+      "sha256": "27d2bd4c89a3d4cb42757d62c660a9fc46c91802db1ba73d6c9f442374004055"
+    },
+    ".cache/huggingface/download/model-00034.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00034.safetensors.metadata": {
+      "size": 123,
+      "sha256": "a898025093cb5f8b43224de5c51efb0df771c8ca17474fe86fd858466cb8a19c"
+    },
+    ".cache/huggingface/download/model-00035.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00035.safetensors.metadata": {
+      "size": 124,
+      "sha256": "499d5f8d60f9e8f5077130cfd4d6da4d6b701b5c16fdb2c552713e3137c6bdba"
+    },
+    ".cache/huggingface/download/model-00036.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00036.safetensors.metadata": {
+      "size": 124,
+      "sha256": "d9ad34262fe02ea264efe9a54487522a41a88930c9741124eeb24038433e34ef"
+    },
+    ".cache/huggingface/download/model-00037.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00037.safetensors.metadata": {
+      "size": 124,
+      "sha256": "9092fc9b377974d137e0216cc1b561034d2287aa904268699ac80b178a9a49ef"
+    },
+    ".cache/huggingface/download/model-00038.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00038.safetensors.metadata": {
+      "size": 125,
+      "sha256": "742f8331937ee58d448e4e8796284f66d387c96fec7d9ec670b88fd447614405"
+    },
+    ".cache/huggingface/download/model-00039.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00039.safetensors.metadata": {
+      "size": 125,
+      "sha256": "836b5d67cd41c50f6d8a64ee4544f40b972e06d10e002e16082e6735f11cd7f6"
+    },
+    ".cache/huggingface/download/model-00040.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00040.safetensors.metadata": {
+      "size": 125,
+      "sha256": "eabccd7d9f155f3c8d549d51d20ce0e9437a9b30b6f96407e819815848e7ace8"
+    },
+    ".cache/huggingface/download/model-00041.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00041.safetensors.metadata": {
+      "size": 124,
+      "sha256": "7f3453b6d0dfe2d00dd9ce8b53f39bf2db697f6250d10639f4342f6b7ad24b0c"
+    },
+    ".cache/huggingface/download/model-00042.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00042.safetensors.metadata": {
+      "size": 124,
+      "sha256": "64a4d35bcc7334ba15d71d81560ba4a8eb4850e3dca57f0e89e960661b8135a5"
+    },
+    ".cache/huggingface/download/model-00043.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00043.safetensors.metadata": {
+      "size": 125,
+      "sha256": "9df19251634878f5e54ad33ba2c5e3830e2691b9eecc6cabc1c074e2137fb3a4"
+    },
+    ".cache/huggingface/download/model-00044.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00044.safetensors.metadata": {
+      "size": 124,
+      "sha256": "2e92bcacec37f280838bc8bd59b418b0656f2be3df760ef28cc5df5bcdb90e28"
+    },
+    ".cache/huggingface/download/model-00045.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00045.safetensors.metadata": {
+      "size": 125,
+      "sha256": "2c08e57c4a79535a0cd7117caf64b51c0e713b686291d2a35ad8bf4898908d2a"
+    },
+    ".cache/huggingface/download/model-00046.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00046.safetensors.metadata": {
+      "size": 124,
+      "sha256": "db2d988d3209cc6149a83e915e78d9d7789c3dbef78d09f4a2ee39e2d478e150"
+    },
+    ".cache/huggingface/download/model-00047.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00047.safetensors.metadata": {
+      "size": 124,
+      "sha256": "3438e995508d52a129f492ed85fbac57b819900d729ed5cb7b406a6bc2d9678b"
+    },
+    ".cache/huggingface/download/model-00048.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00048.safetensors.metadata": {
+      "size": 123,
+      "sha256": "31934c381233391d3cb98be59335a81b5c63af6f882094685cfc546a39a7c4f4"
+    },
+    ".cache/huggingface/download/model-00049.safetensors.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model-00049.safetensors.metadata": {
+      "size": 124,
+      "sha256": "ae73441f06b925e7a8e08f8c376abf494cbef01595c7231efbcd470bf59402fb"
+    },
+    ".cache/huggingface/download/model.safetensors.index.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/model.safetensors.index.json.metadata": {
+      "size": 101,
+      "sha256": "caaa5f68d5f882065868afa7c28b0d55bc0760eadf20a29315efa775617b0cc3"
+    },
+    ".cache/huggingface/download/receipts/model-00001-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00001-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "8ab9779ec12a3457f0fc02c1b311615326d0de3ee3a32b87856663607cb6a19c"
+    },
+    ".cache/huggingface/download/receipts/model-00002-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00002-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "be8cfb3477ed6656860aba10ca6ac80a16a28b92c8b8f3f7597c95ab942d5e03"
+    },
+    ".cache/huggingface/download/receipts/model-00003-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00003-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "3d26b8c8a5feb4bbd2d536427fda02d8c7eaa9ca821a26a9f012b9e93f07eb74"
+    },
+    ".cache/huggingface/download/receipts/model-00004-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00004-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "9ceae347878405d378d8d813f478b4c13cef38f8bcee22a88a3f0bd3a9042b23"
+    },
+    ".cache/huggingface/download/receipts/model-00005-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00005-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "cb2d6fd437988368f41277d5a396e5a1aeb56351d70f6732b2c4ffb17de6a74d"
+    },
+    ".cache/huggingface/download/receipts/model-00006-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00006-of-00041.json.metadata": {
+      "size": 101,
+      "sha256": "d3c789e82151d59081144fe55e4f5a0a85f91bc9a0e44f2bd8bbb62f45a7fa36"
+    },
+    ".cache/huggingface/download/receipts/model-00007-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00007-of-00041.json.metadata": {
+      "size": 99,
+      "sha256": "47307272fcfe46c5fcf0f826c5d83274672811880c0aaea356532efcb6f64c76"
+    },
+    ".cache/huggingface/download/receipts/model-00008-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00008-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "56cf204b6fee81f38d8d189efa234ff6ea5dbddae0b345f73800788cf009e725"
+    },
+    ".cache/huggingface/download/receipts/model-00009-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00009-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "b83d153fabcf6c89770cf017ef27129c164f44031323b15fb0537b34abb7868f"
+    },
+    ".cache/huggingface/download/receipts/model-00010-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00010-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "28f39402a058f3f50a715cab8a64c5a3b191caf8da80fcd3fc45d2b3e95d9615"
+    },
+    ".cache/huggingface/download/receipts/model-00011-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00011-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "3c0e56440c6a696fcd8362c758729f79e996bca53187517eee8c340ae749d025"
+    },
+    ".cache/huggingface/download/receipts/model-00012-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00012-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "5482018483cc947884e7a67053de0a6d4e0071e59fff5016f5693aac541ed1b8"
+    },
+    ".cache/huggingface/download/receipts/model-00013-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00013-of-00041.json.metadata": {
+      "size": 101,
+      "sha256": "3b41c9ed8ce5318fcf579b2d733cbd7b8ed72cc5dc74c9b4a2801ce87678bdcb"
+    },
+    ".cache/huggingface/download/receipts/model-00014-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00014-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "1304cb18ff487838e0bf7cf0ecb8a1d3b270b03cda8c18e7d2820cb50351b2f2"
+    },
+    ".cache/huggingface/download/receipts/model-00015-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00015-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "705d9dd68e790fe9253ff85cc588bb49ed3e7ad1a81adf09c31391d53fbb714c"
+    },
+    ".cache/huggingface/download/receipts/model-00016-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00016-of-00041.json.metadata": {
+      "size": 101,
+      "sha256": "0b726fb8e86764e15284cc33ff5cc153281b15b3a980860bb042fa684fb44105"
+    },
+    ".cache/huggingface/download/receipts/model-00017-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00017-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "b0dff4c3763712ed7896f743dec44834f74ad63ce7908162bbf961e9901e9f71"
+    },
+    ".cache/huggingface/download/receipts/model-00018-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00018-of-00041.json.metadata": {
+      "size": 101,
+      "sha256": "f7a9e716fcfd9f56602e524b6b25e11a841f959abba7fbeb1007cc39ff49e569"
+    },
+    ".cache/huggingface/download/receipts/model-00019-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00019-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "3f03146831ac6dd568c55e40bbd26abc439c8ceb38bfb5a0fe7fc8ad4ee5697d"
+    },
+    ".cache/huggingface/download/receipts/model-00020-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00020-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "4a63a999e78eaab73abbb5ef9bc48f8c10919878287f2c0ed0b7e75a1a7b12f9"
+    },
+    ".cache/huggingface/download/receipts/model-00021-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00021-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "5d0449ba49cb650a4c14a808c848374d73abbbd30c1de8d74ab4b7801f2f4d86"
+    },
+    ".cache/huggingface/download/receipts/model-00022-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00022-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "271131cda2201c50d7fe474cd11d2f9e5022bac8a91893b1a1fe6565af0056de"
+    },
+    ".cache/huggingface/download/receipts/model-00023-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00023-of-00041.json.metadata": {
+      "size": 99,
+      "sha256": "018ea74172ca494338dfa9e2055b41c99eca8b2f4960062a502265c6f4601756"
+    },
+    ".cache/huggingface/download/receipts/model-00024-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00024-of-00041.json.metadata": {
+      "size": 101,
+      "sha256": "d205c014627b27b4fe00a10204664055c69026252eec081ab939e503b7284064"
+    },
+    ".cache/huggingface/download/receipts/model-00025-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00025-of-00041.json.metadata": {
+      "size": 101,
+      "sha256": "f646cbab364e14c636848656603ea66f0586937d00b32a16e8e20e6532c18134"
+    },
+    ".cache/huggingface/download/receipts/model-00026-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00026-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "34ae1628737594ac16274068cb31afa9f300bd14d625bc7d4d2702684749eb09"
+    },
+    ".cache/huggingface/download/receipts/model-00027-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00027-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "da4b4643dbb540ceaa119e55c2491d8bbcfaa6f8907f59b4c3f7b0b808825a37"
+    },
+    ".cache/huggingface/download/receipts/model-00028-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00028-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "d4354949c4afacb82fbed9547cf8b6daaec86295090eea693b6f827957673d16"
+    },
+    ".cache/huggingface/download/receipts/model-00029-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00029-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "790ad1d8354ded75e440d15497994c729f9b8aab8f708f57084cba8473410338"
+    },
+    ".cache/huggingface/download/receipts/model-00030-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00030-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "768ff38a20e8c458111caf0200949b1fb5d1f4a2355663ede1520e93ddeb03d3"
+    },
+    ".cache/huggingface/download/receipts/model-00031-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00031-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "9b4ff249f10aa32e9902b39f7e9aa40bf27f95cbf2ab57dca752f3bb766adb4a"
+    },
+    ".cache/huggingface/download/receipts/model-00032-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00032-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "1f52878f442215b4d4cd82a0bdd42da195309ced8f2d3c41c3c53a3c3c57ccea"
+    },
+    ".cache/huggingface/download/receipts/model-00033-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00033-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "866973ec55b88d1fd4d0dc25ea98e43cb64f96f7c41fcf71cdef232aac4e7cd3"
+    },
+    ".cache/huggingface/download/receipts/model-00034-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00034-of-00041.json.metadata": {
+      "size": 101,
+      "sha256": "03174db3ecdd38ed4264262534f92e9fa1f25fff5472b65568036c486f7fb120"
+    },
+    ".cache/huggingface/download/receipts/model-00035-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00035-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "106f8365d0416db5b0d75a0138265109b3aec9355880f3b29f885b3a7e44c60b"
+    },
+    ".cache/huggingface/download/receipts/model-00036-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00036-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "962cd35a007763e081b768ea91e835b4e43c22268a9578d19a48a38fd3b15a2d"
+    },
+    ".cache/huggingface/download/receipts/model-00037-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00037-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "e7553a585e88038827eb9661b5115a104e36ff3377104fc8b9c92cedb53bb107"
+    },
+    ".cache/huggingface/download/receipts/model-00038-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00038-of-00041.json.metadata": {
+      "size": 100,
+      "sha256": "9b17301ede3a95d52ab53d96afc72834ba076b537648517b37628334f90187d8"
+    },
+    ".cache/huggingface/download/receipts/model-00039-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00039-of-00041.json.metadata": {
+      "size": 101,
+      "sha256": "95f7952daa9bd495ca43a5c8d54a423ae402413bacf04571daac38cf9597525d"
+    },
+    ".cache/huggingface/download/receipts/model-00040-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00040-of-00041.json.metadata": {
+      "size": 101,
+      "sha256": "26494d35f229cf0a89847612fe493db67983f2133d2bbc3cffd9e67b8550836b"
+    },
+    ".cache/huggingface/download/receipts/model-00041-of-00041.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/model-00041-of-00041.json.metadata": {
+      "size": 101,
+      "sha256": "2c4e36e9edefede69b1678be99e8d4154aac5761b5c1624fe7cfc30303429c07"
+    },
+    ".cache/huggingface/download/receipts/state.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/receipts/state.json.metadata": {
+      "size": 101,
+      "sha256": "745ddb0081c49d256fd286f1566fa5cfbae12a9452601dae68759a9be7be7217"
+    },
+    ".cache/huggingface/download/tokenizer.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/tokenizer.json.metadata": {
+      "size": 101,
+      "sha256": "236155629c24b7dc29a53fdab4732df5f5b7cc3cf209544fcdfe3f6c60c3a378"
+    },
+    ".cache/huggingface/download/tokenizer_config.json.lock": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".cache/huggingface/download/tokenizer_config.json.metadata": {
+      "size": 100,
+      "sha256": "69388c61812a02d4260642deab4ac17079ff92ca7d9edab8fb35a42b5bbc725e"
+    },
+    ".gitattributes": {
+      "size": 1633,
+      "sha256": "b0de36ae1b8b43eb145c562f132b7b79e150bce167af219036dc431f4555bfef"
+    },
+    "LICENSE": {
+      "size": 1084,
+      "sha256": "f2c6c602815669d292889e5be8c802f2ed950653b77999b1584e8e6aed25d040"
+    },
+    "README.md": {
+      "size": 9672,
+      "sha256": "2b81de7f84dd9635a3df6792ac4970151d7b0c8311fc14b34689e18bacb3183f"
+    },
+    "chat_template.jinja": {
+      "size": 11428,
+      "sha256": "9d7c2291c755cf6dd6205552af8650c4386f2c30fda94242b42ba199a8cf2197"
+    },
+    "config.json": {
+      "size": 122010,
+      "sha256": "3a43beb01ef51adbed5aa61fe4918653bfd3a1e35c6cad5dc45010bc717f2b8d"
+    },
+    "encoding/README.md": {
+      "size": 12120,
+      "sha256": "a2f0fc3baea318c9cfbceca68cbfe50d37cf7da6605ace887f33148bcff7e3ae"
+    },
+    "encoding/encoding.py": {
+      "size": 37316,
+      "sha256": "502bdaec8a3fd88ebc24c4721a7038fbe42f2063c664638127056107920035c1"
+    },
+    "encoding/test_encoding.py": {
+      "size": 19371,
+      "sha256": "4a470892dad828459958cebfad55da598aafcb7a5878764ccbfc3ab060399d06"
+    },
+    "encoding/tests/test_input_1.json": {
+      "size": 2761,
+      "sha256": "6a5a86694e47169c8f0c9243a7e24cc5db05447be0d3d3a9891034e913c518de"
+    },
+    "encoding/tests/test_input_2.json": {
+      "size": 527,
+      "sha256": "fd985cda88e8640b8e2404d8e659f7006cad204eb41f73c9e6662b1f218c01aa"
+    },
+    "encoding/tests/test_input_3.json": {
+      "size": 2554,
+      "sha256": "4207613f15c79b95ad92074bdb8b2b81c5ce9cfdf15b7a67f58ded6bb3ec4fa5"
+    },
+    "encoding/tests/test_input_4.json": {
+      "size": 712,
+      "sha256": "4c3890a7bc042ec6396d98d024a39a73cdcffbe1d0253e852da0c35e65296f3e"
+    },
+    "encoding/tests/test_input_5.json": {
+      "size": 1143,
+      "sha256": "88289b0aac8d650aa55c4ffeb392818fff3a0ac83c2293ddfd90546804d5e5c4"
+    },
+    "encoding/tests/test_output_1.txt": {
+      "size": 2476,
+      "sha256": "91f79aa955717b414a82aabfb38bcd83ab5a998bd47db89d2a26338e8d3de550"
+    },
+    "encoding/tests/test_output_2.txt": {
+      "size": 294,
+      "sha256": "9fa162587b73ab9b315be5c88d433f9e0e681b4b36926952f289099ed9bc1dab"
+    },
+    "encoding/tests/test_output_3.txt": {
+      "size": 2481,
+      "sha256": "cf2b801d0738c88abb691bf4a096000c0e0737faab8a54a4ba5243c5513a3711"
+    },
+    "encoding/tests/test_output_4.txt": {
+      "size": 574,
+      "sha256": "94433b68370dcc69fa61efc5011b5d0e28685e4716fee1ee77fbbfc0c9935b54"
+    },
+    "encoding/tests/test_output_5.txt": {
+      "size": 408,
+      "sha256": "4d673091746553d1cb2e40a3fc01dc09a7c53c40627096a3e49c97a269a81f64"
+    },
+    "engram/engram-L1.bin": {
+      "size": 101377628352,
+      "sha256": "a4494922d74f66272d94b58a99a733d896530f76ef7e9d74aa3c167f720d2177"
+    },
+    "engram/engram-L14.bin": {
+      "size": 101380404048,
+      "sha256": "b72464ba117d12cb57f6433355dd90ee01c171ede6f90747c0b671711e6377c8"
+    },
+    "engram/engram-manifest.json": {
+      "size": 12425,
+      "sha256": "b6467b20fa72b0432dcbf966c2a054aa205004a1e687e44bfbdd1257ce8a52f3"
+    },
+    "engram/engram-residents.safetensors": {
+      "size": 324731695,
+      "sha256": "b08bde5f95309e3870ce42b2ef4522d29718f4d5241b90168bdd271c6d2714a0"
+    },
+    "engram-token-map.u32": {
+      "size": 517120,
+      "sha256": "c60a86322ec17b4142bfef3c57a8d81fb428550cdf487f88a4320cb59fe46481"
+    },
+    "engram-token-map.u32.json": {
+      "size": 479,
+      "sha256": "b3509de9fb07fc769429481e2a3868452c23818df4296be9627fd5568de46b73"
+    },
+    "expert-manifest-v2.json": {
+      "size": 5896690,
+      "sha256": "05136e293209f3a85863799f2b47f0ed4b2f4d64a16688a06349c2df8e7d3471"
+    },
+    "expert-manifest.json": {
+      "size": 46520036,
+      "sha256": "e8f686dbc9119adbb06ac41d92c2229273587e53978601cfe6f39004965ece44"
+    },
+    "experts.bin": {
+      "size": 204535234560,
+      "sha256": "6f42083c8c6c346a80d35160f12b5e0dd35f65d24cc3e2f592250684f09a519f"
+    },
+    "model-00001.safetensors": {
+      "size": 970533589,
+      "sha256": "48cbacf9459d99d2ef8305ee03d1b9186bfbe810639e3a94467eb305f30375ac"
+    },
+    "model-00002.safetensors": {
+      "size": 1323858270,
+      "sha256": "851f893c2e7474703187a63f41ae7fc344f67ae8f895e2d11aac2698e05314e5"
+    },
+    "model-00003.safetensors": {
+      "size": 174962526,
+      "sha256": "eb551543e0db83c7846acc8bd55720a1cb0cf55556335417e44bb695500957a4"
+    },
+    "model-00004.safetensors": {
+      "size": 174962534,
+      "sha256": "ed5191e1bc7c742919673cb0871915dcd47000377e32e71647857823624d4c1d"
+    },
+    "model-00005.safetensors": {
+      "size": 191315913,
+      "sha256": "58635547f19a44ac8235c7d837008e961dd87f978c4978370362d3a4151fed9b"
+    },
+    "model-00006.safetensors": {
+      "size": 174962520,
+      "sha256": "32b8b013afde829475f3594c1c70ecf8ee472354c55dacee1bc1efc92a4deac6"
+    },
+    "model-00007.safetensors": {
+      "size": 174962520,
+      "sha256": "fdb38d167fb8e210dc4e1cc6c3d48851adfea83923c218c3a4bebf77cf30174a"
+    },
+    "model-00008.safetensors": {
+      "size": 174962512,
+      "sha256": "e7b412ec56022206f06e999fdb48af5cf6b2e8790ea75bb7d8f02b1b27e92603"
+    },
+    "model-00009.safetensors": {
+      "size": 174962526,
+      "sha256": "697aed0e9e4fc043413a68513384079836e4fb26ebccc05f3dfcb67c512b3242"
+    },
+    "model-00010.safetensors": {
+      "size": 174962540,
+      "sha256": "c2e4e13d13369cf424fd493f68aee804684ea0634101da48f561403ded1867ed"
+    },
+    "model-00011.safetensors": {
+      "size": 191315907,
+      "sha256": "7e5681f506ff29611edff3bdd513bf6c08447d805d6eebac71f751909b632797"
+    },
+    "model-00012.safetensors": {
+      "size": 174962530,
+      "sha256": "05772832fc0dd80936482841feba672b16a4994e684465a381d7aa1a564e85cd"
+    },
+    "model-00013.safetensors": {
+      "size": 174962568,
+      "sha256": "23bdd482ea8566d10e5cdecad5d1291fa636cfdfc01412ccae7540b4cfd07f85"
+    },
+    "model-00014.safetensors": {
+      "size": 174962554,
+      "sha256": "34d2dddf25ecbdf1f02869d4ea9a34f7c52a394e946e481f4bb1c2b9c34c8076"
+    },
+    "model-00015.safetensors": {
+      "size": 174962542,
+      "sha256": "80926aebffd2aa59f1b467c6bc5ee58281608b2cb9918413bbbcc4bedea86536"
+    },
+    "model-00016.safetensors": {
+      "size": 174962548,
+      "sha256": "87bf32ff12d3716c5ada51049aac54df71a08c791763ca85152845a65e4f6dca"
+    },
+    "model-00017.safetensors": {
+      "size": 191315943,
+      "sha256": "345d7c013a2236daf5632e4db14fb1517b9085df35231ee7417ed80964c2b986"
+    },
+    "model-00018.safetensors": {
+      "size": 174962562,
+      "sha256": "4180ba8ad6a645aba369c37d9e9e62a3a462d59aec7acb9f6b4ce2cbc973058c"
+    },
+    "model-00019.safetensors": {
+      "size": 174962558,
+      "sha256": "2da3388623a82af7d2660adbc00d93c7d5fe51dc066ca3d2778dad8bf5cad4f5"
+    },
+    "model-00020.safetensors": {
+      "size": 174962562,
+      "sha256": "fb5896923f36de04a9dd0717af80f8df470228d6c0d2b03f26668314816b7960"
+    },
+    "model-00021.safetensors": {
+      "size": 174962556,
+      "sha256": "08b2a9ceed393b1618d7b35b5e1fd42de909d3a62979dbfc1d4ce7d36fa67363"
+    },
+    "model-00022.safetensors": {
+      "size": 174962574,
+      "sha256": "85577dfbf65ff23feb796f5371903e9d93a628fc5980d2509932348c9d613900"
+    },
+    "model-00023.safetensors": {
+      "size": 186072941,
+      "sha256": "dbcea590dbd46f42a108e3ad33cdfda9cb23fe3ad8709b2297ce983b4d05c74a"
+    },
+    "model-00024.safetensors": {
+      "size": 174962568,
+      "sha256": "689e9686b101c9416d798519378fc53d7ad4e3ef95d47521de3d0910de469f1a"
+    },
+    "model-00025.safetensors": {
+      "size": 174962548,
+      "sha256": "bf505b08b9f1a4f70ee7c7e992e28b2e05e6edf1fed291a1491b3a46770d07e5"
+    },
+    "model-00026.safetensors": {
+      "size": 174962546,
+      "sha256": "a536d9571aa80f0ae6c95835170e753df929c494efbfc9fa2a66e18085342d8b"
+    },
+    "model-00027.safetensors": {
+      "size": 180697321,
+      "sha256": "370468bc4233fac6d4d7b2147a412430f6ed61a973ffec601ad32b816a634876"
+    },
+    "model-00028.safetensors": {
+      "size": 174962558,
+      "sha256": "ae8ec73f401473fdf8cfb8b5e0e67df584b3c33cb0733273c72d9c15fe41215e"
+    },
+    "model-00029.safetensors": {
+      "size": 174962576,
+      "sha256": "922f97e6fe71efac56d557df2928d8061d0b404bb51aaf9545879e1ef570304d"
+    },
+    "model-00030.safetensors": {
+      "size": 174962554,
+      "sha256": "a7244679d6f22dfe5b032347c1e41f25c934b3bc30bcd7a87ec07f3f1f445d6c"
+    },
+    "model-00031.safetensors": {
+      "size": 180697273,
+      "sha256": "7246774e70bee570ca2f3e267433179bb0d2854bc041e054def417069ae82e26"
+    },
+    "model-00032.safetensors": {
+      "size": 174962562,
+      "sha256": "a344bd1e66e05241f454d89a71c59b12b6a1a25597e02e6e671a524aa48094d3"
+    },
+    "model-00033.safetensors": {
+      "size": 174962542,
+      "sha256": "cd7cb7aa4de26681b006b1d1508b4764fc6f64e8ce5dd9235d1bbeaafa92a109"
+    },
+    "model-00034.safetensors": {
+      "size": 174962552,
+      "sha256": "2ce253b8ee6e617b52562310347791ded3b1f86fdca4869f74642d91b93802bb"
+    },
+    "model-00035.safetensors": {
+      "size": 180697307,
+      "sha256": "079943c0aea006baa79c2d440191f1e642a1fc2f9d479ab8629317d185699549"
+    },
+    "model-00036.safetensors": {
+      "size": 174962566,
+      "sha256": "b3acb20ff638332766f0ee4706c45dd620f54d6a2af2b73d38873166fc25dc37"
+    },
+    "model-00037.safetensors": {
+      "size": 174962566,
+      "sha256": "b2716c291c24f46bbeb913e664d7da59ffabdcfb404b0f74f7fce8d64b8d4cb6"
+    },
+    "model-00038.safetensors": {
+      "size": 174962574,
+      "sha256": "196bea61796898adfbb7dba2423ead2d582d3f638e0023b7b1ead44e32ae7dd1"
+    },
+    "model-00039.safetensors": {
+      "size": 180697293,
+      "sha256": "8cf631cf56d8a436cf8e8852ff29d175da04407e08089de959da4794542beb05"
+    },
+    "model-00040.safetensors": {
+      "size": 174962532,
+      "sha256": "7b76b5c71cd40cf808c8da9b8f624e088b01700ef8fafcd1b963c9d11e256c41"
+    },
+    "model-00041.safetensors": {
+      "size": 174962596,
+      "sha256": "1627efb091ef13671c28de7e37b10d4cc5fd74648b9aaf2f8d53552fcd0cdce1"
+    },
+    "model-00042.safetensors": {
+      "size": 174962554,
+      "sha256": "dc698dff1a9091f03e5da2be4b7603700f5fdf8f389e55acf3ed5e723662e635"
+    },
+    "model-00043.safetensors": {
+      "size": 1323837639,
+      "sha256": "b84be2a671ec9a50f27c62d34e32c7e1685897881894b7f63d997e5959895c72"
+    },
+    "model-00044.safetensors": {
+      "size": 253450320,
+      "sha256": "a98c053e86e0a123ba03eb63abf7a8b552d14918b439dc2cc42977f10aa04753"
+    },
+    "model-00045.safetensors": {
+      "size": 172338964,
+      "sha256": "adeb9fa5e9ec775902d5ccb85b279476008f214c8b33aad647cf0971899be287"
+    },
+    "model-00046.safetensors": {
+      "size": 304743093,
+      "sha256": "3fc6a01228110222d8bff0cdbf7625010f6628f106884199a7d3a199ad1eb8f2"
+    },
+    "model-00047.safetensors": {
+      "size": 2406562980,
+      "sha256": "95428e522cd6cc8ca3e0cb104c1d9e4a80cda1a732f88c9f039cf195a8c3d61e"
+    },
+    "model-00048.safetensors": {
+      "size": 2406563006,
+      "sha256": "09012d6ecb7ff9b83de842e7425b9b34c58fcfadd4e08491070825cbf23ebb99"
+    },
+    "model-00049.safetensors": {
+      "size": 2406563050,
+      "sha256": "83b9de0c6d6ceb4e2a49087ce4584f0866d6d28fb58276ec6243318dc545611e"
+    },
+    "model.safetensors.index.json": {
+      "size": 250619,
+      "sha256": "c0ead8ce7960b2c715366373da35626f3ccaef1837094bf9215cded0bfefdabb"
+    },
+    "receipts/model-00001-of-00041.json": {
+      "size": 622781,
+      "sha256": "5da4db80b82a6ba3f93755420594761d73217516f42f0ae1388eec8ac1663965"
+    },
+    "receipts/model-00002-of-00041.json": {
+      "size": 622946,
+      "sha256": "8e53128a70de710eee20460c2682a4587e813fac1ac97b95e35feefce0d54186"
+    },
+    "receipts/model-00003-of-00041.json": {
+      "size": 623201,
+      "sha256": "e03d4cdab554daa02ea82c011c36a18ac536b638e5d853d31f908764eeb347ee"
+    },
+    "receipts/model-00004-of-00041.json": {
+      "size": 623190,
+      "sha256": "10fa7e1f3e68cf613c19db29f759010d1fadf99ee69f8461020e16cb88bfe028"
+    },
+    "receipts/model-00005-of-00041.json": {
+      "size": 623144,
+      "sha256": "5f41775a9c495a850f63320f9b435eca1d057a04c0967c1214d98d3753deec05"
+    },
+    "receipts/model-00006-of-00041.json": {
+      "size": 623270,
+      "sha256": "d8c4b43c544f1e208e47d6b7d4cbfbc422b5bc0e112f8626170a83820906acba"
+    },
+    "receipts/model-00007-of-00041.json": {
+      "size": 623286,
+      "sha256": "c4edffdfd31c8779a23b7ee63e5423c7391397a649bd20d10eead4b4d585cb23"
+    },
+    "receipts/model-00008-of-00041.json": {
+      "size": 623271,
+      "sha256": "a3e7511d5950233b8e96b5c13902b178c591dd9d9c12720fa272229b2b017197"
+    },
+    "receipts/model-00009-of-00041.json": {
+      "size": 623361,
+      "sha256": "7f6e15e6309848d1e2f45e743ba9883b5af37af5d6b2338c8109a630e812f23c"
+    },
+    "receipts/model-00010-of-00041.json": {
+      "size": 623287,
+      "sha256": "ab1c4328f5395890d5cd3006b34e53dc47c093307fd8049e115536d2fad3c0e1"
+    },
+    "receipts/model-00011-of-00041.json": {
+      "size": 623586,
+      "sha256": "7197a8c425de92396f52404713df5d06a538b204be6738651e9a266e9c4c3b9b"
+    },
+    "receipts/model-00012-of-00041.json": {
+      "size": 623665,
+      "sha256": "67dbcccfff3398bb2bfd2f5fedd1d812c73942c552d79765cd37fe9c50a57d1c"
+    },
+    "receipts/model-00013-of-00041.json": {
+      "size": 623550,
+      "sha256": "a90b0e606ed38a45199a3c45539f9dcac179f9d7c4d7a83c9916087017171017"
+    },
+    "receipts/model-00014-of-00041.json": {
+      "size": 623469,
+      "sha256": "01d968ef45f6a171375427ce8325bb5761fe4146cd9f0a276d5f4eded3d1d390"
+    },
+    "receipts/model-00015-of-00041.json": {
+      "size": 623397,
+      "sha256": "24cc498646f13191dfbbc3bb4a8ea4896d15e757313e57ef5d933790f39f4a1f"
+    },
+    "receipts/model-00016-of-00041.json": {
+      "size": 623213,
+      "sha256": "9b0211eb43bd3d15468fb63df6a6a9a20ccb3d88754da72b26f7d9b96075508b"
+    },
+    "receipts/model-00017-of-00041.json": {
+      "size": 623534,
+      "sha256": "c88e7353e5bdcc0801a84e100b3641f42b32663dbe6c2bade8fc932389ef06b4"
+    },
+    "receipts/model-00018-of-00041.json": {
+      "size": 623526,
+      "sha256": "45542e95703b56a9789ea4d9d0fbf8599912b3b81ab1f784489ba2f0a76bd48d"
+    },
+    "receipts/model-00019-of-00041.json": {
+      "size": 623566,
+      "sha256": "732b06f0021cbbd2786833e10587eb2404625ddfa4ce00f168e0c173f3b887b9"
+    },
+    "receipts/model-00020-of-00041.json": {
+      "size": 623542,
+      "sha256": "32b049ff480cc26ccf9407aff5de53fb78163c1db0d54ca61b1c482c4a6bdc5c"
+    },
+    "receipts/model-00021-of-00041.json": {
+      "size": 624001,
+      "sha256": "9d98da5a8f36a2280d86c64b56b92f7f5b58f5faa11b2a7a98e7a1fe8f8b3e61"
+    },
+    "receipts/model-00022-of-00041.json": {
+      "size": 623896,
+      "sha256": "795658c94efb5027592346f20efc7f22db4b309c91b1b221b6966d9e312d1fcd"
+    },
+    "receipts/model-00023-of-00041.json": {
+      "size": 623952,
+      "sha256": "4b03e5cc19dcbc8ae710698f948d4be1d849b31c9fef4d703dd4148b0bd159d0"
+    },
+    "receipts/model-00024-of-00041.json": {
+      "size": 623903,
+      "sha256": "599838215ec6f16e07fcf1f8a736038631486bc0ca8c4dcf7e7e38593b15b96b"
+    },
+    "receipts/model-00025-of-00041.json": {
+      "size": 623888,
+      "sha256": "f57f64906a31c349ff774e8e2406e5ce8c23c4a73baf1b3aa10b818cb4a5eea3"
+    },
+    "receipts/model-00026-of-00041.json": {
+      "size": 624046,
+      "sha256": "25ceaa7795893445e198b7bfed1beb3fbb7e2df8a7ee6c3381f4f2158de58089"
+    },
+    "receipts/model-00027-of-00041.json": {
+      "size": 623938,
+      "sha256": "f394dc0cac8d4992d4a732c95aaed396d779ccf4419493994a94d108bb872da9"
+    },
+    "receipts/model-00028-of-00041.json": {
+      "size": 623984,
+      "sha256": "190fc69b849be1cb934232c6cca6ff7d6587860d94820444d6876bafd165fb79"
+    },
+    "receipts/model-00029-of-00041.json": {
+      "size": 623887,
+      "sha256": "ce97fec665b356e51b411f8f2126d4bcc6f8b8435b273d2ea46b6eda8245c52a"
+    },
+    "receipts/model-00030-of-00041.json": {
+      "size": 623961,
+      "sha256": "1e7a807a986abba82d297e910842c17c7405aeeb70f65dd63505a45d3e918fb9"
+    },
+    "receipts/model-00031-of-00041.json": {
+      "size": 623944,
+      "sha256": "0562ac438b319ffa6f03b30527d2e5daae83ba316e0db426b631d5f04e805c30"
+    },
+    "receipts/model-00032-of-00041.json": {
+      "size": 623865,
+      "sha256": "0b74c690c005f26bfdf664b75923ee0f44c293ec79acec1318ab01db338ca93c"
+    },
+    "receipts/model-00033-of-00041.json": {
+      "size": 623721,
+      "sha256": "d207262032b01631b111b2298eefd16c0953a2c46ad56f6ddc6b5a817ab1f024"
+    },
+    "receipts/model-00034-of-00041.json": {
+      "size": 623966,
+      "sha256": "a0bfb3d56fe1979631bbd39676251e89846785ca8eb0d7d671faae3461c3cc42"
+    },
+    "receipts/model-00035-of-00041.json": {
+      "size": 623826,
+      "sha256": "05bfaeff9063e50579357fd57f9c2b233a70327fd222e7c37525dffc5c717dd8"
+    },
+    "receipts/model-00036-of-00041.json": {
+      "size": 623543,
+      "sha256": "5df1ba66bd7b6d90195fbf0e2b002136c25cdea7ea421a57b5bdf052ac25d868"
+    },
+    "receipts/model-00037-of-00041.json": {
+      "size": 623768,
+      "sha256": "6b353d3a96f40f58d552c3e5333765debb4b498d21607ecf71c6def51e9a8368"
+    },
+    "receipts/model-00038-of-00041.json": {
+      "size": 623644,
+      "sha256": "9437e431f0071587cd410584bdc246bf1193259e87d17edd2d9508e4b13d8d6e"
+    },
+    "receipts/model-00039-of-00041.json": {
+      "size": 623169,
+      "sha256": "970d9589c7f6d0d7401821bc42c1bd1663cfcc3568f3a253d0921b933ceda5b7"
+    },
+    "receipts/model-00040-of-00041.json": {
+      "size": 622615,
+      "sha256": "29b0dc21e6025569b0ead3ae651ff47fde4b6c08f9234275940177b0da16e783"
+    },
+    "receipts/model-00041-of-00041.json": {
+      "size": 781,
+      "sha256": "96fc5201ce5fb22f2536b0cbaa910104fe8a4313d55bf5484dee9b61217f457d"
+    },
+    "receipts/state.json": {
+      "size": 9588,
+      "sha256": "b80fb0087ba7677bada3410cc9b409686295e05aac7761ed6f04b8be494d1521"
+    },
+    "tokenizer.json": {
+      "size": 6367257,
+      "sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b"
+    },
+    "tokenizer_config.json": {
+      "size": 801,
+      "sha256": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547"
+    }
+  },
+  "provenance": {
+    "historical_receipt": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/two-host-split-v1/local-base-verification-progress.json",
+    "historical_receipt_sha256": "5e88fd8f4cac4c6357b3fd1c00b02954cfdee7dc3eaad34d6819b598217c672d",
+    "expected_payload_hashes": "historical full-byte hashes; not refreshed here",
+    "incidental_hashes": "fresh local bounded reads only",
+    "incidental_bytes_read": 21228,
+    "incidental_files": 245
+  }
+}

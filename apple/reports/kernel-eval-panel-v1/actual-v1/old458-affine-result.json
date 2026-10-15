@@ -1,0 +1,103 @@
+{
+  "adapter_id": "old458",
+  "adapter_sha256": "7b0ed3df65d088f08f30045f7638c4859b4ba33a6e2df69c4175edebcc99f0a6",
+  "attempt": 1,
+  "budget": {
+    "attempts": 1,
+    "max_output_tokens": 4096
+  },
+  "format": "kernel-eval-result-v1",
+  "prompt_sha256": "0534a67c9563c330641b2f0d42e250a5f1e8e2ddc23d0ef4aa09b4e384743891",
+  "protocol_sha256": "28f45e7715c7d9f646ab72236e2eeab7dc362566d4abeef9955ca6b8338fead5",
+  "task_id": "affine",
+  "task_sha256": "96bd7167d16b580a2ab214552836d882b76e4b68a92debc865335796e3f0f078",
+  "tracks": {
+    "normalized": {
+      "compile": {
+        "evidence": [
+          {
+            "path": "evidence/eaf5fc7b9d941e74-build-receipt.json",
+            "sha256": "eaf5fc7b9d941e74e34c962443d892b46b43756aeae408047c1821b4d1a3b5fb"
+          }
+        ],
+        "status": "passed"
+      },
+      "numerical": {
+        "evidence": [
+          {
+            "path": "evidence/6b9c11a73f62ac6f-review-v1.json",
+            "sha256": "6b9c11a73f62ac6f9dd520db8a09edab51cd01c4cb137214087aa7580371291b"
+          }
+        ],
+        "outcome_class": "model_output",
+        "reason": "215/224 cases passed; 9 failed, 12 rows outside fixed tolerance",
+        "status": "failed"
+      },
+      "replay": {
+        "evidence": [
+          {
+            "path": "evidence/a067fd1c65d9a8a7-receipt.json",
+            "sha256": "a067fd1c65d9a8a769a470370188f31450cc6430620c29bab0386f322f17413e"
+          }
+        ],
+        "status": "passed"
+      },
+      "source": {
+        "evidence": [
+          {
+            "path": "evidence/0ba87504079a7479-source-review-v2.json",
+            "sha256": "0ba87504079a7479f3d6e190d0701214ba4f2b7256d7e0844fd11d9c3fb68de3"
+          }
+        ],
+        "status": "passed"
+      },
+      "timing": {
+        "reason": "Numerically rejected",
+        "status": "not_run"
+      }
+    },
+    "strict": {
+      "generation": {
+        "evidence": [
+          {
+            "path": "evidence/c200b4cd4eb76c6a-review-v1.json",
+            "sha256": "c200b4cd4eb76c6a87197337fe58ee0ef00c41437fac29ff95390f582fb08d42"
+          },
+          {
+            "path": "evidence/0cf7a3939350245c-generation.raw",
+            "sha256": "0cf7a3939350245c5968ac35bf40c017e265c80bb1a780dbc751810c3fa4383d"
+          },
+          {
+            "path": "evidence/e94e49421185ad52-0729-checkpoint458.json",
+            "sha256": "e94e49421185ad5257bb39d9eaa22e694238c25b72352987b3e86a7cc4ca61c5"
+          },
+          {
+            "path": "affine-protocol.json",
+            "sha256": "28f45e7715c7d9f646ab72236e2eeab7dc362566d4abeef9955ca6b8338fead5"
+          }
+        ],
+        "status": "passed"
+      },
+      "raw_format": {
+        "evidence": [
+          {
+            "path": "evidence/0c8e448086abb52e-replay.json",
+            "sha256": "0c8e448086abb52e54c5e3b6ec0eb1481f6fac528c8df067ac3a55338545168b"
+          }
+        ],
+        "status": "passed"
+      },
+      "replay": {
+        "evidence": [
+          {
+            "path": "evidence/0c8e448086abb52e-replay.json",
+            "sha256": "0c8e448086abb52e54c5e3b6ec0eb1481f6fac528c8df067ac3a55338545168b"
+          }
+        ],
+        "outcome_class": "model_output",
+        "reason": "Hunk count mismatch: declared 6/20, observed 5/12",
+        "status": "failed"
+      }
+    }
+  }
+}

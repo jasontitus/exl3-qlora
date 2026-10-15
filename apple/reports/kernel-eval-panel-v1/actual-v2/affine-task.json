@@ -1,0 +1,24 @@
+{
+  "baseline": {
+    "dispatch.json": {
+      "path": "evidence/d3dbe6d31c3d9657-dispatch.json",
+      "sha256": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9"
+    },
+    "kernel.metal": {
+      "path": "evidence/412de4af4d0994e4-kernel.metal",
+      "sha256": "412de4af4d0994e4273fb862b03cabcbd76f965a35bea0fdc53bcaa6cd69dd0f"
+    }
+  },
+  "design": {
+    "path": "evidence/d5290974d3d284fa-design-v2.json",
+    "sha256": "d5290974d3d284fa6526c73f2296b55abc6e85c896681c65c8810a57a22f37c0"
+  },
+  "prompt": {
+    "path": "evidence/87697bda869d2352-prompt.txt",
+    "sha256": "87697bda869d23522d9e05cbe41fb9ae52b1d8d0a02d576d14106de47e6bce90"
+  },
+  "serialized_prompt": {
+    "path": "evidence/0534a67c9563c330-prompt-prepared.json",
+    "sha256": "0534a67c9563c330641b2f0d42e250a5f1e8e2ddc23d0ef4aa09b4e384743891"
+  }
+}

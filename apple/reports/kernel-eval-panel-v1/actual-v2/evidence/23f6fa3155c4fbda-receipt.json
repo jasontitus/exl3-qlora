@@ -1,0 +1,47 @@
+{
+  "changed": [
+    "kernel.metal"
+  ],
+  "header_changes": [
+    {
+      "original": "@@ -1,6 +1,31 @@\n",
+      "normalized": "@@ -1,5 +1,32 @@\n"
+    },
+    {
+      "original": "@@ -1 +1 @@\n",
+      "normalized": "@@ -1,1 +1,1 @@\n"
+    }
+  ],
+  "noop_sections_omitted": [
+    "dispatch.json"
+  ],
+  "unchanged_file_sha256": {
+    "dispatch.json": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9"
+  },
+  "shell_executed": false,
+  "raw_model_success": false,
+  "scope": "normalized format diagnostic only; original strict outcome retained",
+  "format": "affine-mechanically-normalized-diagnostic-v1",
+  "condition": "zeroB458",
+  "diagnostic_reconstruction_passed": true,
+  "strict_replay_accepted": false,
+  "baseline_sha256": {
+    "kernel.metal": "412de4af4d0994e4273fb862b03cabcbd76f965a35bea0fdc53bcaa6cd69dd0f",
+    "dispatch.json": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9"
+  },
+  "after_sha256": {
+    "kernel.metal": "b40833aa6c4a727881f60ee8b654ea925a322968dc88449b6a6754a627fb4ed4",
+    "dispatch.json": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9"
+  },
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/normalized-diagnostic-v2/normalize.py": "ad71afe8b2771efd547fddc3f9ea10b6ef10c1af42b43fbf19656324efd02c66",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/normalized-diagnostic-v2/independent-q/review-v1.json": "a2d4d24ce31e559e68b84e149f61ab78283fd7efa94d26383a2283e722fdbe86",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/independent-actual-q-v1/zeroB458/generation.raw": "18b13c6f46227f95d9dd820eed06e3942e1247ea2818017baf839b49f2253171",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-affine458-generation-box96-v1/independent-actual-q-v1/zeroB458/capture.json": "68027a247db2400cffa299ce13c33ce45abba335842b4a5b6ca22b64cc895d00",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/strict-actual-v1/zeroB458/receipt.json": "5b0637866d024c80eb8fc887841f0a057aa6e44387ec1fdcf8713194fcf0a9a5",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/task/kernel.metal": "412de4af4d0994e4273fb862b03cabcbd76f965a35bea0fdc53bcaa6cd69dd0f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/affine_relu_sum/task/dispatch.json": "d3dbe6d31c3d9657cb9f582fd9afc884d4ce40c19109e7a1882a2fadd04a5ab9"
+  },
+  "compiler_executed": false,
+  "GPU_executed": false
+}
