@@ -1,0 +1,23 @@
+{
+  "format": "kernel-full-files-product-validation-v1",
+  "observed_utc": "2026-10-15T18:36:50.023453+00:00",
+  "CPU_regression": {
+    "passed": 203,
+    "seconds": 6.9
+  },
+  "independent_tests_passed": 8,
+  "independent_review_sha256": "672383fda43a8dfc905634b11ea764ed0b6f12d63b875c12fa7ab5125c1fc764",
+  "review_pins_root_verified": 18,
+  "ruff": "passed",
+  "sealed_runtimes_modified": false,
+  "GPU_executed": false,
+  "claim": "Reusable full-file format import only; capture/protocol/source/ABI/numerical/timing remain separate evidence",
+  "source_sha256": {
+    "apple/src/exl3_mlx/kernel_full_files.py": "190e868b8a4f7604a707b12e146e42b83ae4892e358d23445479fa38e66daefd",
+    "apple/src/exl3_mlx/kernel_replay.py": "662e4c32addecdab38ea239befe2565938434767f154f32980669f8cb7d9fd64",
+    "apple/src/exl3_mlx/kernel_execution.py": "9b1e23bcaf3f401669f462f332ee4187b4f923ef98691cb2b66512d5de46fb1f",
+    "apple/tests/test_kernel_full_files.py": "bcfb8d9901753c82bdd4c870f80198c19a2970351bd168bbd66b6baabb6eb18d",
+    "apple/tests/test_kernel_execution.py": "1985afca5e753f7d1aeeb9b82cacc816b51451efb7fa1dd6bce216f6825d3bd6",
+    "docs/apple-kernel-execution.md": "08b3d6d1e7731b34847df33c3191bca0c68d16a27ab392732d76ccea90d14712"
+  }
+}

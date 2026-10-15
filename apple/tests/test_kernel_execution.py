@@ -307,6 +307,54 @@ def test_import_replay_convenience_produces_suite_result(tmp_path):
     assert (tmp_path / "imported/execution/result.json").is_file()
 
 
+@pytest.mark.parametrize("changed", [False, True])
+@pytest.mark.parametrize("wrapped", [False, True])
+def test_full_files_import_exact_bytes_and_no_repair(tmp_path, changed, wrapped):
+    _, plan, _, _ = fixture(tmp_path, stage="raw_format")
+    baseline = {"kernel.metal": "// baseline\n", "dispatch.json": '{"threads_per_row":1}\n'}
+    refs = {}
+    for name, content in baseline.items():
+        path = tmp_path / name
+        path.write_text(content)
+        refs[name] = pin(path)
+    files = dict(baseline)
+    if changed:
+        files["kernel.metal"] = "// exact candidate bytes\n"
+    content = json.dumps(
+        {"format": "kernel-full-files-v1", "rationale": "A decision.", "files": files}
+    ).encode()
+    if wrapped:
+        content = b"```json\n" + content + b"\n```"
+    raw = tmp_path / "content.json"
+    raw.write_bytes(content)
+    request = {
+        "format": "kernel-eval-replay-request-v1",
+        "initial_result": plan["initial_result"],
+        "replay": {
+            "protocol": "kernel-full-files-v1",
+            "generation": pin(raw),
+            "baseline": refs,
+            "required_paths": ["kernel.metal", "dispatch.json"],
+        },
+    }
+    ref = put(tmp_path / "import.json", request)
+    out = tmp_path / "imported"
+    result = e.import_replay(ref["path"], ref["sha256"], out, run=True)
+    stages = result["tracks"]["strict"]
+    assert stages["raw_format"]["status"] == ("failed" if wrapped else "passed")
+    work = out / "execution/00-raw_format/work"
+    if wrapped:
+        assert not (work / "candidate").exists()
+    else:
+        assert stages["replay"]["status"] == "passed"
+        report = json.loads((work / "replay.json").read_text())
+        assert report["unchanged_baseline"] is (not changed)
+        for name, expected in files.items():
+            assert (work / "candidate" / name).read_bytes() == expected.encode()
+    backend = json.loads((out / "replay-backend.json").read_text())
+    assert any(Path(x["path"]).name == "kernel_full_files.py" for x in backend["code"])
+
+
 def test_documented_example_accepts_output_parent_alias(tmp_path):
     alias = tmp_path / "parent-alias"
     alias.symlink_to(tmp_path, target_is_directory=True)

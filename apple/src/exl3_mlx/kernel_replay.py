@@ -11,6 +11,7 @@ import json
 import re
 from pathlib import Path, PurePosixPath
 
+from . import kernel_full_files
 from .evaluation_audit import _json
 from .evaluation_receipts import _read
 
@@ -163,8 +164,12 @@ def run(spec_path, expected_sha256, output):
     raw, identity = _read(spec_path, 1 << 20)
     require(hashlib.sha256(raw).hexdigest() == expected_sha256, "Specification changed")
     spec = _json(raw)
+    fields = {"generation", "baseline", "required_paths"}
+    require(set(spec) in (fields, fields | {"protocol"}), "Unexpected replay specification")
+    protocol = spec.get("protocol", "safe-common-git-apply-exact-v1")
     require(
-        set(spec) == {"generation", "baseline", "required_paths"}, "Unexpected replay specification"
+        protocol in ("safe-common-git-apply-exact-v1", "kernel-full-files-v1"),
+        "Unknown replay protocol",
     )
     pins = {}
 
@@ -187,7 +192,7 @@ def run(spec_path, expected_sha256, output):
     (out / "generation.raw").write_bytes(generation)
     report = {
         "format": "kernel-eval-replay-v1",
-        "protocol": "safe-common-git-apply-exact-v1",
+        "protocol": protocol,
         "input_sha256": expected_sha256,
         "generation_sha256": hashlib.sha256(generation).hexdigest(),
         "stages": {},
@@ -196,11 +201,23 @@ def run(spec_path, expected_sha256, output):
         "GPU_executed": False,
     }
     try:
-        rationale, command, patch = parse_native(generation)
-        report["stages"]["raw_format"] = {"status": "passed"}
-        report["rationale"] = rationale
-        (out / "patch.diff").write_text(patch)
-        after, changed = apply_exact(patch, baseline, required_paths=spec["required_paths"])
+        if protocol == "kernel-full-files-v1":
+            # Generation is exact assistant content from a separately verified
+            # capture. No EOS stripping, JSON extraction, or code repair here.
+            after = kernel_full_files.parse(generation)
+            report["stages"]["raw_format"] = {"status": "passed"}
+            report["rationale"] = kernel_full_files.decode(generation)["rationale"]
+            require(set(after) == set(baseline), "Complete-file inventory differs from task")
+            require(set(spec["required_paths"]) <= set(after), "Required file absent")
+            changed = [name for name, data in after.items() if data != baseline[name]]
+            # Keeping an already-good baseline is a valid decision, not a speedup.
+            report["unchanged_baseline"] = not changed
+        else:
+            rationale, command, patch = parse_native(generation)
+            report["stages"]["raw_format"] = {"status": "passed"}
+            report["rationale"] = rationale
+            (out / "patch.diff").write_text(patch)
+            after, changed = apply_exact(patch, baseline, required_paths=spec["required_paths"])
         (out / "candidate").mkdir()
         for name, data in after.items():
             target = out / "candidate" / name

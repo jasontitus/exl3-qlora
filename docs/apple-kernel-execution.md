@@ -28,6 +28,33 @@ timing unrun. They cannot establish model quality or a performance winner.
 
 ## Import a real captured response
 
+The default replay protocol remains exact git-apply edits. For the bounded
+complete-file interface, add `"protocol": "kernel-full-files-v1"` inside `replay`.
+Its generation file must be the exact verified assistant content, with the
+terminal EOS excluded by the capture layer. The importer does not strip EOS,
+extract JSON from prose or Markdown, repair code, or validate token provenance.
+The capture result must bind that content to the actual model output separately.
+
+The complete-file response is one JSON object with exactly `format`, `rationale`
+and `files`. `format` is `kernel-full-files-v1`; `files` contains exactly
+`kernel.metal` and `dispatch.json` as strings ending in newlines. Dispatch contains
+only integer `threads_per_row`, either 1 or 32. This is a deliberately narrow
+row-kernel contract, not a general project-edit format. The task baseline must
+contain those same two files. Duplicate keys, extra paths, wrappers and unsupported
+dispatches fail. Limits are 128 KiB response, 64 KiB kernel, 256 bytes dispatch and
+2,048 bytes rationale. Source/ABI, compiler, numerical and performance gates still
+follow parsing.
+
+A complete-file response may retain the baseline unchanged. The replay report
+records `unchanged_baseline: true`; that is a valid no-change decision, not an
+optimization or speedup. The exact-edit protocol still rejects no-op patches.
+Use a distinct protocol identity in the suite, and compare base and adapters
+under the same response contract; changing formats is not a training benefit.
+The suite's protocol digest remains supplied registration evidence: this bridge
+pins the chosen parser but does not interpret a protocol manifest to attest that
+the supplied digest names that parser. Keep registration and capture review as
+separate requirements when importing real results.
+
 Create `replay-request.json` with this shape. File references use `{path, sha256}`;
 relative paths resolve against the request's directory.
 
