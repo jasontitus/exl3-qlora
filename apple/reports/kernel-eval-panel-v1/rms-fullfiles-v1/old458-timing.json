@@ -1,0 +1,119 @@
+{
+  "schema": "RMS-fullfiles-partial-comparison-v1",
+  "updated_utc": "2026-10-15T19:05:38.809569+00:00",
+  "status": "old458_useful_kernel_demonstrated_same_protocol_model_comparison_pending",
+  "device": "Apple M1 Ultra",
+  "condition": "checkpoint458",
+  "numerical_cases_passed": 224,
+  "timing_workloads": 12,
+  "timing_dispatches": 84000,
+  "native_sha256": "572ad650a4c650588ff7ecc49f30349a7b1dd2221e78e291f427deadbd88b9f8",
+  "independent_review_sha256": "89dd7c7997e9229cc476b27aa8fdd350c84b26fc9c081f5cf531b2b15d6aec32",
+  "native_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-old458-v1/timing-fullfiles-run-v1/native.json",
+  "review_path": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-old458-v1/actual-audit-q-v1/review-v1.json",
+  "measurement": "Warm GPU command-buffer time amortized over100 repeated dispatches;5warmups/variant,30alternating paired rounds",
+  "rows": [
+    {
+      "workload": "case-09-uniform-seed0",
+      "rows": 32,
+      "cols": 4096,
+      "baseline_us": 500.620833481662,
+      "old458_us": 41.888541891239576,
+      "paired_median_speedup": 11.95024993906378
+    },
+    {
+      "workload": "case-09-uniform-seed17",
+      "rows": 32,
+      "cols": 4096,
+      "baseline_us": 501.37458310928196,
+      "old458_us": 42.26354183629155,
+      "paired_median_speedup": 11.885798436344619
+    },
+    {
+      "workload": "case-09-uniform-seed2026",
+      "rows": 32,
+      "cols": 4096,
+      "baseline_us": 515.3722909744829,
+      "old458_us": 41.7337502585724,
+      "paired_median_speedup": 12.19431612395707
+    },
+    {
+      "workload": "case-10-uniform-seed0",
+      "rows": 256,
+      "cols": 128,
+      "baseline_us": 33.783541293814785,
+      "old458_us": 6.502083269879222,
+      "paired_median_speedup": 5.165679489217294
+    },
+    {
+      "workload": "case-10-uniform-seed17",
+      "rows": 256,
+      "cols": 128,
+      "baseline_us": 34.0881256852299,
+      "old458_us": 6.568749668076635,
+      "paired_median_speedup": 5.06197120361333
+    },
+    {
+      "workload": "case-10-uniform-seed2026",
+      "rows": 256,
+      "cols": 128,
+      "baseline_us": 33.773749601095915,
+      "old458_us": 6.474166293628514,
+      "paired_median_speedup": 5.204711957836578
+    },
+    {
+      "workload": "case-11-uniform-seed0",
+      "rows": 256,
+      "cols": 1024,
+      "baseline_us": 195.48520853277296,
+      "old458_us": 20.186458714306355,
+      "paired_median_speedup": 10.639329372629767
+    },
+    {
+      "workload": "case-11-uniform-seed17",
+      "rows": 256,
+      "cols": 1024,
+      "baseline_us": 192.30291654821485,
+      "old458_us": 21.21854107826948,
+      "paired_median_speedup": 10.022823888143627
+    },
+    {
+      "workload": "case-11-uniform-seed2026",
+      "rows": 256,
+      "cols": 1024,
+      "baseline_us": 197.64000026043502,
+      "old458_us": 20.968333119526505,
+      "paired_median_speedup": 9.635523969292532
+    },
+    {
+      "workload": "case-12-uniform-seed0",
+      "rows": 256,
+      "cols": 4096,
+      "baseline_us": 550.1243751496077,
+      "old458_us": 46.140416525304325,
+      "paired_median_speedup": 11.866202162863672
+    },
+    {
+      "workload": "case-12-uniform-seed17",
+      "rows": 256,
+      "cols": 4096,
+      "baseline_us": 563.5347915813327,
+      "old458_us": 46.884167240932584,
+      "paired_median_speedup": 10.69904116439266
+    },
+    {
+      "workload": "case-12-uniform-seed2026",
+      "rows": 256,
+      "cols": 4096,
+      "baseline_us": 573.174374876544,
+      "old458_us": 46.87208391260356,
+      "paired_median_speedup": 11.664199575575907
+    }
+  ],
+  "limitations": [
+    "One RMS task, four shapes with three seeds each; no broad kernel generalization claim.",
+    "Comparison here is to supplied scalar implementation; base-model and newer-adapter timing comparisons pending.",
+    "Whole inference-engine speed and token generation throughput not measured.",
+    "Prior affine failures remain; no code repair or generation retries."
+  ]
+}

@@ -2520,7 +2520,7 @@
       },
       "M5_profile_work": {
         "user_authorized": true,
-        "status": "CPU_fixture_and_deployment_preparing_no_GPU_run",
+        "status": "M5_compiled_and_nine_CPU_fixtures_validated_GPU_execution_preparing",
         "observed_utc": "2026-10-15T18:51:13.802147+00:00",
         "chip": "Apple M5 Max",
         "GPU_cores": 40,
@@ -2530,7 +2530,15 @@
         "lease_at_observation": "free",
         "first_performance_pair": "row48 Q6_K decode reuse across batch",
         "source_collection_paused": true,
-        "same_host_paired_timings_required": true
+        "same_host_paired_timings_required": true,
+        "source_files_copied": 38,
+        "remote_root": "/Volumes/Scratch/exl3-training/kernel-profiles/row48-q6k-v1",
+        "CPU_build_receipt": "kernel-library/next-round-v5/correctness-pilot-inventory-v1/row48-m5-deployment-v1/root-M5-build-receipt.json",
+        "Metal_sources_compiled": 6,
+        "CPU_fixture_cases_passed": 9,
+        "GPU_executed": false,
+        "host_sha256": "b64f535b13b0b7f91c7279408167ccd47f8b14019b5838544649327285f2338e",
+        "next": "Complete reviewed owned M5 numerical/profile controller; actual GPU correctness and timings still pending"
       }
     },
     "RMS_fullfiles_evaluation": {
@@ -2608,6 +2616,24 @@
         "actual_review_sha256": "a133dec66c977cffa3dc6680aab161bdaaf9c1e32c016a846d1c632ca81b05a5",
         "actual_review_pins_root_verified": 755,
         "timing_prerequisite_passed": true
+      },
+      "timing": {
+        "status": "independently_audited_usable_faster_kernel",
+        "batches": 840,
+        "dispatches": 84000,
+        "workloads": 12,
+        "paired_rounds": 30,
+        "controller_exit": 0,
+        "lease_released": true,
+        "path": "kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-old458-v1/timing-fullfiles-run-v1",
+        "native_sha256": "572ad650a4c650588ff7ecc49f30349a7b1dd2221e78e291f427deadbd88b9f8",
+        "claim": "Unchanged generated kernel beats supplied scalar implementation on this one task; base-model/newer-adapter comparison pending",
+        "actual_review_sha256": "89dd7c7997e9229cc476b27aa8fdd350c84b26fc9c081f5cf531b2b15d6aec32",
+        "actual_review_pins_root_verified": 777,
+        "min_paired_median_speedup": 5.06197120361333,
+        "max_paired_median_speedup": 12.19431612395707,
+        "device": "Apple M1 Ultra",
+        "report": "publish-exl3/apple/reports/kernel-eval-panel-v1/rms-fullfiles-v1/comparison.md"
       }
     },
     "RMS_final188_evaluation": {
@@ -2629,11 +2655,25 @@
       "generated_quality_demonstrated": false
     },
     "RMS_code152_evaluation": {
-      "status": "CPU_prepared_awaiting_concrete_review",
+      "status": "generation_complete_capture_independently_accepted",
       "operation": "kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rms-fullfiles-code152-v1",
       "request_sha256": "4845c9a680ea50df9a980d04279552c2953cdae40307536441386949ef2302b7",
       "GPU_launched": false,
-      "CPU_tests_passed": 6
+      "CPU_tests_passed": 6,
+      "session_id": null,
+      "started_utc": "2026-10-15T18:57:40.512887+00:00",
+      "independent_request_review_sha256": "994a85916f2ae7d24fdefaf0c0287dbae1f4bdd52200301e2e3670f782a7e751",
+      "review_pins_root_verified": 75,
+      "finished_utc": "2026-10-15T19:00:31.388569+00:00",
+      "output_ids": 519,
+      "non_EOS_ids": 518,
+      "natural_EOS": true,
+      "full_file_parse_accepted": true,
+      "dispatch_threads_per_row": 1,
+      "actual_review_sha256": "8dba6e5fb0cdab81609d0ba506d30ab0d72a1fcdb62f44d5ea755392fb28a99e",
+      "actual_review_pins_root_verified": 106,
+      "numerical_status": "not_run"
     }
-  }
+  },
+  "last_updated_utc": "2026-10-15T18:59:33.357411+00:00"
 }
