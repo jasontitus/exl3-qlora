@@ -1,3 +1,11 @@
+## Update: tiny device test observes fixed-layout mismatch; M5 221
+
+The reviewed model-free MPP witness completed on the M1 Ultra. All four NN/NT identity/basis cases executed both paths. The coordinate-accessor path matched the expected matrices exactly; the legacy fixed-layout path had maximum errors 0.21875, 0.84375, 0.908203125 and 0.96484375. Recorded A/B/C slot mappings disagree with the fixed map at 192/448/448 slots for NN and 192/508/448 for NT, with complete coordinate coverage and no duplicates. This is evidence of an actual layout mismatch for this float tile; production BF16 multi-tile attention still needs a repaired-path comparison.
+
+Root verified the concrete review (11 inputs), detailed review (63), approval consumer (63), actual operation evidence (24) and output-audit evidence (15). The execution session exited zero. The owned lease released; fresh process inspection found all three recorded IDs absent and the shared lock free. Independent actual lifecycle and numerical audits passed (94 and 85 inputs respectively, all rehashed by root). Fraction arithmetic predicts all 2,048 observed legacy values exactly from the captured coordinate maps, explaining the wrong witness products. Maximum observed aggregate RSS was 719,273,984 bytes; maximum fixed Metal allocation was 819,200 bytes. The original failed versions and all captures remain preserved.
+
+An isolated portable full-attention repair is underway. It must preserve grouped BF16 projection and adapter hooks, gate compressed-index NAX usage too, and account for fallback temporary allocations. Production and M5 runtime remain unchanged. The latest direct M5 observation is saved update **221 of 458**, alive in the next forward pass. Source collection remains paused.
+
 ## Update: M5 218; tiny layout test held for validator repair
 
 Direct process and log observation found M5 worker 47890 alive at saved update **218 of 458**, advancing through layer 30. The stable source/history audit remains 206; later checkpoint pointers are observations, not independently audited exposure counts.

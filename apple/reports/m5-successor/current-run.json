@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T00:07:31Z",
+  "updated_utc": "2026-10-15T00:15:27.276837+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "m5_training_live_checkpoint150_pair_completed_independently_audited",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -72,15 +72,15 @@
     "reasoning_metric_limitation": "Only5rationale targettokens; no broad reasoning claim."
   },
   "latest_training_observation": {
-    "saved_checkpoint": 218,
+    "saved_checkpoint": 221,
     "worker_pid": 47890,
-    "elapsed": "19:28:57",
-    "worker_cpu": "826:51.53",
-    "worker_rss_kib": 18957200,
-    "forward_layer": 30,
-    "active_mlx_gib": 15.51,
+    "elapsed": "19:37:37",
+    "worker_cpu": "832:38.50",
+    "worker_rss_kib": 18080352,
+    "forward_layer": 8,
+    "active_mlx_gib": 15.52,
     "history_audit_checkpoint": 206,
-    "evidence": "Direct SSH ps/latest.txt/training.log observation in root tool output; no saved state payload audit beyond historical206."
+    "evidence": "Direct root SSH process/latest pointer/log; exposure history audit remains206."
   },
   "final_transfer_guard": {
     "status": "independently_reviewed_cpu_integrity_only_waiting_final_state",
@@ -1000,11 +1000,51 @@
     "next": "Review and execute tiny MPP cooperative-coordinate/identity witness on M1 Ultra; compare runtime layout to fixed NAX map before repair."
   },
   "mpp_layout_diagnostic_current": {
-    "status": "source_and_concrete_review_in_progress_not_executed",
+    "status": "actual_layout_incompatibility_independently_verified_for_float_tile",
     "author_seal": "8c659581ee5acd59f9375e4069dadf6847e8fe2630ffe9b8786bbaf1388004b0",
     "root_rehashed_input_files": 27,
     "root_default_validation": "cpu_validated; native_executed=false",
     "review_finding": "Analyzer must bind skipped status to recorded capacities/masks and SIMD-group uniformity before execution. Independent reviewers coordinating versioned repair.",
-    "scope": "Small model-free M1 Ultra layout/identity/basis witness; production cause and repair unproven."
+    "scope": "Small model-free M1 Ultra layout/identity/basis witness; production cause and repair unproven.",
+    "operation": "exact-generation-qualification-v1/mpp-layout-operation-v2",
+    "source_review_sha256": "4e056763994639e02e3da7ef5993382233329722d50f7ddce878967d4245ac69",
+    "concrete_review_sha256": "740dc18c0f3cb539d3ed285310e2fad25bacf4996845aca664296dbc16880a33",
+    "detail_review_pins_root_verified": 63,
+    "root_session": 63349,
+    "exit_code": 0,
+    "operation_evidence_pins_root_verified": 24,
+    "audit_evidence_pins_root_verified": 15,
+    "all_owned_released": true,
+    "root_fresh_ps_no_recorded_ids": true,
+    "root_shared_lock_free": true,
+    "observed_results": {
+      "all_four_status": 0,
+      "all_four_accessor_aware_max_error": 0,
+      "legacy_max_errors": [
+        0.21875,
+        0.84375,
+        0.908203125,
+        0.96484375
+      ],
+      "nn_operand_mismatches": [
+        192,
+        448,
+        448
+      ],
+      "nt_operand_mismatches": [
+        192,
+        508,
+        448
+      ]
+    },
+    "limits": "One float16x32x16 cooperative tile NN/NT identity/basis; actual fixed-layout mismatch on M1 Ultra, not full production repair or quality proof.",
+    "next": "Independent actual audits; isolated portable full-attention/index repair and resource accounting, then reviewed small/component/full-model parity.",
+    "actual_lifecycle_review_sha256": "962b248b5287c701a54e9a92b29f21e57f9ecf52787a8c39c802324a914a69aa",
+    "actual_lifecycle_pins_root_verified": 94,
+    "actual_numerical_review_sha256": "fcbec8095cf0214df9ff2781309ab0567c939c2f80ce1f25a5cef1b96a6ff902",
+    "actual_numerical_pins_root_verified": 85,
+    "legacy_prediction": "All2048 legacy values exactly predicted by observed SDK coordinate maps interpreting fixed-slot writes; witness-local mechanism, not whole-attention repair qualification.",
+    "max_observed_aggregate_rss_bytes": 719273984,
+    "max_fixed_metal_allocation_bytes": 819200
   }
 }
