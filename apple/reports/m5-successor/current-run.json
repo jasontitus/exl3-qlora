@@ -2143,7 +2143,7 @@
     "completed_report": "generated-kernel-outcome-v1.json"
   },
   "next_cached_screen": {
-    "status": "data_projects_targets_independently_approved_initial_snapshot_launch_package_in_preparation",
+    "status": "initial_attempt_failed_pre_model_owner_timestamp_parser_fix_in_progress",
     "proposed_training_rows": 188,
     "proposed_development_rows": 41,
     "boundary": 39,
@@ -2189,6 +2189,29 @@
       "CPU_default_stdout": "CPU source validation only; no model/runtime device import",
       "GPU_phase_started": false,
       "next": "independent source review then actual concrete request preparation and review"
+    },
+    "dev_generation_registration_review": {
+      "path": "kernel-library/next-round-v5/cached-screen188-v1/dev-edit-registration-v1/independent-q/review-v1.json",
+      "sha256": "59a4c25e9f266695b7fb0b95fe8ce4303f7efc3dbdb2cf4982106c703dd012bd",
+      "pins_verified": 66,
+      "status": "approved_corrected_prospective_registration_no_inference",
+      "rows": [
+        93,
+        63,
+        43
+      ],
+      "selection": "explicit_manual_three_repository_screen_not_three_shortest",
+      "GPU_executed": false
+    },
+    "initial_failure": {
+      "observed_utc": "2026-10-15T15:24:13.855874+00:00",
+      "path": "kernel-library/next-round-v5/cached-screen188-baseline-v1/actual-initial-failure-v1",
+      "error": "Owned lock mismatch",
+      "cause": "New helper compared timestamped owner-record line with bare owner ID; unchanged lease protocol uses first whitespace token.",
+      "model_imported": false,
+      "memory_failure": false,
+      "original_receipts_preserved": true,
+      "recovery": "Independent review of exact owned cleanup and additive corrected source in progress; no retry yet."
     }
   }
 }
