@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T04:11:06.827429+00:00",
+  "updated_utc": "2026-10-15T04:14:09.028958+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_completed_final458_full16_evaluation_running_reused_baseline_process36",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1546,9 +1546,15 @@
   },
   "GPU_forward_observed": true,
   "cache_cross_run_M5": {
-    "status": "controls_staged_complete_rows_materialized_actual_phase1_request_pending_review",
+    "status": "phase1_running_model_identity_hashing",
     "available_GiB_at_preparation": 105.24142456054688,
     "request_sha256": "6b10dc76f3fd089f20af0a6e2d161ac689650c0b1aab5a6c8497980d0d962beb",
-    "GPU_launched": false
+    "GPU_launched": true,
+    "session_id": 73103,
+    "wrapper_pid": 40325,
+    "worker_pid": 40328,
+    "independent_actual_review_sha256": "9ef09b4344d6cacc29484969a39cac0d84babf98f9613a3d9664d575c5490907",
+    "fresh_available_GiB": 105.26492309570312,
+    "cache_hits_proven": false
   }
 }
