@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T05:52:14.457764+00:00",
+  "updated_utc": "2026-10-15T05:59:26.159175+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_and_full16_fixed_target_evaluation_completed_independently_audited_generated_quality_pending",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -1800,7 +1800,7 @@
   },
   "m5_internal_serving_controls": {
     "namespace": "kernel-library/next-round-v5/exact-generation-qualification-v1/short-serving-operation458-f32-m5-internal-v1",
-    "status": "deployed_CPU_prepared_default_validation_and_memory_admission_passed_composition_harness_repair_pending",
+    "status": "first_frontend_failed_before_native_import_path_bug_owned_lease_recovery_and_successor_fix_in_progress",
     "author_seal_sha256": "c182a2a57642b61ef497c04e27a71ecf0ffd25942f5b99b1063aec0f2ac76636",
     "root_verified_pins": 128,
     "root_author_tests": 12,
@@ -1836,6 +1836,17 @@
     "observed_outer_available_bytes": 110134542336,
     "observed_native_available_bytes": 111147827200,
     "observed_source_filled_upper_bytes": 53165768704,
-    "admission_is_not_reservation_or_fit_proof": true
+    "admission_is_not_reservation_or_fit_proof": true,
+    "composition_checker_repair_exit_code": 0,
+    "composition_checker_repair_result": "kernel-library/next-round-v5/native-long-m5-prepared-check-shim-v1/actual-v2/stdout.json",
+    "composition_checker_original_failure_preserved": true,
+    "execution_session_id": 41979,
+    "execution_exit_code": 1,
+    "controller_pid": 53730,
+    "native_started": false,
+    "owned_lease_retained_for_review": true,
+    "failure": "frontend qualification_gate loads operation.py without parent import path; own_host import missing",
+    "failure_evidence": "root-deployment-v1/failed-launch-evidence.json",
+    "concrete_review_sha256": "4e531660040cdc7bcfbc56b27af23d37cf4bdab573d893dc2a243fa8c7ca1419"
   }
 }

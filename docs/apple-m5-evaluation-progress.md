@@ -2,6 +2,8 @@
 
 ## Current status — 2026-10-15 UTC
 
+Latest M5 evaluation attempt: deployment, all three prepared requests, fresh hardware identity and CPU memory admission passed independent review. The first frontend then exited before native model loading because its dynamically loaded validation module could not import `own_host`. The controller is terminal, failure receipts are preserved, and its own GPU lease is retained pending reviewed cleanup. A minimal import fix and real-entrypoint regression test are in progress; the original sealed lane will remain unchanged. No generated-kernel quality result is available yet.
+
 Training finished all **458 updates on 229 distinct complete examples**: 186 exact edits and 43 diagnostics, presented twice. Rank-4 adapters cover two attention projections in the final layer (`wq_a` and `wo_b`, layer 39), totaling 78,848 trainable parameters. The final checkpoint, optimizer and history were audited. New source collection remains paused.
 
 The independently audited evaluation covers 16 held-out edits and 47,069 supervised targets. Overall negative log-likelihood fell **11.72%**, and added Metal code NLL fell **5.08%**. Added-code top-1 correctness changed from 17,859 to 17,856, so accuracy did not improve. Formatting accounts for 82.62% of the NLL-sum gain. Only five rationale tokens were measured. This establishes a narrow target-likelihood benefit, not better generated kernels or reasoning. Historical baseline reuse and mixed cold/prewarmed timing limitations remain recorded in the evaluation receipt.
@@ -10,7 +12,7 @@ Caching is measured: the first epoch took **20.64 hours**, while the repeated ca
 
 The six-phase Studio serving test completed and passed exact matched zero-adapter controls. The trained adapter changed logits but did not change the observed output tokens. Strict cached/fresh comparisons failed in all three conditions, with maximum differences 1.59375, 1.59375 and 1.25. No tolerance was widened, and trainer-forward parity remains unestablished. This is short-run adapter participation evidence, not a whole-engine numerical repair or a quality result.
 
-M5 now has the exact six runtime files in a fresh evaluation directory. Independent audit accepted their copy and static dependency checks. The Scratch checkpoint checksum pass completed all 365 files (426.35 GB) in 21.20 minutes; root verified all hashes and file identities, with independent actual-outcome audit pending. It never loaded the model or used the GPU.
+M5 now has the exact six runtime files in a fresh evaluation directory. Independent audit accepted their copy and static dependency checks. The Scratch checkpoint checksum pass completed all 365 files (426.35 GB) in 21.20 minutes; root verified all hashes and file identities, with independent actual-outcome audit accepted. It never loaded the model or used the GPU.
 
 The existing internal-drive copy is the same numerical-base candidate: all 120 useful file hashes and 50 tensor headers match the historical Scratch copy. The differing file counts describe filtered versus complete inventories, not different tensor formats. A fresh metadata check confirmed all six saved identity fields for those 120 files and an unchanged complete 369-file inventory. Independent audit accepted that continuity to the prior full checksums; it was not a new internal weight hash. No model transfer is needed. Serving requests are being separately bound to this faster internal path; it is not yet qualified for native execution.
 
