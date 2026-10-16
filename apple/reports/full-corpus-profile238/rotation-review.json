@@ -1,0 +1,85 @@
+{
+  "aggregates": [
+    {
+      "condition": "old458/profile_present",
+      "measured_pairs": 360,
+      "ratio_of_summed_durations": 2.2973711343648886
+    },
+    {
+      "condition": "old458/profile_omitted",
+      "measured_pairs": 360,
+      "ratio_of_summed_durations": 2.343052902221554
+    },
+    {
+      "condition": "full238/profile_present",
+      "measured_pairs": 360,
+      "ratio_of_summed_durations": 2.3103309370174467
+    },
+    {
+      "condition": "full238/profile_omitted",
+      "measured_pairs": 360,
+      "ratio_of_summed_durations": 2.324444507005348
+    }
+  ],
+  "all_four_cells_all12_workloads_all30_pairs_verified": true,
+  "baseline_workload_identity_equal": true,
+  "findings": [],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-old458-v1/actual-audit-q-v1/capture.json": "3ff23cfd2e9648ce5c0e860bec7833715adf26edfacccd17f7cabfdd5b5b4c42",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-omitted-old458-v1/actual-audit-q-v1/files/dispatch.json": "2a70858869bc054fd21a5f7c3664a57c366e6bf7fac11ca67d764d460f9b42f8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-old458-v1/actual-audit-q-v1/capture.json": "f600c7339771614eb359cd9759734d99e2e554f26034a4cc8df6d06e68a28db0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/exact-generation-qualification-v1/studio-rotation-profile-present-old458-v1/actual-audit-q-v1/files/dispatch.json": "2a70858869bc054fd21a5f7c3664a57c366e6bf7fac11ca67d764d460f9b42f8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-omitted-build-v1/inputs/host-contract.json": "4e558e11c200f7ba1c1c830882164c9bbac7b5e58d2ec06de29ed87f4fe43b06",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-omitted-build-v1/job.json": "735f3c911c6c1992d9ae008485611b3d81098756925f93009b734593827368a2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-omitted-source-review-v1.json": "01090dfe07318bac92a4869c95b0535be3a787d5821e378a4eb4b0180b4ba52d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-omitted-timing-build-v1/job.json": "9c0602ec8060250be872d4a99c08235b602b926f098c30bbfa7fd70cdd02b51d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-omitted-timing-operation-v1/actual-audit-q-v1/recomputed.json": "e46a35194199c269f0fe62e1ec16beac657dd34e08d62368a0fde6783684b5ce",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-omitted-timing-operation-v1/actual-audit-q-v1/review-v1.json": "7c1b7e59f6739827b4f6086b4fc8a5dddb8aa99c1d88135e590f39730b2ef10d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-omitted-timing-operation-v1/actual-v1/native/receipt.json": "d1c1005398fa1a2e333419db30449fa384c8697dc6e52fb0c19ab598e60e1b61",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-omitted-timing-operation-v1/launch-contract.json": "06ec7044bfdd4df539e4e0952d3c2a735f59186ef9becc6d69426d7689ad656a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-present-build-v1/inputs/host-contract.json": "39a594e9b8f226296995179ffa0694c2150f5290088baec0baf5c32e1006af91",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-present-build-v1/job.json": "642a9629331a1461a86e80a185a5a1ebcf4a102ec7a3ad661a44cfe53f64e4bc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-present-source-review-v1.json": "4637d52a99cb6a470ea4a1c90e711d494d534bb23d9a49fad6b9496a251f4505",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-present-timing-build-v1/job.json": "0489594b51ce83af208399660ba84ffad361434e37c7c61f93a707fa4bb7ee73",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-present-timing-operation-v1/actual-audit-q-v1/recomputed.json": "3d0a3096feb40cde98cf57204a7c611ee4349a8335d1abab66fffe7298547835",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-present-timing-operation-v1/actual-audit-q-v1/review-v1.json": "4ac45351a11aa2b22eec14e7d661e0eef912e5d9cc8157794c060c4d82d2d4e7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-present-timing-operation-v1/actual-v1/native/receipt.json": "136876821ddc5232836c1ec2c6220eddcf4fe4736628ab990b1f46ae183181d8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/candidate-evaluation-prep-v1/profile-present-timing-operation-v1/launch-contract.json": "dbb41912c5c394029c3b3ef4a3630561100ee787257e85b3ca32b7b9fc15ce40",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/evaluation-prep-v1/profile_omitted/actual-audit-q-v1/capture.json": "2d2a3adf5b640e37b15b00d5acade2ed75af334856249fb599677978c2d57cf9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/evaluation-prep-v1/profile_omitted/actual-audit-q-v1/files/dispatch.json": "2a70858869bc054fd21a5f7c3664a57c366e6bf7fac11ca67d764d460f9b42f8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/evaluation-prep-v1/profile_present/actual-audit-q-v1/capture.json": "5ef4fd83fa358021d5474c11dbbc8339c902850a65c5e2543105c70dad4ac17b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/evaluation-prep-v1/profile_present/actual-audit-q-v1/files/dispatch.json": "2a70858869bc054fd21a5f7c3664a57c366e6bf7fac11ca67d764d460f9b42f8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/rotation-comparison-v1/README.md": "806ae932c77d133015769140b841145e67801a42fcfbd5e5d00f459f739d5b55",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/rotation-comparison-v1/author-seal-v1.json": "a87697b9fda360f4858cdd54ef269cf7cd9a9eb3cc048cb487e3ce7e2b4f7451",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/rotation-comparison-v1/compare.py": "c941da860f6ffdabf6f38a47bb9f99ac6be525600e757304ca71475c3a6d9c36",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/rotation-comparison-v1/comparison.json": "4fdef84ec48cb1ffe5ef0ba62c6be2a9f4682c662a460d43abb645964ac44775",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/rotation-comparison-v1/replay.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-run-v1/rotation-comparison-v1/replay.stdout.log": "7d2c329589e41d3496aae277f0f5fa0d2e989671563c45bfbc644bc54d82413d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-build-v1/job.json": "57359e1b8b0306cc468b97d08e56353bb042df8fa0716cfc43af32f2d4fa458f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/actual-audit-q-v1/recomputed.json": "a6e99681f1940516caae80d5a3ed16df98e7a46b4516b93b91be357ca005a868",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/actual-audit-q-v1/review-v1.json": "d3c3e217fac65f310727fb592fff7d4162bc584245b7ba10868d1af289d6f531",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/actual-v1/native/receipt.json": "5b5b530b38370dd18b27cf30db7a392743ec159b352146f06fb5efa37bc92cd2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-omitted-operation-v1/launch-contract.json": "f60afeee94cc142aa21b182edfd002282cb81d53a155717c6aab52b729838257",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-build-v1/job.json": "32db32854c16ffb2a5949ff745101bb37ebcc736d46c1018ef6fdefe668483ec",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/actual-audit-q-v1/recomputed.json": "88425ad85c31c87d62b3a1527f8f59bfb8acf4156af7cd333fb71d040bc3d12a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/actual-audit-q-v1/review-v1.json": "fb321f834d19be9165796f41dd581689fa7599574896564305e1637a3e57143b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/actual-v1/native/receipt.json": "f87c3f3c411ec26b8569f5edb64d10afb3f284bcda99478f65165b2be14553a4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-timing-v1/old458-present-operation-v1/launch-contract.json": "e31f85fe611e535b53e7077f97c294fd0e3ad5f77931fee9c54a2bc12257fda8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/old458-omitted-build-v1/inputs/host-contract.json": "92d1e97a0d3b73bdeef28a3fb1298efe3c88fcc82428fabbd943e7e4bbf79b8e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/old458-omitted-build-v1/job.json": "10801eb8404551295612901aad70319de04c740c64c662a96b7aea8199068b2a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/old458-present-build-v1/inputs/host-contract.json": "023c37e13e06dfc8c820bc2dea8044d538b412d35f4e10c39cd5ff377f9db0d9",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/old458-present-build-v1/job.json": "1e03f8a5ae8ccf491a556506a41bba2f06d3fe68aaa1524176b7389fb3d26bcf",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/old458-profile-omitted-source-review-v1.json": "8f563b0b7a2bbde08f11bb157f5c349df0659f9a6eeaab80dd6f4fd71583bb4b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/profile-guided-rotation-v1/candidate-v1/old458-profile-present-source-review-v1.json": "cbe24c70ecadc7e91b27c0b605d5ea3db1bd8f71ca187a01c423133a7de192dc",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/controller-pool-v2/run_control.py": "ba648b0ffb33ae3b3cd093271669171f2fa4234701ff2835552b57753220b210"
+  },
+  "limitations": [
+    "Separate timing windows and one deterministic generation per condition do not establish causal training or profile-input advantage.",
+    "Full238 preserves the scalar guarded xy16x16 mechanism. Small cross-window ratio changes are insufficient evidence to replace original458.",
+    "No additional generation, training, confirmation opening or automatic winner selection is authorized by this review."
+  ],
+  "native_measured_records_replayed": 2880,
+  "reviewer": "quality_research",
+  "schema": "full238-rotation-comparison-independent-review-v1",
+  "status": "accepted_scoped_measured_comparison_no_selection_claim"
+}

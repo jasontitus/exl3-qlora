@@ -1,0 +1,102 @@
+{
+  "schema": "full238-generated-optimization-comparison-v1",
+  "status": "completed_independently_audited",
+  "adapter": {
+    "condition": "full238",
+    "lineage": "original458 plus238updates;696updates total",
+    "payload_sha256": "0a7952fade3e4cc387509f1cf3e3623651b86f2a17d9a4c356c3771e435ca876",
+    "config_sha256": "13bb4563ebb045a97e89df875340daad3d4d3564988588610511ba0c152fee37",
+    "layers": [
+      39
+    ],
+    "rank": 4,
+    "alpha": 8
+  },
+  "protocol": {
+    "host": "Apple M1 Ultra",
+    "families": 3,
+    "generated_conditions": 4,
+    "attempts_each": 1,
+    "references": "completed matching original458 generations; no regeneration",
+    "generation": "same frozen prompts/800b/greedy4096/EOS",
+    "timing": "5warmup pairs/30measured pairs/100dispatches per batch/12workloads"
+  },
+  "correctness": {
+    "RMS": {
+      "candidate_pass": 224,
+      "cases": 224
+    },
+    "transpose": {
+      "candidate_pass": 12,
+      "cases": 12
+    },
+    "rotation_profile_present": {
+      "candidate_pass": 12,
+      "cases": 12
+    },
+    "rotation_profile_omitted": {
+      "candidate_pass": 12,
+      "cases": 12
+    }
+  },
+  "rotation": {
+    "old458_present_ratio_of_sums": 2.297371,
+    "new_present_ratio_of_sums": 2.310331,
+    "old458_omitted_ratio_of_sums": 2.343053,
+    "new_omitted_ratio_of_sums": 2.324445,
+    "decision": "same scalar guardedXY16x16 mechanism; no demonstrated additional advantage"
+  },
+  "transpose": {
+    "old458_ratio_of_sums": 2.263877,
+    "new_ratio_of_sums": 2.260078,
+    "new_large_paired_medians": [
+      2.419,
+      2.993,
+      3.012
+    ],
+    "decision": "same scalar guardedXY16x16 mechanism; no demonstrated additional advantage"
+  },
+  "reasoning": {
+    "profile_response_effect": "rotation chooses same mechanism with and without actual baseline profile",
+    "transpose_error": "Rationale incorrectly claims neighboringx lanes write contiguous output; code writes output strides. Preserved unchanged.",
+    "claim": "No demonstrated profile-guided reasoning improvement"
+  },
+  "limitations": [
+    "Repeated development panel of3families; no unseen confirmation or broad generalization claim",
+    "Old/new kernels measured in separate windows against a same-window supplied baseline",
+    "Ratio_of_sums uses equal counts per workload; it is not a production traffic mix",
+    "No candidate repair, retries, source recollection, or original reference regeneration"
+  ],
+  "completed_utc": "2026-10-16T04:40:17.940128+00:00",
+  "RMS": {
+    "old458_ratio_of_sums": 10.90804679349826,
+    "new_ratio_of_sums": 12.310260358228167,
+    "new_paired_median_range": [
+      5.111729873350858,
+      13.605664499470592
+    ],
+    "old_paired_median_range": [
+      5.06197120361333,
+      12.19431612395707
+    ],
+    "new_candidate_median_faster_workloads": 9,
+    "new_candidate_median_slower_workloads": 3,
+    "maximum_slowdown_percent_approx": 1.2517832044193655,
+    "decision": "positive_RMS_signal_separate_windows_not_general_or_causal_training_win",
+    "operation": "row RMS statistic sqrt(mean(x^2)+epsilon), not RMSNorm output normalization"
+  },
+  "decision": "Retain original458 as reference and keep full238 as promising RMS challenger; no broad winner or profile-reasoning improvement established.",
+  "timing_dispatches": 336000,
+  "all_candidates_compile_and_pass_fixed_correctness": true,
+  "confirmation_opened": false,
+  "new_training_triggered": false,
+  "copied_review_sha256": {
+    "rms-numerical-review.json": "47b3cfac3853dfa64f7992dc1c78db45d5a600a15401b043031c3be3e45e111b",
+    "transpose-timing-review.json": "1e78a5118ee4075fd1d08087f029c4f763fd143c9527e5e67249eb27a833b25a",
+    "rms-timing-review.json": "797986a1dfd0a431b8f12602034dd20bc76f28c0c7103088b3114c7824f04e6c",
+    "rotation-review.json": "50fb62f22e346bdab3e0a4533dd771fbfff3636aa3db1ee4f36eb8e3647f6b6a",
+    "transpose-numerical-review.json": "249c96287d11f7716641c72217b5ba9de9e9a328706ddbf3aaa47ab341866ab9",
+    "recipe-review.json": "7bc279d8373d552aff303615198680f11e6c50bd69a7f8807c2a3a29ca47f2a2",
+    "data-review.json": "6408571eee9744f93a574de670b0f9a33f7558524d88c47cd177d9d017428b66"
+  }
+}

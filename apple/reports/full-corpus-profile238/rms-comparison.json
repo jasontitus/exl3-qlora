@@ -1,0 +1,294 @@
+{
+  "aggregates": {
+    "full238": {
+      "equal_count_ratio_of_summed_durations": 12.310260358228167,
+      "measured_samples_per_variant": 360,
+      "sum_seconds_per_dispatch": {
+        "baseline": 0.1150937533355318,
+        "full238": 0.00934941666433588
+      }
+    },
+    "old458": {
+      "equal_count_ratio_of_summed_durations": 10.90804679349826,
+      "measured_samples_per_variant": 360,
+      "sum_seconds_per_dispatch": {
+        "baseline": 0.11743187751155343,
+        "checkpoint458": 0.010765619155718024
+      }
+    }
+  },
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-fullfiles-v1/old458-build-v1/build/job.json": "117a43c20d0691bcba451e1a60a8518fd4501365bf1b44e8af06cdc9630fbd5b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-fullfiles-v4/full238-build-v2/build/job.json": "8b10f1826c392f800eb330be1bc387ad052d0f01e830ce1a322456c556291c49",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-full238-v1/actual-audit-q-v1/compare_original458.py": "ed9f68fa0cbd306093e4826856777ab7be8f11b04ee5fe199bc30c932b31a884",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-full238-v1/actual-audit-q-v1/review-v1.json": "797986a1dfd0a431b8f12602034dd20bc76f28c0c7103088b3114c7824f04e6c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-full238-v1/timing-fullfiles-run-v1/native.json": "057dd5e2a344ebb3760a14327e656ef24137022ebabae7d8e8b7c9c8c3bb7549",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-old458-v1/actual-audit-q-v1/review-v1.json": "89dd7c7997e9229cc476b27aa8fdd350c84b26fc9c081f5cf531b2b15d6aec32",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-controller-old458-v1/timing-fullfiles-run-v1/native.json": "572ad650a4c650588ff7ecc49f30349a7b1dd2221e78e291f427deadbd88b9f8",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-fullfiles-v1/old458-build-v1/build/job.json": "489b57f36ec2cd9118bcceed9f0f091dd02c7cb8b534f338e07ac5be356d3452",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/row_rms-v2/candidate-timing-fullfiles-v4/full238-build-v1/build/job.json": "e24b80a05f4edee68ace52ab405994c9c4133cb6131e62a25bc6536fec481427"
+  },
+  "limitations": [
+    "Each exact kernel was paired with the curator baseline within its own window. Old/new candidate median ratios are unpaired and descriptive; all12 workloads and dispersion retained.",
+    "Equal sample counts per workload define only this test mix, not a production traffic mix. Ratio of sums is not an average of speedups or a geometric summary.",
+    "Both exact kernels passed224 numerical cases. Old458 uses SIMD32 simd_sum; full238 uses an explicit SIMD32 shuffle tree. One generation per adapter on one repeated RMS task cannot establish general reasoning skill or isolate training-data, LR or exposure effects.",
+    "No automatic selection, new training, generation retry, source repair or confirmation opening follows from this comparison."
+  ],
+  "same_task_workloads_policy_device_registry_curator_and_tolerance": true,
+  "schema": "rms-original458-full238-descriptive-comparison-v1",
+  "status": "accepted_descriptive_separate_run_comparison",
+  "workloads": [
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 40.1574996067211,
+          "candidate_p10_us": 39.90695788525045,
+          "candidate_p90_us": 41.5609588380903,
+          "curator_median_us": 501.4818743802607,
+          "within_run_paired_curator_over_candidate_median": 12.478914385906315
+        },
+        "old458": {
+          "candidate_median_us": 41.888541891239576,
+          "candidate_p10_us": 41.597750037908554,
+          "candidate_p90_us": 42.06474986858666,
+          "curator_median_us": 500.620833481662,
+          "within_run_paired_curator_over_candidate_median": 11.95024993906378
+        }
+      },
+      "curator_full238_run_over_old_run_median": 1.0017199461968262,
+      "unpaired_old_candidate_over_full238_candidate_median": 1.043106326376674,
+      "workload": "case-09-uniform-seed0"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 39.56749977078289,
+          "candidate_p10_us": 39.26854149904102,
+          "candidate_p90_us": 39.83987541869283,
+          "curator_median_us": 501.2970831012354,
+          "within_run_paired_curator_over_candidate_median": 12.690875608837224
+        },
+        "old458": {
+          "candidate_median_us": 42.26354183629155,
+          "candidate_p10_us": 41.9368747388944,
+          "candidate_p90_us": 42.62587579432875,
+          "curator_median_us": 501.37458310928196,
+          "within_run_paired_curator_over_candidate_median": 11.885798436344619
+        }
+      },
+      "curator_full238_run_over_old_run_median": 0.9998454249364498,
+      "unpaired_old_candidate_over_full238_candidate_median": 1.0681377919031279,
+      "workload": "case-09-uniform-seed17"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 40.44479166623205,
+          "candidate_p10_us": 40.071500348858535,
+          "candidate_p90_us": 40.80812528263778,
+          "curator_median_us": 501.6327084740623,
+          "within_run_paired_curator_over_candidate_median": 12.487558636657507
+        },
+        "old458": {
+          "candidate_median_us": 41.7337502585724,
+          "candidate_p10_us": 41.326125035993755,
+          "candidate_p90_us": 42.16091602575034,
+          "curator_median_us": 515.3722909744829,
+          "within_run_paired_curator_over_candidate_median": 12.19431612395707
+        }
+      },
+      "curator_full238_run_over_old_run_median": 0.9733404710710362,
+      "unpaired_old_candidate_over_full238_candidate_median": 1.0318695816998489,
+      "workload": "case-09-uniform-seed2026"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 6.534791900776327,
+          "candidate_p10_us": 4.489333252422512,
+          "candidate_p90_us": 6.55729090794921,
+          "curator_median_us": 33.79854199010879,
+          "within_run_paired_curator_over_candidate_median": 5.1622457469275105
+        },
+        "old458": {
+          "candidate_median_us": 6.502083269879222,
+          "candidate_p10_us": 5.037374561652541,
+          "candidate_p90_us": 7.1337498957291245,
+          "curator_median_us": 33.783541293814785,
+          "within_run_paired_curator_over_candidate_median": 5.165679489217294
+        }
+      },
+      "curator_full238_run_over_old_run_median": 1.0004440237973735,
+      "unpaired_old_candidate_over_full238_candidate_median": 0.994994694338588,
+      "workload": "case-10-uniform-seed0"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 6.604375084862113,
+          "candidate_p10_us": 4.702000063844025,
+          "candidate_p90_us": 6.641500629484654,
+          "curator_median_us": 33.7874994147569,
+          "within_run_paired_curator_over_candidate_median": 5.111729873350858
+        },
+        "old458": {
+          "candidate_median_us": 6.568749668076635,
+          "candidate_p10_us": 5.512250005267561,
+          "candidate_p90_us": 7.628125604242086,
+          "curator_median_us": 34.0881256852299,
+          "within_run_paired_curator_over_candidate_median": 5.06197120361333
+        }
+      },
+      "curator_full238_run_over_old_run_median": 0.9911809093509868,
+      "unpaired_old_candidate_over_full238_candidate_median": 0.9946057853577798,
+      "workload": "case-10-uniform-seed17"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 6.5552088199183345,
+          "candidate_p10_us": 5.995874525979161,
+          "candidate_p90_us": 6.59512507263571,
+          "curator_median_us": 33.535833354108036,
+          "within_run_paired_curator_over_candidate_median": 5.134901381276209
+        },
+        "old458": {
+          "candidate_median_us": 6.474166293628514,
+          "candidate_p10_us": 5.954666528850794,
+          "candidate_p90_us": 7.327166153118014,
+          "curator_median_us": 33.773749601095915,
+          "within_run_paired_curator_over_candidate_median": 5.204711957836578
+        }
+      },
+      "curator_full238_run_over_old_run_median": 0.9929555868152655,
+      "unpaired_old_candidate_over_full238_candidate_median": 0.9876369268293073,
+      "workload": "case-10-uniform-seed2026"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 17.718542367219925,
+          "candidate_p10_us": 13.467125012539327,
+          "candidate_p90_us": 20.45254199765623,
+          "curator_median_us": 193.35020857397467,
+          "within_run_paired_curator_over_candidate_median": 11.298367327464518
+        },
+        "old458": {
+          "candidate_median_us": 20.186458714306355,
+          "candidate_p10_us": 12.858125730417669,
+          "candidate_p90_us": 21.462958771735426,
+          "curator_median_us": 195.48520853277296,
+          "within_run_paired_curator_over_candidate_median": 10.639329372629767
+        }
+      },
+      "curator_full238_run_over_old_run_median": 0.9890784577778408,
+      "unpaired_old_candidate_over_full238_candidate_median": 1.1392843889716449,
+      "workload": "case-11-uniform-seed0"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 18.501667072996497,
+          "candidate_p10_us": 13.240124331787229,
+          "candidate_p90_us": 20.17700055148453,
+          "curator_median_us": 192.95145815704018,
+          "within_run_paired_curator_over_candidate_median": 11.613747297455985
+        },
+        "old458": {
+          "candidate_median_us": 21.21854107826948,
+          "candidate_p10_us": 15.038040932267904,
+          "candidate_p90_us": 22.220833343453705,
+          "curator_median_us": 192.30291654821485,
+          "within_run_paired_curator_over_candidate_median": 10.022823888143627
+        }
+      },
+      "curator_full238_run_over_old_run_median": 1.0033725001183886,
+      "unpaired_old_candidate_over_full238_candidate_median": 1.1468448218505838,
+      "workload": "case-11-uniform-seed17"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 18.951667007058862,
+          "candidate_p10_us": 13.554458389990032,
+          "candidate_p90_us": 20.57308389339596,
+          "curator_median_us": 183.4274997236207,
+          "within_run_paired_curator_over_candidate_median": 10.615849632686249
+        },
+        "old458": {
+          "candidate_median_us": 20.968333119526505,
+          "candidate_p10_us": 19.141124561429024,
+          "candidate_p90_us": 21.035750629380345,
+          "curator_median_us": 197.64000026043502,
+          "within_run_paired_curator_over_candidate_median": 9.635523969292532
+        }
+      },
+      "curator_full238_run_over_old_run_median": 0.9280889469839803,
+      "unpaired_old_candidate_over_full238_candidate_median": 1.106411014488409,
+      "workload": "case-11-uniform-seed2026"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 38.074374897405505,
+          "candidate_p10_us": 37.207166315056384,
+          "candidate_p90_us": 43.31049928441644,
+          "curator_median_us": 531.8927083862945,
+          "within_run_paired_curator_over_candidate_median": 13.605664499470592
+        },
+        "old458": {
+          "candidate_median_us": 46.140416525304325,
+          "candidate_p10_us": 41.12195794004947,
+          "candidate_p90_us": 61.60187465138735,
+          "curator_median_us": 550.1243751496077,
+          "within_run_paired_curator_over_candidate_median": 11.866202162863672
+        }
+      },
+      "curator_full238_run_over_old_run_median": 0.966859009367918,
+      "unpaired_old_candidate_over_full238_candidate_median": 1.211849614068082,
+      "workload": "case-12-uniform-seed0"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 41.67624982073903,
+          "candidate_p10_us": 37.61074936483056,
+          "candidate_p90_us": 44.37787469942123,
+          "curator_median_us": 547.8775000665338,
+          "within_run_paired_curator_over_candidate_median": 13.430060708223863
+        },
+        "old458": {
+          "candidate_median_us": 46.884167240932584,
+          "candidate_p10_us": 40.770208230242126,
+          "candidate_p90_us": 65.15337550081313,
+          "curator_median_us": 563.5347915813327,
+          "within_run_paired_curator_over_candidate_median": 10.69904116439266
+        }
+      },
+      "curator_full238_run_over_old_run_median": 0.97221592748362,
+      "unpaired_old_candidate_over_full238_candidate_median": 1.1249612775284301,
+      "workload": "case-12-uniform-seed17"
+    },
+    {
+      "conditions": {
+        "full238": {
+          "candidate_median_us": 38.882916560396545,
+          "candidate_p10_us": 37.63279120903462,
+          "candidate_p90_us": 44.24262570682913,
+          "curator_median_us": 553.1489581335336,
+          "within_run_paired_curator_over_candidate_median": 13.499616883929509
+        },
+        "old458": {
+          "candidate_median_us": 46.87208391260356,
+          "candidate_p10_us": 39.29566696751863,
+          "candidate_p90_us": 69.87866712734103,
+          "curator_median_us": 573.174374876544,
+          "within_run_paired_curator_over_candidate_median": 11.664199575575907
+        }
+      },
+      "curator_full238_run_over_old_run_median": 0.9650622609440214,
+      "unpaired_old_candidate_over_full238_candidate_median": 1.205467286380061,
+      "workload": "case-12-uniform-seed2026"
+    }
+  ]
+}

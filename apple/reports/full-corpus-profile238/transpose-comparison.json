@@ -1,0 +1,256 @@
+{
+  "schema": "strided-full238-versus-old458-descriptive-comparison-v1",
+  "policy": {
+    "warmup_pairs": 5,
+    "measured_pairs": 30,
+    "dispatches_per_batch": 100,
+    "ordering": "alternating AB/BA including warmup"
+  },
+  "cases": [
+    {
+      "case": "case-00",
+      "params": [
+        1,
+        1,
+        3,
+        5,
+        1,
+        3
+      ],
+      "old458_baseline_us": 3.06208326946944,
+      "full238_baseline_us": 4.3358333641663185,
+      "old458_candidate_us": 3.386457683518529,
+      "full238_candidate_us": 3.846874460577964,
+      "old458_paired_baseline_over_candidate": 0.9959498894666028,
+      "full238_paired_baseline_over_candidate": 1.0750286051160538,
+      "descriptive_old_over_new_median": 0.8803140622919468,
+      "baseline_drift_old_over_new": 0.7062271568774204
+    },
+    {
+      "case": "case-01",
+      "params": [
+        1,
+        33,
+        41,
+        7,
+        3,
+        1
+      ],
+      "old458_baseline_us": 4.177708178758622,
+      "full238_baseline_us": 4.237500252202153,
+      "old458_candidate_us": 3.985416842624545,
+      "full238_candidate_us": 3.9387494325637817,
+      "old458_paired_baseline_over_candidate": 1.100028042648331,
+      "full238_paired_baseline_over_candidate": 1.0765687813338176,
+      "descriptive_old_over_new_median": 1.0118482809987706,
+      "baseline_drift_old_over_new": 0.9858897770183122
+    },
+    {
+      "case": "case-02",
+      "params": [
+        31,
+        1,
+        5,
+        37,
+        1,
+        5
+      ],
+      "old458_baseline_us": 3.9495836244896054,
+      "full238_baseline_us": 4.338541766628623,
+      "old458_candidate_us": 3.2099999953061347,
+      "full238_candidate_us": 4.068749258294702,
+      "old458_paired_baseline_over_candidate": 1.1319804234397788,
+      "full238_paired_baseline_over_candidate": 1.065708083691145,
+      "descriptive_old_over_new_median": 0.7889402348306697,
+      "baseline_drift_old_over_new": 0.9103481853901184
+    },
+    {
+      "case": "case-03",
+      "params": [
+        17,
+        33,
+        41,
+        23,
+        1,
+        3
+      ],
+      "old458_baseline_us": 4.327083588577808,
+      "full238_baseline_us": 4.565624985843897,
+      "old458_candidate_us": 3.816250246018171,
+      "full238_candidate_us": 4.249582998454571,
+      "old458_paired_baseline_over_candidate": 1.1125406993368872,
+      "full238_paired_baseline_over_candidate": 1.0740706099469426,
+      "descriptive_old_over_new_median": 0.8980293472103055,
+      "baseline_drift_old_over_new": 0.9477527396565187
+    },
+    {
+      "case": "case-04",
+      "params": [
+        33,
+        17,
+        23,
+        41,
+        3,
+        1
+      ],
+      "old458_baseline_us": 4.175833310000598,
+      "full238_baseline_us": 4.585625138133764,
+      "old458_candidate_us": 3.783750580623746,
+      "full238_candidate_us": 4.26458369474858,
+      "old458_paired_baseline_over_candidate": 1.170868645253237,
+      "full238_paired_baseline_over_candidate": 1.0752211008407928,
+      "descriptive_old_over_new_median": 0.8872496945676238,
+      "baseline_drift_old_over_new": 0.9106355587757571
+    },
+    {
+      "case": "case-05",
+      "params": [
+        63,
+        65,
+        73,
+        71,
+        1,
+        3
+      ],
+      "old458_baseline_us": 5.104791489429772,
+      "full238_baseline_us": 4.978958168067038,
+      "old458_candidate_us": 3.5493745235726237,
+      "full238_candidate_us": 4.459999618120491,
+      "old458_paired_baseline_over_candidate": 1.4426350918313628,
+      "full238_paired_baseline_over_candidate": 1.116374737013719,
+      "descriptive_old_over_new_median": 0.7958239523501086,
+      "baseline_drift_old_over_new": 1.0252730224105469
+    },
+    {
+      "case": "case-06",
+      "params": [
+        64,
+        64,
+        64,
+        64,
+        0,
+        0
+      ],
+      "old458_baseline_us": 4.844999639317392,
+      "full238_baseline_us": 5.03875024151057,
+      "old458_candidate_us": 4.250416532158852,
+      "full238_candidate_us": 4.441249184310436,
+      "old458_paired_baseline_over_candidate": 1.1897919329172368,
+      "full238_paired_baseline_over_candidate": 1.134662298693302,
+      "descriptive_old_over_new_median": 0.9570317619588341,
+      "baseline_drift_old_over_new": 0.9615478853075494
+    },
+    {
+      "case": "case-07",
+      "params": [
+        127,
+        129,
+        137,
+        135,
+        1,
+        3
+      ],
+      "old458_baseline_us": 4.630624898709357,
+      "full238_baseline_us": 5.422499962151051,
+      "old458_candidate_us": 4.95833286549896,
+      "full238_candidate_us": 4.991041496396065,
+      "old458_paired_baseline_over_candidate": 1.0689862458992394,
+      "full238_paired_baseline_over_candidate": 1.0866662068886357,
+      "descriptive_old_over_new_median": 0.993446531967181,
+      "baseline_drift_old_over_new": 0.8539649480923989
+    },
+    {
+      "case": "case-08",
+      "params": [
+        257,
+        31,
+        39,
+        263,
+        3,
+        5
+      ],
+      "old458_baseline_us": 4.859791952185333,
+      "full238_baseline_us": 4.889999981969595,
+      "old458_candidate_us": 4.14041627664119,
+      "full238_candidate_us": 4.4887501280754805,
+      "old458_paired_baseline_over_candidate": 1.147116273748449,
+      "full238_paired_baseline_over_candidate": 1.0889805622066508,
+      "descriptive_old_over_new_median": 0.9223984758573238,
+      "baseline_drift_old_over_new": 0.9938224887738967
+    },
+    {
+      "case": "case-09",
+      "params": [
+        512,
+        1024,
+        1031,
+        519,
+        1,
+        3
+      ],
+      "old458_baseline_us": 34.71062460448593,
+      "full238_baseline_us": 38.80916687194257,
+      "old458_candidate_us": 14.175208634696899,
+      "full238_candidate_us": 16.02145843207836,
+      "old458_paired_baseline_over_candidate": 2.4554448139582252,
+      "full238_paired_baseline_over_candidate": 2.4185670188137953,
+      "descriptive_old_over_new_median": 0.884763936740935,
+      "baseline_drift_old_over_new": 0.8943924181371767
+    },
+    {
+      "case": "case-10",
+      "params": [
+        1024,
+        1536,
+        1543,
+        1031,
+        1,
+        3
+      ],
+      "old458_baseline_us": 79.7487498493865,
+      "full238_baseline_us": 87.01062470208853,
+      "old458_candidate_us": 27.249999693594873,
+      "full238_candidate_us": 29.77583382744342,
+      "old458_paired_baseline_over_candidate": 2.918692364632145,
+      "full238_paired_baseline_over_candidate": 2.993209569985877,
+      "descriptive_old_over_new_median": 0.9151716741675067,
+      "baseline_drift_old_over_new": 0.9165403664487456
+    },
+    {
+      "case": "case-11",
+      "params": [
+        1536,
+        1024,
+        1033,
+        1541,
+        3,
+        1
+      ],
+      "old458_baseline_us": 80.9556245803833,
+      "full238_baseline_us": 88.86687457561493,
+      "old458_candidate_us": 27.280625072307885,
+      "full238_candidate_us": 28.0437502078712,
+      "old458_paired_baseline_over_candidate": 3.252520425919538,
+      "full238_paired_baseline_over_candidate": 3.011804558784611,
+      "descriptive_old_over_new_median": 0.9727880497470298,
+      "baseline_drift_old_over_new": 0.9109763898751709
+    }
+  ],
+  "counts": {
+    "workloads": 12,
+    "full238_slower_than_own_baseline": 0,
+    "full238_slower_than_old_descriptive": 11
+  },
+  "equal_invocation_sum_of_medians": {
+    "old458_us": 103.78624894656241,
+    "full238_us": 112.59062273893505,
+    "old_over_new": 0.9218018909728617
+  },
+  "scope": "All12 retained; each arm paired against its own contemporaneous baseline. Cross-run candidate median ratios are descriptive, not interleaved model-to-model speedups; separate windows and baseline drift remain. Equal-invocation total is a designed aggregate, not observed traffic. Not engine throughput.",
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/strided-transpose-candidate-timing-v1/old458-operation-v1/actual-audit-q-v1/recomputed.json": "3b8e9e54f0ec6fc70bbdb09386395e312034279d16dd3de51ded2503e7ae1797",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/strided-transpose-candidate-timing-v1/old458-operation-v1/actual-audit-q-v1/review-v1.json": "be1cc6d149164b4b55d4e56646d5b4440c27366f634e1d50abc6e89bf7843d6c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/strided-transpose-candidate-timing-v3/full238-operation-v1/actual-audit-q-v1/recomputed.json": "097468f40cf4e12a4b546e43d6c21bb752fdac50447f3b34e9a8d2c682b91c89",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/studio-functional-panel-v1/strided-transpose-candidate-timing-v3/full238-operation-v1/actual-audit-q-v1/review-v1.json": "1e78a5118ee4075fd1d08087f029c4f763fd143c9527e5e67249eb27a833b25a"
+  }
+}

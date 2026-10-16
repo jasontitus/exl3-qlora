@@ -1,0 +1,47 @@
+{
+  "status": "running",
+  "endpoint": "main/step-000238",
+  "comparison": "original458",
+  "new_generation_conditions": [
+    {
+      "task": "rotation",
+      "profile": "present",
+      "prompt_tokens": 2128
+    },
+    {
+      "task": "rotation",
+      "profile": "omitted",
+      "prompt_tokens": 1263
+    },
+    {
+      "task": "RMS",
+      "prompt_tokens": 702
+    },
+    {
+      "task": "transpose",
+      "prompt_tokens": 789
+    }
+  ],
+  "attempts_per_condition": 1,
+  "policy": "greedy, natural EOS required, 4096 generated token allowance",
+  "reference_policy": "reuse completed matching original458 outputs, no regeneration",
+  "gates": [
+    "exact response and source/ABI acceptance",
+    "compilation",
+    "fixed numerical correctness cases",
+    "paired latency for correct kernels"
+  ],
+  "timing_policy": {
+    "warmups": 5,
+    "paired_rounds": 30,
+    "dispatches_per_batch": 100,
+    "workloads": 12
+  },
+  "limitations": [
+    "Repeated development tasks, not unseen confirmation",
+    "Separate timing windows do not isolate training causality",
+    "No claim from training loss alone"
+  ],
+  "source_collection": "paused",
+  "automation_notices": "paused"
+}

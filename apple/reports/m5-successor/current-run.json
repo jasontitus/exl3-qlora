@@ -3460,7 +3460,7 @@
   },
   "active_authorized_run": {
     "id": "full229-profile238-run-v1",
-    "status": "optimization_evaluation_running",
+    "status": "training_and_optimization_evaluation_complete",
     "human_authorized": true,
     "human_clarification": "Run the full corpus plus profile-focused subset;38 was approximate subset count, not layer38",
     "host": "jason-m5-MacBook.local",
@@ -3519,8 +3519,8 @@
     "wrapper_exit_code": 0,
     "owned_release": true,
     "finished_utc": "2026-10-16T03:38:11.642381+00:00",
-    "evaluation_status": "rotation profile-present running; reviewed rotation omitted/RMS/transpose sequential queue active",
-    "observed_utc": "2026-10-16T04:08:43.492268+00:00",
+    "evaluation_status": "4EOS full-file generations;260/260 candidate numerical cases;4 audited timings/336000dispatches. Positive RMS signal, rotation/transpose comparable, no profile reasoning gain.",
+    "observed_utc": "2026-10-16T04:40:17.940128+00:00",
     "factor_review_sha256": "bb2ad28f951252bcd632d4edfade1773a0d5638569f510c77cdd9826f1a737c4",
     "evaluation_session": 81335,
     "evaluation_queue_session": 19233,
@@ -3530,6 +3530,17 @@
       "RMS",
       "transpose"
     ],
-    "reference": "reuse completed original458 matching outputs; no reference generations"
+    "reference": "reuse completed original458 matching outputs; no reference generations",
+    "generation_queue_completed": true,
+    "generation_output_tokens": [
+      494,
+      444,
+      573,
+      365
+    ],
+    "evaluation_report": "publish-exl3/apple/reports/full-corpus-profile238/README.md",
+    "decision": "Retain original458 as reference and keep full238 as promising RMS challenger; no broad winner or profile-reasoning improvement established.",
+    "confirmation_opened": false,
+    "automatic_extension": false
   }
 }
