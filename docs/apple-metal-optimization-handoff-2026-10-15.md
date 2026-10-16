@@ -30,6 +30,9 @@ Branch: apple-metal-training-m5
 Latest evaluation commit: 72dbde57
 ```
 
+Publication: the handoff and completed work are pushed to `https://github.com/jasontitus/exl3-qlora`, branch `apple-metal-training-m5`. This writable fork was created for the user-requested push; `UnstableLlama/exl3-qlora` is read-only for the authenticated account. Local `origin` points to `/Users/jasontitus/experiments/exl3-qlora`; use the writable fork for GitHub publication, preserving the local origin.
+
+
 Read these first:
 
 1. [Latest evaluation and decision](../apple/reports/full-corpus-profile238/README.md).
