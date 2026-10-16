@@ -119,7 +119,9 @@ This handoff does not launch another campaign. Use the user’s ongoing mandate 
 
 ### 1. Make the existing rank-8 route evaluable, then test greater capacity
 
-Start here because it changes capacity while retaining the final-block frozen boundary and potentially existing training prefixes. Training supports a rank argument; native rank-8 serving is **not yet hardware-qualified**.
+Start here because it changes capacity while retaining the final-block frozen boundary and potentially existing training prefixes. Training supports a rank argument; native rank-8 serving is **hardware-qualified as of October 15, 2026** on the Studio (Apple M1 Ultra, MLX 0.32.3, GPU stream): 26/26 model-free cases passed, the device output is bit-exact against the seam including the intermediate `astype(z*2, dt)` rounding, and an independent verifier recomputed every acceptance from the frozen case file. Evidence: `<V>/exact-generation-qualification-v1/attention-rank8-serving-extension-v1/device-qualification-v1/RESULT.md` (`run-v3`, `cases-v2.json` sha256 `3990621e…f28eda`).
+
+**Executed 2026-10-16 UTC — the rank-8 route is now evaluable.** The gated intended-route control ran once on the Studio (93 s wall; cases 45.6 s / 46.0 s, both `completed`, exit 0). The widened rank-8 engine loading a rank-8 **zero-B** adapter produced raw logits **bitwise identical** to the absent-adapter baseline (`zero_b_bitwise_equal_to_absent: true`) and **reproduced the pre-widening engine's published row** (`reproduces_pre_widening_engine_logits: true`; witness engine `800b8a3f…96d2f`): 129280 values, 0 differing, max absolute error 0.0, argmax 553, position 33, row sha256 `266166f5…f4974fa`, greedy argmax equal. Receipts consistent; same prefix and vocab. A second descriptive control from a different engine build (`report80` rank-4, row `ef651a4e…9e3a2f`) does not match, as expected across builds. Result: `<V>/exact-generation-qualification-v1/rank8-zero-b-native-control-v3/operation-result.json` (`status: rank8_zero_b_native_control_bitwise_reproduced`; plan `2774d9ad…c7598`, review `a609374b…95ac9c` `approved_scoped_operation_source_no_launch`). **Scope: selected-row raw-logit comparison only — not trainer parity, not quality, not timing.** So with zero B the widening is numerically inert, and a trained rank-8 adapter can be evaluated without a widening artifact.
 
 Existing isolated work:
 
@@ -127,7 +129,9 @@ Existing isolated work:
 <V>/exact-generation-qualification-v1/attention-rank8-serving-extension-v1
 ```
 
-Its linked artifact has passed static review (`80ea4e31…be7d17c`), but source/build success is not device qualification. Read `qualification-plan-v1.json` and the artifact review. Finish the bounded intended-route residual/zero-B qualification. The plan uses small model-free rank 4/rank 8 forward cases and a short same-build absent/zero-B control; do not restart a full41 null baseline or pursue perfect trainer/native cross-mode bitwise equivalence as a launch prerequisite. Preserve the qualified 800b rank-4 engine.
+Its linked artifact has passed static review (`80ea4e31…be7d17c`). Read `qualification-plan-v1.json` and the artifact review. The bounded intended-route residual/zero-B qualification is finished; do not re-run it without a fresh run directory. Preserve the qualified 800b rank-4 engine.
+
+That qualification is a cautionary result about review: the first case-file revision fused the seam's intermediate rounding into the final one (`round_dt(base + z*2)` instead of `s = round_dt(z*2); y = base + s`), and static review passed it. Only executing against the device found it — the device was right, the reference was wrong, by exactly one bf16 ulp on 9373 of 42240 elements. Reusable rule: a generated reference that implements a **chain of roundings** must be cross-checked against a second, independently written formulation of the same chain, and its error bound must budget a full ulp at every rounding step, not half. Both are now enforced in `reference/generate_cases.py` and `run_device.py`.
 
 A practical candidate is rank 8/alpha 16 at boundary 39. If expanding a rank-4 adapter, explicitly implement and test the orientation/padding/scaling mapping; alpha/rank remains 2, but a valid schema alone does not establish equivalent predictions. Extra components with zero B can preserve the intended initial function; validate the arithmetic contract. Record the chosen parent and fresh optimizer. A directly expanded rank-4 adapter is not a fresh random rank-8 baseline.
 
@@ -144,6 +148,8 @@ This should genuinely change the learning content, rather than repeat the same t
 ### 3. Assess broader final-block adapter coverage before paying for layer 38
 
 More final-block projections may offer a larger change than another LR tweak while preserving the mathematical boundary 39 input. Current trainer/export/native support for additional targets must be inventoried and implemented; do not claim it exists. Treat shared/routed expert coverage separately and count parameters/optimizer state before selecting it.
+
+**Inventoried 2026-10-16.** `<V>/final-block-target-coverage-v1/{INVENTORY.md,inventory.json}` — 33 stage/target rows across trainer, export/serving-admission and native. End-to-end support today is exactly `blocks.39.attn.linears.wq_a` and `blocks.39.attn.linears.wo_b` (rank 4 or 8, alpha = 2*rank, `adapter_layers == [39]`, `expert_adapter_layers == []`). Layer 38 is trainer-supported and generically exportable, but blocked by the serving-admission frontend (`rank8-widened-identity-v1/frontend/adapter_generate.py:55-71,86-119`) and by the native loader/model (`lora.zig:89-102,143-155,169-185`; `model.zig:250-252,386-395`), which hardcode four block-39 tensors and forbid adapters on layers 0..38. `wq_b`, `wkv`, `wo_a` and final-block norms are unimplemented in both the trainer and the serving route; routed-expert adapters exist in the trainer only as all 384 experts' `w1`/`w2`/`w3` per selected layer and are rejected by the serving route; shared-expert and selective-expert targets are unimplemented everywhere. No trained layer-38 adapter exists in this effort. So layer 38 with the existing `wq_a`/`wo_b` pair is a serving/native implementation job first, not a training-config change, and the cheapest genuinely new capacity is an additional projection in block 39 (also a serving/native implementation job).
 
 Adding layer 38 moves the frozen boundary and requires different cached states, earlier backward, serving support, and a measured cold-cost/fit pilot. It is a legitimate later capacity experiment, not automatically equivalent in cost to cached boundary 39 runs.
 
@@ -222,7 +228,9 @@ Rotation numerical/timing and all-workload comparison: `<F>/candidate-evaluation
 
 RMS: `<R>/candidate-fullfiles-v4`, `candidate-controller-fullfiles-full238-v1`, `candidate-timing-fullfiles-v4`, `candidate-timing-controller-full238-v1`.
 
-Transpose: `<S>/strided-transpose-candidate-v3` and `strided-transpose-candidate-timing-v3`, each `full238-*` build/operation. Their actual reviews and comparison retain all shapes and regressions.
+Transpose: `<S>/strided-transpose-candidate-v3` and `<S>/strided-transpose-candidate-timing-v3`, each `full238-*` build/operation. Their actual reviews and comparison retain all shapes and regressions.
+
+Rank-8 intended-route control: `<V>/exact-generation-qualification-v1/rank8-zero-b-native-control-v3` (operation result, per-case attempts with raw logits and metadata, wrapper and lease receipts, preclaim observation). Its result is recorded under priority 1; do not re-run it, and any repeat needs a fresh run directory.
 
 The policy is fixed per existing comparison: one greedy attempt per condition, up to 4096 generated tokens within 8192 context, natural EOS required. Rotation prompts are 2128/1263 tokens; RMS 702; transpose 789. The common timing policy is 5 warmup pairs, 30 measured pairs, 100 dispatches per batch across 12 workloads, 840 batches/84,000 dispatches per condition. Compile/source/ABI/numerical acceptance precedes timing. Never execute generated shell or repair a candidate into a strict success.
 
