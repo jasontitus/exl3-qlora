@@ -2989,7 +2989,7 @@
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
     "id": "time-weighted-pilot-v2",
-    "status": "training_and_adapter_comparisons_and_M5_crossdevice_complete_fullmix_candidate_preparing",
+    "status": "completed_experiments_fullmix_data_and_recipe_reviewed_38_clarification_pending",
     "user_authorized": true,
     "starting_adapter": "original458_weights_fresh_optimizer",
     "comparison_adapter": "original458_matching_completed_generation_outputs",
@@ -3028,7 +3028,7 @@
     "cold_review_pins_root_verified": 65,
     "cold_wrapper_pid": 24609,
     "cold_worker_pid": 24612,
-    "cold_status": "first_new_prefix_forward_healthy",
+    "cold_status": "completed_audited_discarded",
     "remote_root": "/Volumes/Scratch/exl3-training/2026-10-15/time-weighted-pilot-v2",
     "evaluation_preparation": "time-weighted-pilot-v2/evaluation-prep-v2",
     "evaluation_source_review_sha256": "8aa40b89ac8aa59a0a666e53ec4183b5cb085d9889bc8a18fbd88ddad88d88fc",
@@ -3164,7 +3164,20 @@
         109
       ],
       "38_meaning_pending_user_clarification": true,
-      "not_launched": true
+      "not_launched": true,
+      "candidate_rows": 238,
+      "distinct_record_variants": 232,
+      "known_lineage_components": 171,
+      "input_tokens": 1151731,
+      "supervised_targets": 439708,
+      "max_item_tokens": 12173,
+      "no_new_independent_lineages": true,
+      "review_pending": false,
+      "data_review_accepted": true,
+      "recipe_strategy_review_pending": false,
+      "recipe_strategy_review_accepted": true,
+      "recipe_review_sha256": "7bc279d8373d552aff303615198680f11e6c50bd69a7f8807c2a3a29ca47f2a2",
+      "recipe_review_pins_root_verified": 10
     },
     "step48_profile_omitted_session": 46419,
     "step48_profile_omitted_exit_code": 0,
@@ -3189,7 +3202,7 @@
       "correct_cases_per_arm": 12,
       "verified_uint32_words_including_padding": 8068646,
       "observed_peak_bytes": 223330304,
-      "timing_preparing": true,
+      "timing_preparing": false,
       "timing_session": 44977,
       "timing_exit_code": 0,
       "timing_capture_files": 10,
@@ -3210,7 +3223,12 @@
     "step48_comparison_pins_root_verified": 68,
     "publication_review_sha256": "fb5a0ee59e4bccce8910dfccdef5166b30fa95f0b1bcb06c43f38244b92a1557",
     "publication_review_pins_root_verified": 25,
-    "step48_product_report": "publish-exl3/apple/reports/time-weighted-pilot-v2/README.md"
+    "step48_product_report": "publish-exl3/apple/reports/time-weighted-pilot-v2/README.md",
+    "fullcorpus_candidate": "kernel-library/next-round-v5/full229-profile238-candidate-v1",
+    "fullcorpus_data_review_sha256": "6408571eee9744f93a574de670b0f9a33f7558524d88c47cd177d9d017428b66",
+    "fullcorpus_data_review_pins_root_verified": 238,
+    "fullcorpus_recipe": "kernel-library/next-round-v5/full229-profile238-recipe-v1/recipe.json",
+    "fullcorpus_product_recipe": "publish-exl3/docs/apple-full-corpus-profile-recipe.md"
   },
   "completed_targeted_profile_pilot_v1": {
     "status": "completed_reviewed_report_no_pilot_extension",

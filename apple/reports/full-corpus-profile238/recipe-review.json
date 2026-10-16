@@ -1,0 +1,50 @@
+{
+  "GPU_executed": false,
+  "checks": {
+    "LR_rank_alpha_layer_chunk_sequence_clipping_resources_match_accepted_prior_request": true,
+    "accepted_candidate_unchanged_and_exact_hash_bound": true,
+    "complete12173_max_item_fits_without_truncation": true,
+    "evaluation_reuses_matching458_outputs_and_keeps_confirmation_sealed": true,
+    "former_dev41_consumption_and_protected16_exclusion_explicit": true,
+    "historical_warm_cost_math_and_non_guarantee_honest": true,
+    "no_layer38_activation_or_invented38_example_set": true,
+    "one_epoch238_is_exactly_one_seed8_sampler_permutation_with_accumulation1": true,
+    "profile_example_and_target_fractions_not_global_loss_weights": true,
+    "source_confirms_microbatch_target_normalized_loss_with_accumulation1": true,
+    "weights_only_original458_fresh_Adam_step0_cursor0_source_confirmed": true
+  },
+  "exact_fractions": {
+    "profile_examples": 0.037815126050420166,
+    "profile_supervised_targets": 0.02873725290420006,
+    "warm_wall_minutes": [
+      107.87577763673795,
+      108.65683521448385
+    ]
+  },
+  "findings": [],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/data/train.jsonl": "218d0c15bfcc4a59f47c7e582fcdcc6abeccf9445ebd964050049fa25471e835",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/data/train.prepared.jsonl": "bce31595872c30cc688ce8771b99b9a0ed4b9a8d0171d26576902f72475f5914",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/independent-q/review-v1.json": "6408571eee9744f93a574de670b0f9a33f7558524d88c47cd177d9d017428b66",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/manifest.json": "24d274da15c96f835cc0796bd441fda2ad101d6437795f745b7d641bc9a5e39a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-recipe-v1/recipe.json": "1ab1717fa79df07c9e2bf204f3583876c8cc55ed547ce79f1e32059c500e1128",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/fullcorpus-profile-mixture-inventory-v1/inventory.json": "a718bea1693d27572172618507be18e7667ec7bda0c15a1590d0e1439d17c37e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/main-request.json": "6a26255ca4c5ad1935e5dbc8f2495bfe03f77177016fb5dbc22de67d4d5df109",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/docs/apple-full-corpus-profile-recipe.md": "07fc589f6d07c049f1d2ab6673333248e342ef62d57f4caa5823e37e5bfef485",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/training.py": "b43a2d9d3c23ebf80fe9d908349a517e1fbb61c9a3ec090fc4c90f04de1d677e",
+    "/Users/jasontitus/experiments/exl3-qlora/apple/src/exl3_mlx/workflow.py": "51025ede97a12e257ad77287713d76081990efed236b324e2290a041f1f3f708"
+  },
+  "limitations": [
+    "This is a recipe proposal, not an executable request. Existing worker ownership/headroom, exact model/runtime/cache and checkpoint verification must be bound in any later concrete request.",
+    "The former41 development rows are training material and cannot support unseen-generalization claims. Current rotation evaluations are reused development comparisons, not a fresh blinded benchmark.",
+    "Equal per-example updates are not a global token-weighted objective: with accumulation1 each example is target-normalized before clipping and Adam. Target share2.87% is descriptive, not gradient influence.",
+    "5/3/1 profile exposures add no independent source lineages. A wider corpus may change behavior, but no measured benefit or safe weighting threshold follows.",
+    "108\u2013109minute warm-pass arithmetic is historical planning evidence; setup, new cold misses, changed I/O and generated evaluation can add cost. Boundary38 remains outside this proposal.",
+    "Confirmation remains unopened absent an explicit development decision. Exact source reuse preserves historical measurement labeling, not a newly measured1x result."
+  ],
+  "reviewer": "quality_research",
+  "schema": "full229-profile238-recipe-independent-review-v1",
+  "status": "accepted_CPU_recipe_and_claims_not_concrete_training_authorization",
+  "strategy": "Coherent bounded proposal for one broader-corpus pass from original458. This changes the training mixture substantially; the preceding small-pilot outcomes do not establish whether the broader mixture will help. No second epoch or new GPU campaign follows from this review.",
+  "training_launched": false
+}

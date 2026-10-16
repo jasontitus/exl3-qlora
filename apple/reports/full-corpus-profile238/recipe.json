@@ -1,0 +1,86 @@
+{
+  "schema": "full229-profile238-recipe-proposal-v1",
+  "status": "CPU_reviewed_data_recipe_not_launched",
+  "data": {
+    "candidate_dir": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1",
+    "prepared_file": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/data/train.prepared.jsonl",
+    "raw_file": "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/data/train.jsonl",
+    "rows": 238,
+    "distinct_record_variants": 232,
+    "known_lineage_components": 171,
+    "input_tokens": 1151731,
+    "supervised_tokens": 439708,
+    "max_serialized_item_tokens": 12173,
+    "profile_presentations": {
+      "positive": 5,
+      "retention": 3,
+      "precision": 1
+    },
+    "former_dev41_consumed": true,
+    "protected16_exact_overlap": 0
+  },
+  "host": "jason-m5-MacBook.local",
+  "initialization": {
+    "mode": "resume-adapter_weights_only_fresh_Adam_step0_cursor0",
+    "adapter": "/Volumes/Scratch/exl3-training/2026-10-13/metal-mix229-internal-split-v1/attempts/attempt-1791952639336825000/train/step-000458",
+    "discarded_pilots_not_initializers": true
+  },
+  "training": {
+    "additional_updates": 238,
+    "epochs": 1,
+    "learning_rate": 2.5e-05,
+    "seed": 8,
+    "rank": 4,
+    "alpha": 8,
+    "adapter_layers": [
+      39
+    ],
+    "expert_adapter_layers": [],
+    "activation_mode": "checkpoint",
+    "chunk_size": 2048,
+    "seq_length": 12287,
+    "grad_accumulation": 1,
+    "clip_grad": 1,
+    "verify_reload": true,
+    "truncate": false
+  },
+  "resources": {
+    "memory_gib": 80,
+    "reserve_gib": 8,
+    "packed_cache_mib": 6144,
+    "decoded_cache_mib": 0,
+    "prefix_cache_mib": 1024,
+    "prefix_disk_cache_gib": 64,
+    "allocator_cache_mib": 256
+  },
+  "runtime": "/Volumes/Scratch/exl3-training/2026-10-13/runtime-v5",
+  "environment": {
+    "MLX_ENABLE_TF32": "0",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "cost": {
+    "historical_warm_wall_minutes": [
+      107.876,
+      108.657
+    ],
+    "actual_fit_or_cache_guarantee": false
+  },
+  "evaluation": {
+    "original458_reference": "reuse completed matching outputs",
+    "development_task": "same frozen rotation profile-present and omitted one greedy attempt each",
+    "confirmations": "remain sealed until explicit development decision",
+    "quality": "correct generated speed improvements and grounded decisions; no NLL-only claim",
+    "dev41_unseen_claim": false
+  },
+  "pending": {
+    "meaning_of_38": "optional clarification unanswered; no layer38 activation or invented38 examples",
+    "new_GPU_campaign": "not launched or authorized by this proposal alone",
+    "operational": "fresh concrete request review/staging/host ownership/headroom and payload verification before execution"
+  },
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/manifest.json": "24d274da15c96f835cc0796bd441fda2ad101d6437795f745b7d641bc9a5e39a",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/data/train.prepared.jsonl": "bce31595872c30cc688ce8771b99b9a0ed4b9a8d0171d26576902f72475f5914",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/data/train.jsonl": "218d0c15bfcc4a59f47c7e582fcdcc6abeccf9445ebd964050049fa25471e835",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/independent-q/review-v1.json": "6408571eee9744f93a574de670b0f9a33f7558524d88c47cd177d9d017428b66"
+  }
+}
