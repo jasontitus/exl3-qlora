@@ -3460,7 +3460,7 @@
   },
   "active_authorized_run": {
     "id": "full229-profile238-run-v1",
-    "status": "running",
+    "status": "optimization_evaluation_running",
     "human_authorized": true,
     "human_clarification": "Run the full corpus plus profile-focused subset;38 was approximate subset count, not layer38",
     "host": "jason-m5-MacBook.local",
@@ -3507,6 +3507,29 @@
     "local_session": 18334,
     "launch_verified_utc": "2026-10-16T02:02:01.131769+00:00",
     "concrete_review": "4607927c9b8087dd7b2f2a13a4ca83b0b28a2e2ad83b2af8afe08cba72e2e4d6",
-    "fresh_remote_pins_verified": 119
+    "fresh_remote_pins_verified": 119,
+    "completed_step": 238,
+    "adapter_prediction_reload_exact": true,
+    "peak_mlx_gib": 70.33071223646402,
+    "training_elapsed_seconds": 5640.009381791111,
+    "wrapper_elapsed_seconds": 5793.26835,
+    "prefix_disk_hits": 239,
+    "prefix_disk_misses": 0,
+    "prefix_disk_writes": 0,
+    "wrapper_exit_code": 0,
+    "owned_release": true,
+    "finished_utc": "2026-10-16T03:38:11.642381+00:00",
+    "evaluation_status": "rotation profile-present running; reviewed rotation omitted/RMS/transpose sequential queue active",
+    "observed_utc": "2026-10-16T04:08:43.492268+00:00",
+    "factor_review_sha256": "bb2ad28f951252bcd632d4edfade1773a0d5638569f510c77cdd9826f1a737c4",
+    "evaluation_session": 81335,
+    "evaluation_queue_session": 19233,
+    "evaluation_conditions": [
+      "rotation/profile_present",
+      "rotation/profile_omitted",
+      "RMS",
+      "transpose"
+    ],
+    "reference": "reuse completed original458 matching outputs; no reference generations"
   }
 }

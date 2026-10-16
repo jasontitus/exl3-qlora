@@ -1,0 +1,29 @@
+{
+  "status": "training_complete_evaluation_pending",
+  "initializer": "original458_weights_only_fresh_Adam",
+  "completed_updates": 238,
+  "corpus_items": 229,
+  "distinct_profile_records": 3,
+  "profile_exposures": [
+    5,
+    3,
+    1
+  ],
+  "supervised_targets": 439708,
+  "adapter_layers": [
+    39
+  ],
+  "rank": 4,
+  "alpha": 8,
+  "learning_rate": 2.5e-05,
+  "peak_mlx_gib": 70.33071223646402,
+  "training_seconds": 5640.009381791111,
+  "wrapper_seconds": 5793.26835,
+  "exact_prediction_reload": true,
+  "disk_prefix_hits": 239,
+  "disk_prefix_misses": 0,
+  "disk_prefix_writes": 0,
+  "owned_release": true,
+  "quality_claim": "None; generated-kernel evaluation pending",
+  "receipt_source": "kernel-library/next-round-v5/full229-profile238-run-v1/main-capture-v1"
+}
