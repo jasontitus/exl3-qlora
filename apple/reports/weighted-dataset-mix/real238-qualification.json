@@ -1,0 +1,23 @@
+{
+  "schema": "weighted-mix-real238-CPU-qualification-v1",
+  "status": "exact_reviewed_candidate_reproduced_no_GPU",
+  "rows": 238,
+  "input_tokens": 1151731,
+  "supervised_tokens": 439708,
+  "byte_equal_to_reviewed_prepared_candidate": true,
+  "payload_sha256": "bce31595872c30cc688ce8771b99b9a0ed4b9a8d0171d26576902f72475f5914",
+  "zero_truncation_and_no_dedup": true,
+  "protected_overlap_refused_by_unit_tests_not_new_data_claim": true,
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/weighted-mix-tool-qualification-v1/plan.json": "c2524691a0db6f810272225ab6e1f3345113c7c44e9efef55074987842784508",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/weighted-mix-tool-qualification-v1/cli.stdout.log": "1634ad6f92e2a2e83f10f7129ca6b16f51026186a46171a6ea3d1f2f4bfc9eaa",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/weighted-mix-tool-qualification-v1/cli.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/full229-profile238-candidate-v1/data/train.prepared.jsonl": "bce31595872c30cc688ce8771b99b9a0ed4b9a8d0171d26576902f72475f5914",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/weighted-mix-tool-qualification-v1/output-v1/dataset.json": "1634ad6f92e2a2e83f10f7129ca6b16f51026186a46171a6ea3d1f2f4bfc9eaa",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/weighted-mix-tool-qualification-v1/output-v1/mixture.json": "2da1eb308041aff545bcc094b9826fa96bed5d26952940721844d3da31c0144d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/weighted-mix-tool-qualification-v1/output-v1/mixture.jsonl": "a7740965de778ad9e410402edf5102b32315c8fd157f17c102fe2a4f65413202",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/dataset_mix.py": "92e1ec815ac2fe454e1d773f674951c1e34d49af5c4d03493412dfd72a0e8a34",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/workflow.py": "4f8847f62375e40db10f9fb4bcac51af28e99eb335ba33d35f664b3118ca62cb",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/src/exl3_mlx/cli.py": "e4d91a8c04147039100a1bee5ae7e32fff9dc1895c870cd75412c6d4a8c77480"
+  }
+}

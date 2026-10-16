@@ -90,6 +90,10 @@ def train_smoke(base, *, steps=60, output=None, seed=8):
 
 
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "mix":
+        from .dataset_mix import main as mix_main
+
+        return mix_main(sys.argv[2:])
     if len(sys.argv) > 1 and sys.argv[1] == "ktune":
         from .ktune_cli import main as ktune_main
 
@@ -105,7 +109,7 @@ def main():
         return workflow_main()
     p = argparse.ArgumentParser(
         description=__doc__,
-        epilog="Advanced engine: prepare, train, evaluate, generate, doctor (COMMAND --help)",
+        epilog="Advanced engine: prepare, mix, train, evaluate, generate, doctor (COMMAND --help)",
     )
     sub = p.add_subparsers(dest="command", required=True)
     for name in sorted(COMMANDS):

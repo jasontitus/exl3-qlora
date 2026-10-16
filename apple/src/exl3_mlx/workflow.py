@@ -1,5 +1,14 @@
 """A bounded, local, end-to-end DeepSeek EXL3 adapter workflow."""
 
+import sys
+
+# Keep prepared-data mixing CPU-only even through this module entrypoint.
+if __name__ == "__main__" and sys.argv[1:2] == ["mix"]:
+    from .dataset_mix import main as mix_main
+
+    mix_main(sys.argv[2:])
+    raise SystemExit(0)
+
 import argparse
 import hashlib
 import importlib.metadata
@@ -7,7 +16,6 @@ import json
 import math
 import os
 import shutil
-import sys
 import tempfile
 import time
 from pathlib import Path
@@ -19,6 +27,8 @@ from mlx.utils import tree_flatten
 from .activation_config import ACTIVATION_MODES, validate_activation_mode
 from .context import ENGINE_SEMANTICS, MAX_CONTEXT_TOKENS
 from .data import load_dataset, load_tokenizer, prepare, training_data_identity
+from .dataset_mix import add_arguments as add_mix_arguments
+from .dataset_mix import mix
 from .deepseek import DeepSeekTextModel
 from .fit_probe import file_sha256, run_final_fit_probe, validate_final_fit_examples
 from .memory import MemoryBudget
@@ -64,6 +74,8 @@ def build_parser():
     prep.add_argument("--test-fraction", type=float, default=0.1)
     prep.add_argument("--truncate", action="store_true", help="Explicitly allow prefix truncation")
     prep.add_argument("--all-tokens", action="store_true", help="Also supervise chat prompts")
+    mixture = sub.add_parser("mix", help="Mix prepared token rows with explicit repetition")
+    add_mix_arguments(mixture)
     train = sub.add_parser(
         "train", help="Train adapters with streamed EXL3 and exact optimizer resume"
     )
@@ -194,7 +206,7 @@ def parse_args(argv):
             action.required = False
             action.default = value
     args = parser.parse_args(argv)
-    if args.command != "prepare":
+    if args.command not in {"prepare", "mix"}:
         for key, value in resources_from_args(args).items():
             setattr(args, key, value)
         args.cache_mib = args.packed_cache_mib  # Preserve the existing Python helper attribute.
@@ -769,7 +781,9 @@ def main(argv=None):
         print(f"[{time.monotonic() - start:.1f}s] {message}", flush=True, file=sys.stderr)
 
     try:
-        if args.command == "prepare":
+        if args.command == "mix":
+            report = mix(args.plan, args.model, args.output, seq_length=args.seq_length)
+        elif args.command == "prepare":
             with MemoryBudget(4, cache_mib=0, reserve_gib=16):
                 report = prepare(args)
         else:
@@ -842,7 +856,7 @@ def main(argv=None):
                             "requested_max_examples": args.max_examples,
                             "implementation": evaluated_implementation,
                         }
-        if args.command != "prepare":
+        if args.command not in {"prepare", "mix"}:
             report["resources"] = resources_from_args(args)
         if getattr(args, "report", None):
             path = Path(args.report).expanduser()

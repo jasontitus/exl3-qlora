@@ -5,8 +5,6 @@ import json
 import random
 from pathlib import Path
 
-from transformers import PreTrainedTokenizerFast
-
 from .context import MAX_CONTEXT_TOKENS
 
 TOKENIZER_FILES = ("tokenizer.json", "tokenizer_config.json", "chat_template.jinja")
@@ -58,6 +56,8 @@ def tokenizer_identity(root):
 
 def load_tokenizer(root):
     # This is a tokenizer-only local load, without remote code or model creation.
+    from transformers import PreTrainedTokenizerFast
+
     return PreTrainedTokenizerFast.from_pretrained(str(root), local_files_only=True)
 
 

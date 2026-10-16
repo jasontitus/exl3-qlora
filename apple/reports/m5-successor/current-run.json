@@ -3228,7 +3228,18 @@
     "fullcorpus_data_review_sha256": "6408571eee9744f93a574de670b0f9a33f7558524d88c47cd177d9d017428b66",
     "fullcorpus_data_review_pins_root_verified": 238,
     "fullcorpus_recipe": "kernel-library/next-round-v5/full229-profile238-recipe-v1/recipe.json",
-    "fullcorpus_product_recipe": "publish-exl3/docs/apple-full-corpus-profile-recipe.md"
+    "fullcorpus_product_recipe": "publish-exl3/docs/apple-full-corpus-profile-recipe.md",
+    "prepared_dataset_mix_tool": {
+      "status": "implemented_CPU_tested_independently_accepted",
+      "product_command": "exl3-mlx mix",
+      "docs": "publish-exl3/docs/apple-weighted-dataset-mixing.md",
+      "review_sha256": "02b80f654078fff4276f3098c4823156a8cc02af7f17b6c54e44ec8e9108802e",
+      "review_pins_root_verified": 42,
+      "CPU_tests_passed": 76,
+      "actual238_payload_exact": true,
+      "actual238_payload_sha256": "bce31595872c30cc688ce8771b99b9a0ed4b9a8d0171d26576902f72475f5914",
+      "runtime_and_candidate_unchanged": true
+    }
   },
   "completed_targeted_profile_pilot_v1": {
     "status": "completed_reviewed_report_no_pilot_extension",
