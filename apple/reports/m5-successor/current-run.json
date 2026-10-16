@@ -2989,7 +2989,7 @@
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
     "id": "time-weighted-pilot-v2",
-    "status": "adapter_comparison_complete_M5_timing_preparing",
+    "status": "training_and_adapter_comparisons_and_M5_crossdevice_complete_fullmix_candidate_preparing",
     "user_authorized": true,
     "starting_adapter": "original458_weights_fresh_optimizer",
     "comparison_adapter": "original458_matching_completed_generation_outputs",
@@ -3189,7 +3189,21 @@
       "correct_cases_per_arm": 12,
       "verified_uint32_words_including_padding": 8068646,
       "observed_peak_bytes": 223330304,
-      "timing_preparing": true
+      "timing_preparing": true,
+      "timing_session": 44977,
+      "timing_exit_code": 0,
+      "timing_capture_files": 10,
+      "timing_capture_bytes": 489833,
+      "timing_audit_pending": false,
+      "timing_actual_review_sha256": "ccfa169220099cce177017f0bee734848885a6f143aeadda7fffa82356522036",
+      "timing_actual_pins_root_verified": 197,
+      "equal_invocation_ratio_of_summed_durations": 1.9920905576187848,
+      "large_case_paired_medians": [
+        2.352762,
+        2.273793,
+        2.158066
+      ],
+      "observed_timing_peak_bytes": 230080512
     },
     "step48_selection": "retain_original458_no_demonstrated_improvement_step48_present_noop",
     "step48_comparison_review_sha256": "eb31c19ef05192e8041b9a069b2c4b592915b6706fe36023133c55e75c521b65",
