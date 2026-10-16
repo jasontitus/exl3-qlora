@@ -1,6 +1,6 @@
 # Apple EXL3 Metal optimization fine-tuning: handoff
 
-Status: end of October 15, 2026, America/Los_Angeles. Some receipts are dated October 16 UTC. This document supersedes the live-job instructions in the October 14 handoff and old heartbeat messages. Preserve those historical documents as evidence; do not execute their queues.
+Status: end of October 15, 2026, America/Los_Angeles, plus the October 16 UTC state section below. Some receipts are dated October 16 UTC. This document supersedes the live-job instructions in the October 14 handoff and old heartbeat messages. Preserve those historical documents as evidence; do not execute their queues.
 
 ## User goal and immediate priority
 
@@ -51,6 +51,18 @@ R = <S>/row_rms-v2
 ```
 
 The mirrored status files are `<V>/m5-successor/current-run.json` and `apple/reports/m5-successor/current-run.json`. Read **active_authorized_run** for the latest completed run. Older top-level and `active_authorized_pilot` fields retain historical states and are not current launch instructions.
+
+## October 16 UTC update: the rank-8 capacity path
+
+This section is the current state. It does not change the priorities above; it records what has actually been observed since they were written. **There is still no trained-adapter result.** Everything below is either a training-side pass, a pre-registered plan, or a recorded refusal.
+
+**1. Rank-8 end-to-end pilot — training half passed, generation half not run.** `<V>/rank8-end-to-end-pilot-v1/pilot-result.json` (host `jason-m5-MacBook.local`, observed `2026-10-16T12:55:00Z`) records the bounded train/save/reload pilot on the M5. All three pre-registered acceptance criteria passed: 8 of 8 requested steps completed (`cursor` 8), 157,696 trainable parameters, and the trainer's own post-save check logged `Adapter prediction reload is exact`. The adapter is a **fresh** rank-8 (rank 8, alpha 16, layer 39 only, fresh Adam, LR 2.5e-5, seed 8, no parent and no resumed optimizer — it is not an expansion of the accepted rank-4 adapter), 631,212 bytes, sha256 `113ffa27…b705ef3`, transferred into the v4 lane below. Per-step loss is recorded for all eight updates, but each step is a different single sequence, so the series is not a curve and **no loss-trend claim is made**. The file's own `limits` list states what it does not cover; `generation_half` in the same file reads `blocked_on_studio_memory_admission` (item 3).
+
+**2. The generation half is a complete, gate-cleared lane, not a stub.** `<V>/exact-generation-qualification-v1/rank8-trained-adapter-native-control-v4/` holds the three-case native control (`absent` / `r8trained-zerob` / `r8trained`) at position 33 on prompt 0033, run by the widened rank-8 native serving package. `plan.json` (sha256 `1e57d096…`, status `reviewed_pending_independent_source_review`) carries the static independent source review, the host/build context, the license record, and the exact regression assertions that review required. Gate 4b is pre-registered in the plan: `r8trained-zerob` must be bitwise equal to `absent` at position 33, `r8trained` must differ from `absent` (the trained weights must actually take effect), and `absent` must still reproduce the pre-widening engine's published row `266166f5…` bitwise. The plan states that a difference in the first comparison is a retained finding, not something to hide.
+
+**3. Admission is refused, and the refusal is recorded rather than worked around.** `preclaim-observations.json` in that lane records it: the reviewed `40/80/32/128` GiB memory profile requires 72 GiB available at startup, and the Studio was showing 37–46 GiB. The identified holder is **operator-owned and not this lane** — `screen` sessions `bonsai-lora-*` running `mlx_align.py train` under `/Users/jasontitus/experiments/worldpolicies`. No process was signalled, no memory profile was edited, and no admission check was bypassed. `rank8-trained-adapter-native-control-v4-admission/wait_for_admission.py` is armed and detached (ppid 1): it polls the same two read-only predicates, additionally requires that no foreign MLX training process is running, and then runs `--preclaim` and `--execute` once. If admission never passes inside its window, no device work happens and every poll is logged to `admission-wait.jsonl`. The operation remains the only thing that can start the engine, and it re-checks admission internally.
+
+**4. Profile-coverage validation is in flight.** Per the "Minimal next preparation" section of `<V>/correctness-pilot-inventory-v1/RECOMMENDATION.md`, source-verified validation cases are being built for the first candidates (row 98, `mlx` split-K quantized matmul partials; row 96, `mx.block_masked_mm` output mask). Each case is source plus closure plus license plus exact regression assertions with a CPU numerical reproduction of the mechanism. These are explicitly **not** device measurements and **not** performance evidence, and the training-ready count in the inventory remains 0 until they and their reviews land.
 
 ## Adapter lineage and exact scope
 
