@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-15T21:12:30.431374+00:00",
+  "updated_utc": "2026-10-16T21:59:09+00:00",
   "host": "jason-m5-MacBook.local",
   "status": "training_full16_and_paired_generation_completed_independently_audited_no_generated_kernel_gain_demonstrated",
   "remote_root": "/Volumes/Scratch/exl3-training/2026-10-13",
@@ -234,7 +234,7 @@
     "GPU_executed": false,
     "runtime_changed": false
   },
-  "previous_pointer_archive": "kernel-library/next-round-v5/m5-successor/current-run-before-sixphase-result-20261014T222734Z.json",
+  "previous_pointer_archive": "kernel-library/next-round-v5/m5-successor/current-run-before-rank8-terminal-20261016T215909Z.json",
   "generated_candidate_replay": {
     "status": "independently_approved_CPU_syntax_replay_only",
     "author_seal_sha256": "d6db3b45c38fc69d3bab5466fe9bf32a4371c5492f56187f325e825e523bfa0f",
@@ -2986,7 +2986,7 @@
       "comparison": "publish-exl3/apple/reports/kernel-eval-panel-v1/strided-transpose-v1/candidate-timing-comparison.json"
     }
   },
-  "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
+  "last_updated_utc": "2026-10-16T21:59:09+00:00",
   "active_authorized_pilot": {
     "id": "time-weighted-pilot-v2",
     "status": "completed_prior_experiments_next_full238_run_staged",
@@ -3458,7 +3458,7 @@
     "final_report_review_sha256": "970025e75b72dbb0bdd9725a528ea44cdd792920088ce08003b616899b25e0ad",
     "final_report_review_pins_root_verified": 88
   },
-  "active_authorized_run": {
+  "completed_full229_profile238_run_v1": {
     "id": "full229-profile238-run-v1",
     "status": "training_and_optimization_evaluation_complete",
     "human_authorized": true,
@@ -3542,5 +3542,120 @@
     "decision": "Retain original458 as reference and keep full238 as promising RMS challenger; no broad winner or profile-reasoning improvement established.",
     "confirmation_opened": false,
     "automatic_extension": false
+  },
+  "active_authorized_run": {
+    "id": "rank8-full-corpus-run-v1",
+    "status": "training_completed_served_gate4b_accepted_evaluation_queued",
+    "human_authorized": true,
+    "host": "jason-m5-MacBook.local",
+    "remote_root": "/Volumes/Scratch/exl3-training/2026-10-16/rank8-full-corpus-run-v1",
+    "local_root": "kernel-library/next-round-v5/rank8-full-corpus-run-v1",
+    "rows": 238,
+    "epochs": 1,
+    "input_tokens": 1151731,
+    "supervised_targets": 439708,
+    "max_serialized_item_tokens": 12173,
+    "data_sha256": "bce31595872c30cc688ce8771b99b9a0ed4b9a8d0171d26576902f72475f5914",
+    "data_basis": "byte-identical to the accepted full229-profile238 payload; re-pinned under this run's own root",
+    "initialization": "fresh_random_rank8_adapter_fresh_Adam_step0_cursor0",
+    "adapter_layers": [
+      39
+    ],
+    "rank": 8,
+    "alpha": 16,
+    "trainable_parameters": 157696,
+    "learning_rate": 2.5e-05,
+    "seed": 8,
+    "runtime": "unchanged_runtime-v5",
+    "memory_gib": 80,
+    "reserve_gib": 8,
+    "request_sha256": "68517f8243afb4c4e5399219014fe9b8f919fa8552725c3d443d72bdb8ae2976",
+    "fresh_remote_pins_verified": 116,
+    "pilot_basis": "rank8-end-to-end-pilot-v1: 8 steps on a byte-identical data subset, train/save/reload exact, lease released",
+    "serving_basis": "native rank-8 serving hardware-qualified 2026-10-15 (26/26 model-free device cases)",
+    "wrapper_pid": 95650,
+    "worker_pid": 95653,
+    "wrapper_started_utc": "2026-10-16T17:31:27.943601+00:00",
+    "lease_owner": "ktune-engine-95650-20030828f15248b5a3baab88864e9c72",
+    "launch_detached_verified": "After the launching ssh was cancelled, the wrapper reparented to pid 1 and the worker stayed live.",
+    "new_cold_probe": false,
+    "source_collection": "paused",
+    "Qwen": "parked",
+    "evaluation": "prepared_sealed_queued_behind_studio_occupancy_window_no_generation_launched",
+    "estimated_warm_training_minutes": [
+      108,
+      109
+    ],
+    "confirmation_opened": false,
+    "automatic_extension": false,
+    "training_completed_utc": "2026-10-16T19:06:02+00:00",
+    "duration_seconds": 5491.753387916833,
+    "exit_code": 0,
+    "lease_released": true,
+    "cleanup_verified": true,
+    "processes_signalled": false,
+    "foreign_objects_removed": false,
+    "completion_sha256": "2b2b1cd6b0cc3c98ec53eaf6442d559d08cc9e5da4387ec93061a012f1f1af88",
+    "final_loss": 0.10130806267261505,
+    "gradient_norm": 0.03996831551194191,
+    "peak_mlx_gib": 70.31937132030725,
+    "post_save_reload_check": "Adapter prediction reload is exact",
+    "adapter_safetensors": {
+      "path": "main/step-000238/adapter.safetensors",
+      "bytes": 631212,
+      "sha256": "f6c6fc748c75f4b3aabf8a511d4707ada6822b6fbb817f94d3bfda816387af6f"
+    },
+    "adapter_config_sha256": "69da06ad4bcab46f3e302ace9b9d38b962c7932b8e495e362c775b69f5f09d3c",
+    "capture": {
+      "lane": "main-capture-v1",
+      "files": 12,
+      "bytes": 1109750,
+      "receipt_status": "copied_closed12_terminal_evidence_pending_quality_audit",
+      "independent_review_sha256": "dbf89a02836b8d2105754db17adbde0d29d6ecb0b0f479e5f43c68ee2fdd5de0",
+      "captured_matches_served": true
+    },
+    "gate_4b": {
+      "lane": "kernel-library/next-round-v5/exact-generation-qualification-v1/rank8-full-corpus-adapter-native-control-v5",
+      "verdict": "accepted",
+      "window_utc": [
+        "2026-10-16T19:14:18+00:00",
+        "2026-10-16T19:16:32+00:00"
+      ],
+      "scope": "servability_and_nonzero_effect_only_not_quality_not_timing"
+    },
+    "evaluation_prep": {
+      "lane": "evaluation-prep-v1",
+      "seal": "author-seal-v1.json",
+      "local_digests": 50,
+      "input_digests": 65,
+      "independent_review": "evaluation-prep-v1/independent-q/review-v1.json",
+      "prompts": {
+        "profile_present": 2128,
+        "profile_omitted": 1263
+      },
+      "runtime": "800b",
+      "resources": "50/104/32",
+      "context": 8192,
+      "attempts": 1
+    },
+    "evaluation_admission": {
+      "waiter_pid": 83089,
+      "poll_seconds": 300,
+      "armed_utc": "2026-10-16T21:26:35+00:00",
+      "polls": 12,
+      "admitted": false,
+      "device_launches": 0,
+      "last_poll_utc": "2026-10-16T21:56:43+00:00",
+      "last_refusal": "native source-derived headroom refused",
+      "last_status": "cpu_preclaim_refused_no_lease",
+      "last_observation": {
+        "outer_available_gib": 93.88,
+        "native_available_gib": 91.02,
+        "native_baseline_gib": 36.98,
+        "process_upper_gib": 59.02,
+        "budget_gib": 50.0,
+        "log": "evaluation-admission-v1/admission-wait.jsonl"
+      }
+    }
   }
 }
