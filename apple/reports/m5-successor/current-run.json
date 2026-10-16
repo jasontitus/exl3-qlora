@@ -2989,7 +2989,7 @@
   "last_updated_utc": "2026-10-15T19:52:14.089527+00:00",
   "active_authorized_pilot": {
     "id": "time-weighted-pilot-v2",
-    "status": "completed_experiments_fullmix_data_and_recipe_reviewed_38_clarification_pending",
+    "status": "completed_prior_experiments_next_full238_run_staged",
     "user_authorized": true,
     "starting_adapter": "original458_weights_fresh_optimizer",
     "comparison_adapter": "original458_matching_completed_generation_outputs",
@@ -3163,7 +3163,7 @@
         108,
         109
       ],
-      "38_meaning_pending_user_clarification": true,
+      "38_meaning_pending_user_clarification": false,
       "not_launched": true,
       "candidate_rows": 238,
       "distinct_record_variants": 232,
@@ -3177,7 +3177,8 @@
       "recipe_strategy_review_pending": false,
       "recipe_strategy_review_accepted": true,
       "recipe_review_sha256": "7bc279d8373d552aff303615198680f11e6c50bd69a7f8807c2a3a29ca47f2a2",
-      "recipe_review_pins_root_verified": 10
+      "recipe_review_pins_root_verified": 10,
+      "human_clarification": "Broader data: profile-focused examples plus full remaining corpus; no layer38 request"
     },
     "step48_profile_omitted_session": 46419,
     "step48_profile_omitted_exit_code": 0,
@@ -3456,5 +3457,56 @@
     "report": "publish-exl3/apple/reports/profile-pilot-v1/README.md",
     "final_report_review_sha256": "970025e75b72dbb0bdd9725a528ea44cdd792920088ce08003b616899b25e0ad",
     "final_report_review_pins_root_verified": 88
+  },
+  "active_authorized_run": {
+    "id": "full229-profile238-run-v1",
+    "status": "running",
+    "human_authorized": true,
+    "human_clarification": "Run the full corpus plus profile-focused subset;38 was approximate subset count, not layer38",
+    "host": "jason-m5-MacBook.local",
+    "remote_root": "/Volumes/Scratch/exl3-training/2026-10-16/full229-profile238-run-v1",
+    "local_root": "kernel-library/next-round-v5/full229-profile238-run-v1",
+    "rows": 238,
+    "epochs": 1,
+    "corpus_rows": 229,
+    "distinct_profile_records": 3,
+    "profile_exposures": [
+      5,
+      3,
+      1
+    ],
+    "input_tokens": 1151731,
+    "supervised_targets": 439708,
+    "max_serialized_item_tokens": 12173,
+    "initialization": "original458_weights_only_fresh_Adam_step0_cursor0",
+    "adapter_layers": [
+      39
+    ],
+    "rank": 4,
+    "alpha": 8,
+    "learning_rate": 2.5e-05,
+    "seed": 8,
+    "runtime": "unchanged_runtime-v5",
+    "memory_gib": 80,
+    "reserve_gib": 8,
+    "remote_pins_verified": 119,
+    "prelaunch_available_bytes": 106137255936,
+    "request_sha256": "694149ae4c695e112e9aaab9ea3958dcaee230f868c66cc3a1123b3116ac25d5",
+    "new_cold_probe": false,
+    "source_collection": "paused",
+    "Qwen": "parked",
+    "automation_notices": "remain_paused",
+    "evaluation": "reuse original458 matching outputs; final238 generation and correctness/performance comparison",
+    "estimated_warm_training_minutes": [
+      108,
+      109
+    ],
+    "recorded_utc": "2026-10-16T01:59:15.405058+00:00",
+    "wrapper_pid": 57011,
+    "worker_pid": 57014,
+    "local_session": 18334,
+    "launch_verified_utc": "2026-10-16T02:02:01.131769+00:00",
+    "concrete_review": "4607927c9b8087dd7b2f2a13a4ca83b0b28a2e2ad83b2af8afe08cba72e2e4d6",
+    "fresh_remote_pins_verified": 119
   }
 }
