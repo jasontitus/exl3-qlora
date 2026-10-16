@@ -30,3 +30,15 @@ The user requested stronger training because cached updates are inexpensive. A s
 ## Reproduction
 
 [Step24 comparison receipt](step24-comparison.json) preserves source identities, all per-case ratios, exact association of reused evidence, and the independent selection decision. Local execution artifacts are under `kernel-library/next-round-v5/time-weighted-pilot-v2`; native generation uses accepted engine800b and the same2128/1263-token profile-present/omitted prompts. Training uses pinned runtime-v5, MLX_ENABLE_TF32=0, layer39 attention rank4/alpha8, LR2.5e-5, chunk2048 and80GiB process/8GiB reserve.
+
+## Second epoch: step48
+
+The resumed24 updates completed with restored Adam/RNG/cursor state and exact final prediction reload. End-to-end wrapper time was486.40seconds, peak MLX41.014GiB. All24 training calls and both reload calls hit the frozen-prefix cache;21 disk hits, zero misses or writes. Step24 is preserved.
+
+Both registered step48 generations completed with natural EOS and valid full-file responses:390 output IDs with the profile,458 without it. The profile-present kernel and dispatch are byte-identical to the supplied qualified baseline. Its response argues against the2D mapping, despite observed gains for that mapping; supplied elapsed durations do not establish its memory-bottleneck claim. This is an unchanged implementation, with no new candidate timing invented.
+
+The profile-omitted kernel and dispatch exactly match the prior validated scalarXY16×16 pair. Existing numerical and timing evidence is associated through exact identity, retaining the historical measurement window and adding no independent sample. It introduces no new optimization over original458.
+
+Keep original458. Additional exposure did not improve this development comparison, and the profile-present no-change result is worse than step24's useful generated edit. This single deterministic task does not establish that two epochs or profile training are generally harmful. Do not automatically add a third epoch. Confirmation remains sealed.
+
+The next data experiment should mix profile examples with broader accepted optimization cases rather than repeatedly train only these18 examples. An inventory finds229 full-corpus rows; adding the current nine weighted profile presentations gives238 updates per pass, roughly108–109minutes from historical warm-run measurements. The229 rows include the41 development rows already seen by original458; they must not be called unseen. Protected16 and current generated-kernel evaluation material remain excluded. This is a proposal, not a launched full-corpus run.

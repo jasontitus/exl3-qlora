@@ -1,0 +1,45 @@
+{
+  "checks": [
+    "Product step24-comparison.json remains byte-identical to the accepted scoped comparison.",
+    "Step48 claims agree with exact continuation, capture, no-op and historical identity receipts. Present has no fabricated1x timing; omitted has no duplicated independent sample.",
+    "Keep458 is a practical decision on this repeated development task. The report rejects general harm and causal separate-window claims.",
+    "Full229+9=238 and108-109minute rough historical warm estimates match the bound CPU inventory. This is not a current cache-hit guarantee or launch approval.",
+    "Full229 consumes former development41 and preserves protected16/evaluation exclusions. Exact protected token disjointness is not semantic independence. Layer38 meaning and future scope remain unresolved, without current activation."
+  ],
+  "findings": [],
+  "inputs_sha256": {
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cache-aware-development-proposal-v2/proposal.json": "6adafb102adf7f9c5f778fc85c8c9cbbb39640a3d8be92806f04093ba36ad852",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cache-aware-m5-inventory-v1/remote-inventory-v3.json": "1545dd2382d614bc55fc2f31ceda9bfc69074bb562345dab6a6d3cd792004d8c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-screen188-matrix-review-q-v2/review-v1.json": "eff6dad8525680b257427fef9db6d43975dd85b4f9b3efa9024e06026d96cd9d",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-screen188-v1/materialized-v2/prepared/dev.jsonl": "e36b9f93d474b9d20971df0a22e61ac333515859c2db7c85b6b938d8a617df73",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/cached-screen188-v1/materialized-v2/prepared/train.jsonl": "85fc07d62a0e890d5a36640725443c30253efa3b2bad585db68f6535e8960098",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/expanded-candidate-12288-v3/test.prepared.jsonl": "0720ead3d696e6e9215e99cbf18dd26e532def8c309add06bbbe21efe1841ad0",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/expanded-candidate-12288-v3/train.prepared.jsonl": "809d0568957f6328fa8270447d2f161fedf39fb0830f36e22e8c2356919edf11",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/fullcorpus-profile-mixture-inventory-v1/README.md": "9ac1e9abc704a56820bee891358ff303f7d6d05c552abdfc1665ee6f52f6ce52",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/fullcorpus-profile-mixture-inventory-v1/author-seal-v1.json": "b180fe3f85df28b15e0bc0e144e6175f37eec2810dbef0fecb627d35205ac3df",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/fullcorpus-profile-mixture-inventory-v1/inventory.json": "a718bea1693d27572172618507be18e7667ec7bda0c15a1590d0e1439d17c37e",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/fullcorpus-profile-mixture-inventory-v1/inventory.py": "7bf711f428da7df53874edf55f61b6f987e736ba8befecb8cd1204f3ac155571",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/practical-lr25-r4-v1/completion-summary-v1.json": "761dc44cfd06067bdc94a88e25c597de64b34509ab4ef4a5cd7a0cc66040fbac",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/practical-lr25-r4-v1/wrapper.json": "4252c40a2ec39d3e4487a220a09eab6958801e3ad5556638773044329c23107f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/continuation48-audit-q-v1/factor-review-v1.json": "a9e140b988992da4d57e91ad087819d559d6740eeda9bcac27869f152eae6db4",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/continuation48-audit-q-v1/review-v1.json": "5d63485fa302e7830952208e0677ce0514d61fbf456c4b7718db9a98154a6c7f",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/data-prep-v1/independent-q/review-v1.json": "2ec9992df133aad8d2f3c6d367190cca3e1ddbdd20b1152c35edf8b7bd5e0c21",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/data-prep-v1/tokenized-draft.jsonl": "7730be94a43160dd1891b28190c66716571482086c341211a45b66ecf3e8c2c2",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/main-capture-v1/files/main-wrapper.json": "3ea8f9c28e405ac220190ffea3907e1de1d29ce6847283fe4cc78394ad26cda7",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/main-capture-v1/files/main/training.json": "0d2a6ed03abe83e64601d50587598594daa3d088ba9433b82bbc2a7222716a6b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/step24-comparison-q-v1/publication-review-v1.json": "b2ffe73452511fe5792684551ea08a5afc096011e4e54146729b72b91aeb278b",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/step24-comparison-q-v1/review-v1.json": "4ddbaa405de3f78cdf8002078d5a28bbb7534a453fb3270c6d2e9a4370e99d1c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/kernel-library/next-round-v5/time-weighted-pilot-v2/step48-comparison-q-v1/review-v1.json": "eb31c19ef05192e8041b9a069b2c4b592915b6706fe36023133c55e75c521b65",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/time-weighted-pilot-v2/README.md": "014e5275352dc0b52943421c394fdf436b691414ed89e18e8bbdbe6188ab17fd",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/apple/reports/time-weighted-pilot-v2/step24-comparison.json": "4ddbaa405de3f78cdf8002078d5a28bbb7534a453fb3270c6d2e9a4370e99d1c",
+    "/Users/jasontitus/Documents/Codex/2026-10-12/can-we-create-a-new-experiments/publish-exl3/docs/apple-cache-aware-experiment-plan.md": "dbe9edbf2710574839d0c1b90ffc77c8d7c6ca2145b966395b743735bfd27ad7"
+  },
+  "limitations": [
+    "No new GPU run, remote cache inspection, full-corpus export or training authorization is created by this claims review.",
+    "The broader-replay proposal is a hypothesis; the current evidence does not establish that it improves optimization."
+  ],
+  "prior_publication_review_preserved": true,
+  "reviewer": "quality_research",
+  "schema": "time-weighted-v2-publication-claims-review-v2",
+  "status": "accepted_scoped_step24_step48_claims_and_proposal_no_launch"
+}
