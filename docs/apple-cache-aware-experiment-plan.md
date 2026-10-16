@@ -118,3 +118,38 @@ The full 229-item corpus plus weighted profile records completed 238 updates fro
 All four fixed development generations passed complete-file parsing, compilation and numerical correctness: 224 row-RMS-statistic cases, 12 transpose cases, and 12 cases for each rotation profile condition. Four audited timing jobs completed 336,000 dispatches. The row RMS statistic kernel showed a positive signal: equal-count ratio of summed baseline/candidate durations 12.310× versus original458 10.908×, with lower candidate median latency on 9/12 workloads in separate windows. Rotation and transpose remained comparable. The transpose explanation contained a false contiguous-write claim; no profile-guided reasoning improvement was demonstrated.
 
 Keep full238 as a promising RMS challenger and original458 as the reference; this repeated three-family development panel does not establish a broad replacement winner. Preserve every adapter and cache. Do not automatically add epochs or resume source collection. Broader correctness/performance and grounded profile-decision evidence should drive the next experiment, rather than lower training loss or repeated exposure to the same few profile records. Confirmation remains sealed; no new GPU phase follows automatically from this report. See [the complete evaluation](../apple/reports/full-corpus-profile238/README.md).
+
+
+## Next experiments after full238: two distinct learning hypotheses
+
+Status: proposed and in progress; no new training run is authorized by this section. Both hypotheses change what the adapter can learn rather than repeating the same three profile records at a new learning rate. They run on different hosts and different resources, so they proceed in parallel.
+
+### H1 — capacity: rank 8/alpha 16 at the same frozen boundary 39
+
+Hypothesis: the demonstrated weakness is partly *capacity*, not only data content. 78,848 trainable parameters across two attention projections of one block may be too few to represent both a grounded profile decision and its code. Doubling rank while keeping alpha/rank = 2, layer 39, and the same four original-basis F32 factors tests that with one changed variable.
+
+This is **not** a free change, and the handoff forbids training an adapter the serving path cannot apply. Native rank-8 serving was hardware-qualified on 2026-10-15 (26/26 model-free device cases, bit-exact against the seam). The ordered gates were:
+
+1. Independent static review of `runtime-package-attention-rank8-v1` (the linked artifact `80ea4e31…be7d17c` already passed static artifact review; the *package* copy is still `pending_independent_static_review`).
+2. **Done 2026-10-15.** Phase A, model-free device qualification: call the unchanged `lora.apply` through the real `MlxOps` backend for rank 4 and rank 8 at both sites `[5120,1280]` and `[8192,5120]`, rows `{1,33}`, activation/base dtypes `{F32,BF16}`, factor dtype F32. Sparse dyadic basis cases must match the independent reference **exactly**, including the eighth component and the zero-B base-identity case. Dense cases use a bound predeclared before execution. Record raw outputs and actual dtype/layout. No whole-engine or trainer-parity claim.
+3. **Done 2026-10-16.** Phase B: one short same-build native control, absent versus rank-8/alpha-16/positive-zero-B, on the frozen 33-token prompt (context 256, 1 new token, greedy, real selected-logits observer). Exact initial raw-logit bits and token equality are the acceptance. No full-41 null baseline, no forced 4096-token endurance.
+4. Bounded end-to-end pilot on M5: train → save → exact reload → generate one real condition, so a rank-8 adapter is proven applicable before hours are spent. A directly expanded rank-4 adapter is not a fresh random rank-8 baseline; record the chosen parent and fresh optimizer explicitly.
+5. Only then a useful rank-8 run plus actual generated-code tests.
+
+**Status 2026-10-16:** gates 1–3 are complete. Gate 2 passed 26/26 model-free device cases (`attention-rank8-serving-extension-v1/device-qualification-v1/RESULT.md`). Gate 3 ran once as `rank8-zero-b-native-control-v3`: the widened rank-8 engine with a zero-B adapter is bitwise identical to the absent-adapter baseline and reproduces the pre-widening engine's published row (129280 values, 0 differing, max absolute error 0.0, argmax 553; `operation-result.json`). With zero B the widening is numerically inert, so a trained rank-8 adapter can be evaluated on this route without a widening artifact. Gate 4 — the bounded M5 train/save/reload/generate pilot — is the next actionable step, and gate 5 follows only if it passes.
+
+Preserve the qualified 800b rank-4 engine and runtime-v5 unchanged; the rank-8 route is additive.
+
+### H2 — data content: more independent measured profile-decision coverage
+
+Hypothesis: the profile-present rotation result (no benefit; the pilot returned the exact baseline) is a *data* failure. The dataset's profile presentations are ~3.8% of updates and come from only two already-represented lineages, so the model has almost no independently measured examples of "read a profile, then make a different grounded choice".
+
+Work: validate additional feasible independent optimization pairs that are already collected — not fetched. Each training example must contain baseline code, the real workload/precision/dispatch context and baseline measurements, a concise grounded decision, complete correct code, and actual feedback where it was used. Workload-dependent regressions and explicit retain-baseline decisions are wanted; fabricated counters and after-the-fact timings leaked into an initial proposal prompt are not. Report real lineage counts and gaps rather than padding a quota.
+
+Constraints: measurement on M5, curation and mixing on CPU; keep evaluation lineages and confirmation material out of training; the row48 draft-v2 (after-results removed) is the usable precedent, draft-v1 is not. `correctness-pilot-inventory-v1` and the reviewed measured drafts are the starting inventory.
+
+### Explicitly deferred
+
+Layer 38 and broader final-block projection coverage move the frozen boundary and require new cached states, earlier backward, serving support, and a measured cold-cost/fit pilot. They are a separate capacity path, not a cheaper continuation of H1. Source collection stays paused; Qwen stays parked.
+
+Coverage was inventoried on 2026-10-16 (`kernel-library/next-round-v5/final-block-target-coverage-v1/{INVENTORY.md,inventory.json}`): end-to-end support today is exactly block-39 `wq_a` and `wo_b`, so layer 38 and every other projection, expert or norm target is a serving/native implementation job first — the trainer can already select layer 38, but the serving-admission frontend and the native loader/model hardcode four block-39 tensors and forbid adapters on layers 0..38.
